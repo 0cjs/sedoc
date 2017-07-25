@@ -4,6 +4,13 @@ Go Language Notes
 Running and Testing
 -------------------
 
+[How to Write Go Code](https://golang.org/doc/code.html) is a brief
+overview of the development environment and its customary use.
+[Effective Go](https://golang.org/doc/effective_go.html) covers
+conventions in much more detail and is also a high-density
+introduction to what makes the language different from other
+languages.
+
 A quick place to run small language experiments is in the [Go Tour](
 https://tour.golang.org/). Use `import "fmt"` and `fmt.Println(x)` to
 print-debug.
