@@ -52,3 +52,43 @@ Type checks:
     t := i.(type)           // t == `bool`, `int`, `string`, etc.
 
 Sandbox at [tour/methods12](https://tour.golang.org/methods/12).
+
+
+### Struct Embedding
+
+(This also applies, more simply because no data, to interfaces.)
+
+Structs containing unnamed references to other structs "embed" a copy
+of that struct in themselves, allowing access to the "sub-struct"
+fields directly:
+
+    type Alice struct { a int }
+    type Bob   struct { b bool }
+    type Sub   struct { aa Alice; bb Bob }
+    type Embed struct { Alice; Bob }
+
+    var s Sub   = Sub{Alice{13}, Bob{true}}
+    var e Embed = Embed{Alice{13}, Bob{true}}
+
+    func main() {
+        fmt.Println(s, s.aa, s.bb, s.aa.a, s.bb.b)
+        // fmt.Println(s.a)
+        //      => "s.a undefined (type Sub has no field or method a)"
+        fmt.Println(e, e.a, e.b, e.Bob.b)
+    }
+
+Note the type name can be used for disambiguation, `e.Bob.b`; you may
+not embed the same type twice.
+
+The embedded structs are still separate types and data as far as
+method calls are concerned:
+
+    func (b Bob) printBob() { fmt.Println(unsafe.Sizeof(b) }
+
+`unsafe.Sizeof(e)` is 8, but `e.printBob()` will print 1.
+
+
+### First-class Functions
+
+[Codewalk: First-Class Functions in Go](
+https://golang.org/doc/codewalk/functions/)
