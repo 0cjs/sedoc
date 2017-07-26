@@ -18,7 +18,7 @@ print-debug.
 Language Features
 -----------------
 
-### [Blank Identifier](https://golang.org/doc/effective_go.html#blank)
+### [Blank Identifier]
 
 You can assign to `_` to discard a value; this is used for ignored
 values:
@@ -47,7 +47,7 @@ static conversions in the code that would already do that:
     // Compiler asserts that *RawMessage implments json.Marshaller
     var _ json.Marshaller = (*RawMessage)(nil)
 
-### Interfaces
+### [Interfaces]
 
     type I interface { M() }
     type T struct { S string }
@@ -89,7 +89,8 @@ Type checks:
 Sandbox at [tour/methods12](https://tour.golang.org/methods/12).
 
 
-### Struct Embedding
+### [Struct Embedding]
+
 
 (This also applies, more simply because no data, to interfaces.)
 
@@ -127,3 +128,11 @@ method calls are concerned:
 
 [Codewalk: First-Class Functions in Go](
 https://golang.org/doc/codewalk/functions/)
+
+
+
+-----
+
+[Blank Identifier]: https://golang.org/doc/effective_go.html#blank
+[Struct Embedding]: https://golang.org/doc/effective_go.html#embedding
+[Interfaces]: https://golang.org/doc/effective_go.html#interfaces_and_types
