@@ -47,9 +47,14 @@ Empty interface holds any value/type:
 Type checks:
 
     var i interface{} = "hello"
-    x, ok := i.(float)      // ⇒ "zero value", false
-    x     := i.(float)      // panic
-    t := i.(type)           // t == `bool`, `int`, `string`, etc.
+    x, ok := i.(float64)      // ⇒ "zero value", false
+    x     := i.(float64)      // panic
+
+    switch t := t.(type) {
+    default:    fmt.Printf("unexpcted type %T\n", t)
+    case bool:  fmt.Printf("boolean %t\n", t)
+    case *bool: fmt.Printf("pointer to boolean %t\n", *t)
+    }
 
 Sandbox at [tour/methods12](https://tour.golang.org/methods/12).
 
