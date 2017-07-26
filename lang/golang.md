@@ -18,6 +18,35 @@ print-debug.
 Language Features
 -----------------
 
+### [Blank Identifier](https://golang.org/doc/effective_go.html#blank)
+
+You can assign to `_` to discard a value; this is used for ignored
+values:
+
+    if _, err := os.Stat(path); os.IsNotExist(err) {
+        fmt.Printf("%s does not exist\n", path)
+    }
+
+and for suppressing unused import/var warnings during development:
+
+    import ("fmt"; "log"; "os")
+    var _ = fmt.Printf          // We compile without debugging printfs
+    func main() {
+        fd, err := os.Open("test.go")
+        if err != nil { log.Fatal(err) }
+        _ = fd  // TODO: use fd.
+    }
+
+Also for importing a package just for its side effects:
+
+    import _ "net/http/pprof"
+
+Also for forcing static checks of an interface when there are no
+static conversions in the code that would already do that:
+
+    // Compiler asserts that *RawMessage implments json.Marshaller
+    var _ json.Marshaller = (*RawMessage)(nil)
+
 ### Interfaces
 
     type I interface { M() }
@@ -48,6 +77,7 @@ Type checks:
 
     var i interface{} = "hello"
     x, ok := i.(float64)      // ⇒ "zero value", false
+    _, ok := i.(float64)      // Check only; not a float64.
     x     := i.(float64)      // panic
 
     switch t := t.(type) {
