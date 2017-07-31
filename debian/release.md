@@ -39,9 +39,7 @@ Upgrading Debian
 4. Update source lists:
 
         cd /etc
-        for i in apt/sources.list apt/sources.list.d/*; do
-            sed -i -e 's/jessie/stretch/g' $i
-        done
+        sed -i -e 's/jessie/stretch/g' apt/sources.list apt/sources.list.d/*
         git diff --word-diff    # Confirm nothing weird happened
         etckeeper commit -m 'apt/sources.list: Update from jessie to stretch'
 
