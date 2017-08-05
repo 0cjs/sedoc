@@ -56,3 +56,14 @@ From an install started with non-free components:
     # stretch-backports, previously on backports.debian.org
     deb     http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
     deb-src http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
+
+
+Cryptographic Keys
+==================
+
+A `NO_PUBKEY 6494C6D6997C215E` error can be fixed with:
+
+    sudo apt-key adv --keyserver keyserver.ubuntu.com \
+	--recv-keys 6494C6D6997C215E
+
+You can also directly import keys from stdin via `apt-key add -`.
