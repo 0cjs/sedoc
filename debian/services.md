@@ -7,8 +7,18 @@ Systemd
 (The usual.)
 
 
-System-V-style `init.d` (older systems)
----------------------------------------
+System-V-style `init.d`
+-----------------------
+
+Older systems without systemd use `init.d` startup scripts and even
+some packages on `systemd` systems (such as `webfs` on Debian 9) still
+appear use this old system. However, in the latter case you usually
+can still use, e.g., `systemctl disable webfs` and it will handle
+this:
+
+    # systemctl disable webfs
+    webfs.service is not a native service, redirecting to systemd-sysv-install.
+    Executing: /lib/systemd/systemd-sysv-install disable webfs
 
 `service` changes the current state, but not what happens on bootup:
 
@@ -26,7 +36,9 @@ updates and re-installs do not enable the service again.
     update-rc.d NAME enable|disable
     update-rc.d NAME start ...          # Complex; don't use this
 
-If asked to create links, `update-rc.d` if any links already exist.
-(This avoids overwriting custom configurations.)
+If asked to create links, `update-rc.d` will do nothing if any links
+already exist. (This avoids overwriting custom configurations.)
 
-https://askubuntu.com/questions/19320/how-to-enable-or-disable-services#19324
+Some information here is from a [StackExchange answer][354600].
+
+[354600]: https://askubuntu.com/a/19324/354600
