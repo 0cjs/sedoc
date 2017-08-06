@@ -67,3 +67,11 @@ A `NO_PUBKEY 6494C6D6997C215E` error can be fixed with:
 	--recv-keys 6494C6D6997C215E
 
 You can also directly import keys from stdin via `apt-key add -`.
+
+If the `dirmngr` package is not installed, this may produce the
+following error:
+
+    Executing: /tmp/apt-key-gpghome.NjrP5qfAgB/gpg.1.sh --keyserver keyserver.ubuntu.com --recv-keys 6494C6D6997C215E
+    gpg: failed to start the dirmngr '/usr/bin/dirmngr': No such file or directory
+    gpg: connecting dirmngr at '/tmp/apt-key-gpghome.NjrP5qfAgB/S.dirmngr' failed: No such file or directory
+    gpg: keyserver receive failed: No dirmngr
