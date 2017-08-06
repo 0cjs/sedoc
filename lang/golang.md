@@ -124,6 +124,27 @@ method calls are concerned:
 `unsafe.Sizeof(e)` is 8, but `e.printBob()` will print 1.
 
 
+### [Struct Composition]
+
+To replace specific functions within a structure but inherit the rest,
+use struct embedding as above. E.g., to replace just the `io.Writer`
+in a `net.Conn`:
+
+    type recordingConn struct { net.Conn; io.Writer }
+    func (c *recordingConn) Write(buf []byte) (int, error) {
+        return c.Writer.Write(buf)
+    }
+
+    func main() {
+        client, server := net.Pipe()
+        var buf bytes.Buffer
+        client = &recordingConn { client, io.MultiWriter(client, &buf), }
+    }
+
+A detailed tutorial available at Dave Cheney's [Struct Composition]
+blog post.
+
+
 ### First-class Functions
 
 [Codewalk: First-Class Functions in Go](
@@ -135,4 +156,5 @@ https://golang.org/doc/codewalk/functions/)
 
 [Blank Identifier]: https://golang.org/doc/effective_go.html#blank
 [Struct Embedding]: https://golang.org/doc/effective_go.html#embedding
+[Struct Composition]: https://dave.cheney.net/2015/05/22/struct-composition-with-go
 [Interfaces]: https://golang.org/doc/effective_go.html#interfaces_and_types
