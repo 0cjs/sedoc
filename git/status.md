@@ -4,7 +4,7 @@ Git: Status of Working Copy/Index
 Programatically Getting the Status
 ----------------------------------
 
-    # `__ path` for index/working copy status of each path
+    # Prints `__ path` where `__` is index/working copy status of each path
     git status --porcelain     
 
     # Check for changes staged to index (ignoreg unstaged working copy changes)
