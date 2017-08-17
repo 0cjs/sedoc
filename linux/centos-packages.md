@@ -1,7 +1,18 @@
 CentOS Package Information
 ==========================
 
-### Keys
+Standard Packages
+-----------------
+
+Always install these imediately after installing a new system:
+
+    yum install epel-release
+    yum install etckeeper
+    cd /etc && etckeeper init && git commit -m 'Initial commit'
+
+
+Keys
+----
 
 Keys are in `/etc/pki/rpm-gpg` and can be checked with, e.g.,
 
@@ -24,12 +35,3 @@ Keys as of 2017-08-14 from <https://getfedora.org/keys/>:
     4096R/352C64E5 2013-12-16
     Fingerprint 91E9 7D7C 4A5E 96F1 7F3E 888F 6A2F AEA2 352C 64E5
     uid Fedora EPEL (7) <epel@fedoraproject.org>
-
-
-### Standard Packages
-
-Always install these imediately after installing a new system:
-
-    yum install epel-release
-    yum install etckeeper
-    cd /etc && etckeeper init && git commit -m 'Initial commit'
