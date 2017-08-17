@@ -6,9 +6,39 @@ Standard Packages
 
 Always install these imediately after installing a new system:
 
-    yum install epel-release
+    yum install epel-release        # CentOS only
     yum install etckeeper
     cd /etc && etckeeper init && git commit -m 'Initial commit'
+
+RHEL users need to get an EPEL RPM from the [EPEL] page.
+
+You likely also want [IUS] packages for later versions of certain
+software (such as Git). Download the RPM from [IUS-RPM].
+
+[EPEL]: https://fedoraproject.org/wiki/EPEL
+[IUS]: https://ius.io/
+[IUS-RPM]: https://ius.io/GettingStarted/
+
+
+Replacing Packages
+------------------
+
+To replace a package with dependencies with a different one (e.g., a
+newer version of Git from IUS) without uninstalling dependencies, use
+a transaction:
+
+    yum shell
+    > erase mysql-libs
+    > install mysql56u mysql56u-libs mysql56u-server mysqlclient16
+    > run
+
+Alternatively, if you have the [yum replace plugin] available
+(it's in IUS):
+
+    yum install yum-plugin-replace
+    yum replace php --replace-with php56u
+
+[yum replace plugin]: https://github.com/iuscommunity/yum-plugin-replace
 
 
 Keys
