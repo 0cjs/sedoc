@@ -1,5 +1,10 @@
-Start/Stopping/Etc. Services
-============================
+System Service Startup and Management
+=====================================
+
+This covers all startup and process management systems that cover the
+functionality that used to be provided by `initd` and its associated
+shell scripts and configuration files.
+
 
 Systemd
 -------
