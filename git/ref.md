@@ -37,6 +37,22 @@ Has many more formatting options than `show-ref`.
 **ls-remote**: Display/query refs in a remote repo
 
 
+Finding Branches that Contain Commits
+-------------------------------------
+
+This [SO Answer](https://stackoverflow.com/a/13955891/107294) contains some hepful ideas:
+
+* See which branches contain a commit: `git branch --contains <ref>`
+* Get symbolic name to track down a commit: `use git name-rev <ref>`
+* A shell-scriptable ("plumbing") list of all branches containing a commit:
+
+      commit=$(git rev-parse <ref>) # expands hash if needed
+      for branch in $(git for-each-ref --format "%(refname)" refs/heads); do
+          if git rev-list "$branch" | fgrep -q "$commit"; then
+              echo "$branch"
+          fi
+      done
+
 Internals
 ---------
 
