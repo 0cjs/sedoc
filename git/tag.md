@@ -36,7 +36,7 @@ Git Commands
 will show the commit referenced by that tag rather than the tag
 itself. To see the tag itself, use `git cat-file -p TAG`.
 
-`git for-each-ref refs/tags/*` will print a nice list of tag and
+`git for-each-ref refs/tags` will print a nice list of tag and
 commit objects.
 
 
