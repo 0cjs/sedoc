@@ -38,4 +38,17 @@ password of the migrated user to allow him to unlock the disk.
 When doing a migration from another Mac you will not be able to use
 that Mac during the Migration process.
 
+### Application Issues with Migration
 
+**Dropbox:**
+If you use the Dropbox sync client, a migration may confuse it and
+cause it to delete large numbers of files when started on the new
+machine. (Perhaps the migration doesn't copy over the files in the
+Dropbox directory and the client then sees them as locally deleted
+since the last sync.) It seems best to disable or uninstall the
+Dropbox sync client before doing a migration and reconnect/re-install
+it after the migration is complete.
+
+**Office 365:**
+Your permissions/license for Office 365 might not be preserved across
+a migration.
