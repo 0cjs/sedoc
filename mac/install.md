@@ -1,7 +1,7 @@
 Mac Initial Wipe/Install
 ========================
 
-* Boot with `Command-R` to recovery tools.
+* Boot with [`Command-R`](./startup.md) to recovery tools.
 * Use Disk Utility to erase current partition under Internal/APPLE SSD.
   You must create a new partition to replace it: name it for the Mac
   and format it as "Mac OS Extended (Journaled, Encrypted)". The
