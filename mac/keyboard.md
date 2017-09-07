@@ -15,4 +15,6 @@ the Input Sources shortcut under the Shortcuts tab in Keyboard settings.
 "Select the previous input source" and "Select next source in input
 menu" are configured to `^Space` and `^⌥Space` which will conflict
 with Spotlight and Finder search. I normally remap Spotlight to
-`⌘Space` and Finder search to `⌥⌘Space`.
+`⌘Space` and Finder search to `⌥⌘Space`. However, the default mapping
+on a US keyboard Mac in Guest mode is `⌘Space` to select the previous
+input source.
