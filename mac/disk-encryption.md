@@ -17,10 +17,10 @@ change encryption, so we'll use that here.
 An LV optionally has a Disk Password independent of any user; this
 will be present if the LV was set up via `disktuil` or the graphical
 `Disk Utility` (such as before doing a fresh MacOS install). `diskutil
-coreStorage changeVolumePassword` will change this if it exists, but
-it's not clear how to add one if it doesn't exist (maybe the
-`-recoverykeychain` option?) or remove one if FDE credentials (see
-below) are in use.
+coreStorage changeVolumePassphrase` (`changeVolumePassword` on OS X <=
+10.11) will change this if it exists, but it's not clear how to add
+one if it doesn't exist (maybe the `-recoverykeychain` option?) or
+remove one if FDE credentials (see below) are in use.
 
 After install, encryption can be set up and/or user passphrases ("OS"
 and "Personal Recovery" FDE Credentials) added using the Control Panel
