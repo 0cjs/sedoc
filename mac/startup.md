@@ -11,15 +11,15 @@ Keys to hold down during startup (OS X Yosemite):
 * `N`: Boot NetBoot disk image
 * `T`: Target disk mode
 * `D`: Diagnostics/Hardware Test
-* `Command-R`: Recovery tools
-* `Option-Command-P-R`: Reset parameter RAM
-* `Command-V`: Verbose mode
-* `Command-S`: Single-user mode (not with Filevault disk?)
+* `⌘R`: Recovery tools
+* `⌥⌘PR`: Reset parameter RAM
+* `⌘V`: Verbose mode
+* `⌘S`: Single-user mode (not with Filevault disk?)
 
 #### Shutdown
 
 * Hold power button for 6 seconds to force restart.
-* `Control-Command-Power`: Force restart
+* `^⌘Power`: Force restart
 
 Wait for laptops to shut down before closing display or it may sleep
 instead.
