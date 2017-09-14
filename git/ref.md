@@ -40,7 +40,8 @@ Has many more formatting options than `show-ref`.
 Finding Branches that Contain Commits
 -------------------------------------
 
-This [SO Answer](https://stackoverflow.com/a/13955891/107294) contains some hepful ideas:
+This [SO Answer](https://stackoverflow.com/a/13955891/107294) contains
+some hepful ideas:
 
 * See which branches contain a commit: `git branch --contains <ref>`
 * Get symbolic name to track down a commit: `use git name-rev <ref>`
