@@ -23,6 +23,25 @@ Mac Initial Wipe/Install
   changeVolumePassphrase`. (You will need both the disk password you
   set earlier and the intended user to make this change.)
 
+
+Install Error on Pre-encrypted Disk
+-----------------------------------
+
+Erasing the disk and setting up a new encrypted volume before the
+install (as described above) may sometimes result in the following
+error at first boot after the install:
+
+> macOS could not be installed on your computer
+>
+> Storage system verify or repair failed.
+> Quit the installer to restart your computer and try again.
+
+This has been fixed on at least one occasion by rebooting again into
+recovery mode (the reboot and ⌘R are required), using Disk Utility to
+format the drive as "Mac OS Extended (Journaled)" only, installing,
+and enabling FileVault after configuration.
+
+
 Migration/Data Transfer
 -----------------------
 
