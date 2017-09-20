@@ -13,10 +13,12 @@ Keys to hold down during startup (OS X Yosemite):
 * `D`: Diagnostics/Hardware Test (also see [diag-howto])
 * `⌥D`: Internet diagnostics
 * `⌘R`: Recovery tools
+* `⌥⌘R` (pre-10.12.4), `Shift⌥⌘R` (10.12.4+): Upgrade to latest compatible
+  macOS (Always use to wipe El Capitan or earlier to protect Apple ID.)
+* `Shift⌥⌘R` (10.12.4+): Reinstall original MacOS that came with this Mac
 * `⌥⌘PR`: Reset parameter RAM
 * `⌘V`: Verbose mode
 * `⌘S`: Single-user mode (not with Filevault disk?)
-
 
 #### Shutdown
 
@@ -40,4 +42,4 @@ number will be displayed and the following options are available:
 
 
 [Startup]: https://support.apple.com/kb/PH25625
-[diag-howto](https://support.apple.com/en-us/HT202731)
+[diag-howto]: https://support.apple.com/en-us/HT202731

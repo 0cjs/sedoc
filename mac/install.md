@@ -13,6 +13,8 @@ Mac Initial Wipe/Install
   until you do this, but will not give an error indication).
 * Continue standard install process. (A couple of times during this
   process you will be prompted for the disk password you set above.)
+* When the setup assistant comes up, ⌘Q will let you shut down and
+  run it later.
 * When adding new users (via user creation or data migration—see
   below) you will be prompted for a user password at least once during
   the process, so you will need the intended user of the Mac nearby.
@@ -22,6 +24,11 @@ Mac Initial Wipe/Install
   the user to change the password with `diskutil coreStorage
   changeVolumePassphrase`. (You will need both the disk password you
   set earlier and the intended user to make this change.)
+
+Further information, especially about different versions, is at [How
+to reinstall macOS][reinstall-howto].
+
+[reinstall-howto]: https://support.apple.com/en-us/HT204904
 
 
 Install Error on Pre-encrypted Disk
