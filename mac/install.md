@@ -43,6 +43,9 @@ error at first boot after the install:
 > Storage system verify or repair failed.
 > Quit the installer to restart your computer and try again.
 
+(This is the 10.12 Sierra; the message is slightly different for
+10.10 Yosemite, which has also been seen to fail in a similar way.)
+
 This has been fixed on at least one occasion by rebooting again into
 recovery mode (the reboot and ⌘R are required), using Disk Utility to
 format the drive as "Mac OS Extended (Journaled)" only, installing,
