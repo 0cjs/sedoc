@@ -8,7 +8,7 @@ Mac and OS X/macOS
 
 Date    | Ver   | Codename      | Notes
 --------|-------|---------------|--------------------------------
-2017-?? | 10.13 | High Sierra   | APFS replaces HFS Plus
+2017-09 | 10.13 | High Sierra   | APFS replaces HFS Plus
 2016-09 | 10.12 | Sierra        |
 2015-09 | 10.11 | El Capitan    |
 2014-06 | 10.10 | Yosmite       |
