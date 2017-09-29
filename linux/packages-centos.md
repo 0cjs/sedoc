@@ -20,6 +20,20 @@ software (such as Git). Download the RPM from [IUS-RPM].
 [IUS-RPM]: https://ius.io/GettingStarted/
 
 
+Yum Quickref
+------------
+
+Detailed docs are at [yum7] and [yum6].
+
+* `yum update` to update everything (with prompt)
+* `yum-config-manager --enable | --disable | --add-repo=REPO`
+  (from `yum-utils` package) Adds new repos ([manpage][ycm]).
+
+[yum6]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html
+[yum7]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-yum.html
+[ycm]: http://man7.org/linux/man-pages/man1/yum-config-manager.1.html
+
+
 Replacing Packages
 ------------------
 
