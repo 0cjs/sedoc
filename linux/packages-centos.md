@@ -20,6 +20,26 @@ software (such as Git). Download the RPM from [IUS-RPM].
 [IUS-RPM]: https://ius.io/GettingStarted/
 
 
+Package Management Software
+---------------------------
+
+Packages are installed etc. by [RPM]; there are several [front ends] available
+for repository management including:
+* [yum]: RH/CentSO 5+, Fedora through 21.
+* [dnf]: Avail. since Fedora 18; default since Fedora 22
+
+Useful plugins for [yum] (many from the [`yum-utils`] package) include:
+* [yum-verify]: Verify installed package is unmodified (good for [FIM])
+
+[RPM]: http://rpm.org/
+[front ends]: https://en.wikipedia.org/wiki/Rpm_(software)#Local_operations
+[yum]: http://yum.baseurl.org/
+[dnf]: https://fedoraproject.org/wiki/DNF
+[`yum-utils`]: https://linux.die.net/man/1/yum-utils
+[yum-verify]: http://bencane.com/2013/12/23/yum-plugins-verifying-packages-and-configurations-with-yum-verify/
+[FIM]: https://en.wikipedia.org/wiki/File_integrity_monitoring
+
+
 Yum Quickref
 ------------
 
