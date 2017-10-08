@@ -31,6 +31,9 @@ for repository management including:
 Useful plugins for [yum] (many from the [`yum-utils`] package) include:
 * [yum-verify]: Verify installed package is unmodified (good for [FIM])
 
+Other useful tools:
+* [`repoquery`]: Query info (files, dependencies) about non-installed packages
+
 [RPM]: http://rpm.org/
 [front ends]: https://en.wikipedia.org/wiki/Rpm_(software)#Local_operations
 [yum]: http://yum.baseurl.org/
@@ -38,6 +41,7 @@ Useful plugins for [yum] (many from the [`yum-utils`] package) include:
 [`yum-utils`]: https://linux.die.net/man/1/yum-utils
 [yum-verify]: http://bencane.com/2013/12/23/yum-plugins-verifying-packages-and-configurations-with-yum-verify/
 [FIM]: https://en.wikipedia.org/wiki/File_integrity_monitoring
+[`repoquery`]: https://linux.die.net/man/1/repoquery
 
 
 Yum Quickref
