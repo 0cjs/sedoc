@@ -43,7 +43,7 @@ From an install started with non-free components:
 
     #deb    cdrom:[Debian GNU/Linux 9.0.0 _Stretch_ - Official amd64 NETINST 20170617-13:06]/ stretch contrib main non-free
 
-    deb	    http://ftp.jp.debian.org/debian/            stretch             main non-free contrib
+    deb     http://ftp.jp.debian.org/debian/            stretch             main non-free contrib
     deb-src http://ftp.jp.debian.org/debian/            stretch             main non-free contrib
 
     deb     http://security.debian.org/debian-security  stretch/updates     main contrib non-free
@@ -64,7 +64,7 @@ Cryptographic Keys
 A `NO_PUBKEY 6494C6D6997C215E` error can be fixed with:
 
     sudo apt-key adv --keyserver keyserver.ubuntu.com \
-	--recv-keys 6494C6D6997C215E
+        --recv-keys 6494C6D6997C215E
 
 You can also directly import keys from stdin via `apt-key add -`.
 
