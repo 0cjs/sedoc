@@ -75,3 +75,17 @@ following error:
     gpg: failed to start the dirmngr '/usr/bin/dirmngr': No such file or directory
     gpg: connecting dirmngr at '/tmp/apt-key-gpghome.NjrP5qfAgB/S.dirmngr' failed: No such file or directory
     gpg: keyserver receive failed: No dirmngr
+
+
+Downloading and Extracting Packages
+===================================
+
+    apt-get download pkgname    # download current version .deb file
+    dpkg -i pkgnameetc.deb      # install
+    dpkg -I pkgnameetc.deb      # show info
+    dpkg -c pkgnameetc.deb      # show contents (file list)
+    dpkg -x pkgnameetc.deb dir  # extract contents to `dir`
+
+Also handy:
+
+    dpkg -S /etc/ssh/ssh_config # Show package whence file comes
