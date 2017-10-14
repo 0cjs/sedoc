@@ -4,7 +4,7 @@ Bash Initalization Behaviour
 A Bash process may be:
 
 | State             | Invocation
-+-------------------+---------------------------------------------------
+|-------------------|---------------------------------------------------
 | Login (`L`)       | `argv[0][0] == '-'`, `--login`
 | Interactive (`I`) | `-i`, stdin is tty
 | Remote (`Rem`)    | stdin is "network connection" (see below)
@@ -13,13 +13,13 @@ Which initialization files depend on the state. In the following table:
 * P  = sources `/etc/profile` then `~/.bash_profile` or `~/.profile`
 * RC = sources `/etc/bash.bashrc` then `~/.bashrc`
 
-| L | I | Rem || P | RC || Example
-+---+---+-----++--------++-----------------
-| ✓ | ✓ | n/a || ✓ |    || `ssh host.com` (sshd sets argv[0]="-bash")
-| ✓ |   | n/a || ✓ |    || `ssh host.com </dev/null` (sshd sets argv[0]="-bash")
-|   | ✓ |     ||   | ✓  || `bash -i`, `bash` on tty
-|   |   |     ||   |    || `bash hello.sh`, `bash -c echo foo`,
-|   |   | ✓   ||   | ✓  || `ssh host.com 'echo $-'` (ssh runs `bash -c 'echo $-`)
+| L | I | Rem | | P | RC | | Example
+|---|---|-----|-|---|----|-|-----------------
+| ✓ | ✓ | n/a | | ✓ |    | | `ssh host.com` (sshd sets argv[0]="-bash")
+| ✓ |   | n/a | | ✓ |    | | `ssh host.com </dev/null` (sshd sets argv[0]="-bash")
+|   | ✓ |     | |   | ✓  | | `bash -i`, `bash` on tty
+|   |   |     | |   |    | | `bash hello.sh`, `bash -c echo foo`,
+|   |   | ✓   | |   | ✓  | | `ssh host.com 'echo $-'` (ssh runs `bash -c 'echo $-`)
 
 Calling `ssh` with no command starts a login shell on the remote,
 regardless of whether stdin is a tty or not. Calling ssh with a
