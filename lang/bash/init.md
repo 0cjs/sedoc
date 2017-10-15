@@ -22,11 +22,18 @@ A Bash process may be:
 |   |   |   | |   |    | | `bash hello.sh`, `bash -c echo foo`,
 |   |   | • | |   | •  | | `ssh host.com 'echo $-'` (ssh runs `bash -c 'echo $-`)
 
+Note that whether or not the shell is a "login shell" (by the [Bash
+manpage definition][Invocation] is not the same as whether the shell
+is a "fresh login" in the sense that the profile has ever been run.
+The shell process from `ssh host command` is not considered a "login
+shell" but has never had any of the profile files run.
+
 Calling `ssh` with no command starts a login shell on the remote,
 regardless of whether stdin is a tty or not. Calling ssh with a
-command runs `bash -c ...` which is non-interactive, but Bash detects
-it's "connected to a network connection" (the exact details of how it
-decides this are not clear) and sources `.bashrc` anyway.
+command runs `bash -c ...` which is non-login and non-interactive, but
+Bash detects it's "connected to a network connection" (the exact
+details of how it decides this are not clear) and sources `.bashrc`
+anyway.
 
 
 `.bashrc` Notes
