@@ -89,3 +89,17 @@ Downloading and Extracting Packages
 Also handy:
 
     dpkg -S /etc/ssh/ssh_config # Show package whence file comes
+
+
+Restoring Original Package Config Files
+---------------------------------------
+
+If the package has the config file stored, rather than generating it,
+you can extract the files as per above and take the config from there.
+Some packages, however, such as `openssh-server`, generate their
+configuration (`/etc/ssh/sshd_config`) so you need to use [this
+technique from SO](https://askubuntu.com/a/67028):
+
+    rm ssh/sshd_config
+    apt-get -o Dpkg::Options::="--force-confmiss" 
+            install --reinstall openssh-server
