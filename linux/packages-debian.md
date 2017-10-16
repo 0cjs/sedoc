@@ -59,7 +59,7 @@ From an install started with non-free components:
 
 
 Cryptographic Keys
-==================
+------------------
 
 A `NO_PUBKEY 6494C6D6997C215E` error can be fixed with:
 
@@ -78,7 +78,7 @@ following error:
 
 
 Downloading and Extracting Packages
-===================================
+-----------------------------------
 
     apt-get download pkgname    # download current version .deb file
     dpkg -i pkgnameetc.deb      # install
