@@ -103,3 +103,10 @@ technique from SO](https://askubuntu.com/a/67028):
     rm ssh/sshd_config
     apt-get -o Dpkg::Options::="--force-confmiss" 
             install --reinstall openssh-server
+
+
+Dependency Management
+---------------------
+
+    apt-cache depends pkgname       # show what pkgname depends on
+    apt-cache rdepends pkgname      # pkgs that directly depend on pkgname
