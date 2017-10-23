@@ -31,10 +31,13 @@ See [12 Japanse IME Tips][12tips].
 
 * `Backtick/半角/全角/英数`: Switch IME romaji to IME hiragana.
 * Start word with capital to switch to romaji; space/convert to finish.
+* `Shift-ｶﾀｶﾅ`: Full width katakana
 
 In conversion mode:
 * `←,→`: Select parse range
 * `Shift-←,→`: Extend/contract parse range
+* `Ctrl-O`: Convert parse to half-width
+* `Ctrl-U`: Convert parse to full-width hiragana
 
 For advanced config of keystrokes: switch to Japanese input,
 right-click on あin language bar, "Properties," "Advanced" button,
