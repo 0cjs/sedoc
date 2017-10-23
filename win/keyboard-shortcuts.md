@@ -24,6 +24,20 @@ Modifier keys are `WCAS-`: Windows, Control, Alt, Shift.
 * `W-Tab`: Launch task view (right-click on window gives options)
 * `WC-←,→`: Switch between desktops (also four-finger swipe)
 
+#### ja Input on US Keyboard
+
+There's more (and more general) information on this in Wikipedia's
+[Language input keys][wp-langinput] article. Many of the keyboard
+shortcuts work only when configured for a US keyboard, not a JP
+keyboard.
+
+* `Alt-Shift`: Switch languages/IMEs (configurable)
+* `Ctrl-Caps`: Hiragana
+* `Alt`: Alpha→hiragana→katakana
+* `Alt-backquote`: Kana/eiji switch
+* `Space`: Convert
+
 
 
 [ksiw]: https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts
+[wp-langinput]: https://en.wikipedia.org/wiki/Language_input_keys
