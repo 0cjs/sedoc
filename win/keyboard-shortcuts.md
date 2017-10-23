@@ -14,6 +14,7 @@ Modifier keys are `WCAS-`: Windows, Control, Alt, Shift.
 
 * `W-↑,↓`: Maximize, minimize
 * `W-←,→`: Move+resize app to left/right half of screen
+           (Actually cycles through various positions on all screens)
 * `WS-↑,↓`: Maximize/minimize vertically (maintaining width)
 * `WS-←,→`: Move app to other monitor (maintains vert maximization)
 * `W-#`: Start/switch to taskbar pinned app #  
