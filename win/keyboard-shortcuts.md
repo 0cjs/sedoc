@@ -36,14 +36,9 @@ In conversion mode:
 * `←,→`: Select parse range
 * `Shift-←,→`: Extend/contract parse range
 
-Advanced Configuration:
-1. Click on language selector in task bar, then "Language Settings"
-2. "Additional date, time, & regional settings"
-3. "Change Input Methods"
-4. "Options", next to 日本語.
-5. "Options", next to "Microsoft IME"
-6. "Advanced" button
-7. "General" tab, Key template section, "Advanced" button
+For advanced config of keystrokes: switch to Japanese input,
+right-click on あin language bar, "Properties," "Advanced" button,
+"General" tab, Key template section, "Advanced" button.
 
 #### ja Input on US Keyboard
 
