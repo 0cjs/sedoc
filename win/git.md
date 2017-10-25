@@ -2,6 +2,22 @@ Git for Windows
 ===============
 
 
+TLS (SSL) Libraries
+-------------------
+
+First, a warning: lots of people recommend `git config --global
+http.sslVerify false`; this disables all authentication and should not
+be done.
+
+Git for Windows comes with a MinGW OpenSSL library; this will be used
+by `curl` and the like. Git itself [can be configured][so-winsecchan]
+(without reinstallation, but for just that user) to use this or the
+native Windows Secure Channel library via one of the following:
+
+    git config --global http.sslBackend openssl
+    git config --global http.sslBackend schannel
+
+
 Credential Management
 ---------------------
 
@@ -33,3 +49,4 @@ you use nowhere else and perhaps expire it on a regular basis.
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
 [git-credential]: https://git-scm.com/docs/git-credential
 [gh-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[so-winsecchan]: https://stackoverflow.com/a/46332681
