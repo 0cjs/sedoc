@@ -10,6 +10,10 @@ To make available the standard extra stuff, add `contrib` and
 * `firmware-iwlwifi`: Thinkpad and other Intel WiFi chips
 * `firmware-linux-nonfree`: general stuff
 
+Other commonly wanted packages are:
+
+* `build-essential`: Tools to build programs (gcc, make, etc.)
+
 
 Repository Configuration Format
 -------------------------------

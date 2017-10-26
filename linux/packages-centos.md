@@ -15,6 +15,9 @@ RHEL users need to get an EPEL RPM from the [EPEL] page.
 You likely also want [IUS] packages for later versions of certain
 software (such as Git). Download the RPM from [IUS-RPM].
 
+Other handy packages:
+* `yum groupinstall "Development Tools" "Legacy Software Development"
+
 [EPEL]: https://fedoraproject.org/wiki/EPEL
 [IUS]: https://ius.io/
 [IUS-RPM]: https://ius.io/GettingStarted/
