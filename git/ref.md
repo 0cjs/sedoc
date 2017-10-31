@@ -42,6 +42,8 @@ Has many more formatting options than `show-ref`.
 Getting Branch/Upstream Names
 -----------------------------
 
+#### rev-parse
+
     git rev-parse --symbolic-full-name --short @
 
 Use current branch (`HEAD`, `@`), upstream (`@{u}`, `@{upstream}`) or
@@ -50,6 +52,14 @@ whatever you like as the branch name.
 When this branch isn't tracking another, a query for upstream will
 fail with exit code 128 and: `fatal: HEAD does not point to a branch`
 on stderr, which can be redirected to `/dev/null`.
+
+#### name-rev
+
+`git name-rev` can, given an arbitrary commit-ish, translate that into
+a reference using a name. Unless you know in advance the particular
+`--refs` and/or `--exclude` arguments it can be hard to know just what
+name you'll get. E.g., `git name-rev @{upstream}` will often give you
+`remotes/origin/HEAD` instead of `remotes/origin/master`.
 
 
 Finding Branches that Contain Commits
