@@ -39,6 +39,19 @@ Has many more formatting options than `show-ref`.
 **ls-remote**: Display/query refs in a remote repo
 
 
+Getting Branch/Upstream Names
+-----------------------------
+
+    git rev-parse --symbolic-full-name --short @
+
+Use current branch (`HEAD`, `@`), upstream (`@{u}`, `@{upstream}`) or
+whatever you like as the branch name.
+
+When this branch isn't tracking another, a query for upstream will
+fail with exit code 128 and: `fatal: HEAD does not point to a branch`
+on stderr, which can be redirected to `/dev/null`.
+
+
 Finding Branches that Contain Commits
 -------------------------------------
 
