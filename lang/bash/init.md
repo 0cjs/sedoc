@@ -42,11 +42,41 @@ anyway.
 `.bashrc` is not sourced by an interactive login shell. However, the
 default `/etc/profile` and `~/.profile` installed by most distros
 will, if run under Bash, explicitly source their respective
-`/etc/bash.bashrc` and `.bashrc` files.
+`/etc/bash.bashrc` and `.bashrc` files. If you're not using these, you
+almost certainly want to do this too. This will cause `.bashrc` to be
+executed in some non-interactive situations (e.g., `echo ls | ssh
+somehost`, since that's a login shell because it was given no remote
+command) but you have to handle that anyway as we see below.
 
-`.bashrc` should never print anything to stdout as this will confuse
-commands like scp etc. (And it should probably never print to stderr,
-either.)
+Whether or not the profile is sourced, `.bashrc` is executed in some
+non-interactive situations: in particular, when you `ssh somehost
+acommand` (see table above). The assumption here appears to be that if
+you give a command to be executed by the shell you'll want all your
+functions and aliases available, and if the command runs a script or
+something else that would generate a subprocess, the subprocess would
+not inherit the functions/aliases (nor source `.bashrc`) and thus not
+have its environment polluted by that.
+
+Thus, your `.bashrc` should never assume that it's being run in an
+interactive environment and do "interactive" things only after
+checking to see if the `-i` flag is set (see below). In particular,
+you should never generate output if you're not interactive as this
+breaks non-interactive programs such as `scp` or `ssh remotehost tar
+cf - somedir > somedir.tar`.
+
+Setting `BASH_ENV=~/.bashrc` may be tempting but should not be done;
+this will pollute the environment of shell scripts and `bash -c`
+invocations. Typical problems include:
+
+* Changes made to `$PATH` or other environment variables
+  disrupting the environment set up by the parent process.
+* Shell functions or aliases shadowing commands executed by
+  a child shell script.
+
+Instead, scripts and invocations that need your functions and/or
+aliases should explicitly `source ~/.bashrc` and handle having that
+entire environment, presumably designed for interactive use, brought
+in and potentially overriding the environment set up by the caller.
 
 
 Testing State
