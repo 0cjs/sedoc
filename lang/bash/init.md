@@ -10,17 +10,20 @@ A Bash process may be:
 | Remote (**R**)      | stdin is "network connection" (see below)
 
 * '•' = set; blank = not set; '-' = not checked or don't care.
+* **inh**: Inherits environment from a parent (other than init);
+  i.e., it's not a "fresh login" and the parent may expect that
+  the environment be kept intact.
 * **p**: sources `/etc/profile`
   then first of `~/.bash_profile`, `~/.bash_login`, `~/.profile`
 * **rc**: sources `/etc/bash.bashrc` then `~/.bashrc`
 
-| L | I | R | | p | rc | | Example
-|:-:|:-:|:-:|-|:-:|:--:|-|-----------------
-| • | • | - | | • |    | | `ssh host.com` (sshd sets argv[0]="-bash")
-| • |   | - | | • |    | | `ssh host.com </dev/null` (sshd sets argv[0]="-bash")
-|   | • |   | |   | •  | | `bash -i`, `bash` on tty
-|   |   |   | |   |    | | `bash hello.sh`, `bash -c echo foo`,
-|   |   | • | |   | •  | | `ssh host.com 'echo $-'` (ssh runs `bash -c 'echo $-`)
+| L | I | R | |inh| p | rc | | Example
+|:-:|:-:|:-:|-|:-:|:-:|:--:|-|-----------------
+| • | • | - | |   | • |    | | `ssh host.com` (sshd sets argv[0]="-bash")
+| • |   | - | |   | • |    | | `ssh host.com </dev/null` (sshd sets argv[0]="-bash")
+|   | • |   | | • |   | •  | | `bash -i`, `bash` on tty
+|   |   |   | | • |   |    | | `bash hello.sh`, `bash -c echo foo`,
+|   |   | • | |   |   | •  | | `ssh host.com 'echo $-'` (ssh runs `bash -c 'echo $-`)
 
 Note that whether or not the shell is a "login shell" (by the [Bash
 manpage definition][Invocation] is not the same as whether the shell
