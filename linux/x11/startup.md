@@ -1,6 +1,5 @@
-X11 Notes
-=========
-
+X11 Login and Session Startup
+=============================
 
 Display Manager
 ---------------
