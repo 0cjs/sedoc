@@ -5,7 +5,7 @@ Programatically Getting the Status
 ----------------------------------
 
     # Prints `__ path` where `__` is index/working copy status of each path
-    git status --porcelain     
+    git status --porcelain
 
     # Check for changes staged to index (ignoreg unstaged working copy changes)
     git diff-index --quiet --cached HEAD --

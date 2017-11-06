@@ -17,7 +17,7 @@ annotated reference a `tag` object.
 * `refs/tags/<tagname>` points to a tag object
 
 #### Fetching/Pushing
-  
+
 * Tags are fetched by default when:
   * No tag with that name already exists (i.e., no overwrite)
   * The tag is on a commit brought over due to a tracking branch

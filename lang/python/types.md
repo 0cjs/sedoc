@@ -14,7 +14,7 @@ Abbreviations below: [I] = immutable, "inst." = instantiated.
 * `str` [I]: strings inst. with `'`, `"`, etc.
 * `tuple` [I]: tuples inst. with `x, y, ...` (often in parens).
 * `list`: list/array inst. with `[x, y, ...]`.
-* `dict`: dictionary inst. with `{ 1: x, 'a': y, ...}` 
+* `dict`: dictionary inst. with `{ 1: x, 'a': y, ...}`
 * `set`: inst. with `{0, 'a', ()}` or `set()` for empty set
 * `frozenset`: [I] immutable version of `set`
 

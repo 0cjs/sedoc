@@ -8,7 +8,7 @@ Mac Initial Wipe/Install
   password you choose will be a disk password separate from any user
   passwords that may also be used to unlock the disk. (This can be
   removed later)
-* Quit Disk Utility, start Reinstall macOS. 
+* Quit Disk Utility, start Reinstall macOS.
 * Connect to a network (dialogue box after Continue will not work
   until you do this, but will not give an error indication).
 * Continue standard install process. (A couple of times during this

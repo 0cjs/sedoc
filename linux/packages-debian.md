@@ -37,7 +37,7 @@ Sources are listed from most to less preferred.
    identical lines starting with each.
 2. `uri` can be the base of the distro or an exact path. Not clear on
    details. Examples:
-3. `suite`: Examples include `stretch`, `stretch/updates`, 
+3. `suite`: Examples include `stretch`, `stretch/updates`,
 4. `component`: The standard seems to be `main`, plus optional `contrib`
     and `non-free`.
 
@@ -105,7 +105,7 @@ configuration (`/etc/ssh/sshd_config`) so you need to use [this
 technique from SO](https://askubuntu.com/a/67028):
 
     rm ssh/sshd_config
-    apt-get -o Dpkg::Options::="--force-confmiss" 
+    apt-get -o Dpkg::Options::="--force-confmiss"
             install --reinstall openssh-server
 
 

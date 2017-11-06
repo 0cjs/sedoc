@@ -52,7 +52,7 @@ Input JSON (basic structure; many fields removed):
 Query:
 
     aws ec2 describe-instances | jq -c '
-      .Reservations[].Instances[] 
+      .Reservations[].Instances[]
           | { InstanceId, Name:.Tags[] | select(.Key == "Name").Value }
       '
 

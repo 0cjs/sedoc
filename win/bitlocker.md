@@ -39,7 +39,7 @@ and/or additional authentication. You’ll then need to run
 
 This summary comes from [this Stack Overflow answer][bl-pin];
 slightly more detailed instructions can be found in [this MS
-forum post][bl-no-tpm]. 
+forum post][bl-no-tpm].
 
 [bl-pin]: https://serverfault.com/a/55495/7408
 [bl-no-tpm]: https://answers.microsoft.com/en-us/windows/forum/windows_10/bitlocker-in-windows-10-without-tpm/f79add65-17c2-4a5d-92d6-e4d2a387119f

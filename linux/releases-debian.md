@@ -54,7 +54,7 @@ Upgrading Debian
         shutdown -r now
 
 6. Optional cleanup:
-        
+
         apt autoremove
         apt-clean
 
@@ -62,11 +62,11 @@ Upgrading Debian
 Upgrading Ubuntu
 ----------------
 
-    aptitude update && aptitude full-upgrade                                    
-    aptitude install update-manager-core                                        
-    # One of the following                                                      
-    do-release-upgrade                                                          
-    update-manager -c                                                           
+    aptitude update && aptitude full-upgrade
+    aptitude install update-manager-core
+    # One of the following
+    do-release-upgrade
+    update-manager -c
     update-manager -c -d        # for devel upgrade
 
 
