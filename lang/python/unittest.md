@@ -25,6 +25,7 @@ JUnit-style with a typical [API][ut-api]:
             t.actual = None
 
         def test_good(t):                       # test case
+            t.maxDiff = None                    # show full diff (def. 80 chars)
             t.assertEqual(t.actual, 'expected')
             with t.assertRaises(LookupError):
                 raise KeyError
