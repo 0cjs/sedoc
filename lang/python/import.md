@@ -4,7 +4,7 @@ The Python Import/Module System
 Handy commands:
 
     # Show import path python is using
-    python -c "import sys, pprint; pprint.pprint(sys.path)"
+    python -c 'import sys, pprint; pprint.pprint(sys.path)'
 
     # Show import path for a particular module
     python -c 'import foo; print(foo.__file__)'

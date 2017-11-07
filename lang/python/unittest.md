@@ -38,7 +38,7 @@ JUnit-style with a typical [API][ut-api]:
 
     class TestOther(ut.TestCase):
         import sys
-        @ut.skipUnless(sys.platform.startswith("win"), "need Windows")
+        @ut.skipUnless(sys.platform.startswith('win'), 'need Windows')
         def test_win():
             t.fail()                            # setUp(), tearDown() not run
 
