@@ -58,11 +58,25 @@ Tuples, Lists, Dictionaries, Sets:
     set()                   # empty set
     frozenset(['a',2,'a'])  # frozen set: frozenset({2, 'a'})
 
-Functions:
+### Functions
 
     def f(x): return x + 1  # 'return' required
     g = f
     h = lambda x: x + 1     # no 'return'!
+
+Decorators are syntatic sugar:
+
+    def foo(f):      return lambda s: 'Foo(' + f(s) + ')'
+    def prefix(arg): return lambda f: lambda s: arg + '(' + f(s) + ')'
+
+    @prefix('Bar')
+    @foo
+    def decorated(s): return s
+
+    def manual(s): return s
+    manual = prefix('Bar')(foo(manual))
+
+    print(manual('Hi'), decorated('Hi')) # Bar(Foo(Hi)) Bar(Foo(Hi))
 
 
 Objects
