@@ -18,10 +18,12 @@ Syntax
 -------
 
 Line-oriented, with blocks delimited by indentation ([lex]).
-Statements that introduce blocks (`def`, `if`, `else`, etc.)
-end with a `:` (`if p: x`).
+Statements that introduce blocks (`def`, `if`, `else`, etc.) end with
+a `:` (`if p: x`) and must have a body; use `pass` as the body if it
+should do or return nothing (see example in [types](types.md)).
 
 If `return` is not used in a function it always returns `None`.
+`lambda: expr` however returns `expr` and may not use `return`.
 
 See [types.md] for more information on the types below.
 
