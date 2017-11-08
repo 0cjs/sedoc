@@ -85,7 +85,10 @@ Other Builtins
 [Standard Library][stdlib]
 --------------------------
 
-(No highlights here yet.)
+* The [functional programming modules][fpmods] include:
+  * [`operator`]: standard operators  (`+`, `=`, etc.) as functions
+    (see the [opmap])
+  * [`functools`]: higher order functions and operations on callable objects
 
 
 
@@ -99,3 +102,6 @@ Other Builtins
 [super]: https://docs.python.org/3/library/functions.html#super
 [Exceptions]: https://docs.python.org/3/library/exceptions.html
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+[fpmods]: https://docs.python.org/3/library/functional.html
+[`operator`]: https://docs.python.org/3/library/operator.html
+[opmap]: https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
