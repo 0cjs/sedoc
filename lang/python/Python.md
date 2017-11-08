@@ -7,8 +7,9 @@ There are two major versions:
 * 3.6.3 (2017-10): current (3.7 releasing 2018-06)
 
 Python variables are untyped; their values are typed. All variables
-are references to objects. Functions define variables in the same
-namespace referencing function objects.
+are references to objects or builtin types. [Functions](functions.md)
+define variables in the same namespace and these reference function
+objects.
 
 There is limited implicit conversation, mainly between numeric types
 and any type to boolean.
@@ -57,26 +58,6 @@ Tuples, Lists, Dictionaries, Sets:
     { 0, 'a', (), [] }      # set
     set()                   # empty set
     frozenset(['a',2,'a'])  # frozen set: frozenset({2, 'a'})
-
-### Functions
-
-    def f(x): return x + 1  # 'return' required
-    g = f
-    h = lambda x: x + 1     # no 'return'!
-
-Decorators are syntatic sugar:
-
-    def foo(f):      return lambda s: 'Foo(' + f(s) + ')'
-    def prefix(arg): return lambda f: lambda s: arg + '(' + f(s) + ')'
-
-    @prefix('Bar')
-    @foo
-    def decorated(s): return s
-
-    def manual(s): return s
-    manual = prefix('Bar')(foo(manual))
-
-    print(manual('Hi'), decorated('Hi')) # Bar(Foo(Hi)) Bar(Foo(Hi))
 
 
 Objects
