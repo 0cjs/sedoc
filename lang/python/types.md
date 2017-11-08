@@ -69,8 +69,43 @@ Empty class definitions are useful as structs:
 (XXX add more here, and cover `@staticmethod` and `@classmethod`.)
 
 
+Type Annotations
+----------------
+
+Function definition annotations per [PEP 3107] function definition
+annotations ([BNF][funcdef]) are available from at least Python 3.4
+(perhaps 3.0). These are return annotations `-> expr` and parameter
+annotations `identifier: expr`. (Lambdas cannot be annotated.) These
+are syntax only (accessible via the `__annotations__` attribute).
+
+Using the [typing] library (3.5 or later) you can annotate as:
+
+    def greeting(name: str = 'nobody') -> str:
+        return 'Hello ' + name
+
+    greeting()      # no error
+    greeting('joe') # no error
+    greeting(7)     # TypeError: Can't convert 'int' object to str implicitly
+
+(This example works in 3.4.3, with no `import typing`. I don't know
+why or how.)
+
+Further documentation:
+* The [typing] library (3.5)
+* [PEP 3107]: Function Annotations (3.0; syntax but no semantics)
+* [PEP 483]:  The Theory of Type Hints
+* [PEP 484]:  Type Hints (3.5)
+* [PEP 526]:  Syntax for Variable Annotations (3.6)
+
+
 
 [bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
 [Classes]: https://docs.python.org/3.6/tutorial/classes.html
 [`memoryview`]: https://docs.python.org/3/library/stdtypes.html#typememoryview
 [collections]: https://docs.python.org/3/library/collections.html#module-collections
+[funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[typing]: https://docs.python.org/3/library/typing.html
+[PEP 3107]: https://www.python.org/dev/peps/pep-3107/
+[PEP 483]: https://www.python.org/dev/peps/pep-0483/
+[PEP 484]: https://www.python.org/dev/peps/pep-0484/
+[PEP 526]: https://www.python.org/dev/peps/pep-0526/
