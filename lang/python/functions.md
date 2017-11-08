@@ -200,6 +200,11 @@ The [functional programming modules][fpmods] include:
     import operator
     reduce(operator.add, [1,2,3], 4)         # ⇒ 10
 
+### Currying
+
+Various techniques are linked from SO [Currying decorator in python](
+https://stackoverflow.com/q/9458271/107294).
+
 
 Function Objects
 ----------------
