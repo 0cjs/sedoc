@@ -85,6 +85,7 @@ Other Builtins
 [Standard Library][stdlib]
 --------------------------
 
+* Regular Expressions in [`re` package](regexp.md)
 * The [functional programming modules][fpmods] include:
   * [`operator`]: standard operators  (`+`, `=`, etc.) as functions
     (see the [opmap])
