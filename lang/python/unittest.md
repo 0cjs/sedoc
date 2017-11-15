@@ -1,9 +1,12 @@
-Python Unit Testing
-===================
+Python [unittest] Library
+=========================
 
-* The [unittest] module is part of the standard library and most commonly used.
+[unittest] is part of the standard library and commonly used, but not
+very good in terms of the assertions provided. See [pytest](pytest.md)
+for a library with better assertions.
+
+Other unit test tools include:
 * [doctest] finds tests in function docstrings.
-* [pytest] has simpler syntax made useful by good introspection.
 * [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
 
 
@@ -93,7 +96,6 @@ The [`load_tests` protocol][ut-load] can implement custom loading.
 
 [unittest]: https://docs.python.org/3/library/unittest.html
 [doctest]: https://docs.python.org/3/library/doctest.html
-[pytest]: https://docs.pytest.org/en/latest/
 [PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
 [ut-api]: https://docs.python.org/3.6/library/unittest.html#classes-and-functions
 [ut-disc]: https://docs.python.org/3/library/unittest.html#test-discovery
