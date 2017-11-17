@@ -32,7 +32,13 @@ Small Form Factor PCs
   * Rest as N3350 above.
   * (i3-7100U model apparently also available; [PM 3710/1337][pm2], no turbo)
 
+#### ASRock
 
+* [Beebox J3160 Barebone] [¥16k][et-j3160]
+  * Celeron J3160 4c 1.6(2.2)GHz 6W [PM 1796/522][pm1]
+  * Intel HD Graphics 400, mDP, 2xHDMI (all 30 Hz @4k).
+  * 0 MB. DDR3L 1600MHz, 2 x SO-DIMM slots, Max. 16GB
+  * mSATA slot, 2.5" SATA HDD
 
 [ECS Liva]: http://www.ecs.com.tw/ECSWebSite/Product/Product_Category_1.aspx?CategoryID=12&TypeID=130&MenuID=209&childid=M_10&LanID=0
 [Livia Z N3350]: https://www.amazon.co.jp/dp/B01N5MHCN9/
@@ -43,3 +49,5 @@ Small Form Factor PCs
 [PassMark]: https://www.cpubenchmark.net/
 [pm1]: https://www.cpubenchmark.net/compare.php?cmp[]=2895&cmp[]=2772&cmp[]=2886
 [pm2]: https://www.cpubenchmark.net/compare.php?cmp[]=2879&cmp[]=2865&cmp[]=2955
+[Beebox J3160 Barebone]: http://www.asrock.com/nettop/Intel/Beebox%20Series/#Specification
+[et-j3160]: https://www.e-trend.co.jp/items/1145591
