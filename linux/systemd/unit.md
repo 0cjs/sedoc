@@ -1,49 +1,12 @@
-[systemd]
-=========
-
-Documentation:
-* [Main project page][systemd]
-* [Manual pages][manpages]
-
-For information about the logging system see [systemd-journal].
+Systemd Units
+=============
 
 A simple example of setting up a daemon and a network server to be run
-by systemd can be found in [this blog entry][fabianlee].
+by systemd can be found at [fabianlee].
 
 
-Systemd Versions
-----------------
-
-| Systemd | Distribution
-|--------:|-------------------
-| 229     | Ubuntu 16.04
-
-
-Misc. Notes
------------
-
-Systemd configures a unique [machine-id] for each machine, usually
-stored in `/etc/machine-id` at install time.
-
-
-Process Tree
-------------
-
-The process tree supervised by systemd can be seen with `systemctl
-status`. It will usually consist of:
-* `init.scope` supervising `/sbin/init`
-* `system.slice` supervising system daemons etc.
-* `user.slice` with a sub-slice (e.g., `user-cjs.slice`) for each
-  logged-in user, continaing
-  * a user service (e.g., `user@1765.service`)
-  * a scope for each login session (e.g., `session-37.scope`)
-* `machine.slice` for [containers] spawned with [`systemd-nspawn`]
-
-
-Systemd Units
--------------
-
-#### Systemd [Unit] Types
+Systemd [Unit] Types
+--------------------
 
 | Unit Type     | Description
 |---------------|----------------------------------------------------------
@@ -62,7 +25,9 @@ See also `systemctl -t help` output and the list of [special units].
 For those units that are configured with files, there is a list of all
 [directives].
 
-#### Transient Units
+
+Transient Units
+---------------
 
 [`systemd-run`] creates one of three types of transient unit:
 * `.service` unit (default): started and managed asynchronously by
@@ -121,8 +86,5 @@ Further information:
 [inotify(7)]: http://man7.org/linux/man-pages/man7/inotify.7.html
 [kaisforza]: https://bitbucket.org/KaiSforza/systemd-user-units
 [machine-id]: https://www.freedesktop.org/software/systemd/man/machine-id.html
-[manpages]: https://www.freedesktop.org/software/systemd/man/
 [special units]: https://www.freedesktop.org/software/systemd/man/systemd.special.html
-[systemd-journal]: ./systemd-journal.md
-[systemd]: https://www.freedesktop.org/wiki/Software/systemd/
 [zoqaeski]: https://github.com/zoqaeski/systemd-user-units
