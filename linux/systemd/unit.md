@@ -19,6 +19,7 @@ Systemd [Unit] Types
 | [*.path]      | Path-based activation using [inotify(7)].
 | [*.mount]     | Filesystem mount point controlled and supervised by systemd
 | [*.automount] | Filesystem automount point
+| [*.swap]      |
 | [*.device]    | 
 
 See also `systemctl -t help` output and the list of [special units].
@@ -73,6 +74,7 @@ Further information:
 [*.service]: https://www.freedesktop.org/software/systemd/man/systemd.service.html
 [*.slice]: https://www.freedesktop.org/software/systemd/man/systemd.slice.html
 [*.socket]: https://www.freedesktop.org/software/systemd/man/systemd.socket.html
+[*.swap]: https://www.freedesktop.org/software/systemd/man/systemd.swap.html
 [*.target]: https://www.freedesktop.org/software/systemd/man/systemd.target.html
 [*.timer]: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
 [Unit]: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
