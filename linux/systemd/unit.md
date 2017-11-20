@@ -1,8 +1,10 @@
 Systemd Units
 =============
 
-A simple example of setting up a daemon and a network server to be run
-by systemd can be found at [fabianlee].
+A simple example of setting up a network service to be run by systemd
+can be found at [fabianlee]. Socket activation examples can be found
+at [systemd for Developers I][0p-socket] and [systemd for Developers
+II][0p-socket2].
 
 
 Systemd [Unit] Types
@@ -20,7 +22,7 @@ Systemd [Unit] Types
 | [*.mount]     | Filesystem mount point controlled and supervised by systemd
 | [*.automount] | Filesystem automount point
 | [*.swap]      |
-| [*.device]    | 
+| [*.device]    |
 
 See also `systemctl -t help` output and the list of [special units].
 For those units that are configured with files, there is a list of all
@@ -65,6 +67,40 @@ Further information:
 * [gtmanfred page] on managing your Xorg session (archive copy)
 
 
+Unit Files
+----------
+
+Similar to [XDG Desktop Entry] files (in turn similar to Windows INI
+files) but settings can be specified more than once, with various
+interpretations (usually, a list of each value for that setting, reset
+by setting a value to empty; this is not compatible with the XDG
+parser).
+
+#### Load Paths
+
+`$SYSTEMD_UNIT_PATH` overrides everything below, or prefixes
+everything below if the last entry is empty (`...:`).
+
+`--system` mode:
+
+    /etc/systemd/system
+    /run/systemd/system
+    /lib/systemd/system
+
+`--user` mode:
+
+    ${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user
+    /etc/systemd/user
+    $XDG_RUNTIME_DIR/systemd/user
+    /run/systemd/user
+    ${XDG_DATA_HOME:-$HOME/.local/share}/systemd/user
+    /usr/lib/systemd/user
+
+#### Unit File Directives
+
+See [unit-file](unit-file.md) for details.
+
+
 
 [*.automount]: https://www.freedesktop.org/software/systemd/man/systemd.automount.html
 [*.device]: https://www.freedesktop.org/software/systemd/man/systemd.device.html
@@ -77,7 +113,10 @@ Further information:
 [*.swap]: https://www.freedesktop.org/software/systemd/man/systemd.swap.html
 [*.target]: https://www.freedesktop.org/software/systemd/man/systemd.target.html
 [*.timer]: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
+[0p-socket2]: http://0pointer.de/blog/projects/socket-activation2.html
+[0p-socket]: http://0pointer.de/blog/projects/socket-activation.html
 [Unit]: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[XDG Desktop Entry]: https://specifications.freedesktop.org/desktop-entry-spec/latest/
 [`systemd-nspawn`]: https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html
 [`systemd-run`]: https://www.freedesktop.org/software/systemd/man/systemd-run.html
 [arch-systemd-user]: https://wiki.archlinux.org/index.php/Systemd/User
