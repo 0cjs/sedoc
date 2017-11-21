@@ -10,6 +10,6 @@ Python Summary/Quickref
   * [Regular Expressions](regexp.md)
 * [IPython REPL](ipython.md)
 * Testing
-  * [`unittest`](unittest.md)
-  * [Pytest](pytest.md)
-  * [Virtual Environments](virtualenv.md)
+  * [`unittest`](test/unittest.md)
+  * [Pytest](test/pytest.md)
+  * [Virtual Environments](test/virtualenv.md)
