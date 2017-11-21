@@ -9,7 +9,8 @@ Python Summary/Quickref
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
 * [IPython REPL](ipython.md)
-* Testing
+* Testing Libraries and Environments
   * [`unittest`](test/unittest.md)
   * [Pytest](test/pytest.md)
+  * [tox](test/tox.md)
   * [Virtual Environments](test/virtualenv.md)
