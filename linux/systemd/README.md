@@ -40,6 +40,14 @@ status`. It will usually consist of:
 * `machine.slice` for [containers] spawned with [`systemd-nspawn`]
 
 
+Failed Units
+------------
+
+Units that have failed will persist in the status listing even after
+the units themselves have been removed (the status will usually be
+`Loaded: not-found`). To remove these from the status use `systemctl
+reset-failed`.
+
 
 [systemd]: https://www.freedesktop.org/wiki/Software/systemd/
 [manpages]: https://www.freedesktop.org/software/systemd/man/
