@@ -80,12 +80,25 @@ Most of the following would normally be done with decorators; see below.
 * `exit()`: Exit test process.
 
 
+[Configuration]
+---------------
+
+`pytest -h` will print out out the command line options and config
+file settings, if any. The `pytest` command line tool finds the config
+file by looking in the current then parent dirs for the first of the
+following files:
+
+* `pytest.ini` (used but breaks if no `[pytest]` section)
+* [`tox.ini`](tox.md) with a `[pytest]` section
+* `setup.cfg` with a `[tool:pytest]` section
+
+
 XXX To-do
 ---------
 
 * Marking failing tests with the decorator (mentioned in [assertions])
   [assertions] mentions the decorator `@pytest.mark.xfail(raises=IndexError)`.
-  <https://docs.pytest.org/en/latest/skipping.html>
+  <https://docs.pytest.org/en/latest/skipping.html> and `pytest --markers`.
 * `pytest_skipping` plugin
 * <https://docs.pytest.org/en/latest/fixture.html#conftest-py> and
   fixture stuff from <https://docs.pytest.org/en/latest/builtin.html>
@@ -104,3 +117,4 @@ XXX To-do
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
+[Configuration]: https://docs.pytest.org/en/latest/customize.html
