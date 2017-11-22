@@ -72,6 +72,25 @@ compiled code (`cpython-34.pyc`, machine-portable) underneath, if the
 "source" was not already compiled code.
 
 
+[Import-related Libraries][implibs]
+-----------------------------------
+
+[`importlib`] replaced the deprecated [`imp`] library in 3.4.
+
+#### [Replacing `imp.load_source`][so-34import]
+
+    from importlib.util import spec_from_loader
+    from importlib.machinery import SourceFileLoader
+
+    spec = spec_from_loader("foobar",
+        SourceFileLoader("foobar", "/path/to/foobar"))
+    foobar = module_from_spec(spec)
+    spec.loader.exec_module(foobar)
+
+    # To keep importing by name after first load:
+    sys.modules['foobar'] = foobar
+
+
 Further Documentation
 ---------------------
 
@@ -82,9 +101,13 @@ Further Documentation
 
 
 
+[PEP 451]: https://www.python.org/dev/peps/pep-0451/
+[`imp`]: https://docs.python.org/3/library/imp.html
+[`importlib`]: https://docs.python.org/3/library/importlib.html
+[implibs]: https://docs.python.org/3/library/modules.html
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
 [modules]: https://docs.python.org/3/tutorial/modules.html
-[package]: https://docs.python.org/3/glossary.html#term-package
 [namespace package]: https://www.python.org/dev/peps/pep-0420/
-[PEP 451]: https://www.python.org/dev/peps/pep-0451/
+[package]: https://docs.python.org/3/glossary.html#term-package
+[so-34import]: https://stackoverflow.com/a/43602645/107294
