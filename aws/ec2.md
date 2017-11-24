@@ -1,7 +1,7 @@
-AWS Information
-===============
+AWS EC2 (Elastic Compute Cloud)
+===============================
 
-AWS Instance Type Information
+Instance Type Information
 -----------------------------
 
 [EC2Instances.info][ec2info] contains a database of EC2 instance type
