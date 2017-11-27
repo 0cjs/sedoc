@@ -148,7 +148,7 @@ limits can be increased by request.) You can always start an instance
 corresponding to a currently unused AZ reservation even if this would
 make you exceed your on-demand instance limit for the region.
 
-### Reservation Risks
+#### Reservation Risks
 
 No refund is given against reservations when the instance price drops.
 AWS has had over 60 price reductions since it started. A typical price
@@ -170,8 +170,17 @@ money by buying spot instances over on-demand instances when cheaper
 spot instances are available you may end up with unused reservations
 that you're still paying for.
 
-The HFT Guy's [article][hft-pricing] comparing GCP and AWS pricing
-also discusses why AWS reserved instances can often be a bad deal.
+Other analyses:
+
+* The HFT Guy's [article][hft-pricing] comparing GCP and AWS pricing
+  also discusses why AWS reserved instances can often be a bad deal.
+* Infoworld's [Cloud pricing comparison][iw-cpc] offers good
+  information on analyzing commitment discounts on the big three cloud
+  providers.
+* Cloudyn's older [EC2 price drops analysis][cloudyn-drop] provides a
+  bit of historical information, a simple analysis (with spreadsheet)
+  is shown in [a blog post][cloudyn-res] and they are one of several
+  providers of systems to help analyze and optimize usage.
 
 ### [Scheduled Instances]
 
@@ -268,6 +277,8 @@ takes at least a day.
 [Spot Instances]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html
 [`jq`]: ../lang/jq.md
 [availability zone]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+[cloudyn-drop]: https://www.cloudyn.com/blog/analyzing-aws-ec2-price-drops-over-the-past-5-years/
+[cloudyn-res]: https://www.cloudyn.com/blog/deciding-an-approach-to-the-cloud-aws-reserved-instances/
 [cu-report]: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html
 [dh-pricing]: https://aws.amazon.com/ec2/dedicated-hosts/pricing/
 [ec2doc]: https://aws.amazon.com/documentation/ec2/
@@ -282,11 +293,12 @@ takes at least a day.
 [ec2source]: https://github.com/powdahound/ec2instances.info
 [exchanged]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html
 [hft-pricing]: https://thehftguy.com/2016/11/18/google-cloud-is-50-cheaper-than-aws/
+[iw-cpc]: https://www.infoworld.com/article/3237566/cloud-computing/cloud-pricing-comparison-aws-vs-azure-vs-google-vs-ibm.html
 [modified]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html
 [orgs-intro]: http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
 [ri-application]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html
-[ri-apply]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/apply_ri.html
 [ri-apply-r]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/apply_ri.html#apply-regional-ri
+[ri-apply]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/apply_ri.html
 [service-linked role]: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role
 [spot-bidadv]: https://aws.amazon.com/ec2/spot/bid-advisor/
 [spot-price-hist]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html
