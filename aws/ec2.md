@@ -103,6 +103,11 @@ instance type][ri-apply-r]. E.g., a regional 4xlarge reservation can
 discount two 2xlarge instances or 1/2 of an 8xlarge instance. The
 [Cost and Usage Report][cu-report] can give exact details.
 
+Using regional reservations of the same size can help to save
+reservation slots (see "Reservation Limits" below). You can replace
+2 * 2xlarge and 1 * 4xlarge reservations, using two reservation slots,
+with one 2 * 4xlarge reservation, using only a single slot.
+
 A reservation discounts 3600 seconds of instance use per clock hour,
 whether serial or concurrent. E.g., an m4.xlarge reservation will give
 1-instance-hour discount from 13:00-14:00 whether applied to a single
@@ -137,8 +142,9 @@ than 30 days or convertable reservations, among other restrictions.
 
 #### Reservation Limits
 
-The default limits for reservations are 20 per AZ plus 20 per region.
-(This can be increased by request.) You can always start an instance
+The default limits for reservations are 20 reservation purchaes per
+month per AZ plus 20 reservation purchaes per month per region. (These
+limits can be increased by request.) You can always start an instance
 corresponding to a currently unused AZ reservation even if this would
 make you exceed your on-demand instance limit for the region.
 
@@ -158,6 +164,11 @@ compute units, Mem in GB):
     c3.4xlarge  55  30  $0.840  $0.584
     c4.4xlarge  62  30  $0.796  $0.504
     c5.4xlarge  62  32  $0.680  $0.428
+
+Spot instances do not use reservation discounts so if you are saving
+money by buying spot instances over on-demand instances when cheaper
+spot instances are available you may end up with unused reservations
+that you're still paying for.
 
 The HFT Guy's [article][hft-pricing] comparing GCP and AWS pricing
 also discusses why AWS reserved instances can often be a bad deal.
