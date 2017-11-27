@@ -115,10 +115,11 @@ all instance costs are calculated and summed to the billing account,
 and then all reservations are applied to discount that sum.
 
 Discount pricing tiers are available for reserved instances in a
-region worth $500,000 or more. Consolidated billing applies. Tiers do
-not apply to convertable reservations, MS SQL Server reservations, or
-reservations purchased from third-party sellers or the marketplace.
-There's more complexity; see the docs for details.
+region: billings over $500K are discounted 5% and over $4M, 10%.
+Consolidated billing applies. Tiers do not apply to convertable
+reservations, MS SQL Server reservations, or reservations purchased
+from third-party sellers or the marketplace. There's more complexity;
+see the docs for details.
 
 #### Reservation Renewals and Changes
 
@@ -141,7 +142,22 @@ The default limits for reservations are 20 per AZ plus 20 per region.
 corresponding to a currently unused AZ reservation even if this would
 make you exceed your on-demand instance limit for the region.
 
-#### Other Notes
+### Reservation Risks
+
+No refund is given against reservations when the instance price drops.
+AWS has had over 60 price reductions since it started. A typical price
+drop is 7%.
+
+Unless you bought convertable reservations, you can't move up to newer
+hardware (e.g., `c3` to `c4`) on current reservations. New generations
+may or may not have a performance increase, but they may be
+considerably cheaper than previous generations. Compare (ECU is
+compute units, Mem in GB):
+
+    Type        ECU Mem Demand  Reserved
+    c3.4xlarge  55  30  $0.840  $0.584
+    c4.4xlarge  62  30  $0.796  $0.504
+    c5.4xlarge  62  32  $0.680  $0.428
 
 The HFT Guy's [article][hft-pricing] comparing GCP and AWS pricing
 also discusses why AWS reserved instances can often be a bad deal.
