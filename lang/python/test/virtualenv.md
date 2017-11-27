@@ -38,6 +38,13 @@ unless you provide the `--system-site-packages` option. You can also
 use an alternate interpreter, pip, [wheel]s, etc. by providing
 `--extra-search-dir`.
 
+By default, virtualenv installs using the version of python it was
+installed with. (The help text for the `-p` option displays this.) If
+you want to use a different version, e.g., 2.7 on Debian systems, pass
+in the path to that interpreter:
+
+    virtualenv -p /usr/bin/python DIR
+
 
 virtualenvwrapper
 -----------------
