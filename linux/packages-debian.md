@@ -114,3 +114,21 @@ Dependency Management
 
     apt-cache depends pkgname       # show what pkgname depends on
     apt-cache rdepends pkgname      # pkgs that directly depend on pkgname
+
+
+Package Versions
+----------------
+
+`apt show` (and `aptitude show`) will show the latest version of a
+package (or all versions, with `-a`); this is not necessarily the one
+installed. To see which version is installed, use `dpkg -s PACKAGE`.
+
+
+Package Verification
+--------------------
+
+The `debsums` package/program can perform hash checks of installed
+files against packages, like `rpm -v` (from this [StackExchange
+question](https://askubuntu.com/q/9463/354600)):
+
+    sudo debsums -c [PACKAGE ...]
