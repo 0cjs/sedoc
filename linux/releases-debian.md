@@ -1,18 +1,22 @@
 Debian Releases and Upgrading
 =============================
 
-Debian and Ubuntu LTS releases:
+[Debian][debrel] and Ubuntu LTS releases:
 
-| Date    | Ver   | Codename | Kernel | Notes
-| --------|-------|----------|--------|---------------
-| 2017-06 | 9     | Stretch  | 4.9    |
-| 2016-04 | 16.04 |          | 4.?    | systemd
-| 2015-05 | 8     | Jessie   | 3.16   | systemd
-| 2014-04 | 14.04 |          | 3.13   |
-| 2013-03 | 7     | Wheezy   |        |
-| 2012-04 | 12.04 |          | 3.2    |
-| 2011-02 | 6     | Squeeze  |        |
-| 2010-04 | 10.04 |          | 2.6    |
+| Date    | Ver   | Codename | EOL      | Kernel | Notes
+| --------|-------|----------|----------|--------|---------------
+| 2018-?? | 10    | Buster   |          |        |
+| 2017-06 | 9     | Stretch  | 2022     | 4.9    |
+| 2016-04 | 16.04 |          |          | 4.?    | systemd
+| 2015-05 | 8     | Jessie   | 2020-06  | 3.16   | systemd
+| 2014-04 | 14.04 |          |          | 3.13   |
+| 2013-03 | 7     | Wheezy   | 2018-05  |        |
+| 2012-04 | 12.04 |          |          | 3.2    |
+| 2011-02 | 6     | Squeeze  | 2016-02  |        |
+| 2010-04 | 10.04 |          |          | 2.6    |
+
+Debian figures above are end of [Debian LTS] support; regular support
+ends two years earlier.
 
 
 Upgrading Debian
@@ -76,3 +80,8 @@ Sources
 * [LinuxBabe.Com](
 https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 * Philipp Wiendl
+
+
+
+[Debian LTS]: https://wiki.debian.org/LTS
+[debrel]: https://wiki.debian.org/DebianReleases
