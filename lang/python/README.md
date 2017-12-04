@@ -8,6 +8,8 @@ Python Summary/Quickref
   * [Modules and Importing](import.md)
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
+  * [`argparse`](https://docs.python.org/3/library/argparse.html) -
+    The modern Python arg parser (replaces optparse)
 * [IPython REPL](ipython.md)
 * Testing Libraries and Environments
   * [`unittest`](test/unittest.md)
