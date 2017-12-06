@@ -91,6 +91,48 @@ compiled code (`cpython-34.pyc`, machine-portable) underneath, if the
     sys.modules['foobar'] = foobar
 
 
+Importing from "Unusual" Filenames
+----------------------------------
+
+`import` needs an identifier to which to bind the module it creates
+and also generates the name of the file to read from this. Thus, files
+to be imported with `import` must end with `.py` and not otherwise
+have any characters not valid in a Python identifier. This makes
+loading files designed for use as scripts (e.g., `git-mything`)
+unloadable as modules with this mechanism.
+
+There are several solutions ([so-impname1], [so-impname2]) other than
+renaming the file:
+
+1. Instead of creating a module, just execute it in the local
+   namespace (adding its definitions) with `exec(open(PATH).read())`.
+
+2. Create a symlink to the file with a better name.
+
+3. Create the module separately from binding a variable to it,
+   possibly in an import proxy module:
+
+      gitmything.py:
+          #   XXX not clear how this handles paths
+
+          #   Solution 1:
+          tmp = __import__('git-mything')
+          globals().update(vars(tmp))
+
+          #   Solution 2:
+          sys.modules['gitmything'] = __import__('git-mything')
+
+          #   Solution 3:
+
+      main.py:
+          #   Solution 1/2:
+          from gitmything import *
+
+          #   Solution 3:
+          import importlib
+          mod = importlib.import_module("path.to.my-module")
+
+
 Further Documentation
 ---------------------
 
@@ -111,3 +153,5 @@ Further Documentation
 [namespace package]: https://www.python.org/dev/peps/pep-0420/
 [package]: https://docs.python.org/3/glossary.html#term-package
 [so-34import]: https://stackoverflow.com/a/43602645/107294
+[so-impname1]: https://stackoverflow.com/q/8350853/107294
+[so-impname2]: https://stackoverflow.com/a/24659400/107294
