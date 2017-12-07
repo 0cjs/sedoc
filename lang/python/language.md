@@ -20,16 +20,59 @@ and any type to boolean.
 Syntax
 -------
 
-Line-oriented, with blocks delimited by indentation ([lex]).
-Statements that introduce blocks (`def`, `if`, `else`, etc.) end with
-a `:` (`if p: x`) and must have a body; use `pass` as the body if it
-should do or return nothing (see example in [types](types.md)).
+Statements are separated by semicolons or newlines. Indenting
+introduces a new block that closes at the next dedent. Statements that
+introduce blocks (`def`, `if`, `else`, etc.) are followed by a colon
+and may not be on the same line as another block-introducing
+statement. Following the colon may be a list of semicolon-separated
+statements on the same line or an indented block on subsequent lines.
+E.g.:
+
+    if x == 0:  pass  # statement must be present so do nothing
+    elif x > 0: foo; bar; baz()
+    else:
+        baz(0, 1, 2)
+        quux('............................................')
+
+For further details see the [lexical][lex] and [statement][stmts]
+documentation.
 
 If `return` is not used in a function it always returns `None`.
 `lambda: expr` however returns `expr` and may not use `return`.
 
-See [types.md] for more information on the types below.
+### [Compound Statements][stmts]
 
+* `if P: ...` / `elif P: ...` / `else: ...`
+* `while EXPR: ...` / `else: ...`
+  * `else` always executed at end of loop.
+* `for TARGETS in EXPRS: ...` / `else: ...`
+   * Comma-separate _[targets]_ and _[exprs]_ .
+   * Use `range(10)` for 0..9.
+   * Assignments in _targets_ override all previous assignments even in loop.
+   * Careful when mutating _exprs_; copy (`for x in xs[:]:x`) if necessary.
+* `break` / `continue`
+  * Work as expected in `while` and `for`.
+  * `break` in the first part causes `else` to be skipped.
+* `try: ...` / `finally: ...`  
+  `try: ...` / (`except [EXPR [as ID]]: ...`)+ / [`else: ...`] / `finally: ...`
+  * Searches through multiple `except` clauses for match.
+  * _ID_ is cleared at end of `except` clause; assign to other var if necessary.
+  * [`sys.exc_info()`] gives exception info; not available in `finally`.
+  * More info in [Exceptions].
+* `with EXPR [as TARGET] [, EXPR [as TARGET] ...]: ...`
+  * _expr_ produces a [context manager] having methods:
+    * `__enter__(self)` returning object assigned to _target_.
+    * `__exit__(self, exceptiontype, exceptionvalue, traceback)` returning
+        * `False`, `None` etc. to continue exception (do not re-raise).
+        * `True` etc. to suppress exception.
+        * Throw exception to replace original.
+  * Enter/exit can be called directly.
+  * See [contextlib] for useful stuff.
+* [Function definitions](functions.md)
+
+### Types
+
+See [types.md] for more information on the types below.
 
 ### Literals
 
@@ -77,10 +120,16 @@ Further Reading
 
 
 
-[wp]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics
-[pyref]: https://docs.python.org/3/reference/
-
 [CPython]: https://en.wikipedia.org/wiki/CPython
+[Exceptions]: https://docs.python.org/3/reference/executionmodel.html#exceptions
+[`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
+[context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
+[contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
+[exprs]: https://docs.python.org/3/reference/expressions.html#expression-lists
+[lambda]: https://docs.python.org/3/reference/expressions.html#lambda
 [legacy]: https://wiki.python.org/moin/Python2orPython3
 [lex]: https://docs.python.org/3/reference/lexical_analysis.html
-[lambda]: https://docs.python.org/3/reference/expressions.html#lambda
+[pyref]: https://docs.python.org/3/reference/
+[stmts]: https://docs.python.org/3/reference/compound_stmts.html
+[targets]: https://docs.python.org/3/reference/simple_stmts.html#assignment-statements
+[wp]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics
