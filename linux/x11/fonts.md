@@ -12,4 +12,4 @@ X11 Fonts
 
 [desktop-utils]: https://github.com/0cjs/desktop-utils
 [scp]: https://en.wikipedia.org/wiki/Source_Code_Pro
-[scp-releases]: https://github.com/adobe-fonts/source-code-pro/releases)
+[scp-releases]: https://github.com/adobe-fonts/source-code-pro/releases
