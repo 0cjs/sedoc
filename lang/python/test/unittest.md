@@ -2,7 +2,7 @@ Python [unittest] Library
 =========================
 
 [unittest] is part of the standard library and commonly used, but not
-very good in terms of the assertions provided. See [pytest](pytest.md)
+very good in terms of the [assertions] provided. See [pytest](pytest.md)
 for a library with better assertions.
 
 
@@ -91,7 +91,8 @@ The [`load_tests` protocol][ut-load] can implement custom loading.
 
 
 [unittest]: https://docs.python.org/3/library/unittest.html
-[ut-api]: https://docs.python.org/3.6/library/unittest.html#classes-and-functions
+[assertions]: https://docs.python.org/3/library/unittest.html#assert-methods
+[ut-api]: https://docs.python.org/3/library/unittest.html#classes-and-functions
 [ut-disc]: https://docs.python.org/3/library/unittest.html#test-discovery
 [so-where]: https://stackoverflow.com/q/61151/107294
 [ut-load]: https://docs.python.org/3/library/unittest.html#load-tests-protocol
