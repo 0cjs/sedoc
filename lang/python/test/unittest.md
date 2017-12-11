@@ -5,10 +5,6 @@ Python [unittest] Library
 very good in terms of the assertions provided. See [pytest](pytest.md)
 for a library with better assertions.
 
-Other unit test tools include:
-* [doctest] finds tests in function docstrings.
-* [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
-
 
 unittest
 --------
@@ -95,8 +91,6 @@ The [`load_tests` protocol][ut-load] can implement custom loading.
 
 
 [unittest]: https://docs.python.org/3/library/unittest.html
-[doctest]: https://docs.python.org/3/library/doctest.html
-[PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
 [ut-api]: https://docs.python.org/3.6/library/unittest.html#classes-and-functions
 [ut-disc]: https://docs.python.org/3/library/unittest.html#test-discovery
 [so-where]: https://stackoverflow.com/q/61151/107294
