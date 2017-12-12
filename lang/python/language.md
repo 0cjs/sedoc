@@ -67,8 +67,17 @@ If `return` is not used in a function it always returns `None`.
         * `True` etc. to suppress exception.
         * Throw exception to replace original.
   * Enter/exit can be called directly.
-  * See [contextlib] for useful stuff.
+  * See [contextlib] for useful stuff, including:
+    * `with closing(o)`: ensures `o.close()`
+    * `with suppress(excs)`: suppresses listed exceptions
+    * `with redirect_stdout(f)`: sends `sys.stdout` to `f` (similar for stderr)
+    * `class mycon(ContextDecorator):` to use as `@mycon()` wrapping function
+    * `ExitStack` to ammend context in `with` block (like nested `with`)
+  * [Examples and recipes][contextlib-ex], e.g., optional context managers
+    (particularly note rentrancy and reusability considerations)
 * [Function definitions](functions.md)
+* Class definitions
+* Coroutines
 
 ### Types
 
@@ -124,6 +133,7 @@ Further Reading
 [Exceptions]: https://docs.python.org/3/reference/executionmodel.html#exceptions
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
 [context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
+[contextlib-ex]: https://docs.python.org/3/library/contextlib.html#examples-and-recipes
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
 [exprs]: https://docs.python.org/3/reference/expressions.html#expression-lists
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
