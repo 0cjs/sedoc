@@ -10,6 +10,7 @@ Python Summary/Quickref
   * [Regular Expressions](regexp.md)
   * [`argparse`](https://docs.python.org/3/library/argparse.html) -
     The modern Python arg parser (replaces optparse)
+  * [Python Language Services](ast.md) (manipulating Python code)
 * [IPython REPL](ipython.md)
 * Testing Libraries and Environments
   * [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
@@ -21,5 +22,5 @@ Python Summary/Quickref
 
 
 
-[`doctest`]: https://docs.python.org/3/library/doctest.html
 [PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
+[`doctest`]: https://docs.python.org/3/library/doctest.html
