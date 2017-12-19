@@ -13,10 +13,18 @@ Documentation:
 Systemd Versions
 ----------------
 
-| Systemd | Distribution
-|--------:|-------------------
-| 232     | Debian 9
-| 229     | Ubuntu 16.04
+| Systemd | Distribution    | Notes
+|--------:|-----------------+-----------------------------------------
+| 232     | Debian 9        |
+| 229     | Ubuntu 16.04    |
+| 219     | CentOS 7        | `--user` removed (see below)
+
+
+Known Issues
+------------
+
+* RHEL/CentOS 7 do not and will not support user systemd (`systemctl
+  --user`); it's [disabled entirely][1121451]. See [CentOS bug 8767].
 
 
 Misc. Notes
@@ -49,5 +57,8 @@ the units themselves have been removed (the status will usually be
 reset-failed`.
 
 
-[systemd]: https://www.freedesktop.org/wiki/Software/systemd/
+
+[1121451]: https://superuser.com/a/1121451/26274
+[CentOS bug 8767]: https://bugs.centos.org/view.php?id=8767
 [manpages]: https://www.freedesktop.org/software/systemd/man/
+[systemd]: https://www.freedesktop.org/wiki/Software/systemd/
