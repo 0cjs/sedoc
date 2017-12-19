@@ -1,5 +1,13 @@
-Git for Windows
-===============
+[Git for Windows]
+=================
+
+Includes:
+* Git, of course
+* OpenSSH (dunno if it's [Win32-OpenSSH] or not)
+* [ssh-pagent], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
+* [mintty] and Bash (used by 'Git Bash Here' menu item in Explorer)
+* zlib, curl, tcl/tk, perl, MSYS21
+* Root certs
 
 
 TLS (SSL) Libraries
@@ -21,7 +29,7 @@ native Windows Secure Channel library via one of the following:
 Credential Management
 ---------------------
 
-Recent versions of [Git for Windows][gfw] install and configure [Git
+Recent versions of [Git for Windows] install and configure [Git
 Credential Manager for Windows][gcmw] if that box is checked during
 the install process. This installs the `git credential-manager`
 program and sets `credential.helper=manager` in the Git system
@@ -45,8 +53,11 @@ you use nowhere else and perhaps expire it on a regular basis.
 
 
 
-[gfw]: https://git-for-windows.github.io/
+[Git for Windows]: http://gitforwindows.org/
+[Win32-OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
-[git-credential]: https://git-scm.com/docs/git-credential
 [gh-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[git-credential]: https://git-scm.com/docs/git-credential
+[mintty]: https://mintty.github.io/
 [so-winsecchan]: https://stackoverflow.com/a/46332681
+[ssh-pagent]: https://github.com/cuviper/ssh-pageant
