@@ -11,11 +11,10 @@ have official Docker images which may be the easiest way to use it.
 [GitLab CI]
 -----------
 
-You specify build descriptions in `.gitlab-ci.yml`. Runners are
-triggered by the Web UI, [triggers] or new commits that do not contain
-`[ci skip]` or `[skip ci]`) in the message. Triggers require
-[permissions].
-
+You specify build descriptions in `.gitlab-ci.yml`.
+[Runners](gitlab-runner.md) are triggered by the Web UI, [triggers] or
+new commits that do not contain `[ci skip]` or `[skip ci]`) in the
+message. Triggers require [permissions].
 
 ### [Build Configuration]
 
@@ -88,12 +87,6 @@ also a large number of preset variables. These are described on the
 * `GIT_DEPTH`: for shallow clones
 
 
-### [Runners]
-
-The [Autoscale GitLab CI runners][aws-autoscale] describes how to configure
-a system that can spin up and down EC2 instances as the load varies.
-
-
 
 [Build Configuration]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
@@ -104,7 +97,6 @@ a system that can spin up and down EC2 instances as the load varies.
 [YAML]: https://en.wikipedia.org/wiki/YAML#Syntax
 [`GIT_CHECKOUT`]: https://docs.gitlab.com/ee/ci/yaml/README.html#git-checkout
 [`GIT_STRATEGY`]: https://docs.gitlab.com/ee/ci/yaml/README.html#git-strategy
-[aws-autoscale]: https://substrakthealth.com/news/gitlab-ci-cost-savings/
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
 [install]: https://about.gitlab.com/installation/
 [jobs]: https://docs.gitlab.com/ee/ci/yaml/README.html#jobs
@@ -112,7 +104,6 @@ a system that can spin up and down EC2 instances as the load varies.
 [only and except]: https://docs.gitlab.com/ee/ci/yaml/README.html#only-and-except-simplified
 [permissions]: https://docs.gitlab.com/ee/user/project/new_ci_build_permissions_model.html
 [refcard]: http://yaml.org/refcard.html
-[runners]: https://docs.gitlab.com/ee/ci/runners/README.html
 [special YAML features]: https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features
 [triggers]: https://docs.gitlab.com/ee/ci/triggers/README.html
 [variables]: https://docs.gitlab.com/ee/ci/variables/README.html
