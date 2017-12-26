@@ -42,13 +42,12 @@ The `/ci/lint` path in your GitLab instance contains a validator for
 The [YAML] ([refcard]) build description is a combination of the
 following top-level elements.
 
-* `image` and `services`: [Docker config] (if using the `docker` executor)
-* `before_script`, `after_script`: list or multi-line string
-* `stages`, `types`: List of stages; default `[build, test, deploy]`).
-  Stages are run in order listed. `types` is a deprecated alias.
-* `variables`: Map of [variables] defined for all jobs.
-  Values must be strings (see below).
-* `cache`: See <https://docs.gitlab.com/ee/ci/yaml/README.html#cache>
+* `stages`: List of stages; default `[build, test, deploy]`).
+  Stages are run in order listed. (`types` is a deprecated alias.)
+* `image`, `services`, `before_script`, `after_script`, `variables`,
+  `cache`: As per job elements below. These are defaults that are
+  entirely overridden by (not combined with) settings in a job.
+* [Jobs]; see below.
 
 All other top level elements are names of [jobs], each of which is a
 dictionary with a required `script` parameter and any other optional
@@ -56,24 +55,41 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
 [special YAML features] can turn them into templates.
 
 * `script`: Commands to be executed (list or multi-line string)
-* `image`, `services`: As above.
+* `image`, `services`: [Docker config] (if using the `docker` executor)
 * `stage`: Stage to contain this job; default `test`.
-* `type`: Deprecated alias for `stage`.
+  (`type` is a deprecated alias.)
 * `variables`: Map of job [variables]; if present, entirely replaces
-   global var map. Values must be strings (see below).
-   Turn off global vars with `variables: {}`.
+   global var map (i.e., turn off global vars with `variables: {}`).
+   Values must be strings (see below).
 * `only`, `except`: Lists of Git refs for which job is/is not created.
   Can be quite complex; see [only and except].
 * `tags`: List of tags; runner must have all of these tags too.
 * `allow_failure: true`: This job doesn't contribute to failure status.
+  (But 'CI build passed with warnings' displayed on commit, etc.)
 * `when`: [When] to run jobs:
   - `on_success`: (default) when all jobs from prior stages succeeded
   - `on_failure`: when at least one job from prior stage failed
   - `always`: always regardless of any prior job status
   - `manual`: [manual action] started by user in console (blocks pipeline at
     this stage by default; set `allow_failure: false` for non-blocking)
-* `environment`: [Environments] for continuous deployment. Deployments are
+* [`dependencies`]: List of jobs from previous (completed) stages from which
+  artifacts should be downloaded. Default is all jobs from previous stages.
+  Status is ignored so there's no error trying to download artifacts that
+  weren't created due to failure or a manual job that wasn't run.
+* [`artifacts`]: Build products to keep after the job has finished.
+  These can be downloaded from the GitLab UI. Keys in this map:
+  - `paths` (list of shell globs?): files to keep
+  - `untracked: true`: Keep all files not tracked by Git
+  - `name`: Name of archive (default `artifacts`); `.zip` added when downloaded
+  - `when`: When to store (upload) artifacts:
+    `on_success` (default), `on_failure`, `always`
+  - `expire_in`: When to delete (overridden with 'Keep' button in UI), e.g.
+    `3 min 4 sec`, `2h20min`, `6 mos 2 weeks and 1d`.
+* `cache`: See <https://docs.gitlab.com/ee/ci/yaml/README.html#cache>
+* `before_script`, `after_script`: list or multi-line string
+* [`environment`]: [Environments] for continuous deployment. Deployments are
   recorded under 'Piplines / Environments' in the project pages.
+  Sub-vars: `environment:name`, `url`, `on_stop`, `action`.
 * `coverage`: Regexp to extract code coverage statement line from job
    output, e.g., `'/Coverage: \d+\.\d+/'`.
 * `retry`: How many times (up to 2) to retry job.
@@ -114,7 +130,6 @@ also a large number of preset variables. These are described on the
 
 
 
-[directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
 [Environments]: https://docs.gitlab.com/ee/ci/environments.html
 [GitLab CI]: https://docs.gitlab.com/ee/ci/README.html
@@ -123,6 +138,10 @@ also a large number of preset variables. These are described on the
 [YAML]: https://en.wikipedia.org/wiki/YAML#Syntax
 [`GIT_CHECKOUT`]: https://docs.gitlab.com/ee/ci/yaml/README.html#git-checkout
 [`GIT_STRATEGY`]: https://docs.gitlab.com/ee/ci/yaml/README.html#git-strategy
+[`artifacts`]: https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts
+[`dependencies`]: https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies
+[`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
+[directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
 [install]: https://about.gitlab.com/installation/
 [jobs]: https://docs.gitlab.com/ee/ci/yaml/README.html#jobs
