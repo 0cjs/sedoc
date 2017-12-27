@@ -34,6 +34,8 @@ are executed in parallel. The build aborts if any jobs fail. Stages
 default to `build`, `test` and `deploy` if not explicitly set; jobs
 are assigned to the `test` stage if not explicitly assigned.
 
+Pipelines must have at least one (visible) job.
+
 The `/ci/lint` path in your GitLab instance contains a validator for
 `.gitlab-ci.yml` files. There are also [example build configs].
 
