@@ -22,6 +22,11 @@ up two commits on a branch in one push, only the last one will be
 tested. If you want to trigger a build of a particular commit that
 doesn't have a tag or ref pointing to it, you'll have to add one.
 
+Runners may be [shared or specific]; the former can be used by any
+project and use a [fair usage queue]; the latter are assigned to
+specific projects and use a FIFO queue. Shared may be converted
+to specific but not vice-versa.
+
 The CI system includes continuous deployment (CD) support with
 [environments] which, as well as being deployed to, can be monitored,
 accessed via web terminals, etc.
@@ -145,6 +150,7 @@ also a large number of preset variables. These are described on the
 [`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
 [directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
+[fair usage queue]: https://docs.gitlab.com/ee/ci/runners/README.html#how-shared-runners-pick-jobs
 [install]: https://about.gitlab.com/installation/
 [jobs]: https://docs.gitlab.com/ee/ci/yaml/README.html#jobs
 [manual action]: https://docs.gitlab.com/ee/ci/yaml/README.html#manual-actions
@@ -152,6 +158,7 @@ also a large number of preset variables. These are described on the
 [permissions]: https://docs.gitlab.com/ee/user/project/new_ci_build_permissions_model.html
 [refcard]: http://yaml.org/refcard.html
 [secret variables]: https://docs.gitlab.com/ee/ci/variables/README.html#secret-variables
+[shared or specific]: https://docs.gitlab.com/ee/ci/runners/README.html#shared-vs-specific-runners
 [special YAML features]: https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features
 [tracing]: https://docs.gitlab.com/ee/ci/variables/README.html#debug-tracing
 [triggers]: https://docs.gitlab.com/ee/ci/triggers/README.html
