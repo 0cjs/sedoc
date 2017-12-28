@@ -7,21 +7,24 @@ Documentation:
 * [Quick Start Guide][qs]
 * [Owners Handbook and Problem Solving Guide][oh]
 
+Memory:
+* Stack: X, Y, Z, T
+* Registers: `R₀`, `R₁` … `R₉`, `R.₀`, … `R.₉` (latter are decimal point + num)
+* Stats registers are `R₁`…`R.₆`
+* Financial registers: `n` `i` `PV` `PMT` `FV` (can use `STO`/`RCL` on these)
+* `STO+` etc. register arithmetic works as usual.
+* After program steps 1-8, `R.₉` downward convert to 7 program steps each.
+
 Input and Display:
 * `EEX` = exponent, `CHS` = change sign
 * `CLX` clears X reg; no backspace.
-* `Σ` clears stack, stats (regs 1-6).  
+* `Σ` clears stack, LSTX, stats (`R₁`…`R₆`)
+  `PRGM` clears program only in PRGM mode (`fP/R`).
+  `FIN` clears financial registers
   `REG` clears stack, Σ, FIN, REG, but leaves PRGM. (Not programmable.)  
-  `PRGM` works only in PRGM mode (`fP/R`).
 * `PREFIX` cancel/noop.
 * Decimals displayed: `f0` through `f9`, `f.` for scientific.
-
-Memory:
-* Registers: `0`, `1`, ... `9`, `.0` ... `.9` (stats uses `1`...`6`)
-* Financial registers (`STO`/`RCL` works): `n` `i` `PV` `PMT` `FV`
-* `STO+` etc. register arithmetic works as usual.
-* After program steps 1-8, registers from `.9` down
-  are converted to 7 program steps each.
+* Hold `.` before `ON` to change digit and decimal separators
 
 Operations:
 * `INTG`, `FRAC`: prev value can be recalled with `LSTX`
@@ -39,7 +42,7 @@ Financial:
   * `PV`: present value
   * `PMT`: payment/period
   * `FV`: future value
-* `12×`, `12÷` enter into `n`/`i` registers after mult/div
+* `12×`, `12÷` enter into `n`, `i` registers after mult/div
 
 
 [qs]: http://www.hp.com/ctg/Manual/c01798099.pdf
