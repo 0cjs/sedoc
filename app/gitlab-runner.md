@@ -1,6 +1,8 @@
 [GitLab CI Runners]
 ===================
 
+Source code repo: <https://gitlab.com/gitlab-org/gitlab-runner>
+
 Runners get jobs from the 'coordinator', which is the GitLab
 installation to which they've been registered. The entire runner
 system is a single `gitlab-runner` binary. Logs go to the system
@@ -11,8 +13,9 @@ logger (syslog).
 * Debug mode: `gitlab-runner --debug run`.
 * [FAQ][]
 
-If started as root, the runner runs in system mode, otherwise in
-user mode. The TOML format [config file] for each mode is:
+If started as root, the runner runs in system mode, otherwise in user
+mode. (The latter will not work with a properly secured Docker
+installation.) The [TOML] format [config file] for each mode is:
 
 * system: `/etc/gitlab-runner/config.toml`
 * user:   `~/.gitlab-runner/config.toml`.
@@ -29,6 +32,9 @@ Installation
 
 #### [Manual Install]
 
+This is from the docs, but is more or less the process done by the
+Debian package [post-install] script.
+
     # Versions avilable: amd64 386 arm
     wget -O /usr/local/bin/gitlab-runner \
         https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
@@ -36,6 +42,7 @@ Installation
 
     useradd --system --create-home --shell /bin/bash \
         --comment 'GitLab Runner' gitlab-runner
+    # Set up /etc/init/gitlab-runner.conf or systemd unit.
     gitlab-runner install --user=gitlab-runner \
         --working-directory=/home/gitlab-runner
     gitlab-runner start
@@ -90,9 +97,11 @@ but can be set to further limit particular runners.
 
 [FAQ]: https://docs.gitlab.com/runner/faq/README.html
 [GitLab CI Runners]: https://docs.gitlab.com/ee/ci/runners/README.html
+[TOML]: https://en.wikipedia.org/wiki/TOML
 [aws-autoscale]: https://substrakthealth.com/news/gitlab-ci-cost-savings/
 [commands list]: https://docs.gitlab.com/runner/commands/README.html
 [config file]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
 [manual install]: https://docs.gitlab.com/runner/install/linux-manually.html
 [package install]: https://docs.gitlab.com/runner/install/linux-repository.html
+[post-install]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/packaging/root/usr/share/gitlab-runner/post-install
 [register]: https://docs.gitlab.com/runner/register/index.html
