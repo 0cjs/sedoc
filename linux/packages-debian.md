@@ -8,6 +8,7 @@ To make available the standard extra stuff, add `contrib` and
 `apt-get update` after.) The most commonly wanted packages are:
 
 * `firmware-iwlwifi`: Thinkpad and other Intel WiFi chips
+* `firmware-realtek`: Realtek Ethernet/WiFi/Bluetooth adapters
 * `firmware-linux-nonfree`: general stuff
 
 Other commonly wanted packages are:
