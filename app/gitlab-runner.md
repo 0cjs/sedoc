@@ -34,7 +34,7 @@ Installation
         https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
     chmod +x /usr/local/bin/gitlab-runner
 
-    useradd --create-home --shell /bin/bash \
+    useradd --system --create-home --shell /bin/bash \
         --comment 'GitLab Runner' gitlab-runner
     gitlab-runner install --user=gitlab-runner \
         --working-directory=/home/gitlab-runner
