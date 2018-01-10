@@ -61,8 +61,9 @@ dictionary with a required `script` parameter and any other optional
 parameters. Job names starting with `.` are 'hidden' and will be ignored;
 [special YAML features] can turn them into templates.
 
-* `script`: Commands to be executed (list or multi-line string)
-* `image`, `services`: [Docker config] (if using the `docker` executor)
+* `script`: Commands to be executed (list or multi-line string). These
+  are fed into whichever of the [shells] is available on the runner system.
+* `image`, `services`: [Docker config] (if using the [Docker executor])
 * `stage`: Stage to contain this job; default `test`.
   (`type` is a deprecated alias.)
 * `variables`: Map of job [variables]; if present, entirely replaces
@@ -138,6 +139,7 @@ also a large number of preset variables. These are described on the
 
 
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
+[Docker executor]: https://docs.gitlab.com/runner/executors/docker.html
 [Environments]: https://docs.gitlab.com/ee/ci/environments.html
 [GitLab CI]: https://docs.gitlab.com/ee/ci/README.html
 [GitLab]: https://gitlab.com
@@ -159,6 +161,7 @@ also a large number of preset variables. These are described on the
 [refcard]: http://yaml.org/refcard.html
 [secret variables]: https://docs.gitlab.com/ee/ci/variables/README.html#secret-variables
 [shared or specific]: https://docs.gitlab.com/ee/ci/runners/README.html#shared-vs-specific-runners
+[shells]: https://docs.gitlab.com/runner/shells/README.html
 [special YAML features]: https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features
 [tracing]: https://docs.gitlab.com/ee/ci/variables/README.html#debug-tracing
 [triggers]: https://docs.gitlab.com/ee/ci/triggers/README.html
