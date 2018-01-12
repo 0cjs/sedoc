@@ -15,11 +15,11 @@ logger (syslog).
 
 If started as root, the runner runs in system mode, otherwise in user
 mode. (The latter will not work with a properly secured Docker
-installation.) The [TOML] format [config file] for each mode is:
+installation.) The [TOML] format [config file][`config.toml`] for each
+mode is:
 
-* system: `/etc/gitlab-runner/config.toml`
-* user:   `~/.gitlab-runner/config.toml`.
-
+    system  /etc/gitlab-runner/config.toml
+    user    ~/.gitlab-runner/config.toml
 
 ### Autoscaling
 
@@ -62,9 +62,7 @@ to contain something like:
 
     deb-src https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ xenial main
 
-
-Registration
-------------
+### Registration
 
 You'll need a registration token:
 * Shared runner: from `admin/runners` page.
@@ -87,11 +85,40 @@ For non-interactive, use `gitlab-runner register --non-interactive ...`.
 Configuration
 -------------
 
-See the [Advanced configuration][config file] documentation.
+Settings are made in [`config.toml`].
 
-You will almost certainly want to increase `concurrent` in the global
-section. `limit` in the `[[runners]]` section defaults to 0 (no limit)
-but can be set to further limit particular runners.
+##### Configuration Section: Top Level
+
+* `concurrent`: Concurrency level (default 1).
+* `log_level`: Lower prio than command line setting. Values:
+  `debug`, `info`, `warn`, `error`, `fatal`, `panic`.
+* `check_interval`: How often to check GitLab for new builds.
+* `sentry_dsn`: Send all system-level errors to Sentry.
+* `metrics_server`: Prometheus HTTP server `host:port`.
+
+##### Configuration Section: `[[runners]]`
+
+* `name`: Ignored as a comment.
+* `url`: GitLab instance
+* `clone_url`: Overrides `url` if that can't be used to clone
+* `token`: Runner token
+* `tls-ca-file`, `tls-cert-file`, `tls-key-file`
+* `limit`: Limits job concurrency, if less than `concurrent` above.
+  Default 0 (no limit).
+* `request_concurrency`: Limit number of concurrent requests for new
+  jobs from GitLab. Default 1.
+* [`executor`]: Which system to use to run the build.
+* `shell`: One of `bash`, `sh`, `cmd`, `powershell`.
+* `builds_dir`, `cache_dir`: Change build and cache dir mount paths.
+  The cache path must be explicitly declared as persistent
+  (see `volumes` below).
+* `environment`
+* `output_limit`: Max size of log. Default 4 MB.
+* `pre_clone_script`, `pre_build_script`, `post_build_script`
+
+##### Configuration Section: `[[runners.cache]]`
+
+For the [distributed cache] feature. (Shared via AWS S3.)
 
 ### Docker Build Container Configuration
 
@@ -116,36 +143,36 @@ The build containers [do not override][glentry] the [ENTRYPOINT] of
 their images, so if that's set the specified script will not be
 executed. This can be used for security purposes....
 
-The following [configuration variables][Docker executor] are available
-in both `.gitlab-ci.yml` and the `[runners.docker]` section of
-`config.toml`:
+##### Configuration Section: [`[runners.docker]`][Docker executor]
 
-* `image`: Image name for build container
-* `services`: List of image names or [configuration maps] for the
-  services images, if necessary. See below.
-  
-The following configuration variables are used only in the
-`[runners.docker]` section of `config.toml`:
-
+* `image`: Image name for build container.
+  (Also available in `.gitlab-ci.yml`.)
+* `services`: List of image names or [configuration maps]
+  for the services containers, if necessary. See below.
+  (Also available in `.gitlab-ci.yml`.)
 * `tmpfs`, `services_tmpfs`: Map of tmpfs mounts, usually used to
   speed tests that do a lot of IO.
-* `volumes`: List of storage paths persisted between builds. The default
-  cache dir is automatically in this list. These can be in custom cache
-  containers or on host paths; the latter may be read-only. See the end
-  of [GitLab CI and conda] for an example.
+* `volumes`: List of storage paths persisted between builds (see below).
+  The default cache dir is automatically in this list.
 * `privileged`: Enable privileged mode to use Docker-in-Docker.
 * [`pull_policy`]: `never` (use only local images), `if-not-present`
   (faster; will not fetch updated images unless local image manually
   deleted), `always` (default).
 
+###### Volume Configuration
 
-The following configuration variables are used only in the
-`[runners]` section of `config.toml`:
+The `volumes` parameter is a list of strings.
+* `"/path/to/bind/in/container"` mounts a [Docker volume] that persists
+  between uses of the build container. The volume name is managed by
+  gitlab-runner.
+* `"/path/to/bind/from/host:/path/to/bind/in/container:ro"` does a
+  [bind mount]. Use `rw` for a read-only mount.
 
-* `builds_dir`, `cache_dir`: Change build and cache dir mount paths.
-  The cache path must be explicitly declared as persistent (above).
+Examples:
+* [Volumes in the [runners.docker] section][volumes]
+* At the end of the [GitLab CI and conda] blog post
 
-### Docker Service Containers
+#### Docker Service Containers
 
 The runner can start extra containers to provide services to the build
 container; these are usually used to provide heavy-weight services
@@ -160,25 +187,35 @@ the [gitlab-runner-service] script.
 
 There are [service container examples].
 
+#### Private Container Registry
+
+See [Using a private container registry][priv-cont-reg].
+
 
 
 [Docker executor]: https://docs.gitlab.com/runner/executors/docker.html
+[Docker volume]: https://docs.docker.com/engine/admin/volumes/volumes/
 [ENTRYPOINT]: https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime
 [FAQ]: https://docs.gitlab.com/runner/faq/README.html
 [GitLab CI Runners]: https://docs.gitlab.com/ee/ci/runners/README.html
 [GitLab CI and conda]: https://beenje.github.io/blog/posts/gitlab-ci-and-conda
 [TOML]: https://en.wikipedia.org/wiki/TOML
+[`config.toml`]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
+[`executor`]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-executors
 [`pull_policy`]: https://docs.gitlab.com/runner/executors/docker.html#how-pull-policies-work
 [aws-autoscale]: https://substrakthealth.com/news/gitlab-ci-cost-savings/
+[bind mount]: https://docs.docker.com/engine/admin/volumes/bind-mounts/
 [commands list]: https://docs.gitlab.com/runner/commands/README.html
-[config file]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
 [configuration maps]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/docker/using_docker_images.md#extended-docker-configuration-options
 [container links]: https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
+[distributed cache]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runners-cache-section
 [gitlab-runner-helper]: https://hub.docker.com/r/gitlab/gitlab-runner-helper/
 [gitlab-runner-service]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/dockerfiles/build/gitlab-runner-service
 [glentry]: https://docs.gitlab.com/runner/executors/docker.html#the-entrypoint
 [manual install]: https://docs.gitlab.com/runner/install/linux-manually.html
 [package install]: https://docs.gitlab.com/runner/install/linux-repository.html
 [post-install]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/packaging/root/usr/share/gitlab-runner/post-install
+[priv-cont-reg]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#using-a-private-container-registry
 [register]: https://docs.gitlab.com/runner/register/index.html
 [service container examples]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/services/README.md
+[volumes]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runners-docker-section
