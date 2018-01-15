@@ -10,6 +10,7 @@ Python Summary/Quickref
   * [Regular Expressions](regexp.md)
   * [`argparse`](https://docs.python.org/3/library/argparse.html) -
     The modern Python arg parser (replaces optparse)
+  * [Concurrency](concurrency.md) (including processes)
   * [Python Language Services](ast.md) (manipulating Python code)
 * [IPython REPL](ipython.md)
 * Testing Libraries and Environments
