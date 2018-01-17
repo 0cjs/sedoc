@@ -22,6 +22,9 @@ Installation
     pip3 show virtualenvwrapper # Check installed and location
     pip3 install --user virtualenvwrapper
 
+`virtualenvwrapper` will bring in `virtualenv` as a dependency, but
+the latter can be installed alone if that's all you need.
+
 
 virtualenv
 ----------
@@ -29,7 +32,7 @@ virtualenv
     virtualenv DIR              # create new env in given dir
     source DIR/bin/activate     # enter environment (pwd doesn't matter)
                                 # This sets $VIRTUAL_ENV
-    lssitepackages              # list packages in this env
+    pip list                    # Lists only packages installed in virtual env
     deactivate                  # exit environment
     rm -rf DIR                  # remove environment
 
@@ -56,7 +59,8 @@ virtualenvwrapper
     mktmpenv                    # make/activate env, deleted on deactivate
     lsvirtualenv | workon       # list virtual environments
     workon ENV                  # activate $WORKON_HOME/ENV
-    cdvirutalenv                # cd to $WORKON_HOME/ENV (current env)
+    cdvirtualenv                # cd to $WORKON_HOME/ENV (current env)
+    lssitepackages              # list packages in this env
     cdsitepackages
     rmvirtualenv ENV
 
