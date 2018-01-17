@@ -12,6 +12,9 @@ Python Summary/Quickref
     The modern Python arg parser (replaces optparse)
   * [Concurrency](concurrency.md) (including processes)
   * [Python Language Services](ast.md) (manipulating Python code)
+* [Functional Programming](functional.md)
+  * [Functional] modules in the standard library
+  * [toolz][toolz-pypy] library ([docs][toolz-docs])
 * [IPython REPL](ipython.md)
 * Testing Libraries and Environments
   * [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
@@ -25,3 +28,6 @@ Python Summary/Quickref
 
 [PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
 [`doctest`]: https://docs.python.org/3/library/doctest.html
+[functional]: https://docs.python.org/3/library/functional.html
+[toolz-docs]: https://toolz.readthedocs.io/
+[toolz-pypy]: https://pypi.python.org/pypi/toolz
