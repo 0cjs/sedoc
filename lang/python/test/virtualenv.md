@@ -69,6 +69,38 @@ virtualenvwrapper can be extended with [hooks] and [plugins].
 [Project directories] for hacking-in-progress may be bound to a virtualenv.
 
 
+Using with Git
+--------------
+
+In general, the virtualenv directories and files should not be checked
+in to the Git repo as these will vary depending on the system on which
+it's been generated. Instead, create the following (non-executable)
+`activate` file that will install the virtualenv if necessary and then
+activate it if not already activated.
+
+    [ -n "$BASH_SOURCE" ] \
+        || { echo 1>&2 "source (.) this with Bash."; exit 2; }
+    (
+        cd "$(dirname "$BASH_SOURCE")"
+        [ -d .build/virtualenv ] || {
+            virtualenv .build/virtualenv
+            . .build/virtualenv/bin/activate
+            pip install -r requirements.txt
+        }
+    )
+    . "$(dirname "$BASH_SOURCE")/.build/virtualenv/bin/activate"
+
+After adding new packages in the virtual environment you'll want to
+ensure you generate and commit the list of packages your project needs:
+
+    pip freeze > requirements.txt
+
+This would usually be called from your top-level test script, e.g.:
+
+    cd "$(dirname "$0")"
+    [[ $VIRTUAL_ENV = $(pwd -P) ]] || . activate
+
+
 
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [virtualenvwrapper]: http://virtualenvwrapper.readthedocs.io/en/latest/
