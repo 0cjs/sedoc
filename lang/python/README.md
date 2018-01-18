@@ -1,6 +1,7 @@
 Python Summary/Quickref
 =======================
 
+* [Versions](version.md)
 * [Core and Syntax](language.md)
   * [Functions](functions.md)
   * [Types](types.md)

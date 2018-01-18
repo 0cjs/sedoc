@@ -1,11 +1,6 @@
 Python Summary/Quickref
 =======================
 
-Python's reference implementation is the [CPython] interpreter.
-There are two major versions:
-* 2.7 (2010): [legacy], supported until 2020 (latest 2.7.13 2016-12)
-* 3.6.3 (2017-10): current (3.7 releasing 2018-06)
-
 A good REPL is available via [ipython](./ipython.md).
 
 Python variables are untyped; their values are typed. All variables
