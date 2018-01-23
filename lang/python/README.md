@@ -24,6 +24,7 @@ Python Summary/Quickref
   * [Pytest](test/pytest.md)
   * [tox](test/tox.md)
   * [Virtual Environments](test/virtualenv.md)
+* [Tips and Tricks](tricks.md)
 
 
 
