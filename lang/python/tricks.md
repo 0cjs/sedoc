@@ -1,23 +1,20 @@
 Python Tips and Tricks
 ======================
 
-#### jsontool
+#### json.tool
 
-Install the [`jsontool`] package to get a program that can pretty
-print JSON (color it and add optional indented multi-line formatting).
-It comes with a command line tool or you can call it directly with the
-Python interpreter:
+The [`json.tool`] package, which is part of the standard library in
+Python 2 and 3, can be used from the command line to pretty-print JSON
+from a file for (if no file is specified) stdin:
 
-    jsontool --indent=2 < foo.json
-    python3 -m jsontool --indent=4 < foo.json
+    python  -m jsontool data.js
+
+    python3 -m jsontool data.js pretty.js   # writes output file
+    python3 -m jsontool -h
 
 This isn't as good as [`jq`](../jq.md) but can be useful when that's
-not available. In particular, on any system that already has `python`
-(2 or 3) in the path it can be installed with:
-
-    curl > ~/.local/bin/jsontool \
-        https://raw.github.com/mysz/jsontool/master/jsontool.py
+not available and can't easily be installed.
 
 
 
-[`jsontool`]: https://pypi.python.org/pypi/jsontool/
+[`json.tool`]: https://docs.python.org/3/library/json.html#module-json.tool
