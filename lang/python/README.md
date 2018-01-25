@@ -9,6 +9,7 @@ Python Summary/Quickref
   * [Modules and Importing](import.md)
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
+  * [Pickle](pickle.md) object seralization
   * [`argparse`](https://docs.python.org/3/library/argparse.html) -
     The modern Python arg parser (replaces optparse)
   * [Concurrency](concurrency.md) (including processes)
