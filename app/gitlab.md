@@ -7,6 +7,12 @@ free ("Community") version you can [install] on your own servers. They
 have official Docker images which may be the easiest way to use it.
 (Not clear if these include the DBMS or rely on an existing one in the OS.)
 
+Other documents related to this:
+* [Git/GitLab](../git/gitlab.md): GitLab's configuration and use of
+  its hosted Git repos.
+* [GitLab Runner](gitlab-runner.md): GitLab's runner for the
+  build ("CI/CD") system described below.
+
 
 [GitLab CI]
 -----------

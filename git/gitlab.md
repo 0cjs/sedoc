@@ -1,8 +1,8 @@
-[GitLab] Notes
-==============
+GitLab Git Repo Notes
+=====================
 
-Basically a slightly less featureful GitHub, with usual open and
-enterprise editions, oursourced or self-hosted.
+This document is about GitLab's use use of Git repos; for other
+information about it see the [GitLab](../app/gitlab.md) document.
 
 
 Special Refs
@@ -24,10 +24,5 @@ Sometimes objects referenced by `keep-around` refs are lost, as in
 [this bug report][gh-issue-773].
 
 
-Links
------
 
-(These are visible only in the Markdown source.)
-
-[GitLab]: https://en.wikipedia.org/wiki/GitLab
 [gh-issue-773]: https://gitlab.com/gitlab-com/infrastructure/issues/773
