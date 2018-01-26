@@ -89,6 +89,10 @@ activate it if not already activated.
         }
     )
     . "$(dirname "$BASH_SOURCE")/.build/virtualenv/bin/activate"
+    export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
+
+The last line is optional; use it if you are putting your `.py` files
+for modules in paths under `lib/` rather than off the root of the repo.
 
 After adding new packages in the virtual environment you'll want to
 ensure you generate and commit the list of packages your project needs:
