@@ -10,8 +10,7 @@ Python Summary/Quickref
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
   * [Pickle](pickle.md) object seralization
-  * [`argparse`](https://docs.python.org/3/library/argparse.html) -
-    The modern Python arg parser (replaces optparse)
+  * [Argument Parsing](argparse.md)
   * [Concurrency](concurrency.md) (including processes)
   * [Python Language Services](ast.md) (manipulating Python code)
 * [Functional Programming](functional.md)
