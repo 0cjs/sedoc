@@ -19,6 +19,12 @@ Handy Commands
 * `-i`: Interactive, keep STDIN open even if not attached
 * `-t`: Allocate a pseudo-TTY
 
+### Usage of Docker Volumes
+
+    docker volume create VOL
+    docker run -it --rm --mount=type=volume,destination=/mnt,source=MYVOL ubuntu
+    docker volume rm VOL
+
 
 Public Docker Images
 --------------------
