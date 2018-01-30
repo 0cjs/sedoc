@@ -110,8 +110,8 @@ Settings are made in [`config.toml`].
 * [`executor`]: Which system to use to run the build.
 * `shell`: One of `bash`, `sh`, `cmd`, `powershell`.
 * `builds_dir`, `cache_dir`: Change build and cache dir mount paths.
-  The cache path must be explicitly declared as persistent
-  (see `volumes` below).
+  If changed, the cache path must be explicitly declared as persistent
+  (see `volumes` parameter below).
 * `environment`
 * `output_limit`: Max size of log. Default 4 MB.
 * `pre_clone_script`, `pre_build_script`, `post_build_script`
@@ -125,16 +125,18 @@ For the [distributed cache] feature. (Shared via AWS S3.)
 The [Docker executor] documentation gives details on what's summarized
 below.
 
-Two directories, `/builds/$GITLAB_USER_ID` and `/cache`, are
-bind-mounted into the Docker containers used for the build. (The
-`$CI_PROJECT_DIR` directory in which the build is done is
-`/builds/$GITLAB_USER_ID/$CI_PROJECT_NAME`.)
+By default two persistent [Docker volume]s are created and populated
+before the build container runs: `/builds/$GITLAB_USER_ID` and
+`/cache`. (The `$CI_PROJECT_DIR` directory in which the build is done
+is `/builds/$GITLAB_USER_ID/$CI_PROJECT_NAME`.) Unless configured
+otherwise, only the `/cache` volume is saved between builds.
 
 The build runs as follows:
 1. Start service containers.
-2. Run a [gitlab-runner-helper] container which populates the above
-   directories by cloning the repo, downloading any artifacts from
-   previous stages and restoring the cache.
+2. Run a [gitlab-runner-helper] container which populates the
+   `/builds/$GITLAB_USER_ID` volume by cloning the repo,
+   downloading any artifacts from previous stages and restoring
+   (from the `/cache` volume) any files configured as [cached].
 3. Run the build containers which do the pipeline stages.
 4. Run the helper image again to save the cache and new build artifacts.
 5. Shut down and remove all containers.
@@ -219,3 +221,4 @@ See [Using a private container registry][priv-cont-reg].
 [register]: https://docs.gitlab.com/runner/register/index.html
 [service container examples]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/services/README.md
 [volumes]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runners-docker-section
+[cached]: https://docs.gitlab.com/ee/ci/yaml/README.html#cache
