@@ -12,6 +12,32 @@ Handy Commands
 * `-t`: Allocate a pseudo-TTY
 
 
+Public Docker Images
+--------------------
+
+[Docker Hub] is the standard repository for public docker images.
+Docker Docker will download images from there unless another repo is
+explicitly specified. Images are specified in the form of
+`NAME[:TAG]`; the tag defaults to `latest` if not specified.
+
+Handy [official repos] and images include:
+
+* __alpine__ (5 MiB): Linux optimized for small size, based on musl libc
+  and Busybox. Tags  `edge`, `3.7` (latest), `3.6`, ...
+* __busybox__ (1-5 Mib): `1`, `uclibc`, `glibc`, `musl`
+* __ubuntu__ (110 MiB): tags `18.04`, `16.04`, (latest) `14.04` (220 MiB)
+* __mysql__ (400 MiB): `8`, `5` (latest)
+* __centos__ (210 MiB): `7` (latest), `6`
+* __debian__ (100 MiB): tags `9` (latest), `8`, `7`
+
+Extended information about these repos may be found in [repo-info].
+
+There is also a [Docker Store]; dunno how this relates to the Hub.
+
+[so-28320134] may help with ways of listing images and tags from
+various remotes.
+
+
 Install Docker
 --------------
 
@@ -80,8 +106,13 @@ versions of Docker Engine.)
 
 
 
+[Docker Hub]: https://hub.docker.com
 [Docker Machine]: https://docs.docker.com/machine/overview/
-[supported platforms]: https://docs.docker.com/engine/installation/#supported-platforms
-[debian]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
-[ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+[Docker Store]: https://store.docker.com/
 [Ubuntu EE]: https://docs.docker.com/engine/installation/linux/docker-ee/ubuntu/
+[debian]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
+[official repos]: https://hub.docker.com/explore/
+[repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
+[so-28320134]: https://stackoverflow.com/q/28320134/107294
+[supported platforms]: https://docs.docker.com/engine/installation/#supported-platforms
+[ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
