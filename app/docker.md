@@ -4,7 +4,15 @@ Docker
 Handy Commands
 --------------
 
-### Shell in Docker Container
+### Start/Detach/Stop/Restart
+
+    docker run --name CONT -it debian bash -l   # No `--rm` option
+    #   ^P^Q to detach.
+    docker attach CONT          #   End existing process with ^D
+    docker start -a CONT        #   End new process with ^D
+    docker rm CONT
+
+### Separate Shell Process in Running Docker Container
 
     docker exec -it CONTAINER bash -l
 
