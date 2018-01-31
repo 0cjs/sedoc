@@ -180,6 +180,12 @@ also a large number of preset variables. These are described on the
   `RESTORE_CACHE_ATTEMPTS`: default 1
 * `GIT_DEPTH`: for shallow clones
 
+### Runners Cache
+
+In GitLab 10.4+ you can manually [clear the runners
+cache][clear-cache] for any project from the __CI/CD > Pipelines__
+page. If this isn't available, you can also clear the [cache key].
+
 
 
 [deploy keys]: https://docs.gitlab.com/ce/ssh/README.html#deploy-keys
@@ -187,7 +193,6 @@ also a large number of preset variables. These are described on the
 [personal access tokens]: https://docs.gitlab.com/ce/api/README.html#personal-access-tokens
 [services api]: https://docs.gitlab.com/ce/api/services.html
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
-
 
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
 [Docker executor]: https://docs.gitlab.com/runner/executors/docker.html
@@ -201,6 +206,8 @@ also a large number of preset variables. These are described on the
 [`artifacts`]: https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts
 [`dependencies`]: https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies
 [`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
+[cache key]: https://docs.gitlab.com/ce/ci/yaml/README.html#cache-key
+[clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
 [directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
 [fair usage queue]: https://docs.gitlab.com/ee/ci/runners/README.html#how-shared-runners-pick-jobs
