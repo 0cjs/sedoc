@@ -51,7 +51,7 @@ To update, `gitlab-runner stop`, download the new binary, restart.
 
 #### [Package Install]
 
-The Debian package is `gitlab-ci-multi-runner` from `packages.gitlab.com`.
+The Debian package is available from `packages.gitlab.com`.
 You can install the repo with their script:
 
     curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh \
@@ -62,24 +62,72 @@ to contain something like:
 
     deb-src https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ xenial main
 
-### Registration
+The repo provides a `gitlab-runner` package (previously named
+`gitlab-ci-multi-runner`) that installs the binary, adds a
+gitlab-runner user and sets up the system starup scripts using
+`gitlab-runner install`.
 
-You'll need a registration token:
-* Shared runner: from `admin/runners` page.
-* Specific runner: from project page, 'Settings', 'CI/CD Pipelines'.
+### Connection to a GitLab Server
 
-Run `gitlab-runner register` (`docker exec -it gitlab-runner
-gitlab-runner register` if running it in a Docker container) for an
-interactive registration. This will always add a new entry to the
-config file, not replace any existing ones.
+GitLab Runner configuration information is split between the local
+configuration file (`/etc/gitlab-runner/config.toml`) on the host
+running `gitlab-runner` and the GitLab server.
 
-* You'll be asked for the GitLab instance URL.
-* The (registration) token comes from GitLab Admin UI.
-* The description, tags, etc. can be changed in GitLab admin UI.
-* If using a docker executor, the image you choose is the default for
-  projects that don't specify one.
+There are two tokens discussed here:
+* The _registration token_ which is used only when creating a new
+  runner on the GitLab server.
+  * Shared runners use the token from the `/admin/runners` page.
+  * Specific runner runners use the token from from project page
+    under 'Settings', 'CI/CD Pipelines'.
+* The _(runner) token_ which identifies and authenticastes an existing
+  runner on the GitLab server. For shared runners this is visible to
+  admins on the GitLab server; for specific runners this appears to be
+  visible to anybody with admin rights for a project using it.
+
+#### Registration of a New Runner
+
+To create a new runner on GitLab, run `gitlab-runner register`
+(`docker exec -it gitlab-runner gitlab-runner register` if running it
+in a Docker container) for an interactive registration. This will
+always add a new entry to the config file, not replace any existing
+ones. Supply at the prompts:
+* The GitLab instance URL
+* The _registration token_
+* The runner's description, tags, whether to run untagged builds,
+  and whether to lock the runner to a project. (These can all be
+  changed later in the GitLab server's configuration.)
+
+Once the registration succeeds you will be prompted for additional
+locally configured information:
+* The executor (usually `docker`)
+* The default Docker image (e.g., `ubuntu:14.04`)
+
+#### Non-interactive Registration
 
 For non-interactive, use `gitlab-runner register --non-interactive ...`.
+
+#### Connection of an Existing Runner
+
+To have any runner connect as a runner already configured on the
+GitLab server you can copy the config file information into the config
+file. (The (runner) _token_ field is the key information here. Almost
+everything else is ignored except for the executor and some of its
+configuration such as the default Docker image.)
+
+The `gitlab-runner register` command also appears as if it offers the
+options to do this, but I've not been able to get it to work. With a
+previously registered token, using e.g.
+
+    gitlab-runner register --non-interactive \
+      --url https://gitlab.mydomain.com \
+      --token 0123abcd0000000000000000000000 \
+      --executor docker --docker-image ubuntu:14.04
+
+produces
+
+    ERROR: Verifying runner... is removed               runner=0123abcd
+
+(Possibly I should have used `--leave-runner` when testing.)
 
 
 Configuration
