@@ -84,12 +84,18 @@ activate it if not already activated.
         cd "$(dirname "$BASH_SOURCE")"
         [ -d .build/virtualenv ] || {
             virtualenv .build/virtualenv
-            . .build/virtualenv/bin/activate
+            . .build/virtualenv/*/activate
             pip install -r requirements.txt
         }
     )
-    . "$(dirname "$BASH_SOURCE")/.build/virtualenv/bin/activate"
+    . "$(dirname "$BASH_SOURCE")/.build/virtualenv/*/activate"
     export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
+
+I use `virtualenv/*/activate` instead of `virtualenv/bin/activate`
+because under Windows Python installs the scripts under `Scripts/`
+instead of `bin/`. This trick would fail if there were ever more than
+one file matched by the pattern, but that should never happen so long
+as you leave virtualenv to manage that directory.
 
 The last line is optional; use it if you are putting your `.py` files
 for modules in paths under `lib/` rather than off the root of the repo.
