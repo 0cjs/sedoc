@@ -6,7 +6,7 @@ Python Summary/Quickref
   * [Functions](functions.md)
   * [Types](types.md)
 * Language Features
-  * [Modules and Importing](import.md)
+  * [Modules, Packages and Importing](import.md)
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
   * [Pickle](pickle.md) object seralization

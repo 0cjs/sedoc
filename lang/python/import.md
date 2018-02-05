@@ -23,7 +23,7 @@ code outside it.
 
     import a.b.c    # Create module a.b.c
                     # from a/b/c/ or a/b/c.py somewhere in sys.path
-    a.b.c           # => <module 'm.a' from '.../a/b/c.py'>
+    a.b.c           # => <module 'a.b.c' from '.../a/b/c.py'>
     a.b.c.f         # => <function a.b.c.f>
     a.b.c.f()       # calls f() from that module
     f = a.b.c.f     # Assign f to a local name
@@ -35,20 +35,62 @@ Modules are loaded once per interpreter instance unless you use:
 
     import importlib; importlib.reload(modulename)
 
+The files containing the code that is executed to build the module
+object are usually referred to as "modules" (even in the [modules]
+tutorial) even though, if the same file is loaded via two different
+paths in `$PYTHONPATH`, you can end up with two different modules:
+
+    PYTHONPATH=a:. ipython
+    import b.c
+    b.c                 ⇒ <module 'b.c' from '/home/cjs/play/pyimp/a/b/c.py'>
+    import a.b.c
+    a.b.c               ⇒ <module 'a.b.c' from '/home/cjs/play/pyimp/a/b/c.py'>
+    a.b.c is b.c        ⇒ False
+
 ### Packages
 
-A (regular) [package] is a module that may contain submodules or
-subpackages, technically a module with a `__path__` attribute. These
-are usually created via `import` from a directory containing an
-`__init__.py` file or any `*.{py,pyc,so,pyd}` files. Importing a
-directory without any of these creates a [namespace package] (unless
-other same-named dirs later in the path contain such files).
+A [package] is a [module] that can contain submodules and/or
+subpackages. (Non-package modules cannot do this.) Packages always
+have a `__path__` attribute. Packages come in two types.
+
+##### [Regular Package]s
+
+[Regular package]s are usually created from a directory containing an
+`__init__.py` file. This can be empty (which simply identifies the
+directory as a package), or it can contain initialiation code or set
+`__all__`, which can be a list of submodule names to be imported with
+`from pkg import *`; without this submodules will not be loaded.
+
+##### [Namespace Package]s
+
+Described in [PEP 420], these serve only as a container for subpackages
+or submodules and have no physical representation beyond a directory
+on the disk. (In particular, they have no `__init__.py` file.)
+
+Given `a/b/c.py` in `sys.path` (and no other files under `a/`):
+
+    import a
+    a                ⇒ <module 'a' (namespace)>
+    a.b              ⇒ AttributeError: module 'a' has no attribute 'b'
+    import a.b.c
+    a.b              ⇒ <module 'a.b' (namespace)>
+    a.b.c            ⇒ <module 'a.b.c' from '/home/cjs/a/b/c.py'>
+
+However, if you add the file `a/b.py` to the above, or under any other
+directory in `sys.path`:
+
+    import a.b.c
+    ⇒ ImportError: No module named 'a.b.c'; 'a.b' is not a package
 
 ### Module Attributes
 
     __name__        # module name; '__main__' if top module (`python foo.py`)
     __file__        # full path to .py file, if created from a file
-    __path__        # _NamespacePath with full path to dir, if namespace module
+    __path__        # Dir containing `__init.py__` (set before execing it) or
+                    # _NamespacePath with full path to dir, if namespace package
+    __loader__      # Loader used to load this package, e.g.,
+                    #    _frozen_importlib_external._NamespaceLoader
+                    #    _frozen_importlib_external.SourceFileLoader
 
 
 The [Import Statement][istmt]
@@ -60,16 +102,26 @@ is run.)
 
     import a.b              # Import all definitions into namespace a.b
     from a.b import f, g    # import definitions into current namespace
-    from a.b import *       # imports all not starting with `_`
-                            # (may hide existing definitions)
+    from a.b import *       # imports `__all__` if present, otherwise all defs
+                            # not starting with `_` (may hide existing defs)
+    from . import foo       # Intra-package references are based on name
+    from .. import bar      # of current module and thus cannot be used
+    from ..bar import baz   # in `__main__`.
 
 `import` searches `sys.path` for directories and files from which to
 build modules. Symlinks are dereferenced before calculating names and
-paths.
+paths. The default `sys.path` includes the directory containing the
+input script (or current directory if no file specified), the
+`$PYTHONPATH` environment variable paths and installation-dependent
+defaults.
 
 Writable paths may have `__pycache__` directories created with the
-compiled code (`cpython-34.pyc`, machine-portable) underneath, if the
-"source" was not already compiled code.
+["compiled"] code (`cpython-34.pyc`, machine-portable) underneath, if
+the "source" was not already compiled code. Compiled files will be
+read from directories that contain no source.
+
+As well as directories, ZIP files containing source code or compiled
+source code (not binary shared libs) may be specified in the path.
 
 
 [Import-related Libraries][implibs]
@@ -139,19 +191,27 @@ Further Documentation
 * The Python Language Reference section [The import system][isys] goes
   into the gory details of how imports work and how to replace the
   import system with your own.
-* [PEP 451] (included in Python 3.4) has more gory details.
+* [PEP 451] (included in Python 3.4) has more gory details. [The
+* Hitchhikers's Guide to Packaging][hhgtp] provides guidelines on
+  how to lay out Python projects with packaging metadata and create
+  distributable packages for them. This may not be up to date with
+  modern versions of Python and libraries.
 
 
 
+["compiled"]: https://docs.python.org/3/tutorial/modules.html#compiled-python-files
+[PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [PEP 451]: https://www.python.org/dev/peps/pep-0451/
 [`imp`]: https://docs.python.org/3/library/imp.html
 [`importlib`]: https://docs.python.org/3/library/importlib.html
+[hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
 [implibs]: https://docs.python.org/3/library/modules.html
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
 [modules]: https://docs.python.org/3/tutorial/modules.html
-[namespace package]: https://www.python.org/dev/peps/pep-0420/
+[namespace package]: https://docs.python.org/3/glossary.html#term-namespace-package
 [package]: https://docs.python.org/3/glossary.html#term-package
+[regular package]: https://docs.python.org/3/glossary.html#term-regular-package
 [so-34import]: https://stackoverflow.com/a/43602645/107294
 [so-impname1]: https://stackoverflow.com/q/8350853/107294
 [so-impname2]: https://stackoverflow.com/a/24659400/107294
