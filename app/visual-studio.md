@@ -5,7 +5,6 @@ Don't confuse [VS Code] with VS; the former is an open source,
 multiplatform editor built on completely different technology from the
 VS IDE.
 
-
 Unix vs. DOS Newlines
 ---------------------
 
@@ -29,11 +28,30 @@ on SO are:
   Not clear on what it does about new files. [Open source][idct-gh].
 
 
+Build System
+------------
+
+Work is done in a single _solution_ which has zero or more _projects_
+associated with it. (Projects may apparently be members of more than
+one solution.) Projects each have their own set of configurations. A
+solution configuration is the selected set of projects and a project
+configuration for each project; a separate build is can be done for
+each combination of solution configuration and platform. For more, see
+[Understanding Build Configurations][vs-buildconf].
+
+Under the hood, VS uses [MSBuild].
+
+See also [so-1289356] (2009, 6 votes).
+
+
 
 [IDCT.pl]: https://marketplace.visualstudio.com/items?itemName=IDCTpl.Trimlineendsonsave
+[MSBuild]: https://en.wikipedia.org/wiki/MSBuild
 [Strip'em]: http://www.grebulon.com/software/stripem.php
 [VS Code]: https://code.visualstudio.com/
 [idct-gh]: https://github.com/ideaconnect/vs-trim-line-ends-on-save-plugin
 [so-10611963]: https://stackoverflow.com/a/10611963/107294
 [so-1288642]: https://stackoverflow.com/a/1288642/107294
+[so-1289356]: https://stackoverflow.com/a/1289356/107294
 [so-29658845]: https://stackoverflow.com/a/29658845/107294
+[vs-buildconf]: https://docs.microsoft.com/en-us/visualstudio/ide/understanding-build-configurations
