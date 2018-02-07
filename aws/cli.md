@@ -1,7 +1,19 @@
 AWS CLI Notes
 =============
 
-These cover the `aws` command-line program.
+These cover the [`aws` command-line program][aws-cli].
+The [reference] lists all options and commands.
+
+Installation
+------------
+
+`aws` is a Python package (2.6.5+ or 3.3+) available from PyPI:
+
+    pip3 install --user --upgrade awscli
+
+This can be installed in a virtual environment as well, and there are
+also standalone installers for all platforms (Linux, MacOS, Windows).
+See [aws-install] for more information.
 
 
 CLI Authentication on EC2 Instances
@@ -71,6 +83,9 @@ To verify you're configured correctly:
 
 
 
-[instprof]: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html
 [EC2 IAM Role]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
+[aws-cli]: https://aws.amazon.com/cli/
+[aws-install]: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [creds]: https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html
+[instprof]: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html
+[reference]: https://docs.aws.amazon.com/cli/latest/reference/
