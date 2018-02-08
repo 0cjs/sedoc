@@ -19,6 +19,10 @@ the following; _(dev)_ indicates that it works only in developer mode.
 * `network_diag`
 * `packet_capture`: (dev)
 
+By default the window is in a browser tab. Use [croshwindow]
+([source]) to get separate, undecorated windows.
+
+
 
 [Recovery] and Developer Modes
 ------------------------------
@@ -53,9 +57,20 @@ standard test keys. If you do enable it, you can get a text console
 with Ctrl-Alt-F2 and log in as root with default password 'test0000'.
 
 
+[Crouton]
+---------
+
+* Installer download: <https://goo.gl/fd3zc>.
+* Run installer in shell: `sh ~/Downloads/crouton`
+* Chrome extension: <https://goo.gl/OVQOEt>
+
+
 
 [crosh shell]: https://www.howtogeek.com/170648/10-commands-included-in-chrome-oss-hidden-crosh-shell/
+[croshwindow]: https://chrome.google.com/webstore/detail/crosh-window/nhbmpbdladcchdhkemlojfjdknjadhmh
+[crouton]: https://github.com/dnschneid/crouton
 [debugging features]: http://www.chromium.org/chromium-os/how-tos-and-troubleshooting/debugging-features
 [developer info]: http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices
 [generic]: http://www.chromium.org/a/chromium.org/dev/chromium-os/developer-information-for-chrome-os-devices/generic
 [recovery]: https://support.google.com/chromebook/answer/1080595
+[source]: https://github.com/adlr/croshwindow
