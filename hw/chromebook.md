@@ -61,7 +61,10 @@ with Ctrl-Alt-F2 and log in as root with default password 'test0000'.
 ---------
 
 * Installer download: <https://goo.gl/fd3zc>.
-* Run installer in shell: `sh ~/Downloads/crouton`
+* Run installer in shell:
+  * Help: `sh ~/Downloads/crouton --help`
+  * Non-X11 Debian install:
+    `sudo sh ~/Downloads/crouton -e -n deb9 -r stretch -t core,cli-extra`
 * Chrome extension: <https://goo.gl/OVQOEt>
 
 
