@@ -2,7 +2,8 @@ Python Summary/Quickref
 =======================
 
 * [Versions](version.md)
-* [Core and Syntax](language.md)
+* [Introduction and Syntax](language.md)
+  * [Expressions and Statements](expressions.md)
   * [Functions](functions.md)
   * [Types](types.md)
 * Language Features
