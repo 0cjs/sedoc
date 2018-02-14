@@ -1,6 +1,62 @@
 Python Expressions and Statements
 =================================
 
+[Operator Precedence]
+---------------------
+
+Highest to lowest. All operators in subgroups have equal precedence.
+Includes info from link above and [PPR].
+
+* Literals and Comprehensions
+  * `{...}`         dict, set and their comprehensions
+  * `[...]`         list; list comprehension
+  * `(...)`         tuple; expression; generator expression
+* References
+  * `x.attr`        attribute reference
+  * `x(...)`        call (function, method, class, other callable)
+  * `x[i:j:k]`      slicing (all bounds optional). Also `x[slice(i,j,k)]`.
+  * `x[i]`          indexing (sequence, mapping, others)
+* `await x`
+* `x**y`            exponentiation
+* `-x`, `+x`, `~x`  urnary negation, identity, bitwise NOT
+* Multiplication
+  * `*`             product; repetition
+  * `@`             matrix product (not used by builtins)
+  * `%`             remainder, (legacy) string formatting
+  * `/`             division (Py3 always produces floating point result)
+  * `//`            floor division (always produces int)
+* `+ -`             addition, subtraction
+* `x<<y, x>>y`      bitwise shift left, right by _y_ bits
+* `&`               bitwise AND, set intersection
+* `^`               bitwise XOR, set symmetric difference
+* `|`               bitwise OR, set union
+* Comparisons (when chanined, each _x_ evaled only once)
+  * `== !=`         equality
+  * `< <= > >=`,    ordering, set subset and superset
+  * `is`, `is not`  object identity
+  * `in`, `not in`  membership of iterable or set
+* `not`             logical negation
+* `and`             shortcut logical evaluation
+* `or`              shortcut logical evaluation
+* if
+  * `if p: x`, `else: y`
+  * `x if y else z` (_x_ evaluated only if _y_ is true)
+* `lambda args: expr`
+* `yield x`         generator function `send()` protocol
+
+The list of [special method names] gives the method name equivalant of
+each operator for use when overriding/overloading, and in particular
+see the [emulating numeric types] section.
+
+#### Python 2 Notes
+
+The following Python-2-isms have been removed in Python 3:
+
+* `<>` replaced by `!=`
+* Backticks (\`x\`) no longer call `repr(x)`
+* `x/y` no longer truncates (`x//y`) when _x_ and _y_ are ints
+
+
 [Compound Statements][stmts]
 ----------------------------
 
@@ -43,11 +99,15 @@ Python Expressions and Statements
 
 
 
+[PPR]: http://shop.oreilly.com/product/0636920028338.do
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
 [context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
 [contextlib-ex]: https://docs.python.org/3/library/contextlib.html#examples-and-recipes
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
+[emulating numeric types]: https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
 [exceptions]: https://docs.python.org/3/reference/executionmodel.html#exceptions
 [exprs]: https://docs.python.org/3/reference/expressions.html#expression-lists
+[operator precedence]: https://docs.python.org/3/reference/expressions.html#operator-precedence
+[special method names]: https://docs.python.org/3/reference/datamodel.html#special-method-names
 [stmts]: https://docs.python.org/3/reference/compound_stmts.html
 [targets]: https://docs.python.org/3/reference/simple_stmts.html#assignment-statements
