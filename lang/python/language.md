@@ -31,6 +31,9 @@ E.g.:
         baz(0, 1, 2)
         quux('............................................')
 
+In place of the `pass` statement you can also use an expression,
+usually `None` or `...` (Ellipsis literal).
+
 If `return` is not used in a function it always returns `None`.
 `lambda: expr` however returns `expr` and may not use `return`.
 
