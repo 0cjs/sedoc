@@ -4,6 +4,8 @@ Docker
 Handy Commands
 --------------
 
+Also see the Docker [command line] reference.
+
 ### Start/Detach/Stop/Restart
 
     docker run --name CONT -it debian bash -l   # No `--rm` option
@@ -24,6 +26,63 @@ Handy Commands
     docker volume create VOL
     docker run -it --rm --mount=type=volume,destination=/mnt,source=MYVOL ubuntu
     docker volume rm VOL
+
+
+Terminology
+-----------
+
+A Docker __container__ are one or more process with their own
+configuration for access to disk/network resources, UIDs/GIDs, etc. on
+the host. Each container has its own disk store for the root volume
+and may also have host resources mounted in it. The initial disk store
+for a container is created from an __image__.
+
+Each Docker instance has a local set of images; these are either
+created locally using the [docker build] process or pulled (copied)
+from a registry. Images are identified by a unique __digest__; this is
+generated at the time it's built and will be different for another
+build from the same image description. Images may also be identified
+by a __tag__ local to the image store (e.g. `alpine:latest`); the tag
+within a store may point to different images over time.
+
+A __registry__ is an image store from which one can __pull__ images to
+or __push__ images from a local Docker instance. Registries use a
+standard [HTTP API] currently at version 2. Images in registries are
+stored in collections known as __repositories__; each collection
+usually contains different versions of an image designed for a
+particular purpose (e.g., `alpine`). See the [Docker Hub] registry
+(and below) for an example.
+
+
+Registries
+----------
+
+You can set up your own registry; see [Deploy a registry
+server][registry-deploy].
+
+The default port for docker push/pull is 5000. (Note that the API uses
+standard ports 80/443.) The default registry is [Docker Hub] (API at
+`index.docker.io`). Specify non-default registries to [docker pull]
+with the registry, repository and image name separated by slashes:
+
+    docker pull dr.example.com:5000/stuff/myimage:latest
+
+The registry name/port must contain a `.` or `:`; if the hostname has
+no `.`, add the default port of `:5000`.
+
+Registries may require [authentication]. The `docker login` command
+can do this; it stores the credentials in `~/.docker/config.json`.
+
+To list the repositories in a registry and tags in a repository:
+
+    curl https://myregistry:5000/v2/_catalog
+    curl https://myregistry:5000/v2/REPONAME/tags/list
+
+If authorization is required you can check the headers (with `-i` or
+`-v`) for the auth type, or try `--auto-auth --user USERNAME` or try
+`-H 'Authorization: Bearer TOKEN'` where _TOKEN_ is taken from your
+`~/.docker/config.json` file, [docker-ls], [registry-cli] or something
+else. I've not been able to get anything to work.
 
 
 Public Docker Images
@@ -140,12 +199,20 @@ implict access via:
 
 
 
-[Docker Hub]: https://hub.docker.com
+[Docker Hub]: https://hub.docker.com/explore/
 [Docker Machine]: https://docs.docker.com/machine/overview/
 [Docker Store]: https://store.docker.com/
+[HTTP API]: https://docs.docker.com/registry/spec/api/
 [Ubuntu EE]: https://docs.docker.com/engine/installation/linux/docker-ee/ubuntu/
+[authentication]: https://docs.docker.com/registry/spec/auth/jwt/
+[command line]: https://docs.docker.com/edge/engine/reference/commandline/docker/
 [debian]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
+[docker build]: https://docs.docker.com/engine/reference/commandline/build/
+[docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
+[docker-ls]: https://github.com/mayflower/docker-ls
 [official repos]: https://hub.docker.com/explore/
+[registry-cli]: https://github.com/andrey-pohilko/registry-cli
+[registry-deploy]: https://docs.docker.com/registry/deploying/
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
 [so-28320134]: https://stackoverflow.com/q/28320134/107294
 [supported platforms]: https://docs.docker.com/engine/installation/#supported-platforms
