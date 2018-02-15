@@ -1,7 +1,20 @@
 Python Summary/Quickref
 =======================
 
-A good REPL is available via [ipython](./ipython.md).
+#### Documentation
+
+* [Official Documentation] ([Language Reference], [Library Reference]).
+* Wikipedia, [Python syntax and semantics][wp].
+* O'Reilly [Python Pocket Reference, 5th ed.][ppr] (Safari)
+
+#### Quick Hints
+
+* Use the [ipython](ipython.md) REPL to experiment.
+* Use [virtual environments](test/virtualenv.md) to experiment with packages.
+
+
+Langauge Summary
+----------------
 
 Python variables are untyped; their values are typed. All variables
 are references to objects or builtin types. [Functions](functions.md)
@@ -88,19 +101,15 @@ Objects
 list of `obj`'s attributes.
 
 
-Further Reading
----------------
-
-* Wikipedia, [Python syntax and semantics][wp].
-* [The Python Language Reference][pyref].
-
-
 
 [CPython]: https://en.wikipedia.org/wiki/CPython
 [compound statements]: https://docs.python.org/3/reference/compound_stmts.html
 [expressions]: https://docs.python.org/3/reference/expressions.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
+[language reference]: https://docs.python.org/3/reference/
 [legacy]: https://wiki.python.org/moin/Python2orPython3
 [lexical]: https://docs.python.org/3/reference/lexical_analysis.html
-[pyref]: https://docs.python.org/3/reference/
+[library reference]: https://docs.python.org/3/library/index.html
+[official documentation]: <https://docs.python.org/3/>
+[ppr]: https://www.safaribooksonline.com/library/view/python-pocket-reference/9781449357009/ch01.html
 [wp]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics
