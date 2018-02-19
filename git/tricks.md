@@ -1,8 +1,10 @@
 Handy Git Tricks
 ================
 
-* `git blame --reverse START..` to find out which commit
-  after `START` deleted a line.
+* To do a 'blame in reverse', e.g., to find out which commit deleted a
+  line, use `git blame --reverse START.. PATH`. The file must exist in
+  the START commit, so you may need to do a forward log to find where
+  it was added.
 
 * Find first ancestor of a <commit-ish> reachable by any other ref
   (commits that are on only "this" branch):
