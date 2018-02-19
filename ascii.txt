@@ -26,10 +26,10 @@
 072 x48 H    088 x58 X    104 x68 h  120 x78 x
 073 x49 I    089 x59 Y    105 x69 i  121 x79 y
 074 x4a J    090 x5a Z    106 x6a j  122 x7a z
-075 x4b K    091 x5b [    107 x6b k  123 x7b [
-076 x4c L    092 x5c \    108 x6c l  124 x7c \
-077 x4d M    093 x5d ]    109 x6d m  125 x7d ]
-078 x4e N    094 x5e ^    110 x6e n  126 x7e ^
+075 x4b K    091 x5b [    107 x6b k  123 x7b {
+076 x4c L    092 x5c \    108 x6c l  124 x7c |
+077 x4d M    093 x5d ]    109 x6d m  125 x7d }
+078 x4e N    094 x5e ^    110 x6e n  126 x7e ~
 079 x4f O    095 x5f _    111 x6f o  127 x7f DEL
 
 Also see: https://en.wikipedia.org/wiki/ASCII#Character_set
