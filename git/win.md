@@ -51,8 +51,17 @@ When using this kind of credential storage you should issue a separate
 access token (e.g., a [GitHub personal access token][gh-token]) that
 you use nowhere else and perhaps expire it on a regular basis.
 
+Using [2FA] on your GitHub account (as you should!) somewhat increases
+your security against this general class of attack as you will not be
+able to use just your password to authenticate; you'll have to use a
+personal access token instead in these situations. However, the
+additional security you gain is merely being able to limit the scope
+of the token and easily cancel it without affecting other tokens used
+by other machines or applications.
 
 
+
+[2FA]: https://help.github.com/articles/about-two-factor-authentication/
 [Git for Windows]: http://gitforwindows.org/
 [Win32-OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
