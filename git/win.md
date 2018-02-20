@@ -44,7 +44,7 @@ cleartext of a password stored there by sending a request to it using
 the [git-credential] protocol, e.g.,
 
     echo "protocol=https
-    host=codebase.sxi-genesis.com
+    host=git.mycompany.com
     " | git credential-manager get
 
 When using this kind of credential storage you should issue a separate
