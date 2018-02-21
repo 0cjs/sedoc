@@ -35,6 +35,34 @@ or add to your config (see below):
     c.TerminalInteractiveShell.confirm_exit = False
 
 
+Common Commands and Functions
+-----------------------------
+
+Typing `?` will print a help overview. `x?` prints object details
+about `x`; `x??` is verbose.
+
+Prefixing a line with `!` will pass it to the shell to be executed.
+
+IPython 'magic' commands are single-line comands starting with `%`
+or multi-line 'cells' starting with a `%%` prefixed command and
+consuming all following lines until the first blank line. On a line
+alone you can leave off the the `%` prefix if the magic command
+isn't shadowed by a variable name.
+
+* `%quickref`: Print IPython quick reference card,
+  including brief details of magic commands
+* `%magic`: Full details of magic commands
+* `%cd`: Change current working directory
+* `%run -m MOD`: Load and run module _MOD_ as `__main__`
+
+The following functions are Python [builtins] rather than supplied by
+IPython, but tend to be very helpful in interactive use:
+
+* `help(x)`: print documentation about object _x_.
+  (With no args enters interactive help utility.)
+* `dir(x)`: print documentation about object _x_.
+
+
 Customization
 -------------
 
@@ -50,3 +78,4 @@ will already be in that directory if you've run `ipython` before.)
 [documentation]: http://ipython.readthedocs.io/en/stable/
 [SO-ipexit]: https://stackoverflow.com/q/7438112/107294
 [5.x LTS]: https://ipython.readthedocs.io/en/5.x/
+[builtins]: https://docs.python.org/3/library/functions.html
