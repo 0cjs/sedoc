@@ -17,14 +17,15 @@ Python Summary/Quickref
 * [Functional Programming](functional.md)
   * [Functional] modules in the standard library
   * [toolz][toolz-pypy] library ([docs][toolz-docs])
-* [IPython REPL](ipython.md)
-* Testing Libraries and Environments
+* Runtime Environments
+  * [IPython REPL](runtime/ipython.md)
+  * [Virtual Environments](runtime/virtualenv.md)
+* Testing Libraries
   * [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
   * [`unittest`](test/unittest.md)
   * [`doctest`] finds and runs tests in function docstrings.
   * [Pytest](test/pytest.md)
   * [tox](test/tox.md)
-  * [Virtual Environments](test/virtualenv.md)
 * [Tips and Tricks](tricks.md)
 
 
