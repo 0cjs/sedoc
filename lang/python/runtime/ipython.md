@@ -62,6 +62,8 @@ IPython, but tend to be very helpful in interactive use:
   (With no args enters interactive help utility.)
 * `dir(x)`: print documentation about object _x_.
 
+The [inspect] library may also be useful.
+
 
 Customization
 -------------
@@ -74,8 +76,9 @@ Customization
 will already be in that directory if you've run `ipython` before.)
 
 
-[IPython]: http://ipython.org/
-[documentation]: http://ipython.readthedocs.io/en/stable/
-[SO-ipexit]: https://stackoverflow.com/q/7438112/107294
 [5.x LTS]: https://ipython.readthedocs.io/en/5.x/
+[IPython]: http://ipython.org/
+[SO-ipexit]: https://stackoverflow.com/q/7438112/107294
 [builtins]: https://docs.python.org/3/library/functions.html
+[documentation]: http://ipython.readthedocs.io/en/stable/
+[inspect]: https://docs.python.org/3/library/inspect.html
