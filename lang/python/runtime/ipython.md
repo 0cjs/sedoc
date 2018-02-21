@@ -5,12 +5,14 @@ IPython - Python REPL
 embedded in other programs as well. It has a nice help facility
 built in and a tutorial etc. in the [documentation].
 
+IPython's current release is 6.x compatible only with Python ≥ 3.3.
+To use lesser Python versions (e.g., 2.7) you'll need to use the
+[5.x LTS] release.
+
 The versions included with OS distros tend to be very old; it's best
 to `pip3 install --user --upgrade ipython` and use that one. (Be sure
 to `hash -v` after the install if you have used a system
-`ipython`/`ipython3` in that session.) The most recent version is 6.x
-which supports only Python >= 3.3. (Use [5.x LTS] if you need to use
-Python < 3.3, including 2.x.)
+`ipython`/`ipython3` in that session.)
 
 
 Invocation
@@ -47,4 +49,4 @@ will already be in that directory if you've run `ipython` before.)
 [IPython]: http://ipython.org/
 [documentation]: http://ipython.readthedocs.io/en/stable/
 [SO-ipexit]: https://stackoverflow.com/q/7438112/107294
-[5.x LTS]: https://ipython.readthedocs.io/en/stable/whatsnew/version5.html
+[5.x LTS]: https://ipython.readthedocs.io/en/5.x/
