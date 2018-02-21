@@ -1,4 +1,4 @@
-ipython - Python REPL
+IPython - Python REPL
 =====================
 
 [IPython] is an enhanced interactive shell for Python that can be
