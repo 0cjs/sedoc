@@ -6,6 +6,7 @@ Python Summary/Quickref
   * [Expressions and Statements](expressions.md)
   * [Functions](functions.md)
   * [Types](types.md)
+  * [Names, Bindings, Namespaces](name-binding.md)
 * Language Features
   * [Modules, Packages and Importing](import.md)
 * [Standard Libraries](stdlib.md)
