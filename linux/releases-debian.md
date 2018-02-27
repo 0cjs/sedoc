@@ -6,14 +6,16 @@ Debian Releases and Upgrading
 | Date    | Ver   | Codename | EOL      | Kernel | Notes
 | --------|-------|----------|----------|--------|---------------
 | 2018-?? | 10    | Buster   |          |        |
+| 2018-04 | 18.04 | Bionic   |          |        |
 | 2017-06 | 9     | Stretch  | 2022     | 4.9    |
-| 2016-04 | 16.04 |          |          | 4.?    | systemd
+| 2016-04 | 16.04 | Xenial   |          | 4.?    | systemd
 | 2015-05 | 8     | Jessie   | 2020-06  | 3.16   | systemd
-| 2014-04 | 14.04 |          |          | 3.13   |
+| 2014-04 | 14.04 | Trusty   |          | 3.13   |
 | 2013-03 | 7     | Wheezy   | 2018-05  |        |
-| 2012-04 | 12.04 |          |          | 3.2    |
+| 2012-04 | 12.04 | Precise  |          | 3.2    |
 | 2011-02 | 6     | Squeeze  | 2016-02  |        |
-| 2010-04 | 10.04 |          |          | 2.6    |
+| 2010-04 | 10.04 | Lucid    |          | 2.6    |
+| 2009-10 |  9.10 | Karmic   |          |        |
 
 Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
