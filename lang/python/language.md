@@ -16,13 +16,36 @@ Python Summary/Quickref
 Langauge Summary
 ----------------
 
-Python variables are untyped; their values are typed. All variables
-are references to objects or builtin types. [Functions](functions.md)
-define variables in the same namespace and these reference function
-objects.
+Python variables are untyped, holding references to typed values which
+are always _objects_. Each object has a _[namespace](name-binding.md)_,
+a dictionary of name-value bindings called _attributes_, usually
+accessed as `obj.attr`.
 
 There is limited implicit conversation, mainly between numeric types
 and any type to boolean.
+
+[Functions](functions.md) are first-class objects like any other.
+_f(x)_ syntax invokes the [`__call__`] attribute on the object (which
+must be a function itself), passing the parameters `x` to it.
+
+Scripts are executed statement by statement, updating the interpreter
+state as they go. Thus, bindings must come before use.
+
+All statments (which includes expressions) run in the context of a
+_module_ (`__main__` by default); that module's namespace is referred
+to as the "global" namespace for that statement. Calling functions,
+defining classes and loading new modules all create new namespaces.
+
+Function definitions are executable statements that compile and store
+the function's code, binding it to a variable that is the function
+name. (Expressions in the function declaration, i.e. arguments, are
+executed at the time of definition, not at the time of the call.) The
+compiled code will use a new _local_ namespace created at call time.
+
+Code in [class definitions](name-binding.md#classes) is executed
+immediately but in the class's _local_ namespace which shadows the
+module namespace; new bindings are stored in the class object's
+attribute dictionary.
 
 
 Syntax
@@ -103,6 +126,7 @@ list of `obj`'s attributes.
 
 
 [CPython]: https://en.wikipedia.org/wiki/CPython
+[`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
 [compound statements]: https://docs.python.org/3/reference/compound_stmts.html
 [expressions]: https://docs.python.org/3/reference/expressions.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
