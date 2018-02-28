@@ -44,8 +44,21 @@ time.)
 Binding
 -------
 
-Bindings are created with assignment, `global` or `nonlocal` and apply
-to the entire block, both before and after the binding. Thus,
+Bindings are created with any of the following statements:
+
+1. Assignment: `x = ...`.
+2. `global x` and `nonlocal x`, which bind _x_ to an enclosing block's
+   _x_ and the current module's _x_, respectively. In both cases you
+   may change the binding and that will be reflected in the encloser's
+   binding.
+3. Various forms of the `import` statement.
+4. `def x():`
+5. `class x:`
+
+These all create a binding that applies to the entire block, both
+before and after the statement creating the binding, though the
+variable will be unbound before the statement that creates the
+binding. Thus,
 
     x = 1
     def f():
@@ -54,10 +67,6 @@ to the entire block, both before and after the binding. Thus,
     f()
 
     ⇒ UnboundLocalError: local variable 'x' referenced before assignment
-
-Using `nonlocal x` will bind _x_ to an enclosing function's _x_ and
-allow you to to assign to it. `global x` will skip enclosing bindings
-and bind the module variable.
 
 
 Classes
