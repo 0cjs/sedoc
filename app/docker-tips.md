@@ -41,3 +41,17 @@ implict access via:
     echo 'taro ALL=(ALL) NOPASSWD:ALL' > 50-taro
     chmod 600 50-taro
     exit
+
+### Checking If You're Running in a Container
+
+[This SO answer][so-23513045] suggests checking `/proc/1/cgroup` to
+see if you're at the root for all hierarchies (e.g., `3:cpuset:/`).
+However, as per my comment there, newer systemd versions (e.g.,
+Debian 9 systemd 232) may have many cgroups set to `/init.scope`.
+The most reliable heurstic I can think of at the moment is:
+
+    grep -s -q ':/docker/' /proc/1/cgroup
+
+
+
+[so-23513045]: https://stackoverflow.com/q/23513045/107294
