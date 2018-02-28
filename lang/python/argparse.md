@@ -8,6 +8,18 @@ more Gnu-flavoured. The old `optparse` is deprecated.
 [argparse] Summary
 ------------------
 
+Passing the `--` pseudo-argument to a command using argparse indicates
+to it that options parsing stops there and all remaining arguments are
+positional. Without this (and unlike optparse and getopt) arguments
+starting with hyphens will be treated as options even if they come
+after positional arguments. That is, the following are equivalant:
+
+    cmd --opt1 pos1 pos2 --opt2
+    cmd --opt1 --opt2 pos1 pos2
+
+This behaviour can be changed only by providing arguments that have
+`nargs=argparse.REMAINDER`.
+
 #### Example
 
     #   Setup
@@ -64,7 +76,8 @@ See [`add_argument()`] for the full set of options. Briefly:
   * `1`: Stores a list of one item.
   * `'?'`: Consumes if it can, otherwise stores `default`
   * `'*'`, `+`: Stores list of all remaining args, `+` requires at least one
-  * `argparse.REMAINDER`: Gathers unparsed options into a list somehow
+  * `argparse.REMAINDER`: Like `'*'` except also terminates options
+    processing (like adding an implied `--` argument)
 * `const`: Used with `store_const`, `append_const`, `nargs='?'`.
 * `default`: If string, parsed as if it were specified on command line.
   `argparse.SUPPRESS` leaves attribute off result if not on command line.
