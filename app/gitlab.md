@@ -137,7 +137,8 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
     `on_success` (default), `on_failure`, `always`
   - `expire_in`: When to delete (overridden with 'Keep' button in UI), e.g.
     `3 min 4 sec`, `2h20min`, `6 mos 2 weeks and 1d`.
-* `cache`: See <https://docs.gitlab.com/ee/ci/yaml/README.html#cache>
+* `cache`: See <https://docs.gitlab.com/ee/ci/yaml/README.html#cache>.
+  You can use `*` globs, but may not end dirs with a `/`.
 * `before_script`, `after_script`: list or multi-line string
 * [`environment`]: [Environments] for continuous deployment. Deployments are
   recorded under 'Piplines / Environments' in the project pages.
