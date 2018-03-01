@@ -78,6 +78,12 @@ Handy [official repos] and images include:
 * __mysql__ (400 MiB): `8`, `5` (latest)
 * __centos__ (210 MiB): `7` (latest), `6`
 * __debian__ (100 MiB): tags `9` (latest), `8`, `7`
+* __buildpack-deps__ (600-850 MiB) Ubuntu/Debian with many build
+  dependencies; used as a base for language-specific images.
+  Tags `trusty` (14.04), `xenial` (16.04), `stretch`/`latest` (9), etc.
+  and `-curl`/-`scm` varients of each (only curl or curl+Git/svn/etc.).
+* __node__ (680 MiB): Based on buildpack-deps or alpine.
+  Tags `strech`, `wheezy` `alpine`.
 
 Extended information about these repos may be found in [repo-info].
 
