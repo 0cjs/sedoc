@@ -83,9 +83,10 @@ activate it if not already activated.
     (
         cd "$(dirname "$BASH_SOURCE")"
         [ -d .build/virtualenv ] || {
-            virtualenv .build/virtualenv
+            echo 'Building virtualenv...'
+            virtualenv -q .build/virtualenv
             . .build/virtualenv/*/activate
-            pip install -r requirements.txt
+            pip install -q -r requirements.txt
         }
     )
     . "$(dirname "$BASH_SOURCE")/.build/virtualenv/*/activate"
