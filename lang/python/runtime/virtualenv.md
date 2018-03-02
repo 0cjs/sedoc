@@ -48,6 +48,23 @@ in the path to that interpreter:
 
     virtualenv -p /usr/bin/python DIR
 
+#### Building Alternative Python Versions for Virtualenv
+
+You could try using [pythonz] to build Python, or get the source from
+[GitHub] or the Python.org [downloads] area and build it yourself:
+
+    sudo apt-get install build-essential dpkg-dev \
+        zlib1g-dev libbz2-dev liblzma-dev \
+        libssl-dev libgdbm-dev libncurses5-dev libreadline-dev
+    # Use libssl1.0-dev instead for Python <=3.4
+    mkdir ~/.local/python34
+    ./configure --prefix=/home/cjs/.local/python34
+    make -j 4
+    #   Check for notices about libs it couldn't build
+    make -j 8 install       # Python 2.x may need `altinstall`?
+
+    virtualenv -p ~/.local/python34/bin/python3
+
 
 virtualenvwrapper
 -----------------
@@ -113,12 +130,15 @@ This would usually be called from your top-level test script, e.g.:
 
 
 
+[Project directories]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
+[downloads]: http://www.python.org/ftp/python
+[github]: https://github.com/python/cpython
+[hooks]: http://virtualenvwrapper.readthedocs.io/en/latest/scripts.html
+[pipenv]: https://docs.pipenv.org/
+[plugins]: http://virtualenvwrapper.readthedocs.io/en/latest/plugins.html
+[pyenv]: https://github.com/pyenv/pyenv
+[pythonz]: https://github.com/saghul/pythonz
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [virtualenvwrapper]: http://virtualenvwrapper.readthedocs.io/en/latest/
-[pyenv]: https://github.com/pyenv/pyenv
-[pipenv]: https://docs.pipenv.org/
-[zc.buildout]: http://docs.buildout.org/
 [wheel]: http://wheel.rtfd.org/
-[hooks]: http://virtualenvwrapper.readthedocs.io/en/latest/scripts.html
-[plugins]: http://virtualenvwrapper.readthedocs.io/en/latest/plugins.html
-[Project directories]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
+[zc.buildout]: http://docs.buildout.org/
