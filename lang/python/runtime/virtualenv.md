@@ -106,7 +106,7 @@ activate it if not already activated.
             pip install -q -r requirements.txt
         }
     )
-    . "$(dirname "$BASH_SOURCE")/.build/virtualenv/*/activate"
+    . "$(dirname "$BASH_SOURCE")"/.build/virtualenv/*/activate
     export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
 
 I use `virtualenv/*/activate` instead of `virtualenv/bin/activate`
