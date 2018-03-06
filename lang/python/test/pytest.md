@@ -55,7 +55,7 @@ Assertions
 See [assertions] for the basics, and [builtin] for details on the API
 and fixtures. The following is an incomplete summary:
 
-#### Exceptions
+#### [Exceptions]
 
     import pytest
     def test_exceptions():
@@ -138,5 +138,6 @@ XXX To-do
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
 [discover tests]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [doc-contents]: https://docs.pytest.org/en/latest/contents.html
+[exceptions]: https://docs.python.org/3/library/exceptions.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
