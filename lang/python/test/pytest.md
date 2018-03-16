@@ -1,7 +1,7 @@
 Python [pytest] Library
 =======================
 
-[pytest] ([docs][doc-contents]) uses Python's [`assert`] statement
+[pytest] ([docs], [wiki]) uses Python's [`assert`] statement
 instead of assertion functions and introspection to display values
 that fail assertions:
 
@@ -137,7 +137,8 @@ XXX To-do
 [ast-rewrite]: http://pybites.blogspot.jp/2011/07/behind-scenes-of-pytests-new-assertion.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
 [discover tests]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
-[doc-contents]: https://docs.pytest.org/en/latest/contents.html
+[docs]: https://docs.pytest.org/en/latest/contents.html
 [exceptions]: https://docs.python.org/3/library/exceptions.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
+[wiki]: https://wiki.python.org/moin/PyTest
