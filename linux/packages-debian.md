@@ -133,3 +133,18 @@ files against packages, like `rpm -v` (from this [StackExchange
 question](https://askubuntu.com/q/9463/354600)):
 
     sudo debsums -c [PACKAGE ...]
+
+
+Automated Installs
+------------------
+
+* Use `apt-get`; the `apt` interface is not stable. Set
+* `DEBIAN_FRONTEND=noninteractive` to avoid complaints from dpkg
+  about not having a terminal. In a Dockerfile, make sure you use
+  [`ARG`] not [`ENV`] to avoid propagating it to the command running
+  in the container, which causes confusion.
+
+
+
+[`ARG`]: https://docs.docker.com/engine/reference/builder/#arg
+[`ENV`]: https://docs.docker.com/engine/reference/builder/#env
