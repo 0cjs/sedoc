@@ -101,13 +101,13 @@ activate it if not already activated.
         cd "$(dirname "$BASH_SOURCE")"
         [ -d .build/virtualenv ] || {
             echo 'Building virtualenv...'
-            virtualenv -q .build/virtualenv
-            . .build/virtualenv/*/activate
-            pip install -q -r requirements.txt
+            virtualenv -q .build/virtualenv "$@" \
+            && . .build/virtualenv/*/activate \
+            && pip install -q -r requirements.txt
         }
-    )
-    . "$(dirname "$BASH_SOURCE")"/.build/virtualenv/*/activate
-    export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
+    ) \
+    && . "$(dirname "$BASH_SOURCE")"/.build/virtualenv/*/activate \
+    && export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
 
 I use `virtualenv/*/activate` instead of `virtualenv/bin/activate`
 because under Windows Python installs the scripts under `Scripts/`
