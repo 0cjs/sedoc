@@ -6,20 +6,54 @@ Handy commands:
     # Show import path python is using
     python -c 'import sys, pprint; pprint.pprint(sys.path)'
 
-    # Show import path for a particular module
+    # Show source used to create a particular module
     python -c 'import foo; print(foo.__file__)'
 
 
+`import` Statement Syntax
+-------------------------
 
-Overview
+[`import`][istmt] is a runtime directive that creates a module. (Any parent
+modules/packages in the hierarchy will also be created.) Thus, if in a
+function, `if` statement, etc., `import` will not be executed until
+the code is run. Also see [PEP 328] for the multi-line and relative
+import design.
+
+    import a.b              # bind module to `a.b` in current namespace
+    import a.b.c as c
+
+    #   `from` can import definitions or submodules
+    from a.b import f, g    # import definitions into current namespace
+    from a.b import (h, j)  # can use parens for multilines without backslash
+
+    #   At the module level only (not in classes or functions, this
+    #   imports `__all__` if present in that module's globals, otherwise
+    #   all defs not starting with `_`. It may hide defs in the importer.
+    from a.b import *
+
+    #   Relative imports can only be done with non-* form of `from`
+    #   Intra-package references are based on name of current module.
+    from . import foo
+    from .. import bar
+    from ..bar import baz
+
+Intra-package references can be used from `__main__` only under
+certain circumstances; see [PEP 366].
+
+Import statements result in bytecode that calls [`__import__`]. For
+programmatic importing You should use [`importlib.import_module()`]
+instead.
+
+
+Modules
 --------
 
 [Modules][modules] are objects of type `builtins.module`) that
 encapsulate a namespace containing arbitrary Python objects (typically
 classes and functions). They're usually created by loading a `.py`
-file with the `import` statement (see below). A module's symbol table
-is global to functions defined within it, but must be qualified for
-code outside it.
+file with the `import` statement (see below). A module's symbol table,
+accessed with the [`globals()`] function, is global to functions
+defined within the module, but must be qualified for code outside it.
 
     import a.b.c    # Create module a.b.c
                     # from a/b/c/ or a/b/c.py somewhere in sys.path
@@ -42,9 +76,9 @@ paths in `$PYTHONPATH`, you can end up with two different modules:
 
     PYTHONPATH=a:. ipython
     import b.c
-    b.c                 ⇒ <module 'b.c' from '/home/cjs/play/pyimp/a/b/c.py'>
+    b.c                 ⇒ <module 'b.c' from './a/b/c.py'>
     import a.b.c
-    a.b.c               ⇒ <module 'a.b.c' from '/home/cjs/play/pyimp/a/b/c.py'>
+    a.b.c               ⇒ <module 'a.b.c' from './a/b/c.py'>
     a.b.c is b.c        ⇒ False
 
 ### Packages
@@ -92,21 +126,79 @@ directory in `sys.path`:
                     #    _frozen_importlib_external._NamespaceLoader
                     #    _frozen_importlib_external.SourceFileLoader
 
+Importers
+---------
 
-The [Import Statement][istmt]
------------------------------
+[PEP 302] describes the 2.3 import system. That's described below but
+isn't entirely correct for 3.3.
 
-`import` is a runtime directive that creates a module. (Thus, if in a
-function, `if` statement, etc., it will not be executed until the code
-is run.)
+XXX Now see [`finder`] and work from there (esp. [PEP 420] and [PEP 451]).
 
-    import a.b              # Import all definitions into namespace a.b
-    from a.b import f, g    # import definitions into current namespace
-    from a.b import *       # imports `__all__` if present, otherwise all defs
-                            # not starting with `_` (may hide existing defs)
-    from . import foo       # Intra-package references are based on name
-    from .. import bar      # of current module and thus cannot be used
-    from ..bar import baz   # in `__main__`.
+#### Importer Protocol
+
+Importers consist of two objects, a _finder_ and a _loader_.
+
+The finder has a `find_module(self, fullname, path=None)` method
+called with the fully qualified name of the module and, if on
+`sys.meta_path`, a `path` of `None` for top-level modules or
+`package.__path__` for submodules. It returns a loader or `None` if
+the module was not found. The loader may be `self`.
+
+The loader has a `load_module(fullname)` method that returns the
+loaded module or throws `ImportError`. It (unlike the finder) can
+depend on parents having been imported and existing in `sys.modules`,
+e.g., when `load_module('foo.bar.baz')` is called `foo` and `foo.bar`
+are already imported.
+
+The loader must:
+1. Check for `sys.modules[fullname]` and use that if it exists so that
+   `reload()` works correctly.
+2. Before doing any importing, create `sys.modules[fullname]` if it
+   doesn't exist, 
+3. Remove `sys.modules[fullname]` if it did the insertion and the
+   import failed, otherwise leave it alone.
+4. Set the following attributes: `__loader__` (to itself), `__name__`,
+   `__file__`, `__package__` (see [PEP 366]).
+5. Set `__path__` if the module is a package. This must be a list,
+   but may be empty if the importer won't use it later.
+6. Execute the module's code (if a Python module) in its global
+   namespace (`module.__dict__`).
+
+[`importlib.util.module_for_loader()`] will handle many of these
+details.
+
+#### Importer Hooks
+
+Python has two lists of hooks queried in order to find an importer.
+
+1. `sys.meta_path` is a list of objects with `find_module()` methods.
+   These are queried before any other importers (including frozen and
+   built-in) are checked and so can override any other import
+   processing.
+
+2. `sys.path_hooks` is a list of callables (functions or other objects
+   with a `__call__` attribute) accepting a single path item and
+   returning either an importer object (with a `load_module()`
+   attribute) or raising `ImportError`. Once an importer has been
+   returned for a path that importer will always be used for that
+   entry.
+
+The paths that will be checked with the `sys.path_hooks` functions
+include not only `sys.path` but also paths for individual packages.
+(XXX fill in more about this here or throughout document.)
+
+#### XXX todo
+
+XXX \[from PEP 302]: The built-in `__import__` function (known as
+PyImport_ImportModuleEx() in import.c) will then check to see whether
+the module doing the import is a package or a submodule of a package.
+If it is indeed a (submodule of a) package, it first tries to do the
+import relative to the package (the parent package for a submodule).
+For example, if a package named "spam" does "import eggs", it will
+first look for a module named "spam.eggs". If that fails, the import
+continues as an absolute import
+
+#### XXX more todo
 
 `import` searches `sys.path` for directories and files from which to
 build modules. Symlinks are dereferenced before calculating names and
@@ -200,9 +292,17 @@ Further Documentation
 
 
 ["compiled"]: https://docs.python.org/3/tutorial/modules.html#compiled-python-files
+[PEP 302]: https://www.python.org/dev/peps/pep-0302/
+[PEP 328]: https://www.python.org/dev/peps/pep-0328/
+[PEP 366]: https://www.python.org/dev/peps/pep-0366/
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [PEP 451]: https://www.python.org/dev/peps/pep-0451/
+[`__import__`]: https://docs.python.org/3/library/functions.html#__import__
+[`finder`]: https://docs.python.org/3/glossary.html#term-finder
+[`globals()`]: https://docs.python.org/3/library/functions.html#globals
 [`imp`]: https://docs.python.org/3/library/imp.html
+[`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
+[`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
 [`importlib`]: https://docs.python.org/3/library/importlib.html
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
 [implibs]: https://docs.python.org/3/library/modules.html
