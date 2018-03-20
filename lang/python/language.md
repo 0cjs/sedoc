@@ -123,10 +123,19 @@ Objects
 `dir()` returns a list of names in local scope; `dir(obj)` returns the
 list of `obj`'s attributes.
 
+`str(o)` returns an informal, nicely printable string representation
+of an object by calling `o.__str__()`. If that's not present, it
+returns [`repr(o)`], which returns the formal string representation,
+which either can be passed to `eval()` to recreate the object or is of
+the form `<...description...>`. (It should always unambiguously
+describe that particular object.) `repr()` returns `o.__repr__()` if
+present or does its own thing if not.
+
 
 
 [CPython]: https://en.wikipedia.org/wiki/CPython
 [`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
+[`repr(o)`]: https://docs.python.org/3/reference/datamodel.html#object.__repr__
 [compound statements]: https://docs.python.org/3/reference/compound_stmts.html
 [expressions]: https://docs.python.org/3/reference/expressions.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
