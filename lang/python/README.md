@@ -29,6 +29,11 @@ Python Summary/Quickref
   * [tox](test/tox.md)
 * [Tips and Tricks](tricks.md)
 
+When using `pip` with a system (OS-packaged) Python, ensure that the
+`python-dev` or `python3-dev` (Debian) package is installed or some
+packages may not build. (The typical error message will include
+something about not being able to find `<Python.h>`.)
+
 
 
 [PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
