@@ -105,7 +105,7 @@ ensure you generate and commit the list of packages your project needs:
 This would usually be called from your top-level test script, e.g.:
 
     cd "$(dirname "$0")"
-    [[ $VIRTUAL_ENV = $(pwd -P) ]] || . activate
+    [[ $VIRTUAL_ENV = $(pwd -P) ]] || . activate -q
 
 #### Activate Script Notes
 
@@ -114,7 +114,12 @@ This would usually be called from your top-level test script, e.g.:
    than off the root of the repo. (You may also want to add `bin/`
    if you use files under that as modules.)
 
-2. For Windows compatibility it uses `virtualenv/*/activate` instead
+2. This takes a `-q` option that will make the install quiet (if it
+   runs), which is useful for automated test systems. A side effect is
+   that this will leave an `__activate_quiet` variable set (possibly
+   to an empty value) in the current shell.
+
+3. For Windows compatibility it uses `virtualenv/*/activate` instead
    of `virtualenv/bin/activate`. Under Windows, Python installs
    scripts under `Scripts/` instead of `bin/`; this code works with
    either so long as there's never more than one script named

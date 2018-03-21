@@ -1,12 +1,14 @@
 [ -n "$BASH_SOURCE" ] \
     || { echo 1>&2 "source (.) this with Bash."; exit 2; }
+__activate_quiet=
+[[ $1 = -q ]] && { shift; __activate_quiet=-q; }
 (
     cd "$(dirname "$BASH_SOURCE")"
     [ -d .build/virtualenv ] || {
         echo 'Building virtualenv...'
-        virtualenv -q .build/virtualenv "$@" \
+        virtualenv $__activate_quiet .build/virtualenv "$@" \
         && . .build/virtualenv/*/activate \
-        && pip install -q -r requirements.txt
+        && pip install $__activate_quiet -r requirements.txt
     }
 ) \
 && . "$(dirname "$BASH_SOURCE")"/.build/virtualenv/*/activate \
