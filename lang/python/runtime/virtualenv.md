@@ -114,12 +114,16 @@ This would usually be called from your top-level test script, e.g.:
    than off the root of the repo. (You may also want to add `bin/`
    if you use files under that as modules.)
 
-2. This takes a `-q` option that will make the install quiet (if it
-   runs), which is useful for automated test systems. A side effect is
-   that this will leave an `__activate_quiet` variable set (possibly
-   to an empty value) in the current shell.
+2. If passed `-q` as the _first_ option, the virtualenv install (if
+   run) will be done quietly, which is useful for automated test
+   systems. A side effect is that this will leave an `__activate_quiet`
+   variable set (possibly to an empty value) in the current shell.
 
-3. For Windows compatibility it uses `virtualenv/*/activate` instead
+3. All options (other than an initial `-q`) will be passed to
+   `virtualenv` (if run). This can be used to do things like set the
+   Python version you want to use (`-p python2`).
+
+4. For Windows compatibility it uses `virtualenv/*/activate` instead
    of `virtualenv/bin/activate`. Under Windows, Python installs
    scripts under `Scripts/` instead of `bin/`; this code works with
    either so long as there's never more than one script named
