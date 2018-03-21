@@ -91,32 +91,11 @@ Using with Git
 
 In general, the virtualenv directories and files should not be checked
 in to the Git repo as these will vary depending on the system on which
-it's been generated. Instead, create the following (non-executable)
-`activate` file that will install the virtualenv if necessary and then
-activate it if not already activated.
-
-    [ -n "$BASH_SOURCE" ] \
-        || { echo 1>&2 "source (.) this with Bash."; exit 2; }
-    (
-        cd "$(dirname "$BASH_SOURCE")"
-        [ -d .build/virtualenv ] || {
-            echo 'Building virtualenv...'
-            virtualenv -q .build/virtualenv "$@" \
-            && . .build/virtualenv/*/activate \
-            && pip install -q -r requirements.txt
-        }
-    ) \
-    && . "$(dirname "$BASH_SOURCE")"/.build/virtualenv/*/activate \
-    && export PYTHONPATH="$(dirname "$BASH_SOURCE")/lib"
-
-I use `virtualenv/*/activate` instead of `virtualenv/bin/activate`
-because under Windows Python installs the scripts under `Scripts/`
-instead of `bin/`. This trick would fail if there were ever more than
-one file matched by the pattern, but that should never happen so long
-as you leave virtualenv to manage that directory.
-
-The last line is optional; use it if you are putting your `.py` files
-for modules in paths under `lib/` rather than off the root of the repo.
+it's been generated. Instead, commit and use this (non-executable)
+[`activate`](activate) script that will install the virtual
+environment and pip modules if necessary and then activate the
+environment if one is not already activated. (See below for further
+notes on this.)
 
 After adding new packages in the virtual environment you'll want to
 ensure you generate and commit the list of packages your project needs:
@@ -127,6 +106,20 @@ This would usually be called from your top-level test script, e.g.:
 
     cd "$(dirname "$0")"
     [[ $VIRTUAL_ENV = $(pwd -P) ]] || . activate
+
+#### Activate Script Notes
+
+1. The last line setting `PYTHONPATH` is optional; use it if you are
+   putting your `.py` files for modules in paths under `lib/` rather
+   than off the root of the repo. (You may also want to add `bin/`
+   if you use files under that as modules.)
+
+2. For Windows compatibility it uses `virtualenv/*/activate` instead
+   of `virtualenv/bin/activate`. Under Windows, Python installs
+   scripts under `Scripts/` instead of `bin/`; this code works with
+   either so long as there's never more than one script named
+   `activate` in the subdirs. (That should always be the case so long
+   as you leave virtualenv to manage that directory.)
 
 
 
