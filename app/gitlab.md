@@ -183,9 +183,18 @@ also a large number of preset variables. These are described on the
 
 ### Runners Cache
 
+See the [caching] documentation for full information.
+
 In GitLab 10.4+ you can manually [clear the runners
 cache][clear-cache] for any project from the __CI/CD > Pipelines__
-page. If this isn't available, you can also clear the [cache key].
+page. If this isn't available, you can also change the [cache key].
+
+For earlier versions, if you don't want to change the cache key, you
+can delete the cache containers. These have names matching the glob
+`runner-*-cache-*` and each is associated with a Docker volume that
+should also be removed (but can't be removed until the container is
+removed).
+
 
 
 
@@ -208,6 +217,7 @@ page. If this isn't available, you can also clear the [cache key].
 [`dependencies`]: https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies
 [`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
 [cache key]: https://docs.gitlab.com/ce/ci/yaml/README.html#cache-key
+[caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
 [directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
