@@ -12,7 +12,7 @@ useful are:
   * `bool(x)` etc.; see [types](types.md).
 
 #### Functions
-  * `callable(o)`: appears to be callable as `o(...)`
+  * `callable(o)`: appears to be [callable] as `o(...)` (not in Python 3.0/3.1)
   * `eval(exp, globals=None, locals=None)`
   * `exec(obj[, globals[, locals]])`: execute a string or code object
 
@@ -89,7 +89,7 @@ Other Builtins
 * The [functional programming modules][fpmods] include:
   * [`operator`]: standard operators  (`+`, `=`, etc.) as functions
     (see the [opmap])
-  * [`functools`]: higher order functions and operations on callable objects
+  * [`functools`]: higher order functions and operations on [callable] objects
 
 
 
@@ -99,6 +99,7 @@ Other Builtins
 [`operator`]: https://docs.python.org/3/library/operator.html
 [bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
 [builtin]: https://docs.python.org/3/library/functions.html
+[callable]: functions.md
 [format]: https://docs.python.org/3/library/string.html#formatspec
 [fpmods]: https://docs.python.org/3/library/functional.html
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy

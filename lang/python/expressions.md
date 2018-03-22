@@ -13,7 +13,7 @@ Includes info from link above and [PPR].
   * `(...)`         tuple; expression; generator expression
 * References
   * `x.attr`        attribute reference
-  * `x(...)`        call (function, method, class, other callable)
+  * `x(...)`        call (function, method, class, other [callable])
   * `x[i:j:k]`      slicing (all bounds optional). Also `x[slice(i,j,k)]`.
   * `x[i]`          indexing (sequence, mapping, others)
 * `await x`
@@ -101,6 +101,7 @@ The following Python-2-isms have been removed in Python 3:
 
 [PPR]: http://shop.oreilly.com/product/0636920028338.do
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
+[callable]: functions.md
 [context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
 [contextlib-ex]: https://docs.python.org/3/library/contextlib.html#examples-and-recipes
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib

@@ -83,7 +83,7 @@ See [`add_argument()`] for the full set of options. Briefly:
   `argparse.SUPPRESS` leaves attribute off result if not on command line.
   Also see [`set_defaults()`] to set defaults separately and to add
   attributes not specified with `add_argument()`.
-* `type`: Can be `int`, `float`, `open`, etc.; any callable that takes a
+* `type`: Can be `int`, `float`, `open`, etc.; any [callable] that takes a
   `string` and returns a value. (`raise argparse.ArgumentTypeError(msg)`
   on parse error.) For default `open()` params use
   `argparse.FileType('w', mode=..., encoding=...)`
@@ -119,4 +119,5 @@ The parser does not modify its input.
 [`sys.argv`]: https://docs.python.org/3/library/sys.html#sys.argv
 [arg-]: https://docs.python.org/3/library/argparse.html#arguments-containing
 [argparse]: https://docs.python.org/3/library/argparse.html
+[callable]: functions.md
 [subcommands]: https://docs.python.org/3/library/argparse.html#sub-commands

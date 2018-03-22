@@ -1,9 +1,12 @@
-Python Functions
-================
+Python Functions and Callables
+==============================
 
 Functions are first class values of type `class function`; variables
 referencing them are in the same namespace as any other variables. `f`
 refers to the function object and `f()` [calls][Calls] the function.
+(The cpython `tp_call` field on C structs for objects points to the
+function to be called; how this is set is dependent on the type of the
+object and how it was constructed.)
 
 Function definitions may be nested; free variables access variables in
 the enclosing function (standard lexical closure).
@@ -15,7 +18,16 @@ these are _callables_:
   * methods of built-in objects
   * class objects (the call is expected to construct an instance)
   * methods of class instances
-  * all objects having a `__call__()` method
+  * objects of classes having a callable `__call__` property
+
+Use the built-in [`callable()`] function (not in Python 3.0/3.1) to
+determine whether an object is (probably) callable or (definitely)
+not. This can return false positives. E.g., the `__call__` property is
+not checked to be callable itself because this can result in infinite
+recursion (`self.__call__ = self`).
+
+Note that objects may be [callable without having a `__call__()`
+property][so-111255].
 
 See also:
 * Python Language Reference: [Function definitions][funcdef]
@@ -239,9 +251,11 @@ C functions that use `PyArg_ParseTuple()` may also have
 [PEP 3102]: https://www.python.org/dev/peps/pep-3102/
 [PEP 362]: https://www.python.org/dev/peps/pep-0362/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
+[`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
 [`operator`]: https://docs.python.org/3/library/operator.html
 [fpmods]: https://docs.python.org/3/library/functional.html
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [mapping]: https://docs.python.org/3/glossary.html#term-mapping
+[so-111255]: https://stackoverflow.com/a/111255/107294

@@ -176,12 +176,11 @@ Python has two lists of hooks queried in order to find an importer.
    built-in) are checked and so can override any other import
    processing.
 
-2. `sys.path_hooks` is a list of callables (functions or other objects
-   with a `__call__` attribute) accepting a single path item and
-   returning either an importer object (with a `load_module()`
-   attribute) or raising `ImportError`. Once an importer has been
-   returned for a path that importer will always be used for that
-   entry.
+2. `sys.path_hooks` is a list of [callable]s accepting a single path
+   item and returning either an importer object (with a
+   `load_module()` attribute) or raising `ImportError`. Once an
+   importer has been returned for a path that importer will always be
+   used for that entry.
 
 The paths that will be checked with the `sys.path_hooks` functions
 include not only `sys.path` but also paths for individual packages.
@@ -304,6 +303,7 @@ Further Documentation
 [`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
 [`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
 [`importlib`]: https://docs.python.org/3/library/importlib.html
+[callable]: functions.md
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
 [implibs]: https://docs.python.org/3/library/modules.html
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import

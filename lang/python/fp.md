@@ -13,7 +13,7 @@ The standard library includes category of [functional programming
 modules][functional]:
 
 * [`itertools`]: Functions creating iterators for efficient looping.
-* [`functools`]: Higher-order functions and operations on callable objects.
+* [`functools`]: Higher-order functions and operations on [callable] objects.
 * [`operator`]: Function versions of operators for higher-order use.
 
 #### `functools` Highlights:
@@ -46,6 +46,7 @@ See: [toolz-pypy], [toolz-docs], [tools-github]
 [`functools`]: https://docs.python.org/3/library/functools.html
 [`itertools`]: https://docs.python.org/3/library/itertools.html
 [`operator`]: https://docs.python.org/3/library/operator.html
+[callable]: functions.md
 [functional]: https://docs.python.org/3/library/functional.html
 [hate]: http://www.artima.com/weblogs/viewpost.jsp?thread=98196
 [partial]: https://docs.python.org/3/library/functools.html#partial-objects
