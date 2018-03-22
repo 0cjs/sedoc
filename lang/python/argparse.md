@@ -113,10 +113,10 @@ The parser does not modify its input.
 [ArgumentParser]: https://docs.python.org/3/library/argparse.html#argumentparser-objects
 [`Action`]: https://docs.python.org/3/library/argparse.html#argparse.Action
 [`add_argument()`]: https://docs.python.org/3/library/argparse.html#the-add-argument-method
+[`add_argument_group()`]: https://docs.python.org/3/library/argparse.html#argument-groups
 [`getopt`]: https://docs.python.org/3/library/getopt.html
+[`set_defaults()`]: https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.set_defaults
 [`sys.argv`]: https://docs.python.org/3/library/sys.html#sys.argv
 [arg-]: https://docs.python.org/3/library/argparse.html#arguments-containing
 [argparse]: https://docs.python.org/3/library/argparse.html
 [subcommands]: https://docs.python.org/3/library/argparse.html#sub-commands
-[`add_argument_group()`]: https://docs.python.org/3/library/argparse.html#argument-groups
-[`set_defaults()`]: https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.set_defaults

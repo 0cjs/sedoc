@@ -11,6 +11,7 @@ various environments, including with different versions of Python.
 [distutils] `setup.py` is required for `tox` to run, however.
 
 
-[tox]: https://tox.readthedocs.io/en/latest/
-[tool]: https://pypi.python.org/pypi/tox
+
 [distutils]: https://docs.python.org/3/library/distutils.html
+[tool]: https://pypi.python.org/pypi/tox
+[tox]: https://tox.readthedocs.io/en/latest/

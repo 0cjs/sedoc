@@ -90,9 +90,9 @@ The [`load_tests` protocol][ut-load] can implement custom loading.
 
 
 
-[unittest]: https://docs.python.org/3/library/unittest.html
 [assertions]: https://docs.python.org/3/library/unittest.html#assert-methods
+[so-where]: https://stackoverflow.com/q/61151/107294
+[unittest]: https://docs.python.org/3/library/unittest.html
 [ut-api]: https://docs.python.org/3/library/unittest.html#classes-and-functions
 [ut-disc]: https://docs.python.org/3/library/unittest.html#test-discovery
-[so-where]: https://stackoverflow.com/q/61151/107294
 [ut-load]: https://docs.python.org/3/library/unittest.html#load-tests-protocol

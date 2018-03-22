@@ -93,16 +93,16 @@ Other Builtins
 
 
 
-[stdlib]: https://docs.python.org/3/library/index.html
-[builtin]: https://docs.python.org/3/library/functions.html
-[format]: https://docs.python.org/3/library/string.html#formatspec
-[bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
+[Exceptions]: https://docs.python.org/3/library/exceptions.html
 [Iterators]: https://docs.python.org/3/library/stdtypes.html#iterator-types
 [`open()`]: https://docs.python.org/3/library/functions.html#open
-[property]: https://docs.python.org/3/library/functions.html#property
-[super]: https://docs.python.org/3/library/functions.html#super
-[Exceptions]: https://docs.python.org/3/library/exceptions.html
-[hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
-[fpmods]: https://docs.python.org/3/library/functional.html
 [`operator`]: https://docs.python.org/3/library/operator.html
+[bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
+[builtin]: https://docs.python.org/3/library/functions.html
+[format]: https://docs.python.org/3/library/string.html#formatspec
+[fpmods]: https://docs.python.org/3/library/functional.html
+[hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 [opmap]: https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
+[property]: https://docs.python.org/3/library/functions.html#property
+[stdlib]: https://docs.python.org/3/library/index.html
+[super]: https://docs.python.org/3/library/functions.html#super

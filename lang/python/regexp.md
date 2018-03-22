@@ -158,8 +158,8 @@ These always have value `True` in boolean expressions.
 
 
 
-[`re`]: https://docs.python.org/3/library/re.html
-[Matching Functions]: https://docs.python.org/3/library/re.html#module-contents
 [Match Objects]: https://docs.python.org/3/library/re.html#match-objects
-[tokenizer]: https://docs.python.org/3/library/re.html#writing-a-tokenizer
+[Matching Functions]: https://docs.python.org/3/library/re.html#module-contents
 [Regular Expression Syntax]: https://docs.python.org/3/library/re.html#regular-expression-syntax
+[`re`]: https://docs.python.org/3/library/re.html
+[tokenizer]: https://docs.python.org/3/library/re.html#writing-a-tokenizer

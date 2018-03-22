@@ -236,12 +236,12 @@ C functions that use `PyArg_ParseTuple()` may also have
 
 
 [Calls]: https://docs.python.org/3/reference/expressions.html#calls
-[funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
 [PEP 3102]: https://www.python.org/dev/peps/pep-3102/
+[PEP 362]: https://www.python.org/dev/peps/pep-0362/
+[PEP 448]: https://www.python.org/dev/peps/pep-0448/
+[`functools`]: https://docs.python.org/3/library/functools.html
+[`operator`]: https://docs.python.org/3/library/operator.html
+[fpmods]: https://docs.python.org/3/library/functional.html
+[funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [mapping]: https://docs.python.org/3/glossary.html#term-mapping
-[PEP 448]: https://www.python.org/dev/peps/pep-0448/
-[fpmods]: https://docs.python.org/3/library/functional.html
-[`operator`]: https://docs.python.org/3/library/operator.html
-[`functools`]: https://docs.python.org/3/library/functools.html
-[PEP 362]: https://www.python.org/dev/peps/pep-0362/

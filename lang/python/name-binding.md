@@ -110,4 +110,3 @@ Exception Hierarchy
 [execution model]: https://docs.python.org/3/reference/executionmodel.html
 [scopes and namespaces]: https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces
 [wikipedia]: https://en.wikipedia.org/wiki/Scope_(computer_science)#Python
-

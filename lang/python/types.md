@@ -99,13 +99,13 @@ Further documentation:
 
 
 
-[bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
 [Classes]: https://docs.python.org/3.6/tutorial/classes.html
-[`memoryview`]: https://docs.python.org/3/library/stdtypes.html#typememoryview
-[collections]: https://docs.python.org/3/library/collections.html#module-collections
-[funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
-[typing]: https://docs.python.org/3/library/typing.html
 [PEP 3107]: https://www.python.org/dev/peps/pep-3107/
 [PEP 483]: https://www.python.org/dev/peps/pep-0483/
 [PEP 484]: https://www.python.org/dev/peps/pep-0484/
 [PEP 526]: https://www.python.org/dev/peps/pep-0526/
+[`memoryview`]: https://docs.python.org/3/library/stdtypes.html#typememoryview
+[bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
+[collections]: https://docs.python.org/3/library/collections.html#module-collections
+[funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[typing]: https://docs.python.org/3/library/typing.html
