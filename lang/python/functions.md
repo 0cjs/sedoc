@@ -18,7 +18,7 @@ these are _callables_:
   * all objects having a `__call__()` method
 
 See also:
-* Python Language Reference: [Function defintions][funcdef]
+* Python Language Reference: [Function definitions][funcdef]
 * Python Language Reference: [Calls]
 
 
@@ -59,10 +59,10 @@ Parameters with default values (see below) need not be specified.
 
 All parameters to the right of the first with a default value must
 also have default values. On call, parameters with default values can
-be ommitted.
+be omitted.
 
 Default values are evaluated left to right when the `def` statement is
-executed. If the result is a refererence to a mutable value, mutating
+executed. If the result is a reference to a mutable value, mutating
 that value will change the default args at runtime:
 
     def f(x = []):
