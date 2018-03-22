@@ -77,7 +77,7 @@ Handy `ExceptionInfo` attributes include `type`, `typename`, `value`,
 
 #### Other Things
 
-* `approx(`_expected, rel=None, abs=None, nan_ok=False_`)` should be
+* `approx(expected, rel=None, abs=None, nan_ok=False_)` should be
   used to compare floating point numbers:
 
       {'a': 0.1 + 0.2, 'b': 0.2 + 0.4} == approx({'a': 0.3, 'b': 0.6})
