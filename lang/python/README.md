@@ -15,7 +15,7 @@ Python Summary/Quickref
   * [Argument Parsing](argparse.md)
   * [Concurrency](concurrency.md) (including processes)
   * [Python Language Services](ast.md) (manipulating Python code)
-* [Functional Programming](functional.md)
+* [Functional Programming](fp.md)
   * [Functional] modules in the standard library
   * [toolz][toolz-pypy] library ([docs][toolz-docs])
 * Runtime Environments
