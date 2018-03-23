@@ -24,6 +24,34 @@ Overview and configuration details are given in [Docker](docker.md).
     docker run -it --rm --mount=type=volume,destination=/mnt,source=MYVOL ubuntu
     docker volume rm VOL
 
+### Docker Inspect and Templates
+
+`docker inspect` prints Json information about any object (containers,
+images, volumes, etc.) The `-f` argument lets you specify a [Go
+template] to Docker inspect to query and extract specific parts of the
+output. E.g.,:
+
+    $ docker inspect -f 'Tags: {{.RepoTags[0]}}' ubuntu
+    Tags: [ubuntu:16.04 ubuntu:latest]
+
+* Directives in `{{ }}` will be substituted; everything else is literal.
+* `$` is root context (the whole input)
+* `.` is current context (initially `$`);  rebinding:  
+  `{{with .Foo}} {{$.TopThing}} {{.UnderFooThing}} {{end}}`
+
+Functions and actions take space-separated args and use parens for
+grouping:
+
+    {{len .RepoTags}}
+    {{index .RepoTags 0}}
+    {{index .Volumes "/var/jenkins_home"}}      # When you can't use `.`
+    {{if gt (len .RepoTags) 3}} BIG {{else}} SMALL {{end}}
+    {{if false}} N {{else if true}} Y {{else}} ? {{end}}
+
+References:
+* Go library [Package template][go template]
+* [Docker Inspect Template Magic][ditm] blog entry
+
 ### Leveraging Docker for Root Access
 
 On most systems there is a `docker` group with access to the Docker
@@ -54,4 +82,6 @@ The most reliable heurstic I can think of at the moment is:
 
 
 
+[ditm]: https://container-solutions.com/docker-inspect-template-magic/
 [so-23513045]: https://stackoverflow.com/q/23513045/107294
+[go template]: https://golang.org/pkg/text/template/
