@@ -62,6 +62,12 @@ References:
 * Go library [Package template][go template]
 * [Docker Inspect Template Magic][ditm] blog entry
 
+### Check Image Growth
+
+Building with `docker build --rm=false --no-cache` will keep the
+intermediate images; then use `docker diff` to see exactly what files
+are added in each layer.
+
 ### Leveraging Docker for Root Access
 
 On most systems there is a `docker` group with access to the Docker
