@@ -3,7 +3,7 @@ Python Functions and Callables
 
 Functions are first class values of type `class function`; variables
 referencing them are in the same namespace as any other variables. `f`
-refers to the function object and `f()` [calls][Calls] the function.
+refers to the function object and `f()` [calls] the function.
 (The cpython `tp_call` field on C structs for objects points to the
 function to be called; how this is set is dependent on the type of the
 object and how it was constructed.)
@@ -50,7 +50,7 @@ will use that when the function is called.
 
 #### Keyword Arguments
 
-When [calling][Calls] a function you may specify argument values by
+When [calling][calls] a function you may specify argument values by
 parameter name after any non-named arguments are bound in order:
 
     def f(a, b, c, d): return (a, b, c, d)
@@ -247,13 +247,13 @@ C functions that use `PyArg_ParseTuple()` may also have
 `POSITIONAL_ONLY` parameters.
 
 
-[Calls]: https://docs.python.org/3/reference/expressions.html#calls
 [PEP 3102]: https://www.python.org/dev/peps/pep-3102/
 [PEP 362]: https://www.python.org/dev/peps/pep-0362/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
 [`operator`]: https://docs.python.org/3/library/operator.html
+[calls]: https://docs.python.org/3/reference/expressions.html#calls
 [fpmods]: https://docs.python.org/3/library/functional.html
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
