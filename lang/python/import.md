@@ -287,6 +287,9 @@ Further Documentation
   how to lay out Python projects with packaging metadata and create
   distributable packages for them. This may not be up to date with
   modern versions of Python and libraries.
+* [Hacking Python without hacking Python][hpwhp] gives an example of
+  the use of import hooks to do transformation on code (e.g., on
+  the AST) as you load it.
 
 
 
@@ -305,6 +308,7 @@ Further Documentation
 [`importlib`]: https://docs.python.org/3/library/importlib.html
 [callable]: functions.md
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
+[hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
 [implibs]: https://docs.python.org/3/library/modules.html
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
