@@ -3,8 +3,8 @@ Python Functions and Callables
 
 Functions are first class values of type `class function`; variables
 referencing them are in the same namespace as any other variables. `f`
-refers to the function object and `f()` [calls] the function.
-(The cpython `tp_call` field on C structs for objects points to the
+refers to the function object and `f()` [calls] the function. (The
+cpython `tp_call` field on C structs for objects points to the
 function to be called; how this is set is dependent on the type of the
 object and how it was constructed.)
 
@@ -14,7 +14,7 @@ the enclosing function (standard lexical closure).
 Other objects besides functions can also be called in the same way;
 these are _callables_:
   * built-in functions
-  * user-defined functions
+  * user-defined functions (including lambdas and comprehensions)
   * methods of built-in objects
   * class objects (the call is expected to construct an instance)
   * methods of class instances
@@ -32,6 +32,7 @@ property][so-111255].
 See also:
 * Python Language Reference: [Function definitions][funcdef]
 * Python Language Reference: [Calls]
+* [How functions work][hfw] for low-level details
 
 
 Syntax
@@ -256,6 +257,7 @@ C functions that use `PyArg_ParseTuple()` may also have
 [calls]: https://docs.python.org/3/reference/expressions.html#calls
 [fpmods]: https://docs.python.org/3/library/functional.html
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[hfw]: https://stupidpythonideas.blogspot.com/2015/12/how-functions-work.html
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [mapping]: https://docs.python.org/3/glossary.html#term-mapping
 [so-111255]: https://stackoverflow.com/a/111255/107294

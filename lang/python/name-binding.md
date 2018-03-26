@@ -6,7 +6,8 @@ Python Names, Binding and Namespaces
 
 The primary documentation for this is the [Execution model] section of
 the Python 3 reference and the [Scopes and Namespaces] section of the
-[Classes] tutorial. [Wikipedia] also has a useful summary.
+[Classes] tutorial. [Wikipedia] also has a useful summary. [How lookup
+works][hlw] gets into the deep, grungy details.
 
 Python programs are constructed from _code blocks_: modules, function
 bodies, and [class definitions]. Blocks are executed as a unit and
@@ -108,5 +109,6 @@ Exception Hierarchy
 [class definitions]: https://docs.python.org/3/reference/compound_stmts.html#class
 [classes]: https://docs.python.org/3/tutorial/classes.html
 [execution model]: https://docs.python.org/3/reference/executionmodel.html
+[hlw]: https://stupidpythonideas.blogspot.com/2015/12/how-lookup-works.html
 [scopes and namespaces]: https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces
 [wikipedia]: https://en.wikipedia.org/wiki/Scope_(computer_science)#Python
