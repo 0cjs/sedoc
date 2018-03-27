@@ -21,6 +21,7 @@ Python Summary/Quickref
 * Runtime Environments
   * [IPython REPL](runtime/ipython.md)
   * [Virtual Environments](runtime/virtualenv.md)
+  * [Packaging Code](runtime/packaging.md)
 * Testing Libraries
   * [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
   * [`unittest`](test/unittest.md)

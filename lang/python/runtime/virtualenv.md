@@ -15,6 +15,10 @@ Related Software:
 * [zc.buildout] for application-centric (between Make and Chef)
   assembly and deployment, including non-Python software
 
+Also see [this SO answer][so-41573588] for a summary virtualenv,
+pyenv, pyenv-virtualenv, virtualenvwrapper, pyenv-virtualenvwrapper,
+pipenv, pyvenv, and venv.
+
 
 Installation
 ------------
@@ -141,6 +145,7 @@ This would usually be called from your top-level test script, e.g.:
 [plugins]: http://virtualenvwrapper.readthedocs.io/en/latest/plugins.html
 [pyenv]: https://github.com/pyenv/pyenv
 [pythonz]: https://github.com/saghul/pythonz
+[so-41573588]: https://stackoverflow.com/a/41573588/107294
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [virtualenvwrapper]: http://virtualenvwrapper.readthedocs.io/en/latest/
 [wheel]: http://wheel.rtfd.org/
