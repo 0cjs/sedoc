@@ -77,7 +77,7 @@ implict access via:
 
     #   On the host, start a Docker container with a root shell
     #   that has access to all files on the host.
-    docker run -it --rm --name root -v /:/host:rw alpine /bin/bash -l
+    docker run -it --rm --name root -v /:/host:rw alpine /bin/sh -l
 
     #   You are now running as root user in the docker container.
     #   Allow user `taro` to sudo to a root shell with no password.
