@@ -19,6 +19,7 @@ Python Summary/Quickref
   * [Functional] modules in the standard library
   * [toolz][toolz-pypy] library ([docs][toolz-docs])
 * Runtime Environments
+  * [Site setup](runtime/site.md) (`sys.path` etc.)
   * [IPython REPL](runtime/ipython.md)
   * [Virtual Environments](runtime/virtualenv.md)
   * [Packaging Code](runtime/packaging.md)
