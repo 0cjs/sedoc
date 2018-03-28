@@ -116,6 +116,12 @@ directory in `sys.path`:
     import a.b.c
     ⇒ ImportError: No module named 'a.b.c'; 'a.b' is not a package
 
+The default loader for namespace packages doesn't support [PEP 302]'s
+[`ResourceLoader.get_data()`] function, and so [`pkgutil.get_data()`]
+will always return `None`. A workaround for this is to add an empty
+`__init__.py` file to the package directory to convert it to a regular
+package.
+
 ### Module Attributes
 
     __name__        # module name; '__main__' if top module (`python foo.py`)
@@ -169,18 +175,25 @@ details.
 
 #### Importer Hooks
 
-Python has two lists of hooks queried in order to find an importer.
+When a module is to be imported, the interpreter first walks through
+the list of objects in `sys.meta_path`, calling the `find_spec()` or
+(deprecated since 3.4) `find_module()` method on each. The interface
+is documented in the  [importlib.abc.MetaPathFinder] abstract base
+class. These are queried before any other importers (including frozen
+and built-in) are checked and so can override any other import
+processing.
 
-1. `sys.meta_path` is a list of objects with `find_module()` methods.
-   These are queried before any other importers (including frozen and
-   built-in) are checked and so can override any other import
-   processing.
+If all the above returned `None`, the interpreter then walks through
+the list of paths in `sys.path`. For each path, if a [finder] is not
+already  cached for that path in `sys.path_importer_cache` it walks
+through the list of callables in `sys.path_hooks`, calling each one
+with the path to see if it will produce a finder. it caches the first
+one it finds in `sys.path.importer_cache_`.
 
-2. `sys.path_hooks` is a list of [callable]s accepting a single path
-   item and returning either an importer object (with a
-   `load_module()` attribute) or raising `ImportError`. Once an
-   importer has been returned for a path that importer will always be
-   used for that entry.
+Once it's got the finder it queries that via the `find_spec()` or
+deprecated `find_module()` method to see if it can find that module.
+If so, it can continue on to import it, otherwise it starts the step
+above with the next path on `sys.path`.
 
 The paths that will be checked with the `sys.path_hooks` functions
 include not only `sys.path` but also paths for individual packages.
@@ -299,6 +312,7 @@ Further Documentation
 [PEP 366]: https://www.python.org/dev/peps/pep-0366/
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [PEP 451]: https://www.python.org/dev/peps/pep-0451/
+[`ResourceLoader.get_data()`]: https://docs.python.org/3/library/importlib.html#importlib.abc.ResourceLoader.get_data
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
 [`finder`]: https://docs.python.org/3/glossary.html#term-finder
 [`globals()`]: https://docs.python.org/3/library/functions.html#globals
@@ -306,10 +320,13 @@ Further Documentation
 [`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
 [`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
 [`importlib`]: https://docs.python.org/3/library/importlib.html
+[`pkgutil.get_data()`]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
 [callable]: functions.md
+[finder]: https://docs.python.org/3/glossary.html#term-finder
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
 [hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
 [implibs]: https://docs.python.org/3/library/modules.html
+[importlib.abc.MetaPathFinder]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
 [modules]: https://docs.python.org/3/tutorial/modules.html
