@@ -44,7 +44,8 @@ output. E.g.,:
     $ docker inspect -f 'Tags: {{.RepoTags[0]}}' ubuntu
     Tags: [ubuntu:16.04 ubuntu:latest]
 
-* Directives in `{{ }}` will be substituted; everything else is literal.
+* Directives in `{{ }}` will be substituted; everything else is
+  cstring literal (`\t` is a tab, etc.).
 * `$` is root context (the whole input)
 * `.` is current context (initially `$`);  rebinding:  
   `{{with .Foo}} {{$.TopThing}} {{.UnderFooThing}} {{end}}`
@@ -57,6 +58,9 @@ grouping:
     {{index .Volumes "/var/jenkins_home"}}      # When you can't use `.`
     {{if gt (len .RepoTags) 3}} BIG {{else}} SMALL {{end}}
     {{if false}} N {{else if true}} Y {{else}} ? {{end}}
+
+`--format` can also be used with [`ps`]. Prefix the pattern with the
+`table` directive to print headers.
 
 References:
 * Go library [Package template][go template]
@@ -93,6 +97,7 @@ implict access via:
 
 
 
+[`ps`]: https://docs.docker.com/engine/reference/commandline/ps/#formatting
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
-[so-23513045]: https://stackoverflow.com/q/23513045/107294
 [go template]: https://golang.org/pkg/text/template/
+[so-23513045]: https://stackoverflow.com/q/23513045/107294
