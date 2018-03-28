@@ -1,8 +1,13 @@
 Docker
 ======
 
-This covers configuration details; see [Docker Tips](docker-tips.md)
-for handy commands and the like.
+This covers configuration details. See also:
+
+* [Docker Tips](docker-tips.md) for handy commands and the like.
+* [Reference documentation] for complete documentation.
+* [Engine CLI] for `docker` command details.
+  (This provides a lot of information not in the manpages.)
+
 
 Terminology
 -----------
@@ -173,7 +178,9 @@ versions of Docker Engine.)
 [docker build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
 [docker-ls]: https://github.com/mayflower/docker-ls
+[engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
 [official repos]: https://hub.docker.com/explore/
+[reference documentation]: https://docs.docker.com/reference/
 [registry-cli]: https://github.com/andrey-pohilko/registry-cli
 [registry-deploy]: https://docs.docker.com/registry/deploying/
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
