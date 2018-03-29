@@ -42,3 +42,42 @@ recommend it.
        yum install -y epel-release
        yum install -y python34         # 3.4.5; `python3`
        yum install -y python36         # 3.6.3; `python36`; CentOS 7 only
+
+
+Building Alternative Versions
+-----------------------------
+
+### [Pythonz]
+
+Download and install in `~/.pythonz` with:
+
+    curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
+
+To enable the `pythonz` command:
+
+    [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+
+Set up virtual environments with:
+
+    virtualenv -p $(pythonz locate 2.7.3) python2.7.3           # Python < 3.3
+    /usr/local/pythonz/pythons/CPython-3.4.1/bin/pyvenv pyvenv  # Python >= 3.3
+
+### From Source
+
+Get the source from [GitHub] or the Python.org [downloads] area and
+build it:
+
+    sudo apt-get install build-essential dpkg-dev \
+        zlib1g-dev libbz2-dev liblzma-dev \
+        libssl-dev libgdbm-dev libncurses5-dev libreadline-dev
+    #   Use libssl1.0-dev instead for Python <=3.4
+    #   XXX should include libsqlite as well...
+    mkdir ~/.local/python34
+    ./configure --prefix=/home/cjs/.local/python34
+    make -j 4
+    #   Check for notices about libs it couldn't build
+    make -j 8 install       # Python 2.x may need `altinstall`?
+
+
+
+[pythonz]: https://github.com/saghul/pythonz
