@@ -1,7 +1,10 @@
 The Python Import/Module System
 ===============================
 
-Handy commands:
+This and [importers] summarize [the import system reference
+documentation][isys] among other sources.
+
+#### Handy commands
 
     # Show import path python is using
     python -c 'import sys, pprint; pprint.pprint(sys.path)'
@@ -13,11 +16,13 @@ Handy commands:
 `import` Statement Syntax
 -------------------------
 
-[`import`][istmt] is a runtime directive that creates a module. (Any parent
-modules/packages in the hierarchy will also be created.) Thus, if in a
-function, `if` statement, etc., `import` will not be executed until
-the code is run. Also see [PEP 328] for the multi-line and relative
-import design.
+[`import`][istmt] is a runtime directive that creates a module and
+binds it to a name. (Any parent modules/packages in the hierarchy will
+also be created.) Thus, in in a function, `if` statement, etc.,
+`import` will not be executed until the code is run. 
+
+See [PEP 328] for more on multi-line import syntax and relative import
+design.
 
     import a.b              # bind module to `a.b` in current namespace
     import a.b.c as c
@@ -40,15 +45,21 @@ import design.
 Intra-package references can be used from `__main__` only under
 certain circumstances; see [PEP 366].
 
-Import statements result in bytecode that calls [`__import__`]. For
-programmatic importing You should use [`importlib.import_module()`]
-instead.
+Import statements result in bytecode that calls [`__import__`] \(which
+returns the top-level module imported) to perform the creation
+function folowed by code to do the name binding. For programmatic
+importing you should use [`importlib.import_module()`] \(which returns
+the named module) instead.
 
 
 Modules
---------
+-------
 
-[Modules][modules] are objects of type `builtins.module`) that
+Terminology note: the module system uses search paths that are lists
+of filesystem paths or other locations. Below we call search paths
+just 'paths' and filesystem paths 'locations'.
+
+[Modules][modules] are objects of type [`types.ModuleType`] that
 encapsulate a namespace containing arbitrary Python objects (typically
 classes and functions). They're usually created by loading a `.py`
 file with the `import` statement (see below). A module's symbol table,
@@ -62,17 +73,18 @@ defined within the module, but must be qualified for code outside it.
     a.b.c.f()       # calls f() from that module
     f = a.b.c.f     # Assign f to a local name
 
-The name of a module is defined by the path used to import it, and is
-available as `__name__`.
+The name of a module is defined by the location used to import it, and
+is available as `__name__` (and maybe `__spec__.name`).
 
-Modules are loaded once per interpreter instance unless you use:
+Modules are loaded once per interpreter instance (barring manipulation
+of `sys.modules`; see below) unless you use:
 
     import importlib; importlib.reload(modulename)
 
 The files containing the code that is executed to build the module
 object are usually referred to as "modules" (even in the [modules]
 tutorial) even though, if the same file is loaded via two different
-paths in `$PYTHONPATH`, you can end up with two different modules:
+locations in `$PYTHONPATH`, you can end up with two different modules:
 
     PYTHONPATH=a:. ipython
     import b.c
@@ -83,23 +95,46 @@ paths in `$PYTHONPATH`, you can end up with two different modules:
 
 ### Packages
 
-A [package] is a [module] that can contain submodules and/or
+A [package] is a module that can contain submodules and/or
 subpackages. (Non-package modules cannot do this.) Packages always
-have a `__path__` attribute. Packages come in two types.
+have a [`__path__`] attribute which a list of locations (usually of
+filesystem paths); this, rather than `sys.path` is used to search for
+submodules.
 
-##### [Regular Package]s
+Packages come in two types.
 
-[Regular package]s are usually created from a directory containing an
+#### [Regular Packages]
+
+Regular packages are usually created from a directory containing an
 `__init__.py` file. This can be empty (which simply identifies the
-directory as a package), or it can contain initialiation code or set
-`__all__`, which can be a list of submodule names to be imported with
-`from pkg import *`; without this submodules will not be loaded.
+directory as a package), or it can contain initialisation code.
 
-##### [Namespace Package]s
+If the initialization code sets `__all__`, this is the list of
+submodules that will be imported by `from pkg import *`. If `__all__`
+is not set, `import *` will not search for subpackages but merely load
+the main package (and, consequently, anything it loads explicitly).
 
-Described in [PEP 420], these serve only as a container for subpackages
-or submodules and have no physical representation beyond a directory
-on the disk. (In particular, they have no `__init__.py` file.)
+Once a regular package has been found on the search path, only that
+package's `__path__` list (default: a single location that is the
+directory containing `__init__.py`) will be used to search for
+submodules. Thus, submodules not in the original but in same-named
+package dirs further down `sys.path` will not be found unless the
+first package's `__path__` is explicitly modified. (This is the reason
+for having namespace packages, below.)
+
+#### [Namespace Packages]
+
+Described in [PEP 420], these serve only as a container for
+subpackages or submodules. A namespace package may have no
+representation on disk at all, or, if it does, it may be just one or
+more directories (without `__init__.py` files) or other objects, known
+as _[portions]_, each of which contributes subpackages.
+
+The `__path__` attribute of a namespace package is not a regular list
+but instead a custom iterable that can perform a new search for
+portions if `sys.path` or a parent path changes.
+
+#### Example
 
 Given `a/b/c.py` in `sys.path` (and no other files under `a/`):
 
@@ -122,129 +157,54 @@ will always return `None`. A workaround for this is to add an empty
 `__init__.py` file to the package directory to convert it to a regular
 package.
 
-### Module Attributes
+### [Module Attributes]
 
-    __name__        # module name; '__main__' if top module (`python foo.py`)
-    __file__        # full path to .py file, if created from a file
-    __path__        # Dir containing `__init.py__` (set before execing it) or
-                    # _NamespacePath with full path to dir, if namespace package
+    __name__        # Module name; '__main__' if top module (`python foo.py`)
     __loader__      # Loader used to load this package, e.g.,
                     #    _frozen_importlib_external._NamespaceLoader
                     #    _frozen_importlib_external.SourceFileLoader
+    __package__     # Empty str for top-level  modules.
+                    #    Same as __name__ for package modules (PEP 366).
+                    #    Otherwise parent module (== __spec__.parent).
+    __spec__        # (>=3.4) PEP 451 module load/import information. Older
+                    #    individual attributes below are generally the same.
+    __path__        # An iterable of strs representing locations. For regular
+                    #    For regular packages, initialized to a list containing
+                    #    the location of the module dir.
+                    #    For namespace packages, a `_NamespacePath` with
+                    #    locations of all portions.
+    __file__        # Optional; usually full path to .py file.
+    __cached__      # Optional; path to compiled version of code
+                    #    (which need not be actually present).
 
-Importers
----------
+There's nothing in particular synchronizing `__spec__` and the related
+individual module attributes. A notable exception to them being the
+same is when a module is run with `-m`; `module.__name__` will be
+`__main__` but `module.__spec__.name` will be the actual module name.
 
-[PEP 302] describes the 2.3 import system. That's described below but
-isn't entirely correct for 3.3.
-
-XXX Now see [`finder`] and work from there (esp. [PEP 420] and [PEP 451]).
-
-#### Importer Protocol
-
-Importers consist of two objects, a _finder_ and a _loader_.
-
-The finder has a `find_module(self, fullname, path=None)` method
-called with the fully qualified name of the module and, if on
-`sys.meta_path`, a `path` of `None` for top-level modules or
-`package.__path__` for submodules. It returns a loader or `None` if
-the module was not found. The loader may be `self`.
-
-The loader has a `load_module(fullname)` method that returns the
-loaded module or throws `ImportError`. It (unlike the finder) can
-depend on parents having been imported and existing in `sys.modules`,
-e.g., when `load_module('foo.bar.baz')` is called `foo` and `foo.bar`
-are already imported.
-
-The loader must:
-1. Check for `sys.modules[fullname]` and use that if it exists so that
-   `reload()` works correctly.
-2. Before doing any importing, create `sys.modules[fullname]` if it
-   doesn't exist, 
-3. Remove `sys.modules[fullname]` if it did the insertion and the
-   import failed, otherwise leave it alone.
-4. Set the following attributes: `__loader__` (to itself), `__name__`,
-   `__file__`, `__package__` (see [PEP 366]).
-5. Set `__path__` if the module is a package. This must be a list,
-   but may be empty if the importer won't use it later.
-6. Execute the module's code (if a Python module) in its global
-   namespace (`module.__dict__`).
-
-[`importlib.util.module_for_loader()`] will handle many of these
-details.
-
-#### Importer Hooks
-
-When a module is to be imported, the interpreter first walks through
-the list of objects in `sys.meta_path`, calling the `find_spec()` or
-(deprecated since 3.4) `find_module()` method on each. The interface
-is documented in the  [importlib.abc.MetaPathFinder] abstract base
-class. These are queried before any other importers (including frozen
-and built-in) are checked and so can override any other import
-processing.
-
-If all the above returned `None`, the interpreter then walks through
-the list of paths in `sys.path`. For each path, if a [finder] is not
-already  cached for that path in `sys.path_importer_cache` it walks
-through the list of callables in `sys.path_hooks`, calling each one
-with the path to see if it will produce a finder. it caches the first
-one it finds in `sys.path.importer_cache_`.
-
-Once it's got the finder it queries that via the `find_spec()` or
-deprecated `find_module()` method to see if it can find that module.
-If so, it can continue on to import it, otherwise it starts the step
-above with the next path on `sys.path`.
-
-The paths that will be checked with the `sys.path_hooks` functions
-include not only `sys.path` but also paths for individual packages.
-(XXX fill in more about this here or throughout document.)
-
-#### XXX todo
-
-XXX \[from PEP 302]: The built-in `__import__` function (known as
-PyImport_ImportModuleEx() in import.c) will then check to see whether
-the module doing the import is a package or a submodule of a package.
-If it is indeed a (submodule of a) package, it first tries to do the
-import relative to the package (the parent package for a submodule).
-For example, if a package named "spam" does "import eggs", it will
-first look for a module named "spam.eggs". If that fails, the import
-continues as an absolute import
-
-#### XXX more todo
-
-`import` searches `sys.path` for directories and files from which to
-build modules. Symlinks are dereferenced before calculating names and
-paths. The default `sys.path` includes the directory containing the
-input script (or current directory if no file specified), the
-`$PYTHONPATH` environment variable paths and installation-dependent
-defaults.
-
-Writable paths may have `__pycache__` directories created with the
-["compiled"] code (`cpython-34.pyc`, machine-portable) underneath, if
-the "source" was not already compiled code. Compiled files will be
-read from directories that contain no source.
-
-As well as directories, ZIP files containing source code or compiled
-source code (not binary shared libs) may be specified in the path.
+For more details, see [importers].
 
 
-[Import-related Libraries][implibs]
------------------------------------
+Module Loading and Importers
+-----------------------------
 
-[`importlib`] replaced the deprecated [`imp`] library in 3.4.
+Modules are loaded only after their parent package modules are loaded.
+The following [search] process will be followed first for the
+highest-level unloaded module in the full module name and then for
+child modules.
 
-#### [Replacing `imp.load_source`][so-34import]
+Modules are first looked up in the module cache, `sys.modules`, which
+contains all explicitly and automatically loaded modules. (Thus,
+`import a.b.c` will insert `a`, `a.b` and `a.b.c` into the cache if
+`a` had not been previously loaded.) The cache is writable so deleting
+a key or setting its value to `None` will force module creation anew
+on next import, though other modules will still have references to the
+old module object. (Use [`importlib.reload()`] to have the existing
+module object reloaded.)
 
-    from importlib.util import spec_from_loader
-    from importlib.machinery import SourceFileLoader
-
-    spec = spec_from_loader("foobar",
-        SourceFileLoader("foobar", "/path/to/foobar"))
-    foobar = module_from_spec(spec)
-    spec.loader.exec_module(foobar)
-
-    # To keep importing by name after first load:
-    sys.modules['foobar'] = foobar
+If a module isn't in the cache, the [import protocol][importers] is
+invoked. See that document for the details. (And also for how to add
+your own importers.)
 
 
 Importing from "Unusual" Filenames
@@ -292,47 +252,37 @@ renaming the file:
 Further Documentation
 ---------------------
 
-* The Python Language Reference section [The import system][isys] goes
-  into the gory details of how imports work and how to replace the
-  import system with your own.
-* [PEP 451] (included in Python 3.4) has more gory details. [The
-* Hitchhikers's Guide to Packaging][hhgtp] provides guidelines on
+* [The Hitchhikers's Guide to Packaging][hhgtp] provides guidelines on
   how to lay out Python projects with packaging metadata and create
   distributable packages for them. This may not be up to date with
   modern versions of Python and libraries.
-* [Hacking Python without hacking Python][hpwhp] gives an example of
-  the use of import hooks to do transformation on code (e.g., on
-  the AST) as you load it.
 
 
 
-["compiled"]: https://docs.python.org/3/tutorial/modules.html#compiled-python-files
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
 [PEP 328]: https://www.python.org/dev/peps/pep-0328/
 [PEP 366]: https://www.python.org/dev/peps/pep-0366/
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
-[PEP 451]: https://www.python.org/dev/peps/pep-0451/
 [`ResourceLoader.get_data()`]: https://docs.python.org/3/library/importlib.html#importlib.abc.ResourceLoader.get_data
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
-[`finder`]: https://docs.python.org/3/glossary.html#term-finder
+[`__path__`]: https://docs.python.org/3/reference/import.html#__path__
 [`globals()`]: https://docs.python.org/3/library/functions.html#globals
-[`imp`]: https://docs.python.org/3/library/imp.html
 [`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
-[`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
-[`importlib`]: https://docs.python.org/3/library/importlib.html
+[`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
 [`pkgutil.get_data()`]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
-[callable]: functions.md
-[finder]: https://docs.python.org/3/glossary.html#term-finder
+[`types.ModuleType`]: https://docs.python.org/3/library/types.html#types.ModuleType
+[factory functions]: https://www.python.org/dev/peps/pep-0451/#factory-functions
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
-[hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
-[implibs]: https://docs.python.org/3/library/modules.html
-[importlib.abc.MetaPathFinder]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
+[module attributes]: https://docs.python.org/3/reference/import.html#import-related-module-attributes
 [modules]: https://docs.python.org/3/tutorial/modules.html
-[namespace package]: https://docs.python.org/3/glossary.html#term-namespace-package
+[namespace packages]: https://docs.python.org/3/glossary.html#term-namespace-package
 [package]: https://docs.python.org/3/glossary.html#term-package
-[regular package]: https://docs.python.org/3/glossary.html#term-regular-package
+[portions]: https://docs.python.org/3/glossary.html#term-portion
+[py2imp]: https://docs.python.org/2/library/modules.html
+[regular packages]: https://docs.python.org/3/glossary.html#term-regular-package
+[search]: https://docs.python.org/3/reference/import.html#searching
 [so-34import]: https://stackoverflow.com/a/43602645/107294
 [so-impname1]: https://stackoverflow.com/q/8350853/107294
 [so-impname2]: https://stackoverflow.com/a/24659400/107294
