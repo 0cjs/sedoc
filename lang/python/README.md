@@ -11,6 +11,7 @@ Python Summary/Quickref
   * [Modules, Packages and Importing](import.md)
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
+  * [Date and Time](datetime.md)
   * [Pickle](pickle.md) object seralization
   * [Argument Parsing](argparse.md)
   * [Concurrency](concurrency.md) (including processes)
