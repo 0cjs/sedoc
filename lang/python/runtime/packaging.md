@@ -8,6 +8,8 @@ Packaging Python Code
 To-read
 -------
 
+* <https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/>
+* <https://blog.ionelmc.ro/2014/05/25/python-packaging/>
 * [SO notes on types of packages and tools][so-26661475], a broad
   overview including installers (pip, easy_install) etc.
 * [Differences between distribute, distutils, setuptools and
