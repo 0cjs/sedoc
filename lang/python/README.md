@@ -13,6 +13,7 @@ Python Summary/Quickref
 * [Standard Libraries](stdlib.md)
   * [Regular Expressions](regexp.md)
   * [Date and Time](datetime.md)
+  * [`itertools`](iter.md)
   * [Pickle](pickle.md) object seralization
   * [Argument Parsing](argparse.md)
   * [Concurrency](concurrency.md) (including processes)
