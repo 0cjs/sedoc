@@ -38,6 +38,12 @@ packages may not build. (The typical error message will include
 something about not being able to find `<Python.h>`.)
 
 
+Glossary
+--------
+
+* __dunder__: Double underline, as in `__name__`.
+
+
 
 [PTTT]: https://wiki.python.org/moin/PythonTestingToolsTaxonomy
 [`doctest`]: https://docs.python.org/3/library/doctest.html
