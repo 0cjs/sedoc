@@ -34,11 +34,17 @@ virtualenv
 ----------
 
     virtualenv DIR              # create new env in given dir
+    DIR/bin/python              # run python within the virtual environment
     source DIR/bin/activate     # enter environment (pwd doesn't matter)
                                 # This sets $VIRTUAL_ENV
     pip list                    # Lists only packages installed in virtual env
     deactivate                  # exit environment
     rm -rf DIR                  # remove environment
+
+Note that you need not source the `activate` script to run just one
+command in the environment; instead you can just run any command from
+`DIR/bin`. E.g., `dir/bin/python -m pip list` or `dir/bin/pip list` to
+list the packages installed in that environment.
 
 Virtualenv environments don't use `/usr/lib/python3.4/site-packages`
 unless you provide the `--system-site-packages` option. You can also
