@@ -28,13 +28,22 @@ Types iterate over:
 * `dict`: keys in dictionary
 * `open()`: lines in file/input source
 
-### itertools
+### [`itertools`]
 
-The [`itertools`] library, inspired by APL, Haskell, and SML, provides
-functions to help create iterators.
+The `itertools` library provides functions creating useful iterators
+(à la APL, Haskell, SML). The [`operator`] module functions
+(`operator.mul`, etc.) are often used with these.
 
-XXX fill this in
+Infinite:
+* `count(start=0, step=1)`: infinite counting
+* `cycle(itr)`: infinite repeated iteration over _itr_
+* `repeat(elem, n=?)`: repeat _elem_, _n_ times or forever if not specified
 
+Terminating on shortest sequence:
+* XXX write me
+
+Combinatoric:
+* XXX write me
 
 
 [`StopIteration`]: https://docs.python.org/3/library/exceptions.html#StopIteration
@@ -44,3 +53,4 @@ XXX fill this in
 [iterator protocol]: https://docs.python.org/3/library/stdtypes.html#typeiter
 [iterator]: https://docs.python.org/3/glossary.html#term-iterator
 [`itertools`]: https://docs.python.org/3/library/itertools.html
+[`operator`]: https://docs.python.org/3/library/operator.html#module-operator
