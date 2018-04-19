@@ -22,11 +22,12 @@ You can use these modules to print/dissassemble pickle data files:
 Usage
 -----
 
-You can read/write a [`bytes`] object or a file handle.
+[`dump()`] and [`load()`] write to/read from a file handle; `dumps()`
+and `loads()` do the same with [`bytes`] objects.
 
     from pickle import *
 
-    b = dumps(obj, pickle.HIGHEST_PROTOCOL, protocol=None, fix_imports=True)
+    b = dumps(obj, protocol=None, fix_imports=True)
     obj = loads(b, fix_imports=True, encoding='ASCII', errors='strict')
 
     with open('file', 'wb') as f: f.dump(obj, f)
@@ -92,14 +93,21 @@ Pickle uses one of five binary formats; compress if necessary.
 The formats are:
 * 0: human-readable, very early compatibility
 * 1: old binary format, also very early compatibility
-* 2: >=2.3, more efficient with current class structure
-* 3: >=3.0, default, explicit support for `bytes`
-* 4: >=3.4 (PEP 3154) supports very large objects, more kinds
+* 2: ≥2.3, more efficient with current class structure
+* 3: ≥3.0, default, explicit support for `bytes`
+* 4: ≥3.4 (PEP 3154) supports very large objects, more kinds
+
+Protocol arguments take:
+* Any integer above
+* `HIGHEST_PROTOCOL`, any negative number
+* `DEFAULT_PROTOCOL` (≥3.0), `None`
 
 
 
 [`__setstate__()`]: https://docs.python.org/3/library/pickle.html#object.__setstate__
 [`bytes`]: https://docs.python.org/3/library/stdtypes.html#bytes
+[`dump()`]: https://docs.python.org/3/library/pickle.html#pickle.dump
+[`load()`]: https://docs.python.org/3/library/pickle.html#pickle.load
 [marshal]: https://docs.python.org/3/library/marshal.html
 [pci]: https://docs.python.org/3/library/pickle.html#pickling-class-instances
 [pickle]: https://docs.python.org/3/library/pickle.html
