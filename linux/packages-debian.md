@@ -124,6 +124,8 @@ Package Versions
 package (or all versions, with `-a`); this is not necessarily the one
 installed. To see which version is installed, use `dpkg -s PACKAGE`.
 
+For a list of all installed packages, use `apt list --installed`.
+
 
 Package Verification
 --------------------
