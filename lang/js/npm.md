@@ -5,8 +5,12 @@ NPM - Node Package Manager
 
 Most `npm` subcommands assume that the current working directory (CWD)
 is the project directory; this is where it will  manipulate the
-`node_modules/` subdirectory and read the optional `package.json`
+`node_modules/` subdirectory and read the (optional) `package.json`
 file, if present.
+
+For details on the files used by NPM see [NPM Package Configuration
+Files](npm-files.md).
+
 
 NPM Packages
 ------------
@@ -58,59 +62,6 @@ Options:
 * `-E`, `--save-exact`: Save exact instead of minimum vesion in deps
 * `-B`, `--save-bundle`: Add also to `bundledDependencies`
 
-
-package.json
-------------
-
-[`package.json`] is not a required file; you can `npm install`
-specific packages into `node_modules/` under the CWD even if it
-doesn't exist.
-
-#### [Dependency Fields]
-
-The following fields specify dependencies:
-- `dependencies`: Required for use of the package (as library or script)
-- `devDependencies`: For building and testing;
-  installed by default by `npm link` or `install`
-- `peerDependencies`: Minimum versions of plugins; not installed by default
-- `bundledDependencies`: Bundled when publishing the package by `npm pack`
-- `optionalDependencies`: Proceed with warning if not available
-  (your software needs to handle package absence)
-
-Dependencies are a map of `{ "name": "SPEC" }`, where the spec is
-a version spec or direct download specifier.
-
-Version specifiers are [semver]s, including:
-- `x`, `x.y`, `x.y.z`
-- `''`, `*`: any version
-- `>`, `>=`, `<`, `<=` prefixes
-- `~` prefix for approximate equivalance
-  - patch-level changes if minor version given: `~1.2.3` = `>=1.2.3 <1.3.0`
-  - minor version changes if only major version given `~1` = `>=1.0.0 <2.0.0`
-- `^` prefix for "compatible with":
-  Changes must not modify left-most non-zero digit.
-- `v1 - v2`: range
-- `range1 || range2`: either range must be satisfied
-
-Other specifiers are:
-- `https://.../package.tar.gz`: URL to tarball
-- `git+https://...`: URL to Git repo (also `git`, `git+ssh`, `git+file`, etc.).
-  Add `#commit-ish` or `#semver:SEMVER` for a specific version.
-  The commit-ish may need slashes escaped with `\`.
-- `user/project`: GitHub repo. Optional version as with `git`.
-- `./foo/bar`: Local path, starting with `../`, `./`, `~/`, `/` or `file:`.
-
-#### Other Common Fields
-
-- `name`: (required)
-  - Cannot start with `.` or `_`; no uppercase; URL-safe.
-  - Do not put `js` or `node` in the name. (Use `engines` if not for node.)
-  - Don't use names already in <https://www.npmjs.com>.
-- `version`: (required) A semver.
-- `private`: (default `false`) If `true`, npm will not publish and will
-  disable some lint checks for license etc. See also `publishConfig`.
-- `license` (default `ISC`) Use a license from the [SPDX License List],
-  `SEE LICENSE IN <filename>` or `UNLICENSED`.
 
 
 
