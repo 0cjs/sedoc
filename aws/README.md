@@ -3,6 +3,7 @@
 
 * [Command Line Interface](cli.md)
 * [EC2 - Elastic Compute Cloud virtual server instances](ec2.md)
+* [Lambda - Serverless Compute](lambda.md)
 
 
 

@@ -1,5 +1,5 @@
-AWS Lambda
-==========
+AWS Lambda (Serverless Compute)
+===============================
 
 [AWS Lambda][] ([developer guide]) runs "serverless" functions  in an
 AWS environment using Node.js, Java, C#, Python 2/3, Go or native
