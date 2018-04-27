@@ -36,10 +36,20 @@ I am currently considering adding the following fonts:
   (available in the `fonts-firacode` Debian package).
 
 
-FAQ
----
+urxvt Display
+-------------
 
-* Too much space between characters in a new urxvt: see [so-118641].
+Source Code Pro 9pt at 120 DPI gives 106 line `urxvt` terminals on a
+4K monitor. If the width is wrong, this is maybe an issue with
+`Rxvt.letterSpace` where 1.5 seems normal but sometimes it needs to be 2:
+
+    echo 'Rxvt.letterSpace: -2' | xrdb -merge
+
+Be careful that narrowing it too much for certain fonts may break
+display of special full-cell characters such as the Braille ones used
+in `htop` graphs.
+
+Also see [so-118641].
 
 
 

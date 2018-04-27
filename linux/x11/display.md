@@ -20,6 +20,9 @@ But for dealing with Xft fonts (e.g., `urxvt`), you want to set the
 
     echo 'Xft.dpi: 96' | xrdb -merge
 
+But see also [fonts](fonts.md) if the issue seems to be the width of
+terminals and the line height looks ok.
+
 
 
 [so-dpi]: https://askubuntu.com/a/272172/354600
