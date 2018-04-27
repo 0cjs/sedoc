@@ -107,7 +107,7 @@ ensure you generate and commit the list of packages your project needs:
 This would usually be called from your top-level test script, e.g.:
 
     cd "$(dirname "$0")"
-    [[ $VIRTUAL_ENV = $(pwd -P) ]] || . activate -q
+    . activate -q
 
 #### Activate Script Notes
 
