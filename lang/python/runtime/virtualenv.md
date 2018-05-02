@@ -67,6 +67,9 @@ use it with commands like:
     virtualenv -p ~/.local/python34/bin/python3
     virtualenv -p $(pythonz locate 2.7.3) python2.7.3
 
+See "Virtualenv Information" below for how to figure out whence your
+virtualenv was created.
+
 
 virtualenvwrapper
 -----------------
@@ -86,6 +89,16 @@ virtualenvwrapper
 virtualenvwrapper can be extended with [hooks] and [plugins].
 
 [Project directories] for hacking-in-progress may be bound to a virtualenv.
+
+
+Virtualenv Information
+----------------------
+
+Virtualenv copies the Python binary into the virtual environment
+directory. If you want to see where the binary originally came from,
+you can check `sys.real_prefix`, added by the virtualenv setup, which
+is the value of `sys.prefix` that was compiled into the Python binary
+([so-15469948]).
 
 
 Using with Git
@@ -142,6 +155,7 @@ This would usually be called from your top-level test script, e.g.:
 [pipenv]: https://docs.pipenv.org/
 [plugins]: http://virtualenvwrapper.readthedocs.io/en/latest/plugins.html
 [pyenv]: https://github.com/pyenv/pyenv
+[so-15469948]: https://stackoverflow.com/a/15469948/107294
 [so-41573588]: https://stackoverflow.com/a/41573588/107294
 [version]: ../version.md#building-alternative-versions
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
