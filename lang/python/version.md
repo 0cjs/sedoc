@@ -6,6 +6,8 @@ There are two major versions:
 * 2.7 (2010): [legacy], supported until 2020 (latest [2.7.15] 2018-05-01)
 * [3.6.5][] (2018-03-28): current (3.7 releasing 2018-06)
 
+Release Histories/Schedules/New Features: [3.6], [3.7]
+
 On almost all systems `/usr/bin/python3` is present if Python 3 is
 installed. It's almost never installed as part of the base system.
 
@@ -81,6 +83,8 @@ build it:
 
 
 
-[pythonz]: https://github.com/saghul/pythonz
 [2.7.15]: https://www.python.org/downloads/release/python-2715/
 [3.6.5]: https://www.python.org/downloads/release/python-365/
+[3.6]: https://www.python.org/dev/peps/pep-0494/
+[3.7]: https://www.python.org/dev/peps/pep-0537/
+[pythonz]: https://github.com/saghul/pythonz
