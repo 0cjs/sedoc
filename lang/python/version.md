@@ -3,8 +3,8 @@ Python Versions
 
 Python's reference implementation is the [CPython] interpreter.
 There are two major versions:
-* 2.7 (2010): [legacy], supported until 2020 (latest 2.7.13 2016-12)
-* 3.6.3 (2017-10): current (3.7 releasing 2018-06)
+* 2.7 (2010): [legacy], supported until 2020 (latest [2.7.15] 2018-05-01)
+* [3.6.5][] (2018-03-28): current (3.7 releasing 2018-06)
 
 On almost all systems `/usr/bin/python3` is present if Python 3 is
 installed. It's almost never installed as part of the base system.
@@ -19,6 +19,7 @@ recommend it.
 
 | OS/Distro     | `python`  |`python3`  | Distro Release Date
 |---------------|-----------|-----------|----------------------
+| AWS Lambda    | 2.7.?     | 3.6.1     | 2018-05 (last check)
 | Ubuntu 18.04  | 2.7.14+   | 3.6.4+    | 2018-04
 | Debian 9      | 2.7.13    | 3.5.3     | 2017-06
 | Ubuntu 16.04  | 2.7.12    | 3.5.2     | 2016-04
@@ -81,3 +82,5 @@ build it:
 
 
 [pythonz]: https://github.com/saghul/pythonz
+[2.7.15]: https://www.python.org/downloads/release/python-2715/
+[3.6.5]: https://www.python.org/downloads/release/python-365/
