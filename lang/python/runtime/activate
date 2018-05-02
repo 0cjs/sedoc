@@ -3,10 +3,12 @@
 __activate_quiet=
 [[ $1 = -q ]] && { shift; __activate_quiet=-q; }
 (
-    cd "$(dirname "$BASH_SOURCE")"
+    basedir=$(cd "$(dirname "$BASH_SOURCE")" && pwd -P)
+    cd "$basedir"
     [ -d .build/virtualenv ] || {
         echo 'Building virtualenv...'
-        virtualenv $__activate_quiet .build/virtualenv "$@" \
+        virtualenv --prompt="($(basename "$basedir")) " \
+            $__activate_quiet .build/virtualenv "$@" \
         && . .build/virtualenv/*/activate \
         && pip install $__activate_quiet -r requirements.txt
     }
