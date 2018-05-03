@@ -181,6 +181,8 @@ XXX To-do
 * <https://docs.pytest.org/en/latest/existingtestsuite.html>
   <https://docs.pytest.org/en/latest/usage.html#calling-pytest-from-python-code>
 * Anything else left out from <https://docs.pytest.org/en/latest/contents.html>
+* [Development mode](https://docs.pytest.org/en/documentation-restructure/how-to/existingtestsuite.html)
+* [tox](https://docs.pytest.org/en/documentation-restructure/background/goodpractices.html#use-tox)
 
 
 
