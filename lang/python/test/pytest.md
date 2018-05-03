@@ -136,6 +136,31 @@ the [`addopts`] config option; config file options can be set on the
 command line with `-o option=value` or `--override-ini=option=value`.
 
 
+Cache
+-----
+
+Pytest has a [cache] ([new docs][cache-restruc]) supplied by the
+included `cacheprovider` [plugin][plugins] (enabled by default). Data
+are stored in `.pytest_cache/` under the [rootdir][] and accessible
+via the [`config.cache`] ([API docs][config-cache-API]) object. The
+plugin adds the following command line options:
+
+* `--cache-show`: Display cache content (no tests will be run)
+* `--cache-clear`: Clear all cache files and values
+* `--lf`/`--last-failed`: Re-run only failures
+* `--ff`/`--failed-first`: Run failures before remainder of tests
+* `-last-failed-no-failures`: Behaviour when last run had no failures
+  * `all` (default): Run all tests
+  * `none`: Run no tests
+
+The [`cache_dir`] configuration option (≥3.2) moves it elsewhere; it's
+an absolute path or relative to `rootdir`.
+
+There is also a [`pytest-cache`] PyPI module which appears to be an
+older version of the above `cacheprovider` plugin. (Last release was
+2013.)
+
+
 XXX To-do
 ---------
 
@@ -156,15 +181,22 @@ XXX To-do
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
 [`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`assert`]: https://docs.python.org/3/reference/simple_stmts.html#assert
+[`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
+[`config.cache`]: https://docs.pytest.org/en/latest/cache.html#config-cache
 [`norecursedirs`]: https://docs.pytest.org/en/latest/customize.html#confval-norecursedirs
+[`pytest-cache`]: https://pypi.org/project/pytest-cache/
 [`test package name`]: https://docs.pytest.org/en/latest/goodpractices.html#test-package-name
 [`testpaths`]: https://docs.pytest.org/en/latest/customize.html#confval-testpaths
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [ast-rewrite]: http://pybites.blogspot.jp/2011/07/behind-scenes-of-pytests-new-assertion.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
+[cache-restruc]: https://docs.pytest.org/en/documentation-restructure/how-to/cache.html
+[cache]: https://docs.pytest.org/en/latest/cache.html
+[config-cache-API]: https://docs.pytest.org/en/latest/reference.html#cache-api
 [discover tests]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [docs]: https://docs.pytest.org/en/latest/contents.html
 [exceptions]: https://docs.python.org/3/library/exceptions.html
+[plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
 [rootdir]: https://docs.pytest.org/en/latest/customize.html#initialization-determining-rootdir-and-inifile
