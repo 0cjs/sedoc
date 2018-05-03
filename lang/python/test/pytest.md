@@ -3,7 +3,8 @@ Python Pytest Library
 
 Documentation:
 * [Standard Homepage/Documentation][pytest]
-* [Restructed Documentation][restruc] (much better, but kind of a secret!)
+  * [Examples and customization tricks][examples]
+* [Restructed Documentation][restruc] (sometimes better; kind of a secret!)
 
 Overview
 --------
@@ -41,19 +42,127 @@ with test frameworks that do their own loading?
 Test Discovery
 --------------
 
-Pytest from the command line will [discover tests] using paths from
-the first of the command line, the [`testpaths`] configuration
-variable and the current directory. Files are added directly;
-directories (excepting those in [`norecursedirs`]) are recursed to
-find `test_*.py` and `*_test.py` files. All are imported by their
-[`test package name`] derived from the first parent directory not
-containing an `__init__.py` file). (This directory is added to
-`sys.path`.) PEP 420 namespace packages without `__init__.py` files
-may also work, but this needs to be investigated.
+#### Default Discovery
+
+Pytest from the command line will [discover tests] by searching paths
+from the first of: the command line; the [`testpaths`] configuration
+variable; the current directory. Files are added directly; directories
+(excepting those in [`norecursedirs`]) are recursed to find
+`test_*.py` and `*_test.py` files. All are imported by their [`test
+package name`] derived from the first parent directory not containing
+an `__init__.py` file). (This directory is added to `sys.path`.) PEP
+420 namespace packages without `__init__.py` files may also work, but
+this needs to be investigated.
 
 The test functions are those matching `test_*` that are at the
 top-level (within the module) or within a `Test*` class that has no
 `__init__` method.
+
+#### [Customizing Discovery]
+
+`--collect-only` is useful for checking what discovery is finding. It
+can also be used to check for missing dependencies the code attempts
+to import.
+
+Command-line options:
+
+* `--ignore=PATH`: Ignore directories/modules; may be used multiple times.
+* `--keep-duplicates`: (Normally they are removed.)
+* `--collect-in-virtualenv`: Do not ignore tests in local virtualenv dirs.
+* `deselect=NODEID_PREFIX`: Delect items during collection (multi allowed).
+* `--pyargs`: Try to interpret all args as Python packages.
+
+[Config file][confopts] (see below) / `-o name=value` options:
+
+* `python_files`, `python_classes`, `python_functions`: Glob patterns
+  determining what files, classes and functions will be selected as
+  test modules, classes containing tests, and test functions/methods.
+  This does not apply to `unittest` collecting, which selects
+  subclasses of `unittest .TestCase`.
+* `testpaths`: Paths to search when none are given explicitly on the
+  command line.
+* `norecursedirs`: Glob patterns determining what directories should
+  be ignored. Default `.* build dist CVS _darcs {arch} *.egg venv`.
+  (Virtualenvs are also detected via their activiation scripts and
+  ignored unless `--collect-in-virtualenv` is given, but
+  `norecursedirs` ignore patterns precedence over this.)
+
+You can set `collect_ignore` in `conftest.py` to programatically
+ignore certain modules. See [Customizing test collection] for an
+example.
+
+You can also set [a session-fixture which can look at all collected
+tests][collection-fixture].
+
+
+conftest.py
+-----------
+
+`conftest.py` files anywhere under the rootdir are loaded and used.
+automatically by `pytest`. This seems to be some sort of way to get
+deep into the guts of pytest. XXX need to expand this info.
+
+[Pytest import mechanisms][import] discusses stuff about this.
+
+Uses include:
+* [`pytest_runtest_setup()`]
+* [Sharing fixture functions][fixture-conftest] amongst many modules
+* [Per-directory plugins][plugin-conftest] (also see the [hooks]
+  reference and ][writing hooks])
+* [Basic patterns and examples][basic] has many examples of other
+  things
+* [Non-Python Test Execution][nonpython]
+
+Command-line options:
+* `--noconftest`: Don't load `conftest.py` files.
+* `confcutdir`: Where `conftest.py` search stops
+
+
+unittest and doctest Tests
+--------------------------
+
+Pytest will also run [`unittest`] and [`doctest`] test cases.
+
+#### `unittest`
+
+Collection is slightly different from that for standard pytest:
+* Files: the same, matching `python_files` glob
+* Classes:  if inherits from `unittest.TestCase` (`python_classes` is ignored)
+* Methods: if in a selected class and matching `test*`
+  (`python_functions` is ignored)
+
+[`@pytest.mark` decorators][marks] can be used on `unittest` test
+methods. This includes things like the following. (See the
+documentation linked above for considerably more detail.)
+* `@pytest.mark.skip(reason='foo')`
+* `@pytest.mark.usefixtures("my_fixture")`
+
+Supported features:
+* `@unittest.skip`-style decorators
+* `setUp()`/`tearDown()`
+* `setUpClass()`/`tearDownClass()`
+
+Unsupported features:
+* `load_tests` protocol
+* `setUpModule()`,`tearDownModule()`
+* subtests/`subTest()` context manager
+
+#### `doctest`
+
+Doctest options:
+
+* `--doctest-modules`: Run doctests in all .py modules.
+* `--doctest-report`: Format of doctest failure output:
+  `{none,cdiff,ndiff,udiff,only_first_failure}`
+* `--doctest-glob=PAT`: Doctests on files matching PAT. Default: `test*.txt`.
+* `--doctest-ignore-import-errors`: ignore doctest ImportErrors
+* `--doctest-continue-on-failure`: Continue after first doctest
+  failure in a file.
+
+Doctest config options:
+
+* `doctest_optionflags`: Option flags for doctests.
+* `doctest_encoding`: Encoding used for doctest files.
 
 
 Assertions
@@ -171,6 +280,7 @@ older version of the above `cacheprovider` plugin. (Last release was
 XXX To-do
 ---------
 
+* [`pytest-xdist`](https://pypi.org/project/pytest-xdist/)
 * Marking failing tests with the decorator (mentioned in [assertions])
   [assertions] mentions the decorator `@pytest.mark.xfail(raises=IndexError)`.
   <https://docs.pytest.org/en/latest/skipping.html> and `pytest --markers`.
@@ -183,6 +293,7 @@ XXX To-do
 * Anything else left out from <https://docs.pytest.org/en/latest/contents.html>
 * [Development mode](https://docs.pytest.org/en/documentation-restructure/how-to/existingtestsuite.html)
 * [tox](https://docs.pytest.org/en/documentation-restructure/background/goodpractices.html#use-tox)
+* [background](https://docs.pytest.org/en/documentation-restructure/background/)
 
 
 
@@ -192,22 +303,38 @@ XXX To-do
 [`assert`]: https://docs.python.org/3/reference/simple_stmts.html#assert
 [`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
 [`config.cache`]: https://docs.pytest.org/en/latest/cache.html#config-cache
+[`doctest`]: https://docs.pytest.org/en/documentation-restructure/how-to/doctest.html
 [`norecursedirs`]: https://docs.pytest.org/en/latest/customize.html#confval-norecursedirs
 [`pytest-cache`]: https://pypi.org/project/pytest-cache/
+[`pytest_runtest_setup()`]: https://docs.pytest.org/en/latest/reference.html?highlight=%22pytest_runtest_setup%22#_pytest.hookspec.pytest_runtest_setup
 [`test package name`]: https://docs.pytest.org/en/latest/goodpractices.html#test-package-name
 [`testpaths`]: https://docs.pytest.org/en/latest/customize.html#confval-testpaths
+[`unittest`]: https://docs.pytest.org/en/latest/unittest.html
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [ast-rewrite]: http://pybites.blogspot.jp/2011/07/behind-scenes-of-pytests-new-assertion.html
+[basic]: https://docs.pytest.org/en/latest/example/simple.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
 [cache-restruc]: https://docs.pytest.org/en/documentation-restructure/how-to/cache.html
 [cache]: https://docs.pytest.org/en/latest/cache.html
+[collection-fixture]: https://docs.pytest.org/en/latest/example/special.html
 [config-cache-API]: https://docs.pytest.org/en/latest/reference.html#cache-api
+[confopts]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#builtin-configuration-file-options
+[customizing discovery]: https://docs.pytest.org/en/documentation-restructure/example/pythoncollection.html
+[customizing test collection]: https://docs.pytest.org/en/latest/example/pythoncollection.html#customizing-test-collection
 [discover tests]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [docs]: https://docs.pytest.org/en/latest/contents.html
+[examples]:  https://docs.pytest.org/en/latest/example/
 [exceptions]: https://docs.python.org/3/library/exceptions.html
+[fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
+[hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
+[import]: https://docs.pytest.org/en/latest/pythonpath.html
+[marks]: https://docs.pytest.org/en/latest/mark.html
+[nonpython]: http://doc.pytest.org/en/latest/example/nonpython.html
+[plugin-conftest]: https://docs.pytest.org/en/latest/writing_plugins.html#conftest-py-plugins
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
 [restruc]: https://docs.pytest.org/en/documentation-restructure/
 [rootdir]: https://docs.pytest.org/en/latest/customize.html#initialization-determining-rootdir-and-inifile
 [wiki]: https://wiki.python.org/moin/PyTest
+[writing hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#writing-hook-functions
