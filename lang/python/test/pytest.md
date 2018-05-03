@@ -98,17 +98,42 @@ Most of the following would normally be done with decorators; see below.
 * `exit()`: Exit test process.
 
 
-[Configuration]
----------------
+Rootdir and Configuration
+-------------------------
 
-`pytest -h` will print out out the command line options and config
-file settings, if any. The `pytest` command line tool finds the config
-file by looking in the current then parent dirs for the first of the
-following files:
+`pytest -h` will print out the [configuration] determined by the
+command line options and config file settings. The rootdir and inifile
+are also printed at the start of non-quiet test runs and available in
+Python as `config.rootdir` (guaranteed to exist) and `config.inifile`
+(may be `None`).
 
-* `pytest.ini` (used but breaks if no `[pytest]` section)
-* [`tox.ini`](tox.md) with a `[pytest]` section
-* `setup.cfg` with a `[tool:pytest]` section
+Pytest has a [rootdir][] for each test run used for assigning
+_nodeids_ and for storing information between test runs (e.g., the
+cache, below). This is set as follows:
+
+1. Use the `--rootdir=path` option if passed on the command line. (Not
+   clear if this can be ready from any inifile overriding the
+   discovered one below.)
+2. Determine common ancestor directory (CAD) of all path args and
+   current working directory. (The docs don't make it clear that, even
+   with path args, the CWD is still used in this calculation.)
+3. The rootdir is the first condition matched below.
+   1. `{pytest,tox}.ini`/`setup.cfg` are found CAD-upwards.
+   2. `setup.py` is found CAD-upwards.
+   3. `{pytest,tox}.ini`/`setup.cfg` are found in any of `args`-upwards.  
+      (Does this also check CWD?)
+   4. CAD is rootdir.
+
+The files found in steps 1 and 3 above must also meet certain
+conditions:
+* `pytest.ini` is always used, but but breaks if no `[pytest]` section.
+* [`tox.ini`](tox.md) must have a `[pytest]` section.
+* `setup.cfg` must have a `[tool:pytest]` section
+
+Pytest has (non-overlapping) command line options and configuration
+variables. Command line options can also be set in a config file using
+the [`addopts`] config option; config file options can be set on the
+command line with `-o option=value` or `--override-ini=option=value`.
 
 
 XXX To-do
@@ -129,6 +154,7 @@ XXX To-do
 
 [Configuration]: https://docs.pytest.org/en/latest/customize.html
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
+[`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`assert`]: https://docs.python.org/3/reference/simple_stmts.html#assert
 [`norecursedirs`]: https://docs.pytest.org/en/latest/customize.html#confval-norecursedirs
 [`test package name`]: https://docs.pytest.org/en/latest/goodpractices.html#test-package-name
@@ -141,4 +167,5 @@ XXX To-do
 [exceptions]: https://docs.python.org/3/library/exceptions.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
+[rootdir]: https://docs.pytest.org/en/latest/customize.html#initialization-determining-rootdir-and-inifile
 [wiki]: https://wiki.python.org/moin/PyTest
