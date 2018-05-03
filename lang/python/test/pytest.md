@@ -1,5 +1,12 @@
-Python [pytest] Library
-=======================
+Python Pytest Library
+=====================
+
+Documentation:
+* [Standard Homepage/Documentation][pytest]
+* [Restructed Documentation][restruc] (much better, but kind of a secret!)
+
+Overview
+--------
 
 [pytest] ([docs], [wiki]) uses Python's [`assert`] statement
 instead of assertion functions and introspection to display values
@@ -199,5 +206,6 @@ XXX To-do
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
+[restruc]: https://docs.pytest.org/en/documentation-restructure/
 [rootdir]: https://docs.pytest.org/en/latest/customize.html#initialization-determining-rootdir-and-inifile
 [wiki]: https://wiki.python.org/moin/PyTest
