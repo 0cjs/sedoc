@@ -240,9 +240,14 @@ are also printed at the start of non-quiet test runs and available in
 Python as `config.rootdir` (guaranteed to exist) and `config.inifile`
 (may be `None`).
 
-Pytest has a [rootdir][] for each test run used for assigning
-_nodeids_ and for storing information between test runs (e.g., the
-cache, below). This is set as follows:
+Pytest has a [rootdir][] for each test run used for storing
+information between test runs (e.g., the cache, below). The
+documentation claims it's also used for assigning nodeids but, from
+changing rootdir and looking at `.pytest_cache/v/cache/nodeids`, this
+doesn't seem to be the case. It does however affect the locations set
+for nodes.
+
+rootdir is set as follows:
 
 1. Use the `--rootdir=path` option if passed on the command line. (Not
    clear if this can be ready from any inifile overriding the
