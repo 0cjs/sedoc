@@ -39,6 +39,23 @@ as they are loaded using [PEP 302] import hooks. Can this cause issues
 with test frameworks that do their own loading?
 
 
+Scopes
+------
+
+Pytest has at least two different kinds of scoping.
+
+Run scoping (my term) is one of _session_, _module_, _class_ or
+_function_ and refers to particular start and end points during a test
+session.
+* A run scope can be passed (as `scope=...`) to [`@pytest.fixture`] to
+  determine when a fixture is to be torn down.
+* Various [hooks] are called at their defined points in the run scope.
+
+Package or directory scoping is used by `config.py` files; fixtures
+and hooks in a `config.py` are used only by modules in that directory
+and below. (XXX confirm this.)
+
+
 Test Discovery
 --------------
 
@@ -299,6 +316,7 @@ XXX To-do
 
 [Configuration]: https://docs.pytest.org/en/latest/customize.html
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
+[`@pytest.fixture()`]: https://docs.pytest.org/en/latest/reference.html#fixtures
 [`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`assert`]: https://docs.python.org/3/reference/simple_stmts.html#assert
 [`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
