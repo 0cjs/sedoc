@@ -134,6 +134,8 @@ The `__path__` attribute of a namespace package is not a regular list
 but instead a custom iterable that can perform a new search for
 portions if `sys.path` or a parent path changes.
 
+Also see [so-27586272](https://stackoverflow.com/a/27586272/107294).
+
 #### Example
 
 Given `a/b/c.py` in `sys.path` (and no other files under `a/`):
