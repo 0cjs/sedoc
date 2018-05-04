@@ -95,7 +95,7 @@ Command-line options:
   determining what files, classes and functions will be selected as
   test modules, classes containing tests, and test functions/methods.
   This does not apply to `unittest` collecting, which selects
-  subclasses of `unittest .TestCase`.
+  subclasses of `unittest.TestCase`.
 * `testpaths`: Paths to search when none are given explicitly on the
   command line.
 * `norecursedirs`: Glob patterns determining what directories should
@@ -326,7 +326,7 @@ XXX To-do
 [`pytest-cache`]: https://pypi.org/project/pytest-cache/
 [`pytest_runtest_setup()`]: https://docs.pytest.org/en/latest/reference.html?highlight=%22pytest_runtest_setup%22#_pytest.hookspec.pytest_runtest_setup
 [`test package name`]: https://docs.pytest.org/en/latest/goodpractices.html#test-package-name
-[`testpaths`]: https://docs.pytest.org/en/latest/customize.html#confval-testpaths
+[`testpaths`]: https://docs.pytest.org/en/latest/reference.html#confval-testpaths
 [`unittest`]: https://docs.pytest.org/en/latest/unittest.html
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [ast-rewrite]: http://pybites.blogspot.jp/2011/07/behind-scenes-of-pytests-new-assertion.html
