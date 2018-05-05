@@ -3,6 +3,7 @@ Python Pytest Library
 
 Documentation:
 * [Standard Homepage/Documentation][pytest]
+  * [Reference]: Functions, objects, variables, configuration options
   * [Examples and customization tricks][examples]
 * [Restructed Documentation][restruc] (sometimes better; kind of a secret!)
 
@@ -356,6 +357,7 @@ XXX To-do
 [plugin-conftest]: https://docs.pytest.org/en/latest/writing_plugins.html#conftest-py-plugins
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
+[reference]: https://docs.pytest.org/en/latest/reference.html
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
 [restruc]: https://docs.pytest.org/en/documentation-restructure/
 [rootdir]: https://docs.pytest.org/en/latest/customize.html#initialization-determining-rootdir-and-inifile
