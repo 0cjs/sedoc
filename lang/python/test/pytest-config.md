@@ -7,43 +7,66 @@ For information on writing Pytest tests, see [pytest](pytest.md).
 Test Discovery
 --------------
 
-#### Default Discovery
-
-Pytest from the command line will [discover tests] by searching paths
-from the first of: the command line; the [`testpaths`] configuration
-variable; the current directory. Files are added directly; directories
-(excepting those in [`norecursedirs`]) are recursed to find
-`test_*.py` and `*_test.py` files. All are imported by their [`test
-package name`] derived from the first parent directory not containing
-an `__init__.py` file). (This directory is added to `sys.path`.) PEP
-420 namespace packages without `__init__.py` files may also work, but
-this needs to be investigated.
-
-The test functions are those matching `test_*` that are at the
-top-level (within the module) or within a `Test*` class that has no
-`__init__` method.
-
-#### [Customizing Discovery]
+This is a summary of [test discovery]. For default values of
+configuration parameters, see 'Customizing Discovery' below.
 
 `--collect-only` is useful for checking what discovery is finding. It
 can also be used to check for missing dependencies the code attempts
 to import.
 
+#### Default Discovery
+
+If `--pyargs` is given, no file searching is done and instead all
+arguments are interpreted as Python module names to load.
+
+When a directory is searched, all subdirs not matching `norecursedirs`
+are also searched. Files to search for tests are:
+
+1. All `.py` files given directly on the command line.
+2. For each directory given on the command line, all files matching
+   `python_files`.
+3. If no files or directories are given on the command line:
+   - If the current working directory is the rootdir, paths in the
+     config param `testpaths` (default rootdir) will be searched.
+   - Otherwise, the current working directory will be searched.
+
+Each file is imported as a module using its [`test package name`]
+derived from the first parent directory not containing an
+`__init__.py` file. (This directory is added to `sys.path`.) Thus,
+[PEP 420 namespace packages][PEP 420] without `__init__.py` files have
+their internal paths added to `sys.path` and their files imported at
+the root of the namespace.
+
+Top-level functions in the collected modules are selected  as test
+functions if their names match `python_functions`. Functions within
+classes must also be in a class that matches `python_classes` and has
+no `__init__` method.
+
+#### Customizing Discovery
+
+[Changing standard (Python) test discovery][custom-disc] describes
+both ad hoc and configured methods of changing test discovery.
+
 Command-line options:
 
+* `--pyargs`: Do not search the filesystem; interpret all args as
+  Python module names to load.
 * `--ignore=PATH`: Ignore directories/modules; may be used multiple times.
 * `--keep-duplicates`: (Normally they are removed.)
 * `--collect-in-virtualenv`: Do not ignore tests in local virtualenv dirs.
 * `deselect=NODEID_PREFIX`: Delect items during collection (multi allowed).
-* `--pyargs`: Try to interpret all args as Python packages.
 
 [Config file][confopts] (see below) / `-o name=value` options:
 
-* `python_files`, `python_classes`, `python_functions`: Glob patterns
-  determining what files, classes and functions will be selected as
-  test modules, classes containing tests, and test functions/methods.
-  This does not apply to `unittest` collecting, which selects
-  subclasses of `unittest.TestCase`.
+* [`python_files`]: Prefixes/glob patterns of files to match during
+  discovery. Default: `test_*.py *_test.py`:
+* [`python_classes`]: Prefixes/glob patterns of classes to match as
+  test suites during discovery. Default: `Test*`. Classes inheriting
+  from `unittest.TestCase` also always match (via `unittest`'s
+  collection framework).
+* [`python_functions`]: Prefixes/glob patterns of functions and methods
+  to consider tests. Default: `test*`. (Does not apply to functions in
+  `unittest.TestCase` descendants.)
 * `testpaths`: Paths to search when none are given explicitly on the
   command line.
 * `norecursedirs`: Glob patterns determining what directories should
@@ -171,12 +194,16 @@ XXX To-do
 
 
 
+[PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
 [`config.cache`]: https://docs.pytest.org/en/latest/cache.html#config-cache
 [`norecursedirs`]: https://docs.pytest.org/en/latest/customize.html#confval-norecursedirs
 [`pytest-cache`]: https://pypi.org/project/pytest-cache/
 [`pytest_runtest_setup()`]: https://docs.pytest.org/en/latest/reference.html?highlight=%22pytest_runtest_setup%22#_pytest.hookspec.pytest_runtest_setup
+[`python_classes`]: https://docs.pytest.org/en/latest/reference.html#confval-python_classes
+[`python_files`]: https://docs.pytest.org/en/latest/reference.html#confval-python_files
+[`python_functions`]: https://docs.pytest.org/en/latest/reference.html#confval-python_functions
 [`testpaths`]: https://docs.pytest.org/en/latest/reference.html#confval-testpaths
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [basic]: https://docs.pytest.org/en/latest/example/simple.html
@@ -186,9 +213,7 @@ XXX To-do
 [collection-fixture]: https://docs.pytest.org/en/latest/example/special.html
 [config-cache-API]: https://docs.pytest.org/en/latest/reference.html#cache-api
 [confopts]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#builtin-configuration-file-options
-[customizing discovery]: https://docs.pytest.org/en/documentation-restructure/example/pythoncollection.html
-[customizing test collection]: https://docs.pytest.org/en/latest/example/pythoncollection.html#customizing-test-collection
-[discover tests]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
+[custom-disc]: https://docs.pytest.org/en/documentation-restructure/example/pythoncollection.html
 [fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
 [hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
 [import]: https://docs.pytest.org/en/latest/pythonpath.html
@@ -196,4 +221,5 @@ XXX To-do
 [plugin-conftest]: https://docs.pytest.org/en/latest/writing_plugins.html#conftest-py-plugins
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
+[test discovery]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [writing hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#writing-hook-functions
