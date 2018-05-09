@@ -1,6 +1,10 @@
 [GitLab CI Runners]
 ===================
 
+This covers the administrative side of GitLab runner configuration;
+see [gitlab-ci](gitlab-ci.md) for documentation on how to set up your
+`.gitlab-ci.yml` file.
+
 Source code repo: <https://gitlab.com/gitlab-org/gitlab-runner>
 
 Runners get jobs from the 'coordinator', which is the GitLab
