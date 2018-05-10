@@ -1,6 +1,10 @@
 Handy Git Tricks
 ================
 
+
+Logging and Graph Exploration
+-----------------------------
+
 * To do a 'blame in reverse', e.g., to find out which commit deleted a
   line, use `git blame --reverse START.. PATH`. The file must exist in
   the START commit, so you may need to do a forward log to find where
@@ -15,3 +19,15 @@ Handy Git Tricks
   https://stackoverflow.com/a/13461275/107294) or the [post-receive-email](
   https://github.com/git/git/blob/master/contrib/hooks/post-receive-email#L292)
   script for more details.
+
+
+Fixing Commits
+--------------
+
+* To remove a file accidentally added to the most recent commit:
+
+      git reset --soft @^
+      git reset @ path/to/file
+      git commit -c ORIG_HEAD
+
+  From <https://stackoverflow.com/a/15321456/107294>.
