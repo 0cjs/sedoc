@@ -107,7 +107,9 @@ Most of the following would normally be done with decorators; see below.
 * `skip(msg='')`: Skip (the rest of) the current test.
 * `importorskip(modname, minversion=None)`: Checks __version__ attribute
   of module and skips if too low or can't load.
-* `xfail(reason='')`:
+* `xfail(reason='', strict=False, raises=None, run=True)`: Allows test
+  failure. Enforces if _strict_. Limit allowed exceptions with _raises_.
+  Doesn't run (e.g., to avoid segfault) if not _run_.
 * `exit()`: Exit test process.
 
 
