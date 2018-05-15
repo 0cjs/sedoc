@@ -6,8 +6,15 @@ __activate_quiet=
     basedir=$(cd "$(dirname "$BASH_SOURCE")" && pwd -P)
     cd "$basedir"
     [ -d .build/virtualenv ] || {
+        py='python3'; $py -m pip --version >/dev/null 2>&1 || py='python'
+
+        echo 'Bootstrapping virtualenv'
+        bsdir=".build/virtualenv-bootstrap"
+        $py -m pip $__activate_quiet $__activate_quiet install --system \
+            -b "$bsdir/build" -t "$bsdir/target" virtualenv
+
         echo 'Building virtualenv...'
-        virtualenv --prompt="($(basename "$basedir")) " \
+        $py $bsdir/target/virtualenv.py --prompt="($(basename "$basedir")) " \
             $__activate_quiet .build/virtualenv "$@" \
         && . .build/virtualenv/*/activate \
         && pip install $__activate_quiet -r requirements.txt
