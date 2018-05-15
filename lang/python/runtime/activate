@@ -10,7 +10,9 @@ __activate_quiet=
 
         echo 'Bootstrapping virtualenv'
         bsdir=".build/virtualenv-bootstrap"
-        $py -m pip $__activate_quiet $__activate_quiet install --system \
+        deb_nouser=--system     # Must turn off --user on Debian
+        $py -m pip install $deb_nouser >/dev/null 2>&1 || deb_nouser=
+        $py -m pip $__activate_quiet $__activate_quiet install $deb_nouser \
             -b "$bsdir/build" -t "$bsdir/target" virtualenv
 
         echo 'Building virtualenv...'
