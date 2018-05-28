@@ -7,6 +7,7 @@ Python Summary/Quickref
   * [Functions](functions.md)
   * [Types](types.md)
   * [Names, Bindings, Namespaces](name-binding.md)
+  * [String Handling](string.md)
 * Language Features
   * [Iterators and Generators](iter.md)
   * [Modules, Packages and Importing](import.md)
