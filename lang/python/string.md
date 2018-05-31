@@ -1,7 +1,9 @@
 Python String Handling
 ======================
 
-Python strings are [`str`] objects which are immutable [sequence]s of
+* See also [Sequences](sequence.md).
+
+Python strings are [`str`] objects which are immutable sequences of
 Unicode code points. There's no separate char type; `s[0]` produces a
 string of length 1.
 
@@ -19,7 +21,10 @@ literals] for more.
 
 ### Methods
 
-* [Common sequence operations][seqops]
+[Common Sequence Operations](sequence.md):
+* `t [not] in s`: Subsequence test, e.g., `'bar' in 'foobarbaz'` is True
+* `s + t`: Concatenation returning new object. For better efficiency,
+  use `''.join(s, t, ...)` or write to [`io.StringIO`].
 
 Character Class Predicates (all chars must match and len ≥ 1):
 * `isprintable()`: Includes space but not other whitespace;
@@ -97,11 +102,16 @@ Other:
 * _s_ `%` _values_: Not recommended. See [printf] for more info.
 
 
+Related
+-------
+
+* [`io.StringIO`]
+
+
 
 [String and Bytes literals]: https://docs.python.org/3/reference/lexical_analysis.html#strings
+[`io.StringIO`]: https://docs.python.org/3/library/io.html#io.StringIO
 [`str`]: https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
 [f-strings]: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
 [format string syntax]: https://docs.python.org/3/library/string.html#formatstrings
 [printf]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
-[seqops]: https://docs.python.org/3/library/stdtypes.html#typesseq-common
-[sequence]: https://docs.python.org/3/library/stdtypes.html#typesseq

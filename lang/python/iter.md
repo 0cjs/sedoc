@@ -1,6 +1,8 @@
 Iterators and Generators
 ========================
 
+* See also [Sequences](sequence.md).
+
 [Iterator Protocol]
 -------------------
 
