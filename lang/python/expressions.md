@@ -1,6 +1,11 @@
 Python Expressions and Statements
 =================================
 
+Python reference documentation:
+* [Expressions]
+* [Compound statements][stmts]
+
+
 [Operator Precedence]
 ---------------------
 
@@ -107,6 +112,7 @@ The following Python-2-isms have been removed in Python 3:
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
 [emulating numeric types]: https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
 [exceptions]: https://docs.python.org/3/reference/executionmodel.html#exceptions
+[expressions]: https://docs.python.org/3/reference/expressions.html
 [exprs]: https://docs.python.org/3/reference/expressions.html#expression-lists
 [operator precedence]: https://docs.python.org/3/reference/expressions.html#operator-precedence
 [special method names]: https://docs.python.org/3/reference/datamodel.html#special-method-names

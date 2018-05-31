@@ -33,25 +33,35 @@ state as they go. Thus, bindings must come before use.
 
 All statments (which includes expressions) run in the context of a
 _module_ (`__main__` by default); that module's namespace is referred
-to as the "global" namespace for that statement. Calling functions,
-defining classes and loading new modules all create new namespaces.
+to as the "global" namespace for that statement.
 
-Function definitions are executable statements that compile and store
-the function's code, binding it to a variable that is the function
-name. (Expressions in the function declaration, i.e. arguments, are
-executed at the time of definition, not at the time of the call.) The
-compiled code will use a new _local_ namespace created at call time.
+* Loading a module creates a new namespace that will be the global one
+  for the code in that module.
 
-Code in [class definitions](name-binding.md#classes) is executed
-immediately but in the class's _local_ namespace which shadows the
-module namespace; new bindings are stored in the class object's
-attribute dictionary.
+* Defining a class creates a new namespace that will be the _local
+  namespace_ for the code defining the class. The code in the [class
+  definition](name-binding.md#classes) is executed immediately in
+  ithat local namespace (which shadows the module namespace): this is
+  implemented by storing new bindings in the class object's attribute
+  dictionary.
+
+* Function definitions are executable statements that compile and
+  store the function's code in a (callable) function object, binding
+  it to a variable that is the function name. (Expressions in the
+  function declaration, i.e. arguments, are executed at the time of
+  definition, not at the time of the call.) Calling a function creates
+  a new local namespace used by the code run during that function
+  call.
+
+* Blocks (see below) do not introduce new namespaces.
 
 
 Syntax
 ------
 
-### [Lexical]
+### Lexical
+
+* Also see Python reference documentation [Lexical Analysis][lexical].
 
 Statements are separated by semicolons or newlines. Indenting
 introduces a new block that closes at the next dedent. Statements that
@@ -61,8 +71,8 @@ statement. Following the colon may be a list of semicolon-separated
 statements on the same line or an indented block on subsequent lines.
 E.g.:
 
-    if x == 0:  pass  # statement must be present so do nothing
-    elif x > 0: foo; bar; baz()
+    if x == 0:   pass           # Statement must be present; pass does nothing
+    elif x > 0:  foo; bar; baz()
     else:
         baz(0, 1, 2)
         quux('............................................')
@@ -75,16 +85,11 @@ If `return` is not used in a function it always returns `None`.
 
 ### Futher Details
 
-Further details can be found in the [expressions](expressions.md)
-documentation here and in the following from the Python reference
-manual:
-* [Lexical Analysis][lexical]
-* [Expressions]
-* [Compound statements]
+* See [Expressions and Statements](expressions.md).
 
 ### Types
 
-See [types.md] for more information on the types below.
+* See [Types](types.md).
 
 ### Literals
 
@@ -136,8 +141,6 @@ present or does its own thing if not.
 [CPython]: https://en.wikipedia.org/wiki/CPython
 [`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
 [`repr(o)`]: https://docs.python.org/3/reference/datamodel.html#object.__repr__
-[compound statements]: https://docs.python.org/3/reference/compound_stmts.html
-[expressions]: https://docs.python.org/3/reference/expressions.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
 [language reference]: https://docs.python.org/3/reference/
 [legacy]: https://wiki.python.org/moin/Python2orPython3
