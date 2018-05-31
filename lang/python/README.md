@@ -2,6 +2,7 @@ Python Summary/Quickref
 =======================
 
 * [Versions](version.md)
+* [Glossary](https://docs.python.org/3/glossary.html)
 * [Introduction and Syntax](language.md)
   * [Expressions and Statements](expressions.md)
   * [Functions](functions.md)
