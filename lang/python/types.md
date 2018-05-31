@@ -15,11 +15,14 @@ Abbreviations below: [I] = immutable, "inst." = instantiated.
 
 ### Atomic
 
+Boolean:
 * `bool` [I]: inst. with `True`, `False`, `bool(expr)`
 
+Floaing point:
 * `float` [I]
 * `complex` [I]: inst. with `(x+yj)`
 
+Strings and Bytes:
 * `str` [I]: strings inst. with `'`, `"`, etc.
 * `bytes` [I]: bytes inst. with `b'...'` (also see [Buffer Protocol][bufprot])
 * `bytearray`: mutable `bytes`
