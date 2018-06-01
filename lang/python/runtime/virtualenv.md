@@ -90,6 +90,28 @@ virtualenvwrapper can be extended with [hooks] and [plugins].
 
 [Project directories] for hacking-in-progress may be bound to a virtualenv.
 
+#### Activation Hooks
+
+The `$VIRTUAL_ENV/bin` directory contains four hook scripts run during
+the activation and deactivation process: `preactivate`, `postactivate`,
+`predeactivate`, `postdeactivate`.
+
+When setting, e.g., environment variables, make sure you clean them up
+(removing them or restoring saved values) on deactivate. A good way to
+handle this is to have the activate script create a shell function that
+unsets/restores whatever it set and then deletes itself, and have the
+deactivate script just call that. (This keeps all the code but that
+one call in a single file where it's easier to see that the activate
+and deactivate are in sync.)
+
+    _virtualenv_deactivate_postactivate() {
+        FOOBAR="$_OLD_FOOBAR"; unset _OLD_FOOBAR
+        unset _virtualenv_deactivate_postactivate
+    }
+
+[so-11134336] contains further information about this and more ideas
+about how to use it.
+
 
 Virtualenv Information
 ----------------------
@@ -155,6 +177,7 @@ This would usually be called from your top-level test script, e.g.:
 [pipenv]: https://docs.pipenv.org/
 [plugins]: http://virtualenvwrapper.readthedocs.io/en/latest/plugins.html
 [pyenv]: https://github.com/pyenv/pyenv
+[so-11134336]: https://stackoverflow.com/a/11134336/107294
 [so-15469948]: https://stackoverflow.com/a/15469948/107294
 [so-41573588]: https://stackoverflow.com/a/41573588/107294
 [version]: ../version.md#building-alternative-versions
