@@ -21,6 +21,41 @@ to particular types:
   functions may return other types of iterators.
 
 
+Generators
+----------
+
+[Generators] are functions using the [`yield`] expression in their
+body; these return a _generator-iterator_, which is an object
+implementing the iterator protcol (plus some further generator-related
+methods of its own; see below). Thus any class can implement
+`__iter__()` as a generator function.
+
+A [generator expression] is, like a list comprehension, an expression
+followed by `for` and optionally `if`:
+
+    ( i*i for i in range(10) if i%2 )
+
+#### yield
+
+When any method is called on a generator iterator (returned by a
+generator function), the generator function runs up to the point of
+the first `yield`. At that point all execution of the function is
+suspended and all state (including exception state) is saved.
+
+If the function was `__next()__`, the value given to `yield` is
+returned.
+
+On resumption `yield` will return a value based on what
+[method][gi-methods] was called on the generator-iterator object:
+
+* `__next()__`: `None` is returned.
+* `send(x)`: _x_ is returned.
+* `throw(exception)`: The given exception object is raised.
+* `close()`: A `GeneratorExit` exception is raised.
+
+[gi-methods]: https://docs.python.org/3/reference/expressions.html#generator-iterator-methods
+
+
 Using Iterables
 ---------------
 
@@ -98,6 +133,8 @@ Combinatoric:
 [`operator`]: https://docs.python.org/3/library/operator.html#module-operator
 [builtin]: https://docs.python.org/3/library/functions.html
 [container types]: https://docs.python.org/3/reference/datamodel.html#emulating-container-types
+[generator expression]: https://docs.python.org/3/glossary.html#term-generator-expression
+[generators]: https://docs.python.org/3/glossary.html#term-generator
 [iterator protocol]: https://docs.python.org/3/library/stdtypes.html#typeiter
 [iterator]: https://docs.python.org/3/glossary.html#term-iterator
 [matrix transposition]: https://en.wikipedia.org/wiki/Transpose
