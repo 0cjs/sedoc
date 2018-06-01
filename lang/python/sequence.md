@@ -53,7 +53,8 @@ object that can be stored in _s_.
 * `s.clear()`, `s.copy()`: (≥3.3) Remove all elements (`del s[:]`) and
   shallow copy (`s[:]`). For compatibility with non-sequence containers.
 * `s.reverse()`: In-place reversal returning `None`.
-  Use `reversed(s)` to return a reversed copy.
+  Use `reversed(s)` to return a reversed iterator (as s[::-1], but also
+  works on non-indexable collections if they support `__reversed__()`)
 
 When implementing these, [`collections.abc.MutableSequence`] is useful.
 
