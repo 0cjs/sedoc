@@ -79,7 +79,7 @@ Other Builtins
 
 * Constants
 * Types
-* [Exceptions] and their [hierarchy]
+* [Exceptions](exceptions.md)
 
 
 [Standard Library][stdlib]
@@ -93,7 +93,6 @@ Other Builtins
 
 
 
-[Exceptions]: https://docs.python.org/3/library/exceptions.html
 [Iterators]: https://docs.python.org/3/library/stdtypes.html#iterator-types
 [`open()`]: https://docs.python.org/3/library/functions.html#open
 [`operator`]: https://docs.python.org/3/library/operator.html
@@ -102,7 +101,6 @@ Other Builtins
 [callable]: functions.md
 [format]: https://docs.python.org/3/library/string.html#formatspec
 [fpmods]: https://docs.python.org/3/library/functional.html
-[hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 [opmap]: https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
 [property]: https://docs.python.org/3/library/functions.html#property
 [stdlib]: https://docs.python.org/3/library/index.html
