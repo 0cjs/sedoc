@@ -8,7 +8,8 @@ Iterators and Generators
 
 An _[iterator]_ has a [`__next__()`] method that returns successive
 items, throwing [`StopIteration`] when no more are available. You may
-also use `next(itr)`.
+also use `next(itr)` which also throws `StopIteration` unless given a
+second argument giving a value to return when the iterator is exhausted.
 
 An object is _iterable_ if it can produce an iterator via its
 [`__iter__()`] method or `iter(xs)`. The following conventions apply
