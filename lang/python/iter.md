@@ -35,6 +35,10 @@ followed by `for` and optionally `if`:
 
     ( i*i for i in range(10) if i%2 )
 
+Generator expressions differ from list comprehensions in that the latter
+are not lazy; in fact you can think of a list comprehension as passing
+a generator expression to the list constuctor. [so-6407222]
+
 #### yield
 
 When any method is called on a generator iterator (returned by a
@@ -138,3 +142,4 @@ Combinatoric:
 [iterator protocol]: https://docs.python.org/3/library/stdtypes.html#typeiter
 [iterator]: https://docs.python.org/3/glossary.html#term-iterator
 [matrix transposition]: https://en.wikipedia.org/wiki/Transpose
+[so-6407222]: https://stackoverflow.com/a/6407222/107294
