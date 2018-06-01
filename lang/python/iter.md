@@ -20,19 +20,26 @@ to particular types:
   that iteratates over keys for mappings, values otherwise. Additional
   functions may return other types of iterators.
 
-The following  are some things that consume iterables:
+
+Using Iterables
+---------------
+
+#### Syntax
+
 * `for x in I` (where `I` is an iterable)
 * `x in y` operator
-* Constructors: `list`, `tuple`, `set`, `dict`, `frozenset`, ...
-* Reducers: `sum`, `min`, ...
 
-Types iterate over:
-* `dict`: keys in dictionary
-* `open()`: lines in file/input source
+#### Constructors
 
-### [Builtin] functions operating on iterables:
+* `tuple`, `list`
+* `set`, `frozenset`
+* `dict`: Iteratates over the keys.
+* `open()`: Iterates over lines in file or other input source.
+* ...
 
-(For data constructors, see above.)
+#### Builtin Functions
+
+(See also the [Python builtin functions][builtin] documentation.)
 
 Mappings:
 * `map(f, xs, ys, ...)`: `[f(x₀,y₀,...), f(x₁,y₁,...), ...]`;
@@ -55,9 +62,9 @@ Misc:
   `None` specifies the identity function.
 * `all(xs)`, `any(xs)`: bool, all or any `bool`(_xᵢ_) == True
 
-### [`itertools`]
+#### itertools
 
-The `itertools` library provides functions creating useful iterators
+The [`itertools`] library provides functions creating useful iterators
 (à la APL, Haskell, SML). The [`operator`] module functions
 (`operator.mul`, etc.) are often used with these. The lists below also
 include a few similar [builtin] functions.
