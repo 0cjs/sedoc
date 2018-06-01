@@ -65,6 +65,8 @@ Sequence Types
 The built-in [sequence] types are tuple, list, range,
 [`str`](string.md) and `bytes`.
 
+See also [Emulating container types][container-emul].
+
 #### [`tuple`]
 
 Construct with `tuple()` or comma (parens are optional).
@@ -123,6 +125,7 @@ Additional attributes: `start`, `stop`, `step`.
 [`sorted()`]: https://docs.python.org/3/library/functions.html#sorted
 [`tuple`]: https://docs.python.org/3/library/stdtypes.html#tuples
 [comparing]: https://docs.python.org/3/reference/expressions.html#comparisons
+[container-emul]: https://docs.python.org/3/reference/datamodel.html#emulating-container-types
 [mutseqops]: https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types
 [seqops]: https://docs.python.org/3/library/stdtypes.html#typesseq-common
 [sequence]: https://docs.python.org/3/library/stdtypes.html#typesseq
