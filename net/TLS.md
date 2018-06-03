@@ -3,6 +3,18 @@ TLS (SSL) Information
 
 Below, SEIS is the [Information Security Stack Exchange][SEIS].
 
+Testing
+-------
+
+* The [Symantic View Browser Warnings][sy-bw] page offers links
+  to sites that should trigger various warnings in the client.
+  Unfortunately not usable with Chrome >=66 because most certs
+  are old enough to trigger `ERR_CERT_SYMANTEC_LEGACY`.
+* [Digicert][digicert-check] offers a service that checks certs
+  from servers.
+* [Geekflare] offers a list of various TLS testing sites.
+
+
 Certificates
 ------------
 
@@ -38,6 +50,13 @@ Detecting and migigating MITM attacks:
 mitigation.
 
 
+Other Notes
+-----------
+
+* [Superfish](https://arstechnica.com/information-technology/2015/02/lenovo-pcs-ship-with-man-in-the-middle-adware-that-breaks-https-connections/)
+* [Chromebook Enterprise SSL Inspection](https://support.google.com/chrome/a/answer/3504942)
+
+
 
 [BCP 188]: https://tools.ietf.org/html/bcp188
 [EV]: https://en.wikipedia.org/wiki/Extended_Validation_Certificate
@@ -46,6 +65,8 @@ mitigation.
 [Proxytunnel]: http://proxytunnel.sourceforge.net/intro.php
 [SEIS]: https://security.stackexchange.com/
 [corporate MITM]: https://directorblue.blogspot.com/2006/07/think-your-ssl-traffic-is-secure-if.html
+[digicert-check]: https://www.digicert.com/help/
+[geekflare]: https://geekflare.com/ssl-test-certificate/
 [imperialviolet.org/pinning]: https://www.imperialviolet.org/2011/05/04/pinning.html
 [jarmoc]: https://media.blackhat.com/bh-eu-12/Jarmoc/bh-eu-12-Jarmoc-SSL_TLS_Interception-WP.pdf
 [se-16293]: https://security.stackexchange.com/q/16293/12254
@@ -56,3 +77,4 @@ mitigation.
 [se-87415]: https://security.stackexchange.com/questions/87415/certificate-pinning-and-corporate-mitm
 [se-129719]: https://security.stackexchange.com/a/129719/12254
 [se-172024]: https://security.stackexchange.com/a/172024/12254
+[sy-bw]: https://cryptoreport.websecurity.symantec.com/checker/views/sslCheck.jsp
