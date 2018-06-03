@@ -36,8 +36,9 @@ uses connect for tunnelling arbitrary apps via both TCP and TLS
 See [se-33976], [se-87415], etc. Also national: [se-172024]. The
 paper [SSL/TLS Interception Proxies and Transitive Trust][jarmoc] by
 Jeff Jarmoc (Dell SecureWorks Counter Threat Unit) may provide some
-insight into this and also has lots of references. Follow-up on
-SEIS [Key Management in Interception Proxies?][se-51500]
+insight into this and also has lots of references. (Follow-up on
+SEIS [Key Management in Interception Proxies?][se-51500]) Also see
+[hboeck2015], "TLS Interception Considered Harmful Video and Slides."
 
 Detecting and migigating MITM attacks:
 * SEIS [answer on proxy-generated certs][se-49526]
@@ -67,6 +68,7 @@ Other Notes
 [corporate MITM]: https://directorblue.blogspot.com/2006/07/think-your-ssl-traffic-is-secure-if.html
 [digicert-check]: https://www.digicert.com/help/
 [geekflare]: https://geekflare.com/ssl-test-certificate/
+[hboeck2015]: https://blog.hboeck.de/archives/875-TLS-interception-considered-harmful-video-and-slides.html
 [imperialviolet.org/pinning]: https://www.imperialviolet.org/2011/05/04/pinning.html
 [jarmoc]: https://media.blackhat.com/bh-eu-12/Jarmoc/bh-eu-12-Jarmoc-SSL_TLS_Interception-WP.pdf
 [se-16293]: https://security.stackexchange.com/q/16293/12254
