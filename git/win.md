@@ -26,6 +26,29 @@ native Windows Secure Channel library via one of the following:
     git config --global http.sslBackend schannel
 
 
+Certificate Management
+----------------------
+
+(XXX This applies to Unix as well, and so should be in another sedoc file.)
+
+Git can be [configured][git-config] to use specific certificates (client
+and/or server) for specific sites. Setting server certs is useful both
+for sites using a non-public PKI (e.g., a self-signed cert) and for
+environments using [corporate MITM][mitm].
+
+To set the CA cert to use for a site:
+
+    git config --global http.SITE-URL.sslcainfo 'CERT-FILE-PATH'
+    # E.g.:
+    git config --global http.https://git.myserver.com/.sslcainfo "C:\Certs\MyCACert.crt"
+
+[so-46332681] has further useful information and discussion on certificate
+issues when using Git.
+
+[mitm]: https://security.stackexchange.com/q/107542/12254
+[so-46332681]: https://stackoverflow.com/a/46332681/107294
+
+
 Credential Management
 ---------------------
 
@@ -66,6 +89,7 @@ by other machines or applications.
 [Win32-OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
 [gh-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[git-config]: https://git-scm.com/docs/git-config
 [git-credential]: https://git-scm.com/docs/git-credential
 [mintty]: https://mintty.github.io/
 [so-winsecchan]: https://stackoverflow.com/a/46332681
