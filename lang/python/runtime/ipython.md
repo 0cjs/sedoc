@@ -18,6 +18,8 @@ to `hash -v` after the install if you have used a system
 Invocation
 ----------
 
+To start an interactive session, run `ipython` or `python -m IPython`.
+
 To run a command or file and then drop into the interpreter:
 
     ipython -i -c 'x = 7'
