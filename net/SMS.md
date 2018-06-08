@@ -43,6 +43,8 @@ Public Switched Telephone Network:
   listened][register] (2016-12)
 * How-To Geek, [Why You Shouldn't Use SMS for Two-Factor
   Authentication (and What to Use instead)][htg] (2017-06)
+* Mobility Arena, [Google plans to phase out two-step verification via
+  SMS][mobilityarena] (2018-06)
 * Forbes, [All That's Needed To Hack Gmail And Rob Bitcoin: A Name And
   A Phone Number][forbes] (2017-09)
 * Naked Security (Sophos), [Why SMS two-factor authentication puts
@@ -62,3 +64,4 @@ Public Switched Telephone Network:
 [sophos]: https://nakedsecurity.sophos.com/2017/09/20/why-sms-two-factor-authentication-puts-your-bitcoins-at-risk
 [tidbits]: https://tidbits.com/2018/02/19/facebook-shows-why-sms-isnt-Ideal-for-two-factor-authentication
 [wired]: https://www.wired.com/2016/06/hey-stop-using-texts-two-factor-authentication
+[mobilityarena]: https://mobilityarena.com/google-plans-phase-two-step-verification-via-sms/
