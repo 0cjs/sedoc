@@ -6,7 +6,9 @@ The major options are:
 * OpenSSH and [mintty] as included in [Git for Windows].
 * [PuTTY], a set of graphical clients for SSH, telnet and raw sockets
   that includes a terminal emulator.
+* [Chrome SSH App]: terminal emulator and SSH client
 * See [ssh.com/ssh/client] for further options.
+
 
 
 OpenSSH for Windows
