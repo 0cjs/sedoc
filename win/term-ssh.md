@@ -28,10 +28,6 @@ PuTTY
 The author's page is at [PuTTY], but there is better documentation at
 [ssh.com/ssh/putty].
 
-The main downside of PuTTY is that all configuration is stored in the
-registry. This can be [dumped and restored][putty-registry], and may
-be easier if you're using [putty-portable].
-
 PAgent can be used by other SSH programs that use the standard OpenSSH
 agent protocol by using [ssh-pagent] (included w/[Git for Windows]).
 
@@ -42,8 +38,22 @@ back ends), `Pageant` (SSH authentication agent for PuTTY/PSCP/Plink),
 `PuTTYgen` (key generation/management utility), and `PuTTYtel`
 (Telnet-only client).
 
+#### PuTTY Configuration in the Registry
+
+A huge downside of PuTTY is that all configuration is stored in the
+registry. This can be [dumped and restored][putty-registry], and may
+be easier if you're using [putty-portable].
+
+To dump (you may need to be an admin):
+
+    regedit /ea sessions.reg HKEY_CURRENT_USER\Software\SimonTatham\PuTTY
+
+Running this should (re-)load the entries. The format is fairly
+human-readable.
 
 
+
+[Chrome SSH App]: https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo
 [Git for Windows]: git.md
 [MLS installer]: http://www.mls-software.com/opensshd.html
 [PSBlog]: https://blogs.msdn.microsoft.com/powershell/2015/10/19/openssh-for-windows-update/
