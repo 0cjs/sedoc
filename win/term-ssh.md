@@ -28,8 +28,9 @@ PuTTY
 The author's page is at [PuTTY], but there is better documentation at
 [ssh.com/ssh/putty].
 
-PAgent can be used by other SSH programs that use the standard OpenSSH
-agent protocol by using [ssh-pagent] (included w/[Git for Windows]).
+PAgeant (note spelling) can be used by other SSH programs that use the
+standard OpenSSH agent protocol by using [ssh-pageant] (included
+w/[Git for Windows]).
 
 PuTTY's terminal emulator connects to serial ports or network hosts
 via SSH, Telnet or rlogin. The main components are `PuTTY` (terminal
@@ -64,6 +65,6 @@ human-readable.
 [portable]: https://www.openssh.com/portable.html
 [putty-portable]: https://portableapps.com/apps/internet/putty_portable
 [putty-registry]: https://stackoverflow.com/q/13023920/107294
-[ssh-pagent]: https://github.com/cuviper/ssh-pageant
+[ssh-pageant]: https://github.com/cuviper/ssh-pageant
 [ssh.com/ssh/client]: https://www.ssh.com/ssh/client/
 [ssh.com/ssh/putty]: https://www.ssh.com/ssh/putty/

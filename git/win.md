@@ -4,7 +4,7 @@
 Includes:
 * Git, of course
 * OpenSSH (dunno if it's [Win32-OpenSSH] or not)
-* [ssh-pagent], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
+* [ssh-pageant], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
 * [mintty] and Bash (used by 'Git Bash Here' menu item in Explorer)
 * zlib, curl, tcl/tk, perl, MSYS21
 * Root certs
@@ -93,4 +93,4 @@ by other machines or applications.
 [git-credential]: https://git-scm.com/docs/git-credential
 [mintty]: https://mintty.github.io/
 [so-winsecchan]: https://stackoverflow.com/a/46332681
-[ssh-pagent]: https://github.com/cuviper/ssh-pageant
+[ssh-pageant]: https://github.com/cuviper/ssh-pageant
