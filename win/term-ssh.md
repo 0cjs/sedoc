@@ -28,10 +28,6 @@ PuTTY
 The author's page is at [PuTTY], but there is better documentation at
 [ssh.com/ssh/putty].
 
-PAgeant (note spelling) can be used by other SSH programs that use the
-standard OpenSSH agent protocol by using [ssh-pageant] (included
-w/[Git for Windows]).
-
 PuTTY's terminal emulator connects to serial ports or network hosts
 via SSH, Telnet or rlogin. The main components are `PuTTY` (terminal
 client) `pscp`, `psftp`, `Plink` (command-line interface to the PuTTY
@@ -51,6 +47,23 @@ To dump (you may need to be an admin):
 
 Running this should (re-)load the entries. The format is fairly
 human-readable.
+
+### PAgeant and ssh-pageant
+
+PAgeant (note spelling) can be used by other SSH programs that use the
+standard OpenSSH agent protocol by using [ssh-pageant]. This is not
+included in the standard PuTTY distribution, but is included with [Git
+for Windows].
+
+It's started just like ssh-agent: `eval $(ssh-pageant)`. PAgeant does
+not need to be running at the time, but in that case a query will fail:
+
+    $ ssh-add -l; echo $?
+    error fetching identities: agent refused operation
+    1
+
+You can start PAgeant later and `ssh-pageant` will then be able to
+communicate with it.
 
 
 
