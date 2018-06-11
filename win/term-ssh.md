@@ -1,29 +1,57 @@
 Terminal Emulators and SSH for Windows
 ======================================
 
-The two major options are [PuTTY] or OpenSSH and [mintty] as included
-in [Git for Windows].
+The major options are:
+
+* OpenSSH and [mintty] as included in [Git for Windows].
+* [PuTTY], a set of graphical clients for SSH, telnet and raw sockets
+  that includes a terminal emulator.
+* See [ssh.com/ssh/client] for further options.
 
 
-[PuTTY]
--------
+OpenSSH for Windows
+-------------------
 
-Terminal emulator connects to serial ports or network hosts via SSH,
-Telnet or rlogin. The main components are `PuTTY` (terminal client)
-`pscp`, `psftp`, `Plink` (command-line interface to the PuTTY back
-ends), `Pageant` (SSH authentication agent for PuTTY/PSCP/Plink),
-`PuTTYgen` (key generation/management utility), and `PuTTYtel`
-(Telnet-only client).
+The port I use is the one included in [Git for Windows]. It's not
+clear if this is the same as other ports, such as the [MLS installer].
+All appear to be based on the [OpenSSH Portable Release][portable].
+There is also the [PowerShell] fork of on the portable release which
+may be [using Windows crypto instead of OpenSSL][PSBlog] (do modern
+builds of OpenSSH [still use OpenSSL][openssl]?)
 
-Configuration is stored in the Registry; it can be dumped/restored
-but this is a real pain.
+
+PuTTY
+-----
+
+The author's page is at [PuTTY], but there is better documentation at
+[ssh.com/ssh/putty].
+
+The main downside of PuTTY is that all configuration is stored in the
+registry. This can be [dumped and restored][putty-registry], and may
+be easier if you're using [putty-portable].
 
 PAgent can be used by other SSH programs that use the standard OpenSSH
 agent protocol by using [ssh-pagent] (included w/[Git for Windows]).
 
+PuTTY's terminal emulator connects to serial ports or network hosts
+via SSH, Telnet or rlogin. The main components are `PuTTY` (terminal
+client) `pscp`, `psftp`, `Plink` (command-line interface to the PuTTY
+back ends), `Pageant` (SSH authentication agent for PuTTY/PSCP/Plink),
+`PuTTYgen` (key generation/management utility), and `PuTTYtel`
+(Telnet-only client).
 
 
+
+[Git for Windows]: git.md
+[MLS installer]: http://www.mls-software.com/opensshd.html
+[PSBlog]: https://blogs.msdn.microsoft.com/powershell/2015/10/19/openssh-for-windows-update/
+[PowerShell]: https://github.com/PowerShell/openssh-portable
 [PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty
 [mintty]: https://mintty.github.io/
+[openssl]: https://it.slashdot.org/story/14/04/30/1822209/openssh-no-longer-has-to-depend-on-openssl
+[portable]: https://www.openssh.com/portable.html
+[putty-portable]: https://portableapps.com/apps/internet/putty_portable
+[putty-registry]: https://stackoverflow.com/q/13023920/107294
 [ssh-pagent]: https://github.com/cuviper/ssh-pageant
-[Git for Windows]: git.md
+[ssh.com/ssh/client]: https://www.ssh.com/ssh/client/
+[ssh.com/ssh/putty]: https://www.ssh.com/ssh/putty/
