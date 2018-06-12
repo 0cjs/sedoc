@@ -113,6 +113,52 @@ Most of the following would normally be done with decorators; see below.
 * `exit()`: Exit test process.
 
 
+Markers
+-------
+
+[Markers] are set with a `@pytest.mark.MARKERNAME` decorator on the
+test function. Unknonwn markers are normally ignored; use `--strict`
+on the command line to raise an error instead.
+
+[Condition string]s for _condition_ parameters below are deprecated;
+use an expression evaluating to a boolean instead.
+
+#### Skipping and Failing
+
+These may also be used programmatically within the test function; see
+'Test Outcomes' above. See [skip] for more details.
+
+* [`skip(*, reason=None)`][api-skip]: Skip the test.
+* [`skipif(condition, *, reason=None)`][api-skipif]: Skip if
+  _condition_.
+* [`xfail(condition=None, *, reason=None, raises=None, run=True,
+  strict=False)`][api-xfail]: Expect failure, noting test as 'xfailed'
+  or 'xpassed'.
+  - _condition_: Not `None` and false, run the test as normal.
+  - If _raises_ passed, test still fails with any exception other than
+    the expected one.
+  - If not _run_, don't run the test at all (in case it crashes
+    interpreter).
+  - If _strict_, fail the test if it passes instead of noting 'xpass'.
+
+#### Parametrization
+
+You can [parametrize] test functions; they will be run multiple times
+(each as an individual test) with the given parameters.
+
+* [`parametrize(argnames, argvalues, indirect=False, ids=None,
+  scope=None)`][api-parametrize]
+  - _argnames_: comma-separated list of argnames to be bound with each
+    function invocation
+  - _argvalues_: List (sequence?) of values if one argname; list
+    (sequence?) of lists (sequences?) of values if multiple argnames.
+
+#### Custom Markers
+
+See [Working with custom markers][markers-custom].
+
+
+
 unittest and doctest Tests
 --------------------------
 
@@ -126,7 +172,7 @@ Collection is slightly different from that for standard pytest:
 * Methods: if in a selected class and matching `test*`
   (`python_functions` is ignored)
 
-[`@pytest.mark` decorators][marks] can be used on `unittest` test
+[`@pytest.mark` decorators][markers] can be used on `unittest` test
 methods. This includes things like the following. (See the
 documentation linked above for considerably more detail.)
 * `@pytest.mark.skip(reason='foo')`
@@ -166,16 +212,24 @@ Doctest config options:
 [`assert`]: https://docs.python.org/3/reference/simple_stmts.html#assert
 [`doctest`]: https://docs.pytest.org/en/documentation-restructure/how-to/doctest.html
 [`unittest`]: https://docs.pytest.org/en/latest/unittest.html
+[api-parametrize]: https://docs.pytest.org/en/latest/reference.html#pytest-mark-parametrize-ref
+[api-skip]: https://docs.pytest.org/en/latest/reference.html#pytest-mark-skip-ref
+[api-skipif]: https://docs.pytest.org/en/latest/reference.html#pytest-mark-skipif
+[api-xfail]: https://docs.pytest.org/en/latest/reference.html#pytest-mark-xfail
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [ast-rewrite]: http://pybites.blogspot.jp/2011/07/behind-scenes-of-pytests-new-assertion.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
+[condition string]: https://docs.pytest.org/en/latest/historical-notes.html#string-conditions
 [docs]: https://docs.pytest.org/en/latest/contents.html
 [examples]:  https://docs.pytest.org/en/latest/example/
 [exceptions]: https://docs.python.org/3/library/exceptions.html
 [hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
-[marks]: https://docs.pytest.org/en/latest/mark.html
+[markers-custom]: https://docs.pytest.org/en/latest/example/markers.html
+[markers]: https://docs.pytest.org/en/latest/mark.html
+[parametrize]: https://docs.pytest.org/en/latest/parametrize.html
 [pytest]: https://pytest.org/
 [reference]: https://docs.pytest.org/en/latest/reference.html
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
 [restruc]: https://docs.pytest.org/en/documentation-restructure/
+[skip]: https://docs.pytest.org/en/latest/skipping.html#skip
 [wiki]: https://wiki.python.org/moin/PyTest
