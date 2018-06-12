@@ -92,8 +92,8 @@ Other Notes
 
 
 [BCP 188]: https://tools.ietf.org/html/bcp188
-[CERT2015]: https://insights.sei.cmu.edu/cert/2015/03/the-risks-of-ssl-inspection.html
 [CERT TA17-075A]: https://www.us-cert.gov/ncas/alerts/TA17-075A
+[CERT2015]: https://insights.sei.cmu.edu/cert/2015/03/the-risks-of-ssl-inspection.html
 [EFF2015]: https://www.eff.org/deeplinks/2015/02/dear-software-vendors-please-stop-trying-intercept-your-customers-encrypted
 [EV]: https://en.wikipedia.org/wiki/Extended_Validation_Certificate
 [HSTS]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
@@ -103,21 +103,21 @@ Other Notes
 [SSL Labs Client Test]: https://www.ssllabs.com/ssltest/viewMyClient.html
 [badssl.com]: https://badssl.com.
 [corporate MITM]: https://directorblue.blogspot.com/2006/07/think-your-ssl-traffic-is-secure-if.html
-[durumeric2017]: https://jhalderm.com/pub/papers/interception-ndss17.pdf
 [digicert-check]: https://www.digicert.com/help/
+[durumeric2017]: https://jhalderm.com/pub/papers/interception-ndss17.pdf
 [geekflare]: https://geekflare.com/ssl-test-certificate/
 [hboeck2015]: https://blog.hboeck.de/archives/875-TLS-interception-considered-harmful-video-and-slides.html
 [imperialviolet.org/pinning]: https://www.imperialviolet.org/2011/05/04/pinning.html
 [jarmoc2012]: https://media.blackhat.com/bh-eu-12/Jarmoc/bh-eu-12-Jarmoc-SSL_TLS_Interception-WP.pdf
 [nemertes]: https://nemertes.com/tls-interception-good-bad-just-plain-ugly/
+[se-129719]: https://security.stackexchange.com/a/129719/12254
 [se-16293]: https://security.stackexchange.com/q/16293/12254
+[se-172024]: https://security.stackexchange.com/a/172024/12254
 [se-33976]: https://security.stackexchange.com/q/33976/12254
 [se-49526]: https://security.stackexchange.com/a/49526/12254
 [se-51500]: https://security.stackexchange.com/q/51500/12254
 [se-84323]: https://security.stackexchange.com/a/84323/12254
 [se-87415]: https://security.stackexchange.com/questions/87415/certificate-pinning-and-corporate-mitm
-[se-129719]: https://security.stackexchange.com/a/129719/12254
-[se-172024]: https://security.stackexchange.com/a/172024/12254
 [sslstore-harming]: https://www.thesslstore.com/blog/https-interception-harming-security/
 [superfishy]: https://github.com/hannob/superfishy
 [sy-bw]: https://cryptoreport.websecurity.symantec.com/checker/views/sslCheck.jsp
