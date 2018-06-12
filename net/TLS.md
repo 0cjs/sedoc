@@ -3,6 +3,36 @@ TLS (SSL) Information
 
 Below, SEIS is the [Information Security Stack Exchange][SEIS].
 
+Viewing Certificates
+--------------------
+
+To connect to a server and view the certificate chain it returns:
+
+    openssl s_client </dev/null -showcerts \
+        -servername www.example.com -connect www.example.com:443
+
+The optional `-servername` argument determines the server name sent
+via [SNI] for hosts that return different certs based on that.
+
+Stdout includes both basic cert information and the encoded certs
+themselves (in [PEM] format: `-----BEGIN CERTIFICATE-----` etc.); stderr
+will print information about validation done by the client. Piping
+stdout through:
+
+    openssl x509 -noout -text
+
+will return a detailed deconstruction of about the _first_ cert
+returned, which is generally (always?) the client's certificate. To
+see certs further up the chain (the second and subsequent certs) you
+can save stdout to a file and extract the certs by hand.
+
+There are lots of variations on this at [so-7885785].
+
+I should write another program that automates the above stuff. (The
+one I previously wrote is lost to the archives of some previous
+employer.)
+
+
 Testing
 -------
 
@@ -98,8 +128,10 @@ Other Notes
 [EV]: https://en.wikipedia.org/wiki/Extended_Validation_Certificate
 [HSTS]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
 [HTTP Tunnel]: https://en.wikipedia.org/wiki/HTTP_tunnel
+[PEM]: https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail
 [Proxytunnel]: http://proxytunnel.sourceforge.net/intro.php
 [SEIS]: https://security.stackexchange.com/
+[SNI]: https://en.wikipedia.org/wiki/Server_Name_Indication
 [SSL Labs Client Test]: https://www.ssllabs.com/ssltest/viewMyClient.html
 [badssl.com]: https://badssl.com.
 [corporate MITM]: https://directorblue.blogspot.com/2006/07/think-your-ssl-traffic-is-secure-if.html
@@ -118,6 +150,7 @@ Other Notes
 [se-51500]: https://security.stackexchange.com/q/51500/12254
 [se-84323]: https://security.stackexchange.com/a/84323/12254
 [se-87415]: https://security.stackexchange.com/questions/87415/certificate-pinning-and-corporate-mitm
+[so-7885785]: https://stackoverflow.com/q/7885785/107294
 [sslstore-harming]: https://www.thesslstore.com/blog/https-interception-harming-security/
 [superfishy]: https://github.com/hannob/superfishy
 [sy-bw]: https://cryptoreport.websecurity.symantec.com/checker/views/sslCheck.jsp
