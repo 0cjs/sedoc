@@ -5,6 +5,14 @@ AWS authentication and authorization is done via the [Identity and
 Access Management (IAM)][IAM] system, which includes the Security
 Token Service (STS).
 
+Note: the term _account_ below refers to an 'AWS account' which is a
+single administrative entity (with a _root login_) containing all IAM
+users and other resources. The account is identified with a nine-digit
+account number and may also have an optional _account alias_, a unique
+(within worldwide AWS account aliases) name to more easily identify
+the account.
+
+
 Identities and Authentication
 -----------------------------
 
@@ -56,6 +64,20 @@ authenticating as an IAM user via the AWS API. However, you can write
 policies (see below) that restrict, e.g., the IP addresses authorized
 to perform requests after authentication.
 
+#### Console (Web) Access
+
+The web-based AWS [console] offers login for IAM users at the
+following URLs. (These will sign out any existing session.)
+
+    #   Generic login page; requires account ID/alias entry
+    https://console.aws.amazon.com
+    #   You can include the account ID or alias in the URL
+    #   This will immediately sign out any existing session.
+    https://ACCOUNT.signin.aws.amazon.com/console/
+
+Root user login is a separate page accessed via a link from the IAM
+login page above.
+
 
 Authorization/Access Control
 -----------------------------
@@ -91,6 +113,7 @@ Policies come in several forms:
 [access keys]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 [assumerole-perms]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html
 [cli-roles]: https://docs.aws.amazon.com/cli/latest/userguide/cli-roles.html
+[console]: https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html
 [federation]: https://en.wikipedia.org/wiki/Federated_identity
 [identities]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html
 [policy]: https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management.html
