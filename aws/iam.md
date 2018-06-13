@@ -28,7 +28,7 @@ be used for anything except to set up one or more IAM users with admin
 privs.
 
 An [IAM role] is like a user without authentication credentials. (This
-is different from some other systems where "roles" are the equivialant
+is different from some other systems where "roles" are the equivalent
 of _groups_, below.) Because roles are often shared, sessions have
 both RoleName and a RoleSessionName; the latter is intended to
 identify the principal (within AWS our outside it) that used the role
@@ -57,7 +57,7 @@ policies (see below) that restrict, e.g., the IP addresses authorized
 to perform requests after authentication.
 
 
-Authortization/Access Control
+Authorization/Access Control
 -----------------------------
 
 Access to resources is described in [_policies_][policy]; the access
@@ -66,7 +66,7 @@ directly to the the identity and all [_groups_] of which the identity
 is a member.
 
 Policies come in several forms:
-* Identity-based policies: attached to an idenity or group
+* Identity-based policies: attached to an identity or group
   * Managed Policies that can be attached to multiple
     users/roles/groups
     - AWS managed policies: read-only, supplied and maintained by Amazon
