@@ -35,6 +35,8 @@ Python Summary/Quickref
   - [`doctest`] finds and runs tests in function docstrings.
   - [Pytest](test/pytest.md)
   - [tox](test/tox.md)
+* Other Libraries
+  - [PyMongo](lib/pymongo.md)
 * [Tips and Tricks](tricks.md)
 
 When using `pip` with a system (OS-packaged) Python, ensure that the
