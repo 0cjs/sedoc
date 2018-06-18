@@ -2,6 +2,22 @@ Docker Security Notes
 =====================
 
 
+Secure Your Server and Be Careful of Malicious Images
+-----------------------------------------------------
+
+There are automated bots that scan for Docker daemons to exploit; if
+you leave a port open you will get 0wned. (See 'Leveraging Docker for
+Root Access' below.) The default standalone config uses only a Unix
+socket, but management systems may open stuff further.
+
+Malicious images are also a problem, and, despite Docker doing
+security scanning, may be left up on [Docker Hub] for a year or more.
+
+For details, see:
+* [Cryptojacking invades cloud. How modern containerization trend is
+  exploited by attackers][kromtech]
+
+
 Leveraging Docker for Root Access
 ---------------------------------
 
@@ -25,3 +41,8 @@ implict access via:
     cat >> /host/home/adminuser/.ssh/authorized_keys
     ssh-rsa AAAA.... ur@hacked.com
     ^D
+
+
+
+[Docker Hub]: https://hub.docker.com/explore/
+[kromtech]: https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
