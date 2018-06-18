@@ -20,6 +20,7 @@ Python Summary/Quickref
   - [Pickle](pickle.md) object seralization
   - [Argument Parsing](argparse.md)
   - [Concurrency](concurrency.md) (including processes)
+  - [Internet Protocols and Support](internet.md)
   - [Python Language Services](ast.md) (manipulating Python code)
 * [Functional Programming](fp.md)
   - [Functional] modules in the standard library
