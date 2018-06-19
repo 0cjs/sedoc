@@ -12,10 +12,14 @@ Multi-system Chat Clients
 [Gitter]
 --------
 
-The zoom level of the Gitter desktop client [can be changed][gitter-zoom].  
-Bring up the console from menu `Gitter / Developer Tools` and enter:
+In the old (now unsuable) version of the Gitter desktop client, the
+zoom [could be changed][gitter-zoom]. Bring up the console from menu
+`Gitter / Developer Tools` and enter:
 
     gui.Window.get().zoomLevel = -1.1;   // 0 is default zoom
+
+Unfortunately this no longer works as of Gitter 4.x, and I don't know
+of a replacement. (Help wanted on this!)
 
 
 Telegram
