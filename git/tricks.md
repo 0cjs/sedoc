@@ -31,3 +31,19 @@ Fixing Commits
       git commit -c ORIG_HEAD
 
   From <https://stackoverflow.com/a/15321456/107294>.
+
+
+Checking Line End Settings
+--------------------------
+
+For debugging Git [attributes], the `core.eol` and `core.autocrlf`
+settings, etc., the `git ls-files --eol` option is very useful.
+
+Normally `core.autocrlf` wants to be set to `input` to avoid any
+conversions whatsoever.
+
+
+
+[attributes]: https://www.git-scm.com/docs/gitattributes
+
+
