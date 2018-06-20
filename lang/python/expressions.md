@@ -6,11 +6,17 @@ Python reference documentation:
 * [Compound statements][stmts]
 
 
-[Operator Precedence]
----------------------
+Operators
+---------
 
-Highest to lowest. All operators in subgroups have equal precedence.
-Includes info from link above and [PPR].
+The list of [special method names] gives the method name equivalant of
+each operator for use when overriding/overloading, and in particular
+see the [emulating numeric types] section.
+
+#### Precedence
+
+This table includes information from [operator precedence] and [PPR].
+All operators in subgroups have equal precedence. From highest to lowest:
 
 * Literals and Comprehensions
   * `{...}`         dict, set and their comprehensions
@@ -49,9 +55,15 @@ Includes info from link above and [PPR].
 * `lambda args: expr`
 * `yield x`         generator function `send()` protocol
 
-The list of [special method names] gives the method name equivalant of
-each operator for use when overriding/overloading, and in particular
-see the [emulating numeric types] section.
+#### Operator Details
+
+Comprehensions, which execute in a separate scope (variables don't
+'leak' out) are an expression followed by at least one `for`
+_target-list_ `in` _..._ clause and then zero or more `for`/`if`
+clauses. E.g.:
+
+    >>> [ (x,y) for x in range(5) for y in range(6) if y%2== 0 if x>2 ]
+    [(3, 0), (3, 2), (3, 4), (4, 0), (4, 2), (4, 4)]
 
 #### Python 2 Notes
 
