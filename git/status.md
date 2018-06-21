@@ -7,8 +7,10 @@ Programatically Getting the Status
     # Prints `__ path` where `__` is index/working copy status of each path
     git status --porcelain
 
-    # Check for changes staged to index (ignoreg unstaged working copy changes)
-    git diff-index --quiet --cached HEAD --
+    #   Various checks for changes to tracked and untracked in the working copy:
+    git diff-index --quiet HEAD --          # Tracked files changed (staged or not)
+    git diff-index --quiet --cached HEAD -- # Staged changes
+    git diff-files --quiet                  # Unstaged (but tracked) changes
 
 Information about programatically getting the status of the working
 copy and index is available in StackOverflow post [Checking for a
