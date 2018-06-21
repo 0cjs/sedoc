@@ -27,25 +27,30 @@ be allowed.) The _name_ (also user settable, usually the full name of
 the user) is used for display within the web interface, but externally
 (e.g., in URLs) the username is used.
 
-#### SSH Keys
+### SSH Keys
 
 "[Deploy keys]" (SSH public keys) giving read-only or read-write
 access to all or specific projects may also be added; these are not
 associated with an account but are designed for use by applications.
 
-#### Access Tokens
+### Access Tokens
 
 If not using a session cookie, [personal access tokens] can be used to
 authenticate to the API and Git over HTTP. (A PAT is required if for
 these types of access if 2FA is enabled.) Users may have as many of
 these as they need, and may expire them by hand or set an expiry date.
 
-Sysadmins may create [impersonation tokens] for arbitrary users that
-function in the same way. Admin accounts may also use [sudo] access
-against the API to take actions as another user.
-
 It's not clear how tokens are created for services not associated with
 a user, but perhaps the [services api] would have some clues.
+
+Access tokens have various [scopes]:
+* `api` (≥8.15): Complete read-write API access; HTTP fetch for Git repos
+  (token required when 2FA enabled)
+* `read_user` (≥8.15): Read-only for HTTP `/users` API
+* `read_registry` (≥9.3): Can read [container registry] images in
+  private projects where auth required
+* `sudo` (≥10.2): Allow API actions as any user if authenticated user
+  is admin
 
 Examples of use:
 
@@ -53,6 +58,11 @@ Examples of use:
     curl --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
         https://gitlab.example.com/api/v4/projects
 
+#### Impersonation Tokens
+
+Sysadmins may create [impersonation tokens] for arbitrary users that
+function in the same way. Admin accounts may also use [sudo] access
+against the API to take actions as another user.
 
 
 [deploy keys]: https://docs.gitlab.com/ce/ssh/README.html#deploy-keys
@@ -60,3 +70,4 @@ Examples of use:
 [personal access tokens]: https://docs.gitlab.com/ce/api/README.html#personal-access-tokens
 [services api]: https://docs.gitlab.com/ce/api/services.html
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
+[scopes]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#limiting-scopes-of-a-personal-access-token
