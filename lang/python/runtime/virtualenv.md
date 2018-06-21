@@ -129,7 +129,7 @@ Using with Git
 In general, the virtualenv directories and files should not be checked
 in to the Git repo as these will vary depending on the system on which
 it's been generated. Instead, commit and use this (non-executable)
-[`activate`](activate) script ([raw download][activate-raw])
+[`activate`](activate) script ([raw download][activate-raw]) for Bash
 that will install the virtual environment and pip modules if necessary
 and then activate the environment if one is not already activated.
 (See below for further notes on this.)
@@ -142,7 +142,11 @@ ensure you generate and commit the list of packages your project needs:
 This would usually be called from your top-level test script, e.g.:
 
     cd "$(dirname "$0")"
-    . activate -q
+    . ./activate -q
+
+Note the leading `./` to prevent another `activate` being called if
+it's in `$PATH`.
+
 
 #### Activate Script Notes
 
