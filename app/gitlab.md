@@ -49,9 +49,9 @@ a user, but perhaps the [services api] would have some clues.
 
 Examples of use:
 
-  curl https://gitlab.example.com/api/v4/projects?private_token=9koXpg98eAheJpvBs5tK
-  curl --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
-    https://gitlab.example.com/api/v4/projects
+    curl https://gitlab.example.com/api/v4/projects?private_token=9koXpg98eAheJpvBs5tK
+    curl --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
+        https://gitlab.example.com/api/v4/projects
 
 
 
