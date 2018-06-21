@@ -11,10 +11,12 @@ Programatically Getting the Status
     git diff-index --quiet --cached HEAD --
 
 Information about programatically getting the status of the working
-copy and index is available in StackOverflow post
-and blog post [
+copy and index is available in StackOverflow post [Checking for a
+dirty index or untracked files with Git][so-2657935] (note that second
+answer is higher voted than accepted answer) and blog post [Adding Git
+Status Information to your Terminal Prompt][0xfe].
 
-### References:
 
-* [Checking for a dirty index or untracked files with Git](https://stackoverflow.com/q/2657935/107294) (second answer is higher voted than accepted answer)
-* [Adding Git Status Information to your Terminal Prompt](http://0xfe.blogspot.jp/2010/04/adding-git-status-information-to-your.html)
+
+[0xfe]: http://0xfe.blogspot.jp/2010/04/adding-git-status-information-to-your.html
+[so-2657935]: https://stackoverflow.com/q/2657935/107294
