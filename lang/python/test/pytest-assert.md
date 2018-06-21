@@ -1,10 +1,15 @@
 Pytest Assertions and Checks
-----------------------------
+============================
 
 See [assertions] for the basics, and [builtin] for details on the API
 and fixtures. The following is an incomplete summary:
 
-#### [Exceptions]
+Assertions
+----------
+
+#### Exceptions
+
+See also [Assertions about expected exceptions][exceptions].
 
     import pytest
     def test_exceptions():
@@ -34,3 +39,7 @@ Handy `ExceptionInfo` attributes include `type`, `typename`, `value`,
 * The `deprecated_call` context manager ensures a block of code
   triggers a `DeprecationWarning` or `PendingDeprecationWarning`.
 
+
+
+[assertions]: https://docs.pytest.org/en/latest/assert.html
+[exceptions]: https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions

@@ -178,9 +178,6 @@ XXX To-do
 ---------
 
 * [`pytest-xdist`](https://pypi.org/project/pytest-xdist/)
-* Marking failing tests with the decorator (mentioned in [assertions])
-  [assertions] mentions the decorator `@pytest.mark.xfail(raises=IndexError)`.
-  <https://docs.pytest.org/en/latest/skipping.html> and `pytest --markers`.
 * `pytest_skipping` plugin
 * <https://docs.pytest.org/en/latest/fixture.html#conftest-py> and
   fixture stuff from <https://docs.pytest.org/en/latest/builtin.html>
@@ -205,7 +202,6 @@ XXX To-do
 [`python_files`]: https://docs.pytest.org/en/latest/reference.html#confval-python_files
 [`python_functions`]: https://docs.pytest.org/en/latest/reference.html#confval-python_functions
 [`testpaths`]: https://docs.pytest.org/en/latest/reference.html#confval-testpaths
-[assertions]: https://docs.pytest.org/en/latest/assert.html
 [basic]: https://docs.pytest.org/en/latest/example/simple.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
 [cache-restruc]: https://docs.pytest.org/en/documentation-restructure/how-to/cache.html

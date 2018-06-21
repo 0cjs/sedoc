@@ -82,6 +82,8 @@ Most of the following would normally be done with decorators; see below.
 Markers
 -------
 
+`pytest --markers` will list available markers.
+
 [Markers] are set with a `@pytest.mark.MARKERNAME` decorator on the
 test function. Unknonwn markers are normally ignored; use `--strict`
 on the command line to raise an error instead.
