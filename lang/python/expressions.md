@@ -57,6 +57,9 @@ All operators in subgroups have equal precedence. From highest to lowest:
 
 #### Operator Details
 
+For more details on the slice operator `xs[i:j:k]`,  see
+[Python Sequences Types and Interfaces](sequence.md).
+
 Comprehensions, which execute in a separate scope (variables don't
 'leak' out) are an expression followed by at least one `for`
 _target-list_ `in` _..._ clause and then zero or more `for`/`if`

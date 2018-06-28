@@ -58,6 +58,13 @@ object that can be stored in _s_.
 
 When implementing these, [`collections.abc.MutableSequence`] is useful.
 
+The default values in a slice `xs[::]` are `0:-1:1`. Thus, you can use
+`x[:]` to refer to the whole list:
+
+    del xs[:]           # Clear (empty) list
+    xs[:] = [1,2,3]     # Replace contents of list
+    ys = xs[:]          # Shallow copy (`ys is xs` ⇒ False)
+
 
 Sequence Types
 --------------
