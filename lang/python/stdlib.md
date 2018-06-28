@@ -52,7 +52,8 @@ useful are:
 #### Objects
   * `id(o)`: unique identity constant for object (not interpreter) lifetime
     (memory address in CPython)
-  * `hash(o)`: int hash value
+  * `hash(o)`: int hash value; must throw `TypeError: unhashable type '...'`
+    if hash could change during object lifetime.
   * `dir(o)`: names (attributes) in _o_, or local scope if no arg
   * `vars(o)`: `__dict__` of _o_, or without arg, `locals()`
   * `isinstance(o,cls)`, `issubclass(o,cls)`: _cls_ may be tuple to

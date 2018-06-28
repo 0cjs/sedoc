@@ -32,6 +32,8 @@ Lowest to highest precedence:
 * `s.count(x)`: Count of occurrences of _x_ in _s_.
 * [`hash()`]: Immutable sequences only.
   All values must be immutable or `TypeError` is thrown.
+  Hashable objects that compare equal must have same hash value.
+  More at [Hashes and Equality][hashandeq].
 
 When implementing these, [`collections.abc.Sequence`] is useful.
 
@@ -136,6 +138,8 @@ Additional attributes: `start`, `stop`, `step`.
 [`tuple`]: https://docs.python.org/3/library/stdtypes.html#tuples
 [comparing]: https://docs.python.org/3/reference/expressions.html#comparisons
 [container-emul]: https://docs.python.org/3/reference/datamodel.html#emulating-container-types
+[hashandeq]: https://hynek.me/articles/hashes-and-equality/
 [mutseqops]: https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types
 [seqops]: https://docs.python.org/3/library/stdtypes.html#typesseq-common
 [sequence]: https://docs.python.org/3/library/stdtypes.html#typesseq
+

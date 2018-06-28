@@ -57,6 +57,8 @@ to as the "global" namespace for that statement.
 
 ### Immutability
 
+(Also see [Hashes and Equality][hashandeq].)
+
 Some objects in Python, such as `int` and `str` are immutable. The
 `hash()` function works only on immutable objects, throwing
 `TypeError` if the object is mutable, and thus only immutable objects
@@ -168,6 +170,7 @@ present or does its own thing if not.
 [GvRimmut]: https://twitter.com/nedbat/status/960849071157268480
 [`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
 [`repr(o)`]: https://docs.python.org/3/reference/datamodel.html#object.__repr__
+[hashandeq]: https://hynek.me/articles/hashes-and-equality/
 [inventwith]: https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/
 [jenkins]: http://blog.jenkster.com/2017/01/theres-immutable-and-then-theres-immutable.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
@@ -178,3 +181,4 @@ present or does its own thing if not.
 [official documentation]: <https://docs.python.org/3/>
 [ppr]: https://www.safaribooksonline.com/library/view/python-pocket-reference/9781449357009/ch01.html
 [wp]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics
+
