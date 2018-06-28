@@ -10,8 +10,9 @@ the name (`str(33)`, not `builtins.str(33)`). All type names are also
 constructors, e.g., `bool(x)`, `bytes([x[, encoding[, errors]]])`,
 etc.
 
-Abbreviations below: [I] = immutable, "inst." = instantiated.
-(See [Python.md] for more details of literal instantiation.)
+Abbreviations below: [I] = immutable, "inst." = instantiated. See
+[Language Summary](language.md) for caveats on immutable collections
+and [Python.md] for more details of literal instantiation.
 
 ### Atomic
 

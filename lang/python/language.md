@@ -55,6 +55,32 @@ to as the "global" namespace for that statement.
 
 * Blocks (see below) do not introduce new namespaces.
 
+### Immutability
+
+Some objects in Python, such as `int` and `str` are immutable. The
+`hash()` function works only on immutable objects, throwing
+`TypeError` if the object is mutable, and thus only immutable objects
+may be used as keys in `dict`s.
+
+"Immutable" collections, such as `tuple` are only "shallow immutable";
+they are truly immutable (and `hash()` works on them) only when they
+contain only immutable values. Thus:
+
+    hash((1,2))                 ⇒ 3713081631934410656
+    t = (1,[]); t               ⇒ (1,[])
+    t[1].append(2); t           ⇒ (1,[2])
+    hash(t)                     ⇒ TypeError: unhashable type: 'list'
+
+GvR [explains][GvRimmut], "Immutability is a property of types, while
+hashability is a property of values"; @nedbat's corollary:
+"Immutablity is shallow, hashability is deep." But "this stops being
+true with a sufficiently good notion of type (or even just the one
+provided by the typing module)" (@DRMaclver).
+
+For expanded discussion see [Python Tuples are Immutable, Except When
+They're Mutable][inventwith] and [There's Immutable And Then There's
+Immutable][jenkins].
+
 
 Syntax
 ------
@@ -139,8 +165,11 @@ present or does its own thing if not.
 
 
 [CPython]: https://en.wikipedia.org/wiki/CPython
+[GvRimmut]: https://twitter.com/nedbat/status/960849071157268480
 [`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
 [`repr(o)`]: https://docs.python.org/3/reference/datamodel.html#object.__repr__
+[inventwith]: https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/
+[jenkins]: http://blog.jenkster.com/2017/01/theres-immutable-and-then-theres-immutable.html
 [lambda]: https://docs.python.org/3/reference/expressions.html#lambda
 [language reference]: https://docs.python.org/3/reference/
 [legacy]: https://wiki.python.org/moin/Python2orPython3

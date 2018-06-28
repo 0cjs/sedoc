@@ -9,6 +9,9 @@ Common Sequence Operations
 
 #### [Immutable Sequences][seqops]
 
+See [Language Summary](language.md) for caveats on immutable
+collections.
+
 Lowest to highest precedence:
 
 * `x [not] in s`: Containment or subsequence test.
