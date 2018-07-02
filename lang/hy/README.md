@@ -3,8 +3,26 @@ Hy Language
 
 [Hy] ([github]) is a Lisp variant embedded in CPython. The syntax is
 is mostly [homoiconic], using a Clojure-like [reader]. Hy is converted
-to Python's AST and compiled to Python bytecode. It works on both
-Python 2 and 3.
+to Python's AST and then compiled to Python bytecode. It is tested
+with Python 2.7 and 3.{4-7}.
+
+Hy is changing rapidly. [hy/NEWS.rst] has information about the latest
+changes; this often has not yet filtered into the documentation in the
+docs dir of the repo.
+
+Other Python Lisp projects:
+- [Pixie] on [RPython], with a JIT compiler. 8 commits in 2017.
+  [Author interview][pixie-interview].
+- [clojure-py], an implementation of Clojure in pure Python.
+  Defunct since 2012.
+
+
+[Hy]: http://docs.hylang.org/en/stable/
+[RPython]: https://en.wikipedia.org/wiki/PyPy#RPython
+[clojure-py]: https://github.com/drewr/clojure-py
+[github]: https://github.com/hylang
+[pixie-interview]: https://notamonadtutorial.com/indie-languages-interview-pixie-and-timothy-baldridge-cadbc36418dc
+[pixie]: https://github.com/pixie-lang/pixie
 
 
 Installation
@@ -128,12 +146,11 @@ See [Built-Ins] and [Hy Core] for more details on built-in functions.
 [Built-Ins]: http://docs.hylang.org/en/stable/language/api.html#built-ins
 [Documentation Index]: http://docs.hylang.org/en/stable/language/index.html
 [Hy Core]: http://docs.hylang.org/en/stable/language/core.html
-[Hy]: http://docs.hylang.org/en/stable/
 [`\` escapes]: https://docs.python.org/3/reference/lexical_analysis.html#strings
 [`hy-repr`]: http://docs.hylang.org/en/stable/contrib/hy_repr.html
 [`list-comp`]: http://docs.hylang.org/en/stable/language/api.html#list-comp
 [api]: http://docs.hylang.org/en/stable/language/api.html
-[github]: https://github.com/hylang
 [homoiconic]: https://en.wikipedia.org/wiki/Homoiconicity
+[hy/NEWS.rst]: https://github.com/hylang/hy/blob/master/NEWS.rst
 [punycode]: https://en.wikipedia.org/wiki/Punycode
 [reader]: https://clojure.org/reference/reader
