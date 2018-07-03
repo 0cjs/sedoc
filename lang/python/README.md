@@ -37,6 +37,7 @@ Python Summary/Quickref
   - [Pytest](test/pytest.md)
   - [tox](test/tox.md)
 * Other Libraries
+  - [PyYAML](lib/yaml.md)
   - [PyMongo](lib/pymongo.md)
 * [Tips and Tricks](tricks.md)
 
