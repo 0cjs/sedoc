@@ -16,8 +16,23 @@ Literals are single or double-quoted which work the same way except
 for allowing double or single quotes in the string. Strings may also
 be "triple-quoted" using a sequence of three single or double quotes
 (`'''` or `"""`); these may span multiple lines. Adjacent string
-literals are concatenated into a single string. See [String and Bytes
-literals] for more.
+literals are concatenated into a single string.
+
+String literals may be prefixed with characters to change their
+interpretation. The prefix is case-insensitive. Whitespace is not
+allowed between the prefix and the opening quote.
+
+- `b`: Produce a `bytes` instead of a `str`. Only ASCII chars and
+  backslash escape sequencs allowed.
+- `r`: Raw string or bytes; backslashes are interpreted literally.
+  (Not usable with `u`.)
+- `u`: Unicode literal. Does nothing in Python ≥3.3; in Python 2,
+  where `str` is the equivalant of `bytes`, reads string literal as
+  Unicode instead.
+- `f`: (≥3.6) [Formatted string literal][f-strings]. Cannot be
+  combined with `b` or `u`.
+
+See [String and Bytes literals] for more.
 
 ### Methods
 
