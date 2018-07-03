@@ -33,6 +33,18 @@ Small Form Factor PCs
   * (i3-7100U model apparently also available; [PM 3710/1337][pm2], no turbo)
   * Sellers: [Amazon][lzp7200u-amz]
 
+* [Liva Z One][lzone] (¥40k barebone)
+  * LGA1151 (Core i3-8100, i5-8500, i7-8700, etc.), H110 Express Chipset
+  * Motherboard: H110-SF100 (DDR3L) or H1104-SF100 (DDR4) mini-ITX
+  * Memory: 2 sockets
+  * DP, HDMI, D-sub
+  * M.2 for SSD, 1x SATA 3 (2.5" mounting bay)
+  * 1x GigE, WiFi 802.11 a/b/g/n/ac, BT 4.0, M.2 for WiFi/BT
+  * 4x USB type A, 1x USB type C, MicroSD card reader
+  * Serial port (mobo header?)
+  * 173 x 176 x 33
+  * Sellers: [Amazon][lzone-amz]
+
 #### ASRock
 
 * [Beebox J3160 Barebone] [¥16k][et-j3160]
@@ -58,6 +70,8 @@ Small Form Factor PCs
 [lzn4200-amz]: https://www.amazon.co.jp/dp/B01MS4M6NT/
 [lzn4200-etrend]: https://www.e-trend.co.jp/items/1145136
 [lzn4200-kakaku]: http://kakaku.com/item/K0000944734/
+[lzone-amz]: https://www.amazon.co.jp/dp/B07DTHQLB6
+[lzone]: http://www.ecs.com.tw/ECSWebSite/Product/Product_SPEC.aspx?DetailID=1645&CategoryID=12&DetailName=Feature&MenuID=209&LanID=0
 [lzp7200u-amz]: https://www.amazon.co.jp/dp/B075GH6MSK/
 [pm1]: https://www.cpubenchmark.net/compare.php?cmp[]=2895&cmp[]=2772&cmp[]=2886
 [pm2]: https://www.cpubenchmark.net/compare.php?cmp[]=2879&cmp[]=2865&cmp[]=2955
