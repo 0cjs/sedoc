@@ -24,13 +24,14 @@ Small Form Factor PCs
   * [Sellers][lzn4200-kakaku] include [E-Trend][lzn4200-etrend]
     and [Amazon][lzn4200-amz].
 
-* Liva Z Plus i5 ¥53k
+* Liva Z Plus i5 ¥54k
   * Core i5-7200U (Kaby Lake 14nm) 2c+2h 2.5(3.1)Ghz 15W [PM 4676/1739][pm1]
   * Intel HD Graphics 620 (24 xu). mDP, HDMI.
   * DDR4 SODIM; no mem included?
   * No eMMC? M.2 slot.
   * Rest as N3350 above.
   * (i3-7100U model apparently also available; [PM 3710/1337][pm2], no turbo)
+  * Sellers: [Amazon][lzp7200u-amz]
 
 #### ASRock
 
@@ -40,14 +41,23 @@ Small Form Factor PCs
   * 0 MB. DDR3L 1600MHz, 2 x SO-DIMM slots, Max. 16GB
   * mSATA slot, 2.5" SATA HDD
 
+#### Aleutia
+
+* [R50 Fanless PC][aleutia-r50]
+  * Intel Core i3-6100U or i5-6260U
+
+
+
+[Beebox J3160 Barebone]: http://www.asrock.com/nettop/Intel/Beebox%20Series/#Specification
 [ECS Liva]: http://www.ecs.com.tw/ECSWebSite/Product/Product_Category_1.aspx?CategoryID=12&TypeID=130&MenuID=209&childid=M_10&LanID=0
 [Livia Z N3350]: https://www.amazon.co.jp/dp/B01N5MHCN9/
 [Livia Z N4200]: http://www.links.co.jp/item/liva-z-n4200/
-[lzn4200-kakaku]: http://kakaku.com/item/K0000944734/
+[PassMark]: https://www.cpubenchmark.net/
+[aleutia-r50]: https://www.aleutia.com/products/r50-fanless-server
+[et-j3160]: https://www.e-trend.co.jp/items/1145591
 [lzn4200-amz]: https://www.amazon.co.jp/dp/B01MS4M6NT/
 [lzn4200-etrend]: https://www.e-trend.co.jp/items/1145136
-[PassMark]: https://www.cpubenchmark.net/
+[lzn4200-kakaku]: http://kakaku.com/item/K0000944734/
+[lzp7200u-amz]: https://www.amazon.co.jp/dp/B075GH6MSK/
 [pm1]: https://www.cpubenchmark.net/compare.php?cmp[]=2895&cmp[]=2772&cmp[]=2886
 [pm2]: https://www.cpubenchmark.net/compare.php?cmp[]=2879&cmp[]=2865&cmp[]=2955
-[Beebox J3160 Barebone]: http://www.asrock.com/nettop/Intel/Beebox%20Series/#Specification
-[et-j3160]: https://www.e-trend.co.jp/items/1145591
