@@ -27,5 +27,8 @@ Graphics Card Information
 | GeForce GT   710      |  0.7 | 14.2 |  25W |     |     3 |
 
 
+PCIe x1 GT 710: <http://kakaku.com/item/K0000872584>
+
+
 
 [Passmark]: https://www.videocardbenchmark.net/gpu_list.php
