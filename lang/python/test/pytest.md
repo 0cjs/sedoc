@@ -123,8 +123,41 @@ You can [parametrize] test functions; they will be run multiple times
 
 #### Custom Markers
 
-See [Working with custom markers][markers-custom].
+For full details, see [Working with custom markers][markers-custom].
 
+You can add arbitrary markers by simply making up a marker name, e.g.
+`@pytest.mark.foo`. It's also possible to [ automatically add markers
+based on test names][markers-auto]
+
+Adding markers can be done at many levels:
+
+    #   Function level, in the usual way
+    @pytest.mark.foo
+    def test_one(): ...
+
+    #   Individual parameterized runs
+    @pytest.mark.parametrize('a, b',
+        [ (1, 2),  pytest.mark.foo((3, 4)),  (5, 6), ])
+    def test_two(): ...
+
+    #   Class level
+    @pytest.mark.foo
+    class TestStuff:
+        def test_three(): ...
+        def test_four(): ...
+
+    #   Module level, by defining a global var
+    pytestmark = pytest.mark.foo
+
+If you use the `--strict` option, markers need to be
+[registered][markers-register]. This is done by setting `markers` in
+[pytest.ini] or similar to a sequence of lines, one for each
+registered marker. The marker name is followed by a colon and its
+description:
+
+    markers =
+        foo: A description of the foo marker
+        bar: A description of the bar marker
 
 
 unittest and doctest Tests
@@ -192,9 +225,12 @@ Doctest config options:
 [examples]:  https://docs.pytest.org/en/latest/example/
 [exceptions]: https://docs.python.org/3/library/exceptions.html
 [hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
+[markers-auto]: https://docs.pytest.org/en/latest/example/markers.html#automatically-adding-markers-based-on-test-names
 [markers-custom]: https://docs.pytest.org/en/latest/example/markers.html
+[markers-register]: https://docs.pytest.org/en/latest/example/markers.html#registering-markers
 [markers]: https://docs.pytest.org/en/latest/mark.html
 [parametrize]: https://docs.pytest.org/en/latest/parametrize.html
+[pytest.ini]: pytest-config.md#rootdir-and-configuration
 [pytest]: https://pytest.org/
 [reference]: https://docs.pytest.org/en/latest/reference.html
 [repdemo]: https://docs.pytest.org/en/latest/example/reportingdemo.html
