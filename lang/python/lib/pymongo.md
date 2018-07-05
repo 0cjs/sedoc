@@ -87,6 +87,12 @@ Write a document:
     collection.find_one(_id = oid)  ⇒ {'name': 'test', 'value': 42,
                                        '_id': ObjectId('5b35e112055dd50014002f1b')}
 
+Query:
+
+    collection.find({'afield': re.compile('^foo')}).count()
+
+Ref. [query operators].
+
 
 
 [Cursor]: https://api.mongodb.com/python/current/api/pymongo/cursor.html#pymongo.cursor.Cursor
@@ -101,5 +107,6 @@ Write a document:
 [api-database-2.8]: https://api.mongodb.com/python/2.8/api/pymongo/database.html
 [api-database]: https://api.mongodb.com/python/current/api/pymongo/database.html
 [apiref]: https://api.mongodb.com/python/current/api/index.html
+[query operators]: https://docs.mongodb.com/manual/reference/operator/query/
 [tutorial]: https://api.mongodb.com/python/current/tutorial.html
 [version 2.8]: https://api.mongodb.com/python/2.8/api/pymongo/
