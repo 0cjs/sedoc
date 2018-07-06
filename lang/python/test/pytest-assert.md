@@ -39,6 +39,15 @@ Handy `ExceptionInfo` attributes include `type`, `typename`, `value`,
 * The `deprecated_call` context manager ensures a block of code
   triggers a `DeprecationWarning` or `PendingDeprecationWarning`.
 
+#### Tricks
+
+You can assert things that won't fail in order to add useful
+information to the error output:
+
+    for name, params in config.items():
+        #   _name_ will appear if the params check fails
+        assert name and expected_params == params
+
 
 Capturing Output (stdout/stderr)
 --------------------------------
