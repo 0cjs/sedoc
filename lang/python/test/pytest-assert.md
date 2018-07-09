@@ -29,6 +29,50 @@ Handy `ExceptionInfo` attributes include `type`, `typename`, `value`,
 `tb` (raw traceback), `traceback` (Traceback instance),
 `match(regexp)` and more.
 
+#### Warnings
+
+Python [warnings](../exeptions.md#warnings) are [captured by
+pytest][pt-warnings] unless `-p no:warnings` is specified.
+
+By default warnings are displayed at the end of the sesion. The `-W`
+flag or the `pytest.ini` option `filterwarnings` can be used with
+action values from the [warnings filter] to change the behaviour
+(`error` and `ignore` would be the only ones commonly used); the last
+matching option is used. Examples:
+
+    -W error -W ignore::UserWarning`
+
+    filterwarnings =
+      error
+      ignore::UserWarning
+
+Some functions are supplied to help with testing warnings:
+
+    # turns all warnings into errors for this module
+    pytestmark = pytest.mark.filterwarnings("error")
+
+    def test_warnings():
+        pytest.warns(RuntimeWarning, warn, 'a message', RuntimeWarning)
+        with pytest.warns(UserWarning, match='number \d+$'):
+            warn('warning number 42', UserWarning)
+
+    #   The filterwarnings marker takes an action followed by:
+    #     1. A double colon and a warning class
+    #     2. A single colon and a regex to match the warning
+    #   It will generate a large message full of `INTERNALERROR` if
+    #   the string is not correct; look for the actual message at the
+    #   bottom (e.g., warnings._OptionError: invalid action: 'foo')
+    @pytest.mark.filterwarnings('ignore::RuntimeWarning')
+    @pytest.mark.filterwarnings('ignore:nisanshi')
+    def test_filterwarnings():
+        warn('ichi', RuntimeWarning)
+        warn('nisanshi', UserWarning)
+
+BUG: filterwarnings is not a valid marker; you need to manually
+register it if you run pytest with `--strict`. See [issue 3671].
+
+There's also an ability to record warnings.
+
 #### Other Things
 
 * `approx(expected, rel=None, abs=None, nan_ok=False_)` should be
@@ -81,5 +125,8 @@ output and clears the capture buffer. `disabled()` pauses capture.
 
 
 [assertions]: https://docs.pytest.org/en/latest/assert.html
-[exceptions]: https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions
 [capture]: https://docs.pytest.org/en/latest/capture.html
+[exceptions]: https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions
+[issue 3671]: https://github.com/pytest-dev/pytest/issues/3671
+[pt-warnings]: https://docs.pytest.org/en/latest/warnings.html
+[warnings filter]: https://docs.python.org/3/library/warnings.html#the-warnings-filter
