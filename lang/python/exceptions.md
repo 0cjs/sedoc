@@ -52,7 +52,7 @@ These are just the most important exceptions; for a full list see the
     - `TypeError`
     - `ValueError`: value not valid, e.g., bad Unicode encoding
     - `Warning`
-      - `DeprecationWArning`
+      - `DeprecationWarning`
       - `RuntimeWarning`
       - `FutureWarning`
 
