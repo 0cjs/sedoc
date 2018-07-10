@@ -25,11 +25,12 @@ order to find the nearest in-scope binding:
 2. (__E__) The namespaces of lexically enclosing functions or class
    definitions. `locals()` returns the current function or class's
    namespace dictionary.
-3. (__G__) The namespace of the current module, refered to (perhaps
-   misleadingly) as a 'Global' namespace. (It is not shared in any
-   way with other modules.) `globals()` returns the current module
-   object's namespace dictionary. (Use `sys.modules[__name__]` to
-   get the module itself.)
+3. (__G__) The namespace of the current module, refered to as a
+   'Global' namespace. (Despite the name, it's a namespace local to
+   just that module.) `globals()` returns the current module object's
+   namespace dictionary. (Use `sys.modules[__name__]` to get the
+   module itself. It has an attribute `__dict__`, which symbol is not
+   in the global namespace, containing the global namespace.)
 4. (__B__) The namespace of the [`builtins`] module. This is the
    outermost scope and is accessible from everywhere. The CPython
    implementation also makes this available via the `__builtins__`
@@ -92,6 +93,29 @@ Instance variables are referenced explicitly as attributes the first
     C.f                 # instance method       ==> <function __main__.C.f>
     o.f(); o.i          # instance variable     ==> 2
 
+#### Inheritance
+
+Define base classes for [inheritance] using an argument list after the
+class name. Each argument must evaluate to a class object. When a
+requested attribute is not found in the class itself, each base class
+is searched in turn.
+
+    from collections.abc import *
+    class C(Sized, Iterator):
+        def __len__(self):  # Abstract from Sized; must be implemented.
+            return 0
+        def __next__(self): # Abstract from Iterator; must be implemented.
+            raise StopIteration()
+
+    c = C()
+    isinstance(Sized, c)        # ⇒ True
+    isinstance(Iterator, c)     # ⇒ True
+    iter(c)                     # Calls  __iter__() provided by Iterator
+
+#### Metaclasses
+
+See [Metaclasses].
+
 
 Exception Hierarchy
 -------------------
@@ -110,5 +134,7 @@ Exception Hierarchy
 [classes]: https://docs.python.org/3/tutorial/classes.html
 [execution model]: https://docs.python.org/3/reference/executionmodel.html
 [hlw]: https://stupidpythonideas.blogspot.com/2015/12/how-lookup-works.html
+[inheritance]: https://docs.python.org/3/tutorial/classes.html#inheritance
+[metaclasses]: https://docs.python.org/3/reference/datamodel.html#metaclasses
 [scopes and namespaces]: https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces
 [wikipedia]: https://en.wikipedia.org/wiki/Scope_(computer_science)#Python
