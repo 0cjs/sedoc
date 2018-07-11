@@ -7,6 +7,18 @@ Python Summary/Quickref
 * Wikipedia, [Python syntax and semantics][wp].
 * O'Reilly [Python Pocket Reference, 5th ed.][ppr] (Safari)
 
+You can also get interactive documentation using the [`help()`]
+function:
+- `help()`: Start interactive help system.
+- `help(object)`: Display docstring(s) for given object.
+- `help('topics')`: Display help topics. Individual topics listed must
+  be given as strings in the same (upper) case.
+- `help('keywords')`, `help('symbols')`
+- `help('modules')`: List all modules; can take a very long time.
+  Use `help('modules foo')` to search for modules containing `foo` in
+  the name or description, or display information about module `foo`.
+- `help(s)`: Where `s` is `'modules'`, `'keywords'`, `'symbols'`.
+
 #### Quick Hints
 
 * Use the [ipython](ipython.md) REPL to experiment.
@@ -169,6 +181,7 @@ present or does its own thing if not.
 [CPython]: https://en.wikipedia.org/wiki/CPython
 [GvRimmut]: https://twitter.com/nedbat/status/960849071157268480
 [`__call__`]: https://docs.python.org/3/reference/datamodel.html#object.__call__
+[`help()`]: https://docs.python.org/3/library/functions.html#help
 [`repr(o)`]: https://docs.python.org/3/reference/datamodel.html#object.__repr__
 [hashandeq]: https://hynek.me/articles/hashes-and-equality/
 [inventwith]: https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/
@@ -181,4 +194,3 @@ present or does its own thing if not.
 [official documentation]: <https://docs.python.org/3/>
 [ppr]: https://www.safaribooksonline.com/library/view/python-pocket-reference/9781449357009/ch01.html
 [wp]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics
-
