@@ -133,7 +133,7 @@ Other:
 * `format_map(mapping)`: _mapping_ is used directly and not copied to
   a dict (useful for dict subclasses)
 * _s_ `%` _values_: Not recommended. See [printf-string] and
-  [printf-bytes] for more info.
+  [printf-bytes] (≥3.5) for more info.
 
 ### I/O
 
