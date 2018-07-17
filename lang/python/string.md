@@ -3,8 +3,9 @@ Python Character and Byte String Handling
 
 Python has immutable strings of Unicode code points, [`str`], and
 8-bit bytes, [`bytes`], both of which are [sequences] as well as
-having further specialized methods. There's no separate char type;
-`s[0]` produces a `str` or `bytes` of length 1.
+having further specialized methods. Though `b[0]` of a `bytes` or
+similar returns an `int`, there's no separate char type; `s[0]` of a
+`str` produces another `str` of length 1.
 
 Other [binary sequence types][binseq] include:
 * [`bytearray`]: Mutable counterpart to `bytes`. No string literal
