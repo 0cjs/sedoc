@@ -1,29 +1,35 @@
-Python String Handling
-======================
+Python Character and Byte String Handling
+=========================================
 
-* See also [Sequences](sequence.md).
+Python has immutable strings of Unicode code points, [`str`], and
+8-bit bytes, [`bytes`], both of which are [sequences] as well as
+having further specialized methods. There's no separate char type;
+`s[0]` produces a `str` or `bytes` of length 1.
 
-Python strings are [`str`] objects which are immutable sequences of
-Unicode code points. There's no separate char type; `s[0]` produces a
-string of length 1.
+Other [binary sequence types][binseq] include:
+* [`bytearray`]: Mutable counterpart to `bytes`. No string literal
+  constructor but otherwise all the same methods plus mutators.
+* [`memoryview`]: Memory buffers to access internal data of objects
+  supporting the (C-level) [buffer protocol].
 
-Constructors:
+### Constructors
 
 * `str(obj='')`
 * `str(obj=b'', encoding='utf-8', errors='strict')`
+* `bytes(10)`: Zero-filled string.
+* `bytes(range(20))`: From iterable of integers 0 ≤ i < 256.
+* `bytes(b'abc')`: Copy of binary data via buffer protocol
+* `bytes.fromhex('2Ef0 F1F2')`: ASCII hex representation, skipping whitespace
 
-Literals are single or double-quoted which work the same way except
-for allowing double or single quotes in the string. Strings may also
-be "triple-quoted" using a sequence of three single or double quotes
-(`'''` or `"""`); these may span multiple lines. Adjacent string
-literals are concatenated into a single string.
+Literals are quoted with single (`'`) or double (`"`) quotes; each
+allows the other in its string. Triple-quoted strings (`'''` or
+`"""`); may span multiple lines. Adjacent string literals are
+concatenated into a single string.
 
-String literals may be prefixed with characters to change their
-interpretation. The prefix is case-insensitive. Whitespace is not
-allowed between the prefix and the opening quote.
-
-- `b`: Produce a `bytes` instead of a `str`. Only ASCII chars and
-  backslash escape sequencs allowed.
+String literals may be prefixed with case-insensitive one-character
+prefixes to change their interpretation:
+- `b`: Produce a `bytes` instead of a `str`. Only ASCII chars
+  (codepoints < 128) and backslash escape sequences allowed.
 - `r`: Raw string or bytes; backslashes are interpreted literally.
   (Not usable with `u`.)
 - `u`: Unicode literal. Does nothing in Python ≥3.3; in Python 2,
@@ -32,16 +38,29 @@ allowed between the prefix and the opening quote.
 - `f`: (≥3.6) [Formatted string literal][f-strings]. Cannot be
   combined with `b` or `u`.
 
-See [String and Bytes literals] for more.
+More, including escape code list, at [String and Bytes literals].
 
 ### Methods
+
+All methods below apply to both character and byte strings (`str` and
+`bytes`) unless otherwise indicated. Methods that assume chars (e.g.,
+`capitalize`) assume ASCII in bytestrings. Methods available on
+immutable objects always return a new copy, even when called on a
+mutable object (e.g., `bytearray.replace()`).
 
 [Common Sequence Operations](sequence.md):
 * `t [not] in s`: Subsequence test, e.g., `'bar' in 'foobarbaz'` is True
 * `s + t`: Concatenation returning new object. For better efficiency,
   use `''.join(s, t, ...)` or write to [`io.StringIO`].
 
-Character Class Predicates (all chars must match and len ≥ 1):
+Encoding:
+* `decode(encoding='utf-8', errors='strict')`: Returns `str` decoded
+  from `bytes` read as [encoding]. _errors_ may be `strict` (raises
+  `UnicodeError`), `ignore`, `replace`, etc.; see [codec error handlers].
+* `encode(encoding='utf-8', errors='strict')`: Return `bytes` object
+  encoded from `str`.
+
+Character Class Predicates (`str` only; all chars must match and len ≥ 1):
 * `isprintable()`: Includes space but not other whitespace;
    true if empty as well
 * `isspace()`: Whitespace
@@ -68,8 +87,6 @@ Modification:
 * `lstrip(cs)`, `rstrip(cs)`, `strip(cs)`: Remove leading/trailing/both
   chars of set made from string _cs_, default whitespace
 * `replace(old, new[, count])`: Replace substring _old_
-* `encode(encoding='utf-8', errors='strict')`: Return `bytes` object
-  (strict raises `UnicodeError`)
 
 Case modification:
 * `upper()`, `lower()`
@@ -112,21 +129,29 @@ Other:
 
 * `f'...'`, `F'...'`: (≥3.6) Formatted string literals or [f-strings]
 * `format(*args, **kwargs)`: See [format string syntax]
-* `format_map(mapping)`: _mapping_ is used directly and not copied to a dict
-  (useful for dict subclasses)
-* _s_ `%` _values_: Not recommended. See [printf] for more info.
+* `format_map(mapping)`: _mapping_ is used directly and not copied to
+  a dict (useful for dict subclasses)
+* _s_ `%` _values_: Not recommended. See [printf-string] and
+  [printf-bytes] for more info.
 
+### I/O
 
-Related
--------
-
-* [`io.StringIO`]
+* [`io.StringIO`], [`io.BytesIO`]: In-memory I/O
 
 
 
 [String and Bytes literals]: https://docs.python.org/3/reference/lexical_analysis.html#strings
+[`bytearray`]: https://docs.python.org/3/library/stdtypes.html#bytearray-objects
+[`bytes`]: https://docs.python.org/3/library/stdtypes.html#bytes
+[`io.BytesIO`]: https://docs.python.org/3/library/io.html#io.BytesIO
 [`io.StringIO`]: https://docs.python.org/3/library/io.html#io.StringIO
+[`memoryview`]: https://docs.python.org/3/library/stdtypes.html#memoryview
 [`str`]: https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
+[binseq]: https://docs.python.org/3/library/stdtypes.html#binaryseq
+[buffer protocol]: https://docs.python.org/3/c-api/buffer.html
+[codec error handlers]: https://docs.python.org/3/library/codecs.html#error-handlers
+[encoding]: https://docs.python.org/3/library/codecs.html#standard-encodings
 [f-strings]: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
 [format string syntax]: https://docs.python.org/3/library/string.html#formatstrings
-[printf]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
+[printf-string]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
+[printf-bytes]: https://docs.python.org/3/library/stdtypes.html#printf-style-bytes-formatting

@@ -8,7 +8,7 @@ Python Summary/Quickref
   - [Functions](functions.md)
   - [Types](types.md)
   - [Names, Bindings, Namespaces](name-binding.md)
-  - [String Handling](string.md)
+  - [Character and Byte String Handling](string.md)
   - [Docstrings](docstring.md)
 * Language Features
   - [Iterators and Generators](iter.md)
