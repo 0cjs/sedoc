@@ -123,8 +123,8 @@ output and clears the capture buffer. `disabled()` pauses capture.
 
 
 
-
 [assertions]: https://docs.pytest.org/en/latest/assert.html
+[builtin]: https://docs.pytest.org/en/latest/builtin.html
 [capture]: https://docs.pytest.org/en/latest/capture.html
 [exceptions]: https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions
 [issue 3671]: https://github.com/pytest-dev/pytest/issues/3671
