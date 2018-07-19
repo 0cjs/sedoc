@@ -2,6 +2,7 @@ Docker
 ======
 
 Documentation:
+* [Docker Image Creation and Maintenance](image.md)
 * [Docker Installation and Configuration](config.md)
 * [Docker Security](security.md)
 * [Docker Tips](tips.md) for handy commands and the like.
