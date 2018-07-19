@@ -121,6 +121,19 @@ You can [parametrize] test functions; they will be run multiple times
   - _argvalues_: List (sequence?) of values if one argname; list
     (sequence?) of lists (sequences?) of values if multiple argnames.
 
+Parametrization also occurs with [fixtures that have a `params`
+option][parametrizing-fixtures]. The test is called once for each
+value returned by the fixture (called once with each parameter). With
+multiple fixtures the test is called for the product of all parameters
+(i.e., all possible combinations).
+
+    @pytest.fixture(params=['a', 'b', 'c'])
+    def myfixture(request):
+        return request.param
+
+    def test_run_mutiple_times(myfixture):
+        assert 'b' == myfixture             # Passes once, fails twice
+
 #### Custom Markers
 
 For full details, see [Working with custom markers][markers-custom].
@@ -229,6 +242,7 @@ Doctest config options:
 [markers-custom]: https://docs.pytest.org/en/latest/example/markers.html
 [markers-register]: https://docs.pytest.org/en/latest/example/markers.html#registering-markers
 [markers]: https://docs.pytest.org/en/latest/mark.html
+[parametrizing-fixtures]: https://docs.pytest.org/en/latest/fixture.html#parametrizing-fixtures
 [parametrize]: https://docs.pytest.org/en/latest/parametrize.html
 [pytest.ini]: pytest-config.md#rootdir-and-configuration
 [pytest]: https://pytest.org/
