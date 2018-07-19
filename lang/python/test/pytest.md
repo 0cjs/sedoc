@@ -121,6 +121,11 @@ You can [parametrize] test functions; they will be run multiple times
   - _argvalues_: List (sequence?) of values if one argname; list
     (sequence?) of lists (sequences?) of values if multiple argnames.
 
+To xfail or otherwise mark a single parametrized value, directly build
+a `pytest.param` with the mark set:
+
+    [ (1, 2), pytest.param(3, 4, marks=pytest.mark.xfail(reason='blah'), ... ]
+
 Parametrization also occurs with [fixtures that have a `params`
 option][parametrizing-fixtures]. The test is called once for each
 value returned by the fixture (called once with each parameter). With
