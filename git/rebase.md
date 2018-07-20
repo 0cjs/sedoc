@@ -1,32 +1,60 @@
 Rebasing in Git
 ===============
 
+The following two commands are equivalant:
 
-Regular vs. "Onto" Rebasing
----------------------------
+    git rebase upstream devbranch
+    git rebase --onto upstream $(git merge-base upsteam devbranch) devbranch
 
-`git rebase BASE` takes _all_ commits from `HEAD` (back to the initial
-commit) that do not exist on the `BASE` branch and re-applies them
-following `BASE`. (`BASE` defaults to the upstream defined by
+`git rebase upstream` takes all commits from `HEAD` that do not exist
+on the `upstream` branch and re-applies them following `upstream`.
+(`upstream` defaults to the upstream defined by
 `branch.<name>.{remote,merge}`.)
 
-The `--onto NEWBASE` option applies the commits to follow `NEWBASE`
-instad of `BASE`, in which case `BASE` is only used to determine the
-commits that will be applied, as above.
+`git rebase --onto upstream forkpoint` option applies the commits onto
+`upstream` as above, but takes only commits `forkpoint..HEAD`. See
+below for examples/situations for using this.
 
-In the typical case of a force-pushed dev branch, rebasing the old
-version on to the new will re-introduce commits that were removed. If
-you don't have any new commits you've added all you need to do is
-reset your head to the tracking head (with `git reset --hard
-@{upstream}`), throwing away everything on your local branch. To
-maintain your additional commits, transplant your commits _from_ that
-point from their parent commit to a new parent commit:
+The procedure is:
+1. Checkout `devbranch`.
+2. Set `ORIG_HEAD` to `HEAD`.
+2. Reset the current branch to _upstream_.
+3. For each commit `forkpoint..ORIG_HEAD` apply it to `HEAD` à la `cherry-pick`.
+4. Skip any commits that would produce no textual changes on `HEAD`
+   (i.e., the changes are already included in _upstream_).
+5. Stop on merge failures for manual fixes.
 
-    #                 new-base   old-base
-    git rebase --onto origin/foo origin/foo@{1}
+The standard merge strategy is `recursive`, which will normally stop
+for manual resolution when there's a conflict. This can be overridden
+with `-Xours` or `-Xtheirs`, automatically taking content from the
+specified side in the case of a conflict. During rebases as described
+above, remember that `ours` is _upstream_, onto which you're rebasing,
+and `theirs` is the dev branch, `ORIG_HEAD`. (This is the opposite of
+the meaning during `git merge`.)
 
-For more details, see [`git-rebase(1)`] manpage section ["Recovering
-from Upstream Rebase"].
+The recursive merge strategy also offers `-Xignore-space-change` etc.
+
+
+Using --onto
+------------
+
+Take the last few commits on a branch onto the upstream:
+
+    git rebase --onto origin/master @~5     # Take last five commits
+
+Especially useful when someone else has force-pushed your dev branch
+but you also have new commits and so can't just `git reset --hard
+@{upstream}`. This avoids redoing conflict resolution and
+reintroducing commits that were removed:
+
+    git rebase --onto @{u} @~2              # Keep my last two commits
+
+Remove commits in the middle of a branch:
+
+    git rebase --onto dev~5 dev~3 dev       # Remove dev~4 and dev~3
+
+Also see [`git-rebase(1)`] manpage section ["Recovering from Upstream
+Rebase"][recovering].
 
 
 
