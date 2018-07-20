@@ -32,6 +32,14 @@ above, remember that `ours` is _upstream_, onto which you're rebasing,
 and `theirs` is the dev branch, `ORIG_HEAD`. (This is the opposite of
 the meaning during `git merge`.)
 
+When you're in a conflicted state, you can also use `git checkout
+--ours .` (take all changes from _upstream_) or `git checkout --theirs
+.` (take all changes from _devbranch_). Note that these must have a
+path specified, otherwise you will get an error `--ours/--theirs'
+cannot be used with switching branches`. (For more details, see the
+message from Jeff King in [git checkout --theirs
+fails][co-theirs-fails].
+
 The recursive merge strategy also offers `-Xignore-space-change` etc.
 
 
@@ -59,4 +67,5 @@ Rebase"][recovering].
 
 
 [`git-rebase(1)`]: https://git-scm.com/docs/git-rebase
+[co-theirs-fails]: http://git.661346.n2.nabble.com/git-checkout-theirs-fails-td7650612.html
 [recovering]: https://git-scm.com/docs/git-rebase#_recovering_from_upstream_rebase
