@@ -1,6 +1,18 @@
 Linux Network Configuration
 ===========================
 
+What's Listening?
+-----------------
+
+For most of these informaiton will be incomplete unless run as root.
+
+- `netstat -lp` (package `net-tools`) shows listening sockets with
+  PIDs/program names. Add `-t`/`-u` for TCP/UDP.
+- `lsof -i ap` (`@`_ap_ optional) shows sockets. _ap_ can be, e.g.,
+  `tcp:80`, `:80`.
+- `fuser 80/tcp` (package `psmisc`)
+
+
 RHEL/CentOS Old Static Network Config
 -------------------------------------
 
