@@ -1,6 +1,13 @@
 Git Commits
 ===========
 
+For some tips on fixing/rewriting commits, see [Handy Git
+Tricks](tricks.md).
+
+
+Plumbing
+--------
+
 The plumbing command to create a git commit is [`git commit-tree`]:
 
     git commit-tree <tree> [(-p <parent>)...] \

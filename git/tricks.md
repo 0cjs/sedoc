@@ -24,7 +24,11 @@ Logging and Graph Exploration
 Fixing Commits
 --------------
 
-* To remove a file accidentally added to the most recent commit:
+* To rewrite the author and timestamp of a commit:
+
+      git commit --amend --reset-author
+
+* To remove a file accidentally added to a commit:
 
       git reset --soft @^
       git reset @ path/to/file
