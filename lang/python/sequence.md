@@ -37,6 +37,10 @@ Lowest to highest precedence:
 
 When implementing these, [`collections.abc.Sequence`] is useful.
 
+See also [Using Iterables](iter.md#using-iterables) for more generic
+methods that operate on iterables, including `map`, `enumerate`,
+`zip`, `filter`, `max`, `min`, `sum`, `sorted`, `all`, `any`.
+
 #### [Mutable Sequences][mutseqops]
 
 Below, _s_ is any mutable sequence, _t_ is any iterable and _x_ is an

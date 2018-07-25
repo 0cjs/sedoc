@@ -70,9 +70,11 @@ Using Iterables
 
 #### Constructors
 
-* `tuple`, `list`
-* `set`, `frozenset`
-* `dict`: Iteratates over the keys.
+* `tuple`, `list`: Construct an empty sequence or from an iterable.
+* `set`, `frozenset`: Construct an empty set or from an iterable.
+* `dict`: Construct an empty dictionary or from _kwargs_, a mapping or
+  an iterable of iterable key-value pairs. Iterating over a `dict`
+  yields the keys.
 * `open()`: Iterates over lines in file or other input source.
 * ...
 
