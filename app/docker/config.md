@@ -5,7 +5,9 @@ Registries
 ----------
 
 You can set up your own registry; see [Deploy a registry
-server][registry-deploy].
+server][registry-deploy]. Other services also offer registries,
+including [Google Cloud][gcp-registry], [Amazon Elastic Container
+Registry][aws-ecr] and [GitLab].
 
 The default port for docker push/pull is 5000. (Note that the API uses
 standard ports 80/443.) The default registry is [Docker Hub] (API at
@@ -30,6 +32,9 @@ If authorization is required you can check the headers (with `-i` or
 `-H 'Authorization: Bearer TOKEN'` where _TOKEN_ is taken from your
 `~/.docker/config.json` file, [docker-ls], [registry-cli] or something
 else. I've not been able to get anything to work.
+
+The [scopeo] command line tool offers further tools for
+inspecting/copying/etc. images both locally and in registries.
 
 
 Public Docker Images
@@ -76,7 +81,10 @@ Install Docker
 [Supported platforms] are Linux servers (various distros and
 architectures), Cloud (AWS, Azure), and Desktop (Windows, Mac.)
 
-#### [Debian]
+The [storage driver] you use can be particularly important; as well
+as the Docker documentation [atomic-loopback] is good.
+
+#### Debian
 
 [Debian] has no EE; CE is supported on `x86_64` and `armhf` of Debian
 8-10. Debian 7 supports only `x86_64` and requires a kernel update
@@ -106,50 +114,82 @@ package, or from the Docker repository (this for Debian 8+ `x86_64`):
 
     docker run hello-world      # Verify it's working
 
-#### [Ubuntu]
+#### Ubuntu
 
-[Ubuntu CE][ubuntu] supports 17.10 (edge only), 17.04, 16.04, 14.04 on
+[Ubuntu CE] supports 17.10 (edge only), 17.04, 16.04, 14.04 on
 `x86_64`, `armhf`, `s390x` and `ppc64le`. ([Ubuntu EE] is also
 available.)
 
-`overlay2` is the preferred storage driver (kernel v4+); otherwise
+`overlay2` is the preferred [storage driver] (kernel v4+); otherwise
 use `aufs`. On 14.04 you'll want the `linux-image-extra-*` packages:
 
     apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
 
 The rest is as with Debian above.
 
+[Ubuntu CE]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+[Ubuntu EE]: https://docs.docker.com/engine/installation/linux/docker-ee/ubuntu/
 
-[Docker Machine]
-----------------
+#### RHEL/CentOS
 
-Use [Docker Machine] to provision virtual machines (local VMs, cloud
-instances, whatever) configured with Docker Engine that then let you
-use the `docker` command to use them just like a local Docker Engine.
-(Docker Machine used to be used to set up a VM and Docker Engine on
-Linux and Mac, though that's now been replaced by the "native"
-versions of Docker Engine.)
+The [storage driver] situation can be tricky. In particular
+devicemapper can be bad: [Friends Don't Let Friends Run Docker on
+Loopback in Production][atomic-loopback]. The 'File Systems' section
+of the RHEL release notes for [7.1] and [7.3] offer further
+information.
 
+[7.1]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.1_release_notes/chap-red_hat_enterprise_linux-7.1_release_notes-file_systems)
+[7.3]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.3_release_notes/technology_previews_file_systems
+
+#### CoreOS / Container Linux
+
+[CoreOS] is a set of Kubernates-related technologies that includes
+[Container Linux], a distro designed to do nothing but run Docker
+containers. See also:
+- [Reboot strategies on updates][coreos-update]
+
+[Container Linux]: https://coreos.com/os/docs/latest/
+[CoreOS]: https://coreos.com/
+[coreos-update]: https://coreos.com/os/docs/latest/update-strategies.html
+
+
+Managment Systems
+-----------------
+
+* [Docker Machine] provisions virtual machines (local VMs, cloud
+  instances, whatever) configured with Docker Engine that then let you
+  use the `docker` command to use them just like a local Docker
+  Engine. (Docker Machine used to be used to set up a VM and Docker
+  Engine on Linux and Mac, though that's now been replaced by the
+  "native" versions of Docker Engine.)
+* [Deis Workflow] builds on Kubernetes to provide developer-driven app
+  deployment.
+
+[Deis Workflow]: https://deis.com/docs/workflow/
+[Docker Machine]: https://docs.docker.com/machine/overview/
 
 
 
 [Docker Hub]: https://hub.docker.com/explore/
-[Docker Machine]: https://docs.docker.com/machine/overview/
 [Docker Store]: https://store.docker.com/
 [HTTP API]: https://docs.docker.com/registry/spec/api/
-[Ubuntu EE]: https://docs.docker.com/engine/installation/linux/docker-ee/ubuntu/
+[atomic-loopback]: https://www.projectatomic.io/blog/2015/06/notes-on-fedora-centos-and-docker-storage-drivers/
 [authentication]: https://docs.docker.com/registry/spec/auth/jwt/
+[aws-ecr]: https://aws.amazon.com/ecr/
 [command line]: https://docs.docker.com/edge/engine/reference/commandline/docker/
 [debian]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
 [docker build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
 [docker-ls]: https://github.com/mayflower/docker-ls
 [engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
-[official repos]: https://hub.docker.com/explore/
+[gcp-registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US
+[gitlab]: https://about.gitlab.com/2016/05/23/gitlab-container-registry/
+[official repos]: https://docs.docker.com/docker-hub/official_repos/
 [reference documentation]: https://docs.docker.com/reference/
 [registry-cli]: https://github.com/andrey-pohilko/registry-cli
 [registry-deploy]: https://docs.docker.com/registry/deploying/
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
+[scopeo]: https://github.com/projectatomic/skopeo
 [so-28320134]: https://stackoverflow.com/q/28320134/107294
+[storage driver]: https://docs.docker.com/storage/storagedriver/
 [supported platforms]: https://docs.docker.com/engine/installation/#supported-platforms
-[ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/

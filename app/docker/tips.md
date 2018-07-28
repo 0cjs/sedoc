@@ -70,6 +70,34 @@ Building with `docker build --rm=false --no-cache` will keep the
 intermediate images; then use `docker diff` to see exactly what files
 are added in each layer.
 
+### Cleaning Up Old Images, etc.
+
+`docker system prune`
+
+### Systemd in Docker
+
+- [Running Systemd Within a Docker Container](https://rhatdan.wordpress.com/2014/04/30/running-systemd-within-a-docker-container/)
+- [Docker versus Systemd - Can't we just get along?](https://www.youtube.com/watch?v=93VPog3EKbs#t=18m16)
+  (presentation video)
+
+### Docker in Docker
+
+Another Docker daemon can be run within Docker container if you
+started it with the `-privleged` flag. But don't do it unless you're
+using it to test a different version of Docker. Instead mount
+`/var/run/docker.sock` in your docker container to let it create other
+containers using the main Docker daemon.
+
+* [Docker Can Now Run within Docker][dind]
+* [Using Docker-in-Docker for your CI or testing environment? Think
+  twice.][dind-no-ci] Docker-in-Docker is primarily for testing Docker
+  itself. It has problems with LSM (AppArmor, SELinux), storage
+  drivers (since they have to run on top of a copy-on-write layer) and
+  multiple build caches.
+
+[dind-no-ci]: https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+[dind]: https://blog.docker.com/2013/09/docker-can-now-run-within-docker/
+
 ### Leveraging Docker for Root Access
 
 See [Docker Security](security.md)
