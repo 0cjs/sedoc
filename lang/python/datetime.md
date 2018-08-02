@@ -1,54 +1,60 @@
 Python Date and Time Handling
 =============================
 
-* [`datetime`][datetime] is the Python standard library
-* [`dateutil`] has useful extensions
+- [`datetime`] is the Python standard library
+- [`dateutil`] has useful extensions
+  - [`dateutil.tz`] has `tzinfo` objects for the [IANA timezone database][IANA]
 
 
-[datetime]
-----------
 
-`datetime` is the standard Python library for handling dates and times.
+datetime
+--------
 
-If a `tzinfo` field is not `None` and `d.tzinfo.utcoffset(d)` does not
-return `None`, the 
+[`datetime`] is the standard Python library for handling dates and times.
+
+All objects are immutable.
+
+Constants:
+
+    MINYEAR     # ⇒ 1
+    MAXYEAR     # ⇒ 9999
+
+Class hierarchy:
+
+    object
+        timedelta       # duration in microseconds
+        time            # idealized time in 86,400 second day (no leap secs)
+        date            # year/month/day in proleptic Gregorian calendar
+            datetime    # Adds `time` to `date`
+        tzinfo          # Abstract base class for time zone info objects
+            timezone    # Fixed offset from UTC (no DST etc. adjustments)
 
 An 'aware' object has some sort of TZ, DST etc. information allowing
 it to mark a specific moment in time that's not open to interpretation
 (e.g., '13:15 UTC'). A 'naive' object may vary depending on external
-interpretation (e.g., '2013-08-25'). If `tzinfo` is `None` the object
-is always naive, otherwise check the `tzinfo.utcoffset()` result.
+interpretation (e.g., '2013-08-25'). `date` is always naive; `datetime`
+and `time` may be naive or aware.
 
-#### Constants and Types
+#### timedelta
 
-* `MINYEAR` (1), `MAXYEAR` (9999)
+A [`timedelta`] is a duration in microseconds between two
+`date/time/datetime`. It is neither naive nor aware.
 
-All the following are immuatable.
-
-* `date`: (`year`, `month`, `day`) in proleptic Gregorian calendar
-  (extended infintely in both directions from current date). Always naive.
-* `time`: does not allow leap seconds.
-  (`hour`, `minute`, `second`, `microsecond`, `tzinfo`)  
-  Aware if `t.tzinfo.utcoffset(None)` does not return `None`.
-* `datetime`: subclass of `date` with `time` added
-  Aware if `d.tzinfo.utcoffset(d)` does not return `None`.
-* `timedelta`: microseconds between two `date/time/datetime`.
-  Neither naive nor aware.
-* `tzinfo`: ABC for time zone info objects
-  * `timezone`: A `tzinfo` at fixed offset from UTC (no adjustments)
-
-#### [timedelta]
+- Constructed representations are normalized to a unique value.
+- Only days can be negative; `timedelta(seconds-1)` produces
+  `timedelta(-1, 86399)`.
+- The absolute value of _days_ <= 999,999,999.
+- Due to this normalization:
+  - `timedelta.max > -timedelta.min`
+  - `-timedelta.max` is not representable as a timedelta object.
 
 Class attributes:
-* `min`: most negative, `timedelta(-999999999)`.
-* `max`: most positive, `timedelta(999999999)`.
-* `resolution`: minimum difference, `timedelta(microseconds=1)`.
-  (Due to normalization, `timedelta.max > -timedelta.min`.
-  `-timedelta.max` is not representable as a timedelta object.)
 
-Constructed representations are normalized to a unique value. Only days
-can be negative; `timedelta(seconds-1)` produces `timedelta(-1, 86399)`.
-|days| <= 999,999,999.
+    min         # most negative, `timedelta(-999999999)`.
+    max         # most positive, `timedelta(999999999)`.
+    resolution  # minimum difference, `timedelta(microseconds=1)`.
+
+Constructors:
 
     timedelta(days=0, seconds=0, microseconds=0, milliseconds=0,
               minutes=0, hours=0, weeks=0)
@@ -63,18 +69,34 @@ Operations:
   (Loses microsecond accuracy on >270 year durations on most platforms.)
 * `+/-` with `date` and `datetime`.
 
-#### [date]
+#### time
 
-As per Reingold and Dershowitz _Calendrical Calculations_, where it’s
-the base calendar for all computations. See the book for algorithms
-for converting between proleptic Gregorian ordinals and many other
-calendar systems. Also see [The Mathematics of the ISO 8601
-Calendar][isocalendar].
+[`time`] is an idealized time in a 24\*60\*60 second day (there are no
+leap seconds). It's naive if either `.tzinfo` or `.tzinfo.utcoffset(None)`
+is `None`.
+
+Attributes: `hour`, `minute`, `second`, `microsecond`, `tzinfo`.
+
+XXX write me
+
+
+#### date
+
+A [`date`] is a year, month and day in proleptic Gregorian calendar,
+extended infintely in both directions from current date. It's always
+naive.
+
+It functions as per Reingold and Dershowitz _Calendrical
+Calculations_, where it’s the base calendar for all computations. See
+the book for algorithms for converting between proleptic Gregorian
+ordinals and many other calendar systems. Also see [The Mathematics of
+the ISO 8601 Calendar][isocalendar].
 
 Class attributes:
-* `min`: `date(MINYEAR, 1, 1)`
-* `max`: `date(MAXYEAR, 12, 31)`
-* `resolution`: `timedelta(days=1)`
+
+    min             # ⇒ date(MINYEAR, 1, 1)
+    max             # ⇒ date(MAXYEAR, 12, 31)
+    resolution      # ⇒ timedelta(days=1)
 
 Constructors:
 
@@ -97,22 +119,23 @@ Instance methods:
     strftime(fmt)       #   see below
     __format__(fmt)     #   strftime(fmt)
 
-#### [datetime]
+#### datetime
+
+A [`datetime`] is a sublclass of `date` with `time` added to it. It's
+naive if either `.tzinfo` or `.tzinfo.utcoffset(self)` is `None`.
 
 XXX write me
 
-#### [time]
+#### tzinfo, timezone
+
+[`tzinfo`], [`timezone`]
 
 XXX write me
 
-#### [tzinfo], [timezone]
+#### strftime/strptime
 
-XXX write me
-
-#### [strftime]/strptime
-
-`date`, `datetime` and `time` have the `strftime(fmt)` method, broadly
-the same as `time.strftime(fmt, d.timetuple())`.
+`date`, `datetime` and `time` have a [`strftime(fmt)`][strftime]
+method, broadly the same as `time.strftime(fmt, d.timetuple())`.
 
 `datetime.strptime(date_string, fmt)` constructs a `datetime` object,
 equivalant to `datetime(*(time.strptime(date_string, format)[0:6]))`.
@@ -132,20 +155,21 @@ with a standard C implementation:
 * `%z`, `%Z`: UTC offset (+/-0000), time zone name (empty if object is naive)
 * `%c`, `%x`, `%X`: locale-appropriate datetime, date, time representation
 
-Py>=3.6 adds the following (non-C standard):
+Python ≥ 3.6 adds the following (non-C standard):
 * `%G`: ISO 8601 year containing greater part of date's ISO week
 * `%u`: ISO 8601 weekday (1=Monday)
 * `%V`: ISO 8601 week starting Mon; week 01 contains Jan 4 (see [isocalendar])
 
 
 
+[IANA]: https://www.iana.org/time-zones
+[`date`]: https://docs.python.org/3/library/datetime.html#date-objects
+[`datetime`]: https://docs.python.org/3/library/datetime.html
+[`dateutil.tz`]: https://dateutil.readthedocs.io/en/stable/tz.html
 [`dateutil`]: https://dateutil.readthedocs.io/en/stable/index.html
-[date]: https://docs.python.org/3/library/datetime.html#date-objects
-[datetime]: https://docs.python.org/3/library/datetime.html
-[datetime]: https://docs.python.org/3/library/datetime.html#datetime-objects
+[`time`]: https://docs.python.org/3/library/datetime.html#time-objects
+[`timedelta`]: https://docs.python.org/3/library/datetime.html#timedelta-objects
+[`timezone`]: https://docs.python.org/3/library/datetime.html#timezone-objects
+[`tzinfo`]: https://docs.python.org/3/library/datetime.html#tzinfo-objects
 [isocalendar]: https://www.staff.science.uu.nl/~gent0113/calendar/isocalendar.htm
 [strftime]: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
-[time]: https://docs.python.org/3/library/datetime.html#time-objects
-[timedelta]: https://docs.python.org/3/library/datetime.html#timedelta-objects
-[timezone]: https://docs.python.org/3/library/datetime.html#timezone-objects
-[tzinfo]: https://docs.python.org/3/library/datetime.html#tzinfo-objects
