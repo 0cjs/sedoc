@@ -57,6 +57,9 @@ Classes
 instance has its own namespace. "Methods" are functions in the
 namespace that take `self` as the first argument.
 
+For details on the internals of attribute and method access, and how
+to modify such access, see _[descriptors](functions.md#Descriptors)_.
+
 All data in an object's namespace ("attributes") are public.
 Convention dicates that names starting with an `_` are for internal
 use only. Names starting with `__` (and with no more than one trailing

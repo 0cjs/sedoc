@@ -248,13 +248,33 @@ C functions that use `PyArg_ParseTuple()` may also have
 `POSITIONAL_ONLY` parameters.
 
 
+Descriptors
+-----------
+
+The [descriptor protocol][descriptor] allows customizing of object
+attribute access. It's the core of method dispatch and the like.
+There's a simple introduction at [Python Descriptors Demystified][beaumont]
+
+The protocol is implemented by implementing at least one of the
+following methods:
+
+    .__get__(self, obj, type=None)  # ⇒ value
+    .__set__(self, obj, value)      # ⇒ None
+    .__delete__(self, obj)          # ⇒ None
+
+[The complete summary of this is yet to be written.]
+
+
+
 [PEP 3102]: https://www.python.org/dev/peps/pep-3102/
 [PEP 362]: https://www.python.org/dev/peps/pep-0362/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
 [`operator`]: https://docs.python.org/3/library/operator.html
+[beaumont]: https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb
 [calls]: https://docs.python.org/3/reference/expressions.html#calls
+[descriptor]: https://docs.python.org/3/howto/descriptor.html
 [fpmods]: https://docs.python.org/3/library/functional.html
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
 [hfw]: https://stupidpythonideas.blogspot.com/2015/12/how-functions-work.html

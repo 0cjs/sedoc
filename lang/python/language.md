@@ -31,7 +31,8 @@ Langauge Summary
 Python variables are untyped, holding references to typed values which
 are always _objects_. Each object has a _[namespace](name-binding.md)_,
 a dictionary of name-value bindings called _attributes_, usually
-accessed as `obj.attr`.
+accessed as `obj.attr`. Attribute access can be modified 'under the
+hood' with _[descriptors](functions.md#Descriptors)_.
 
 There is limited implicit conversation, mainly between numeric types
 and any type to boolean.
