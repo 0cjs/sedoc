@@ -4,9 +4,7 @@ X11 Login and Session Startup
 Display Manager
 ---------------
 
-[Note: This has been checked only against Debian.]
-
-* The DM the login screen.
+* The Display Manager provides the login screen.
 * Its Debian apt package will provide `x-display-manager`.
 * `xdm` is the original old-school one.
 * [`lightdm`], from freedesktop.org, is the usual default.
@@ -18,18 +16,52 @@ They're found in `/usr/share/xgreeters/*.desktop`. Debian+Xfce uses
 the GTK greeter. Ubuntu uses the Unity greeter. The [Ubuntu wiki
 page][uw-lightdm] provides lots of good info on LightDM.
 
+`lightdm --show-config` will show lightdm's configuration.
+
 ### Choosing a Session
 
 LightDM with the GTK greeter gives me a drop-down to choose the
-session; I have:
+session. With Xfce and Fvwm installed you will typically see:
 
-* Default Xsession
-* Fvwm
-* Xfce Session
+    Debian 9                XUbuntu 18.04
+    -------------------     -------------------
+    • Default Xsession     • Fvwm
+    • Fvwm                 • Xfce Session
+    • Xfce Session         • Xubuntu Session
+
+The session descriptions above are stored in `/usr/share/xsessions/`.
+(Files in this directory must be world-readable to be picked up when
+`lightdm` is restarted.) The Debian 9 'Default Xsession' above is
+`lightdm-xsession.desktop`:
+
+    [Desktop Entry]
+    Version=1.0
+    Name=Default Xsession
+    Exec=default
+    Icon=
+    Type=Application
+
+The the 'LightDM configuration' section of [CustomXSession] on the
+Ubuntu Wiki describes how to add a new one, suggesting
+`custom.desktop` containing:
+
+    [Desktop Entry]
+    Name=Xsession
+    Exec=/etc/X11/Xsession
+
+Both of the above should execute your `.xsession` file on login.
+
+`lightdm --show-config` on Debian 9 shows `session-wrapper=/etc/X11/Xsession`;
+I'm not clear on what this means.
 
 
 Session Startup
 ---------------
+
+See also [CustomXSession] on the Ubuntu Wiki.
+
+The default session manager can be seen with
+`update-alternatives --display x-session-manager`.
 
 #### Startup Files
 
@@ -40,8 +72,7 @@ Session Startup
 * [`~/.xprofile`]: Sourced by GDM, KDM, LightDM, LXDM, SDDM. (But not
   by XDM or SLIM.)
 
-
-#### Session Options in the DM
+#### Session Options in the Display Manager
 
 The "Xfce Session" option in the Display Manager section above
 presumably does whatever Xfce normally does.
@@ -83,6 +114,7 @@ Links
 
 [`lightdm`]: https://freedesktop.org/wiki/Software/LightDM/
 [uw-lightdm]: https://wiki.ubuntu.com/LightDM
+[CustomXSession]: https://wiki.ubuntu.com/CustomXSession
 [`xinit`]: https://wiki.archlinux.org/index.php/Xinit
 [`~/.xprofile`]: https://wiki.archlinux.org/index.php/Xprofile
 [uw-ses-start]: https://wiki.ubuntu.com/X/Config/SessionStartup
