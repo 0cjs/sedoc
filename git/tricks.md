@@ -47,7 +47,18 @@ Normally `core.autocrlf` wants to be set to `input` to avoid any
 conversions whatsoever.
 
 
+Debugging Connectivity and Fetch/Push Problems
+----------------------------------------------
 
+Setting `GIT_CURL_VERBOSE=1` in the environment will print extra
+information about HTTP(S) connections. (This is particularly useful
+when using a proxy.)
+
+There are also various `GIT_TRACE` environment variables, including
+`GIT_TRACE_CURL` and `GIT_TRACE_CURL_NO_DATA` documented in the
+[`git(1)`] manpage.
+
+
+
+[`git(1)`]: https://git-scm.com/docs/git
 [attributes]: https://www.git-scm.com/docs/gitattributes
-
-
