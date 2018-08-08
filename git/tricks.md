@@ -61,6 +61,24 @@ The various `GIT_TRACE` environment variables documented in the
   removes the data logging from the trace output.
 
 
+github.com SSH via HTTP Proxy
+-----------------------------
 
+Github.com offers SSH connectivity at [`ssh.github.com` port 443]
+[gh-ssh443]. If you need to go through an HTTP proxy, [corkscrew][]
+(available as a Debian package) can be used to tunnel your SSH
+connection as described at [so-3777141]:
+
+    Host github.com
+        HostName ssh.github.com
+        Port 443
+        User git
+        ProxyCommand corkscrew <proxyhost> <proxyport> %h %p [~/.ssh/proxy_auth]
+
+
+
+[corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
 [`git(1)`]: https://git-scm.com/docs/git
 [attributes]: https://www.git-scm.com/docs/gitattributes
+[gh-ssh443]: https://help.github.com/articles/using-ssh-over-the-https-port/
+[so-3777141]: https://stackoverflow.com/a/3777141/107294
