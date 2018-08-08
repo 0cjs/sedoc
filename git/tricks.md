@@ -50,13 +50,15 @@ conversions whatsoever.
 Debugging Connectivity and Fetch/Push Problems
 ----------------------------------------------
 
-Setting `GIT_CURL_VERBOSE=1` in the environment will print extra
-information about HTTP(S) connections. (This is particularly useful
-when using a proxy.)
+The various `GIT_TRACE` environment variables documented in the
+[`git(1)`] manpage are very useful for debugging transfer problems.
 
-There are also various `GIT_TRACE` environment variables, including
-`GIT_TRACE_CURL` and `GIT_TRACE_CURL_NO_DATA` documented in the
-[`git(1)`] manpage.
+- `GIT_TRACE_CURL`: Prints all HTTP(S) connection information and
+  transferred data, including decrypted data from TLS connections.
+  Obsoletes `GIT_CURL_VERBOSE`, which has a format more similar to
+  curl's `--trace-ascii`.
+- `GIT_TRACE_CURL_NO_DATA` (≥2.16.3) When `GIT_TRACE_CURL` is set,
+  removes the data logging from the trace output.
 
 
 
