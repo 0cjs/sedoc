@@ -174,14 +174,20 @@ For the [distributed cache] feature. (Shared via AWS S3.)
 
 ### Docker Build Container Configuration
 
-The [Docker executor] documentation gives details on what's summarized
-below.
+Some information here comes from the (incomplete, and not always
+correct) [Docker executor] documentation, the rest comes from manual
+inspection of cached volumes and containers.
 
 By default two persistent [Docker volume]s are created and populated
-before the build container runs: `/builds/$GITLAB_USER_ID` and
-`/cache`. (The `$CI_PROJECT_DIR` directory in which the build is done
-is `/builds/$GITLAB_USER_ID/$CI_PROJECT_NAME`.) Unless configured
-otherwise, only the `/cache` volume is saved between builds.
+before the build container runs; these are mounted on:
+`/builds/$GITLAB_USER_ID` and `/cache` (but apparently never both in
+the same container). (The `$CI_PROJECT_DIR` directory in which the
+build is done is `/builds/$GITLAB_USER_ID/$CI_PROJECT_NAME`.) The
+docmentation claims that, unless configured otherwise, only the
+`/cache` volume is saved between builds, but it appears from the build
+behaviour that the `/builds` volume is also saved in order to avoid a
+full `git clone` (instead doing a fetch and working copy clean and
+reset) for every build.
 
 The build runs as follows:
 1. Start service containers.
