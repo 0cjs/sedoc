@@ -50,6 +50,21 @@ See [stdlib](stdlib.md) for functions that operate on these and many
 other types.
 
 
+Common Attributes
+-----------------
+
+Many objects have some standard [special attributes] added by the
+implementation and not shown by `dir()`:
+- `__dict__`: Mapping that stores an objects writable attributes.
+- `__class__`: Class of an instance.
+- `__bases__`: Tuple of base (inherited) classes of a class object.
+- `__subclasses__()`: Class object's subclasses; weak refs.
+- `__name__`: Name of class function, method, descriptor, generator.
+- `__qualname__`: (≥3.3) Above name prefixed with module name.
+- `__mro__`: Tuple of classes used during method resolution.
+- `mro()`: Overridden by metclass to customize method resolution.
+
+
 Classes
 -------
 
@@ -115,4 +130,5 @@ Further documentation:
 [bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
 [collections]: https://docs.python.org/3/library/collections.html#module-collections
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[special attributes]: https://docs.python.org/3/library/stdtypes.html#special-attributes
 [typing]: https://docs.python.org/3/library/typing.html
