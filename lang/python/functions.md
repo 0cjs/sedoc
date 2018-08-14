@@ -1,7 +1,7 @@
 Python Functions and Callables
 ==============================
 
-Functions are first class values of type `class function`; variables
+Functions are first class values of type `function`; variables
 referencing them are in the same namespace as any other variables. `f`
 refers to the function object and `f()` [calls] the function. (The
 cpython `tp_call` field on C structs for objects points to the
@@ -222,6 +222,45 @@ https://stackoverflow.com/q/9458271/107294).
 Function Objects
 ----------------
 
+[The standard type hierarchy][typehier] has a section 'Callable types'
+(scroll down to get to it).
+
+- User-defined function: created by a [function definition[funcdef].
+  Special attributes are as follows; all are writable (most checking
+  the type of the assigned value) unless marked 'RO'.
+  - `__doc__`: Docstring; `None` if not available; not inherited.
+  - `__name__`, `__qualname__`: Name and (≥3.3) qualified (with
+    module) name.
+  - `__module__`: Name (as `str`) of module in which func was defined,
+    or `None`.
+  - `__defaults__`, `__kwdefaults__`: Tuple of default argument values
+    and dict of default keyword arg values; either may be `None`.
+  - `__code__`: Compiled function body
+  - `__globals__`: (RO) Reference to global namespace of module in
+    which function was defined.
+  - `__dict__`: Namespace for arbitrary function attributes.
+  - `__closure__`: (RO) Tuple of cells binding 's free vars, or
+    `None`. Each has a writable `cell_contents` attribute.
+  - `__annotations__`: Dict with parameter annotations; keys are
+    parameter names and `return`.
+- Instance method: combines class, class instance and a callable.
+  There are various further details in the documentation. Additional
+  attributes include:
+  - `__self__`: Class instance object.
+  - `__func__`: Function object.
+  - `__doc__`, `__name__`, `__module__`: Refer to attrs on `__func__`.
+- Generator function: a user-defined function using `yield`; always
+  returns an [iterator](iter.md).
+- Coroutine function: defined using `async def`.
+- Asynchronous generator function: defined using `async def` and using
+  `yield`.
+- Built-in functions and methods: wrapper around a C function.
+  `type()` returns `builtin_function_or_method`. Does not have
+  user-settable attributes.
+- Classes: calling them is usual object constructor; calls
+  `.__new__()`, which defaults to calling `.__init__()`.
+- Class instances: callable when `.__call__()` defined.
+
 #### Function Signature Objects
 
 Available with [PEP 362] (Python 3.3).  
@@ -281,3 +320,4 @@ following methods:
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [mapping]: https://docs.python.org/3/glossary.html#term-mapping
 [so-111255]: https://stackoverflow.com/a/111255/107294
+[typehier]: https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy
