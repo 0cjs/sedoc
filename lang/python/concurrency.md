@@ -82,7 +82,7 @@ Exceptions:
 
 `run()` arrived with Python 3.5, use the following for ≤ 3.4:
 
-* `call()`: `run(...).returncode`
+* [`call()`]: `run(...).returncode`
 * `check_call()`: `run(..., check=True)`
 * `check_output`: `run(..., check=True, stdout=PIPE).stdout`
 * [`getstatusoutput(cmd)`], [`getoutput(cmd)`]: Don't use;
@@ -96,6 +96,7 @@ Exceptions:
 [`OSError`]: https://docs.python.org/3/library/exceptions.html#OSError
 [`STARTUPINFO`]: https://docs.python.org/3/library/subprocess.html#subprocess.STARTUPINFO
 [`ValueError`]: https://docs.python.org/3/library/exceptions.html#ValueError
+[`call()`]: https://docs.python.org/3/library/subprocess.html#subprocess.call
 [`io.TextIOWrapper`]: https://docs.python.org/3/library/io.html#io.TextIOWrapper
 [`os.spawn*`]: https://docs.python.org/3/library/os.html?#os.spawnl
 [`os.system`]: https://docs.python.org/3/library/os.html?#os.system
