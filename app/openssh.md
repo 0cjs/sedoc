@@ -10,6 +10,81 @@ Related Software:
 * [Paramiko API] (Python implementation of SSHv2)
 
 
+Selected Client Configuration Directives
+----------------------------------------
+
+Configuration directives are parsed in order from the command line
+`~/.ssh/config` and `/etc/ssh/ssh_config`; the first-obtained value is
+used. Configuration keywords and arguments are separated by whitespace
+and an optional `=`. In configuration files:
+- Whitespace-only lines and lines starting with `#` are ignored;
+  configuration lines cannot have trailing comments.
+- Configuration arguments may be enclosed in double quotes.
+
+#### Tokens
+
+These may not exist in all versions of SSH or work in all directives.
+
+    %%    Literal ‘%’.
+    %C    Shorthand for %l%h%p%r.
+    %d    Local user's home directory.
+    %h    The remote hostname (after HostName, canonicalization, if any).
+    %i    The local user ID.
+    %L    The local hostname.
+    %l    The local hostname, including the domain name.
+    %n    The original remote hostname, as given on the command line.
+    %p    The remote port.
+    %r    The remote username.
+    %u    The local username.
+
+In most paths, `~` alone will be replaced with the user's homedir.
+
+#### Section Directives
+
+`Host` and `Match` apply to all directives until the next `Host` or
+`Match` directive.
+
+`Host` takes a whitespace-separated list of patterns where `*` and `?`
+match as per shell globs and all else is literal. A pattern negated
+with a leading `!` will cause the host entry to be ignored even if
+other patterns match. The patterns are matched against the hostname
+given on the command line unless `CanonicalizeHostname` is in effect.
+
+`Match` takes list of whitespace-separated conditions, negated with a
+leading `!`, all of which must be satisfied.
+
+Conditions taking no argument are:
+- `all`: Always matches.
+- `canonical`: Matches when config is reparsed after
+  `CanonicalizeHostname` canonicalization.
+
+The `exec command` condition takes one argument, executing _command_
+using user's shell. It is true if exit status is 0. Accepts tokens
+`%h %L %l %n %p %r %u`.
+
+The following conditions take as their argument a comma-separated list
+of patterns (`*`, `?` and leading `!` for negation):
+- `host`: Matched against target hostname after any subsitution by
+  `HostName` or `CanonicalizeHostname` options.
+- `originalhost`: Matched against hostname as typed on command line.
+- `user`: Matched against target username on remote host.
+- `localuser`: Matched against name of user running `ssh`.
+
+#### Directives
+
+Authentication:
+- `HostKeyAlias`: Name under which to look up the host key in
+  known_hosts files. (≥5.3 or earlier.)
+- `IdentityAgent`: Path to SSH agent socket (`~` and `%` tokens
+  allowed).
+
+Canonicalization:
+- `CanonicalizeHostname`: Default `no`, do no rewriting; system
+  resolver handles lookups. If `yes`, connections not using a
+  `ProxyCommand` are canonicalized; if `always` proxied connections
+  are too.
+
+
 IdentityFile and IdentitiesOnly Behaviour
 -----------------------------------------
 
@@ -54,6 +129,18 @@ Note the following implications:
 Also good to keep in mind is that none of the above affects agent
 forwarding; once it's been forwarded anybody on the remote host with
 access to the socket can authenticate with all the keys in the agent.
+
+
+Versions
+--------
+
+    Ver     Distros                 New Config Directives
+    ---------------------------------------------------------------------------
+    7.6     Ubuntu 18.04
+    7.4     Debian 9                IdentityAgent Include
+    6.6     Ubuntu 14.04            Match IgnoreUnknown
+    5.9     Ubuntu 12.04
+    5.3     Ubuntu 10.04
 
 
 
