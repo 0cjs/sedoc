@@ -1,6 +1,7 @@
 [Amazon Web Services][AWS]
 ==========================
 
+* [Instance Metadata via HTTP](instance-metadata.md)
 * [Command Line Interface](cli.md)
 * [IAM - Identity and Access Management](iam.md)
 * [EC2 - Elastic Compute Cloud virtual server instances](ec2.md)
