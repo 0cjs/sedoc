@@ -16,7 +16,21 @@ They're found in `/usr/share/xgreeters/*.desktop`. Debian+Xfce uses
 the GTK greeter. Ubuntu uses the Unity greeter. The [Ubuntu wiki
 page][uw-lightdm] provides lots of good info on LightDM.
 
-`lightdm --show-config` will show lightdm's configuration.
+###### Greeter Configuration
+
+`lightdm --show-config` will show lightdm's configuration, including
+the source file for each non-default setting. Local configuration is
+added to Ubuntu 18 (and maybe Debian, but maybe not) under
+`/etc/lightdm/lightdm.conf.d/`.
+
+The `greeter-hide-users` option determines whether you need to type in
+your login name (`true`) or select your full name from a dropdown
+(`false`). Debian 9 sets this to `true`; Ubuntu 18 leaves it at the
+default `false`. Override this by adding
+`/etc/lightdm/lightdm.conf.d/50-hide-users.conf` with:
+
+    [Seat:*]
+    greeter-hide-users=true
 
 ### Choosing a Session
 
