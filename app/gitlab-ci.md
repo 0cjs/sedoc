@@ -124,9 +124,15 @@ protected branches/tags. They can also be limited to certain [environments].
 'true'`. This appears to be `bash -x`, is very, very noisy and will
 probably display all your secrets in the output log.
 
+##### Environment Variables
+
 As well as any variables defined in the build configuration, there are
-also a large number of preset variables. These are described on the
-[variables] page, and include (but are not limited to):
+also a large number of predefined environment variables. These are
+described on the [variables] page. There they mention that variable
+names changed from GitLab 8.x to 9.0, but the names actually seem to
+be determined by the runner version, not the GitLab version.
+
+Selected variables are: , and include (but are not limited to):
 
 * [`GIT_STRATEGY`]: `clone`, `fetch` (also does git clean) or `none`
 * [`GIT_CHECKOUT`]: If `false` doesn't check out current branch
