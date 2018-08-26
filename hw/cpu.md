@@ -21,6 +21,7 @@ Key:
 |  7630 |  2192 |   4   |  84W | 1150 | 13.2 | Intel Core i5-4670K  3.40 GHz
 |  7425 |  2154 |   4   |  84W | 1150 | 13.2 | Intel Core i5-4670   3.40 GHz
 |  6513 |  1856 |   4   |  77W | 1155 | 12.2 | Intel Core i5-3450   3.1 GHz
+|  4882 |  1988 |   2*2 |  54W | 1151 | 17.1 | Intel Pentium G4560  3.50GHz
 |  4793 |  1963 |   2*2 |  54W | 1150 | 13.1 | Intel Core i3-4130   3.40 GHz
 |  4676 |  1739 |   2*2 |  15W | -    |      | Intel Core i5-7200U  2.50 GHz (T3.1 GHz; Kalby Lake 14 nm)
 |  4363 |  1593 |   2*2 |  15W | -    | 15.4 | Intel Core i5-6260U  1.80 GHz (T2.9 GHz)
