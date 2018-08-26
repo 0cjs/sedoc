@@ -21,9 +21,11 @@ Graphics Card Information
 | GeForce GTX 960       |  5.8 |      |      |     |       |
 | GeForce GTX 980M      |  5.7 |      |      |     |       |
 | GeForce GTX 1050      |  4.5 | 16.4 |  75W |     |    20 |
+| Radeon HD 7870        |  4.4 | 12.2 | 175W |   2 |       |
 | GeForce GTX 970M      |  3.9 |      |      |     |       |
 | GeForce GTX 960M      |  2.1 |      |      |     |       |
 | GeForce GT  1030      |  2.2 | 17.2 |  30W |   2 |    12 |
+| Iris Plus 640         |  1.4 | 17.1 |   0W |     |     0 |
 | GeForce GT   710      |  0.7 | 14.2 |  25W |     |     3 |
 
 
