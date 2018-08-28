@@ -151,7 +151,10 @@ Libraries that use annotations include:
 Decorators
 ----------
 
-Decorators are syntatic sugar:
+Decorators, documented as part of [function definitions][funcdef] are
+syntatic sugar for passing a defined function, class, or coroutine to
+a 'wrapping' function and assigning the result to the original
+function's name. They may be nested.
 
     def foo(f):      return lambda s: 'Foo(' + f(s) + ')'
     def prefix(arg): return lambda f: lambda s: arg + '(' + f(s) + ')'
@@ -165,6 +168,29 @@ Decorators are syntatic sugar:
 
     manual('Hi')            # ⇒ Bar(Foo(Hi))
     decorated('Hi')         # ⇒ Bar(Foo(Hi))
+
+To wrap functions taking arbitrary args, you'll need to pass through
+`*args` and `**kwargs`:
+
+    def decorate(f):
+      def wrapper(*args, **kwargs)
+        f(*args, **kwargs)
+      return wrapper
+
+Wrappers can take optional arguments via kwargs
+(`def w(_f=None, *, ...)`) or [via functools.partial][pycook9.6].
+
+It's a common technique for decorators to return the original object
+as-is (or with attributes added not affecting the call) but record
+information about the object, such as a list of functions or classes
+registered as added to an API.
+
+* For a tutorial, see [Primer on Python Decorators][primer].
+* For a clever combination of wrapping and further registration based
+  on the original function (using added attributes, almost as if using
+  a class), see [functools.singledispatch] and [PEP 443].
+
+#### Support Functions for Decorators
 
 [`functools`] (see more below) provides `update_wrapper()` and the
 `@wraps` decorator to help preserve the names and docstrings:
@@ -307,6 +333,7 @@ following methods:
 
 [PEP 3102]: https://www.python.org/dev/peps/pep-3102/
 [PEP 362]: https://www.python.org/dev/peps/pep-0362/
+[PEP 443]: https://www.python.org/dev/peps/pep-0443/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
@@ -316,8 +343,11 @@ following methods:
 [descriptor]: https://docs.python.org/3/howto/descriptor.html
 [fpmods]: https://docs.python.org/3/library/functional.html
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[functools.singledispatch]: https://docs.python.org/3/library/functools.html#functools.singledispatch
 [hfw]: https://stupidpythonideas.blogspot.com/2015/12/how-functions-work.html
 [iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [mapping]: https://docs.python.org/3/glossary.html#term-mapping
+[primer]: https://realpython.com/primer-on-python-decorators/
+[pycook9.6]: https://github.com/dabeaz/python-cookbook/blob/master/src/9/defining_a_decorator_that_takes_an_optional_argument/example.py
 [so-111255]: https://stackoverflow.com/a/111255/107294
 [typehier]: https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy
