@@ -5,8 +5,30 @@ X11 Fonts
 Fontconfig Library
 ------------------
 
-* [fonts-conf][] (local documentation)
-* List fonts with `fc-list`.
+* [The Fontconfig User Guide][fc-user]
+
+#### Commands:
+
+Commands that take a `--format` use formats as specified in the
+`FcPatternFormat(3)` manpage and parsed by `fc-pattern`.
+
+* `fc-list [-v] [pattern [element]]`
+  - _pattern_ may be `:` to match everything
+* `fc-match [-v] [-s] [pattern [element]]`
+  - Like `fc-list`, but displays only best match
+  - `-s` gives sorted list of best matches
+  - `-a` gives sorted list without pruning
+
+Font file reading:
+* `fc-scan`: Scans a file or directory recursively, printing out infomation
+  about the fonts in files.
+* `fc-query`: Like `fc-scan`, but takes only an explicit list of filenames.
+* `fc-cat`: Reads font cache information files. No `--format` option.
+
+Command Hints/Samples:
+
+    fc-list :spacing=100 family         # List monospaced families
+    fc-scan -f '%{family}\n' .fonts/    # List families of all files under dir
 
 
 Preferred Fonts
@@ -55,6 +77,6 @@ Also see [so-118641].
 
 [so-118641]: https://unix.stackexchange.com/q/118641/10489
 [desktop-utils]: https://github.com/0cjs/desktop-utils
-[fonts-conf]: file:///usr/share/doc/fontconfig/fontconfig-user.html
+[fc-user]: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
 [scp-releases]: https://github.com/adobe-fonts/source-code-pro/releases
 [scp]: https://en.wikipedia.org/wiki/Source_Code_Pro
