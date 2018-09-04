@@ -53,7 +53,7 @@ Also see [so-118641].
 
 
 
-[so-118641] https://unix.stackexchange.com/q/118641/10489
+[so-118641]: https://unix.stackexchange.com/q/118641/10489
 [desktop-utils]: https://github.com/0cjs/desktop-utils
 [fonts-conf]: file:///usr/share/doc/fontconfig/fontconfig-user.html
 [scp-releases]: https://github.com/adobe-fonts/source-code-pro/releases
