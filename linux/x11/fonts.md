@@ -127,12 +127,23 @@ fallback is a bitmap font; maybe just set better fallback fonts?
 See:
 - [Ubuntu bug 309792](https://bugs.launchpad.net/ubuntu/+source/rxvt-unicode/+bug/309792)
 
+Another problem, involving a much smaller difference in font width
+rendering, may be related Xft/FreeType's subpixel rendering. The
+default value of [`Xft.rgba`] appears to be set by the X11 server and
+graphics card driver, and may or may not bear any relation to what the
+monitor actually uses, but this can noticably affect character width
+without affecting height. Explicitly forcing `Xft.rgba: none` can make
+the text about 10% narrower than using `Xft.rgba: rgb`. For more
+details and debugging info ([`FC_DEBUG`]), see [so-51969898].
+
 
 
 [Fontconfig]: https://freedesktop.org/wiki/Software/fontconfig/
 [FreeType]: https://en.wikipedia.org/wiki/FreeType
 [Pango]: https://en.wikipedia.org/wiki/Pango
 [Xft]: https://freedesktop.org/wiki/Software/Xft/
+[`FC_DEBUG`]: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
+[`Xft.rgba`]: https://keithp.com/~keithp/talks/xtc2001/paper/
 [desktop-utils]: https://github.com/0cjs/desktop-utils
 [fc-user]: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
 [pango-fontdesc]: https://developer.gnome.org/pygtk/stable/class-pangofontdescription.html
@@ -141,6 +152,7 @@ See:
 [scp-releases]: https://github.com/adobe-fonts/source-code-pro/releases
 [scp]: https://en.wikipedia.org/wiki/Source_Code_Pro
 [so-118641]: https://unix.stackexchange.com/q/118641/10489
+[so-51969898]: https://stackoverflow.com/q/51969898/107294
 [urxvt-archwiki]: https://wiki.archlinux.org/index.php/Rxvt-unicode
 [urxvt-archwikitips]: https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks
 [urxvt-fontdec]: https://wiki.archlinux.org/index.php/Rxvt-unicode#Font_declaration_methods
