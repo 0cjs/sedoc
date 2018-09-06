@@ -327,6 +327,9 @@ following methods:
     .__set__(self, obj, value)      # ⇒ None
     .__delete__(self, obj)          # ⇒ None
 
+These are often used with the [`property()`] function, especially as a
+decorator, to make attribute access call a function.
+
 [The complete summary of this is yet to be written.]
 
 
@@ -338,6 +341,7 @@ following methods:
 [`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
 [`operator`]: https://docs.python.org/3/library/operator.html
+[`property()`]: https://docs.python.org/3/library/functions.html?highlight=property#property
 [beaumont]: https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb
 [calls]: https://docs.python.org/3/reference/expressions.html#calls
 [descriptor]: https://docs.python.org/3/howto/descriptor.html
