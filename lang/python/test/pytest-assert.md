@@ -25,9 +25,25 @@ See also [Assertions about expected exceptions][exceptions].
             forever()
         assert 'maximum recursion' in str(e.value)
 
-Handy `ExceptionInfo` attributes include `type`, `typename`, `value`,
-`tb` (raw traceback), `traceback` (Traceback instance),
-`match(regexp)` and more.
+[`ExceptionInfo`] attributes include:
+- `type`: The exception class.
+- `typename`: The name of the exception class.
+- `value`: The exception object itself.
+- `tb`: The exception's raw traceback.
+- `traceback`: The traceback as a `_pytest._code.Traceback` instance.
+- `errisinstance(exc)`: Return `True` if exception is instance of _exc_.
+- `match(regexp)`: Match _regexp_ against the string representation of
+  the exception.
+- `exconly(tryshort=False)`: Return the exception as a string. If
+  _tryshort_ is `True`, remove 'AssertionError:' from the beginning if
+  the exception is a `_pytest._code._AssertionError`.
+- `getrepr(showlocals=False, style='long', abspath=False,
+  tbfilter=True, funcargs=False, truncate_locals=True)`:
+  Return `str()`able representation of the exception info.
+  - `showlocals`: Show locals per traceback entry.
+  - `style`: One of `long|short|no|native`.
+    (`native` ignores _tbfilter_ and _showlocals_).
+  - `tbfilter`: Hide entries (where _tracebackhide_ is `True`).
 
 #### Warnings
 
@@ -123,6 +139,7 @@ output and clears the capture buffer. `disabled()` pauses capture.
 
 
 
+[`ExceptionInfo`]: https://docs.pytest.org/en/latest/reference.html#exceptioninfo
 [assertions]: https://docs.pytest.org/en/latest/assert.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
 [capture]: https://docs.pytest.org/en/latest/capture.html
