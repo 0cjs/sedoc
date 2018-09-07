@@ -7,7 +7,7 @@ and fixtures. The following is an incomplete summary:
 Assertions
 ----------
 
-#### Exceptions
+### Exceptions
 
 See also [Assertions about expected exceptions][exceptions].
 
@@ -45,7 +45,7 @@ See also [Assertions about expected exceptions][exceptions].
     (`native` ignores _tbfilter_ and _showlocals_).
   - `tbfilter`: Hide entries (where _tracebackhide_ is `True`).
 
-#### Warnings
+### Warnings
 
 Python [warnings](../exeptions.md#warnings) are [captured by
 pytest][pt-warnings] unless `-p no:warnings` is specified.
@@ -89,7 +89,7 @@ register it if you run pytest with `--strict`. See [issue 3671].
 
 There's also an ability to record warnings.
 
-#### Other Things
+### Other Things
 
 * `approx(expected, rel=None, abs=None, nan_ok=False_)` should be
   used to compare floating point numbers:
@@ -99,7 +99,7 @@ There's also an ability to record warnings.
 * The `deprecated_call` context manager ensures a block of code
   triggers a `DeprecationWarning` or `PendingDeprecationWarning`.
 
-#### Tricks
+### Tricks
 
 You can assert things that won't fail in order to add useful
 information to the error output:
@@ -114,7 +114,7 @@ Capturing Output (stdout/stderr)
 
 See [capture] for full details.
 
-#### capsys, capfd Fixtures
+### capsys, capfd Fixtures
 
 `capsys` captures `sys.{stdout,stderr}` as strings. `capfd` captures
 OS-level file descriptors as well. In pytest ≥ 3.3 there is also
