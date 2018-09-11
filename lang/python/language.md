@@ -104,13 +104,19 @@ Syntax
 
 * Also see Python reference documentation [Lexical Analysis][lexical].
 
-Statements are separated by semicolons or newlines. Indenting
-introduces a new block that closes at the next dedent. Statements that
-introduce blocks (`def`, `if`, `else`, etc.) are followed by a colon
-and may not be on the same line as another block-introducing
-statement. Following the colon may be a list of semicolon-separated
-statements on the same line or an indented block on subsequent lines.
-E.g.:
+Statements are normally terminated by semicolon, newline or EOF.
+However, newlines will be removed (but replaced by implicit
+whitespace) when preceeded by a backslash `\` (excepting comments) or
+not all opening `([{` have a matching close. Indentation on lines
+continued from `([{` is ignored. It's fine form to enclose a full
+expression in parens to take advantage of this: `x = ( 2 + 2 )`.
+
+Indenting introduces a new block that closes at the next dedent.
+Statements that introduce blocks (`def`, `if`, `else`, etc.) are
+followed by a colon and may not be on the same line as another
+block-introducing statement. Following the colon may be a list of
+semicolon-separated statements on the same line or an indented block
+on subsequent lines. E.g.:
 
     if x == 0:   pass           # Statement must be present; pass does nothing
     elif x > 0:  foo; bar; baz()
