@@ -35,7 +35,8 @@ anywhere you would use a device name. Commands useful here include:
 The four fields are:
 * _target_: name (`/` not allowed) to map to in `/dev/mapper`
 * _source device_: device name, UUID=partition-UUID, etc.
-* _key file_: 
+* _key file_: File with secret key or `none`
+* _options_: Usually `luks` or `luks,noauto`.
 
 Use `cryptdisks_start TARGET` and `cryptdisks_stop TARGET` to do bring
 the target on or off-line. You will be prompted for a password if
@@ -51,6 +52,13 @@ type two passwords at boot.
 Be careful that your key material doesn't accidentally get into your
 initramfs image, e.g., via setting of `KEYFILE_PATTERN` in
 `/etc/cryptsetup-initramfs/conf-hook`.
+
+If `cryptdisks_start` gives you an error along the following lines,
+you've most likely left out or mispelled the `luks` option in the
+_options_ field.
+
+    the precheck for '/dev/disk/by-uuid/...' failed
+    /dev/disk/by-uuid/.... contains a filesystem type crypto_LUKS.
 
 
 LUKS Commands
