@@ -6,7 +6,10 @@ These are also known as VT100, VT220, etc. codes.
 Escape Code References
 ----------------------
 
+* [Wikipedia: ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
 * [termsys vtansi](http://www.termsys.demon.co.uk/vtansi.htm)
+* [so-4842424](https://stackoverflow.com/q/4842424/107294)
+* [XTerm Control Sequences](https://invisible-island.net/xterm/ctlseqs/ctlseqs.html)
 
 
 Misc. Notes
