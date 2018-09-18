@@ -32,6 +32,19 @@ The most reliable heurstic I can think of at the moment is:
     docker run -it --rm --mount=type=volume,destination=/mnt,source=MYVOL ubuntu
     docker volume rm VOL
 
+### Docker ps and Filters
+
+The [`ps`] command offers various [filters][ps-filtering] passed as
+`--filter key=value`. See the docs for a full list of keys and their
+individual parsing details.
+
+The `name` filter may be a regular expression, but always does a
+substring match (`^` and `$` appear not to be supported). To print
+a list of GitLab CI cache containers:
+
+    docker ps --format='{{.ID}}" \
+      --filter name=runner-[0-9a-f]*-project-[0-9]*-concurrent-[0-9]*-cache-
+
 ### Docker Inspect and Templates
 
 `docker inspect` prints Json information about any object (containers,
@@ -106,4 +119,5 @@ See [Docker Security](security.md)
 [`ps`]: https://docs.docker.com/engine/reference/commandline/ps/#formatting
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
 [go template]: https://golang.org/pkg/text/template/
+[ps-filtering]: https://docs.docker.com/engine/reference/commandline/ps/#filtering
 [so-23513045]: https://stackoverflow.com/q/23513045/107294

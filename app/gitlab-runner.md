@@ -25,10 +25,26 @@ mode is:
     system  /etc/gitlab-runner/config.toml
     user    ~/.gitlab-runner/config.toml
 
-### Autoscaling
+#### Autoscaling
 
 The [Autoscale GitLab CI runners][aws-autoscale] describes how to configure
 a system that can spin up and down EC2 instances as the load varies.
+
+
+Management
+----------
+
+#### Manually Removing Cache Containers
+
+You may need to manually delete the cache containers (see below) from
+time to time. This can be done for all projects with:
+
+    sudo docker rm $(sudo docker ps --format='{{.ID}}" \
+        --filter name=runner-9b285da7-project-[0-9]*-concurrent-[0-9]*-cache-)
+
+Replace the first `[0-9]*` with a project number, available from
+looking at a build log, to remove the containers for a particular
+project.
 
 
 Installation
