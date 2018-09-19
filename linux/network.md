@@ -6,6 +6,8 @@ What's Listening?
 
 For most of these informaiton will be incomplete unless run as root.
 
+- `ss -lpf inet`: (package `iproute2`) shows sockets listening
+  on _inet_ protocols with process name and PID
 - `netstat -lp` (package `net-tools`) shows listening sockets with
   PIDs/program names. Add `-t`/`-u` for TCP/UDP.
 - `lsof -i ap` (`@`_ap_ optional) shows sockets. _ap_ can be, e.g.,
