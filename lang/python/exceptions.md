@@ -102,6 +102,17 @@ functions that work in both Python 2 and 3:
   Often called as `six.reraise(*sys.exc_info())`.
 
 
+Exception-related APIs
+----------------------
+
+The reentrant `contextlib.suppress` context manager is a convenient way of
+suppressing/ignoring exceptions:
+
+    from contextlib import suppress
+    with suppress(FileNotFoundError):
+        os.remove('somefile')
+
+
 Exception Hierarchy
 -------------------
 
@@ -167,6 +178,7 @@ configured. The default is to print a warning message to `stderr`.
 [bicking]: http://www.ianbicking.org/blog/2007/09/re-raising-exceptions.html
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 [raise-py2]: https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement
+[reentrant]: https://docs.python.org/3/library/contextlib.html#reentrant-context-managers
 [six library]: https://pythonhosted.org/six/
 [syntax compatibility]: https://pythonhosted.org/six/index.html#syntax-compatibility
 [warnings filter]: https://docs.python.org/3/library/warnings.html#the-warnings-filter
