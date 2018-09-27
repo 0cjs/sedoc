@@ -4,7 +4,7 @@ Linux Network Configuration
 What's Listening?
 -----------------
 
-For most of these informaiton will be incomplete unless run as root.
+For most of these information will be incomplete unless run as root.
 
 - `ss -lpf inet`: (package `iproute2`) shows sockets listening
   on _inet_ protocols with process name and PID
