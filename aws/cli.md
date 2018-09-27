@@ -16,6 +16,22 @@ also standalone installers for all platforms (Linux, MacOS, Windows).
 See [aws-install] for more information.
 
 
+Environment Variables
+---------------------
+
+Most of the following [environment variables] override settings from
+`~/.aws/config` and `~/.aws/credentials`.
+
+- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN`
+- `AWS_DEFAULT_REGION`
+- `AWS_DEFAULT_OUTPUT`: One of `json`, `text` or `table`.
+- `AWS_PROFILE`: A profile from config/credentials files or `default`.
+- `AWS_CA_BUNDLE`: Path to cert bundle for HTTPS cert validation.
+- `AWS_SHARED_CREDENTIALS_FILE`: If not set, uses `~/.aws/credentials`.
+- `AWS_CONFIG_FILE`: If not set, uses `~/.aws/config`.
+
+
 CLI Authentication on EC2 Instances
 -----------------------------------
 
@@ -87,5 +103,6 @@ To verify you're configured correctly:
 [aws-cli]: https://aws.amazon.com/cli/
 [aws-install]: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [creds]: https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html
+[environment variable]: https://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html
 [instprof]: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html
 [reference]: https://docs.aws.amazon.com/cli/latest/reference/
