@@ -20,6 +20,7 @@ Python Summary/Quickref
   - [Filesystem and Path Libraries](files.md)
   - [Pickle](pickle.md) object seralization
   - [Argument Parsing](argparse.md)
+  - [Logging](logging.md)
   - [Concurrency](concurrency.md) (including processes)
   - [Internet Protocols and Support](internet.md)
   - [Python Language Services](ast.md) (manipulating Python code)
