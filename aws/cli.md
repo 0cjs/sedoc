@@ -1,8 +1,13 @@
 AWS CLI Notes
 =============
 
-These cover the [`aws` command-line program][aws-cli].
+Much of the configuration below is actually [`botocore`] configuration
+and thus it applies equally to the [`aws` command-line
+program][awscli] ([GitHub][awscli-github]) and the [`boto3`] package,
+both of which are built on `botocore`.
+
 The [reference] lists all options and commands.
+
 
 Installation
 ------------
@@ -100,8 +105,11 @@ To verify you're configured correctly:
 
 
 [EC2 IAM Role]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
-[aws-cli]: https://aws.amazon.com/cli/
+[`boto3`]: https://github.com/boto/boto3
+[`botocore`]: https://github.com/boto/botocore
 [aws-install]: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
+[awscli-github]: https://github.com/aws/aws-cli
+[awscli]: https://aws.amazon.com/cli/
 [creds]: https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html
 [environment variable]: https://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html
 [instprof]: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html
