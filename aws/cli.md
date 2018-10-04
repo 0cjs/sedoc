@@ -44,7 +44,7 @@ when you explicitly ask to do so.
 
 You can confirm the instance profile assigned to the host with:
 
-    $ curl http://169.254.169.254/latest/meta-data/iam/info; echo
+    $ curl -w\\n http://169.254.169.254/latest/meta-data/iam/info
     {
       "Code" : "Success",
       "LastUpdated" : "2017-11-02T04:34:19Z",
