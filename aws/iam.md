@@ -5,7 +5,7 @@ AWS authentication and authorization is done via the [Identity and
 Access Management (IAM)][IAM] system, which includes the Security
 Token Service (STS).
 
-Note: the term _account_ below refers to an 'AWS account' which is a
+The term _account_ below refers to an 'AWS account' which is a
 single administrative entity (with a _root login_) containing all IAM
 users and other resources. The account is identified with a nine-digit
 account number and may also have an optional _account alias_, a unique
@@ -39,7 +39,7 @@ An [IAM role] is like a user without authentication credentials. (This
 is different from some other systems where "roles" are the equivalent
 of _groups_, below.) Because roles are often shared, sessions have
 both RoleName and a RoleSessionName; the latter is intended to
-identify the principal (within AWS our outside it) that used the role
+identify the principal (within AWS or outside it) that used the role
 in that session.
 
 Roles can be assumed under the conditions described in the role's
@@ -56,15 +56,15 @@ following ways:
 * Used for accounts on third-party identity providers and
   authenticated by them rather than AWS (federated users)
 
-[Identities] in the documentation lists when you should create a user
-vs. a role.
+The User Guide's [Identities] section describes when you should create
+a user vs. a role.
 
 Note that you cannot prevent anybody, anywhere in the world,
 authenticating as an IAM user via the AWS API. However, you can write
 policies (see below) that restrict, e.g., the IP addresses authorized
 to perform requests after authentication.
 
-#### Console (Web) Access
+### Console (Web) Access
 
 The web-based AWS [console] offers login for IAM users at the
 following URLs. (These will sign out any existing session.)
