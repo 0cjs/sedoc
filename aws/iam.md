@@ -78,6 +78,13 @@ following URLs. (These will sign out any existing session.)
 Root user login is a separate page accessed via a link from the IAM
 login page above.
 
+### API and Command-line Access
+
+The AWS API may be accessed directly via web requests, but more
+usually the `aws` command line client or the `boto3` Python library is
+used. These both handle authentication configuration via the
+`botocore` library. For more details see the [CLI Notes](cli.md).
+
 
 Authorization/Access Control
 -----------------------------
