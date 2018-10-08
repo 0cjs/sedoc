@@ -41,6 +41,7 @@ Python Summary/Quickref
 * Other Libraries
   - [PyYAML](lib/yaml.md)
   - [PyMongo](lib/pymongo.md)
+  - [Twisted](lib/twisted/), an event-driven networking/concurrency framework
 * [Tips and Tricks](tricks.md)
 
 When using `pip` with a system (OS-packaged) Python, ensure that the
