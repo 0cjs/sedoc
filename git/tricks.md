@@ -37,6 +37,14 @@ Fixing Commits
   From <https://stackoverflow.com/a/15321456/107294>.
 
 
+Creating an Orphan Branch
+-------------------------
+
+    git checkout --orphan BRANCHNAME
+    git rm --cached -r .
+    git clean -fdX
+
+
 Checking Line End Settings
 --------------------------
 
