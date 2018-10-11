@@ -159,11 +159,11 @@ To verify you're configured correctly:
 
 [EC2 IAM Role]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
 [`boto3`]: https://github.com/boto/boto3
-[`botocore`]: https://botocore.amazonaws.com/v1/documentation/api/latest/
+[`botocore`]: https://botocore.amazonaws.com/v1/documentation/api/latest/index.html
 [aws-install]: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [awscli-github]: https://github.com/aws/aws-cli
 [awscli]: https://aws.amazon.com/cli/
-[boto3-cred]: https://botocore.amazonaws.com/v1/documentation/api/latest/index.html
+[boto3-cred]: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
 [botocore-github]: https://github.com/boto/botocore
 [creds]: https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html
 [environment variable]: https://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html
