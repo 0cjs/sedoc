@@ -87,6 +87,53 @@ are added in each layer.
 
 `docker system prune`
 
+### Setting Proxies for Docker
+
+##### Daemon
+
+The docker daemon does not use variables from `/etc/environment` so it
+must be configured directly via its startup files if you want it to
+use a proxy. (Remember, the environment variables of a user calling
+the `docker` client are irrelevant because that just sends requests to
+the daemon to do pulling and pushing of images.)
+
+Summary of [the Docker documenation][daemon-proxy]:
+
+    # mkdir -p /etc/systemd/system/docker.service.d
+    # cat > /etc/systemd/system/docker.service.d/http-proxy.conf
+    [Service]
+    Environment="HTTP_PROXY=http://proxy.example.com:80/"
+    ^D
+    # systemctl daemon-reload
+    # systemctl restart docker
+    # systemctl show --property=Environment docker
+    Environment=HTTP_PROXY=http://proxy.example.com:80/
+    #
+
+[daemon-proxy]: https://docs.docker.com/config/daemon/systemd/#httphttps-proxy
+
+##### Containers
+
+Docker containers do not have access to the localhost addresses on the
+host, so if the host wants to supply a proxy to the container without
+the rest of the network being able to connect to it it must listen on
+a shared address, typically the [default bridge network] address
+`172.17.0.1`. Docker ≥17.07 can [configure the client
+automatically][client-proxy] via a `~/.docker/config.json` like:
+
+    {
+        "proxies": {
+            "default": {
+                "httpProxy": "http://172.17.0.1:9080",
+                "noProxy": "localhost"
+            }
+        }
+    }
+
+[default bridge network]: https://docs.docker.com/network/
+[client-proxy]: https://docs.docker.com/network/proxy/
+
+
 ### Systemd in Docker
 
 - [Running Systemd Within a Docker Container](https://rhatdan.wordpress.com/2014/04/30/running-systemd-within-a-docker-container/)
