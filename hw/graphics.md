@@ -30,9 +30,30 @@ Graphics Card Information
 | Iris Plus 640         |  1.4 | 17.1 |   0W |     |     0 |
 | GeForce GT   710      |  0.7 | 14.2 |  25W |     |     3 |
 
-
-PCIe x1 GT 710: <http://kakaku.com/item/K0000872584>
-
-
+PCEe x1 cards are rare, but there is a [PCIe x1 GT 710].
 
 [Passmark]: https://www.videocardbenchmark.net/gpu_list.php
+[PCIe x1 GT 710]: http://kakaku.com/item/K0000872584
+
+
+Cable Notes
+-----------
+
+[HDMI] cables] can be tested at an Authorized Testing Center (ATC) for
+one of [three compliance levels][se-400122], measured in bandwidth per
+channel:
+
+     3.4 GHz * 3 ch (Cat.2, HDMI 1.4 max) High Speed HDMI cable
+     6.0 GHz * 3 ch (Cat.2, HDMI 2.0 max) Premium High Speed HDMI cable
+    12.0 GHz * 4 ch (Cat.3, HDMI 2.1 max) Ultra High Speed HDMI cable
+                                          (no cert. avail as of 2018-08)
+
+Advertising an HDMI version number for a cable is [explicitly
+non-compliant][hdmi-usage].
+
+Much more useful information is available from the [Blue Jeans Cable] page.
+
+[Blue Jeans Cable]: https://www.bluejeanscable.com/articles/bad-reasons-to-upgrade-hdmi-cable.htm
+[HDMI]: https://www.hdmi.org/
+[hdmi-usage]: https://www.hdmi.org/pdf/atlug_faqs/2011_12_20_ATLUG_Q09_UPDATE.PDF
+[se-400122]: https://electronics.stackexchange.com/a/400122/15390
