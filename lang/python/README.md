@@ -11,6 +11,7 @@ Python Summary/Quickref
   - [Character and Byte String Handling](string.md)
   - [Docstrings](docstring.md)
 * Language Features
+  - [Exceptions and Warnings](exceptions.md)
   - [Iterators and Generators](iter.md)
   - [Modules, Packages and Importing](import.md)
 * [Standard Libraries](stdlib.md)
