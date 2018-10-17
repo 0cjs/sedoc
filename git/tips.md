@@ -40,6 +40,20 @@ Fixing/Changing Commits and Branches
     git rm --cached -r .
     git clean -fdX
 
+* To identify large objects ([so-10622293]), in a few ways:
+
+    git gc              # Get all commits into a packfile
+    git verify-pack -v .git/objects/pack/pack-*.idx \
+      | sed -e '/^non delta:/,$d' | sort -k 4 -n -r | head
+    # Columns: SHA-1 type size pack-size pack-offset [depth base-SHA-1]
+
+    git rev-list --objects --all \
+    | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
+    | sed -n 's/^blob //p' \
+    | sort --numeric-sort --key=2 \
+    | cut -c 1-12,41- \
+    | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+
 
 Configuration
 -------------
@@ -87,5 +101,6 @@ connection as described at [so-3777141]:
 [attributes]: https://www.git-scm.com/docs/gitattributes
 [corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
 [gh-ssh443]: https://help.github.com/articles/using-ssh-over-the-https-port/
+[so-10622293]: https://stackoverflow.com/a/10622293/107294
 [so-15321456]: https://stackoverflow.com/a/15321456/107294
 [so-3777141]: https://stackoverflow.com/a/3777141/107294
