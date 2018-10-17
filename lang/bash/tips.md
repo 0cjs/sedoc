@@ -1,5 +1,5 @@
-Bash Tricks
-===========
+Bash Tips
+=========
 
 ### Assigning Default Values
 

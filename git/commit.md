@@ -1,8 +1,7 @@
 Git Commits
 ===========
 
-For some tips on fixing/rewriting commits, see [Handy Git
-Tricks](tricks.md).
+For some tips on fixing/rewriting commits, see [Git Tips](tips.md).
 
 
 Plumbing

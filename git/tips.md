@@ -1,5 +1,5 @@
-Handy Git Tricks
-================
+Git Tips
+========
 
 
 Logging and Graph Exploration
