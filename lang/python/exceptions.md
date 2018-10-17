@@ -206,6 +206,9 @@ filters is:
 Warnings are printed to `stderr`, but can be redirected through the
 logging system with [`logging.captureWarnings()`].
 
+[Pytest](test/pytest.md) provides a [broad set of tools][pytest-warn]
+for dealing with testing, capture and display of warnings.
+
 
 
 [Exceptions]: https://docs.python.org/3/library/exceptions.html
@@ -220,6 +223,7 @@ logging system with [`logging.captureWarnings()`].
 [`with_traceback`]: https://docs.python.org/3/library/exceptions.html#BaseException.with_traceback
 [bicking]: http://www.ianbicking.org/blog/2007/09/re-raising-exceptions.html
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+[pytest-warn]: https://docs.pytest.org/en/latest/warnings.html
 [raise-py2]: https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement
 [reentrant]: https://docs.python.org/3/library/contextlib.html#reentrant-context-managers
 [six library]: https://pythonhosted.org/six/
