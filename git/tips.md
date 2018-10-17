@@ -21,32 +21,30 @@ Logging and Graph Exploration
   script for more details.
 
 
-Fixing Commits
---------------
+Fixing/Changing Commits and Branches
+------------------------------------
 
 * To rewrite the author and timestamp of a commit:
 
       git commit --amend --reset-author
 
-* To remove a file accidentally added to a commit:
+* To remove a file accidentally added to a commit ([so-15321456]):
 
       git reset --soft @^
       git reset @ path/to/file
       git commit -c ORIG_HEAD
 
-  From <https://stackoverflow.com/a/15321456/107294>.
-
-
-Creating an Orphan Branch
--------------------------
+* To create an empty orphan branch:
 
     git checkout --orphan BRANCHNAME
     git rm --cached -r .
     git clean -fdX
 
 
-Checking Line End Settings
---------------------------
+Configuration
+-------------
+
+### Checking Line End Settings
 
 For debugging Git [attributes], the `core.eol` and `core.autocrlf`
 settings, etc., the `git ls-files --eol` option is very useful.
@@ -55,8 +53,10 @@ Normally `core.autocrlf` wants to be set to `input` to avoid any
 conversions whatsoever.
 
 
-Debugging Connectivity and Fetch/Push Problems
-----------------------------------------------
+Connectivity and Fetch/Push
+---------------------------
+
+#### Debugging Connectivity
 
 The various `GIT_TRACE` environment variables documented in the
 [`git(1)`] manpage are very useful for debugging transfer problems.
@@ -68,9 +68,7 @@ The various `GIT_TRACE` environment variables documented in the
 - `GIT_TRACE_CURL_NO_DATA` (≥2.16.3) When `GIT_TRACE_CURL` is set,
   removes the data logging from the trace output.
 
-
-github.com SSH via HTTP Proxy
------------------------------
+#### Accessing github.com via SSH through HTTP Proxy
 
 Github.com offers SSH connectivity at [`ssh.github.com` port 443]
 [gh-ssh443]. If you need to go through an HTTP proxy, [corkscrew][]
@@ -85,8 +83,9 @@ connection as described at [so-3777141]:
 
 
 
-[corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
 [`git(1)`]: https://git-scm.com/docs/git
 [attributes]: https://www.git-scm.com/docs/gitattributes
+[corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
 [gh-ssh443]: https://help.github.com/articles/using-ssh-over-the-https-port/
+[so-15321456]: https://stackoverflow.com/a/15321456/107294
 [so-3777141]: https://stackoverflow.com/a/3777141/107294
