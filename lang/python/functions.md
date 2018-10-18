@@ -220,6 +220,14 @@ The [functional programming modules][fpmods] include:
 * [`operator`]: standard operators (`+`, `=`, etc.) as functions
 * [`functools`]: higher order functions and operations on callable objects
 
+[`operator.attrgetter()`], `itemgetter()` and `methodcaller` are
+particularly useful for accessing attributes with functional control
+structures:
+
+    T = ntup('T', 'name count')
+    ts = ( T('a',3), T('b',9), T('a',4) )
+    map(operator.attrgetter('name', 'count'), ts)   # returns [('a',3), ...]
+
 #### Partial Application
 
     from functools import partial
@@ -340,6 +348,7 @@ decorator, to make attribute access call a function.
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [`callable()`]: https://docs.python.org/3/library/functions.html#callable
 [`functools`]: https://docs.python.org/3/library/functools.html
+[`operator.attrgetter()`]: https://docs.python.org/3/library/operator.html#operator.attrgetter
 [`operator`]: https://docs.python.org/3/library/operator.html
 [`property()`]: https://docs.python.org/3/library/functions.html?highlight=property#property
 [beaumont]: https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb
