@@ -77,8 +77,10 @@ The following Python-2-isms have been removed in Python 3:
 - `x/y` no longer truncates (`x//y`) when _x_ and _y_ are ints
 
 
-[Compound Statements][stmts]
-----------------------------
+Compound Statements
+-------------------
+
+Full details at [Compound Statements][stmts] in the Python docs.
 
 - `if P: ...` / `elif P: ...` / `else: ...`
 - `while EXPR: ...` / `else: ...`
