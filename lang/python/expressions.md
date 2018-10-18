@@ -77,6 +77,50 @@ The following Python-2-isms have been removed in Python 3:
 - `x/y` no longer truncates (`x//y`) when _x_ and _y_ are ints
 
 
+Packing and Unpacking with `*` and `**`
+---------------------------------------
+
+The `*` and `**` operators are used in various places to convert
+between sequences and mappings and multiple variables. This is a
+summary of blog post [Asterisks in Python][hunner].
+
+When calling a function, asterisks unpack sequences and mappings to
+parameters in the definition. They can be used multiple times in a
+function call in Python ≥ 3.5. Key collisions from different
+dictionaries will result in an exception.
+
+    f(*list, *tuple, **map1, **map2)
+
+In function definitions they pack individual arguments passed when called:
+
+    def f(*args, **kwargs): ...
+    f(1, 2, 3, foo=1, bar=2)        # args=[1,2,3], kwargs={'foo':1,'bar':2}
+
+    def f(a, b=1, *, c=2, d): ...   # kwargs forced _after_ * or param *foo
+    f(0, d=4)
+    f(0)            # TypeError: f() missing 1 required keyword-only argument: 'd'
+    f(1, 2, 3, 4)   # TypeError: f() takes from 1 to 2 positional arguments but 4 were given
+
+Iterable unpacking ([PEP 3132], Python ≥3.0):
+
+    fst, *mid, lst = (0,1,2,3,4)            # fst=0, mid=(1,2,3), lst=4
+    (s0, *ss), *ts = ('abc', 'def', 'ghi')  # s0='a', ss='bc', ts=('def','ghi')
+    first, rest = seq[0], seq[1:]           # Python 2
+
+    #   Note carefully tuple vs. list creation from iterables:
+    *lst, =  range(0,3)     # lst = [0, 1, 2]
+    tup   = *range(0,3),    # tup = (0, 1, 2)
+
+Additional iterable unpacking ([PEP 448], Python ≥ 3.5)
+
+    [ *seq, *reversed(seq) ]            # list
+    ( *seq[1:], seq[0] )                # tuple
+    { *xs, *(x.upper() for x in xs) }   # set
+
+    #   In dicts later ovrrides earlier: c=6
+    { **dict(a=1, b=2), 'c':3, **{ 'd':4, 'e':5 }, 'c':6 }
+
+
 Compound Statements
 -------------------
 
@@ -121,6 +165,8 @@ Full details at [Compound Statements][stmts] in the Python docs.
 
 
 
+[PEP 3132]: https://www.python.org/dev/peps/pep-3132/
+[PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [PPR]: http://shop.oreilly.com/product/0636920028338.do
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
 [callable]: functions.md
@@ -131,6 +177,7 @@ Full details at [Compound Statements][stmts] in the Python docs.
 [exceptions]: https://docs.python.org/3/reference/executionmodel.html#exceptions
 [expressions]: https://docs.python.org/3/reference/expressions.html
 [exprs]: https://docs.python.org/3/reference/expressions.html#expression-lists
+[hunner]: https://treyhunner.com/2018/10/asterisks-in-python-what-they-are-and-how-to-use-them/
 [operator precedence]: https://docs.python.org/3/reference/expressions.html#operator-precedence
 [special method names]: https://docs.python.org/3/reference/datamodel.html#special-method-names
 [stmts]: https://docs.python.org/3/reference/compound_stmts.html
