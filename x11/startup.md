@@ -81,7 +81,7 @@ The default session manager can be seen with
 
 (Many of these have a `/etc` version as well.)
 
-* `~/.xinitrc`: Used by [xinit]
+* `~/.xinitrc`: Used by [`xinit`]
 * `~/.xsession`: Used by "bare" sessions (i.e., not Gnome, Xfce, etc.)
 * [`~/.xprofile`]: Sourced by GDM, KDM, LightDM, LXDM, SDDM. (But not
   by XDM or SLIM.)
@@ -121,10 +121,6 @@ or desktop; I just run `fvwm` at the end of my `.xinitrc`.
 * [X Window System Administrator's Guide][x11-admin-guide]
 
 
-Links
------
-
-(These are visible only in the Markdown source.)
 
 [`lightdm`]: https://freedesktop.org/wiki/Software/LightDM/
 [uw-lightdm]: https://wiki.ubuntu.com/LightDM
