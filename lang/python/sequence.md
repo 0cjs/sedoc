@@ -92,10 +92,22 @@ Construct with `tuple()` or comma (parens are optional).
     a,b  ;  (a,b)       # pair, etc.
     tuple(iter)         # from iterable (tuple returns unchanged)
 
-[`collections.namedtuple`] extends standard tuples with access via
-attribute names.
-
 Becuase tuples are immutable, `+` is inefficient. Extend a list instead.
+
+[`collections.namedtuple`] extends standard tuples with access via
+attribute names. These are exactly as efficient as regular tuples. The
+_typename_ (first) parameter is used only to set the class'
+`__name__`. The classes generated with this can be used directly by
+assigning them to names or it may also be convenient to use them as
+superclasses.
+
+    from collections import namedtuple as ntup
+    T0 = ntup('T0', 'foo bar baz'); t0 = T0('a', 'b', 'c')
+
+    class T1(ntup('T1', 'a b')):
+        def __init__(self, *_): self.sum = self.a + self.b
+        def product(self):      return self.a * self.b
+        # inherited __str__, __repr__ display ntup name
 
 #### [`list`]
 
