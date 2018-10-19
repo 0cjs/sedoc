@@ -112,6 +112,28 @@ I use `Default Xsession` which does run `~/.xsession` (mine sources
 Though I'm using `xfce4-panel` I don't use the Xfce session manager
 or desktop; I just run `fvwm` at the end of my `.xinitrc`.
 
+#### Gnome Keyring
+
+See Arch Wiki [GNOME/Keyring]. This works outside of GNOME as well.
+The usual name (hardcoded for some programs) of the password keyring
+is `Login`, and if the password is the same as your Unix password, PAM
+may unlock it at login.
+
+This also may run SSH and GnuPG agents. As of GNOME 3.28 the SSH agent
+is just a wrapper around OpenSSH's `ssh-agent`.
+
+Applications:
+- `gnome-keyring-daemon` starts, manages and gives environment
+  information.
+- `libsecret` is the API.
+- `seahorse` is a visual tool for browsing keyrings and other info.
+- `secret-tool` (apt `libsecret-tools`) looks up attrs/values from the
+  command line. Not useful for browsing.
+- Google Chrome ≥70 uses it to store web site passwords.
+
+Further information:
+- [so-376112]
+
 #### Other Information
 
 * The `startx(1)` manpage.
@@ -122,11 +144,13 @@ or desktop; I just run `fvwm` at the end of my `.xinitrc`.
 
 
 
-[`lightdm`]: https://freedesktop.org/wiki/Software/LightDM/
-[uw-lightdm]: https://wiki.ubuntu.com/LightDM
 [CustomXSession]: https://wiki.ubuntu.com/CustomXSession
+[GNOME/Keyring]: https://wiki.archlinux.org/index.php/GNOME/Keyring
+[`lightdm`]: https://freedesktop.org/wiki/Software/LightDM/
 [`xinit`]: https://wiki.archlinux.org/index.php/Xinit
 [`~/.xprofile`]: https://wiki.archlinux.org/index.php/Xprofile
-[uw-ses-start]: https://wiki.ubuntu.com/X/Config/SessionStartup
 [debref-startx]: https://www.debian.org/doc/manuals/debian-reference/ch07.en.html#_starting_the_x_window_system
+[so-376112]: https://unix.stackexchange.com/q/376112/10489
+[uw-lightdm]: https://wiki.ubuntu.com/LightDM
+[uw-ses-start]: https://wiki.ubuntu.com/X/Config/SessionStartup
 [x11-admin-guide]: https://archive.org/details/xwindowsystemadm08muimiss
