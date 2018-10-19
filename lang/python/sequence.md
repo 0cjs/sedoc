@@ -109,6 +109,13 @@ superclasses.
         def product(self):      return self.a * self.b
         # inherited __str__, __repr__ display ntup name
 
+To [set default constructor values][so-18348004]:
+
+    T3 = ntup('T3', 'a b c')
+    T3.__new__.__defaults__ = (12,13)   # or e.g.: (None,) * len(T3._fields)
+    T3(1,2)     # ⇒ T3(1,2,13)
+    T3(1)       # ⇒ T3(1,12,13)
+
 #### [`list`]
 
 Construct with `list()` or `[]`:
@@ -158,4 +165,4 @@ Additional attributes: `start`, `stop`, `step`.
 [mutseqops]: https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types
 [seqops]: https://docs.python.org/3/library/stdtypes.html#typesseq-common
 [sequence]: https://docs.python.org/3/library/stdtypes.html#typesseq
-
+[so-18348004]: https://stackoverflow.com/a/18348004/107294
