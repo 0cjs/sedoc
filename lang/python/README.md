@@ -40,6 +40,7 @@ Python Summary/Quickref
   - [Pytest](test/pytest.md)
   - [tox](test/tox.md)
 * Other Libraries
+  - [`attrs`](/lib/attrs.md) to generate class definition boilerplate
   - [PyYAML](lib/yaml.md)
   - [PyMongo](lib/pymongo.md)
   - [Twisted](lib/twisted/), an event-driven networking/concurrency framework

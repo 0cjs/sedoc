@@ -26,9 +26,10 @@ fly. This can be done with [`types.SimpleNamespace`] class:
     o.attr = 42
     o.attr                      # ⇒ 42
 
-(But also consider whether [`collections.namedtuple`] is better suited
-to your situation.)
+(But also consider whether [`collections.namedtuple`] or [`attrs`] is
+better suited to your situation.)
 
+[`attrs`]: lib/attrs.md
 [`collections.namedtuple`]: https://docs.python.org/3/library/collections.html#collections.namedtuple
 [`types.SimpleNamespace`]: https://docs.python.org/3/library/types.html#types.SimpleNamespace
 
