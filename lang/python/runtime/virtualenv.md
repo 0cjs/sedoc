@@ -74,23 +74,52 @@ virtualenv was created.
 virtualenvwrapper
 -----------------
 
-    #  virtualenvwrapper commands create/use virtualenvs in $WORKON_HOME
-    #  activation of an env automatically deactivates any current env
-    #
-    mkvirtualenv ENV            # create env ENV and activate it
-    mktmpenv                    # make/activate env, deleted on deactivate
-    lsvirtualenv | workon       # list virtual environments
+virtualenvwrapper [commands][vw-commands] create/manipulate/use
+virtualenvs in directories under `$WORKON_HOME`. Activation of an env
+sets `$VIRTUAL_ENV`; any currently activated env is deactivated first.
+
+    virtualenvwrapper           # print command summary
+
+    lsvirtualenv, workon        # list virtual environments
     workon ENV                  # activate $WORKON_HOME/ENV
-    cdvirtualenv                # cd to $WORKON_HOME/ENV (current env)
-    lssitepackages              # list packages in this env
-    cdsitepackages
+                                #   opts: -c,--cd, --n,--no-cd
+    deactivate                  # deactivate current enviornment
+    allvirtualenv CMD           # run CMD in all virtual environments
+
+    cdvirtualenv                # cd $VIRTUAL_ENV/
+    cdsitepackages              # cd $VIRTUAL_ENV's site_packages directory
+    lssitepackages
+    toggleglobalsitepackages
+
+    mkvirtualenv ENV            # create ENV and activate it
+    mktmpenv                    # make/activate env, deleted on deactivate
     rmvirtualenv ENV
 
-virtualenvwrapper can be extended with [hooks] and [plugins].
+A virtualenv can be copied with `cpvirtualenv src [TARGETENV]`; the
+source does not have to be under `$VIRTUAL_ENV` though the target
+always will be. This doesn't always properly rewrite paths embedded in
+virtualenvs.
 
-[Project directories] for hacking-in-progress may be bound to a virtualenv.
+#### Projects
+
+virtualenvwrapper can manage [project directories][vw-projects] to
+which one or more virtualenvs are bound. When a virtualenv bound to a
+project directory is activated with `workon ENV` the current working
+directory will be changed to that project directory. The project dir
+for bound virtualenvs is stored in `$WORKON_HOME/ENV/.project`.
+
+A new project directory and its first associated virtualenv are created
+under `$PROJECT_HOME` with `mkproject`, which takes a project name, an
+optional template, and `mkvirtualenv` and `virtualenv` options. Use
+`mkproject -h` for details.
+
+A virtualenv _ENV_ can be bound to an existing directory with
+`setvirtualenvproject [ENV]`; the default _ENV_ is the currently
+activated virtualenv, `$VIRTUAL_ENV`.
 
 #### Activation Hooks
+
+virtualenvwrapper can be extended with [hooks] and [plugins].
 
 The `$VIRTUAL_ENV/bin` directory contains four hook scripts run during
 the activation and deactivation process: `preactivate`, `postactivate`,
@@ -173,7 +202,7 @@ it's in `$PATH`.
 
 
 
-[Project directories]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
+[vw-projects]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
 [activate-raw]: https://github.com/0cjs/sedoc/raw/master/lang/python/runtime/activate
 [downloads]: http://www.python.org/ftp/python
 [github]: https://github.com/python/cpython
@@ -187,5 +216,6 @@ it's in `$PATH`.
 [version]: ../version.md#building-alternative-versions
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [virtualenvwrapper]: http://virtualenvwrapper.readthedocs.io/en/latest/
+[vw-commands]: https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
 [wheel]: http://wheel.rtfd.org/
 [zc.buildout]: http://docs.buildout.org/
