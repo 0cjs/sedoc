@@ -7,12 +7,12 @@ Python Sequences Types and Interfaces
 Common Sequence Operations
 --------------------------
 
-#### [Immutable Sequences][seqops]
+#### Immutable Sequences
 
 See [Language Summary](language.md) for caveats on immutable
 collections.
 
-Lowest to highest precedence:
+[Operators][seqops], lowest to highest precedence:
 
 * `x [not] in s`: Containment or subsequence test.
 * `=`, `<`, etc.: Lexicographic by [comparing] corresponding elements.
@@ -41,10 +41,12 @@ See also [Using Iterables](iter.md#using-iterables) for more generic
 methods that operate on iterables, including `map`, `enumerate`,
 `zip`, `filter`, `max`, `min`, `sum`, `sorted`, `all`, `any`.
 
-#### [Mutable Sequences][mutseqops]
+#### Mutable Sequences
 
 Below, _s_ is any mutable sequence, _t_ is any iterable and _x_ is an
 object that can be stored in _s_.
+
+[Operators][mutseqops]:
 
 * `s[i] = x`: Replacement at index.
 * `s[i:j] = t`: Remove slice, insert contents of iterable.
@@ -83,9 +85,9 @@ The built-in [sequence] types are tuple, list, range,
 
 See also [Emulating container types][container-emul].
 
-#### [`tuple`]
+#### tuple
 
-Construct with `tuple()` or comma (parens are optional).
+Construct a [`tuple`] with `tuple()` or comma (parens are optional).
 
     ()   ;  tuple()     # empty
     a,   ;  (a,)        # singleton
@@ -93,6 +95,8 @@ Construct with `tuple()` or comma (parens are optional).
     tuple(iter)         # from iterable (tuple returns unchanged)
 
 Becuase tuples are immutable, `+` is inefficient. Extend a list instead.
+
+#### namedtuple
 
 [`collections.namedtuple`] extends standard tuples with access via
 attribute names. These are exactly as efficient as regular tuples. The
@@ -116,9 +120,9 @@ To [set default constructor values][so-18348004]:
     T3(1,2)     # ⇒ T3(1,2,13)
     T3(1)       # ⇒ T3(1,12,13)
 
-#### [`list`]
+#### list
 
-Construct with `list()` or `[]`:
+Construct a [`list`] with `list()` or `[]`:
 
     []; list()          # empty
     [a, b, c]           # elements
@@ -133,10 +137,11 @@ Additional method:
   - [`functools.cmp_to_key()`] can convert a `cmp(x,y) ⇒ {-1,0,1}` function.
   - See also [Sorting How To].
 
-#### [`range`]
+#### range
 
-Constant size; containment functions fully implemented. Can be empty.
-Testing commpares as sequences: `range(0) == range(2,1,3)`.
+A [`range`] is a constant size object with containment functions fully
+implemented. Can be empty. Testing commpares as sequences: `range(0)
+== range(2,1,3)`.
 
 Construct with `range()`:
 
