@@ -113,12 +113,35 @@ superclasses.
         def product(self):      return self.a * self.b
         # inherited __str__, __repr__ display ntup name
 
-To [set default constructor values][so-18348004]:
+Constructing ntups with a single `**dict` parameter can be convenient.
+
+Utility methods/attrs start with `_` to avoid collisions:
+- `_make(iterable)`: (Class method) Construct this namedtuple from any iterable.
+- `_asdict()`: Returns [`OrderedDict`] of names→values (`dict` in Python <3.1).
+- `_replace(**kwargs)`: New tuple with some values replaced.
+- `_fields`: Tuple of strings listing field names.
+- `_fields_defaults`: Dictionary mapping field names to default values (≥3.7)
+
+Python ≥3.7 has a `defaults` kwarg to supply default vaules for init
+params. For older versions, [set default values][so-18348004] with:
 
     T3 = ntup('T3', 'a b c')
     T3.__new__.__defaults__ = (12,13)   # or e.g.: (None,) * len(T3._fields)
     T3(1,2)     # ⇒ T3(1,2,13)
     T3(1)       # ⇒ T3(1,12,13)
+
+Subclasses of named tuples may want to set `__slots__` to an empty
+tuple to avoid instance dictionary creation:
+
+    class Point(ntup('Point', 'x y')):
+        __slots__ == ()
+        @property
+        def hypot(self):
+            return (self.x ** 2 + self.y ** 2) ** 0.5
+
+To build a new class that "extends" an old one, just add fields:
+
+    Point3D = ntup('Point3', Point._fields + ('z',))
 
 #### list
 
@@ -154,6 +177,7 @@ Additional attributes: `start`, `stop`, `step`.
 
 
 [Sorting How To]: https://docs.python.org/3/howto/sorting.html#sortinghowto
+[`OrderedDict`]: https://docs.python.org/3/library/collections.html#collections.OrderedDict
 [`__index()__`]: https://docs.python.org/3/reference/datamodel.html#object.__index__
 [`collections.abc.MutableSequence`]: https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableSequence
 [`collections.abc.Sequence`]: https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence
