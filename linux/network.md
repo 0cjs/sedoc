@@ -1,8 +1,10 @@
 Linux Network Configuration
 ===========================
 
-What's Listening?
------------------
+Tips
+----
+
+### What's Listening?
 
 For most of these information will be incomplete unless run as root.
 
@@ -13,6 +15,85 @@ For most of these information will be incomplete unless run as root.
 - `lsof -i ap` (`@`_ap_ optional) shows sockets. _ap_ can be, e.g.,
   `tcp:80`, `:80`.
 - `fuser 80/tcp` (package `psmisc`)
+
+### Finding MTU
+
+    tracepath HOST
+    ping -c 1 -s $((1500-28)) -M do HOST
+
+
+Configuration Overview
+----------------------
+
+Hostname is configured via `hostnamectl` (from systemd); the local
+name must also be in `/etc/hosts`.
+
+[NetworkManager] is typically installed for dynamic management of
+interfaces not explicitly configured (see below). `nm-applet` and
+`nm-connection-editor` provide a graphical UI; CLI is via `nmcli`.
+Shared connection configurations are stored under
+`/etc/NetworkManager/system-connections/`. Only one configuration can
+be active per interface; multiple autoconfig configurations will be
+chosen based on highest priority.
+
+Modern `systemd` systems use configuration in `/etc/systemd/network`;
+see the `systemd-networkd` manpage for details.
+
+Debian systems' legacy configuration package is `ifupdown` using
+`/etc/network/interfaces`. For more see the [Debian Network Setup
+reference][debnet]. The [NetworkConfiguration][dw-netconf] Debian
+wiki page also has lots of good info.
+
+Red Hat systems (at least up to RHEL 7) configure via
+`/etc/sysconfig/network`; see below for more details. There are also
+some [tutorials from BSS][BSS] on RHEL v7 networking and Active
+Directory integration.
+
+### Command-line Tools
+
+- `nmcli`, `nmtui*`: NetworkManager CLI and curses interfaces. Can also
+  be used to query autoconfig info from DHCP, etc.
+- `ip`: (`iproute2` package): Interface, routing, etc. query and set.
+- `ethtool DEVNAME` queries and sets driver/hardware settings for
+  network interfaces with a particular focus on wired Ethernet
+  devices.
+- `ifconfig`, `route`: legacy programs replaced by `ip`.
+
+#### nmcli Quickref
+
+All subcommands may be abbreviated to one letter. Completion is available.
+
+- `nmcli`: Long summary of whole system state.
+- `nmcli device`: All device states, one per line.
+- `nmcli device show [DEV]`: Current interface config details.
+- `nmcli connection`: List all connections, one per line.
+- `nmcli connection show CON`: Very detailed connection information,
+  including NM configuration settings, DHCP option details, etc.
+- `nmcli connection up|down CON`: Connect/disconnect.
+
+[BSS]: http://bss.technology/tutorials/
+[NetworkConfiguration][dw-netconf]
+[NetworkManager]: https://en.wikipedia.org/wiki/NetworkManager
+[debnet]: https://www.debian.org/doc/manuals/debian-reference/ch05
+
+
+Interface Naming
+----------------
+
+Names start with `en` (Ethernet), `wl` (WLAN) `ww` (WWAN). The
+following chars may include `o` (onboard), `s` (hotplug slot), `p`
+(PCI bus location), `x` (MAC address follows, e.g.,
+`wlx000f009a0b1c`). Numbers are indexes of IDs, ports, etc. Names such
+as `eth0` will be used if a name following the scheme above cannot be
+constructed.
+
+Debian also has `udev` to try to give fixed names to devices even when
+they're moved around (typically by MAC address0); rules are generated
+when a new network interface is detected and stored in
+`/etc/udev/rules.d/70-local-persistent-net.rules`.
+
+RH has something along those lines as well; possibly it's related to
+their `biosdevname` command and package.
 
 
 RHEL/CentOS Old Static Network Config
