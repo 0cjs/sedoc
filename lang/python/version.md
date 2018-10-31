@@ -66,6 +66,7 @@ install the 1.0 version and reinstall the 1.1 version afterwards:
 Download and install in `~/.pythonz` with:
 
     curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
+    #   Also apt-get build dependencies as per "From Source" below.
 
 To enable the `pythonz` command:
 
@@ -107,7 +108,7 @@ Get the source from [GitHub] or the Python.org [downloads] area and
 build it:
 
     sudo apt-get install build-essential dpkg-dev \
-        zlib1g-dev libbz2-dev liblzma-dev \
+        libffi-dev zlib1g-dev libbz2-dev liblzma-dev \
         libssl-dev libgdbm-dev libncurses5-dev libreadline-dev
     #   Use libssl1.0-dev instead for Python <=3.4
     #   XXX should include libsqlite as well...
