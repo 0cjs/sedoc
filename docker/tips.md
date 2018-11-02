@@ -42,7 +42,7 @@ The `name` filter may be a regular expression, but always does a
 substring match (`^` and `$` appear not to be supported). To print
 a list of GitLab CI cache containers:
 
-    docker ps --format='{{.ID}}" \
+    docker ps --format='{{.ID}}' \
       --filter name=runner-[0-9a-f]*-project-[0-9]*-concurrent-[0-9]*-cache-
 
 ### Docker Inspect and Templates
