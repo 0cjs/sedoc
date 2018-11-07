@@ -72,9 +72,9 @@ All subcommands may be abbreviated to one letter. Completion is available.
 - `nmcli connection up|down CON`: Connect/disconnect.
 
 [BSS]: http://bss.technology/tutorials/
-[NetworkConfiguration][dw-netconf]
 [NetworkManager]: https://en.wikipedia.org/wiki/NetworkManager
 [debnet]: https://www.debian.org/doc/manuals/debian-reference/ch05
+[dw-netconf]: https://wiki.debian.org/netconf
 
 
 Interface Naming
