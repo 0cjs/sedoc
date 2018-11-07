@@ -28,6 +28,12 @@ Configuration Overview
 Hostname is configured via `hostnamectl` (from systemd); the local
 name must also be in `/etc/hosts`.
 
+[Netplan] reads `/etc/netplan/*.yaml` for config placed there by
+packages/apps and then generates configuration for "renderers"
+(currently NetworkManager and systemd-networkd) that actually manage
+the specific interfaces. This seems to have first been delivered on
+Ubuntu 18.04. Sounds like a good idea; let's see if it spreads.
+
 [NetworkManager] is typically installed for dynamic management of
 interfaces not explicitly configured (see below). `nm-applet` and
 `nm-connection-editor` provide a graphical UI; CLI is via `nmcli`.
@@ -72,6 +78,7 @@ All subcommands may be abbreviated to one letter. Completion is available.
 - `nmcli connection up|down CON`: Connect/disconnect.
 
 [BSS]: http://bss.technology/tutorials/
+[Netplan]: https://netplan.io
 [NetworkManager]: https://en.wikipedia.org/wiki/NetworkManager
 [debnet]: https://www.debian.org/doc/manuals/debian-reference/ch05
 [dw-netconf]: https://wiki.debian.org/netconf
