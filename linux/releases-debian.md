@@ -21,6 +21,14 @@ Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
 
 
+Project and Support Sites
+-------------------------
+
+[`alioth.debian.org`] and its subsites have been shutdown, though
+there are still many links pointing to it. It's been replaced by
+[Salsa], a GitLab instance at <https://salsa.debian.org/>.
+
+
 Upgrading Debian
 ----------------
 
@@ -86,4 +94,6 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 
 
 [Debian LTS]: https://wiki.debian.org/LTS
+[Salsa]: https://wiki.debian.org/Salsa
+[`alioth.debian.org`]: https://wiki.debian.org/Alioth/FAQ
 [debrel]: https://wiki.debian.org/DebianReleases

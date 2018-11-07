@@ -42,7 +42,7 @@ bash-completion Framework
 
 The current project site for bash-completion is on [github]. Old versions,
 including the one distributed with Debian 9, list the project site as
-<http://bash-completion.alioth.debian.org>.
+<http://bash-completion.alioth.debian.org>, which is no longer available.
 
 #### User-specific Configuration
 
