@@ -1,7 +1,6 @@
 Docker Security Notes
 =====================
 
-
 Secure Your Server and Be Careful of Malicious Images
 -----------------------------------------------------
 
@@ -21,10 +20,14 @@ For details, see:
 Leveraging Docker for Root Access
 ---------------------------------
 
-On most systems there is a `docker` group with access to the Docker
-daemon socket. Anybody in this group should also be explictly allowed
-to sudo to a root shell. If they can't, they can leverage their
-implict access via:
+On many systems the Docker daemon socket is owned by group `docker`
+and group members have write access to the socket. It's tempting to
+add users to this group so they need not `sudo docker`; don't do this!
+
+Anybody with access to the Docker daemon socket can easily leverage
+this for root access on the host using the technique below. Thus, if
+you're giving someone this access, make it explicit and clear by
+putting them in the `sudo` group instead.
 
     #   On the host, start a Docker container with a root shell
     #   that has access to all files on the host.
