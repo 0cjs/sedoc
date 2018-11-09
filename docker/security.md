@@ -46,6 +46,60 @@ putting them in the `sudo` group instead.
     ^D
 
 
+User/UID in Container
+---------------------
+
+By default Docker container processes are started as UID 0 (user
+`root`), relying on the container protection to isolate the process.
+It's considered better practice (though not so often done, except by
+some hosting services that enforce this) to run as a different user in
+the container. (This can be set with `USER` in the `Dockerfile` or
+`docker run -u`.) An alternative is to use user namespaces to map
+`root` in the container to a different user on the host.
+
+When using `USER` in a `Dockerfile`, note that this affects the build
+of images using that image as a base image. Generally they'll have to
+user another `USER` to change back to root to install further packages
+or whatever, and then change back again later. Also note that hosting
+services may override the `USER` with their own `docker run -u` option,
+particularly if you give a username instead of UID.
+
+When using a different user in the container, the main problem that
+usually crops up is lack of an `/etc/passwd` entry for the user.
+(OpenSSH, for example, will refuse to run in this circumstance.)
+[`nss_wrapper`] can be used to work around this, if you install it in
+your container and use appropriate wrapper scripts or similar to
+supply the following environment. You must supply both passwd and
+group; it won't work with just passwd.
+
+    LD_PRELOAD=/usr/lib/libnss_wrapper.so
+    NSS_WRAPPER_PASSWD=/path/to/custom/passwd
+    NSS_WRAPPER_GROUP=/path/to/custom/group
+
+This series of posts by Graham Dumpleton is a detailed exploration of
+root and non-root users in Docker containers.
+* [Running IPython as a Docker container under OpenShift.][dscpl151218]  
+  Why is the `jupyter/notebooks` image breaking when run on OpenShift?
+  Because OpenShift doesn't run it as root.
+* [Don't run as root inside of Docker containers.][dscpl151218a]  
+  Example of leveraging root in a container to get root access on the host.
+* [Overriding the user Docker containers run as.][dscpl151222]  
+  `USER` directive in Dockerfile; `run -u` option.
+* [Random user IDs when running Docker containers.][dscpl151223]  
+  How to handle not knowing the UID of your container.
+  Working when GID is 0 and umask settings.
+* [Unknown user when running Docker container.][dscpl151224]  
+  Using `nss_wrapper`.
+* [Issues with running as PID 1 in a Docker container.][dscpl151229]
+
+
 
 [Docker Hub]: https://hub.docker.com/explore/
+[`nss_wrapper`]: https://cwrap.org/nss_wrapper.html
+[dscpl151218]: http://blog.dscpl.com.au/2015/12/running-ipython-as-docker-container.html
+[dscpl151218a]: http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html
+[dscpl151222]: http://blog.dscpl.com.au/2015/12/overriding-user-docker-containers-run-as.html
+[dscpl151223]: http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html
+[dscpl151224]: http://blog.dscpl.com.au/2015/12/unknown-user-when-running-docker.html
+[dscpl151229]: http://blog.dscpl.com.au/2015/12/issues-with-running-as-pid-1-in-docker.html
 [kromtech]: https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
