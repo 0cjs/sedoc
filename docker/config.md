@@ -50,7 +50,8 @@ Handy [official repos] and images include:
 * __alpine__ (5 MiB): Linux optimized for small size, based on musl libc
   and Busybox. Tags  `edge`, `3.8` (latest), `3.7`, ...
 * __busybox__ (1-5 Mib): `1`, `uclibc`, `glibc`, `musl`
-* __ubuntu__ (110 MiB): tags `18.04`, `16.04`, (latest) `14.04` (220 MiB)
+* __ubuntu__ (85 MiB): tags `18.10`, `18.04` (latest),
+  `16.04` (116 MiB), `14.04` (188 MiB)
 * __mysql__ (400 MiB): `8`, `5` (latest)
 * __centos__ (210 MiB): `7` (latest), `6`
 * __debian__ (100 MiB): tags `9` (latest), `8`, `7`
