@@ -13,8 +13,8 @@ documentation][isys] among other sources.
     python -c 'import foo; print(foo.__file__)'
 
 
-`import` Statement Syntax
--------------------------
+import Statement Syntax
+-----------------------
 
 [`import`][istmt] is a runtime directive that creates a module and
 binds it to a name. (Any parent modules/packages in the hierarchy will
@@ -181,10 +181,47 @@ package.
 
 There's nothing in particular synchronizing `__spec__` and the related
 individual module attributes. A notable exception to them being the
-same is when a module is run with `-m`; `module.__name__` will be
-`__main__` but `module.__spec__.name` will be the actual module name.
+same is when a non-package module is run with `-m`; `module.__name__`
+will be `__main__` but `module.__spec__.name` will be the actual
+module name.
 
 For more details, see [importers].
+
+
+The `__main__` Module
+---------------------
+
+The "top-level" module in which the interpreter starts is always named
+[`__main__`]. More precisely, the `__name__` attribute will always be
+`__main__`, although `__spec__.name` may be different (see above).
+This is what allows the standard "start when run but not when
+imported" boilerplate:
+
+    if __name__ == '__main__':
+        main()
+
+The possible ways to start the interpreter are as follows. `__name__`
+in that starting module will always `__main__`.
+
+1. __`python .../foo.py`__:
+   - Loads file `.../foo.py` from whatever path was specified.
+   - The directory in which `foo.py` lives will be added to `sys.path`.
+   - `sys.path` will _not_ include the current working directory.
+   - `__spec__` will be `None`.
+2. __`python -m bar`__ where bar is not a package:
+   - Loads file `bar.py` from the Python path.
+   - `sys.path` will include the current working directory.
+   - `__spec__.name` will be `bar`.
+3. __`python -m baz`__ where baz is a package:
+   - Loads file `baz/__main__.py` from the Python path (or generates
+     `python: No module named baz.__main__; 'baz' is a package and
+     cannot be directly executed`).
+   - `sys.path` will include the current working directory.
+   - `__spec__.name` will be `baz`.
+
+In the last case, if there is no `__main__.py` in the package
+directory you will receive an error message: `python: No module named
+baz.__main__; 'baz' is a package and cannot be directly executed`.
 
 
 Module Loading and Importers
@@ -267,6 +304,7 @@ Further Documentation
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [`ResourceLoader.get_data()`]: https://docs.python.org/3/library/importlib.html#importlib.abc.ResourceLoader.get_data
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
+[`__main__`]: https://docs.python.org/3/library/__main__.html
 [`__path__`]: https://docs.python.org/3/reference/import.html#__path__
 [`globals()`]: https://docs.python.org/3/library/functions.html#globals
 [`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
