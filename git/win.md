@@ -1,7 +1,8 @@
-[Git for Windows]
-=================
+Git for Windows
+===============
 
-Includes:
+[Git for Windows] is a [MinGW](../win/unixy.md) build of Git and
+various other tools. It includes:
 * Git, of course
 * OpenSSH (dunno if it's [Win32-OpenSSH] or not)
 * [ssh-pageant], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
