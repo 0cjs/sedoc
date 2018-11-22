@@ -223,6 +223,12 @@ In the last case, if there is no `__main__.py` in the package
 directory you will receive an error message: `python: No module named
 baz.__main__; 'baz' is a package and cannot be directly executed`.
 
+A `baz.__main__` module should normally still use the standard `if
+__name__ == '__main__'` technique to avoid running main program code
+when it's imported with `import baz.__main__` (in which case its
+`__name__` attribute will be the fully qualified name,
+`baz.__main__`). This allows unit testing of code in that module.
+
 
 Module Loading and Importers
 -----------------------------
