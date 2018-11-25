@@ -48,7 +48,13 @@ Abbreviations:
 - DIPnn: 0.3" wide dual-inline package, _nn_ pins
 - WDIPnn: 0.6" wide DIP
 
+A [search for "memory dip" on the JDEC site][JDEC-memory-dip] gives
+standards and pinouts for various kinds of memory chips.
+
 #### SRAM
+
+[JDEC Standard No. 21-C §3.7.5][JDEC-3.7.5] has standard pinouts for
+byte-wide and TTL MOS SRAM.
 
 Hitachi [HM62256A] series 32K×8 high-speed CMOS
 - TTL compatible.
@@ -112,10 +118,12 @@ References and Reading
 
 
 [6509]: http://archive.6502.org/datasheets/mos_6509_mpu.pdf
+[AT28C16A]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
 [AT28C64]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
-[AT28C16A]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
 [HM62256A]: https://datasheet.octopart.com/HM62256ALP-10-Hitachi-datasheet-115281844.pdf
+[JDEC-3.7.5]: https://www.jedec.org/system/files/docs/3_07_05R12.pdf
+[JDEC-memory-dip]: https://www.jedec.org/document_search/field_committees/25?search_api_views_fulltext=memory+dip
 [W27C512-45Z]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [decoddown]: http://forum.6502.org/viewtopic.php?f=12&t=3620&sid=4c12bb500e4de4611e2dd902aed40ec7&start=15
 [rcse-4932/7208]: https://retrocomputing.stackexchange.com/a/4932/7208
