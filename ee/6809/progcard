@@ -1,84 +1,4 @@
 ----------------------------------------------------------------
-|                                                              |
-|                                                              |
-|                           Motorola                           |
-|                                                              |
-|              666      88888      000      99999              |
-|             6        8     8    0   0    9     9             |
-|            6         8     8   0   0 0   9     9             |
-|            666666     88888    0  0  0    999999             |
-|            6     6   8     8   0 0   0         9             |
-|            6     6   8     8    0   0         9              |
-|             66666     88888      000      9999               |
-|                                                              |
-|         6809 MICROPROCESSOR Instruction Set Summary          |
-|                                                              |
-|                                                              |
-|                                                              |
-|                                                              |
-|                                                              |
-|                    _________    _________                    |
-|                  _|         \__/         |_  ____            |
-|             Vss |_|1                   40|_| Halt <--        |
-|             ___  _|                      |_                  |
-|         --> NMI |_|2                   39|_| XTAL <--        |
-|             ___  _|                      |_                  |
-|         --> IRQ |_|3                   38|_| EXTAL <--       |
-|            ____  _|                      |_  _____           |
-|        --> FIRQ |_|4                   37|_| Reset <--       |
-|                  _|                      |_                  |
-|          <-- BS |_|5                   36|_| MRDY <--        |
-|                  _|                      |_                  |
-|          <-- BA |_|6                   35|_| Q -->           |
-|                  _|                      |_                  |
-|             Vcc |_|7                   34|_| E -->           |
-|                  _|                      |_  ___ ____        |
-|          <-- A0 |_|8                   33|_| DMA/BREQ <--    |
-|                  _|                      |_    _             |
-|          <-- A1 |_|9                   32|_| R/W -->         |
-|                  _|                      |_                  |
-|          <-- A2 |_|10       6809       31|_| D0 <-->         |
-|                  _|                      |_                  |
-|          <-- A3 |_|11                  30|_| D1 <-->         |
-|                  _|                      |_                  |
-|          <-- A4 |_|12                  29|_| D2 <-->         |
-|                  _|                      |_                  |
-|          <-- A5 |_|13                  28|_| D3 <-->         |
-|                  _|                      |_                  |
-|          <-- A6 |_|14                  27|_| D4 <-->         |
-|                  _|                      |_                  |
-|          <-- A7 |_|15                  26|_| D5 <-->         |
-|                  _|                      |_                  |
-|          <-- A8 |_|16                  25|_| D6 <-->         |
-|                  _|                      |_                  |
-|          <-- A9 |_|17                  24|_| D7 <-->         |
-|                  _|                      |_                  |
-|         <-- A10 |_|18                  23|_| A15 -->         |
-|                  _|                      |_                  |
-|         <-- A11 |_|19                  22|_| A14 -->         |
-|                  _|                      |_                  |
-|         <-- A12 |_|20                  21|_| A13 -->         |
-|                   |______________________|                   |
-|                                                              |
-|                                                              |
-|                                                              |
-|                                                              |
-|                                                              |
-|                                                              |
-|Written by     Jonathan Bowen                                 |
-|               Programming Research Group                     |
-|               Oxford University Computing Laboratory         |
-|               8-11 Keble Road                                |
-|               Oxford OX1 3QD                                 |
-|               England                                        |
-|                                                              |
-|               Tel +44-865-273840                             |
-|                                                              |
-|Created        August 1981                                    |
-|Updated        April 1985                                     |
-|Issue          1.5                Copyright (C) J.P.Bowen 1985|
-----------------------------------------------------------------
-----------------------------------------------------------------
 |Mnemon.|Op|IHNZVC|IEXD#R|~|Description           |Notes       |
 |-------+--+------+------+-+----------------------+------------|
 |ABX    |3A|------|X     |3|Add to Index Register |X=X+B       |
@@ -237,4 +157,17 @@
 | FFFAH to FFFBH           |SWI instruction interrupt vector   |
 | FFFCH to FFFDH           |Non-maskable interrupt vector (NMI)|
 | FFFEH to FFFFH           |Reset vector                       |
+----------------------------------------------------------------
+|Written by     Jonathan Bowen                                 |
+|               Programming Research Group                     |
+|               Oxford University Computing Laboratory         |
+|               8-11 Keble Road                                |
+|               Oxford OX1 3QD                                 |
+|               England                                        |
+|                                                              |
+|               Tel +44-865-273840                             |
+|                                                              |
+|Created        August 1981                                    |
+|Updated        April 1985                                     |
+|Issue          1.5                Copyright (C) J.P.Bowen 1985|
 ----------------------------------------------------------------
