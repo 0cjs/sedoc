@@ -125,9 +125,8 @@ See the link for detailed documentation.
 ### Python for Windows
 
 The [Windows downloads][py-win-dl] of Python are native Windows apps.
-See [Using Python on Windows][py-win-using] for more information.
-You'll need to use winpty (see above) for scripts that use, e.g.,
-`getpass()`.
+For further information see [Python for Windows
+](../lang/python/runtime/win.md).
 
 
 Tips and Tricks
@@ -152,7 +151,6 @@ Tips and Tricks
 [mintty]: https://mintty.github.io/
 [msys2-diff]: https://github.com/msys2/msys2/wiki/How-does-MSYS2-differ-from-Cygwin
 [py-win-dl]: https://www.python.org/downloads/windows/
-[py-win-using]: https://docs.python.org/3/using/windows.html
 [so-41318586]: https://stackoverflow.com/a/41318586/107294
 [so-771756]: https://stackoverflow.com/q/771756/107294
 [winpty]: https://github.com/rprichard/winpty
