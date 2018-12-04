@@ -18,6 +18,7 @@ Python Summary/Quickref
   - [Regular Expressions](regexp.md)
   - [Date and Time](datetime.md)
   - [`itertools`](iter.md)
+  - [File and Network I/O](io.md).
   - [Filesystem and Path Libraries](files.md)
   - [Pickle](pickle.md) object seralization
   - [Argument Parsing](argparse.md)

@@ -9,6 +9,7 @@ Things related to this include:
   especially [`pathlib`] and [`os.path`]
 * [Generic Operating System Services][stdlib-genos] (`os` and `io`)
 
+Also see [File and Network I/O](io.md).
 
 os.PathLike
 -----------
