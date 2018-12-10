@@ -19,7 +19,7 @@ import Statement Syntax
 [`import`][istmt] is a runtime directive that creates a module and
 binds it to a name. (Any parent modules/packages in the hierarchy will
 also be created.) Thus, in in a function, `if` statement, etc.,
-`import` will not be executed until the code is run. 
+`import` will not be executed until the code is run.
 
 See [PEP 328] for more on multi-line import syntax and relative import
 design.
@@ -47,9 +47,43 @@ certain circumstances; see [PEP 366].
 
 Import statements result in bytecode that calls [`__import__`] \(which
 returns the top-level module imported) to perform the creation
-function folowed by code to do the name binding. For programmatic
-importing you should use [`importlib.import_module()`] \(which returns
-the named module) instead.
+function followed by code to do the name binding. For programmatic
+importing use the techniques below.
+
+#### Programmatic Importing
+
+first two take _name, package=None_.
+
+* [`importlib.import_module()`] imports the named module (loading it
+  if necessary) and returns it. (The return value is different from
+  `__import__()`.)
+* [`importlib.util.find_spec()`] returns a spec or `None` if the
+  module is not found. The spec ([`importlib.machinery.ModuleSpec`])
+  includes the name, loader, etc.; for more see below.
+
+To load the a module from a spec:
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    sys.modules[name] = module
+
+To directly import a source file (≥3.5):
+
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    sys.modules[module_name] = module   # Optional
+
+[so-import-as-main] discusses how to load a module from a given path
+with a different module name assigned (e.g., `__main__`) but uses a
+deprecated API. It's not clear how to do this with the current API,
+but as of 3.7 the old `imp` interface still works.
+
+#### Deprecated Interfaces
+
+The `imp` module (access to import internals) has been deprecated
+since Python 3.4; use `importlib` instead. As of 3.7 using it
+generates a `DeprecationWarning`.
 
 
 Modules
@@ -314,7 +348,9 @@ Further Documentation
 [`__path__`]: https://docs.python.org/3/reference/import.html#__path__
 [`globals()`]: https://docs.python.org/3/library/functions.html#globals
 [`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
+[`importlib.machinery.ModuleSpec`]: https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec
 [`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
+[`importlib.util.find_spec()`]: https://docs.python.org/3/library/importlib.html?highlight=import_module#importlib.util.find_spec
 [`pkgutil.get_data()`]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
 [`types.ModuleType`]: https://docs.python.org/3/library/types.html#types.ModuleType
 [factory functions]: https://www.python.org/dev/peps/pep-0451/#factory-functions
@@ -332,3 +368,4 @@ Further Documentation
 [so-34import]: https://stackoverflow.com/a/43602645/107294
 [so-impname1]: https://stackoverflow.com/q/8350853/107294
 [so-impname2]: https://stackoverflow.com/a/24659400/107294
+[so-import-as-main]: https://stackoverflow.com/a/6114411/107294
