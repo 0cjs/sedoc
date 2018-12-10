@@ -1,6 +1,9 @@
 Rebasing in Git
 ===============
 
+Basic Rebasing
+--------------
+
 The following two commands are equivalant:
 
     git rebase upstream devbranch
@@ -15,7 +18,7 @@ on the `upstream` branch and re-applies them following `upstream`.
 `upstream` as above, but takes only commits `forkpoint..HEAD`. See
 below for examples/situations for using this.
 
-The procedure is:
+The procedure this command follows is:
 1. Checkout `devbranch`.
 2. Set `ORIG_HEAD` to `HEAD`.
 2. Reset the current branch to _upstream_.
@@ -31,6 +34,8 @@ specified side in the case of a conflict. During rebases as described
 above, remember that `ours` is _upstream_, onto which you're rebasing,
 and `theirs` is the dev branch, `ORIG_HEAD`. (This is the opposite of
 the meaning during `git merge`.)
+
+#### Handling Conflicts
 
 When you're in a conflicted state, you can also use `git checkout
 --ours .` (take all changes from _upstream_) or `git checkout --theirs

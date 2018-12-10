@@ -24,6 +24,8 @@ Logging and Graph Exploration
 Fixing/Changing Commits and Branches
 ------------------------------------
 
+* See [Rebasing in Git](rebase.md) for tips on handling merge conflicts.
+
 * To rewrite the author and timestamp of a commit:
 
       git commit --amend --reset-author
