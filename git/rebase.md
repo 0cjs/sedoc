@@ -27,6 +27,8 @@ The procedure this command follows is:
    (i.e., the changes are already included in _upstream_).
 5. Stop on merge failures for manual fixes.
 
+#### Automated Conflict Handling
+
 The standard merge strategy is `recursive`, which will normally stop
 for manual resolution when there's a conflict. This can be overridden
 with `-Xours` or `-Xtheirs`, automatically taking content from the
@@ -35,17 +37,24 @@ above, remember that `ours` is _upstream_, onto which you're rebasing,
 and `theirs` is the dev branch, `ORIG_HEAD`. (This is the opposite of
 the meaning during `git merge`.)
 
-#### Handling Conflicts
-
-When you're in a conflicted state, you can also use `git checkout
---ours .` (take all changes from _upstream_) or `git checkout --theirs
-.` (take all changes from _devbranch_). Note that these must have a
-path specified, otherwise you will get an error `--ours/--theirs'
-cannot be used with switching branches`. (For more details, see the
-message from Jeff King in [git checkout --theirs
-fails][co-theirs-fails].
-
 The recursive merge strategy also offers `-Xignore-space-change` etc.
+
+#### Manual Conflict Handling
+
+The following vim mapping will let you easily find conflict markers
+in a buffer:
+
+    noremap qv/ /^\(<<<<<<< .*\\|\|\|\|\|\|\|\| .*\\|=======\\|>>>>>>> .*\)$<CR>
+
+When in a conflicted state you may also use:
+
+    git checkout --ours   .     # Take all changes from upstream
+    git checkout --theirs .     # Take all changes from _devbranch
+
+These must have a path specified, otherwise you will get an error
+`--ours/--theirs' cannot be used with switching branches`. (For more
+details, see the message from Jeff King in [git checkout --theirs
+fails][co-theirs-fails].
 
 
 Using --onto
