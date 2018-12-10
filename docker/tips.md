@@ -7,9 +7,17 @@ Docker Tips
 see if you're at the root for all hierarchies (e.g., `3:cpuset:/`).
 However, as per my comment there, newer systemd versions (e.g.,
 Debian 9 systemd 232) may have many cgroups set to `/init.scope`.
-The most reliable heurstic I can think of at the moment is:
+
+Heuristic from [so 52081984]":
+
+    grep -o -P -m1 'docker.*\K[0-9a-f]{64,}' /proc/1/cgroup
+
+Simpler but less reliable:
 
     grep -s -q ':/docker/' /proc/1/cgroup
+
+If you are certain you're in a container you can probably get your
+container ID with `basename $(cat /proc/1/cpuset`.
 
 ### Start/Detach/Stop/Restart
 
@@ -167,4 +175,5 @@ See [Docker Security](security.md)
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
 [go template]: https://golang.org/pkg/text/template/
 [ps-filtering]: https://docs.docker.com/engine/reference/commandline/ps/#filtering
+[so 52081984]: https://stackoverflow.com/a/52081984/107294
 [so-23513045]: https://stackoverflow.com/q/23513045/107294
