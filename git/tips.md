@@ -36,23 +36,23 @@ Fixing/Changing Commits and Branches
 
 * To create an empty orphan branch:
 
-    git checkout --orphan BRANCHNAME
-    git rm --cached -r .
-    git clean -fdX
+      git checkout --orphan BRANCHNAME
+      git rm --cached -r .
+      git clean -fdX
 
 * To identify large objects ([so-10622293]), in a few ways:
 
-    git gc              # Get all commits into a packfile
-    git verify-pack -v .git/objects/pack/pack-*.idx \
-      | sed -e '/^non delta:/,$d' | sort -k 4 -n -r | head
-    # Columns: SHA-1 type size pack-size pack-offset [depth base-SHA-1]
+      git gc              # Get all commits into a packfile
+      git verify-pack -v .git/objects/pack/pack-*.idx \
+        | sed -e '/^non delta:/,$d' | sort -k 4 -n -r | head
+      # Columns: SHA-1 type size pack-size pack-offset [depth base-SHA-1]
 
-    git rev-list --objects --all \
-    | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
-    | sed -n 's/^blob //p' \
-    | sort --numeric-sort --key=2 \
-    | cut -c 1-12,41- \
-    | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+      git rev-list --objects --all \
+      | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
+      | sed -n 's/^blob //p' \
+      | sort --numeric-sort --key=2 \
+      | cut -c 1-12,41- \
+      | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 
 
 Configuration
