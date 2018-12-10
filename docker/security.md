@@ -45,6 +45,10 @@ putting them in the `sudo` group instead.
     ssh-rsa AAAA.... ur@hacked.com
     ^D
 
+The same of course applies to making the Docker daemon socket available
+to any account (root or not) inside a container.
+
+Also see [lvh blog] for more details and a video.
 
 User/UID in Container
 ---------------------
@@ -103,3 +107,4 @@ root and non-root users in Docker containers.
 [dscpl151224]: http://blog.dscpl.com.au/2015/12/unknown-user-when-running-docker.html
 [dscpl151229]: http://blog.dscpl.com.au/2015/12/issues-with-running-as-pid-1-in-docker.html
 [kromtech]: https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
+[lvh blog]: https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html
