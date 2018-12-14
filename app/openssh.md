@@ -6,6 +6,7 @@ OpenSSH Documentation:
 * [`ssh-agent` protocol][agent-protocol]
 
 Related Software:
+* [PuTTY]
 * [ckssh]
 * [Paramiko API] (Python implementation of SSHv2)
 
@@ -131,6 +132,28 @@ forwarding; once it's been forwarded anybody on the remote host with
 access to the socket can authenticate with all the keys in the agent.
 
 
+Key File Formats and Conversion
+-------------------------------
+
+Though `ssh-keygen` claims to be able to handle PEM files, the
+manpage may be a little optimistic about what the program can
+actually do.\[[unix 84122]]
+
+Debian has a [`putty-tools`][putty] package that includes Unix command-line
+version of `puttygen` that is better at doing conversions. Useful
+conversion commands are:
+
+    puttygen foo.pem -l                         # Show ingerprint
+    puttygen foo.pem -L                         # Show OpenSSH public key
+    puttygen foo.pem -O private-openssh -o foo  # Convert private key
+
+All the above work on PEM private key files, which start with lines like:
+
+    -----BEGIN RSA PRIVATE KEY-----
+    Proc-Type: 4,ENCRYPTED
+
+
+
 Versions
 --------
 
@@ -145,7 +168,9 @@ Versions
 
 
 [Paramiko API]: http://docs.paramiko.org/
+[PuTTY]: ../win/term-ssh.md
 [agent-protocol]: http://api.libssh.org/rfc/PROTOCOL.agent
 [ckssh]: https://github.com/cynic-net/ckssh
 [manual]: https://www.openssh.com/manual.html
 [ssh_config]: https://man.openbsd.org/ssh_config
+[unix 84122]: https://unix.stackexchange.com/a/84122/10489

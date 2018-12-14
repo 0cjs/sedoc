@@ -65,6 +65,16 @@ not need to be running at the time, but in that case a query will fail:
 You can start PAgeant later and `ssh-pageant` will then be able to
 communicate with it.
 
+### PuTTY on Unix
+
+PuTTY has been ported to Unix; Debian has a `putty` (graphical
+terminal client), `putty-tools` (command-line tools) and `putty-doc`
+packages.
+
+`putty-tools` includes `plink`, `pscp`, `psftp` and `puttygen`. The
+last can be very useful for converting key files from Windows users
+that [`ssh-keygen`](../app/openssh.md) can't handle.
+
 
 
 [Chrome SSH App]: https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo
