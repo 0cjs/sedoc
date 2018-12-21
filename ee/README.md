@@ -1,6 +1,9 @@
 Electronic Engineering Info
 ===========================
 
+Also see [to-do list](todo.md)
+
+
 Markup
 ------
 
