@@ -106,6 +106,7 @@ Testing and information:
   Returns absolute path with all symlinks resolved and `..` eliminated.
   - Infinite loop raises `RuntimeError`.
   - (≥3.6) `strict=True` raises `FileNotFoundError` if path doesn't exist.
+  - (≤3.5) Always operates as if `strict=True`.
 * `samefile(otherpath)`
 
 Usage:
