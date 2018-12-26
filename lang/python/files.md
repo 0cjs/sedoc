@@ -44,11 +44,12 @@ Lots; see [`os`] and [`os.DirEntry`].
 pathlib and Path classes
 ------------------------
 
-The [`pathlib`] standard library (≥3.4) offers classes `PurePosixPath`,
-`PureWindowsPath`, `PosixPath` and `WindowsPath`. The Pure versions do
-not include I/O functionality and can be instantiated on any platform.
-The `Path()` and `PurePath()` constructors will instantiate an
-appropriate class for the OS on which they're running.
+The [`pathlib`] standard library (≥3.4, backported to 2.x as PyPI
+[`pathlib2`]) offers classes `PurePosixPath`, `PureWindowsPath`,
+`PosixPath` and `WindowsPath`. The Pure versions do not include I/O
+functionality and can be instantiated on any platform. The `Path()`
+and `PurePath()` constructors will instantiate an appropriate class
+for the OS on which they're running.
 
 All `Path()` constructors take a list of segments; `.` is the default
 if the list is empty. Each segmeent may be a single path component or
@@ -157,6 +158,7 @@ File/directory modification:
 [`os.PathLike`]: https://docs.python.org/3/library/os.html#os.PathLike
 [`os.path`]: https://docs.python.org/3/library/os.path.html
 [`os`]: https://docs.python.org/3/library/os.html
+[`pathlib2`]: https://github.com/mcmtroffaes/pathlib2
 [`pathlib`]: https://docs.python.org/3/library/pathlib.html
 [file objects]: https://docs.python.org/3/glossary.html#term-file-object
 [stdlib-filedir]: https://docs.python.org/3/library/filesys.html
