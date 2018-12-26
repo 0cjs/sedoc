@@ -68,11 +68,11 @@ are installed. Without special handling the most recently installed
 version will be used by default for scripts and shebangs such as
 `#!/usr/bin/env python3` will be ignored.
 
-The separate [Python Launcher for Windows][[py] application, which is
-not specific to any particular version of Python, will normally be
-installed with the first version of Python you install. This provides
-a `py` program that selects a requested version of python or an
-appropriate one based on a shebang line.
+The separate [Python Launcher for Windows][[py] application ([PEP
+397]), which is not specific to any particular version of Python, will
+normally be installed with the first version of Python you install.
+This provides a `py` program that selects a requested version of
+python or an appropriate one based on a shebang line.
 
 Usage (unknown parameters will be passed to the Python interpreter):
 
@@ -107,6 +107,7 @@ application's installer.
 [ActivePython]: https://www.activestate.com/activepython/
 [Anaconda]: https://www.anaconda.com/download/
 [Canopy]: https://www.enthought.com/product/canopy/
+[PEP 397]: https://www.python.org/dev/peps/pep-0397/
 [WinPython]: https://winpython.github.io/
 [py-win-using]: https://docs.python.org/3/using/windows.html
 [py]: https://docs.python.org/3/using/windows.html#launcher
