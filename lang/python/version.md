@@ -8,19 +8,25 @@ There are two major versions:
 
 Release Histories/Schedules/New Features: [3.6], [3.7]
 
-On almost all systems `/usr/bin/python3` is present if Python 3 is
-installed. It's almost never installed as part of the base system.
+#### Interpreter Paths
 
-On most systems `/usr/bin/python` will be Python 2 unless the sysadmin
-has explicitly selected otherwise. Red Hat flavour systems include
-Python 2 as part of the base system; on other systems many packages
-(over a thousand non-Python ones on Debian) require it and many more
-recommend it.
+[PEP 394] recommends that `python2` and `python3` always be available.
+`#!/usr/bin/env python` should be used only for scripts compatible
+with both 2 and 3.
+- Through 2018, PEP 394 recommends that `python` be Python 2. Most
+  Linux distros through 2018 adhere to this unless the admin specifies
+  otherwise.
+- Arch made `python` be Python 3 long ago.
+- RHEL ≥8: No default `python`.
+- Windows should use `py` to interpret shebangs; see
+  [`runtime/win`](runtime/win.md).
+
 
 #### OS/Distro Version Reference
 
 | OS/Distro     | `python`  |`python3`  | Distro Release Date
 |---------------|-----------|-----------|----------------------
+| CentOS 8      | varies[3] | ?         |
 | AWS Lambda    | 2.7.?     | 3.6.1     | 2018-05 (last check)
 | Ubuntu 18.04  | 2.7.14+   | 3.6.4+    | 2018-04
 | Debian 9      | 2.7.13    | 3.5.3     | 2017-06
@@ -45,6 +51,12 @@ recommend it.
        yum install -y epel-release
        yum install -y python34         # 3.4.5; `python3`
        yum install -y python36         # 3.6.3; `python36`; CentOS 7 only
+
+3. No default `python`; can be selected with `alternatives --config
+   python` (but not recommended). "App streams" allow parallel defaults.
+   `yum install python` fails; use `python2`, `python3`, `@python27`,
+   `@python36`.
+   See [What, No Python in RHEL 8 Beta?][RHEL8].
 
 
 Building Alternative Versions
@@ -124,4 +136,6 @@ build it:
 [3.6.5]: https://www.python.org/downloads/release/python-365/
 [3.6]: https://www.python.org/dev/peps/pep-0494/
 [3.7]: https://www.python.org/dev/peps/pep-0537/
+[PEP 394]: https://www.python.org/dev/peps/pep-0394
+[RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
 [pythonz]: https://github.com/saghul/pythonz
