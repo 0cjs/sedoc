@@ -12,8 +12,15 @@ Things related to this include:
 Also see [File and Network I/O](io.md).
 
 
-os.PathLike
------------
+os
+--
+
+[`os`] provides various OS-related interfaces for processes,
+environment, system information, random numbers and filesystem objects
+including devices, named pipes, FIFOs, etc. Here we cover only the
+filesystem-related functionality.
+
+### PathLike
 
 (≥3.6) From [PEP 519], [`os.PathLike`] is an abstract base class for
 objects representing a file system path. The abstract method
@@ -28,6 +35,10 @@ Most path-using `os` functions accept a `PathLike` and the
 
 On earlier versions of Python, generally you wrap `Path` objects
 (below) in a `str()` call.
+
+### Other File-related Functions
+
+Lots; see [`os`] and [`os.DirEntry`].
 
 
 pathlib and Path classes
@@ -142,8 +153,10 @@ File/directory modification:
 
 [PEP 519]: https://www.python.org/dev/peps/pep-0519
 [`open()`]: https://docs.python.org/3/library/functions.html#open
+[`os.DirEntry`]: https://docs.python.org/3/library/os.html?highlight=direntry#os.DirEntry
 [`os.PathLike`]: https://docs.python.org/3/library/os.html#os.PathLike
 [`os.path`]: https://docs.python.org/3/library/os.path.html
+[`os`]: https://docs.python.org/3/library/os.html
 [`pathlib`]: https://docs.python.org/3/library/pathlib.html
 [file objects]: https://docs.python.org/3/glossary.html#term-file-object
 [stdlib-filedir]: https://docs.python.org/3/library/filesys.html
