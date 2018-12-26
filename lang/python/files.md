@@ -3,7 +3,7 @@ Python Filesystem and Path Libraries
 
 Things related to this include:
 * [File objects]
-* [`os.PathLike`]
+* [`os.PathLike`], [PEP 519] \(≥3.6)
 * The built-in function [`open()`]
 * [File and Directory Access][stdlib-filedir] libraries,
   especially [`pathlib`] and [`os.path`]
@@ -11,16 +11,23 @@ Things related to this include:
 
 Also see [File and Network I/O](io.md).
 
+
 os.PathLike
 -----------
 
-(≥3.6) [`os.PathLike`] is an abstract base class for objects
-representing a file system path. The abstract method `__fspath__()`
-must return a `str` (preferably) or `bytes` object in the format
-appropriate for the OS. `os.fspath()` calls this.
+(≥3.6) From [PEP 519], [`os.PathLike`] is an abstract base class for
+objects representing a file system path. The abstract method
+`__fspath__()` must return a `str` (preferably) or `bytes` object in
+the format appropriate for the OS.
 
 Most path-using `os` functions accept a `PathLike` and the
 `pathlib.Path` classes implement this interface.
+
+`os.fspath()` returns any `str` or `bytes` parameter and calls
+`__fspath__()` on anything else.
+
+On earlier versions of Python, generally you wrap `Path` objects
+(below) in a `str()` call.
 
 
 pathlib and Path classes
@@ -133,10 +140,11 @@ File/directory modification:
 
 
 
+[PEP 519]: https://www.python.org/dev/peps/pep-0519
 [`open()`]: https://docs.python.org/3/library/functions.html#open
 [`os.PathLike`]: https://docs.python.org/3/library/os.html#os.PathLike
 [`os.path`]: https://docs.python.org/3/library/os.path.html
+[`pathlib`]: https://docs.python.org/3/library/pathlib.html
 [file objects]: https://docs.python.org/3/glossary.html#term-file-object
 [stdlib-filedir]: https://docs.python.org/3/library/filesys.html
 [stdlib-genos]: https://docs.python.org/3/library/allos.html
-[`pathlib`]: https://docs.python.org/3/library/pathlib.html
