@@ -129,6 +129,7 @@ Other:
 ### Formatting
 
 * `f'...'`, `F'...'`: (≥3.6) Formatted string literals or [f-strings]
+  (This is [the fastest formatter][fstr-fast].)
 * `format(*args, **kwargs)`: See [format string syntax]
 * `format_map(mapping)`: _mapping_ is used directly and not copied to
   a dict (useful for dict subclasses)
@@ -154,5 +155,6 @@ Other:
 [encoding]: https://docs.python.org/3/library/codecs.html#standard-encodings
 [f-strings]: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
 [format string syntax]: https://docs.python.org/3/library/string.html#formatstrings
-[printf-string]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
+[fstr-fast]: https://twitter.com/raymondh/status/1076533323961327616
 [printf-bytes]: https://docs.python.org/3/library/stdtypes.html#printf-style-bytes-formatting
+[printf-string]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
