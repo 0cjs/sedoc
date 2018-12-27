@@ -148,6 +148,22 @@ Libraries that use annotations include:
 * [typing] (3.5)
 
 
+Recursion
+---------
+
+CPython does not have tail call optimization, though there's an
+amusing (if inefficient) pure Python TCO implementation using
+exceptions and `tail_return(foo, *args)` at [`tail_calling.py`].
+
+The CPython interpreter limits the number of Python stack frames to
+avoid overrunning its C stack, which would produce a segmentation
+fault or similar. Exceeding the recursion limit will raise
+`RecursionError` (≥3.5) or `RuntimeError` (≤3.4). The limit is
+checked/changed with `sys.{get,set}recursionlimit()`. Setting the
+limit lower than the current recursion depth will raise
+`RecursionError` (≥3.5.1).
+
+
 Decorators
 ----------
 
@@ -351,6 +367,7 @@ decorator, to make attribute access call a function.
 [`operator.attrgetter()`]: https://docs.python.org/3/library/operator.html#operator.attrgetter
 [`operator`]: https://docs.python.org/3/library/operator.html
 [`property()`]: https://docs.python.org/3/library/functions.html?highlight=property#property
+[`tail_calling.py`]: https://gist.github.com/iksteen/7948168640bdd67017c8
 [beaumont]: https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb
 [calls]: https://docs.python.org/3/reference/expressions.html#calls
 [descriptor]: https://docs.python.org/3/howto/descriptor.html
