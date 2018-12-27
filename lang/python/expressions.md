@@ -68,13 +68,10 @@ clauses. E.g.:
     >>> [ (x,y) for x in range(5) for y in range(6) if y%2== 0 if x>2 ]
     [(3, 0), (3, 2), (3, 4), (4, 0), (4, 2), (4, 4)]
 
-#### Python 2 Notes
-
-The following Python-2-isms have been removed in Python 3:
-
-- `<>` replaced by `!=`
-- Backticks (\`x\`) no longer call `repr(x)`
-- `x/y` no longer truncates (`x//y`) when _x_ and _y_ are ints
+In CPython comprehensions implement a separate scope by creating a new
+stack frame; this can cause unexpected `RecursionError`s because a
+recursive function calling itself from a comprehension will generate
+twice as many stack frames as you have recursive calls. See [Batchelder].
 
 
 Packing and Unpacking with `*` and `**`
@@ -165,6 +162,7 @@ Full details at [Compound Statements][stmts] in the Python docs.
 
 
 
+[Batchelder]: https://nedbatchelder.com/blog/201812/a_thing_i_learned_about_python_recursion.html
 [PEP 3132]: https://www.python.org/dev/peps/pep-3132/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [PPR]: http://shop.oreilly.com/product/0636920028338.do
