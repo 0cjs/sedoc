@@ -174,7 +174,7 @@ action the [warnings filter] has been configured:
 |----------:|:-------------------------------------------------------------
 | `default` | Print only first occurrence at that module/lineno.
 | `module`  | Print only first occurrence in that module.
-| `once`    | Print only first occurrence in interpreter process.
+| `once`    | Print only first occurrence (matching this entry) in interpreter process.
 | `always`  | Print every occurrence, even at some module/lineno.
 | `error`   | Raise exception for that warning category.
 | `ignore`  | Print and raise nothing.
@@ -182,20 +182,17 @@ action the [warnings filter] has been configured:
 There is also a [`catch_warnings`] context manager to locally override
 the configured action. (This does not work in multi-threaded apps.)
 
-Entries in the filter are _(action, message, category, module, lineno)_
-tuples:
+The filter list is available as `warnings.filters`.
+Entries are _(action, message, category, module, lineno)_ tuples:
 - _action_: string from table above
 - _message_: regexp to match message
 - _category_: `Warning` subclass
 - _module_: regexp to match module name
+- _lineno_: Warning must have been emitted on given line, `0` for any line.
 - _once_: If true, print only first match of this filter entry,
   regardless of location.
 
-The warnings filter is configured with `-W`, `-b` and/or
-`$PYTHONWARNINGS`. Tuple elements are separated with `:` and the
-tuples themselves with `,`, separate lines or separate `-W` options.
-There's also an API for configuration at runtime. The default list of
-filters is:
+The default list of filters is (tuple items separated with `:`):
 
     default::DeprecationWarning:__main__        # ≥ 3.7
     ignore::DeprecationWarning
@@ -209,6 +206,41 @@ logging system with [`logging.captureWarnings()`].
 [Pytest](test/pytest.md) provides a [broad set of tools][pytest-warn]
 for dealing with testing, capture and display of warnings.
 
+### Filter Configuration
+
+#### API
+
+- `resetwarnings()`: Clear the warnings filter.
+  This removes even the default warnings filter entries.
+- `filterwarnings(action)`: Insert an entry at the front of the filter list.
+  - `action`: (`str`) Action from the list above.
+  - `message=''`: (`str`) Regex to match a message. (May not be `None`.)
+  - `category=Warning`: Subclass of `Warning`.
+  - `module=''`: (`str`) Regex to match a module name. (May not be `None`.)
+  - `linenno=0`: Warning must have been emitted on given line, `0` for any line.
+  - `append=False`: Add the entry at the end of the filter list.
+- `simplefilter(action)`: As `filterwarnings()` without _message_ and
+  _module_, which are set to `None` in the filter tuple, causing all
+  messages and modules to be matched (perhaps more quickly than with a
+  regex present).
+
+#### Command-line and Environment
+
+The warnings filter can be configured at interpreter startup with
+`-W`, `-b` and/or `$PYTHONWARNINGS`. Tuple elements are separated with
+`:` and the tuples themselves with `,`, separate lines or separate
+`-W` options. Tuple elements may be absent or empty.
+
+If warnings filter tuples are supplied this way, the supplied values will
+be available as `sys.warnoptions`, which is otherwise an empty list.
+
+The ["Describing Warning Filters"][describing] section of the
+documentation gives the details of how to specify tuples, but [is
+apparently inaccurate][batchelder]:
+- _module_ is regex-escaped, so regexes cannot be used.
+- _module_ has `$` added to end so prefixes cannot be used.
+- _category_ must be a module that can be loaded at interpreter startup.
+
 
 
 [Exceptions]: https://docs.python.org/3/library/exceptions.html
@@ -221,7 +253,9 @@ for dealing with testing, capture and display of warnings.
 [`try`]: https://docs.python.org/3/reference/compound_stmts.html#the-try-statement
 [`warnings.warn()`]: https://docs.python.org/3/library/warnings.html#warnings.warn
 [`with_traceback`]: https://docs.python.org/3/library/exceptions.html#BaseException.with_traceback
+[batchelder]: https://nedbatchelder.com/blog/201810/why_warnings_is_mysterious.html
 [bicking]: http://www.ianbicking.org/blog/2007/09/re-raising-exceptions.html
+[describing]: https://docs.python.org/3/library/warnings.html#describing-warning-filters
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 [pytest-warn]: https://docs.pytest.org/en/latest/warnings.html
 [raise-py2]: https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement
