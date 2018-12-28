@@ -30,8 +30,9 @@ are also searched. Files to search for tests are:
      config param `testpaths` (default rootdir) will be searched.
    - Otherwise, the current working directory will be searched.
 
-Each file is imported as a module using its [`test package name`]
-derived from the first parent directory not containing an
+After loading `conftest.py` and `__init__.py` files (see below), each
+discovered file is imported as a module using its [`test package
+name`] derived from the first parent directory not containing an
 `__init__.py` file. (This directory is added to `sys.path`.) Thus,
 [PEP 420 namespace packages][PEP 420] without `__init__.py` files have
 their internal paths added to `sys.path` and their files imported at
@@ -86,17 +87,48 @@ tests][collection-fixture].
 conftest.py
 -----------
 
-`conftest.py` files anywhere under the rootdir are loaded and used.
-automatically by `pytest`. This seems to be some sort of way to get
-deep into the guts of pytest. XXX need to expand this info.
+When a file is found during discovery  a recursive search is done
+through all parent directories (up to the root of the filesystem) for
+`conftest.py` files and these are remembered. The loading then
+proceeds in this order:
+1. The `conftest.py` files found for the first-discovered test file
+   are loaded in order from highest to deepest in the directory
+   hierarchy.
+2. Step 1 is repeated for each additional discovered test file, but
+   previously loaded files are excluded.
+3. If there is a `conftest.py` in the rootdir (see below), it is
+   loaded if it hasn't already been.
+4. The discovered test files are loaded in the order they were
+   discovered, as per the section above.
+
+As per standard Python module loading, if an `__init__.py` file is
+present in any directory from which a file is loaded, it will be
+loaded first, preceded (recursively) by any `__init__.py` files in
+direct parent directories. Note that this means files under test may
+be loaded before all `conftest.py` files discovered this way have been
+loaded and thus `conftest.py` cannot reliably be used for
+configuration of the load environment (e.g., to set the warnings
+configuration under which the top level of an `__init__.py` will run).
+
+Unless an `__init__.py` file is also present in the same directory as
+a `conftest.py` (and perhaps directories immediately above), making it
+a regular package, the loaded module will have a fully-qualified name
+of `conftest` and it will overwrite any previous entry for that name
+in `sys.modules`. Without fully specified package configuration for
+all directories searched by pytest, `import conftest` cannot be
+reliably used in test files.
 
 [Pytest import mechanisms][import] discusses stuff about this.
 
+`conftest.py` files are considered plugins, and the `--trace-config`
+flag will print information about them along with builtin and
+registered external plugins.
+
 Uses include:
-* [`pytest_runtest_setup()`]
 * [Sharing fixture functions][fixture-conftest] amongst many modules
-* [Per-directory plugins][plugin-conftest] (also see the [hooks]
-  reference and ][writing hooks])
+* [Per-directory plugins][plugin-conftest] using [hook functions] such
+  as [`pytest_runtest_setup()`]; also see the [hooks] reference and
+  [writing hooks].
 * [Basic patterns and examples][basic] has many examples of other
   things
 * [Non-Python Test Execution][nonpython]
@@ -211,6 +243,7 @@ XXX To-do
 [confopts]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#builtin-configuration-file-options
 [custom-disc]: https://docs.pytest.org/en/documentation-restructure/example/pythoncollection.html
 [fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
+[hook functions]: https://docs.pytest.org/en/latest/reference.html#hooks
 [hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
 [import]: https://docs.pytest.org/en/latest/pythonpath.html
 [nonpython]: http://doc.pytest.org/en/latest/example/nonpython.html
