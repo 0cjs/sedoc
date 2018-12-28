@@ -109,6 +109,8 @@ be loaded before all `conftest.py` files discovered this way have been
 loaded and thus `conftest.py` cannot reliably be used for
 configuration of the load environment (e.g., to set the warnings
 configuration under which the top level of an `__init__.py` will run).
+Possibly using the `-p` option to load a named plugin would be a way
+to deal with this.
 
 Unless an `__init__.py` file is also present in the same directory as
 a `conftest.py` (and perhaps directories immediately above), making it
