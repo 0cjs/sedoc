@@ -115,7 +115,7 @@ are also printed at the start of non-quiet test runs and available in
 Python as `config.rootdir` (guaranteed to exist) and `config.inifile`
 (may be `None`).
 
-Pytest has a [rootdir][] for each test run used for storing
+Pytest has a [rootdir] for each test run used for storing
 information between test runs (e.g., the cache, below). The
 documentation claims it's also used for assigning nodeids but, from
 changing rootdir and looking at `.pytest_cache/v/cache/nodeids`, this
@@ -125,7 +125,7 @@ for nodes.
 rootdir is set as follows:
 
 1. Use the `--rootdir=path` option if passed on the command line. (Not
-   clear if this can be ready from any inifile overriding the
+   clear if this can be read from any inifile overriding the
    discovered one below.)
 2. Determine common ancestor directory (CAD) of all path args and
    current working directory. (The docs don't make it clear that, even
@@ -154,7 +154,7 @@ Cache
 
 Pytest has a [cache] ([new docs][cache-restruc]) supplied by the
 included `cacheprovider` [plugin][plugins] (enabled by default). Data
-are stored in `.pytest_cache/` under the [rootdir][] and accessible
+are stored in `.pytest_cache/` under the [rootdir] and accessible
 via the [`config.cache`] ([API docs][config-cache-API]) object. The
 plugin adds the following command line options:
 
@@ -217,5 +217,6 @@ XXX To-do
 [plugin-conftest]: https://docs.pytest.org/en/latest/writing_plugins.html#conftest-py-plugins
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pytest]: https://pytest.org/
+[rootdir]: https://docs.pytest.org/en/latest/customize.html
 [test discovery]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [writing hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#writing-hook-functions
