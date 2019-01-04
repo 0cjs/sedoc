@@ -35,6 +35,7 @@ Python Summary/Quickref
   - [Virtual Environments](runtime/virtualenv.md)
   - [Packaging Code](runtime/packaging.md)
   - [Microsoft Windows](runtime/win.md)
+  - [Jupyter](runtime/jupyter.md) (IPython) Notebook, Hub, Lab, etc.
 * Testing Libraries
   - [PythonTestingToolsTaxonomy][PTTT] offers a large list of testing tools.
   - [`unittest`](test/unittest.md)
