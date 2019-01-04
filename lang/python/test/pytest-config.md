@@ -183,6 +183,62 @@ the [`addopts`] config option; config file options can be set on the
 command line with `-o option=value` or `--override-ini=option=value`.
 
 
+Warnings Filter Configuration
+-----------------------------
+
+For assertion information and testing warnings within code, see See
+[Warnings](pytest-assert.md#warnings) in Pytest Assertions and Checks.
+
+Python [warnings](../exeptions.md#warnings) are [captured by
+pytest][pt-warnings] unless `-p no:warnings` is specified. By default
+warnings are displayed at the end of the sesion. There's also an
+ability to record warnings.
+
+### Command-line and Init File Options
+
+The `-W` flag or the `pytest.ini` option `filterwarnings` take filter
+specifications as colon-separated tuples:
+
+    action:message:category:module:line
+
+each of which is pushed on to the head of the Python warnings filter
+list (`warnings.filters`); thus, the last-specified matching action
+will be the one used.
+
+The specifications are similar to, but not the same as [the `-W`
+option for the CPython interpreter][python-W]. The main difference is
+that `message` and `module` are compiled as case-sensitive regular
+expressions with an implicit `^` anchor at the start of the pattern ,
+but without a `$` anchor at the end unless explicitly specified.
+
+Examples:
+
+    -W error -W ignore::UserWarning`
+
+    filterwarnings =
+      error
+      ignore::UserWarning
+      ignore::DeprecationWarning:thing
+
+In the last example, the _module_ pattern `thing` will match
+`thing.subthing` and `thingie` but not `other.thing`.
+
+### Programatic Configuration
+
+It's difficult to find a hook to do [programatic configuration of
+warnings](../exceptions.md#api) because it must be done after
+`pytest.main()` has initialized the test framework but before it
+starts discovering and loading the test and code modules. Pytest must
+suppress certain warnings during initialization; adding `('error',
+None, Warning, None, 0)` to filter.warning before calling
+`pytest.main()` will cause it to throw an exception.
+
+A `conftest.py` in the root dir gets close, but that still leaves open
+the possibility of code under test in `__init__.py` files being loaded
+before that `conftest.py` (see above). Perhaps using the `-p` option
+to preload a "real" plugin would do the trick.
+
+
 Cache
 -----
 
@@ -251,7 +307,9 @@ XXX To-do
 [nonpython]: http://doc.pytest.org/en/latest/example/nonpython.html
 [plugin-conftest]: https://docs.pytest.org/en/latest/writing_plugins.html#conftest-py-plugins
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
+[pt-warnings]: https://docs.pytest.org/en/latest/warnings.html
 [pytest]: https://pytest.org/
 [rootdir]: https://docs.pytest.org/en/latest/customize.html
 [test discovery]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [writing hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#writing-hook-functions
+[python-W]: ../exceptions.md#command-line-and-environment

@@ -241,6 +241,9 @@ apparently inaccurate][batchelder]:
 - _module_ has `$` added to end so prefixes cannot be used.
 - _category_ must be a module that can be loaded at interpreter startup.
 
+Note that [Pytest warnings configuration][pytest-warnings] looks
+similar but is different.
+
 
 
 [Exceptions]: https://docs.python.org/3/library/exceptions.html
@@ -258,6 +261,7 @@ apparently inaccurate][batchelder]:
 [describing]: https://docs.python.org/3/library/warnings.html#describing-warning-filters
 [hierarchy]: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 [pytest-warn]: https://docs.pytest.org/en/latest/warnings.html
+[pytest-warnings]: test/pytest-config.md#warnings-filter-configuration
 [raise-py2]: https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement
 [reentrant]: https://docs.python.org/3/library/contextlib.html#reentrant-context-managers
 [six library]: https://pythonhosted.org/six/
