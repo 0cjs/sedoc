@@ -1,6 +1,16 @@
 Project Jupyter and Python
 ==========================
 
+[Jupyter] ([documentation]) is an ecosystem that grew out of IPython.
+It uses _notebooks_ (JSON `.ipynb` files) containing cells with code,
+text, etc. These are usually interpreted by the [web application], run
+locally or remotely, for which _kernels_ provide interpreters for the
+various languages used interactively in the notebook.
+
+For notes on kernel creation see [Creating Language Kernels for
+IPython][gibiansky], who created the [IHaskell] kernel.
+
+
 Jupyter Hub
 -----------
 
@@ -23,6 +33,16 @@ is the [workshopper] tool.)
 - Deploying the full workshop
 - ???
 
+
+
+<!-- Jupyter -->
+[IHaskell]: https://github.com/gibiansky/IHaskell
+[Jupyter]: https://jupyter.org/
+[documentation]: https://jupyter.org/documentation
+[gibiansky]: http://andrew.gibiansky.com/blog/ipython/ipython-kernels/
+[web application]: https://jupyter-notebook.readthedocs.io/en/stable/
+
+<!-- Jupyter Hub -->
 [Graham Dumpleton]: http://blog.dscpl.com.au
 [Jupyter Hub]: https://jupyterhub.readthedocs.io
 [Jupyter Notebook]: https://jupyter-notebook.readthedocs.io
