@@ -40,6 +40,8 @@ Python Summary/Quickref
   - [`unittest`](test/unittest.md)
   - [`doctest`] finds and runs tests in function docstrings.
   - [Pytest](test/pytest.md)
+    ([Assertions](test/pytest-assert.md),
+    [Configuration](test/pytest-config.md))
   - [tox](test/tox.md)
 * Other Libraries
   - [`attrs`](lib/attrs.md) to generate class definition boilerplate
