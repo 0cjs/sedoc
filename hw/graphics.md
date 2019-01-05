@@ -52,7 +52,9 @@ Advertising an HDMI version number for a cable is [explicitly
 non-compliant][hdmi-usage].
 
 Much more useful information is available from the [Blue Jeans Cable] page.
+The [CabletimeTech] page also offers useful information.
 
+[CabletimeTech]: https://www.cabletimetech.com/technology/hdmi-technology/
 [Blue Jeans Cable]: https://www.bluejeanscable.com/articles/bad-reasons-to-upgrade-hdmi-cable.htm
 [HDMI]: https://www.hdmi.org/
 [hdmi-usage]: https://www.hdmi.org/pdf/atlug_faqs/2011_12_20_ATLUG_Q09_UPDATE.PDF
