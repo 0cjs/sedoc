@@ -8,7 +8,8 @@ There are two major versions:
 
 Release Histories/Schedules/New Features: [3.6], [3.7]
 
-#### Version Attributes
+Version Attributes
+------------------
 
 The `sys` module has the following attributes:
 - `version`: String with version, build, compiler, etc. info. Examples:
@@ -23,7 +24,9 @@ The `sys` module has the following attributes:
    - Implementation-specific attributes starting with underscore.
 - `api_version`: C API version of the interpreter (`int`).
 
-#### Interpreter Paths
+
+Interpreter Paths
+-----------------
 
 [PEP 394] recommends that `python2` and `python3` always be available.
 `#!/usr/bin/env python` should be used only for scripts compatible
@@ -36,7 +39,9 @@ with both 2 and 3.
 - Windows should use `py` to interpret shebangs; see
   [`runtime/win`](runtime/win.md).
 
-#### OS/Distro Version Reference
+
+OS/Distro Version Reference
+---------------------------
 
 | OS/Distro     | `python`  |`python3`  | Distro Release Date
 |---------------|-----------|-----------|----------------------
@@ -55,7 +60,7 @@ with both 2 and 3.
 | Ubuntu 10.04  | 2.6.5     | 3.1.2     | 2010-04 x
 | CentOS 5      | 2.4.3     | -         | 2007-04 x
 
-##### Notes
+#### Notes
 
 1. Python 2 is included in the base OS install.
 
@@ -155,4 +160,5 @@ build it:
 [API and ABI versioning]: https://docs.python.org/3/c-api/apiabiversion.html#apiabiversion
 [PEP 394]: https://www.python.org/dev/peps/pep-0394
 [RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
+[cpython]: https://en.wikipedia.org/wiki/CPython
 [pythonz]: https://github.com/saghul/pythonz
