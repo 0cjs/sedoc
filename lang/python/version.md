@@ -87,9 +87,11 @@ install the 1.0 version and reinstall the 1.1 version afterwards:
     pythonz install --shared 3.4.3
     sudo apt-get install libssl-dev     # restore 1.1 dev package
 
-### [Pythonz]
+### Pythonz
 
-Download and install in `~/.pythonz` with:
+[Pythonz] downloads and builds source for various Python
+implementations and versions, storing all work in `~/.pythonz`.
+Install with:
 
     curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
     #   Also apt-get build dependencies as per "From Source" below.
@@ -98,7 +100,7 @@ To enable the `pythonz` command:
 
     [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
-Pythonz commands:
+Pythonz subcommands:
 
     pythonz list                    # List installed versions
     pythonz list -a                 # List all known versions
