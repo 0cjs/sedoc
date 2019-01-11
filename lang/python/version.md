@@ -8,6 +8,21 @@ There are two major versions:
 
 Release Histories/Schedules/New Features: [3.6], [3.7]
 
+#### Version Attributes
+
+The `sys` module has the following attributes:
+- `version`: String with version, build, compiler, etc. info. Examples:
+  - `'2.7.6 (default, Nov 13 2018, 12:45:42) \n[GCC 4.8.4]'`
+  - `'3.6.5 (default, Apr  1 2018, 05:46:30) \n[GCC 7.3.0]'`
+- `version_info`: Named tuple of `(major,minor,micro,releaselevel,serial)`.
+  All `int` except `releaselevel`: `alpha`, `beta`, `candidate`, `final`.
+- `hexversion`: `int` encoded per [API and ABI versioning]; view with `hex()`.
+- `implementation`: (≥3.3) Attributes (not all documented here):
+   - `name`: `cpython` or other lower-case `str`
+   - `cache_tag`: Used in filenames of cached modules.
+   - Implementation-specific attributes starting with underscore.
+- `api_version`: C API version of the interpreter (`int`).
+
 #### Interpreter Paths
 
 [PEP 394] recommends that `python2` and `python3` always be available.
@@ -20,7 +35,6 @@ with both 2 and 3.
 - RHEL ≥8: No default `python`.
 - Windows should use `py` to interpret shebangs; see
   [`runtime/win`](runtime/win.md).
-
 
 #### OS/Distro Version Reference
 
@@ -136,6 +150,7 @@ build it:
 [3.6.5]: https://www.python.org/downloads/release/python-365/
 [3.6]: https://www.python.org/dev/peps/pep-0494/
 [3.7]: https://www.python.org/dev/peps/pep-0537/
+[API and ABI versioning]: https://docs.python.org/3/c-api/apiabiversion.html#apiabiversion
 [PEP 394]: https://www.python.org/dev/peps/pep-0394
 [RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
 [pythonz]: https://github.com/saghul/pythonz
