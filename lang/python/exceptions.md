@@ -117,7 +117,9 @@ Exception Hierarchy
 -------------------
 
 These are just the most important exceptions; for a full list see the
-[standard library exception hierarchy][hierarchy].
+[standard library exception hierarchy][hierarchy]. Many of these
+(`RuntimeError`, `DeprecationWarning`, etc.) are intended to be used
+as base clases for user-defined exceptions.
 
 - `BaseException`
   - `SystemExit`
@@ -152,7 +154,9 @@ These are just the most important exceptions; for a full list see the
     - `ValueError`: value not valid, e.g., bad Unicode encoding
     - `Warning`
       - `UserWarning`: default category for [`warnings.warn()`]
-      - `DeprecationWarning`
+      - `DeprecationWarning`: warns developers of deprecated APIs, etc.
+      - `PendingDeprecationWarning`: warns developers about upcoming
+        deprecated APIs, features, etc.
       - `RuntimeWarning`
       - `FutureWarning`: warnings intended for end-users (of apps)
          about deprecated features
