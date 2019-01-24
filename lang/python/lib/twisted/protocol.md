@@ -25,9 +25,6 @@ transport-related functions.
 - `IUDPTransport`, `IUNIXDatagramTransport`, `IMulticastTransport`, etc.
   provide packet-oriented interfaces.
 
-interface offers non-blocking write for byte streams
-and other transport-related functions.
-
 `ITransport` Methods:
 - `write(bytes)`: Non-blocking write; will attempt to make sure that
   all data is eventually written.
@@ -41,11 +38,11 @@ and other transport-related functions.
 [`ITransport`]: https://twistedmatrix.com/documents/current/api/twisted.internet.interfaces.ITransport.html
 
 
-Protocols and their Factories
+Protocols and Their Factories
 -----------------------------
 
 The [`twisted.internet.protocol`] module contains the abstractions
-for: _protocols_, which read/write data and convert it to/from
+for _protocols_, which read/write data and convert it to/from
 higher-level messages, and _factories_ that create protocol objects.
 
 Connection error handling is split between the factories and the

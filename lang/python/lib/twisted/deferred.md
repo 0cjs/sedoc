@@ -10,7 +10,7 @@ Twisted: Deferred Callback Handling
 Callback Chain
 --------------
 
-The `.callbacks` property is a list of _(callback, errback)_ pairs of
+The `.callbacks` attribute is a list of _(callback, errback)_ pairs of
 functions. If for any stage a _callback_ is supplied without an
 _errback_ or vice versa, the missing one will be set to `passthru`
 (the identity function). Append pairs to the sequence with:
@@ -38,7 +38,7 @@ A `Deferred` is called no more than once with:
 
 A second attempt to call the `Deferred` will raise `AlreadyCalledError`.
 
-After the _callaback_ or _errback_ for a pair is executed, processing
+After the _callback_ or _errback_ for a pair is executed, processing
 continues with the next pair based on return value:
 - Exception thrown: Wrap in `Failure`; pass to _errback_ from next pair.
 - `Failure`: Pass to _errback_ of next pair.
@@ -109,6 +109,7 @@ level using `Deferred` objects, but this can also be done directly.
 [`CancelledError`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.CancelledError.html
 [`Deferred.addTimeout()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#addTimeout
 [`Deferred.cancel()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#cancel
+[`Deferred.pause()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#pause
 [`Deferred`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html
 [`Failure`]: https://twistedmatrix.com/documents/current/api/twisted.python.failure.Failure.html
 [`Protocol`]: https://twistedmatrix.com/documents/current/api/twisted.internet.protocol.html
@@ -119,5 +120,5 @@ level using `Deferred` objects, but this can also be done directly.
 [`reactor.addReader()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.interfaces.IReactorFDSet.html#addReader
 [`reactor.connectTCP()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.interfaces.IReactorTCP.html#connectTCP
 [gh-deferred]: https://github.com/twisted/twisted/blob/trunk/src/twisted/internet/defer.py
-[ht-deferred]: https://twistedmatrix.com/documents/current/core/howto/defer.html
 [ht-deferintro]: https://twistedmatrix.com/documents/current/core/howto/defer-intro.html
+[ht-deferred]: https://twistedmatrix.com/documents/current/core/howto/defer.html

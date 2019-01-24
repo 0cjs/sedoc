@@ -55,7 +55,7 @@ started automatically by the [Twisted Application Framework
 The most basic application just gets the default reactor and starts it:
 
     from twisted.internet import reactor
-    reactor.callWhenRunnig(myfunc)
+    reactor.callWhenRunning(myfunc)
     reactor.callLater(4, reactor.stop)
     reactor.run()
 
@@ -65,7 +65,7 @@ documentation. Some common attributes and methods are:
 - `run()`: Start reactor in this thread. (IReactorCore)
 - `stop()`, `crash()`: Stop reactor with and without firing system events.
   The latter may lose data and leave inconsistent state. (IReactorCore)
-- `callWhenRunnig(f)`: Schedule _f_ to be called as soon as possible
+- `callWhenRunning(f)`: Schedule _f_ to be called as soon as possible
   when reactor is running. (IReactorCore)
 - `reactor.callLater(secs, callback, *args)`
 - `reactor.listenTCP(port, factory, iface=None)`: Start a server. (IReactorTCP)
