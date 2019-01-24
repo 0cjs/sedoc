@@ -6,6 +6,36 @@ Twisted: Deferred Callback Handling
 - [Deferred Reference][ht-deferred] documentation/howto
 - [`src/twisted/internet/defer.py`][gh-deferred] source code
 
+A [`Deferred`] is an object encapsulating how to handle an event at a
+future time and, after handling, its result. After construction its
+processing chain `.callbacks` is set up via the functions described
+below. Later one of `callback(result)`, `errback(fail=None)` or
+`cancel()` is called on it to do the chain processing; only one of
+these may be called and that only once.
+
+
+Constructors
+------------
+
+- `Deferred(canceller=None)`: Unexecuted `Deferred` with empty chain.
+  If _canceller_ is not supplied, `.errback(CancelledError)` is called
+  on cancellation.
+
+To construct an already-executed `Deferred`, when you do not need to
+do any asynchronous operations:
+
+- `succeed(result)`: Executed with `.callback(result)`
+- `fail(result=None)`: Executed with with `.errback(result)`
+- `execute(f, *args, **kwargs)`:
+  Invoke _f_ with args; wrap return value in `.callback(retval)` or
+  exception in or `errback(Failure(exception))`.
+- `maybeDeferred(f, *args, *kwargs)`:
+  Invoke _f_ with args. Based on return value's type:
+  - `Deferred`: return it
+  - `Failure`: return `fail(result)`
+  - Exception thrown: return `fail(result)`
+  - Otherwise: return `succeed(result)`
+
 
 Callback Chain
 --------------
@@ -71,6 +101,30 @@ called, otherwise `errback` will be called with [`CancelledError`].
 some complex options.
 
 
+Inline Callbacks
+----------------
+
+The [`@inlineCallbacks`] decorator lets you write a sequential-looking
+function. So instead of:
+
+    def printThing(thing):
+        print(thing)
+    deferred = requestThing()
+    deferred.addCallback(printThing)
+
+you can simply `yield` the Deferred in a generator and it function
+will be suspended until the `Deferred` is complete:
+
+    @inlineCallbacks
+    def printThing():
+        deferred = requestThing()   # returns a Deferred
+        thing = yield deferred      # will resume after deferred is processed
+        print(thing)
+
+If the yielded object is not a `Deferred` it will be immediately
+returned, à la [`maybeDeferred()`].
+
+
 asyncio Interoperation
 -----------------------
 
@@ -106,6 +160,7 @@ level using `Deferred` objects, but this can also be done directly.
 
 
 
+[`@inlineCallbacks`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.html#inlineCallbacks
 [`CancelledError`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.CancelledError.html
 [`Deferred.addTimeout()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#addTimeout
 [`Deferred.cancel()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#cancel
@@ -117,6 +172,7 @@ level using `Deferred` objects, but this can also be done directly.
 [`asyncio.Future`]: https://docs.python.org/3/library/asyncio-future.html#asyncio.Future
 [`callback(result)`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#callback
 [`errback(fail=None)`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html#errback
+[`maybeDeferred()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.defer.html#maybeDeferred
 [`reactor.addReader()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.interfaces.IReactorFDSet.html#addReader
 [`reactor.connectTCP()`]: https://twistedmatrix.com/documents/current/api/twisted.internet.interfaces.IReactorTCP.html#connectTCP
 [gh-deferred]: https://github.com/twisted/twisted/blob/trunk/src/twisted/internet/defer.py
