@@ -22,21 +22,49 @@ servers, workers should not normally be run by your normal interactive
 account.
 
 
-Common Commands
----------------
+Command Line Tools
+------------------
 
-(Re)start commands will show the log output if the command fails, or
-will otherwise exit silently.
+- Both command-line tools take `--verbose`, `--help` (on main command
+  and subcommands) and `--version` options.
+- (Re)start commands will show the log output if the command fails, or
+  will otherwise exit silently.
+- There's a [command line index] of subcommands for all tools.
 
-Master:
+### Buildmaster
 
-    buildbot create-master DIR
-    buildbot upgrade-master DIR         # When switching to a new version
-    buildbot checkconfig DIR|FILE
-    buildbot reconfig                   # No change if config broken
-    buildbot {restart|start|stop}
+Interaction with the buildmaster is done with the [`buildbot` command
+line tool][buildbot-cmd]:
 
-Worker:
+    buildbot create-master [-r] DIR         # -r for relocatable buildbot.tac
+    buildbot upgrade-master DIR             # When switching to a new version
+    buildbot checkconfig DIR|FILE           # DIR checks buildbot.tac, too
+    buildbot reconfig                       # No change if config broken
+    buildbot {restart|start} [--nodaemon]
+    buildbot stop [--clean] [--no-wait]     # Waits for shutdown
+
+There is also a [`buildbot try`][buildbot-cmd-try] command for use by
+developers which will upload a patch (usually generated on the fly
+from the local VCS tree) directly to the buildmaster. (This is to make
+it easy to test alternate platform builds during development.) This is
+complex and requires client-side configuration and a `Try_Userpass`
+scheduler (if using `Pb` protocol) or a `Try_Jobdir` scheduler (if
+using SSH to the buildmaster host).
+
+The [`sendchange`] subcommand tells the buildmaster about source
+changes. It's typically used by a post-commit/post-push hook. The
+master is configured with `c['change_source']` set to a a
+`PbChangeSource`.
+
+The `user` subcommand manages users in the buildmaster's database.
+See [Users Options].
+
+Commands above may use configuration from the [`.buildbot` config dir].
+
+### Workers
+
+The [`buildbot-worker` command line tool][buildbot-worker-cmd] is for
+management of individual workers only. The full set of commands is:
 
     buildbot-worker create-worker DIR
     buildbot-worker {restart|start|stop} DIR
@@ -44,6 +72,7 @@ Worker:
 Various information about the current environment is often printed to the
 build logs, so when starting workers it may be worth being careful of what
 user you are and what's in the environment.
+
 
 Configuration
 -------------
@@ -106,8 +135,15 @@ Further configuration in:
 [Buildbot]: https://buildbot.net/
 [GitHub]: https://github.com/buildbot/buildbot
 [Twisted]: https://twistedmatrix.com/
+[`.buildbot` config dir]: https://docs.buildbot.net/1.8.0/manual/cmdline.html#buildbot-config-directory
+[`sendchange`]: https://docs.buildbot.net/1.8.0/manual/cmdline.html#sendchange
 [authentication]: https://docs.buildbot.net/latest/manual/configuration/www.html#web-authentication
+[buildbot-cmd-try]: https://docs.buildbot.net/1.8.0/manual/cmdline.html#developer-tools
+[buildbot-cmd]: https://docs.buildbot.net/1.8.0/manual/cmdline.html
+[buildbot-worker-cmd]: https://docs.buildbot.net/1.8.0/manual/cmdline.html#worker
+[command line index]: https://docs.buildbot.net/1.8.0/bb-cmdline.html
 [configuration]: https://docs.buildbot.net/latest/manual/configuration/index.html
 [documentation]: https://docs.buildbot.net/latest/
 [master-buildbot.tac]: https://github.com/buildbot/buildbot/blob/master/master/docker/buildbot.tac
+[users options]: https://docs.buildbot.net/1.8.0/manual/concepts.html#concepts-users
 [worker-buildbot.tac]: https://github.com/buildbot/buildbot/blob/master/worker/docker/buildbot.tac
