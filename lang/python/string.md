@@ -130,11 +130,59 @@ Other:
 
 * `f'...'`, `F'...'`: (≥3.6) Formatted string literals or [f-strings]
   (This is [the fastest formatter][fstr-fast].)
-* `format(*args, **kwargs)`: See [format string syntax]
-* `format_map(mapping)`: _mapping_ is used directly and not copied to
-  a dict (useful for dict subclasses)
+* `format(*args, **kwargs)`: See format() String Syntax below
+* `format_map(mapping)`: Specifications `{key}` in the `str` are looked up
+  in _mapping_ and replaced by the returned values.
 * _s_ `%` _values_: Not recommended. See [printf-string] and
   [printf-bytes] (≥3.5) for more info.
+
+#### format() String Syntax
+
+The string is literal text, doubled braces `{{` and `}}` for literal
+braces, and substitutions of the form `{spec}`. _spec_ renders values
+from the arguments to `str.format()`:
+- `{0}` or another number to use a positional argument. `{}` alone may
+  be used (multiple times) for auto-numbered positionals if no other
+  specs are used.
+- `{name}` to use named argument _name_. If calling as `format(**mapping)`,
+   consider using `str.format_map(mapping)` instead.
+- `{name.attr}` to use attribute _attr_ of argument _name_.
+- `{name[n]}`, `{name.attr[n]}` to use index _n_ of _name_ or _name.attr_.
+
+Optionally append `!conversion` to apply a specific conversion to the value: `s`
+for `str()`, `r` for `repr()` and `a` for `ascii()`. The last escapes
+non-ASCII values using `\x` (hex 00-FF), `\u` (UCS-16) and `\U`
+(UCS-32) escapes.
+
+Additionally optionally append , `:format` for further formatting
+including field width, alignment and padding, numeric formatting and
+grouping, etc. The _format_ characters are in order:
+- _fill_: Any character (default space).
+- _align_: `<` left, `>` right, `^` centered, `=` padding after sign.
+- _sign_: Determines sign on positive numbers:
+  `-` none (default), `+`, ` ` (leading space).
+- `#`: Alternate form for conversion: `0b` `0o` `0x` prefix on ints,
+  always decimal point on other numbers and trailing zeros left on floats.
+- _width_: One or more digits for minimum field width;
+  leading `0` for fill `0` and `=` padding.
+- _grouping_: `_` (≥3.6) or `,` to separate thousands (ints only).
+- `.`_precision_: Max field size, or precision for floats.
+- _type_: Default `s` (str) or none. Other values
+  (uppercase converts `nan` to `NAN`, etc.):
+  - `e`, `E`: Exponent notation, default precision 6.
+  - `f`, `F`: Fixed-point notation, default precision 6.
+  - `g`, `G`: "General"; rounds to precision and uses `f` or `e`.
+  - `n`: "Number"; as `g` but inserts locale separators.
+  - `%`: Percentage in `f` format.
+  - None: similar to `g` but at least one digit past decimal point
+    and unlimited default precision.
+
+The _format_ specs above also allow `{...}` specification of
+parameters ("nested replacement fields") for programatically
+specifying field widths etc.
+
+See [Format String Syntax] and [Format Specification Mini-Language]
+for further details and examples.
 
 ### I/O
 
@@ -154,6 +202,7 @@ Other:
 [codec error handlers]: https://docs.python.org/3/library/codecs.html#error-handlers
 [encoding]: https://docs.python.org/3/library/codecs.html#standard-encodings
 [f-strings]: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
+[format specification mini-language]: https://docs.python.org/3/library/string.html#formatspec
 [format string syntax]: https://docs.python.org/3/library/string.html#formatstrings
 [fstr-fast]: https://twitter.com/raymondh/status/1076533323961327616
 [printf-bytes]: https://docs.python.org/3/library/stdtypes.html#printf-style-bytes-formatting
