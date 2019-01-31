@@ -128,9 +128,9 @@ keys/values; this is usually created along with a short alias to it:
     c = BuildmasterConfig = {}
 
 The plugins import above brings in all internal and plugin
-configuration classes, allowing references to e.g.
-`changes.GitPoller`, `schedulers.SingleBranchScheduler` and
-`worker.Worker`.
+configuration classes under the [standard top-level plugin package
+names][plugins]:  `worker`, `changes`, `schedulers`, `steps`,
+`reporters`, `statistics`, `util`, `secrets`, and `webhooks`.
 
 `DIR/` is also added to `sys.path` so you can drop e.g., `foo.py` into
 there to import it with `import foo`.
@@ -139,7 +139,7 @@ there to import it with `import foo`.
 
 The various [configuration] keys divide into three groups.
 
-#### Server Internal Configuration
+#### Server Configuration
 
 * `title`, `titleURL`: Name of Buildbot instance and URL for external
   access to its web UI.
@@ -302,3 +302,4 @@ To Read
 [users options]: https://docs.buildbot.net/1.8.0/manual/concepts.html#concepts-users
 [worker-buildbot.tac]: https://github.com/buildbot/buildbot/blob/master/worker/docker/buildbot.tac
 [www]: https://docs.buildbot.net/latest/manual/configuration/www.html
+[plugins]: https://docs.buildbot.net/1.8.0/manual/plugins.html
