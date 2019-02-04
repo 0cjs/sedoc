@@ -19,7 +19,7 @@ and [Python.md] for more details of literal instantiation.
 Boolean:
 * `bool` [I]: inst. with `True`, `False`, `bool(expr)`
 
-Floaing point:
+Floating point:
 * `float` [I]
 * `complex` [I]: inst. with `(x+yj)`
 
@@ -31,17 +31,17 @@ Strings and Bytes:
 ### Composite
 
 * `object`: base for all classes (no `__dict__` so can't add attrs)
-* `range` [I]: sequence inst. with `range(start, stop[, step])`
-* `tuple` [I]: tuples inst. with `x, y, ...` (often in parens).
-* `list`: list/array inst. with `[x, y, ...]`.
-* `dict`: dictionary inst. with `{ 1: x, 'a': y, ...}`
-* `set`: inst. with `{0, 'a', ()}` or `set()` for empty set
+* [`range`] [I]: [sequence] inst. with `range(start, stop[, step])`
+* [`tuple`] [I]: tuple inst. with `x, y, ...` (often in parens).
+* [`list`]: list/array inst. with `[x, y, ...]`.
+* [`dict`]: dictionary inst. with `{ 1: x, 'a': y, ...}`
+* [`set`]: inst. with `{0, 'a', ()}` or `set()` for empty set
 * `frozenset`: [I] immutable version of `set`
 * [`collections` module][collections]
 
-### Collections
+### Collection Interfaces
 
-* Sequences: `str`, `tuple`, `list`. Indexed 0 - len-1.
+* [Sequences][sequence]: `str`, `tuple`, `list`. Indexed 0 - len-1.
 * Mappings: `dict`. key→value sets; keys must be immutable (they're hashed).
 * Sets: `set`, `frozenset`
 * [`memoryview`]: direct buffer access
@@ -121,14 +121,21 @@ Further documentation:
 
 
 
+<!-------------------------------------------------------------------->
 [Classes]: https://docs.python.org/3.6/tutorial/classes.html
 [PEP 3107]: https://www.python.org/dev/peps/pep-3107/
 [PEP 483]: https://www.python.org/dev/peps/pep-0483/
 [PEP 484]: https://www.python.org/dev/peps/pep-0484/
 [PEP 526]: https://www.python.org/dev/peps/pep-0526/
+[`dict`]: https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
+[`list`]: https://docs.python.org/3/library/stdtypes.html#lists
 [`memoryview`]: https://docs.python.org/3/library/stdtypes.html#typememoryview
+[`range`]: https://docs.python.org/3/library/stdtypes.html#ranges
+[`set`]: https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset
+[`tuple`]: https://docs.python.org/3/library/stdtypes.html#tuples
 [bufprot]: https://docs.python.org/3/c-api/buffer.html#bufferobjects
 [collections]: https://docs.python.org/3/library/collections.html#module-collections
 [funcdef]: https://docs.python.org/3/reference/compound_stmts.html#function-definitions
+[sequence]: https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range
 [special attributes]: https://docs.python.org/3/library/stdtypes.html#special-attributes
 [typing]: https://docs.python.org/3/library/typing.html
