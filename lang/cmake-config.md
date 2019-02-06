@@ -235,8 +235,9 @@ For file-level dependencies use:
 
 #### [`target_link_libraries()`]: Libraries and link flags.
 
-Specify libraries/flags when linking a target or its dependents. `target`
-may not be an alias.
+Specify libraries/flags when linking a target or its dependents.
+`target` may not be an alias. If called more than once, subsequent
+items are appended.
 
     target_link_libraries(target item ...)
 

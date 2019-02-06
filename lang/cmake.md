@@ -5,10 +5,15 @@ See also [CMake Build Configurations](cmake-config.md).
 
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`
 file, reads/generates a build configuration, and generates
-platform-native buildsystem files (such as makefiles) and workspaces
-to build the project. `CMakeLists.txt` is stored at the root of the
-source directory, but the build is usually done in a separate, empty
-build directory (referred to as `$build/` below).
+platform-native buildsystem files (e.g., for GNU Make, [Ninja] or
+MSBuild) and workspaces to build the project. `CMakeLists.txt` is
+stored at the root of the source directory, but the build is usually
+done in a separate, empty build directory (referred to as `$build/`
+below).
+
+CMake reads C, C++ and Fortran files and automatically computes
+dependency information for them. However, when using IDE build systems
+it offloads this task to the IDE.
 
 Execute CMake with `cd $build && cmake dir`, where _dir_ is a relative
 or absolute path to the directory containing `CMakeLists.txt` or the
@@ -50,18 +55,49 @@ For more details, see the following pages from [the documentation][docs]:
 - [cmake-buildsystem(7)]: General introduction to the design of CMake.
 - [cmake-language(7)]: Files and language description.
 - [cmake(1)]: Command line tool.
+- [_The Architecture of Open Source Applications_: CMake chapter][aosa]
 
-CMake creates a _buildsystem_ for a _project_ defined by a
-`CMakeLists.txt` file in the top-level directory of that project. A
-project has _targets_ that are output files or "phony" (always out of
-date and thus always built).
+CMake creates a _buildsystem_ for _projects_, each defined by a
+`CMakeLists.txt` file in the _directory_ of the project. The
+buildsystem has _targets_ that are output files or "phony" (always out
+of date and thus always built).
 
-Other projects with their own `CMakeLists.txt` files can be integrated
-into the main build with [`add_subdirectory()`]. (These need not be in
-actual subdirectories of the project.) These projects have separate
-build dir under the main project's build dir, but their properties and
-targets are shared with the top-level project and thus may produce
-name collisions.
+Variables used to configure the build are generally not stored in or
+read from the process environment (though they can be accessed with
+`$ENV{name}`) but instead stored to and read from a single
+`CMakeCache.txt` file in the (root) build directory.
+
+The overall process is three steps of configuration and one of generation:
+1. Read `CMakeCache.txt` from the build directory (if it exists).
+2. Read `CMakeLists.txt` from the source root directory and execute
+   its commands to create a configuration/build representation. This
+   step may read further `CMakeLists.txt` files via the `include()`
+   and `add_subdirectory()` commands.
+3. Write the updated `CMakeCache.txt` file.
+4. Generate the Makefiles or other target build tool files.
+
+Though multiple `CMakeLists.txt` files may be read, all them together
+generate a global build configuration with a single set of targets and
+other global state such as cache variables. (This may produce name
+collisions.) CMake code read with [`include()`] is executed in the
+scope of the caller. [`add_subdirectory()`] adds a new build
+subdirectory under the top-level build directory and creates a new
+directory scope for the processing of the new `CMakeLists.txt`; the
+new source directory need not be a subdirectory of the calling source
+dir.
+
+Directory scoping appears to be based on the build directory tree;
+commands that use directory scoping "apply to directories below the
+project directory" in which they're executed, so presumably to
+projects below the project directory. However, it's generally
+suggested that properties be set using target-scoped commands (where
+they will be propagated/exported to dependents) rather than
+directory-scoped where possible. E.g., prefer
+[`target_include_directories()`] to set the [target-scoped
+`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:tgt] property over
+[`include_directories()`] to set the [directory-scoped
+`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:dir].
+
 
 XXX properties
 
@@ -99,6 +135,15 @@ Generate the configuration and buildsystem files.
 CMake can also invoke the native build system with `cmake --build buildir
 [opts] -- [native-opts]`; _builddir_ must already have been created with
 `cmake sourcedir`.
+
+Setting envvar `VERBOSE=1` makes the build output more verbose (at least
+when using the Makefile generator).
+
+Other useful options/modes:
+* `-E command`: Command-line tool mode; `-E help` for a list of commands.
+  This lets makefiles etc. do things like copy files and directories, make
+  symlinks, generate SHA hashes, set/clear Windows registery entries, etc.
+  This can also print CMake capabilities and start server mode.
 
 #### CTest
 
@@ -185,6 +230,13 @@ Define new commands.
 Variables
 ---------
 
+Variable scoping is dynamic. The search order is:
+- Function scope created with `function()`.
+- Directory scope created by `CMakeLists.txt` file.
+- Cache scope persisted across runs in `$build/CMakeCache.txt`.
+- Environment variables are in a separate scope accessed via
+  `$ENV{name}` and do not use the search rules above.
+
 Variable names are alphanumeric, `/_.+-` and escape sequences. (`$` is
 also permitted but discouraged.)
 
@@ -193,13 +245,7 @@ as different types, including:
 - Boolean `0`/`1`.
 - Lists of elements separated by `;`
 
-Scoping is dynamic; search order is:
-- Function scope created with `function()`.
-- Directory scope created by `CMakeLists.txt` file.
-- Cache scope persisted across runs in `$build/CMakeCache.txt`.
-
-[cmake-variables(7)] lists variables read/used by CMake, CTest and
-CPack.
+[cmake-variables(7)] lists variables read/used by CMake, CTest and CPack.
 
 #### [`set()`], [`unset()`]
 
@@ -227,7 +273,7 @@ Properties
 - XXX properties???
 - [cmake-properties(7)]
 - [`set_property()`]
-- Set `INCLUDE_DIRECTORIES` with `include_directories()`, but prefer
+- Set `INCLUDE_DIRECTORIES` with [`include_directories()`], but prefer
   `target_include_directories()`.
 
 
@@ -236,7 +282,7 @@ Generator Expressions
 
 [Generator expressions][cmake-generator-expressions(7)] of the form
 `$<...>` can be used in certain properties and commands that populate
-them (e.g., `INCLUDE_DIRECTORIES`, `include_directories()`,
+them (e.g., `INCLUDE_DIRECTORIES`, [`include_directories()`],
 `target_include_directories()`) to be evaluated during build system
 generation. They allow lookup of information, conditional evaluation,
 and generation of output.
@@ -285,15 +331,21 @@ types) related to configuring builds.
 [CMP0053]: https://cmake.org/cmake/help/latest/policy/CMP0053.html
 [CMake]: https://cmake.org/
 [FAQ]: https://gitlab.kitware.com/cmake/community/wikis/FAQ
+[INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
+[INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
+[Ninja]: https://en.wikipedia.org/wiki/Ninja_(build_system)
 [Running CMake]: https://cmake.org/runningcmake/
 [Wiki]: https://gitlab.kitware.com/cmake/community/wikis/home
+[`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
 [`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
+[`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
 [`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
 [`set()`]: https://cmake.org/cmake/help/latest/command/set.html
+[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
 [`while()`]: https://cmake.org/cmake/help/latest/command/while.html
 [aosa]: http://www.aosabook.org/en/cmake.html
