@@ -244,7 +244,7 @@ Each _item_ may be prefixed by:
 - `general` (default): Add _item_ for all configurations.
 - `optimized`: Add _item_ for all non-debug configurations.
 - `debug`: Add _item_ for debug configuration only.
-Items are:
+Each _item_ is:
 - A target created by `add_executable` or `add_library` in the current
   directory,
 - Full path to a library file.

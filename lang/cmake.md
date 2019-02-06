@@ -1,7 +1,7 @@
 CMake
 =====
 
-See also [CMake Build Configurations](cmake-decl.md).
+See also [CMake Build Configurations](cmake-config.md).
 
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`
 file, reads/generates a build configuration, and generates
@@ -26,7 +26,7 @@ The simplest build description is:
 
     cmake_minimum_required(VERSION 3.1)     # Optional but recommended
     project(hello)
-    add_executable(hello, hello.c)
+    add_executable(hello hello.c)
 
 (We use 3.1 instead of 3.0 to default to new variable names instead of
 the deprecated old ones, [CMP0053].)
