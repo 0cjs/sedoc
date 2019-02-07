@@ -1,12 +1,14 @@
 CMake Build Configuration
 =========================
 
-These are "project commands" used to define how a project is built,
-but this also includes some "scripting" commands that can be used in a
-standalone file run with `cmake -P filename.cmake`. See also:
-* [The overview document](cmake.md) for scripting commands and general
-  CMake information.
-* [`cmake-commands(7)`] for the full list of commands.
+Docs in this series: [Overview](cmake.md)
+| [Build Configurations](cmake-config.md)
+| [Tips](cmake-tips.md)
+
+These are mostly _project commands_ used to define how a project is
+built, but this also includes some _scripting commands_ that can be
+used in a standalone file run with `cmake -P filename.cmake`. For a
+full list of commands see [`cmake-commands(7)`].
 
 
 Project Configuration
@@ -99,7 +101,52 @@ generated makefiles.
 
 #### [`add_library()`]: Define library target.
 
-    add_library(libtarget sourcefile ...)     # Static lib
+    add_library(libtarget [STATIC|SHARED|MODULE] [EXCLUDE_FROM_ALL] sourcefile ...)
+
+Builds a _normal library_ from the _sourcefile_ sources. (Additional
+sources may be added later with [`target_sources()`].) Arguments may
+use generators.
+
+Types of normal library are:
+- `STATIC`: Archive of object files used for later linking.
+- `SHARED`: (Shared) library to be dynamically linked at runtime.
+- `MODULE`: Plugins loaded by programs at runtime.
+
+The default is `STATIC` or `SHARED` depending on whether the global
+flag `BUILD_SHARED_LIBS` is `ON` or `OFF` (usually set with
+[`option()`] for selection by the developer). `SHARED` and `MODULE`
+libraries have their `POSITION_INDEPENDENT_CODE` target property set
+to `ON`. Libraries that export no symbols cannot be declared as
+`SHARED` (because Windows). A `SHARED` or `STATIC` library may be
+marked with the `FRAMEWORK` target property to create a MacOS
+Framework.
+
+    add_library(libtarget SHARED|STATIC|MODULE|OBJECT|UNKNOWN IMPORTED [GLOBAL])
+
+References an imported library from outside the project.
+Can also be done with `INTERFACE` signature below.
+
+    add_library(name OBJECT src ...)
+
+Defines an _object library_, is a list of source files whose object
+files are added when a target depending on them is linked, without a
+library file being created. Generator syntax may be used.
+
+The object files are referenced with `$<TARGET_OBJECTS:objlib>` as a
+source. Some build systems (e.g. Xcode) may need at least one source
+file specified along with an object file list.
+
+    add_library(name ALIAS target)
+
+???
+
+    add_library(name INTERFACE [IMPORTED [GLOBAL]])
+
+Creates an _interface library_ with no actual build output. Typically
+set up with `target_link_libraries()` etc. to set link interface,
+options, include dirs, etc. etc. which then can be added as a group to
+another target with `target_link_libraries()`. Directory scope unless
+`GLOBAL` is specified.
 
 #### [`add_custom_target()`]: Phony Target
 
@@ -235,9 +282,10 @@ For file-level dependencies use:
 
 #### [`target_link_libraries()`]: Libraries and link flags.
 
-Specify libraries/flags when linking a target or its dependents.
-`target` may not be an alias. If called more than once, subsequent
-items are appended.
+Specify libraries/flags when linking a target or its dependents. (This
+should be used to express only direct dependencies; link interface
+inheritance will take care of the indirect ones.) `target` may not be
+an alias. If called more than once, subsequent items are appended.
 
     target_link_libraries(target item ...)
 
@@ -256,6 +304,37 @@ Each _item_ is:
   used only for that build configuration. `optimized` is for non-debug
   configurations; `general` is for all configurations.
 
+With the default `(target item ...)` signature, dependencies are
+transitive; all targets that depend on _target_ will also be linked
+against each _item_.
+
+The _link interface_, specified in _target's_
+[`INTERFACE_LINK_LIBRARIES`][INTERFACE_LINK_LIBRARIES:tgt]  property
+(generator syntax allowed), contains the transitive link dependencies:
+anything linked to _target_ will be linked to those dependencies as
+well. Item lists may be prefixed by any of the following to change the
+nature of the link:
+- `PRIVATE`: _target_ linked against _item_ but _item_ not part of
+  _target's_ link interface. (Legacy form: `LINK_PRIVATE`.)
+- `INTERFACE`: _target_ not linked against _item_ but _item_ is part
+  of _target's_ link interface (Legacy form: `LINK_INTERFACE_LIBRARIES`.)
+- `PUBLIC`: Both of the above: _target_ linked against _item_ and
+  _item_ becomes part of _target's_ link interface. (Legacy form:
+  `LINK_PUBLIC`.)
+
+XXX Also need to describe linking `OBJECT` libs, cyclic dependencies,
+and relocatable packages.
+
+#### [`target_sources()`]
+
+    target_sources(target item ...)
+
+Adds sources to use when compiling _target_ added with
+`add_executable()` or `add_library()`; _target_ must not be an alias.
+Any list of _items_ may be preceeded by `PUBLIC`, `PRIVATE` or
+`INTERFACE` which work as with `target_link_libraries()` above.
+Generator expressions may be used.
+
 #### [`add_custom_command()`]: Configure Existing Target Form
 
 Adds pre-/post-commands to build for a target.
@@ -269,20 +348,59 @@ Adds pre-/post-commands to build for a target.
                        [COMMENT comment]
                        [VERBATIM] [USES_TERMINAL])
 
-To-do
------
 
-Some of these may belong in the Syntax or other sections of
-[cmake.md](cmake.md).
+External Packages/Dependencies
+------------------------------
 
-- `set()`
-- `set_property()`
-- `message()`
-- `import()`
-- `add_subdirectory()`
+#### [`add_library()`]
+
+See `IMPORTED` signature for `add_library()` above.
+
+#### [`find_path()`], [`find_file()`], [`find_library()`], [`find_program()`]
+
+    find_*(var <name|NAMES name ...>
+           [HINTS path1 [path2 ... ENV envar]]
+           [PATHS path1 [path2 ... ENV envar]]
+           ...  # Many more opts
+           )
+
+Creates a cache entry _var_ to store the result; subsequent calls are
+a no-op if _var_ is already set.
+
+`CMAKE_SYSTEM_PREFIX_PATH` is searched; this will have
+`CMAKE_INSTALL_PREFIX` added to it.
+
+#### [`find_package()`]
+
+_Module_ mode loads `Find<PkgName>.cmake` from `CMAKE_MODULE_PATH` or
+the CMake installation. (Read the file for details of variables that
+influence the search.) These are used for third-party libraries that
+do not provide CMake support to clients.
+
+_Config_ mode (`CONFIG` or `NO_MODULE` option) searches for
+`<PkgName>Config.cmake` or `<pkgname>Config.cmake`; the search and
+configuration are both more complex.
+
+The code run by these should use a namespace for their variables, so
+after calling `find_package(Foo 2.0 REQUIRED)` you would use
+`target_link_libraries(... Foo::Foo ...)`.
+
+
+Misc
+----
+
+#### [`install()`]
+
+Installs files to subdirs of `CMAKE_INSTALL_PREFIX` (default
+`/usr/local` or `C:\Program Files\projectname`.) Generated Unix
+Makefiles will also accept a `DESTDIR=...` option. The
+`GNUInstallDirs` module provides GNU-style options for install layout.
+
 
 
 <!-------------------------------------------------------------------->
+[CMP0022]: https://cmake.org/cmake/help/latest/policy/CMP0022.html
+[INTERFACE_LINK_LIBRARIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INTERFACE_LINK_LIBRARIES.html
 [`add_custom_command()`]: https://cmake.org/cmake/help/latest/command/add_custom_command.html
 [`add_custom_target()`]: https://cmake.org/cmake/help/latest/command/add_custom_target.html
 [`add_dependencies()`]: https://cmake.org/cmake/help/latest/command/add_dependencies.html
@@ -294,11 +412,19 @@ Some of these may belong in the Syntax or other sections of
 [`cmake_minimum_required()`]: https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html
 [`cmake_policy()`]: https://cmake.org/cmake/help/latest/command/cmake_policy.html
 [`configure_file()`]: https://cmake.org/cmake/help/latest/command/configure_file.html
+[`find_file()`]: https://cmake.org/cmake/help/latest/command/find_file.html
+[`find_library()`]: https://cmake.org/cmake/help/latest/command/find_library.html
+[`find_package()`]: https://cmake.org/cmake/help/latest/command/find_package.html
+[`find_path()`]: https://cmake.org/cmake/help/latest/command/find_path.html
+[`find_program()`]: https://cmake.org/cmake/help/latest/command/find_program.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
 [`install()`]: https://cmake.org/cmake/help/latest/command/install.html
+[`install()`]: https://cmake.org/cmake/help/latest/command/install.html
+[`option()`]: https://cmake.org/cmake/help/latest/command/option.html
 [`project()`]: https://cmake.org/cmake/help/latest/command/project.html
 [`set_tests_properties()`]: https://cmake.org/cmake/help/latest/command/set_tests_properties.html
 [`target_link_libraries()`]: https://cmake.org/cmake/help/latest/command/target_link_libraries.html
+[`target_sources()`]: https://cmake.org/cmake/help/latest/command/target_sources.html
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
 [cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
 [properties on tests]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html#test-properties

@@ -1,7 +1,9 @@
-CMake
-=====
+CMake Overview
+===============
 
-See also [CMake Build Configurations](cmake-config.md).
+Docs in this series: [Overview](cmake.md)
+| [Build Configurations](cmake-config.md)
+| [Tips](cmake-tips.md)
 
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`
 file, reads/generates a build configuration, and generates
@@ -46,6 +48,18 @@ Documentation:
 - [Running CMake]
 - [_The Architecture of Open Source Applications_: CMake chapter][aosa]
 
+Other Resources:
+- [LLVM CMake Primer](http://llvm.org/docs/CMakePrimer.html):
+  A decent, quick overview.
+- [CMake Cookbook Code](https://github.com/dev-cafe/cmake-cookbook)
+- Daniel Pfeifer, [Effective Cmake Presentation][pfeifer]. Subtitled
+  "A Random Selection of Best Practices," this also gives general
+  information on CMake design and syntax, especially some subtle
+  things. There are some errors (e.g., bracket argument comments are
+  not nested).
+- [TheErk/CMake-tutorial]. Extremely verbose (e.g., explains what a build
+  system is).
+
 
 Architecture
 ------------
@@ -57,15 +71,19 @@ For more details, see the following pages from [the documentation][docs]:
 - [cmake(1)]: Command line tool.
 - [_The Architecture of Open Source Applications_: CMake chapter][aosa]
 
-CMake creates a _buildsystem_ for _projects_, each defined by a
-`CMakeLists.txt` file in the _directory_ of the project. The
-buildsystem has _targets_ that are output files or "phony" (always out
-of date and thus always built).
+CMake creates a _buildsystem_ for _directories_ (also called
+_projects_), each of which is a set of source code with the build
+definition in a `CMakeLists.txt` file in the root directory of the
+source. The buildsystem has _targets_ that are output files or "phony"
+(always out of date and thus always built).
 
 Variables used to configure the build are generally not stored in or
 read from the process environment (though they can be accessed with
 `$ENV{name}`) but instead stored to and read from a single
-`CMakeCache.txt` file in the (root) build directory.
+`CMakeCache.txt` file in the (root) build directory. (These are
+divided into normal ones always shown by `ccmake`/`cmake-gui` and
+_advanced_ ones, marked with [`mark_as_advanced()`], that are not
+displayed unless the show advanced option is on.)
 
 The overall process is three steps of configuration and one of generation:
 1. Read `CMakeCache.txt` from the build directory (if it exists).
@@ -74,7 +92,11 @@ The overall process is three steps of configuration and one of generation:
    step may read further `CMakeLists.txt` files via the `include()`
    and `add_subdirectory()` commands.
 3. Write the updated `CMakeCache.txt` file.
-4. Generate the Makefiles or other target build tool files.
+4. Developer repeats the above steps as many times as necessary to set
+   options revealed by changing other options. (`ccmake` and
+   `cmake-gui` disable generation until the developer has seen all
+   options at least once).
+5. Generate the Makefiles or other target build tool files.
 
 Though multiple `CMakeLists.txt` files may be read, all them together
 generate a global build configuration with a single set of targets and
@@ -122,8 +144,8 @@ may not use "project commands" that define build targets or actions.
 The allowable commands for this mode are listed in [cmake-commands(7)].
 
 
-Command Invocation
-------------------
+Command Line Tool Invocation
+----------------------------
 
 #### cmake
 
@@ -140,20 +162,27 @@ Setting envvar `VERBOSE=1` makes the build output more verbose (at least
 when using the Makefile generator).
 
 Other useful options/modes:
-* `-E command`: Command-line tool mode; `-E help` for a list of commands.
-  This lets makefiles etc. do things like copy files and directories, make
-  symlinks, generate SHA hashes, set/clear Windows registery entries, etc.
-  This can also print CMake capabilities and start server mode.
+* `--system-information`: Discovered system info and variables. Useful
+  to see what variables to check for platform, path or other information.
+* `-E command`: Command-line tool mode; `-E help` for a list of
+  commands. This lets makefiles etc. do things like copy files and
+  directories, make symlinks, generate SHA hashes, set/clear Windows
+  registery entries, etc. This can also print CMake capabilities and
+  start server mode.
+* `--help-command-list`, `--help-variable-list`, `--help-command CMD`,
+  `--help-variable VAR`: Print help on commands and variables used in
+  `CMakeLists.txt`. (But output is raw reStructuredText.)
 
 #### CTest
 
 Running `ctest` in a build directory will run all the tests, as with
-the `test` target of `cmake`. Run `ctest` in the
-build dir.
+the `test` target of `cmake`. Tests are just command line programs
+that have their status code and/or output checked.
 
 #### CPack
 
-Packages software.
+Packages software. Generates many different package formats, including
+TGZ, ZIP, DEB, RPM, NSIS (Null Soft Installer).
 
 #### CDash
 
@@ -167,26 +196,34 @@ The detailed reference is [cmake-language(7)].
 
 Files are a sequence of _commands_ and comments:
 - Commands have the from `command_name(arg ...)` with zero or more
-  arguments in the parentheses. Arguments to commands are separated by
-  whitespace or `;`. In unquoted arguments whitespace and `;()#"\`
-  must be escaped with a backslash. Arguments may be quoted with
-  double quotes or brackets (see below). Unquoted nested parens are
-  passed to commands as individual unquoted arguments. Commands may be
-  broken across multiple lines after the opening paren, but there may
-  not be multiple commands on a line.
+  arguments in the parentheses. They may be broken across multiple
+  lines after the opening paren, but there may not be multiple
+  commands on a line.
 - Line comments start with `#` and go to end of line. `#` immediately
   followed by a _bracket argument_ (see below) allows multiline
   comments.
+
+Commands, which are not expressions, are divided into two types:
+- _Scripting commands_ change the state of the command processor, e.g.
+  setting variables or changing the behaviour of other commands
+-  _Project commands_ create and modify build targets.
+
+Arguments to commands are separated by whitespace or `;`. In unquoted
+arguments whitespace and `;()#"\` must be escaped with a backslash.
+Arguments may be quoted with double quotes or brackets (see below).
+Unquoted nested parens are passed to commands as individual unquoted
+arguments.
 
 Escape sequences, variable expansion, quoting:
 - `\x`: Escape sequence.
   - _x_ is one of `;trn`: semicolon, tab, CR, NL.
   - _x_ is any other char: Remove semantic meaning and treat
     literally. (E.g., to escape a space in an argument.)
-- `${varname}`: Variable ref. Replaced by variable's value, or empty
-  string if not set. Nested is evaluated from inside out, e.g. the
-  variable name in `varname` can be evaluated with: `${${varname}}`,
-  or `suffix` with `${mystuff_${suffix}}`.
+- `${varname}`: Variable ref. Replaced (before a command is called) by
+  variable's value, or empty string if not set. Nested refs are
+  evaluated from inside out, e.g. the variable name in `varname` can
+  be evaluated with: `${${varname}}`, or `suffix` with
+  `${mystuff_${suffix}}`.
 - `"`...`"`: Quoted arg. Evaluates _escape sequences_ and _variable
   refs_. Lines may be continued with a backslash at end of line.
 - `[[`...`]]`: Bracket argument (≥3.0) which expands neither escape
@@ -222,9 +259,32 @@ Empty `LIST` values are a zero-length item.
     while(expr)     # _expr_ same as if()
     endwhile()
 
-### [`macro()`], [`function()`]
+#### [`function()`], [`macro()`]
 
-Define new commands.
+    function(name param0 param1 ...)
+      ...
+    endfunction()
+
+    macro(name param0 param1)
+    endmacro()
+
+    name(one two)
+
+Define a new commands. Calling with fewer arguments than there are
+formal parameters is an error, but extra arguments may be supplied.
+
+Parameters to which the arguments are bound are:
+- `ARGV0`, _param0_: First argument.
+- `ARGV1`, _param1_: Second argument.
+- `ARGV2`, `ARGV3`, ...: Subsequent arguments.
+- `ARGC`: Argument count.
+- `ARGV`: All arguments as `;`-separated list.
+
+Scoping:
+- `function()` creates a new scope at call time; and variables are
+  scoped to the function unless `set(... PARENT_SCOPE)` is used.
+- `macro()` uses the scope of the caller. This is the only way to get
+  "output" as commands are not expressions.
 
 
 Variables
@@ -240,12 +300,26 @@ Variable scoping is dynamic. The search order is:
 Variable names are alphanumeric, `/_.+-` and escape sequences. (`$` is
 also permitted but discouraged.)
 
-Variable values are always strings though some commands may parse them
-as different types, including:
-- Boolean `0`/`1`.
-- Lists of elements separated by `;`
+Variable values are always strings. Unset variables expand to an empty
+string. Some commands may parse variables as different types, including:
+- Boolean:
+  - False: `OFF`, `0`, empty string.
+  - True: `ON`, `1`, unrecognised string.
+- Lists of elements separated by `;`.
 
-[cmake-variables(7)] lists variables read/used by CMake, CTest and CPack.
+Lists of lists are handled with multiple variable names:
+
+    set(ll a b)
+    set(a 1 2 3)
+    set(b 4)
+    foreach(listname in LISTS ll)
+        foreach(value IN LISTS ${listname})
+            ...
+        endforeach()
+    endforeach()
+
+[cmake-variables(7)] lists variables (400+) read/used by CMake, CTest
+and CPack.
 
 #### [`set()`], [`unset()`]
 
@@ -266,6 +340,14 @@ Multiple values are stored as a list (a string with elements separated
 by `;`). Quoted arguments containing `;` are stored as-is, flattening
 lists (`set(name a "b;c")` sets _name_ to `a;b;c`).
 
+#### [`option()`]
+
+    option(varname "help string" [initval])
+
+Provide `ON`/`OFF` option (stored as a cached variable) to developer
+Does nothing if _varname_ already set. Provide `-Dvarname=1` or
+similar on command line of initial `cmake` run to override default.
+
 
 Properties
 ----------
@@ -275,17 +357,25 @@ Properties
 - [`set_property()`]
 - Set `INCLUDE_DIRECTORIES` with [`include_directories()`], but prefer
   `target_include_directories()`.
+- `set_source_file_properties()`
+
+
+Misc. Scripting Commands
+------------------------
+
+- `message()`
 
 
 Generator Expressions
 ---------------------
 
 [Generator expressions][cmake-generator-expressions(7)] of the form
-`$<...>` can be used in certain properties and commands that populate
-them (e.g., `INCLUDE_DIRECTORIES`, [`include_directories()`],
-`target_include_directories()`) to be evaluated during build system
-generation. They allow lookup of information, conditional evaluation,
-and generation of output.
+`$<...>` can be set in certain properties and given to commands that
+populate them, e.g., `INCLUDE_DIRECTORIES`, [`include_directories()`],
+`target_include_directories()`. These are not evaluated by the command
+interpreter, which considers them just strings, but instead by certain
+parts of CMake code during build system generation. They allow lookup
+of information, conditional evaluation, and generation of output.
 
 Logical expressions evaluate to `0` or `1` and most take `0` or `1` as
 input.
@@ -327,28 +417,14 @@ types) related to configuring builds.
 
 
 <!-------------------------------------------------------------------->
+
+<!-- General CMake and KitWare Docs and Links -->
 [Blog]: https://blog.kitware.com/tag/cmake/
 [CMP0053]: https://cmake.org/cmake/help/latest/policy/CMP0053.html
 [CMake]: https://cmake.org/
 [FAQ]: https://gitlab.kitware.com/cmake/community/wikis/FAQ
-[INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
-[INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
-[Ninja]: https://en.wikipedia.org/wiki/Ninja_(build_system)
 [Running CMake]: https://cmake.org/runningcmake/
 [Wiki]: https://gitlab.kitware.com/cmake/community/wikis/home
-[`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
-[`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
-[`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
-[`function()`]: https://cmake.org/cmake/help/latest/command/function.html
-[`if()`]: https://cmake.org/cmake/help/latest/command/if.html
-[`include()`]: https://cmake.org/cmake/help/latest/command/include.html
-[`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
-[`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
-[`set()`]: https://cmake.org/cmake/help/latest/command/set.html
-[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
-[`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
-[`while()`]: https://cmake.org/cmake/help/latest/command/while.html
-[aosa]: http://www.aosabook.org/en/cmake.html
 [cmake(1)]: https://cmake.org/cmake/help/latest/manual/cmake.1.html
 [cmake-buildsystem(7)]: https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html
 [cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
@@ -359,3 +435,26 @@ types) related to configuring builds.
 [doclist]: https://cmake.org/documentation/
 [docs]: https://cmake.org/cmake/help/latest/
 [tutorial]: https://cmake.org/cmake-tutorial/
+
+<!-- CMake Reference Manual Items -->
+[INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
+[INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
+[`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
+[`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
+[`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
+[`function()`]: https://cmake.org/cmake/help/latest/command/function.html
+[`if()`]: https://cmake.org/cmake/help/latest/command/if.html
+[`include()`]: https://cmake.org/cmake/help/latest/command/include.html
+[`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
+[`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
+[`mark_as_advanced()`]: https://cmake.org/cmake/help/latest/command/mark_as_advanced.html
+[`set()`]: https://cmake.org/cmake/help/latest/command/set.html
+[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
+[`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
+[`while()`]: https://cmake.org/cmake/help/latest/command/while.html
+
+<!-- Other Links -->
+[Ninja]: https://en.wikipedia.org/wiki/Ninja_(build_system)
+[TheErk/CMake-tutorial]: https://github.com/TheErk/CMake-tutorial/blob/master/precompiled-PDFs/2016-09-27-CMake-tutorial.pdf
+[aosa]: http://www.aosabook.org/en/cmake.html
+[pfeifer]: https://github.com/boostcon/cppnow_presentations_2017/blob/master/05-19-2017_friday/effective_cmake__daniel_pfeifer__cppnow_05-19-2017.pdf
