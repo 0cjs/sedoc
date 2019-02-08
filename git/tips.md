@@ -26,7 +26,8 @@ Fixing/Changing Commits and Branches
 
 * See [Rebasing in Git](rebase.md) for tips on handling merge conflicts.
 
-* To rewrite the author and timestamp of a commit:
+* To rewrite the author and timestamp of a commit (using the
+  [filter-branch](filter-branch.md) variables if set):
 
       git commit --amend --reset-author
 
