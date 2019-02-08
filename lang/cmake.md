@@ -239,9 +239,10 @@ also permitted but discouraged.)
 
     if(expr) ... elseif(expr) ... else() ... endif()
 
-In some expressions variables names can be passed as arguments which
-are evaluated by the command itself. Thus with `set(var1 OFF)`,
-`set(var2 "var1")`: `if(${var2})` ⇒ false but `if(var2)` ⇒ true.
+Executes commands `...` based on the value of _expr_. In some
+expressions variables names can be passed as arguments which are
+evaluated by the command itself. Thus with `set(var1 OFF)`, `set(var2
+"var1")`: `if(${var2})` ⇒ false but `if(var2)` ⇒ true.
 
 #### [`foreach()`], [`while()`]
 
@@ -252,6 +253,7 @@ Loops. `break()` and `continue()` available.
     foreach(varname RANGE start stop [step])
     foreach(varname IN [LISTS [list1 [...]]]
                        [ITEMS [item1 [...]]])
+    endforeach()
 
 Records commands up to `endforeach()` and iterates their execution.
 Empty `LIST` values are a zero-length item.
@@ -270,8 +272,9 @@ Empty `LIST` values are a zero-length item.
 
     name(one two)
 
-Define a new commands. Calling with fewer arguments than there are
-formal parameters is an error, but extra arguments may be supplied.
+Define a new commands. (There are no return values; commands are not
+expressions.)  Calling with fewer arguments than there are formal
+parameters is an error, but extra arguments may be supplied.
 
 Parameters to which the arguments are bound are:
 - `ARGV0`, _param0_: First argument.
@@ -279,12 +282,30 @@ Parameters to which the arguments are bound are:
 - `ARGV2`, `ARGV3`, ...: Subsequent arguments.
 - `ARGC`: Argument count.
 - `ARGV`: All arguments as `;`-separated list.
+- `ARGN`: All arguments not bound to formal parameters; `;`-separated list.
+
+There is also a [`cmake_parse_arguemnts()`] command to do more
+advanced argument parsing. (Use the [`CMakeParseArguments`] module for
+versions ≤3.5.)
 
 Scoping:
 - `function()` creates a new scope at call time; and variables are
   scoped to the function unless `set(... PARENT_SCOPE)` is used.
-- `macro()` uses the scope of the caller. This is the only way to get
-  "output" as commands are not expressions.
+- `macro()` uses the scope of the caller. Arguments are not set as
+  variables; references are substituted before executing the macro.
+
+Note that macro substitution can cause problems with non-deferenced
+variables with names overlapping in the caller, e.g.:
+
+      macro(print_list my_list)
+          foreach(var IN LISTS my_list)
+              message("${var}")
+          endforeach()
+      endmacro()
+
+      set(my_list a b c d)
+      set(my_list_of_numbers 1 2 3 4)
+      print_list(my_list_of_numbers)    # Prints a, b, c, d
 
 
 Variables
@@ -364,6 +385,11 @@ Misc. Scripting Commands
 ------------------------
 
 - `message()`
+- `math()`:
+  - `math(EXPR outvar expr)`
+  - Operators (C semantics): `+ - * / % | & ^ ~ << >> * / %.`
+- `string()`: search/replace, regex, manipulation, comparision,
+  hashing, generation
 
 
 Generator Expressions
@@ -439,8 +465,10 @@ types) related to configuring builds.
 <!-- CMake Reference Manual Items -->
 [INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
 [INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
+[`CMakeParseArguments`]: https://cmake.org/cmake/help/v3.4/module/CMakeParseArguments.html
 [`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
 [`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
+[`cmake_parse_arguemnts()`]: https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html

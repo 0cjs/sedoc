@@ -80,7 +80,8 @@ the list of directories in `CMAKE_MODULE_PATH` (not set by default)
 followed by CMake's standard module directory. For a list of modules
 that come with CMake see [cmake-modules(7)].
 
-Useful modules may include: `CPack`, `FindPython3`, `CheckLibraryExists`.
+Useful modules from [cmake-modules(7)] may include: `CPack`,
+`FindPython3`, `CheckLibraryExists`.
 
 
 Creating Top-level Targets
