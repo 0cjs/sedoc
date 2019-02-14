@@ -72,10 +72,17 @@ to as the "global" namespace for that statement.
 
 (Also see [Hashes and Equality][hashandeq].)
 
-Some objects in Python, such as `int` and `str` are immutable. The
-`hash()` function works only on immutable objects, throwing
-`TypeError` if the object is mutable, and thus only immutable objects
-may be used as keys in `dict`s.
+Some objects in Python, such as `int` and `str` are immutable, and
+thus hashable. `dict` and similar can store only hashable objects
+because lookup is done based on `hash()`.
+
+The contract for a hashable object is:
+1. Hashable objects are "immutable" in some sense;
+2. `hash()` will return the same value for the entire lifetime of the
+   object or throw `TypeError`;
+3. `__eq__()` can be used to distinguish two different objects whose
+   hash collides;
+4. `hash(x) != hash(y)` implies `x != y`.
 
 "Immutable" collections, such as `tuple` are only "shallow immutable";
 they are truly immutable (and `hash()` works on them) only when they
