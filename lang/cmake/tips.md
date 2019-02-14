@@ -1,10 +1,9 @@
 CMake Tips and Tricks
 ---------------------
 
-Docs in this series: [Overview](cmake.md)
-| [Build Configurations](cmake-config.md)
-| [Tips](cmake-tips.md)
-
+Docs in this series: [Overview](README.md)
+| [Build Configurations](config.md)
+| [Tips](tips.md)
 
 ### General Tips
 

@@ -1,9 +1,9 @@
 CMake Build Configuration
 =========================
 
-Docs in this series: [Overview](cmake.md)
-| [Build Configurations](cmake-config.md)
-| [Tips](cmake-tips.md)
+Docs in this series: [Overview](README.md)
+| [Build Configurations](config.md)
+| [Tips](tips.md)
 
 These are mostly _project commands_ used to define how a project is
 built, but this also includes some _scripting commands_ that can be

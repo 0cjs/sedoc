@@ -1,9 +1,9 @@
 CMake Overview
 ===============
 
-Docs in this series: [Overview](cmake.md)
-| [Build Configurations](cmake-config.md)
-| [Tips](cmake-tips.md)
+Docs in this series: [Overview](README.md)
+| [Build Configurations](config.md)
+| [Tips](tips.md)
 
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`
 file, reads/generates a build configuration, and generates
@@ -437,7 +437,7 @@ filename.cmake`) and "project commands" that are used only when
 defining build configurations in `CMakeLists.txt` and files it
 loads/includes.
 
-See [CMake Build Configuration](cmake-config.md) for commands (of both
+See [CMake Build Configuration](config.md) for commands (of both
 types) related to configuring builds.
 
 
