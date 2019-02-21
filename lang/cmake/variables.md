@@ -27,6 +27,22 @@ cmake is invoked as `cmake -P scriptname`.
 - `PROJECT_BINARY_DIR`: When `project()` is called, set to current
   binary dir.
 
+#### Verbosity
+
+- `CMAKE_RULE_MESSAGES`: Cache setting initializes `RULE_MESSAGES`
+  property. (Not passed to subprojects?) Default `ON` gives progress
+  message (`[33%] Building C object...`) for each build rule; `OFF`
+  reports only as targets complete. Currently ignored by non-Makefile
+  generators.
+- `CMAKE_VERBOSE_MAKEFILE`: Show Makefile command lines. Initialized
+  to `FALSE` by `project()` command.
+
+Verbosity can also be specified when calling `make`:
+- Make or env var `VERBOSE=1`: Non-verbose makefiles become verbose.
+- `--no-print-directory`: Do not print entering/leaving directory
+  messages.
+
+For `ninja`, pass `-v` for verbose.
 
 
 

@@ -4,6 +4,7 @@ CMake Overview
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configurations](config.md)
+| [Variables](variables.md)
 | [Tips](tips.md)
 
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`

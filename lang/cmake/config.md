@@ -5,6 +5,7 @@ Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Variables](variables.md)
 | [Build Configuration](config.md)
+| [Variables](variables.md)
 | [Tips](tips.md)
 
 These are mostly _project commands_ used to define how a project is
@@ -197,12 +198,17 @@ Add a new output file target.
 
 There is also a form below for configuring the build of an existing target.
 
-#### [`add_test()`], [`set_tests_properties()`]: Add `test` Target Dependency
+#### [`enable_testing()`], [`add_test()`], [`set_tests_properties()`]
 
-Directs the `ctest` command to run an executable and verify the
-output. `enable_testing()` must have been executed to run tests. The
-`CTest` module does this and provides `CDash` support for submitting
-build results.
+`enable_testing()` will add a `test` target dependency to cmake that
+will run the command-line `ctest` in the root build directory, which
+in turn reads the generated `CTestTestfile.cmake` and runs the defined
+tests. For this `test` target to work, you need to execute
+`enable_testing()` in the top-level `CMakeLists.txt` even if only
+subprojects have tests.
+
+`include(CTest)` will execute `enable_testing()` and provide `CDash`
+support for submitting build results. tests.
 
     add_test(NAME name COMMAND command [arg...]
              [CONFIGURATIONS config...]
@@ -415,6 +421,7 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [`cmake_minimum_required()`]: https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html
 [`cmake_policy()`]: https://cmake.org/cmake/help/latest/command/cmake_policy.html
 [`configure_file()`]: https://cmake.org/cmake/help/latest/command/configure_file.html
+[`enable_testing()`]: https://cmake.org/cmake/help/latest/command/enable_testing.html
 [`find_file()`]: https://cmake.org/cmake/help/latest/command/find_file.html
 [`find_library()`]: https://cmake.org/cmake/help/latest/command/find_library.html
 [`find_package()`]: https://cmake.org/cmake/help/latest/command/find_package.html
