@@ -3,19 +3,22 @@ Debian Releases and Upgrading
 
 [Debian][debrel] and Ubuntu LTS releases:
 
-| Date    | Ver   | Codename | EOL      | Kernel | Notes
-| --------|-------|----------|----------|--------|---------------
-| 2018-?? | 10    | Buster   |          |        |
-| 2018-04 | 18.04 | Bionic   |          |        |
-| 2017-06 | 9     | Stretch  | 2022     | 4.9    |
-| 2016-04 | 16.04 | Xenial   |          | 4.?    | systemd
-| 2015-05 | 8     | Jessie   | 2020-06  | 3.16   | systemd
-| 2014-04 | 14.04 | Trusty   |          | 3.13   |
-| 2013-03 | 7     | Wheezy   | 2018-05  |        |
-| 2012-04 | 12.04 | Precise  |          | 3.2    |
-| 2011-02 | 6     | Squeeze  | 2016-02  |        |
-| 2010-04 | 10.04 | Lucid    |          | 2.6    |
-| 2009-10 |  9.10 | Karmic   |          |        |
+| Date    | Ver   | Codename | EOL      | Kernel    | Notes
+| --------|-------|----------|----------|-----------|---------------
+| 2018-?? | 10    | Buster   |          |           |
+| 2018-04 | 18.04 | Bionic   |          | 4.15, TBD |
+| 2017-06 | 9     | Stretch  | 2022     | 4.9       |
+| 2016-04 | 16.04 | Xenial   |          | 4.4, 4.15 | systemd
+| 2015-05 | 8     | Jessie   | 2020-06  | 3.16      | systemd
+| 2014-04 | 14.04 | Trusty   |          | 3.13, 4.4 |
+| 2013-03 | 7     | Wheezy   | 2018-05  |           |
+| 2012-04 | 12.04 | Precise  |          | 3.2       |
+| 2011-02 | 6     | Squeeze  | 2016-02  |           |
+| 2010-04 | 10.04 | Lucid    |          | 2.6       |
+| 2009-10 |  9.10 | Karmic   |          |           |
+
+Unbuntu LTS releases provide optional (but recommended) new (sometimes
+major) kernel/X11 versions at point releases; see [LTSEnablementStack].
 
 Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
@@ -93,7 +96,9 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 
 
 
+<!-------------------------------------------------------------------->
 [Debian LTS]: https://wiki.debian.org/LTS
+[LTSEnablementStack]: https://wiki.ubuntu.com/Kernel/LTSEnablementStack
 [Salsa]: https://wiki.debian.org/Salsa
 [`alioth.debian.org`]: https://wiki.debian.org/Alioth/FAQ
 [debrel]: https://wiki.debian.org/DebianReleases
