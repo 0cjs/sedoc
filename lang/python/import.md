@@ -18,7 +18,7 @@ import Statement Syntax
 
 [`import`][istmt] is a runtime directive that creates a module and
 binds it to a name. (Any parent modules/packages in the hierarchy will
-also be created.) Thus, in in a function, `if` statement, etc.,
+also be created.) Thus, in a function, `if` statement, etc.,
 `import` will not be executed until the code is run.
 
 See [PEP 328] for more on multi-line import syntax and relative import
