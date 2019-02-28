@@ -63,6 +63,22 @@ Other Resources:
   system is).
 
 
+Versions and Installation
+-------------------------
+
+The [download] page has binaries and source.
+The [install] page describes how to build from source.
+
+Distributed Versions (as of 2019-02-28):
+- Latest release: is 3.13.4 (next release 3.14.0-rc2).
+- Visual Studio 2017: 3.12.18081601-MSVC_2.
+- Ubuntu 18.04: 3.10.2-1ubuntu2
+- Debian 9: 3.7
+
+Feature introductions:
+- 3.12: `FindPython` modules.
+
+
 Architecture
 ------------
 
@@ -232,6 +248,8 @@ types) related to configuring builds.
 [cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [doclist]: https://cmake.org/documentation/
 [docs]: https://cmake.org/cmake/help/latest/
+[download]: http://cmake.org/download/
+[install]: https://cmake.org/install/
 [tutorial]: https://cmake.org/cmake-tutorial/
 
 <!-- CMake Reference Manual Items -->
