@@ -241,17 +241,12 @@ types) related to configuring builds.
 [`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
 [`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
 [`cmake_parse_arguemnts()`]: https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html
-[`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
-[`function()`]: https://cmake.org/cmake/help/latest/command/function.html
-[`if()`]: https://cmake.org/cmake/help/latest/command/if.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
 [`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
-[`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
 [`mark_as_advanced()`]: https://cmake.org/cmake/help/latest/command/mark_as_advanced.html
 [`set()`]: https://cmake.org/cmake/help/latest/command/set.html
 [`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
-[`while()`]: https://cmake.org/cmake/help/latest/command/while.html
 
 <!-- Other Links -->
 [Ninja]: https://en.wikipedia.org/wiki/Ninja_(build_system)

@@ -203,11 +203,11 @@ Properties
 Misc. Scripting Commands
 ------------------------
 
-- `message()`
-- `math()`:
+- [`message()`]
+- [`math()`]:
   - `math(EXPR outvar expr)`
   - Operators (C semantics): `+ - * / % | & ^ ~ << >> * / %.`
-- `string()`: search/replace, regex, manipulation, comparision,
+- [`string()`]: search/replace, regex, manipulation, comparision,
   hashing, generation
 
 
@@ -249,4 +249,17 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 
 
 <!-------------------------------------------------------------------->
+[`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
+[`function()`]: https://cmake.org/cmake/help/latest/command/function.html
+[`if()`]: https://cmake.org/cmake/help/latest/command/if.html
+[`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
+[`math()`]: https://cmake.org/cmake/help/latest/command/math.html
+[`message()`]: https://cmake.org/cmake/help/latest/command/message.html
+[`option()`]: https://cmake.org/cmake/help/latest/command/option.html
+[`set()`]: https://cmake.org/cmake/help/latest/command/set.html
+[`set_property()`]: https://cmake.org/cmake/help/latest/command/set_property.html
+[`string()`]: https://cmake.org/cmake/help/latest/command/string.html
+[`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
+[`while()`]: https://cmake.org/cmake/help/latest/command/while.html
+[cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
