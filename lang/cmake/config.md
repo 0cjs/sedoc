@@ -116,6 +116,9 @@ Types of normal library are:
 - `SHARED`: (Shared) library to be dynamically linked at runtime.
 - `MODULE`: Plugins loaded by programs at runtime.
 
+Also see Stack Overflow [Difference between modules and shared
+libraries?][so 4845984] for more information on this.
+
 The default is `STATIC` or `SHARED` depending on whether the global
 flag `BUILD_SHARED_LIBS` is `ON` or `OFF` (usually set with
 [`option()`] for selection by the developer). `SHARED` and `MODULE`
@@ -151,6 +154,15 @@ set up with `target_link_libraries()` etc. to set link interface,
 options, include dirs, etc. etc. which then can be added as a group to
 another target with `target_link_libraries()`. Directory scope unless
 `GLOBAL` is specified.
+
+##### Useful Library Properties
+
+- `PREFIX`: Overrides default prefix e.g., `lib` on Unix.
+- `SUFFIX`: Overrides default suffix e.g., `.so`, `.dll`.
+- [`OUTPUT_NAME`][OUTPUT_NAME:tgt]: Defaults to the logical target
+  name. May use generator expressions. There are other variants,
+  especially for different build configurations; see the docs.
+
 
 #### [`add_custom_target()`]: Phony Target
 
@@ -276,6 +288,17 @@ to use generated `.h` files.
 Configuring Existing Targets
 ----------------------------
 
+#### [`set_target_properties()`]
+
+    set_target_properties(target₁ target₂ ...
+        PROPERTIES prop₁ value₁ prop₂ value₂ ...)
+
+#### [`add_compile_definitions()`]
+
+For targets in current directory and below. Set definitions as `VAR`
+or `VAR=value`; CMake will do apropriate escaping for the native build
+system. Generator expressions may be used.
+
 #### [`add_dependencies()`]
 
 Specifies that a top-level target (created with `add_executable()`,
@@ -288,6 +311,23 @@ For file-level dependencies use:
 - For custom rules, `DEPENDS` in `add_custom_target()` and
   `add_custom_command()`.
 - For object files, `OBJECT_DEPENDS` source file property.
+
+#### [`target_compile_options()`], [`target_include_directories()`]
+
+    target_compile_options(<target> [BEFORE]
+        <INTERFACE|PUBLIC|PRIVATE> [items1...]
+        [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+
+    target_include_directories(<target> [SYSTEM] [BEFORE]
+        <INTERFACE|PUBLIC|PRIVATE> [items1...]
+        [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+
+Warning: options are de-duped which can break `-D A -D B`; use
+`"SHELL:-D A" "SHELL:-D B"` to fix this.
+
+For directory-wide settings, you can use `add_compile_options()` and
+`include_directories()`, but setting options on targets is preferred
+except in conditionals for different compilers (`if(MSVC)` etc.).
 
 #### [`target_link_libraries()`]: Libraries and link flags.
 
@@ -409,7 +449,12 @@ Makefiles will also accept a `DESTDIR=...` option. The
 
 <!-------------------------------------------------------------------->
 [CMP0022]: https://cmake.org/cmake/help/latest/policy/CMP0022.html
-[INTERFACE_LINK_LIBRARIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INTERFACE_LINK_LIBRARIES.html
+[cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
+[cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
+[properties on tests]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
+
+<!-- Commands -->
+[`add_compile_definitions()`]: https://cmake.org/cmake/help/latest/command/add_compile_definitions.html
 [`add_custom_command()`]: https://cmake.org/cmake/help/latest/command/add_custom_command.html
 [`add_custom_target()`]: https://cmake.org/cmake/help/latest/command/add_custom_target.html
 [`add_dependencies()`]: https://cmake.org/cmake/help/latest/command/add_dependencies.html
@@ -432,9 +477,16 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [`install()`]: https://cmake.org/cmake/help/latest/command/install.html
 [`option()`]: https://cmake.org/cmake/help/latest/command/option.html
 [`project()`]: https://cmake.org/cmake/help/latest/command/project.html
+[`set_target_properties()`]: https://cmake.org/cmake/help/latest/command/set_target_properties.html
 [`set_tests_properties()`]: https://cmake.org/cmake/help/latest/command/set_tests_properties.html
+[`target_compile_options()`]: https://cmake.org/cmake/help/latest/command/target_compile_options.html
+[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`target_link_libraries()`]: https://cmake.org/cmake/help/latest/command/target_link_libraries.html
 [`target_sources()`]: https://cmake.org/cmake/help/latest/command/target_sources.html
-[cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
-[cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
-[properties on tests]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html#test-properties
+
+<!-- Properties -->
+[INTERFACE_LINK_LIBRARIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INTERFACE_LINK_LIBRARIES.html
+[OUTPUT_NAME:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/OUTPUT_NAME.html
+
+<!-- Stack Overflow -->
+[so 4845984]: https://stackoverflow.com/questions/4845984/difference-between-modules-and-shared-libraries

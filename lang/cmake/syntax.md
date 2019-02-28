@@ -192,12 +192,45 @@ similar on command line of initial `cmake` run to override default.
 Properties
 ----------
 
-- XXX properties???
-- [cmake-properties(7)]
-- [`set_property()`]
+Properties are scoped variables, with optional inheritance of values
+from higher scopes, associated with either global configuration
+(transient or cached in `$build/CMakeCache.txt`) or individual source
+files, targets, tests, etc. The generic [`set_property()`] command
+allows setting a single property on any specified scope:
+
+    set_property(
+        < GLOBAL
+        | DIRECTORY [dir ...]
+        | TARGET    [target₁ ...]
+        | SOURCE    [src₁ ...]
+        | INSTALL   [file₁ ...]
+        | TEST      [test₁ ...]
+        | CACHE     [entry₁ ...]
+        > [APPEND] [APPEND_STRING] PROPERTY name [value₁ ...])
+
+There are also standard functions for setting multiple properties on a
+single scope: `set_directory_properties()`,
+`set_source_file_properties()` `set_target_properties()` and
+`set_tests_properties()`; see [Build Configuration](config.md).
+
+There is no inheritance behaviour when setting properties; `APPEND`
+and `APPEND_STRING` will thus not consider inherited values when
+working out the contents to append to.
+
+[`get_property()`] retrieves property information (using inheritance
+if defined), including whether or not it's defined, whether it's set,
+and its documentation. Also see `get_directory_property()`,
+`get_source_file_property()`, `get_target_property()`, and
+`get_test_property()`.
+
+See [cmake-properties(7)] for a list of all standard properties.
+
+Use [`define_property()`] to define and document custom
+properties.
+
+Other notes XXX:
 - Set `INCLUDE_DIRECTORIES` with [`include_directories()`], but prefer
   `target_include_directories()`.
-- `set_source_file_properties()`
 
 
 Misc. Scripting Commands
@@ -249,8 +282,10 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 
 
 <!-------------------------------------------------------------------->
+[`define_property()`]: https://cmake.org/cmake/help/latest/command/define_property.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
+[`get_property()`]: https://cmake.org/cmake/help/latest/command/get_property.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html
 [`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
 [`math()`]: https://cmake.org/cmake/help/latest/command/math.html
