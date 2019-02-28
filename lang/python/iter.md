@@ -126,6 +126,13 @@ Terminating on shortest sequence:
 * `chain.from_iterable([itr0, itr1, ...])`: concatenation of iterables
   given in the single iterable argument.
 * `compress(xs, ps)`: all _xᵢ_ where _pᵢ_
+* `groupby(xs, p)`: iterator of tuples: _(p(xᵢ), [xss])_ where _xss_
+  is an iterator of all sequential elements producing the same result
+  from _p()_. (_p()_ defaults to the identity function.) E.g.:
+  - `b = [ 1,3,5, 2,4,6, 1,7, 2,12,10, ]`
+  - `def show(pair): return (pair[0], list(pair[1]))`
+  - `list(map(show, groupby(b, lambda x: x%2)))`
+  - ⇒ `[(1, [1, 3, 5]), (0, [2, 4, 6]), (1, [1, 7]), (0, [2, 12, 10])]`
 * `takewhile(p, xs)`, `dropwhile(p, xs)`
 * `filterfalse(p, xs)`: all _xᵢ_ where not _p(xᵢ)_
 
