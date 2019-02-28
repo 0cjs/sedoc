@@ -44,7 +44,7 @@ See: [toolz-pypy], [toolz-docs], [tools-github]
 
 
 [`functools`]: https://docs.python.org/3/library/functools.html
-[`itertools`]: https://docs.python.org/3/library/itertools.html
+[`itertools`]: iter.md
 [`operator`]: https://docs.python.org/3/library/operator.html
 [callable]: functions.md
 [functional]: https://docs.python.org/3/library/functional.html

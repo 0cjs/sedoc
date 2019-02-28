@@ -17,7 +17,7 @@ Python Summary/Quickref
 * [Standard Libraries](stdlib.md)
   - [Regular Expressions](regexp.md)
   - [Date and Time](datetime.md)
-  - [`itertools`](iter.md)
+  - [Iterator protcol and `itertools`](iter.md)
   - [File and Network I/O](io.md).
   - [Filesystem and Path Libraries](files.md)
   - [Pickle](pickle.md) object seralization

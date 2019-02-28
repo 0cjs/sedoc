@@ -3,13 +3,14 @@ Iterators and Generators
 
 * See also [Sequences](sequence.md).
 
-[Iterator Protocol]
--------------------
+Iterator Protocol
+-----------------
 
-An _[iterator]_ has a [`__next__()`] method that returns successive
-items, throwing [`StopIteration`] when no more are available. You may
-also use `next(itr)` which also throws `StopIteration` unless given a
-second argument giving a value to return when the iterator is exhausted.
+An _[iterator]_ implements the [iterator protocol] with a
+[`__next__()`] method that returns successive items, throwing
+[`StopIteration`] when no more are available. You may also use
+`next(itr)` which also throws `StopIteration` unless given a second
+argument giving a value to return when the iterator is exhausted.
 
 An object is _iterable_ if it can produce an iterator via its
 [`__iter__()`] method or `iter(xs)`. The following conventions apply
@@ -63,12 +64,12 @@ On resumption `yield` will return a value based on what
 Using Iterables
 ---------------
 
-#### Syntax
+### Syntax
 
 * `for x in I` (where `I` is an iterable)
 * `x in y` operator
 
-#### Constructors
+### Constructors
 
 * `tuple`, `list`: Construct an empty sequence or from an iterable.
 * `set`, `frozenset`: Construct an empty set or from an iterable.
@@ -78,7 +79,7 @@ Using Iterables
 * `open()`: Iterates over lines in file or other input source.
 * ...
 
-#### Builtin Functions
+### Builtin Functions
 
 (See also the [Python builtin functions][builtin] documentation.)
 
@@ -103,7 +104,7 @@ Misc:
   `None` specifies the identity function.
 * `all(xs)`, `any(xs)`: bool, all or any `bool`(_xᵢ_) == True
 
-#### itertools
+### itertools
 
 The [`itertools`] library provides functions creating useful iterators
 (à la APL, Haskell, SML). The [`operator`] module functions
