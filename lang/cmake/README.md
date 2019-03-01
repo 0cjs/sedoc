@@ -95,7 +95,7 @@ definition in a `CMakeLists.txt` file in the root directory of the
 source. The buildsystem has _targets_ that are output files or "phony"
 (always out of date and thus always built).
 
-Variables used to configure the build are generally not stored in or
+Settings used to configure the build are generally not stored in or
 read from the process environment (though they can be accessed with
 `$ENV{name}`) but instead stored to and read from a single
 `CMakeCache.txt` file in the (root) build directory. (These are
