@@ -282,6 +282,11 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 
 
 <!-------------------------------------------------------------------->
+[cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
+[cmake-language(7)]: https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
+[cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
+[cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+
 [`define_property()`]: https://cmake.org/cmake/help/latest/command/define_property.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
@@ -296,5 +301,3 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 [`string()`]: https://cmake.org/cmake/help/latest/command/string.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
 [`while()`]: https://cmake.org/cmake/help/latest/command/while.html
-[cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
-[cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
