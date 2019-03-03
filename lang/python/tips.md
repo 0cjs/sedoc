@@ -48,6 +48,30 @@ not available and can't easily be installed.
 
 [`json.tool`]: https://docs.python.org/3/library/json.html#module-json.tool
 
+#### grip
+
+The [grip] package ([GitHub][gh-grip]) is an HTTP server that reads
+local Markdown files, requests that GitHub render them (using the
+GitHub API) and displays the results. (Default URL is
+<http://localhost:6419/>.) It's handy for [Readme-driven
+development][rdd].
+
+The GitHub API limits anonymous requests to 60 per hour. To get around
+this, [set up an access token on GitHub][gh-token] with description
+"${hostname}-noscopes" and no scopes to minimize the accesss this
+toekn has. Ensure permissions on `~/.grip/settings.py` are not
+readable to others and then add the GitHub account and token to [the
+config vars][grip-config] to it:
+
+    USER = '1cjs'
+    PASSWORD = '<insert token here>'
+
+[gh-grip]: https://github.com/joeyespo/grip
+[gh-token]: https://github.com/settings/tokens
+[grip-config]: https://github.com/joeyespo/grip#configuration
+[grip]: https://pypi.org/project/grip/
+[rdd]: http://tom.preston-werner.com/2010/08/23/readme-driven-development.html
+
 
 Not So Great Ideas
 ------------------
