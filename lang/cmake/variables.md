@@ -3,8 +3,8 @@ CMake Variables
 
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
-| [Variables](variables.md)
 | [Build Configuration](config.md)
+| [Variables](variables.md)
 | [Tips](tips.md)
 
 This is a categorized selection of some commonly used variables from

@@ -3,7 +3,6 @@ CMake Tips and Tricks
 
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
-| [Variables](variables.md)
 | [Build Configuration](config.md)
 | [Variables](variables.md)
 | [Tips](tips.md)

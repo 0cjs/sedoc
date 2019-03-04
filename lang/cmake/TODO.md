@@ -1,13 +1,11 @@
 CMake - Things Still to Document
 ================================
 
-* In `README`, "Settings used to configure build": note access with
-  `$CACHE{name}`, property access, and maybe variable fallback to
-  cache lookup?
-
-* `get_property(cmcc CACHE CMAKE_C_COMPILER PROPERTY VALUE)`
-
-* `get_property(var VARIABLE PROPERTY ...)`
+Docs in this series: [Overview](README.md)
+| [Syntax](syntax.md)
+| [Build Configurations](config.md)
+| [Variables](variables.md)
+| [Tips](tips.md)
 
 * [`varprops.cmake`], `print_property_attributes()`, accessing values
   of cache attributes. Also CMake's property test script,
@@ -19,7 +17,11 @@ CMake - Things Still to Document
   stage (i.e., in the Makefile?): [so 35695152], [so 28692896]. Also
   Q&D how to print evaluated generator expression.
 
-* Some stuff on cache variables vs. global properties: [so 34290292].
+* Properties for `DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}` apply to all
+  build dirs based on that source? What if you specify `DIRECTORY
+  ${CMAKE_CURRENT_BINARY_DIR}`?
+
+* Explanation of directory/target properties vs. variables: [so 33834879]
 
 * Great? discussion of CMake syntax and variable usage: [so 31037882].
 
@@ -43,6 +45,6 @@ CMake - Things Still to Document
 [everything]: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
 [so 28692896]: https://stackoverflow.com/questions/28692896/
 [so 31037882]: https://stackoverflow.com/questions/31037882
-[so 34290292]: https://stackoverflow.com/questions/34290292/
+[so 33834879]: https://stackoverflow.com/a/33834879
 [so 35695152]: https://stackoverflow.com/questions/35695152/
 [so 9298278]: https://stackoverflow.com/questions/9298278/

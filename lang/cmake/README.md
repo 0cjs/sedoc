@@ -7,6 +7,9 @@ Docs in this series: [Overview](README.md)
 | [Variables](variables.md)
 | [Tips](tips.md)
 
+> _Do not meddle in the affairs of CMake,
+> for it is subtle and quick to anger._
+
 [CMake] is a multi-platform build tool that reads a `CMakeLists.txt`
 file, reads/generates a build configuration, and generates
 platform-native buildsystem files (e.g., for GNU Make, [Ninja] or
@@ -119,29 +122,13 @@ The overall process is three steps of configuration and one of generation:
 Though multiple `CMakeLists.txt` files may be read, all them together
 generate a global build configuration with a single set of targets and
 other global state such as cache variables. (This may produce name
-collisions.) CMake code read with [`include()`] is executed in the
-scope of the caller. [`add_subdirectory()`] adds a new build
-subdirectory under the top-level build directory and creates a new
-directory scope for the processing of the new `CMakeLists.txt`; the
-new source directory need not be a subdirectory of the calling source
-dir.
+collisions.)
 
-Directory scoping appears to be based on the build directory tree;
-commands that use directory scoping "apply to directories below the
-project directory" in which they're executed, so presumably to
-projects below the project directory. However, it's generally
-suggested that properties be set using target-scoped commands (where
-they will be propagated/exported to dependents) rather than
-directory-scoped where possible. E.g., prefer
-[`target_include_directories()`] to set the [target-scoped
-`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:tgt] property over
-[`include_directories()`] to set the [directory-scoped
-`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:dir].
+CMake has _variables_ and separate _properties_ with somewhat complex
+scoping rules; see [Syntax](syntax.md) for details.
 
-
-XXX properties
-
-When run, CMake uses a configuration (property settings) in
+When run, CMake uses a configuration (`CACHE`-scope property settings,
+also sometimes referred to as "cached variables") in
 `$build/CMakeCache.txt`, generating it if necessary. Existing
 configuration entries will not be changed or removed, but new ones may
 be added. Changing a configuration entry may cause additions; re-run
@@ -253,17 +240,12 @@ types) related to configuring builds.
 [tutorial]: https://cmake.org/cmake-tutorial/
 
 <!-- CMake Reference Manual Items -->
-[INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
-[INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
 [`CMakeParseArguments`]: https://cmake.org/cmake/help/v3.4/module/CMakeParseArguments.html
 [`add_compile_options()`]: https://cmake.org/cmake/help/latest/command/add_compile_options.html
 [`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
 [`cmake_parse_arguemnts()`]: https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html
-[`include()`]: https://cmake.org/cmake/help/latest/command/include.html
-[`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
 [`mark_as_advanced()`]: https://cmake.org/cmake/help/latest/command/mark_as_advanced.html
 [`set()`]: https://cmake.org/cmake/help/latest/command/set.html
-[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
 
 <!-- Other Links -->

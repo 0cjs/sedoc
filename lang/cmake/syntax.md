@@ -3,7 +3,6 @@ CMake Syntax and Semantics
 
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
-| [Variables](variables.md)
 | [Build Configuration](config.md)
 | [Variables](variables.md)
 | [Tips](tips.md)
@@ -38,11 +37,8 @@ Escape sequences, variable expansion, quoting:
   - _x_ is one of `;trn`: semicolon, tab, CR, NL.
   - _x_ is any other char: Remove semantic meaning and treat
     literally. (E.g., to escape a space in an argument.)
-- `${varname}`: Variable ref. Replaced (before a command is called) by
-  variable's value, or empty string if not set. Nested refs are
-  evaluated from inside out, e.g. the variable name in `varname` can
-  be evaluated with: `${${varname}}`, or `suffix` with
-  `${mystuff_${suffix}}`.
+- `${varname}`: Variable expansion, replaced (before a command is called) by
+  variable's value, or empty string if not set. See below.
 - `"`...`"`: Quoted arg. Evaluates _escape sequences_ and _variable
   refs_. Lines may be continued with a backslash at end of line.
 - `[[`...`]]`: Bracket argument (≥3.0) which expands neither escape
@@ -51,8 +47,293 @@ Escape sequences, variable expansion, quoting:
   `[==[`...`]==]`. Neither escape sequences nor variable references
   are expanded.
 
-Variable names are alphanumeric, `/_.+-` and escape sequences. (`$` is
-also permitted but discouraged.)
+
+Variables and Properties
+------------------------
+
+CMake has dynamically scoped _variables_ or _normal variables_
+recursively expanded at time of reference (i.e., before commands are
+called). Additionally there are _properties_ which are attached to
+specific objects (a `GLOBAL` object, the `CACHE` object,
+"directories", build targets, etc., often called a _scope_) and are
+normally set and read with special commands.
+
+Cache properties are sometimes referred to as _cache variables_
+because, unlike other properties, variable expansion of a never-set or
+`unset()` variable can result in substitution of a cache property.
+
+Variable and property names are alphanumeric, `/_.+-` and escape
+sequences. (`$` is also permitted but discouraged.)
+
+Expansion forms are:
+- `${name}`: Standard variable/cache-property expansion; see below.
+- `$CACHE{name}`: Expands to a cache property entry.
+- `$ENV{name}`: Expands to the value of a process environment variable.
+
+Unset variables expand to an empty string.
+
+Recursive expansion of nested variable references is done
+inside-to-out: `${outer_${inner}_variable}`. E.g. the variable name in
+`varname` can be evaluated with: `${${varname}}`, or `suffix` with
+`${mystuff_${suffix}}`.
+
+When CMake policy [CMP0054] is set to `OLD`, the `if()` command does
+"automatic evaluation" on unquoted/unbracketed arguments: variable
+names are expanded to variable values (but not cache property values)
+by the command after it's been called, even if these names are
+themselves the result of variable expansion with `${name}` at the call
+site.
+
+### Variables
+
+Variables are set and unset with [`set()`] and [`unset()`]; the latter
+is a "whiteout" that terminates a scope search, potentially exposing a
+cache property. The `PARENT_SCOPE` parameter changes values in a
+parent scope.
+
+Scope is dynamic; new scopes are introduced by [`function()`] and
+[`add_subdirectory()`]. For the latter, though referred to as
+"directory" scope, the actual hierarchy location of the source and
+target directories is irrelevant; only the `add_subdirectory()` call
+tree is used.
+
+New scopes are not introduced by [`macro()`] and [`include()`].
+
+The search order for variable expansion is as follows. Any variable
+"whited out" with `unset()` terminates the function/directory scope
+search and moves on to the cache search.
+- Deepest to highest function scopes in the function call stack.
+- Deepest to highest "directory" scopes in the `add_subdirectory()`
+  call stack.
+- Cache properties persisted across runs in `$build/CMakeCache.txt`.
+
+See [Variables](variables.md) and [cmake-variables(7)] for lists
+variables (400+) read/used by CMake, CTest and CPack.
+
+### Properties
+
+Properties are separate variable-like namespaces attached to objects
+with separate scoping rules and inheritance based on the object
+relationships.
+
+The exception to this is cache properties; variable expansion will
+look up cache properties for unset variable names and `set()` and
+`unset()` have an option to change a cache property instead of a
+variable.
+
+Properties on various objects are used extensively by CMake to
+configure the build. For a list of properties used by cmake, see
+[cmake-properties(7)].
+
+The object types are called "scopes" and are:
+- `GLOBAL`: A single unique object.
+- `DIRECTORY`: Seems not to be the same as `add_subdirectory()`
+  "directory" variable scope.
+- `TARGET`: A build target.
+- `SOURCE`: A source file.
+- `INSTALL`: An installed file.
+- `TEST`: A CTest test.
+- `CACHE`: A cache entry; see property list below.
+
+#### Property Inheritance
+
+Inheritance of values can be specified for specific properties with
+the `INHERITED` option to `define_property()`. This causes
+`get_property()` and `get_*_property()` functions to search as follows
+when a property is not set.
+- `TARGET`, `SOURCE` and `TEST` properties inherit from their  in
+  their corresponding `DIRECTORY` scope.
+- `DIRECTORY` scopes in turn inherit from parent `DIRECTORY` scopes.
+
+`set_property()` and similar never use inheritance; this can introduce
+unexpected behaviour when using the `APPEND` or `APPEND_STRING`
+option, making it appear to overwrite a inherited value.
+
+It's generally suggested that properties be set using target-scoped
+commands (where they will be propagated/exported to dependents) rather
+than directory-scoped where possible. E.g., prefer
+[`target_include_directories()`] to set the [target-scoped
+`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:tgt] property over
+[`include_directories()`] to set the [directory-scoped
+`INCLUDE_DIRECTORIES`][INCLUDE_DIRECTORIES:dir].
+
+#### Cache Entry Properties
+
+All cache entries are identified as an "object" by their name and have
+a [fixed set of properties][cache-prop]. Most of these should be set
+with specialized functions such as [`define_property()`].
+
+- `VALUE`: The value of the property. Setting this directly sets the
+  value without any checks.
+- `TYPE`: Helps interactive setup tools. One of:
+  - `STRING`, `BOOL`, `PATH` to a directory, `FILEPATH` to a file.
+  - `INTERNAL`: Never show property in interactive tools. Setting an
+    `INTERNAL` value implies `FORCE`.
+  - `STATIC`: Managed by CMake; never change.
+  - `UNINITIALIZED`: Type not yet specified.
+- `STRINGS`: List enumerating valid string values to allow interactive
+  configuration tools to display a selection list.
+- `ADVANCED`: If true, property setting is hidden by default in
+  interactive CMake build setup tools. Set with `mark_as_advanced()`.
+- `HELPSTRING`: Help text to be shown by configuration tools.
+- `MODIFIED`: Internal management property; do not set or get. (Tracks
+  interactive user modification of properties.)
+
+#### Using Cache Entries Instead of Variables
+
+Sometimes one wants a subproject to be able to make values available
+to the whole CMake build; `set()` can't be reliably used for this
+because it can't set values beyond the parent.
+
+From [so 34290292] it appears that it's acceptable to set an
+`INTERNAL` cache property (`INTERNAL` implying `FORCE` to override any
+cached values, making this more like a regular transient variable) and
+rely on standard variable expansion for unset variables falling back
+to that cached value.
+
+### Value Types
+
+Variable values are always strings. Unset variables expand to an empty
+string. Some commands may parse variables as different types, including:
+- Boolean:
+  - False: `OFF`, `0`, empty string.
+  - True: `ON`, `1`, unrecognised string.
+- Lists of elements separated by `;`.
+
+Lists of lists are handled with multiple variable names:
+
+    set(ll a b)
+    set(a 1 2 3)
+    set(b 4)
+    foreach(listname in LISTS ll)
+        foreach(value IN LISTS ${listname})
+            ...
+        endforeach()
+    endforeach()
+
+
+Generator Expressions
+---------------------
+
+[Generator expressions][cmake-generator-expressions(7)] of the form
+`$<...>` can be set in certain properties and given to commands that
+populate them, e.g., `INCLUDE_DIRECTORIES`, [`include_directories()`],
+[`target_include_directories()`]. These are not evaluated by the
+command interpreter, which considers them just strings, but instead by
+certain parts of CMake code during build system generation. They allow
+lookup of information, conditional evaluation, and generation of
+output.
+
+Logical expressions evaluate to `0` or `1` and most take `0` or `1` as
+input.
+- `$<BOOL:...>`: Evaluate `...` to `0` or `1`.
+- `$<NOT:?>`: `0`→`1`, `1`→`0`.
+- `$<IF:?,...,...>`.
+- `$<STREQUAL:a,b>`, `$<EQUAL:a,b>`: String and numeric comparison.
+- `$<IN_LIST:x,xs>`.
+- `$<TARGET_EXISTS:target>`.
+- etc.
+
+Informational expressions expand to a value:
+- `$<CONFIG>`: Configuration name.
+- `$<TARGET_FILE_NAME:target>`, `$<TARGET_FILE_DIR:target>`.
+- `$<TARGET_PROPERTY:targetname,propname>`: Value of property on given target.
+- `$<TARGET_PROPERTY:propname>`: Value of property on target for which
+  generator expression is being evaluated.
+- etc.
+
+Output expressions generate a string. E.g., for a list of include dirs
+preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
+
+    set(idirs "$<TARGET_PROPERTY:INCLUDE_DIRECTORIES>")
+    $<$<BOOL:${prop}>:-I$<JOIN:${prop}, -I>>
+
+
+Command Reference
+-----------------
+
+### Variable and Property Setting
+
+#### [`set()`], [`unset()`]
+
+`set()` binds a "normal" variable name in the current scope or in
+`PARENT_SCOPE`, process environment or `CACHE` if specified.
+
+`unset()` whites out a variable, causing it to terminate variable
+scope searches at that location, possibly exposing a cache property.
+To avoid exposing cache properties, use `set(varname "")`.
+
+    set(name value ... [PARENT_SCOPE])
+    set(ENV{name} value ...)
+    set(name value ... CACHE type docstring [FORCE])
+    unset(name [CACHE|PARENT_SCOPE])
+    unset(ENV{name})
+
+Types for cache values (described in detail above) are: `STRING`
+(values selected from `STRINGS` property if set), `BOOL`, `PATH`,
+`FILEPATH`, `INTERNAL` and `UNINITIALIZED`.
+
+Multiple values are stored as a list (a string with elements separated
+by `;`). Quoted arguments containing `;` are stored as-is, flattening
+lists (`set(name a "b;c")` sets _name_ to `a;b;c`).
+
+#### [`option()`]
+
+    option(varname "help string" [initval])
+
+Provide `ON`/`OFF` option (stored as a cached variable) to developer
+Does nothing if _varname_ already set. Provide `-Dvarname=1` or
+similar on command line of initial `cmake` run to override default.
+
+#### [`set_property()`], [`get_property()`], etc.
+
+> Reminder: when setting/getting cache property values, set _entry_ to
+> the property name and use `PROPERTY VALUE`. See above for other
+> properties on cache entries.
+
+    set_property(
+        < GLOBAL
+        | DIRECTORY [dir ...]
+        | TARGET    [target₁ ...]
+        | SOURCE    [src₁ ...]
+        | INSTALL   [file₁ ...]
+        | TEST      [test₁ ...]
+        | CACHE     [entry₁ ...]
+        > [APPEND] [APPEND_STRING] PROPERTY name [value₁ ...])
+
+There are also standard functions for setting multiple properties on a
+single scope: `set_directory_properties()`,
+`set_source_file_properties()` `set_target_properties()` and
+`set_tests_properties()`; see [Build Configuration](config.md).
+
+There is no inheritance behaviour when setting properties; `APPEND`
+and `APPEND_STRING` will thus not consider inherited values when
+working out the contents to append to.
+
+    get_property(varname,
+        < GLOBAL
+        | DIRECTORY [dir]
+        | TARGET    target
+        | SOURCE    src
+        | INSTALL   file
+        | TEST      test
+        | CACHE     entry
+        | VARIABLE
+        > PROPERTY propname [SET|DEFINED|BRIEF_DOCS|FULL_DOCS])
+
+[`get_property()`] retrieves property or variable information (using
+inheritance if defined), including whether or not it's defined,
+whether it's set, and its documentation. Also see
+`get_directory_property()`, `get_source_file_property()`,
+`get_target_property()`, and `get_test_property()`.
+
+See [cmake-properties(7)] for a list of all standard properties.
+
+#### [`define_property()`], [`mark_as_advanced()`]
+
+Define and document custom properties.
+
+### Control Flow
 
 #### [`if()`]
 
@@ -79,6 +360,8 @@ Empty `LIST` values are a zero-length item.
 
     while(expr)     # _expr_ same as if()
     endwhile()
+
+### Command Definition
 
 #### [`function()`], [`macro()`]
 
@@ -127,112 +410,6 @@ variables with names overlapping in the caller, e.g.:
       print_list(my_list_of_numbers)    # Prints a, b, c, d
 
 
-Variables
----------
-
-Variable scoping is dynamic. The search order is:
-- Function scope created with `function()`.
-- Directory scope created by `CMakeLists.txt` file.
-- Cache scope persisted across runs in `$build/CMakeCache.txt`.
-- Environment variables are in a separate scope accessed via
-  `$ENV{name}` and do not use the search rules above.
-
-Variable names are alphanumeric, `/_.+-` and escape sequences. (`$` is
-also permitted but discouraged.)
-
-Variable values are always strings. Unset variables expand to an empty
-string. Some commands may parse variables as different types, including:
-- Boolean:
-  - False: `OFF`, `0`, empty string.
-  - True: `ON`, `1`, unrecognised string.
-- Lists of elements separated by `;`.
-
-Lists of lists are handled with multiple variable names:
-
-    set(ll a b)
-    set(a 1 2 3)
-    set(b 4)
-    foreach(listname in LISTS ll)
-        foreach(value IN LISTS ${listname})
-            ...
-        endforeach()
-    endforeach()
-
-See [Variables](variables.md) and [cmake-variables(7)] for lists
-variables (400+) read/used by CMake, CTest and CPack.
-
-#### [`set()`], [`unset()`]
-
-Binds a variable name in the current scope or in `PARENT_SCOPE`,
-process environment or `CACHE` if specified.
-
-    set(name value ... [PARENT_SCOPE])
-    set(ENV{name} value ...)
-    set(name value ... CACHE type docstring [FORCE])
-    unset(name [CACHE|PARENT_SCOPE])
-    unset(ENV{name})
-
-Types for cache values (used by GUI interface) are `BOOL`, `FILEPATH`
-(file), `PATH` (directory), `STRING` (values selected from `STRINGS`
-property if set) and `INTERNAL`.
-
-Multiple values are stored as a list (a string with elements separated
-by `;`). Quoted arguments containing `;` are stored as-is, flattening
-lists (`set(name a "b;c")` sets _name_ to `a;b;c`).
-
-#### [`option()`]
-
-    option(varname "help string" [initval])
-
-Provide `ON`/`OFF` option (stored as a cached variable) to developer
-Does nothing if _varname_ already set. Provide `-Dvarname=1` or
-similar on command line of initial `cmake` run to override default.
-
-
-Properties
-----------
-
-Properties are scoped variables, with optional inheritance of values
-from higher scopes, associated with either global configuration
-(transient or cached in `$build/CMakeCache.txt`) or individual source
-files, targets, tests, etc. The generic [`set_property()`] command
-allows setting a single property on any specified scope:
-
-    set_property(
-        < GLOBAL
-        | DIRECTORY [dir ...]
-        | TARGET    [target₁ ...]
-        | SOURCE    [src₁ ...]
-        | INSTALL   [file₁ ...]
-        | TEST      [test₁ ...]
-        | CACHE     [entry₁ ...]
-        > [APPEND] [APPEND_STRING] PROPERTY name [value₁ ...])
-
-There are also standard functions for setting multiple properties on a
-single scope: `set_directory_properties()`,
-`set_source_file_properties()` `set_target_properties()` and
-`set_tests_properties()`; see [Build Configuration](config.md).
-
-There is no inheritance behaviour when setting properties; `APPEND`
-and `APPEND_STRING` will thus not consider inherited values when
-working out the contents to append to.
-
-[`get_property()`] retrieves property information (using inheritance
-if defined), including whether or not it's defined, whether it's set,
-and its documentation. Also see `get_directory_property()`,
-`get_source_file_property()`, `get_target_property()`, and
-`get_test_property()`.
-
-See [cmake-properties(7)] for a list of all standard properties.
-
-Use [`define_property()`] to define and document custom
-properties.
-
-Other notes XXX:
-- Set `INCLUDE_DIRECTORIES` with [`include_directories()`], but prefer
-  `target_include_directories()`.
-
-
 Misc. Scripting Commands
 ------------------------
 
@@ -244,60 +421,35 @@ Misc. Scripting Commands
   hashing, generation
 
 
-Generator Expressions
----------------------
-
-[Generator expressions][cmake-generator-expressions(7)] of the form
-`$<...>` can be set in certain properties and given to commands that
-populate them, e.g., `INCLUDE_DIRECTORIES`, [`include_directories()`],
-`target_include_directories()`. These are not evaluated by the command
-interpreter, which considers them just strings, but instead by certain
-parts of CMake code during build system generation. They allow lookup
-of information, conditional evaluation, and generation of output.
-
-Logical expressions evaluate to `0` or `1` and most take `0` or `1` as
-input.
-- `$<BOOL:...>`: Evaluate `...` to `0` or `1`.
-- `$<NOT:?>`: `0`→`1`, `1`→`0`.
-- `$<IF:?,...,...>`.
-- `$<STREQUAL:a,b>`, `$<EQUAL:a,b>`: String and numeric comparison.
-- `$<IN_LIST:x,xs>`.
-- `$<TARGET_EXISTS:target>`.
-- etc.
-
-Informational expressions expand to a value:
-- `$<CONFIG>`: Configuration name.
-- `$<TARGET_FILE_NAME:target>`, `$<TARGET_FILE_DIR:target>`.
-- `$<TARGET_PROPERTY:targetname,propname>`: Value of property on given target.
-- `$<TARGET_PROPERTY:propname>`: Value of property on target for which
-  generator expression is being evaluated.
-- etc.
-
-Output expressions generate a string. E.g., for a list of include dirs
-preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
-
-    set(idirs "$<TARGET_PROPERTY:INCLUDE_DIRECTORIES>")
-    $<$<BOOL:${prop}>:-I$<JOIN:${prop}, -I>>
-
-
 
 <!-------------------------------------------------------------------->
+[cache-prop]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html#properties-on-cache-entries
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
 [cmake-language(7)]: https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
 [cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 
+[CMP0054]: https://cmake.org/cmake/help/latest/policy/CMP0054.html
+
+[INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
+[INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
 [`define_property()`]: https://cmake.org/cmake/help/latest/command/define_property.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
 [`get_property()`]: https://cmake.org/cmake/help/latest/command/get_property.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html
+[`include()`]: https://cmake.org/cmake/help/latest/command/include.html
+[`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
 [`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
+[`mark_as_advanced()`]: https://cmake.org/cmake/help/latest/command/mark_as_advanced.html
 [`math()`]: https://cmake.org/cmake/help/latest/command/math.html
 [`message()`]: https://cmake.org/cmake/help/latest/command/message.html
 [`option()`]: https://cmake.org/cmake/help/latest/command/option.html
 [`set()`]: https://cmake.org/cmake/help/latest/command/set.html
 [`set_property()`]: https://cmake.org/cmake/help/latest/command/set_property.html
 [`string()`]: https://cmake.org/cmake/help/latest/command/string.html
+[`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
 [`while()`]: https://cmake.org/cmake/help/latest/command/while.html
+
+[so 34290292]: https://stackoverflow.com/questions/34290292/
