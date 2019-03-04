@@ -4,7 +4,7 @@ CMake Build Configuration
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configuration](config.md)
-| [Variables](variables.md)
+| [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
 
 These are mostly _project commands_ used to define how a project is

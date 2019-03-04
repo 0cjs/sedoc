@@ -4,7 +4,7 @@ CMake Syntax and Semantics
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configuration](config.md)
-| [Variables](variables.md)
+| [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
 
 Syntax

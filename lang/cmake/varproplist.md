@@ -1,14 +1,18 @@
-CMake Variables
-===============
+CMake Variables and Properties
+==============================
 
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configuration](config.md)
-| [Variables](variables.md)
+| [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
 
-This is a categorized selection of some commonly used variables from
-the full list of over 400 in [cmake-variables(7)].
+This is a categorized selection of some commonly used variables and
+properties from the full lists in [cmake-variables(7)] (>400) and
+[cmake-properties(7)].
+
+Variables
+---------
 
 #### Directories
 
@@ -45,6 +49,20 @@ Verbosity can also be specified when calling `make`:
 For `ninja`, pass `-v` for verbose.
 
 
+Properties
+----------
+
+#### Directory Properties
+
+* [`CMAKE_CONFIGURE_DEPENDS`]: Modifying any files in this list will
+  make the build system re-run CMake to reconfigure the file and
+  generate the build system again. Relative paths are relative to
+  current source dir.
+
+
 
 <!-------------------------------------------------------------------->
+[cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+
+[`CMAKE_CONFIGURE_DEPENDS`]: https://cmake.org/cmake/help/latest/prop_dir/CMAKE_CONFIGURE_DEPENDS.html

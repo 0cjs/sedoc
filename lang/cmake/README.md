@@ -4,7 +4,7 @@ CMake Overview
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configurations](config.md)
-| [Variables](variables.md)
+| [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
 
 > _Do not meddle in the affairs of CMake,

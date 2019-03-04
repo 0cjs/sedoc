@@ -4,7 +4,7 @@ CMake - Things Still to Document
 Docs in this series: [Overview](README.md)
 | [Syntax](syntax.md)
 | [Build Configurations](config.md)
-| [Variables](variables.md)
+| [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
 
 * [`varprops.cmake`], `print_property_attributes()`, accessing values
