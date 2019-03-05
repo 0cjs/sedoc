@@ -72,9 +72,10 @@ collision is a fatal error.)
 The build directory will be `$build/`_outputdir_ where _outputdir_
 defaults to the same name as _sourcedir_.
 
-#### [`include()`]: Load file or module
+#### [`include()`], [`include_guard()`]: Load file or module
 
     include(name [OPTIONAL] [RESULT_VARIABLE <VAR>] [NO_POLICY_SCOPE])
+    include_guard([DIRECTORY|GLOBAL])
 
 If _name_ is a filename, code is loaded and run from it. Otherwise
 it's assumed to be a module name and `name.cmake` is searched for in
@@ -82,12 +83,29 @@ the list of directories in `CMAKE_MODULE_PATH` (not set by default)
 followed by CMake's standard module directory. For a list of modules
 that come with CMake see [cmake-modules(7)].
 
+`include_guard()` will terminate processing of the current file (à la
+`return()`) if the current file has already been processed. (Must not
+be called inside function definitions in the current file.) Scopes are:
+- `GLOBAL`: Included only once in the entire build.
+- `DIRECTORY`: Current directory and below (i.e., any files processed
+  directly or indirectly by `add_subdirectory()` or `include()` in
+  this file.)
+- Default (no arg): Same as a variable set at current scope (function
+  or directory)
+
+[`find_package()`] \(see below) will automatically import any
+`Find*.cmake` modules that it needs; you do not need to use
+`import()`.
+
 Useful modules from [cmake-modules(7)] may include: `CPack`,
 `FindPython3`, `CheckLibraryExists`.
 
 
 Creating Top-level Targets
 --------------------------
+
+Targets are global to the entire configuration. Use namespaces like
+`Python3::Interpreter` where necessary.
 
 #### [`add_executable()`]: Define an executable target.
 
@@ -226,6 +244,18 @@ support for submitting build results. tests.
              [WORKING_DIRECTORY dir])
     set_tests_properties(name ...  PROPERTIES propname value)
     set_tests_properties(test1 test8  PROPERTIES WILL_FAIL TRUE)
+
+Test names are scoped to the `CMakeLists.txt` file where they're
+declared ("directory" scope); added `CMakeLists.txt` files may use the
+same test name. However, namespaces (`foo::bar::test`) are allowed.
+
+_command_ may be a target name in which case the target output file
+will be run. `COMMAND` and `WORKING_DIRECTORY` options may use
+generator expressions.
+
+The legacy `add_test(name command [arg...])` format does not support
+generator expressions or target names. It also doesn't check if a test
+was previously defined for that name with the legacy syntax.
 
 [Properties on tests] include:
 - `WILL_FAIL`: Set to `TRUE` to expect non-zero exit code.
@@ -420,10 +450,10 @@ a no-op if _var_ is already set.
 
 #### [`find_package()`]
 
-_Module_ mode loads `Find<PkgName>.cmake` from `CMAKE_MODULE_PATH` or
-the CMake installation. (Read the file for details of variables that
-influence the search.) These are used for third-party libraries that
-do not provide CMake support to clients.
+_Module_ mode loads (imports) `Find<PkgName>.cmake` from
+`CMAKE_MODULE_PATH` or the CMake installation. (Read the file for
+details of variables that influence the search.) These are used for
+third-party libraries that do not provide CMake support to clients.
 
 _Config_ mode (`CONFIG` or `NO_MODULE` option) searches for
 `<PkgName>Config.cmake` or `<pkgname>Config.cmake`; the search and
@@ -432,6 +462,26 @@ configuration are both more complex.
 The code run by these should use a namespace for their variables, so
 after calling `find_package(Foo 2.0 REQUIRED)` you would use
 `target_link_libraries(... Foo::Foo ...)`.
+
+Failure to find requirements (including even the `.cmake` file itself)
+will usually produce just a warning and not abort the build. Always
+check manually for success with code like `if(NOT Python3_FOUND)` and
+take appropriate action.
+
+See also [cmake-developer(7)] documentation on building your own Find
+modules.
+
+### Modules
+
+Brought in with [`include()`]. Full list at [cmake-modules(7)]. Most
+of these allow fetching content from both local and remote (HTTP,
+GitHub, etc.) destinations.
+
+* [`ExternalData`]: Fetches external data to be used for local build.
+* [`ExternalProject`]: External project code build-time
+  download/update/patch/config/build/install/etc.
+* [`FetchContent`]: Like `ExternalProject` but done during buildsystem
+  generation time.
 
 
 Misc
@@ -448,6 +498,9 @@ Makefiles will also accept a `DESTDIR=...` option. The
 
 <!-------------------------------------------------------------------->
 [CMP0022]: https://cmake.org/cmake/help/latest/policy/CMP0022.html
+[`ExternalProject`]: https://cmake.org/cmake/help/latest/module/ExternalProject.html
+[`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
+[cmake-developer(7)]: https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
 [cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
 [properties on tests]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
@@ -487,5 +540,5 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [INTERFACE_LINK_LIBRARIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INTERFACE_LINK_LIBRARIES.html
 [OUTPUT_NAME:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/OUTPUT_NAME.html
 
-<!-- Stack Overflow -->
+<!-- Misc -->
 [so 4845984]: https://stackoverflow.com/questions/4845984/difference-between-modules-and-shared-libraries

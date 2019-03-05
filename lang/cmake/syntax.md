@@ -27,10 +27,10 @@ Commands, which are not expressions, are divided into two types:
 -  _Project commands_ create and modify build targets.
 
 Arguments to commands are separated by whitespace or `;`. In unquoted
-arguments whitespace and `;()#"\` must be escaped with a backslash.
-Arguments may be quoted with double quotes or brackets (see below).
-Unquoted nested parens are passed to commands as individual unquoted
-arguments.
+arguments whitespace and `;()#"\` (and `>`?) must be escaped with a
+backslash. Arguments may be quoted with double quotes or brackets (see
+below). Unquoted nested parens are passed to commands as individual
+unquoted arguments.
 
 Escape sequences, variable expansion, quoting:
 - `\x`: Escape sequence.
@@ -54,20 +54,22 @@ Variables and Properties
 CMake has dynamically scoped _variables_ or _normal variables_
 recursively expanded at time of reference (i.e., before commands are
 called). Additionally there are _properties_ which are attached to
-specific objects (a `GLOBAL` object, the `CACHE` object,
-"directories", build targets, etc., often called a _scope_) and are
-normally set and read with special commands.
+specific objects (a `GLOBAL` object, a named `CACHE` object,
+"directories", build targets, etc.; `GLOBAL`/`CACHE`/etc. are often
+called _scopes_) and are normally set and read with special
+commands.
 
-Cache properties are sometimes referred to as _cache variables_
-because, unlike other properties, variable expansion of a never-set or
-`unset()` variable can result in substitution of a cache property.
+Cache entry `VALUE` property values are sometimes referred to as
+_cache variables_ because, unlike other properties, variable expansion
+of a never-set or `unset()` variable can result in substitution of a
+those values.
 
 Variable and property names are alphanumeric, `/_.+-` and escape
 sequences. (`$` is also permitted but discouraged.)
 
 Expansion forms are:
 - `${name}`: Standard variable/cache-property expansion; see below.
-- `$CACHE{name}`: Expands to a cache property entry.
+- `$CACHE{name}`: Expands to a cache entry `VALUE` property.
 - `$ENV{name}`: Expands to the value of a process environment variable.
 
 Unset variables expand to an empty string.
@@ -133,7 +135,7 @@ The object types are called "scopes" and are:
 - `SOURCE`: A source file.
 - `INSTALL`: An installed file.
 - `TEST`: A CTest test.
-- `CACHE`: A cache entry; see property list below.
+- `CACHE`: A named cache entry; see property list below.
 
 #### Property Inheritance
 
@@ -159,16 +161,18 @@ than directory-scoped where possible. E.g., prefer
 
 #### Cache Entry Properties
 
-All cache entries are identified as an "object" by their name and have
-a [fixed set of properties][cache-prop]. Most of these should be set
-with specialized functions such as [`define_property()`].
+Cache entries are named objects in the `CACHE` scope and have a [fixed
+set of properties][cache-prop]. Most of the properties on `CACHE`
+objects should be set with specialized functions such as
+[`define_property()`].
 
-- `VALUE`: The value of the property. Setting this directly sets the
-  value without any checks.
-- `TYPE`: Helps interactive setup tools. One of:
+- `VALUE`: The value of the "cache variable." Setting this directly
+  sets the value without any checks.
+- `TYPE`: Helps configuration setting tools. One of:
   - `STRING`, `BOOL`, `PATH` to a directory, `FILEPATH` to a file.
-  - `INTERNAL`: Never show property in interactive tools. Setting an
-    `INTERNAL` value implies `FORCE`.
+  - `INTERNAL`: Never show property in configuration tools, and
+    `FORCE` is always implied when `set()` is used to set cache
+    variable.
   - `STATIC`: Managed by CMake; never change.
   - `UNINITIALIZED`: Type not yet specified.
 - `STRINGS`: List enumerating valid string values to allow interactive
@@ -199,6 +203,7 @@ string. Some commands may parse variables as different types, including:
   - False: `OFF`, `0`, empty string.
   - True: `ON`, `1`, unrecognised string.
 - Lists of elements separated by `;`.
+- `DATA{myfile.dat}` by the `ExternalData` module.
 
 Lists of lists are handled with multiple variable names:
 
@@ -210,6 +215,13 @@ Lists of lists are handled with multiple variable names:
             ...
         endforeach()
     endforeach()
+
+[IXM] offers an example of how to do internal expansion of references
+like `HUB{catchorg/catch2@v2.6.0}`. It's also implemented dictionaries
+as properties on `INTERFACE IMPORTED` libraries (prepending
+`INTERFACE_` to any keys and using `$<TARGET_PROPERTY>` to access
+values). See [izzy] for more details, and ideas on how to deal with
+seralization of values to files.
 
 
 Generator Expressions
@@ -251,6 +263,23 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 
 Command Reference
 -----------------
+
+See [cmake-commands(7)] for a complete list of scripting commands.
+
+### Debugging
+
+#### [`variable_watch()`]
+
+    variable_watch(varname [command])
+
+When variable _varname_ changes, print a message. If _command_ is specified,
+that CMake command will be executed with the following arguments:
+
+    command(varname access value current_list_file stack)
+
+Watching for `CMAKE_CURRENT_LIST_DIR` being set to `""` indicates that
+the configuration step is finished, allowing for post-configuratin
+commands. See [izzy] and [IXM] for more details.
 
 ### Variable and Property Setting
 
@@ -335,14 +364,42 @@ Define and document custom properties.
 
 ### Control Flow
 
+All of these are executed when generating the build system prior to
+the build being started. This allows you to, e.g., programatically add
+new targets, but there are also gotchas such as you can't check
+properties of files that will be produced by the build.
+
+`if()`, `elseif()`, `else()`, `while()` and `foreach(IN LISTS)` all
+may (for some expressions) take variable names that they evaluate
+internally. This means you need to take care not to accidentally use
+expansion that can break things:
+
+    set(var1 "OFF")
+    set(var2 "var1")
+    if(${var2}") ...    # ⇒ false; var1 == OFF
+    if(var2) ...        # ⇒ true;  var2 != OFF
+
+In particular, be careful about checking result variables:
+
+    find_package(Python3)
+    if(NOT Python3_FOUND)   # `if(NOT ${Python3_FOUND})` WILL NOT WORK
+        message(FATAL_ERROR "Python3 not found")
+    endif()
+
+#### [`return()`]
+
+Immediately aborts command processing and returns from the current:
+- Function defined by `function()`.
+- File being processed by `include()` or `find_package()`.
+- `CMakeLists.txt` being processed via `add_subdirectory()`.
+
+Macros are expanded in place and so `return()` cannot be used in them.
+
 #### [`if()`]
 
     if(expr) ... elseif(expr) ... else() ... endif()
 
-Executes commands `...` based on the value of _expr_. In some
-expressions variables names can be passed as arguments which are
-evaluated by the command itself. Thus with `set(var1 OFF)`, `set(var2
-"var1")`: `if(${var2})` ⇒ false but `if(var2)` ⇒ true.
+Executes commands `...` based on the value of _expr_.
 
 #### [`foreach()`], [`while()`]
 
@@ -413,12 +470,18 @@ variables with names overlapping in the caller, e.g.:
 Misc. Scripting Commands
 ------------------------
 
+See [cmake-commands(7)] for a complete list of scripting commands.
+
 - [`message()`]
 - [`math()`]:
   - `math(EXPR outvar expr)`
   - Operators (C semantics): `+ - * / % | & ^ ~ << >> * / %.`
 - [`string()`]: search/replace, regex, manipulation, comparision,
   hashing, generation
+- [`list()`]: List operations.
+- [`file()`]: Filesystem and file read/write/etc. operations.
+- [`get_filename_component()`]: Get a specific component of a filename/path.
+- [`get_filename_component()`]: https://cmake.org/cmake/help/latest/command/get_filename_component.html
 
 
 
@@ -434,22 +497,28 @@ Misc. Scripting Commands
 [INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
 [INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html
 [`define_property()`]: https://cmake.org/cmake/help/latest/command/define_property.html
+[`file()`]: https://cmake.org/cmake/help/latest/command/file.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
 [`get_property()`]: https://cmake.org/cmake/help/latest/command/get_property.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
 [`include_directories()`]: https://cmake.org/cmake/help/latest/command/include_directories.html
+[`list()`]: https://cmake.org/cmake/help/latest/command/list.html
 [`macro()`]: https://cmake.org/cmake/help/latest/command/macro.html
 [`mark_as_advanced()`]: https://cmake.org/cmake/help/latest/command/mark_as_advanced.html
 [`math()`]: https://cmake.org/cmake/help/latest/command/math.html
 [`message()`]: https://cmake.org/cmake/help/latest/command/message.html
 [`option()`]: https://cmake.org/cmake/help/latest/command/option.html
+[`return()`]: https://cmake.org/cmake/help/latest/command/return.html
 [`set()`]: https://cmake.org/cmake/help/latest/command/set.html
 [`set_property()`]: https://cmake.org/cmake/help/latest/command/set_property.html
 [`string()`]: https://cmake.org/cmake/help/latest/command/string.html
 [`target_include_directories()`]: https://cmake.org/cmake/help/latest/command/target_include_directories.html
 [`unset()`]: https://cmake.org/cmake/help/latest/command/unset.html
+[`variable_watch()`]: https://cmake.org/cmake/help/latest/command/variable_watch.html
 [`while()`]: https://cmake.org/cmake/help/latest/command/while.html
 
+[IXM]: https://ixm.one/
+[izzy]: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
 [so 34290292]: https://stackoverflow.com/questions/34290292/

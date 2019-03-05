@@ -25,24 +25,18 @@ Docs in this series: [Overview](README.md)
 
 * Great? discussion of CMake syntax and variable usage: [so 31037882].
 
-* [Everything You Never Wanted to Know About CMake][everything],
-  2019-02-02.
-  - "Variables in CMake are just cursed eldritch terrors, lying in
-    wait to scare the _absolute_ __piss__ out of anyone that isn’t
-    expecting it."
-  - Also from section "Events and the Nightmares Held Within": "This
-    is, I should note, _extremely useful_ if you’re trying to break
-    CMake to not do its normal thing of crushing your soul everytime
-    you want to start a new project."
+* `file(GENERATE)` section from [izzy].
 
-
+* How [IXM] does command overrides, e.g. adding a `LAYOUT` parameter
+  to `project()`.
 
 
 
 <!-------------------------------------------------------------------->
+[IXM]: https://ixm.one/
 [`Tests/Properties/CMakeLists.txt`]: https://github.com/Kitware/CMake/blob/master/Tests/Properties/CMakeLists.txt
 [`varprops.cmake`]: https://gist.github.com/dlrdave/10977804
-[everything]: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
+[izzy]: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
 [so 28692896]: https://stackoverflow.com/questions/28692896/
 [so 31037882]: https://stackoverflow.com/questions/31037882
 [so 33834879]: https://stackoverflow.com/a/33834879

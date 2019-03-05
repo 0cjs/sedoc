@@ -64,6 +64,17 @@ Other Resources:
   not nested).
 - [TheErk/CMake-tutorial]. Extremely verbose (e.g., explains what a build
   system is).
+- [Everything You Never Wanted to Know About CMake][izzy], 2019-02-02.
+  Some very good (if limited) information and cool tips from a CMake
+  expert (or at least someone who spent several weeks on a serious
+  CMake project). Excellent quotes include:
+  - "Variables in CMake are just cursed eldritch terrors, lying in
+    wait to scare the _absolute_ __piss__ out of anyone that isn’t
+    expecting it."
+  - From section "Events and the Nightmares Held Within": "This is, I
+    should note, _extremely useful_ if you’re trying to break CMake to
+    not do its normal thing of crushing your soul everytime you want
+    to start a new project."
 
 
 Versions and Installation
@@ -174,6 +185,8 @@ Other useful options/modes:
   directories, make symlinks, generate SHA hashes, set/clear Windows
   registery entries, etc. This can also print CMake capabilities and
   start server mode.
+* `-P script`: Run (process) given _script_ (in script mode, rather
+  than the normal project mode).
 * `--help-command-list`, `--help-variable-list`, `--help-command CMD`,
   `--help-variable VAR`: Print help on commands and variables used in
   `CMakeLists.txt`. (But output is raw reStructuredText.)
@@ -252,4 +265,5 @@ types) related to configuring builds.
 [Ninja]: https://en.wikipedia.org/wiki/Ninja_(build_system)
 [TheErk/CMake-tutorial]: https://github.com/TheErk/CMake-tutorial/blob/master/precompiled-PDFs/2016-09-27-CMake-tutorial.pdf
 [aosa]: http://www.aosabook.org/en/cmake.html
+[izzy]: https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
 [pfeifer]: https://github.com/boostcon/cppnow_presentations_2017/blob/master/05-19-2017_friday/effective_cmake__daniel_pfeifer__cppnow_05-19-2017.pdf
