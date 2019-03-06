@@ -117,7 +117,9 @@ divided into normal ones always shown by `ccmake`/`cmake-gui` and
 _advanced_ ones, marked with [`mark_as_advanced()`], that are not
 displayed unless the show advanced option is on.)
 
-The overall process is three steps of configuration and one of generation:
+The overall process is three steps of configuration and one of
+generation. (The build itself is done after configuration/generation
+with `cmake --build` or by manually running the build system.)
 1. Read `CMakeCache.txt` from the build directory (if it exists).
 2. Read `CMakeLists.txt` from the source root directory and execute
    its commands to create a configuration/build representation. This
@@ -156,8 +158,10 @@ Built targets (executables, libraries, etc.) will be placed in
 
 CMake can also directly run script files, without configuring and
 producing a buildsystem, with `cmake -P scriptname.cmake`. These files
-may not use "project commands" that define build targets or actions.
-The allowable commands for this mode are listed in [cmake-commands(7)].
+may use only _script commands_, which have an immediate action during
+the configure stage; they may not use _project commands_ that define
+build targets or actions. The allowable commands for this mode are
+listed in [cmake-commands(7)].
 
 
 Command Line Tool Invocation
