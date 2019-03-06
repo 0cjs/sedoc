@@ -273,6 +273,25 @@ Configuration](config.md).
 
 #### [`message()`]
 
+    message([mode] "message")
+
+Display _message_. Indented text is displayed as-is; non-indented text
+is formatted in line-wrapped paragraphs delimited by newlines.
+
+_mode_ is one of the following:
+- `STATUS`: Incidental information; sent to stdout.
+- (none): Important information; sent to stderr, as are all below.
+- `WARNING`: Warning; continue processing.
+- `AUTHOR_WARNING`: Developer warning; continue processing.
+  - Enable/disable display with `-Wdev`/`-Wno-dev`.
+  - Force/suppress errors with `-Werror=dev`/`-Wnoerror=dev`.
+- `SEND_ERROR`: Error; continue processing but do not generate buildsystem.
+- `FATAL_ERROR`: Error; abort processing.
+- `DEPRECATION`: Deprecation error intended for authors of CMake
+  files; not displayed by default.
+  - Enable display by setting `CMAKE_WARN_DEPRECATED` or with `-Wdeprecated`.
+  - Force error by setting `CMAKE_ERROR_DEPRECATED` or with `-Werror=deprecated`.
+
 #### [`variable_watch()`]
 
     variable_watch(varname [command])
