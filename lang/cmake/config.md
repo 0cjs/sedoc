@@ -10,7 +10,7 @@ Docs in this series: [Overview](README.md)
 These are mostly _project commands_ used to define how a project is
 built, but this also includes some _scripting commands_ that can be
 used in a standalone file run with `cmake -P filename.cmake`. For a
-full list of commands see [`cmake-commands(7)`].
+full list of commands see [cmake-commands(7)].
 
 
 Project Configuration
@@ -500,6 +500,7 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [CMP0022]: https://cmake.org/cmake/help/latest/policy/CMP0022.html
 [`ExternalProject`]: https://cmake.org/cmake/help/latest/module/ExternalProject.html
 [`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
+[cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 [cmake-developer(7)]: https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
 [cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
@@ -514,7 +515,6 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [`add_library()`]: https://cmake.org/cmake/help/latest/command/add_library.html
 [`add_subdirectory()`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
 [`add_test()`]: https://cmake.org/cmake/help/latest/command/add_test.html
-[`cmake-commands(7)`]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 [`cmake_minimum_required()`]: https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html
 [`cmake_policy()`]: https://cmake.org/cmake/help/latest/command/cmake_policy.html
 [`configure_file()`]: https://cmake.org/cmake/help/latest/command/configure_file.html
