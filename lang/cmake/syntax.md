@@ -264,9 +264,14 @@ preceeded by `-I`, if `INCLUDE_DIRECTORIES` is not empty:
 Command Reference
 -----------------
 
-See [cmake-commands(7)] for a complete list of scripting commands.
+All of the following commands are scripting commands; see
+[cmake-commands(7)] for a complete list. This is a subset; project
+commands and further scripting commands are described in [Build
+Configuration](config.md).
 
-### Debugging
+### Output and Debugging
+
+#### [`message()`]
 
 #### [`variable_watch()`]
 
@@ -466,22 +471,24 @@ variables with names overlapping in the caller, e.g.:
       set(my_list_of_numbers 1 2 3 4)
       print_list(my_list_of_numbers)    # Prints a, b, c, d
 
+### Data Manipulation
 
-Misc. Scripting Commands
-------------------------
+#### [`string()`], [`get_filename_component()`]: String operations
 
-See [cmake-commands(7)] for a complete list of scripting commands.
+Search/replace, regex, manipulation, comparision, hashing, generation.
 
-- [`message()`]
-- [`math()`]:
-  - `math(EXPR outvar expr)`
-  - Operators (C semantics): `+ - * / % | & ^ ~ << >> * / %.`
-- [`string()`]: search/replace, regex, manipulation, comparision,
-  hashing, generation
-- [`list()`]: List operations.
-- [`file()`]: Filesystem and file read/write/etc. operations.
+Also:
 - [`get_filename_component()`]: Get a specific component of a filename/path.
-- [`get_filename_component()`]: https://cmake.org/cmake/help/latest/command/get_filename_component.html
+
+#### [`math()`]:
+
+- `math(EXPR outvar expr)`
+- Operators (C semantics): `+ - * / % | & ^ ~ << >> * / %.`
+
+#### [`list()`]: List operations.
+
+#### [`file()`]: Filesystem and file read/write/etc. operations.
+
 
 
 
@@ -491,6 +498,7 @@ See [cmake-commands(7)] for a complete list of scripting commands.
 [cmake-language(7)]: https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
 [cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [cmake-variables(7)]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+[cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 
 [CMP0054]: https://cmake.org/cmake/help/latest/policy/CMP0054.html
 
@@ -500,6 +508,7 @@ See [cmake-commands(7)] for a complete list of scripting commands.
 [`file()`]: https://cmake.org/cmake/help/latest/command/file.html
 [`foreach()`]: https://cmake.org/cmake/help/latest/command/foreach.html
 [`function()`]: https://cmake.org/cmake/help/latest/command/function.html
+[`get_filename_component()`]: https://cmake.org/cmake/help/latest/command/get_filename_component.html
 [`get_property()`]: https://cmake.org/cmake/help/latest/command/get_property.html
 [`if()`]: https://cmake.org/cmake/help/latest/command/if.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
