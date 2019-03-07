@@ -32,6 +32,14 @@ there are still many links pointing to it. It's been replaced by
 [Salsa], a GitLab instance at <https://salsa.debian.org/>.
 
 
+Installing
+----------
+
+Up to Debian 8, you could `sudo debian-installer-launcher --text` to
+run the same installer that the live CD uses. This has been removed
+in Debian 9.[so 314792][bug 844611].
+
+
 Upgrading Debian
 ----------------
 
@@ -101,4 +109,6 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [LTSEnablementStack]: https://wiki.ubuntu.com/Kernel/LTSEnablementStack
 [Salsa]: https://wiki.debian.org/Salsa
 [`alioth.debian.org`]: https://wiki.debian.org/Alioth/FAQ
+[bug 844611]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844611
 [debrel]: https://wiki.debian.org/DebianReleases
+[so 314792]: https://unix.stackexchange.com/questions/314792/
