@@ -525,7 +525,7 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [`find_path()`]: https://cmake.org/cmake/help/latest/command/find_path.html
 [`find_program()`]: https://cmake.org/cmake/help/latest/command/find_program.html
 [`include()`]: https://cmake.org/cmake/help/latest/command/include.html
-[`install()`]: https://cmake.org/cmake/help/latest/command/install.html
+[`include_guard()`]: https://cmake.org/cmake/help/latest/command/include_guard.html
 [`install()`]: https://cmake.org/cmake/help/latest/command/install.html
 [`option()`]: https://cmake.org/cmake/help/latest/command/option.html
 [`project()`]: https://cmake.org/cmake/help/latest/command/project.html
