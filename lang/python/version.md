@@ -1,12 +1,13 @@
 Python Versions
 ===============
 
-Python's reference implementation is the [CPython] interpreter.
-There are two major versions:
-* 2.7 (2010): [legacy], supported until 2020 (latest [2.7.15] 2018-05-01)
-* [3.6.5][] (2018-03-28): current (3.7 releasing 2018-06)
+Python's reference implementation is the [CPython] interpreter. The
+latest versions for various releases are listed on the [downloads]
+page. There are two major versions:
+* 3.7.2 (2018-12-24): current
+* 2.7 (2010): [legacy], supported until 2020 (latest 2.7.16 2019-03-04)
 
-Release Histories/Schedules/New Features: [3.6], [3.7]
+Release Histories/Schedules/New Features: [rel3.8], [rel3.7], [rel3.6].
 
 Version Attributes
 ------------------
@@ -152,13 +153,13 @@ build it:
     make -j 8 install       # Python 2.x may need `altinstall`?
 
 
-
-[2.7.15]: https://www.python.org/downloads/release/python-2715/
-[3.6.5]: https://www.python.org/downloads/release/python-365/
-[3.6]: https://www.python.org/dev/peps/pep-0494/
-[3.7]: https://www.python.org/dev/peps/pep-0537/
+<!-------------------------------------------------------------------->
 [API and ABI versioning]: https://docs.python.org/3/c-api/apiabiversion.html#apiabiversion
 [PEP 394]: https://www.python.org/dev/peps/pep-0394
 [RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
 [cpython]: https://en.wikipedia.org/wiki/CPython
+[downloads]: https://www.python.org/downloads/
 [pythonz]: https://github.com/saghul/pythonz
+[rel3.6]: https://www.python.org/dev/peps/pep-0494/
+[rel3.7]: https://www.python.org/dev/peps/pep-0537/
+[rel3.8]: https://www.python.org/dev/peps/pep-0569/
