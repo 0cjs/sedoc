@@ -338,6 +338,10 @@ Provide `ON`/`OFF` option (stored as a cached variable) to developer
 Does nothing if _varname_ already set. Provide `-Dvarname=1` or
 similar on command line of initial `cmake` run to override default.
 
+In ≤3.12 this may remove variables and instead add a cache property
+value; in new [CMP0077] configurations it does nothing if a variable
+of that name exists.
+
 #### [`set_property()`], [`get_property()`], etc.
 
 > Reminder: when setting/getting cache property values, set _entry_ to
@@ -520,6 +524,7 @@ Also:
 [cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 
 [CMP0054]: https://cmake.org/cmake/help/latest/policy/CMP0054.html
+[CMP0077]: https://cmake.org/cmake/help/v3.14/policy/CMP0077.html
 
 [INCLUDE_DIRECTORIES:dir]: https://cmake.org/cmake/help/latest/prop_dir/INCLUDE_DIRECTORIES.html
 [INCLUDE_DIRECTORIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INCLUDE_DIRECTORIES.html

@@ -16,15 +16,39 @@ full list of commands see [cmake-commands(7)].
 Project Configuration
 ---------------------
 
-#### [`cmake_minimum_required()`]: Minimum version and policy settings.
+#### [`cmake_minimum_required()`], [`cmake_policy()`]: CMake version configuration
 
     cmake_minimum_required(VERSION min[...max] [FATAL_ERROR])
 
 - _min_ and _max_ are specified as `major.minor[.patch[.tweak]]`.
-- `...max` is ≥3.12 only.
+- `...max` is effective in ≥3.12 and ignored in <3.12.
 - `FATAL_ERROR` is ignored by ≥2.6 and should be used to make ≤2.4
   fail with an error instead of warning.
-- Invokes [`cmake_policy()`].
+
+This automatically invokes [`cmake_policy()`] with the given version
+number to set to `NEW` all the [cmake-policies(7)] available up to
+that version.
+- 3.12 is a good minimum to to use if you're willing to install CMake
+  for your Unix build and use the 3.12 supplied with the latest
+  updates to Visual Studio 2017.
+- 3.1 is the minmum 3.x version I recommend so that [CMP0053] \(new
+  and safer variable reference and escape sequence evaluation) is
+  used.
+
+CMake has a _policy stack_ that introduces new policy scopes via
+`cmake_policy(PUSH)` and `cmake_policy(POP)`. These are done
+automatically at start and end of file processing for
+`add_subdirectory()` and, since 2.6.3 (policy [CMP0011]) `include()`
+and `find_package()`. (This can be disabled with the `NO_POLICY_SCOPE`
+parameter.)
+
+The stack items are more like closures: they are retained after being
+popped and functions and macros defined within a scope use that same
+scope when executing.
+
+Old polices are by definition deprecated and will be removed;
+`cmake_policy(SET CMP0000 OLD)` should be treated as a warning/error
+suppression mechanism, not a feature toggle.
 
 #### [`project()`]: Set project information.
 
@@ -497,14 +521,17 @@ Makefiles will also accept a `DESTDIR=...` option. The
 
 
 <!-------------------------------------------------------------------->
-[CMP0022]: https://cmake.org/cmake/help/latest/policy/CMP0022.html
 [`ExternalProject`]: https://cmake.org/cmake/help/latest/module/ExternalProject.html
 [`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
 [cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 [cmake-developer(7)]: https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
 [cmake-modules(7)]: https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html
+[cmake-policies(7)]: https://cmake.org/cmake/help/v3.12/manual/cmake-policies.7.html
 [properties on tests]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
+
+[CMP0011]: https://cmake.org/cmake/help/v3.12/policy/CMP0011.html
+[CMP0053]: https://cmake.org/cmake/help/latest/policy/CMP0053.html
 
 <!-- Commands -->
 [`add_compile_definitions()`]: https://cmake.org/cmake/help/latest/command/add_compile_definitions.html

@@ -36,12 +36,12 @@ configuration is no longer supported.)
 
 The simplest build description is:
 
-    cmake_minimum_required(VERSION 3.1)     # Optional but recommended
+    cmake_minimum_required(VERSION 3.12)  # Optional but strongly recommended
     project(hello)
     add_executable(hello hello.c)
 
-(We use 3.1 instead of 3.0 to default to new variable names instead of
-the deprecated old ones, [CMP0053].)
+`cmake_minimum_required()` automatically sets policies as well; see
+[Build Configuration](config.md) for details on this.
 
 Documentation:
 - [List of documentation items][doclist]
@@ -243,7 +243,6 @@ types) related to configuring builds.
 
 <!-- General CMake and KitWare Docs and Links -->
 [Blog]: https://blog.kitware.com/tag/cmake/
-[CMP0053]: https://cmake.org/cmake/help/latest/policy/CMP0053.html
 [CMake]: https://cmake.org/
 [FAQ]: https://gitlab.kitware.com/cmake/community/wikis/FAQ
 [Running CMake]: https://cmake.org/runningcmake/
