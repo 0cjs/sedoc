@@ -13,6 +13,31 @@ used in a standalone file run with `cmake -P filename.cmake`. For a
 full list of commands see [cmake-commands(7)].
 
 
+Generators and Configurations
+-----------------------------
+
+Along with `camke -G` to specify a generator, some generators may
+offer the following additional options that may not be changed after
+the first configuration:
+- `-T`: toolset; see [`CMAKE_GENERATOR_TOOLSET`].
+- `-A`: platform. May be initialized by the toolset. See
+  [`CMAKE_GENERATOR_PLATFORM`]. Windows typically uses `x86` or `x64`.
+
+Generators are single- or multiple-configuration.
+
+Single-configuration generators have a [`CMAKE_BUILD_TYPE`] cache
+entry that determines the build configuration and build products go
+directly in the build directory, `CMAKE_CURRENT_BINARY_DIR`. CMake
+updates various other parameters based on the build type, e.g., adding
+`CMAKE_C_FLAGS_DEBUG` to the `CMAKE_C_FLAGS` setting.
+
+Multi-configuration generators have a [`CMAKE_CONFIGURATION_TYPES`]
+cache entry listing the valid configurations and use `cmake --build .
+--config CONF` to choose the configuration. Output files go into a
+subdirectory of the build dir named for the configuration; see
+[`CMAKE_CFG_INTDIR`] for details.
+
+
 Project Configuration
 ---------------------
 
@@ -563,9 +588,13 @@ Makefiles will also accept a `DESTDIR=...` option. The
 [`target_link_libraries()`]: https://cmake.org/cmake/help/latest/command/target_link_libraries.html
 [`target_sources()`]: https://cmake.org/cmake/help/latest/command/target_sources.html
 
-<!-- Properties -->
+<!-- Variables and Properties -->
 [INTERFACE_LINK_LIBRARIES:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/INTERFACE_LINK_LIBRARIES.html
 [OUTPUT_NAME:tgt]: https://cmake.org/cmake/help/latest/prop_tgt/OUTPUT_NAME.html
+[`CMAKE_CONFIGURATION_TYPES`]: https://cmake.org/cmake/help/v3.14/variable/CMAKE_CONFIGURATION_TYPES.html
+[`CMAKE_GENERATOR_PLATFORM`]: https://cmake.org/cmake/help/v3.14/variable/CMAKE_GENERATOR_PLATFORM.html
+[`CMAKE_GENERATOR_TOOLSET`]: https://cmake.org/cmake/help/v3.14/variable/CMAKE_GENERATOR_TOOLSET.html
+[`CMAKE_CFG_INTDIR`]: https://cmake.org/cmake/help/v3.14/variable/CMAKE_CFG_INTDIR.html
 
 <!-- Misc -->
 [so 4845984]: https://stackoverflow.com/questions/4845984/difference-between-modules-and-shared-libraries

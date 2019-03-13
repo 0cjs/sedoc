@@ -109,6 +109,17 @@ definition in a `CMakeLists.txt` file in the root directory of the
 source. The buildsystem has _targets_ that are output files or "phony"
 (always out of date and thus always built).
 
+CMake has a separate _generator_ (selected at configuration time) for
+each build tool; see [cmake-generators(7)] for a list and [Build
+Configuration](config.md) for more details. These divide into two
+basic types:
+1. Single-configuration generators (various Makefile generators,
+   Ninja) where the build configuration (release, debug, etc.) is
+   selected at generation time.
+2. Multiple-configuration generators (MSBuild, Visual Studio) where
+   the build configuration is selected at build time. These place
+   output in a configuration-specific dir below the build dir.
+
 Settings used to configure the build are generally not stored in or
 read from the process environment (though they can be accessed with
 `$ENV{name}`) but instead stored to and read from a single
@@ -173,14 +184,15 @@ Command Line Tool Invocation
 
 #### cmake
 
-Generate the configuration and buildsystem files.
+Generate the configuration and buildsystem files. See [cmake(1)] for
+full details.
 
     cmake sourcedir             # From build directory
     cmake builddir              # After cmake has been run once
 
 CMake can also invoke the native build system with `cmake --build buildir
 [opts] -- [native-opts]`; _builddir_ must already have been created with
-`cmake sourcedir`.
+`cmake sourcedir`. Specifying `--build` without a dir will print help.
 
 Setting envvar `VERBOSE=1` makes the build output more verbose (at least
 when using the Makefile generator).
@@ -251,6 +263,7 @@ types) related to configuring builds.
 [cmake-buildsystem(7)]: https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html
 [cmake-commands(7)]: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 [cmake-generator-expressions(7)]: https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html
+[cmake-generators(7)]: https://cmake.org/cmake/help/v3.14/manual/cmake-generators.7.html
 [cmake-language(7)]: https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
 [cmake-properties(7)]: https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html
 [doclist]: https://cmake.org/documentation/
