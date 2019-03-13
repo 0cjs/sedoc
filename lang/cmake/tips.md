@@ -6,6 +6,7 @@ Docs in this series: [Overview](README.md)
 | [Build Configuration](config.md)
 | [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
+| [Visual Studio](visualstudio.md)
 
 ### General Tips
 

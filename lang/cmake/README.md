@@ -6,6 +6,7 @@ Docs in this series: [Overview](README.md)
 | [Build Configurations](config.md)
 | [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
+| [Visual Studio](visualstudio.md)
 
 > _Do not meddle in the affairs of CMake,
 > for it is subtle and quick to anger._

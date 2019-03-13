@@ -6,6 +6,7 @@ Docs in this series: [Overview](README.md)
 | [Build Configuration](config.md)
 | [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
+| [Visual Studio](visualstudio.md)
 
 These are mostly _project commands_ used to define how a project is
 built, but this also includes some _scripting commands_ that can be

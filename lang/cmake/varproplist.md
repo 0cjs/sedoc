@@ -6,6 +6,7 @@ Docs in this series: [Overview](README.md)
 | [Build Configuration](config.md)
 | [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
+| [Visual Studio](visualstudio.md)
 
 This is a categorized selection of some commonly used variables and
 properties from the full lists in [cmake-variables(7)] (>400) and

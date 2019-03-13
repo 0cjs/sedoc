@@ -6,6 +6,7 @@ Docs in this series: [Overview](README.md)
 | [Build Configurations](config.md)
 | [Variable/Property List](varproplist.md)
 | [Tips](tips.md)
+| [Visual Studio](visualstudio.md)
 
 * [`varprops.cmake`], `print_property_attributes()`, accessing values
   of cache attributes. Also CMake's property test script,
