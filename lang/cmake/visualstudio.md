@@ -39,14 +39,30 @@ is removed VS will no longer be able to build; use the "Generate" option
 in that menu to regenerate the folder.
 
 
+Tips
+----
+
+- [`source_group()`] can be used to set up file tabs in Visual Studio
+  and change the locations of files in the Solution Explorer
+  hierarchy. (By default, VS seems to set up a reasonable grouping by
+  project.)
+
+
 Documentation
 -------------
 
+Microsoft:
 - [CMake Support in Visual Studio][devblog], Microsoft C++ Team Blog,
   2016-10-05. (Updated 2017-10-05 for VS 2017 15.4.)
 - [CMake projects in Visual Studio][vs-cmake].
 - [Customize CMake build settings in Visual Studio][vs-settings].
 - [Using the MSVC toolset from the command line][vc-cmdline]
+
+Other:
+- [CMake and Visual Studio][cogwave], _Cognitive Waves_ blog post.  
+  Includes a mapping of MSBuild concepts to CMake concepts and
+  commands, e.g. "solution"→"project", "project"→"target".
+
 
 
 To-do
@@ -62,3 +78,7 @@ To-do
 [vs-cmake]: https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio
 [vs-linux]: https://docs.microsoft.com/en-us/cpp/linux/cmake-linux-project
 [vs-settings]: https://docs.microsoft.com/en-us/cpp/ide/customize-cmake-settings
+
+[cogwave]: https://cognitivewaves.wordpress.com/cmake-and-visual-studio/
+
+[`source_group()`]: https://cmake.org/cmake/help/v3.14/command/source_group.html
