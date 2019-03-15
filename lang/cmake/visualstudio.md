@@ -38,6 +38,9 @@ discovered from menu "CMake / Cache / Open Cache Folder". If the folder
 is removed VS will no longer be able to build; use the "Generate" option
 in that menu to regenerate the folder.
 
+The "CMake / Tests / View All Built Tests" option will bring up a Test
+Explorer pane listing the tests and, when run, their pass/fail status.
+
 
 Tips
 ----
