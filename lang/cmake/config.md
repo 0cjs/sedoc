@@ -301,7 +301,7 @@ same test name. However, namespaces (`foo::bar::test`) are allowed.
 
 _command_ may be a target name in which case the target output file
 will be run. `COMMAND` and `WORKING_DIRECTORY` options may use
-generator expressions.
+generator expressions, as may arguments to `set_tests_properties()`.
 
 The legacy `add_test(name command [arg...])` format does not support
 generator expressions or target names. It also doesn't check if a test
