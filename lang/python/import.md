@@ -54,12 +54,13 @@ importing use the techniques below.
 
 first two take _name, package=None_.
 
-* [`importlib.import_module()`] imports the named module (loading it
-  if necessary) and returns it. (The return value is different from
-  `__import__()`.)
-* [`importlib.util.find_spec()`] returns a spec or `None` if the
-  module is not found. The spec ([`importlib.machinery.ModuleSpec`])
-  includes the name, loader, etc.; for more see below.
+* [`importlib.import_module(name, package=None)`][import_module()]
+  imports the named module (loading it if necessary) and returns it.
+  (The return value is different from `__import__()`.)
+* [`importlib.util.find_spec(name, package=None)`][find_spec()]
+  returns a spec or `None` if the module _name_ is not found. The spec
+  ([`importlib.machinery.ModuleSpec`]) includes the name, loader,
+  etc.; for more see below.
 
 To load the a module from a spec:
 
@@ -82,8 +83,8 @@ but as of 3.7 the old `imp` interface still works.
 #### Deprecated Interfaces
 
 The `imp` module (access to import internals) has been deprecated
-since Python 3.4; use `importlib` instead. As of 3.7 using it
-generates a `DeprecationWarning`.
+since Python 3.4; use `importlib` instead. `import imp` generates a
+`DeprecationWarning` in CPython ≥ 3.6.
 
 
 Modules
@@ -110,8 +111,9 @@ defined within the module, but must be qualified for code outside it.
 The name of a module is defined by the location used to import it, and
 is available as `__name__` (and maybe `__spec__.name`).
 
-Modules are loaded once per interpreter instance (barring manipulation
-of `sys.modules`; see below) unless you use:
+A module with a given name is loaded/created once per interpreter
+instance (barring manipulation of `sys.modules`; see below) unless you
+use:
 
     import importlib; importlib.reload(modulename)
 
@@ -137,9 +139,9 @@ submodules.
 
 Packages come in two types.
 
-#### [Regular Packages]
+#### Regular Packages
 
-Regular packages are usually created from a directory containing an
+[Regular packages] are usually created from a directory containing an
 `__init__.py` file. This can be empty (which simply identifies the
 directory as a package), or it can contain initialisation code.
 
@@ -156,13 +158,13 @@ package dirs further down `sys.path` will not be found unless the
 first package's `__path__` is explicitly modified. (This is the reason
 for having namespace packages, below.)
 
-#### [Namespace Packages]
+#### Namespace Packages
 
-Described in [PEP 420], these serve only as a container for
-subpackages or submodules. A namespace package may have no
-representation on disk at all, or, if it does, it may be just one or
-more directories (without `__init__.py` files) or other objects, known
-as _[portions]_, each of which contributes subpackages.
+[Namespace packages], described in [PEP 420], serve only as a
+container for subpackages or submodules. A namespace package may have
+no representation on disk at all, or, if it does, it may be just one
+or more directories (without `__init__.py` files) or other objects,
+known as _[portions]_, each of which contributes subpackages.
 
 The `__path__` attribute of a namespace package is not a regular list
 but instead a custom iterable that can perform a new search for
@@ -193,7 +195,9 @@ will always return `None`. A workaround for this is to add an empty
 `__init__.py` file to the package directory to convert it to a regular
 package.
 
-### [Module Attributes]
+### Module Attributes
+
+Modules have the [following attributes][modattr]:
 
     __name__        # Module name; '__main__' if top module (`python foo.py`)
     __loader__      # Loader used to load this package, e.g.,
@@ -247,15 +251,11 @@ in that starting module will always `__main__`.
    - `sys.path` will include the current working directory.
    - `__spec__.name` will be `bar`.
 3. __`python -m baz`__ where baz is a package:
-   - Loads file `baz/__main__.py` from the Python path (or generates
+   - Loads file `baz/__main__.py` from the Python path or generates:  
      `python: No module named baz.__main__; 'baz' is a package and
-     cannot be directly executed`).
+     cannot be directly executed`.
    - `sys.path` will include the current working directory.
    - `__spec__.name` will be `baz`.
-
-In the last case, if there is no `__main__.py` in the package
-directory you will receive an error message: `python: No module named
-baz.__main__; 'baz' is a package and cannot be directly executed`.
 
 A `baz.__main__` module should normally still use the standard `if
 __name__ == '__main__'` technique to avoid running main program code
@@ -269,8 +269,8 @@ Module Loading and Importers
 
 Modules are loaded only after their parent package modules are loaded.
 The following [search] process will be followed first for the
-highest-level unloaded module in the full module name and then for
-child modules.
+highest-level not-yet-loaded module in the full module name and then
+for child modules.
 
 Modules are first looked up in the module cache, `sys.modules`, which
 contains all explicitly and automatically loaded modules. (Thus,
@@ -296,7 +296,7 @@ have any characters not valid in a Python identifier. This makes
 loading files designed for use as scripts (e.g., `git-mything`)
 unloadable as modules with this mechanism.
 
-There are several solutions ([so-impname1], [so-impname2]) other than
+There are several solutions ([so 8350853], [so 24659400]) other than
 renaming the file:
 
 1. Instead of creating a module, just execute it in the local
@@ -307,25 +307,26 @@ renaming the file:
 3. Create the module separately from binding a variable to it,
    possibly in an import proxy module:
 
-      gitmything.py:
-          #   XXX not clear how this handles paths
+   gitmything.py:
 
-          #   Solution 1:
-          tmp = __import__('git-mything')
-          globals().update(vars(tmp))
+       #   XXX not clear how this handles paths
+       #   XXX These must use importlib.import_module if `.` in name.
 
-          #   Solution 2:
-          sys.modules['gitmything'] = __import__('git-mything')
+       #   Solution 1:
+       tmp = __import__('git-mything')
+       globals().update(vars(tmp))
 
-          #   Solution 3:
+       #   Solution 2:
+       sys.modules['gitmything'] = __import__('git-mything')
 
-      main.py:
-          #   Solution 1/2:
-          from gitmything import *
+   main.py:
 
-          #   Solution 3:
-          import importlib
-          mod = importlib.import_module("path.to.my-module")
+       #   Solution 1/2:
+       from gitmything import *
+
+       #   Solution 3:
+       import importlib
+       mod = importlib.import_module("path.to.my-module")
 
 
 Further Documentation
@@ -338,6 +339,7 @@ Further Documentation
 
 
 
+<!-------------------------------------------------------------------->
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
 [PEP 328]: https://www.python.org/dev/peps/pep-0328/
 [PEP 366]: https://www.python.org/dev/peps/pep-0366/
@@ -347,25 +349,24 @@ Further Documentation
 [`__main__`]: https://docs.python.org/3/library/__main__.html
 [`__path__`]: https://docs.python.org/3/reference/import.html#__path__
 [`globals()`]: https://docs.python.org/3/library/functions.html#globals
-[`importlib.import_module()`]: https://docs.python.org/3/library/importlib.html#importlib.import_module
 [`importlib.machinery.ModuleSpec`]: https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec
 [`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
-[`importlib.util.find_spec()`]: https://docs.python.org/3/library/importlib.html?highlight=import_module#importlib.util.find_spec
 [`pkgutil.get_data()`]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
 [`types.ModuleType`]: https://docs.python.org/3/library/types.html#types.ModuleType
 [factory functions]: https://www.python.org/dev/peps/pep-0451/#factory-functions
+[find_spec()]: https://docs.python.org/3/library/importlib.html?highlight=import_module#importlib.util.find_spec
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
+[import_module()]: https://docs.python.org/3/library/importlib.html#importlib.import_module
+[importers]: importers.md
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
-[module attributes]: https://docs.python.org/3/reference/import.html#import-related-module-attributes
+[modattr]: https://docs.python.org/3/reference/import.html#import-related-module-attributes
 [modules]: https://docs.python.org/3/tutorial/modules.html
 [namespace packages]: https://docs.python.org/3/glossary.html#term-namespace-package
 [package]: https://docs.python.org/3/glossary.html#term-package
 [portions]: https://docs.python.org/3/glossary.html#term-portion
-[py2imp]: https://docs.python.org/2/library/modules.html
 [regular packages]: https://docs.python.org/3/glossary.html#term-regular-package
 [search]: https://docs.python.org/3/reference/import.html#searching
-[so-34import]: https://stackoverflow.com/a/43602645/107294
-[so-impname1]: https://stackoverflow.com/q/8350853/107294
-[so-impname2]: https://stackoverflow.com/a/24659400/107294
+[so 8350853]: https://stackoverflow.com/q/8350853/107294
+[so 24659400]: https://stackoverflow.com/a/24659400/107294
 [so-import-as-main]: https://stackoverflow.com/a/6114411/107294

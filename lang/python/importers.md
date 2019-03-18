@@ -9,8 +9,8 @@ first.
 [PEP 302 "New Import Hooks"][PEP 302] describes the import system
 introduced in Python 2.3. This was heavily modified (with backward
 compatability retained) by [PEP 451 "A ModuleSpec Type for the Import
-System"][PEP 451], but much documentation still references only the
-(now not entirely accurate) PEP 302.
+System"][PEP 451] (Python 3.4), but much documentation still
+references only the (now not entirely accurate) PEP 302.
 
 The [`importlib`] library implements the above and documents some
 further details.
@@ -30,32 +30,33 @@ information) and the _[loader]_ which actually does the loading. In
 PEP 451 loading the finder creates a _[spec]_ which includes the
 loader along with additional information.
 
-#### Finders
+### Finders
 
 Finder objects are normally added to `sys.meta_path` and/or
 `sys.path_hooks` (see below).
 
-##### [PEP 302]
+#### PEP 302
 
-A [PEP 302 finder] \(deprecated since 3.3) has a
-`find_module(fullname, path=None)` method taking the fully qualified
-(dotted) of the module and a _path_ argument of `None` for a top-level
-module or the parent module's `package.__path__` for submodules. It
-returns the loader. If no loader is found, it returns `None` or,
-before Python 3.4, raises [`NotImplementedError`].
+The [finder interface][PEP 302 finder] of [PEP 302]  (deprecated since
+3.3) has a `find_module(fullname, path=None)` method taking the fully
+qualified (dotted) name of the module and a _path_ argument of `None`
+for a top-level module or the parent module's `package.__path__` for
+submodules. It returns the loader. If no loader is found, it returns
+`None` or, before Python 3.4, raises [`NotImplementedError`].
 
 It appears that [PEP 302 finders may also return `(None,
 portions)`][PEP 302 namespace] to indicate part of a possible
 namespace package. XXX Find further docs on this.
 
-##### [PEP 451]
+#### PEP 451
 
-A [PEP 451 finder] \(often `importlib.abc`'s [`MetaPathFinder`] or
-[`PathEntryFinder`]) has a `find_spec(fullname, path, target=None)`
-method taking the name and path as above and an optional _[target]_
-module object used if reloading. It returns the [`ModuleSpec`] for the
-module (which includes the loader) or `None` if no loader was found
-(or no loader that could reload into _target_).
+The [finder interface][PEP 451 finder]  of [PEP 451] \(often
+`importlib.abc`'s [`MetaPathFinder`] or [`PathEntryFinder`]) has a
+`find_spec(fullname, path, target=None)` method taking the name and
+path as above and an optional _[target]_ module object used if
+reloading. It returns the [`ModuleSpec`] for the module (which
+includes the loader) or `None` if no loader was found (or no loader
+that could reload into _target_).
 
 PEP 451 finders may cache data related to module searches; if so they
 can be invalidated with their `invalidate_caches()` method. If the
@@ -67,29 +68,32 @@ For backwards compatibility, `importlib.abc.MetaPathFinder` and
 loader in the spec returned by `find_spec`. (Having specs implement
 the loader interface was considered an unnecessary complication.)
 
-Python 3.4 and above offer some [factory functions],
-`spec_from_file_location` and `spec_from_loader`, to help build specs.
+Python 3.4 and above offer some [factory
+functions][`spec_from_loader()`], `spec_from_file_location` and
+`spec_from_loader`, to help build specs.
 
-#### Loaders
+
+### Loaders
 
 Loaders (unlike finders) can depend on parents having been imported
 and existing in `sys.modules`, e.g., when `load_module('foo.bar.baz')`
 is called `foo` and `foo.bar` are already imported.
 
-##### [PEP 302]
+#### PEP 302
 
-A [PEP 302 loader] has a `load_module(fullname)` method that returns
-the loaded module or raises an exception, usually `ImportError` if no
-other exception is being propagated. `load_module` is responsible for
-some significant work (see the link above and the [PEP 451 loader]
-description) including various kinds of validation and setup. Methods
-in the [Python 2 import libraries][py2imp] and Python 3
-[`importlib.util`] \(particularly [`importlib.util.module_for_loader()`]
-are designed to help with this.
+The [loader interface][PEP 302 loader]  of [PEP 302] has a
+`load_module(fullname)` method that returns the loaded module or
+raises an exception, usually `ImportError` if no other exception is
+being propagated. `load_module` is responsible for some significant
+work (see the link above and the [PEP 451 loader] description)
+including various kinds of validation and setup. Methods in the
+[Python 2 import libraries][py2imp] and Python 3 [`importlib.util`]
+\(particularly [`importlib.util.module_for_loader()`] are designed to
+help with this.
 
-##### [PEP 451]
+#### PEP 451
 
-A PEP 451 loader has an `exec_module(module)` method that, given a
+A [PEP 451] loader has an `exec_module(module)` method that, given a
 module object, executes the module code within it to finish building
 (or reloading) the module. It must handle being called more than once
 on the same module object, though may do this by throwing
@@ -107,13 +111,13 @@ The [PEP 420] `module_repr()` method is deprecated but if it exists
 on a loader it will be used exclusively.
 
 
-[Module Search and Load Process][search]
-----------------------------------------
+Module Search and Load Process
+------------------------------
 
 Modules are loaded only after their parent package modules are loaded.
-The following [search] process will be followed first for the
+The following [search process] will be followed first for the
 highest-level unloaded module in the full module name and then for
-child modules.
+each immediate child module.
 
 Modules are first looked up in the module cache, `sys.modules`, which
 contains all explicitly and automatically loaded modules. (Thus,
@@ -133,21 +137,21 @@ Since Python 3.3, steps 2 and 3 are taken care of by finders
 pre-installed on `sys.meta_path`. (Before that `sys.meta_path` was
 empty by default and the steps were built in to the interpreter.)
 
-### [Meta-path Searches][metapath]
+### Meta-path Searches
 
-The interpreter walks through the list of meta path finder objects in
-[`sys.meta_path`], calling the `find_spec()` method on each or, if not
-present, `find_module()`.
+During a [meta-path search][metapath], the interpreter walks through
+the list of meta-path finder objects in [`sys.meta_path`], calling the
+`find_spec()` method on each or, if not present, `find_module()`.
 
 The interface is documented in the [importlib.abc.MetaPathFinder]
 abstract base class. These are queried before any other importers
 (including frozen and built-in) are checked and so can override any
 other import processing.
 
-If all meta path finders fail to return a spec (or loader), the load
+If all meta-path finders fail to return a spec (or loader), the load
 fails (since Python 3.4, where the path search is done by explicit
-meta path finders) or (before Pyton 3.4) the interpreter moves on to
-an internal impelmentation of the path search. The path search is the
+meta-path finders) or (below 3.4) the interpreter moves on to an
+internal implementation of the path search. The path search is the
 same either way.
 
 ### Path Searches
@@ -173,8 +177,11 @@ a finder rather than throwing `ImportError` is stored in the cache. If
 no hook returns a finder, `None` is stored in the cache.
 
 
-[Import-related Libraries][implibs]
------------------------------------
+Import-related Libraries
+------------------------
+
+Various import-related libraries are listed in [Importing
+Modules][implibs] in the standard library documentation.
 
 [`importlib`] replaced the deprecated [`imp`] library in 3.4.
 
@@ -195,8 +202,8 @@ no hook returns a finder, `None` is stored in the cache.
 XXX To-do
 ---------
 
-XXX Bring into this doc a glossary?
-XXX https://www.python.org/dev/peps/pep-0451/#terms-and-concepts
+XXX Bring into this doc a glossary? E.g.,
+<https://www.python.org/dev/peps/pep-0451/#terms-and-concepts>
 
 XXX \[from PEP 302]: The built-in [`__import__`] function (known as
 PyImport_ImportModuleEx() in import.c) will then check to see whether
@@ -224,6 +231,8 @@ compiled source code (not binary shared libs) may be specified in the
 path.
 
 
+
+<!-------------------------------------------------------------------->
 ["compiled"]: https://docs.python.org/3/tutorial/modules.html#compiled-python-files
 [PEP 302 finder]: https://docs.python.org/3/library/importlib.html#importlib.abc.Finder
 [PEP 302 loader]: https://www.python.org/dev/peps/pep-0302/#specification-part-1-the-importer-protocol
@@ -239,9 +248,11 @@ path.
 [`PathEntryFinder`]: https://docs.python.org/3/library/importlib.html#importlib.abc.PathEntryFinder
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
 [`imp`]: https://docs.python.org/3/library/imp.html
+[`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
 [`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
 [`importlib.util`]: https://docs.python.org/3/library/importlib.html?highlight=importlib#module-importlib.util
 [`importlib`]: https://docs.python.org/3/library/importlib.html
+[`spec_from_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.spec_from_loader
 [`sys.meta_path`]: https://docs.python.org/3/library/sys.html#sys.meta_path
 [`sys.path_hooks`]: https://docs.python.org/3/library/sys.html#sys.path_hooks
 [`sys.path_importer_cache`]: https://docs.python.org/3/library/sys.html#sys.path_importer_cache
@@ -253,6 +264,8 @@ path.
 [isys]: https://docs.python.org/3/reference/import.html
 [loader]: https://docs.python.org/3/glossary.html#term-loader
 [metapath]: https://docs.python.org/3/reference/import.html#the-meta-path
-[search]: https://docs.python.org/3/reference/import.html#searching
+[py2imp]: https://docs.python.org/2/library/modules.html
+[search process]: https://docs.python.org/3/reference/import.html#searching
+[so-34import]: https://stackoverflow.com/a/43602645/107294
 [spec]: https://docs.python.org/3/glossary.html#term-module-spec
 [target]: https://www.python.org/dev/peps/pep-0451/#the-target-parameter-of-find-spec
