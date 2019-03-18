@@ -15,9 +15,14 @@ references only the (now not entirely accurate) PEP 302.
 The [`importlib`] library implements the above and documents some
 further details.
 
-[Hacking Python without hacking Python][hpwhp] gives an example of the
-use of import hooks to do transformation on code (e.g., on the AST) as
-you load it.
+Readings:
+- [Hacking Python without hacking Python][hpwhp] gives an example of
+  the use of import hooks to do transformation on code (e.g., on the
+  AST) as you load it.
+- [Import almost anything in Python: an intro to module loaders and
+  finders][quilt] (quiltdata.com Blog, 2019-03-05) demonstrates how
+  Quilt imports data out of JSON files and into modules with
+  statements like `from t4.data.quilt import open_images`.
 
 
 Importer Protocol
@@ -258,7 +263,6 @@ path.
 [`sys.path_importer_cache`]: https://docs.python.org/3/library/sys.html#sys.path_importer_cache
 [callable]: functions.md
 [finder]: https://docs.python.org/3/glossary.html#term-finder
-[hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
 [implibs]: https://docs.python.org/3/library/modules.html
 [importlib.abc.MetaPathFinder]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder
 [isys]: https://docs.python.org/3/reference/import.html
@@ -269,3 +273,6 @@ path.
 [so-34import]: https://stackoverflow.com/a/43602645/107294
 [spec]: https://docs.python.org/3/glossary.html#term-module-spec
 [target]: https://www.python.org/dev/peps/pep-0451/#the-target-parameter-of-find-spec
+
+[hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
+[quilt]: https://blog.quiltdata.com/import-almost-anything-in-python-an-intro-to-module-loaders-and-finders-f5e7b15cda47
