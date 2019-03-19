@@ -57,11 +57,11 @@ namespace package. XXX Find further docs on this.
 
 The [finder interface][PEP 451 finder]  of [PEP 451] \(often
 `importlib.abc`'s [`MetaPathFinder`] or [`PathEntryFinder`]) has a
-`find_spec(fullname, path, target=None)` method taking the name and
-path as above and an optional _[target]_ module object used if
-reloading. It returns the [`ModuleSpec`] for the module (which
-includes the loader) or `None` if no loader was found (or no loader
-that could reload into _target_).
+[`find_spec(fullname, path, target=None)`][`find_spec()`] method
+taking the name and path as above and an optional _[target]_ module
+object used if reloading. It returns the [`ModuleSpec`] for the module
+(which includes the loader) or `None` if no loader was found (or no
+loader that could reload into _target_).
 
 PEP 451 finders may cache data related to module searches; if so they
 can be invalidated with their `invalidate_caches()` method. If the
@@ -70,7 +70,7 @@ finder has no caches this returns `None` or, before Python 3.4,
 
 For backwards compatibility, `importlib.abc.MetaPathFinder` and
 `PathEntryFinder` implement a `find_module` method that returns the
-loader in the spec returned by `find_spec`. (Having specs implement
+loader in the spec returned by `find_spec()`. (Having specs implement
 the loader interface was considered an unnecessary complication.)
 
 Python 3.4 and above offer some [factory
@@ -81,7 +81,7 @@ functions][`spec_from_loader()`], `spec_from_file_location` and
 ### Loaders
 
 Loaders (unlike finders) can depend on parents having been imported
-and existing in `sys.modules`, e.g., when `load_module('foo.bar.baz')`
+and existing in [`sys.modules`] , e.g., when `load_module('foo.bar.baz')`
 is called `foo` and `foo.bar` are already imported.
 
 #### PEP 302
@@ -124,7 +124,9 @@ The following [search process] will be followed first for the
 highest-level unloaded module in the full module name and then for
 each immediate child module.
 
-Modules are first looked up in the module cache, `sys.modules`, which
+### Cache Lookup
+
+Modules are first looked up in the module cache, [`sys.modules`], which
 contains all explicitly and automatically loaded modules. (Thus,
 `import a.b.c` will insert `a`, `a.b` and `a.b.c` into the cache if
 `a` had not been previously loaded.) The cache is writable so deleting
@@ -133,33 +135,39 @@ on next import, though other modules will still have references to the
 old module object. (Use [`importlib.reload()`] to have the existing
 module object reloaded.)
 
-If a module must be loaded, the interpreter searches:
-1. The finders in [`sys.meta_path`]
-2. The path of the parent package via its loader.
-3. `sys.path` if there is no parent package.
-
-Since Python 3.3, steps 2 and 3 are taken care of by finders
-pre-installed on `sys.meta_path`. (Before that `sys.meta_path` was
-empty by default and the steps were built in to the interpreter.)
-
 ### Meta-path Searches
 
-During a [meta-path search][metapath], the interpreter walks through
-the list of meta-path finder objects in [`sys.meta_path`], calling the
-`find_spec()` method on each or, if not present, `find_module()`.
+If a module must be loaded, the interpreter does a [meta-path
+search][metapath] search, walking through walking through the list of
+finder objects in [`sys.meta_path`] and on each calling its
+[`find_spec()`] \(if not present,  `find_module()`) method. (See below
+for the arguments.) If all of these fail, an `ModuleNotFoundError` is
+thrown.
 
-The interface is documented in the [importlib.abc.MetaPathFinder]
-abstract base class. These are queried before any other importers
-(including frozen and built-in) are checked and so can override any
-other import processing.
+The default `meta_path` in ≥3.4 includes the following finders:
 
-If all meta-path finders fail to return a spec (or loader), the load
-fails (since Python 3.4, where the path search is done by explicit
-meta-path finders) or (below 3.4) the interpreter moves on to an
-internal implementation of the path search. The path search is the
-same either way.
+    [<class '_frozen_importlib.BuiltinImporter'>,
+     <class '_frozen_importlib.FrozenImporter'>,
+     <class '_frozen_importlib_external.PathFinder'>]
+
+(In Python <3.4, the default `meta_path` is empty and the system
+internally tries the hardcoded equivalant procedures of the above
+finders when no finder in `meta_path` is successful.)
+
+The arguments to [`find_spec()`] are:
+- The fully-qualified name of the module. _(str)_ 
+- Path entries to use for module search: _(iter)_ 
+  - `None` if it's a top-level module.
+  - `a.b.__path__` where `a.b` is the parent module. If the parent
+    module's `__path__` attribute is `None` or missing,
+    `ModuleNotFoundError` is raised.
+- Only when reloading, an existing module object that will
+  be the target of the reload. _(module)_
 
 ### Path Searches
+
+The `_frozen_importlib_external.PathFinder` (≥3.4) or Python
+internally (<3.4) does a path search in the following manner.
 
 The search path is `sys.path` for top-level modules or the parent
 module's `__path__` for child modules. In either case it consists of
@@ -175,7 +183,7 @@ To get the finder, the location is first looked up in the
 value is either a finder that is used or `None` in which case the
 import fails because previous searches for a finder for this location
 failed.
-   
+
 If the key is not found, the location is passed in turn to each hook
 (a callable object) in [`sys.path_hooks`]. The first hook that returns
 a finder rather than throwing `ImportError` is stored in the cache. If
@@ -252,6 +260,7 @@ path.
 [`NotImplementedError`]: https://docs.python.org/3/library/exceptions.html#NotImplementedError
 [`PathEntryFinder`]: https://docs.python.org/3/library/importlib.html#importlib.abc.PathEntryFinder
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
+[`find_spec()`]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder.find_spec
 [`imp`]: https://docs.python.org/3/library/imp.html
 [`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
 [`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
@@ -259,6 +268,7 @@ path.
 [`importlib`]: https://docs.python.org/3/library/importlib.html
 [`spec_from_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.spec_from_loader
 [`sys.meta_path`]: https://docs.python.org/3/library/sys.html#sys.meta_path
+[`sys.modules`]: https://docs.python.org/3/library/sys.html#sys.modules
 [`sys.path_hooks`]: https://docs.python.org/3/library/sys.html#sys.path_hooks
 [`sys.path_importer_cache`]: https://docs.python.org/3/library/sys.html#sys.path_importer_cache
 [callable]: functions.md
