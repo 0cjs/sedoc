@@ -212,6 +212,54 @@ Modules][implibs] in the standard library documentation.
     sys.modules['foobar'] = foobar
 
 
+Building a Custom Finder/Loader
+-------------------------------
+
+[Import almost anything in Python][quilt] gives a more detailed
+example; this is a brief sumary.
+
+[`importlib.abc`] provides useful abstract classes with the interfaces
+you need to implement below. (The example above doesn't use these.)
+
+Create a finder object with a [`find_spec()`] function returning a
+[`importlib.machinery.ModuleSpec`][`ModuleSpec`] object or `None`. The
+`ModuleSpec` must have a _loader_ implementing the [PEP 302]
+interface.
+
+The loader's [`create_module(spec)`] function (which ≥3.6 must exist
+if `exec_module()` below is defined) normally returns `None` for
+default module creation semantics: i.e., let the system create the
+module object. But you can return a custom object you've created
+yourself, if necessary.
+
+The loader's [`exec_module(module)`] method takes a
+partially-constructed module object (basically, just has `__name__`
+defined on it) and must finish construction, usually by doing any
+further setup  and exec'ing the code in the module (e.g., with
+[`exec(code, module.__dict__)`][`exec()`]), if it has any.
+
+All modules must have `__path__` set. For a namespace module this can
+be set to information its loader needs, even if just `[]`. For a
+regular module, this will normally point to a path whence information
+used to construct the module was loaded.
+
+The attributes of a module are set by adding entries to its `__dict__`
+attribute; `from foo import bar` will go through the above process to
+generate the `foo` module and then return `foo.bar` which is
+`foo.__dict__['bar']`.
+
+The `load_module(fullname)` method for backwards compatibility is
+provided automatically wehn `exec_module()` is defined.
+
+Other sources of information:
+- [Packages and modules: live and let die!][lald]: Video of a
+  three-hour presentation on Python module implementation details.
+- [Python stdlib loaders and finders][_bootstrap_external.py].
+- [t4.imports]: Quilt T4 module loading code.
+- [How to use loader and finder objects in Python][bradley]:
+  Hacking `import` to interface with model files written in Clojure.
+
+
 XXX To-do
 ---------
 
@@ -255,13 +303,18 @@ path.
 [PEP 451 finder]: https://www.python.org/dev/peps/pep-0451/#finders
 [PEP 451 loader]: https://www.python.org/dev/peps/pep-0451/#loader
 [PEP 451]: https://www.python.org/dev/peps/pep-0451/
+[_bootstrap_external.py]: https://github.com/python/cpython/blob/9e14e49f13ef1a726f31efe6689285463332db6e/Lib/importlib/_bootstrap_external.py#L1225
 [`MetaPathFinder`]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder
 [`ModuleSpec`]: https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec
 [`NotImplementedError`]: https://docs.python.org/3/library/exceptions.html#NotImplementedError
 [`PathEntryFinder`]: https://docs.python.org/3/library/importlib.html#importlib.abc.PathEntryFinder
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
+[`create_module(spec)`]: https://docs.python.org/3/library/importlib.html#importlib.abc.Loader.create_module
+[`exec()`]: https://docs.python.org/3/library/functions.html#exec
+[`exec_module(module)`]: https://docs.python.org/3/library/importlib.html#importlib.abc.Loader.exec_module
 [`find_spec()`]: https://docs.python.org/3/library/importlib.html#importlib.abc.MetaPathFinder.find_spec
 [`imp`]: https://docs.python.org/3/library/imp.html
+[`importlib.abc`]: https://docs.python.org/3/library/importlib.html#module-importlib.abc
 [`importlib.reload()`]: https://docs.python.org/3/library/importlib.html#importlib.reload
 [`importlib.util.module_for_loader()`]: https://docs.python.org/3/library/importlib.html#importlib.util.module_for_loader
 [`importlib.util`]: https://docs.python.org/3/library/importlib.html?highlight=importlib#module-importlib.util
@@ -284,5 +337,8 @@ path.
 [spec]: https://docs.python.org/3/glossary.html#term-module-spec
 [target]: https://www.python.org/dev/peps/pep-0451/#the-target-parameter-of-find-spec
 
+[bradley]: http://www.robots.ox.ac.uk/~bradley/blog/2017/12/loader-finder-python.html
 [hpwhp]: https://stupidpythonideas.blogspot.jp/2015/06/hacking-python-without-hacking-python.html
+[lald]: https://www.youtube.com/watch?v=0oTh1CXRaQ0
 [quilt]: https://blog.quiltdata.com/import-almost-anything-in-python-an-intro-to-module-loaders-and-finders-f5e7b15cda47
+[t4.imports]: https://github.com/quiltdata/t4/blob/master/api/python/t4/imports.py
