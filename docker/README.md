@@ -54,3 +54,8 @@ Further Reading
 * [Terra Nullius](https://alexei-led.github.io/).
   Blog that covers "everday hacks for docker," e.g. [multi-stage
   build](https://alexei-led.github.io/post/node_docker_multistage/).
+
+
+<!-------------------------------------------------------------------->
+[engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
+[reference documentation]: https://docs.docker.com/reference/
