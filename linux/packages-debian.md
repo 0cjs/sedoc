@@ -15,6 +15,18 @@ Other commonly wanted packages are:
 
 * `build-essential`: Tools to build programs (gcc, make, etc.)
 
+### Installed Packages and Sizes
+
+`apt list --installed` lists only packages intalled by `apt`, not
+other packages installed with `dpkg` that did not come through the OS
+distribution mechanism. To list all installed packages with their sizes,
+sorted by size:
+
+    dpkg-query -W --showformat='${Installed-Size;10}\t${Package}\n' | sort -k1,1n
+
+Note that this shows what would be the installed size of removed but
+non-purged packages.
+
 
 Repository Configuration Format
 -------------------------------
