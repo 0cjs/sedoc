@@ -81,6 +81,10 @@ its stdout is substituted with trailing newlines deleted. Nesting
 allowed. The second form has irregular backslash processing; see the
 manpage for details.
 
+`stdout` must close before `$(command)` can finish evaluating so if
+_command_ starts background processes these must not be connected to
+`stdout`. ([so 1080695].) Typically fix with `>/dev/null` or `1>&2`.
+
 Word splitting and pathname expansion are performed on the results
 unless the expansion is double-quoted, e.g., `echo "${echo \*}"`
 prints `*` but `echo ${echo \*}` expands to the filenames in the
@@ -175,3 +179,7 @@ Other:
 * `$-`: Current set of option flags (via `set`, `-i` or shell itself)
 * `$_`: Kinda most recent command executed, but very confusing
 
+
+
+<!-------------------------------------------------------------------->
+[so 1080695]: https://superuser.com/q/1080695/26274
