@@ -87,6 +87,25 @@ The repo provides a `gitlab-runner` package (previously named
 gitlab-runner user and sets up the system starup scripts using
 `gitlab-runner install`.
 
+#### Dockerized Runner Install
+
+`gitlab-runner` can be [run in a Docker container][glr-dockerized],
+usually configured so that containers started by the runner will be
+run and managed by the host.
+
+GitLab supplies a `gitlab/gitlab-runner` image for the container. This
+requires the config dir (containing `config.toml`) and the host's
+Docker socket to be bind-mounted into the container (with special
+SELinux config if necessary). Sample startup command:
+
+    docker run -d --name gitlab-runner --restart always \
+        -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        gitlab/gitlab-runner:latest
+
+When the container is started for the first time the standard setup
+below can be followed.
+
 ### Connection to a GitLab Server
 
 GitLab Runner configuration information is split between the local
@@ -269,6 +288,7 @@ See [Using a private container registry][priv-cont-reg].
 
 
 
+<!-------------------------------------------------------------------->
 [Docker executor]: https://docs.gitlab.com/runner/executors/docker.html
 [Docker volume]: https://docs.docker.com/engine/admin/volumes/volumes/
 [ENTRYPOINT]: https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime
@@ -281,6 +301,7 @@ See [Using a private container registry][priv-cont-reg].
 [`pull_policy`]: https://docs.gitlab.com/runner/executors/docker.html#how-pull-policies-work
 [aws-autoscale]: https://substrakthealth.com/news/gitlab-ci-cost-savings/
 [bind mount]: https://docs.docker.com/engine/admin/volumes/bind-mounts/
+[cached]: https://docs.gitlab.com/ee/ci/yaml/README.html#cache
 [commands list]: https://docs.gitlab.com/runner/commands/README.html
 [configuration maps]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/docker/using_docker_images.md#extended-docker-configuration-options
 [container links]: https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
@@ -288,6 +309,7 @@ See [Using a private container registry][priv-cont-reg].
 [gitlab-runner-helper]: https://hub.docker.com/r/gitlab/gitlab-runner-helper/
 [gitlab-runner-service]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/dockerfiles/build/gitlab-runner-service
 [glentry]: https://docs.gitlab.com/runner/executors/docker.html#the-entrypoint
+[glr-dockerized]: https://docs.gitlab.com/runner/install/docker.html
 [manual install]: https://docs.gitlab.com/runner/install/linux-manually.html
 [package install]: https://docs.gitlab.com/runner/install/linux-repository.html
 [post-install]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/packaging/root/usr/share/gitlab-runner/post-install
@@ -295,4 +317,3 @@ See [Using a private container registry][priv-cont-reg].
 [register]: https://docs.gitlab.com/runner/register/index.html
 [service container examples]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/services/README.md
 [volumes]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runners-docker-section
-[cached]: https://docs.gitlab.com/ee/ci/yaml/README.html#cache
