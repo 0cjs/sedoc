@@ -3,11 +3,10 @@ Python Versions
 
 Python's reference implementation is the [CPython] interpreter. The
 latest versions for various releases are listed on the [downloads]
-page. There are two major versions:
+page. There are two major versions; details about all versions are
+listed in a later section.
 * 3.7.2 (2018-12-24): current
 * 2.7 (2010): [legacy], supported until 2020 (latest 2.7.16 2019-03-04)
-
-Release Histories/Schedules/New Features: [rel3.8], [rel3.7], [rel3.6].
 
 Version Attributes
 ------------------
@@ -41,8 +40,26 @@ with both 2 and 3.
   [`runtime/win`](runtime/win.md).
 
 
-OS/Distro Version Reference
----------------------------
+Version Reference
+-----------------
+
+### CPython Releases
+
+Python 3 minor versions get bug support fixes for 18 months from
+release and security fixes for five years. See also the table of [all
+versions]. Point versions below may be; see [downloads] for lastest
+info.
+
+| SupportEnd | Version| RelDate    | RelNotes |
+|------------|--------|------------|----------|
+| 2024-10    | 3.8    | 2019-10-20 | [rel3.8] |
+| 2023-06-27 | 3.7.3  | 2018-06-27 | [rel3.7] |
+| 2021-12-23 | 3.6.8  | 2016-12-23 | [rel3.6] |
+| 2020-09-13 | 3.5.7  | 2015-09-13 |          |
+| 2020-01-01 | 2.7.16 | 2010-07-03 |          |
+| 2019-03-16 | 3.4.10 | 2014-03-16 |          |
+
+### OS- and Distribution-shipped Versions
 
 | OS/Distro     | `python`  |`python3`  | Distro Release Date
 |---------------|-----------|-----------|----------------------
@@ -61,7 +78,7 @@ OS/Distro Version Reference
 | Ubuntu 10.04  | 2.6.5     | 3.1.2     | 2010-04 x
 | CentOS 5      | 2.4.3     | -         | 2007-04 x
 
-#### Notes
+Notes:
 
 1. Python 2 is included in the base OS install.
 
@@ -157,6 +174,7 @@ build it:
 [API and ABI versioning]: https://docs.python.org/3/c-api/apiabiversion.html#apiabiversion
 [PEP 394]: https://www.python.org/dev/peps/pep-0394
 [RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
+[all versions]: https://en.wikipedia.org/wiki/CPython#Version_history
 [cpython]: https://en.wikipedia.org/wiki/CPython
 [downloads]: https://www.python.org/downloads/
 [pythonz]: https://github.com/saghul/pythonz
