@@ -16,36 +16,41 @@ documentation][isys] among other sources.
 import Statement Syntax
 -----------------------
 
-[`import`][istmt] is a runtime directive that creates a module and
+[import][istmt] is a runtime directive that creates a module and
 binds it to a name. (Any parent modules/packages in the hierarchy will
-also be created.) Thus, in a function, `if` statement, etc.,
-`import` will not be executed until the code is run.
+also be created.) Thus, in a function, if statement, etc.,
+import will not be executed until the code is run.
 
 See [PEP 328] for more on multi-line import syntax and relative import
 design.
 
-    import a.b              # bind module to `a.b` in current namespace
-    import a.b.c as c
+    #   Loads below are done only if not already loaded.
+    #   Bindings are in current namespace.
+    import a.b              # Load a; bind a; load b; bind b.
+    import a.b.c as c       # Load a, b, c; bind only c.
 
-    #   `from` can import definitions or submodules
-    from a.b import f, g    # import definitions into current namespace
+    a = __import__('a.b.c')                 # Programatic imports
+    c = importlib.import_module('a.b.c')    # need explicit binding.
+
+    #   from can import definitions or submodules
+    from a.b import f, g    # bind f, g into current namespace
     from a.b import (h, j)  # can use parens for multilines without backslash
 
-    #   At the module level only (not in classes or functions, this
-    #   imports `__all__` if present in that module's globals, otherwise
-    #   all defs not starting with `_`. It may hide defs in the importer.
+    #   At the module level only (not in classes or functions), binds
+    #   definitions listed in `a.b.__all__` or, if not present, all defs
+    #   not starting with `_`. May shadow existing bindings in the importer.
     from a.b import *
 
-    #   Relative imports can only be done with non-* form of `from`
+    #   Relative imports can only be done with non-* form of from
     #   Intra-package references are based on name of current module.
     from . import foo
     from .. import bar
     from ..bar import baz
 
-Intra-package references can be used from `__main__` only under
+Intra-package references can be used from __main__ only under
 certain circumstances; see [PEP 366].
 
-Import statements result in bytecode that calls [`__import__`] \(which
+Import statements result in bytecode that calls [__import__] \(which
 returns the top-level module imported) to perform the creation
 function followed by code to do the name binding. For programmatic
 importing use the techniques below.
