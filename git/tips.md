@@ -41,7 +41,7 @@ Fixing/Changing Commits and Branches
 
       git checkout --orphan BRANCHNAME
       git rm --cached -r .
-      git clean -fdX
+      git clean -fdx
 
 * To identify large objects ([so-10622293]), in a few ways:
 
