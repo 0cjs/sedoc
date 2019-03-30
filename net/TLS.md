@@ -113,6 +113,17 @@ Detecting and migigating MITM attacks:
 mitigation.
 
 
+HSTS
+----
+
+[HTTP Strict Transport Security][HSTS] indicates to web browsers that
+they should use only TLS connections with certain domains, preventing
+downgrade and other attacks.
+
+`chrome://net-internals/#hsts` allows querying, setting and clearing
+HTST settings.
+
+
 Other Notes
 -----------
 
@@ -121,11 +132,13 @@ Other Notes
 
 
 
+<!-------------------------------------------------------------------->
 [BCP 188]: https://tools.ietf.org/html/bcp188
 [CERT TA17-075A]: https://www.us-cert.gov/ncas/alerts/TA17-075A
 [CERT2015]: https://insights.sei.cmu.edu/cert/2015/03/the-risks-of-ssl-inspection.html
 [EFF2015]: https://www.eff.org/deeplinks/2015/02/dear-software-vendors-please-stop-trying-intercept-your-customers-encrypted
 [EV]: https://en.wikipedia.org/wiki/Extended_Validation_Certificate
+[HSTS]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
 [HSTS]: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
 [HTTP Tunnel]: https://en.wikipedia.org/wiki/HTTP_tunnel
 [PEM]: https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail
