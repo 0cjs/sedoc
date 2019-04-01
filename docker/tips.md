@@ -141,6 +141,19 @@ automatically][client-proxy] via a `~/.docker/config.json` like:
 [default bridge network]: https://docs.docker.com/network/
 [client-proxy]: https://docs.docker.com/network/proxy/
 
+### Curl and the Docker REST API
+
+You can use `curl` to interact with the Docker daemon via the [REST
+API], as explained in [Docker Tips: about /var/run/docker.sock][juggery].
+
+For example, to watch container events:
+
+    curl -s -N --unix-socket /var/run/docker.sock http://localhost/events \
+      | jq -C -c    # Colorized, compact output format.
+
+If your tools (`curl`, `socat` etc.) for this are old and you don't
+have root access on the host, you can bind mount the Docker socket
+into a container where you can install newer tools.
 
 ### Systemd in Docker
 
@@ -171,9 +184,13 @@ containers using the main Docker daemon.
 See [Docker Security](security.md)
 
 
+
+<!-------------------------------------------------------------------->
+[REST API]: https://docs.docker.com/engine/api/v1.24/
 [`ps`]: https://docs.docker.com/engine/reference/commandline/ps/#formatting
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
 [go template]: https://golang.org/pkg/text/template/
+[juggery]: https://medium.com/lucjuggery/about-var-run-docker-sock-3bfd276e12fd
 [ps-filtering]: https://docs.docker.com/engine/reference/commandline/ps/#filtering
 [so 52081984]: https://stackoverflow.com/a/52081984/107294
 [so-23513045]: https://stackoverflow.com/q/23513045/107294
