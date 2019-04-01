@@ -17,7 +17,22 @@ Notes from [cks-070228]:
   (Properly restrict access by putting in `0700` directory.)
 - Unix domain sockets have no peername.
 
+#### Abstract Namespace
+
+Linux supports an [abstract namespace] for Unix domain sockets
+separate from the filesystem. This has no security; like IP all names
+are accessible/usable by all processes and users, including
+containerized processes that were not started with `CLONE_NEWNET`
+separate network namespace. One way of mitigating this is to
+[authenticate clients with `SO_PEERCRED`][cks-150720].
+
+The sockets API distinguishes names in this namespace by a leading
+`\0` byte. Many tools (such as `lsof` and the Go net package)
+use a leading `@`.
+
 
 
 <!-------------------------------------------------------------------->
+[abstract namespace]: https://utcc.utoronto.ca/~cks/space/blog/linux/SocketAbstractNamespace?showcomments
 [cks-070228]: https://utcc.utoronto.ca/~cks/space/blog/python/UnixDomainSockets
+[cks-150720]: https://utcc.utoronto.ca/~cks/space/blog/python/AbstractUnixSocketsAndPeercred
