@@ -44,7 +44,7 @@ This behaviour can be changed only by providing arguments that have
     p.add_argument('remainder', nargs='*')
 
     #   parsing
-    args = p.parse_args('-qi -n 5 sourcefile'.split())  # default is `sys.argv`
+    args = p.parse_args('-qi -n 5 sourcefile'.split())  # default `sys.argv[1:]`
     print(vars(args))   # argparse.Namespace object
 
 #### Setup
