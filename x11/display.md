@@ -14,6 +14,7 @@ See [so-dpi] for a detailed analysis of DPI calculation in Ubuntu.
     grep DPI /var/log/Xorg.0.log
     xdpyinfo | grep dots
     xrdb  -query | grep dpi
+    xwininfo -root -metric      # Shows screen size in mm according to DPI?
 
 But for dealing with Xft fonts (e.g., `urxvt`), you want to set the
 `Xft.dpi` property:
