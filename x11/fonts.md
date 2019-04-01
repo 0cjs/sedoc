@@ -56,7 +56,7 @@ is different from that for Fontconfig and Xft.
 Preferred Fonts
 ---------------
 
-`bin/update-fonts` from [desktop-utils] installs the important stuff.
+`bin/update-fonts` from [cjsdesktop] installs the important stuff.
 
 * Adobe [Source Code Pro][scp]:  
   - Open source monospaced sans-serif that I use in urxvt.
@@ -144,7 +144,7 @@ details and debugging info ([`FC_DEBUG`]), see [so-51969898].
 [Xft]: https://freedesktop.org/wiki/Software/Xft/
 [`FC_DEBUG`]: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
 [`Xft.rgba`]: https://keithp.com/~keithp/talks/xtc2001/paper/
-[desktop-utils]: https://github.com/0cjs/desktop-utils
+[cjsdesktop]: https://github.com/dot-home/cjsdesktop
 [fc-user]: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
 [pango-fontdesc]: https://developer.gnome.org/pygtk/stable/class-pangofontdescription.html
 [r/urxvt-glyphs]: https://www.reddit.com/r/urxvt/comments/5nshat/glyphs_yes_again/
