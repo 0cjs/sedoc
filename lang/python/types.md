@@ -42,7 +42,7 @@ Strings and Bytes:
 ### Collection Interfaces
 
 * [Sequences][sequence]: `str`, `tuple`, `list`. Indexed 0 - len-1.
-* Mappings: `dict`. key→value sets; keys must be immutable (they're hashed).
+* Mappings: [`dict`]. key→value sets; keys must be immutable (they're hashed).
 * Sets: `set`, `frozenset`
 * [`memoryview`]: direct buffer access
 
