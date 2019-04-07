@@ -12,6 +12,7 @@ General Documentation:
 SEDoc documentation pages:
 - [Modules, Imports and Exports](module.md).
 - [Haskell Stack](stack.md).
+- [Haddock](haddock.md).
 
 Other handy stuff:
 - [Pronounceable names for common Haskell operators][so 7746894]
