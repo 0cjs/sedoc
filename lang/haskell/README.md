@@ -13,6 +13,9 @@ SEDoc documentation pages:
 - [Modules, Imports and Exports](module.md).
 - [Haskell Stack](stack.md).
 
+Other handy stuff:
+- [Pronounceable names for common Haskell operators][so 7746894]
+
 
 Language
 --------
@@ -34,8 +37,10 @@ the same scope.
 <!-------------------------------------------------------------------->
 [Hayoo!]: http://hayoo.fh-wedel.de/
 [Hoogle]: http://www.haskell.org/hoogle/
+[ghcdoc]: http://www.haskell.org/ghc/docs/latest/html/users_guide/
 [h.org-docs]: https://www.haskell.org/documentation/
 [h2010-pdf]: https://haskell.org/definition/haskell2010.pdf
 [h2010]: https://haskell.org/onlinereport/haskell2010/
 [typeclass]: https://wiki.haskell.org/Typeclassopedia
-[ghcdoc]: http://www.haskell.org/ghc/docs/latest/html/users_guide/
+
+[so 7746894]: https://stackoverflow.com/q/7746894/107294
