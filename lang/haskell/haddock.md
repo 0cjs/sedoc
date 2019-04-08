@@ -46,7 +46,7 @@ source files.
   indentation level.
 - Definition lists: `[@foo@]: Description of @foo@.`
 - Links/embedded (URLs may be relative):
-  - URLs: `<http://...>`
+  - URLs: `<http://...>`; also automatically detected.
   - Inline links: `[link text](http://...)`
   - Images: `![description](http://...)`
 - Math/LaTeX: `\[ frac{1}{2\pi i} \]`. (Displayed via [MathJax] in HTML.)
