@@ -12,20 +12,24 @@ Things related to this include:
 Also see [File and Network I/O](io.md).
 
 
-os
---
+os, os.path, glob
+-----------------
 
-[`os`] provides various OS-related interfaces for processes,
-environment, system information, random numbers and filesystem objects
-including devices, named pipes, FIFOs, etc. Here we cover only the
-filesystem-related functionality.
+These are lower-level interfaces in the standard library. Some parts
+of the API have a higher-level interface in [`pathlib`], below.
 
-[`os.path`] is a separate library (with a different versions supplied
-for POSIX, Window NT or Macinish platforms) for lower-level
-path/filename manipulations. The OO interface [`pathlib`] provides a
-higher-level interface.
+* [`os`] provides various OS-related interfaces for processes,
+  environment, system information, random numbers and filesystem
+  objects including devices, named pipes, FIFOs, etc. Here we cover
+  only the filesystem-related functionality.
+* [`os.path`] is a separate library (with a different versions
+  supplied for POSIX, Window NT or Macinish platforms) for lower-level
+  path/filename manipulations.
+* [`glob`] finds pathnames using Unix glob patterns.
 
-### PathLike
+### os
+
+#### os.PathLike
 
 (≥3.6) From [PEP 519], [`os.PathLike`] is an abstract base class for
 objects representing a file system path. The abstract method
@@ -41,9 +45,32 @@ Most path-using `os` functions accept a `PathLike` and the
 On earlier versions of Python, generally you wrap `Path` objects
 (below) in a `str()` call.
 
-### Other File-related Functions
+#### os: Other File-related Functions
 
 Lots; see [`os`] and [`os.DirEntry`].
+
+### os.path
+
+XXX write me.
+
+### glob
+
+This uses `os.scandir()` and `fn.fnmatch()` to do expansions of glob
+patterns.
+- Expands `*`, `?` and `[…]` ranges. Escape metachars with brackets: `[*]`.
+- Patterns with trailing `os.sep` will match only dirs (and subdirs with `**`).
+- The `recursive=True` option for `**` to match zero or more
+  dirs/subdirs is available only on Python ≥ 3.5.
+- `~` user homedir expansions are not done; use `os.path.expanduser()`.
+- Shell variable expansions are not done; use `os.path.expandvars()`.
+- Files starting with `.` are a special case.
+
+- `glob(pathname, *, recursive=False)`: Return a list of paths (str)
+  in the filesystem matching an absolute or relative spec with glob
+  patterns in _pathname_ (str). `recursive=True` (≥3.5) enables `**`.
+- `iglob(pathname, *, recursive=False)`: Returns an iterator.
+- `escape(pathname)` (≥3.4): Escape special chars `*`, `?`, `[`
+  (except special chars in drive/UNC sharepoints on Windows).
 
 
 pathlib and Path classes
