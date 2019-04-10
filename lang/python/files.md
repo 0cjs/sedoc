@@ -20,6 +20,11 @@ environment, system information, random numbers and filesystem objects
 including devices, named pipes, FIFOs, etc. Here we cover only the
 filesystem-related functionality.
 
+[`os.path`] is a separate library (with a different versions supplied
+for POSIX, Window NT or Macinish platforms) for lower-level
+path/filename manipulations. The OO interface [`pathlib`] provides a
+higher-level interface.
+
 ### PathLike
 
 (≥3.6) From [PEP 519], [`os.PathLike`] is an abstract base class for
