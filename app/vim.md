@@ -5,6 +5,10 @@ The most comprehensive manual is the built-in `:help`. But checking
 [Learn Vimscript the Hard Way][hardway] first may be a better way to
 get in to a particular area.
 
+Finding help topics:
+- `:help foo` for command `:foo`
+- `:help 'foo'` for option set with `:set foo`
+
 Docs:
 - <https://www.vim.org/docs.php>
 - [The latest help files][:help] on the web.
