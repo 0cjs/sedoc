@@ -57,13 +57,30 @@ line:
 
     The above is a simple Python statement.
 
-Named links use a trailing underscore on the link text, quoted with
-backticks when containing spaces etc. E.g.
+#### Links
 
-    A sentence with links to Wikipedia_ and the `Linux kernel archive`_.
+Links end with an `_`, quoting a phrase with backticks (`` ` ``) if
+necessary. The URL can be in `<…>` after the anchor text or labeled
+with the anchor text later.
+
+    Three links: Wikipedia_, the `Linux kernel archive`_ and
+    `this very repo <https://github.com/0cjs/sedoc>`_.
 
     .. _Wikipedia: https://www.wikipedia.org/
     .. _Linux kernel archive: https://www.kernel.org/
+
+Named references are similar to the above, without the URLs. Titles
+are implict named references.
+
+    Documentation Document
+    ======================
+
+    In example_ below you can see that blah blah blah.
+
+    .. _example:
+
+    Here's the example section. From here you can also go back to
+    the `Documentation Document`_.
 
 
 References
