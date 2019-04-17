@@ -47,21 +47,19 @@ design.
     from .. import bar
     from ..bar import baz
 
-Intra-package references can be used from __main__ only under
+Intra-package references can be used from `__main__` only under
 certain circumstances; see [PEP 366].
 
-Import statements result in bytecode that calls [__import__] \(which
-returns the top-level module imported) to perform the creation
+Import statements result in bytecode that calls [`__import__`][]
+(which returns the top-level module imported) to perform the creation
 function followed by code to do the name binding. For programmatic
 importing use the techniques below.
 
 #### Programmatic Importing
 
-first two take _name, package=None_.
-
 * [importlib.import_module(name, package=None)][import_module()]
   imports the named module (loading it if necessary) and returns it.
-  (The return value is different from __import__().)
+  (The return value is different from `__import__()`.)
 * [importlib.util.find_spec(name, package=None)][find_spec()]
   returns a spec or None if the module _name_ is not found. The spec
   ([importlib.machinery.ModuleSpec]) includes the name, loader,
@@ -81,7 +79,7 @@ To directly import a source file (≥3.5):
     sys.modules[module_name] = module   # Optional
 
 [so-import-as-main] discusses how to load a module from a given path
-with a different module name assigned (e.g., __main__) but uses a
+with a different module name assigned (e.g., `__main__`) but uses a
 deprecated API. It's not clear how to do this with the current API,
 but as of 3.7 the old imp interface still works.
 
@@ -114,7 +112,7 @@ defined within the module, but must be qualified for code outside it.
     f = a.b.c.f     # Assign f to a local name
 
 The name of a module is defined by the location used to import it, and
-is available as __name__ (and maybe __spec__.name).
+is available as `__name__` (and maybe`__spec__.name`).
 
 A module with a given name is loaded/created once per interpreter
 instance (barring manipulation of sys.modules; see below) unless you
@@ -138,7 +136,7 @@ locations in $PYTHONPATH, you can end up with two different modules:
 
 A [package] is a module that can contain submodules and/or
 subpackages. (Non-package modules cannot do this.) Packages always
-have a [__path__] attribute which a list of locations (usually of
+have a [`__path__`] attribute which a list of locations (usually of
 filesystem paths); this, rather than sys.path is used to search for
 submodules.
 
@@ -147,20 +145,20 @@ Packages come in two types.
 #### Regular Packages
 
 [Regular packages] are usually created from a directory containing an
-__init__.py file. This can be empty (which simply identifies the
+`__init__.py` file. This can be empty (which simply identifies the
 directory as a package), or it can contain initialisation code.
 
-If the initialization code sets __all__, this is the list of
-submodules that will be imported by from pkg import *. If __all__
-is not set, import * will not search for subpackages but merely load
+If the initialization code sets `__all__,` this is the list of
+submodules that will be imported by `from pkg import *`. If`__all__`
+is not set, `import *` will not search for subpackages but merely load
 the main package (and, consequently, anything it loads explicitly).
 
 Once a regular package has been found on the search path, only that
-package's __path__ list (default: a single location that is the
-directory containing __init__.py) will be used to search for
+package's `__path__` list (default: a single location that is the
+directory containing `__init__.py`) will be used to search for
 submodules. Thus, submodules not in the original but in same-named
 package dirs further down sys.path will not be found unless the
-first package's __path__ is explicitly modified. (This is the reason
+first package's `__path__` is explicitly modified. (This is the reason
 for having namespace packages, below.)
 
 #### Namespace Packages
@@ -168,10 +166,10 @@ for having namespace packages, below.)
 [Namespace packages], described in [PEP 420], serve only as a
 container for subpackages or submodules. A namespace package may have
 no representation on disk at all, or, if it does, it may be just one
-or more directories (without __init__.py files) or other objects,
+or more directories (without `__init__.py` files) or other objects,
 known as _[portions]_, each of which contributes subpackages.
 
-The __path__ attribute of a namespace package is not a regular list
+The `__path__` attribute of a namespace package is not a regular list
 but instead a custom iterable that can perform a new search for
 portions if sys.path or a parent path changes.
 
@@ -197,7 +195,7 @@ directory in sys.path:
 The default loader for namespace packages doesn't support [PEP 302]'s
 [ResourceLoader.get_data()] function, and so [pkgutil.get_data()]
 will always return None. A workaround for this is to add an empty
-__init__.py file to the package directory to convert it to a regular
+`__init__.py` file to the package directory to convert it to a regular
 package.
 
 ### Module Attributes
@@ -222,51 +220,51 @@ Modules have the [following attributes][modattr]:
     __cached__      # Optional; path to compiled version of code
                     #    (which need not be actually present).
 
-There's nothing in particular synchronizing __spec__ and the related
+There's nothing in particular synchronizing `__spec__` and the related
 individual module attributes. A notable exception to them being the
-same is when a non-package module is run with -m; module.__name__
-will be __main__ but module.__spec__.name will be the actual
+same is when a non-package module is run with `-m`; `module.__name__`
+will be `__main__` but `module.__spec__.name` will be the actual
 module name.
 
 For more details, see [importers].
 
 
-The __main__ Module
+The `__main__` Module
 ---------------------
 
 The "top-level" module in which the interpreter starts is always named
-[__main__]. More precisely, the __name__ attribute will always be
-__main__, although __spec__.name may be different (see above).
+[`__main__`]. More precisely, the `__name__` attribute will always be
+`__main__`, although `__spec__`.name may be different (see above).
 This is what allows the standard "start when run but not when
 imported" boilerplate:
 
     if __name__ == '__main__':
         main()
 
-The possible ways to start the interpreter are as follows. __name__
-in that starting module will always __main__.
+The possible ways to start the interpreter are as follows.`__name__` 
+in that starting module will always `__main__`.
 
-1. __python .../foo.py__:
-   - Loads file .../foo.py from whatever path was specified.
-   - The directory in which foo.py lives will be added to sys.path.
-   - sys.path will _not_ include the current working directory.
-   - __spec__ will be None.
+1. __python …/foo.py__:
+   - Loads file `…/foo.py` from whatever path was specified.
+   - The directory in which `foo.py` lives will be added to`sys.path`. 
+   - `sys.path` will _not_ include the current working directory.
+   - `__spec__` will be None.
 2. __python -m bar__ where bar is not a package:
-   - Loads file bar.py from the Python path.
+   - Loads file `bar.py` from the Python path.
    - sys.path will include the current working directory.
-   - __spec__.name will be bar.
+   - `__spec__`.name will be bar.
 3. __python -m baz__ where baz is a package:
-   - Loads file baz/__main__.py from the Python path or generates:  
-     python: No module named baz.__main__; 'baz' is a package and
-     cannot be directly executed.
-   - sys.path will include the current working directory.
-   - __spec__.name will be baz.
+   - Loads file `baz/__main__.py` from the Python path or prints  
+     `python: No module named baz.__main__; 'baz' is a package and
+     cannot be directly executed.`
+   - `sys.path` will include the current working directory.
+   - `__spec__.name` will be `baz`.
 
-A baz.__main__ module should normally still use the standard if
-__name__ == '__main__' technique to avoid running main program code
-when it's imported with import baz.__main__ (in which case its
-__name__ attribute will be the fully qualified name,
-baz.__main__). This allows unit testing of code in that module.
+A `baz.__main__` module should normally still use the standard if
+`__name__ == '__main__'` technique to avoid running main program code
+when it's imported with `import baz.__main__` (in which case its
+`__name__` attribute will be the fully qualified name,
+`baz.__main__`). This allows unit testing of code in that module.
 
 
 Module Loading and Importers
@@ -350,28 +348,28 @@ Further Documentation
 [PEP 366]: https://www.python.org/dev/peps/pep-0366/
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [ResourceLoader.get_data()]: https://docs.python.org/3/library/importlib.html#importlib.abc.ResourceLoader.get_data
-[__import__]: https://docs.python.org/3/library/functions.html#__import__
-[__main__]: https://docs.python.org/3/library/__main__.html
-[__path__]: https://docs.python.org/3/reference/import.html#__path__
-[globals()]: https://docs.python.org/3/library/functions.html#globals
-[importlib.machinery.ModuleSpec]: https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec
-[importlib.reload()]: https://docs.python.org/3/library/importlib.html#importlib.reload
-[pkgutil.get_data()]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
-[types.ModuleType]: https://docs.python.org/3/library/types.html#types.ModuleType
+[`__import__`]: https://docs.python.org/3/library/functions.html#__import__
+[`__main__`]: https://docs.python.org/3/library/__main__.html
+[`__path__`]: https://docs.python.org/3/reference/import.html#__path__
 [factory functions]: https://www.python.org/dev/peps/pep-0451/#factory-functions
 [find_spec()]: https://docs.python.org/3/library/importlib.html?highlight=import_module#importlib.util.find_spec
+[globals()]: https://docs.python.org/3/library/functions.html#globals
 [hhgtp]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/
 [import_module()]: https://docs.python.org/3/library/importlib.html#importlib.import_module
 [importers]: importers.md
+[importlib.machinery.ModuleSpec]: https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec
+[importlib.reload()]: https://docs.python.org/3/library/importlib.html#importlib.reload
 [istmt]: https://docs.python.org/3/reference/simple_stmts.html#import
 [isys]: https://docs.python.org/3/reference/import.html
 [modattr]: https://docs.python.org/3/reference/import.html#import-related-module-attributes
 [modules]: https://docs.python.org/3/tutorial/modules.html
 [namespace packages]: https://docs.python.org/3/glossary.html#term-namespace-package
 [package]: https://docs.python.org/3/glossary.html#term-package
+[pkgutil.get_data()]: https://docs.python.org/3/library/pkgutil.html?highlight=get_data
 [portions]: https://docs.python.org/3/glossary.html#term-portion
 [regular packages]: https://docs.python.org/3/glossary.html#term-regular-package
 [search]: https://docs.python.org/3/reference/import.html#searching
-[so 8350853]: https://stackoverflow.com/q/8350853/107294
 [so 24659400]: https://stackoverflow.com/a/24659400/107294
+[so 8350853]: https://stackoverflow.com/q/8350853/107294
 [so-import-as-main]: https://stackoverflow.com/a/6114411/107294
+[types.ModuleType]: https://docs.python.org/3/library/types.html#types.ModuleType
