@@ -50,10 +50,16 @@ design.
 Intra-package references can be used from `__main__` only under
 certain circumstances; see [PEP 366].
 
-Import statements result in bytecode that calls [`__import__`][]
-(which returns the top-level module imported) to perform the creation
-function followed by code to do the name binding. For programmatic
-importing use the techniques below.
+Import statements result in bytecode that calls
+[`builtins.__import__`][] (which returns the top-level module
+imported) to perform module creation/load followed by code to do the
+name binding. This should generally not be used directly:
+1. For programmatic importing use the techniques below.
+2. `builtins.__import__` may be bound to a user-defined function to
+   change the behaviour of the syntactic `import` statement, but this
+   is strongly discouraged; instead use import hooks (see ["Module
+   Loading and Importers"](#module-loading-and-importers) below and
+   the [importers] document).
 
 #### Programmatic Importing
 
