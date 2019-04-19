@@ -31,8 +31,8 @@ are also searched. Files to search for tests are:
    - Otherwise, the current working directory will be searched.
 
 After loading `conftest.py` and `__init__.py` files (see below), each
-discovered file is imported as a module using its [`test package
-name`] derived from the first parent directory not containing an
+discovered file is imported as a module using its [test package
+name] derived from the first parent directory not containing an
 `__init__.py` file. (This directory is added to `sys.path`.) Thus,
 [PEP 420 namespace packages][PEP 420] without `__init__.py` files have
 their internal paths added to `sys.path` and their files imported at
@@ -281,6 +281,7 @@ XXX To-do
 
 
 
+<!-------------------------------------------------------------------->
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
@@ -291,6 +292,7 @@ XXX To-do
 [`python_classes`]: https://docs.pytest.org/en/latest/reference.html#confval-python_classes
 [`python_files`]: https://docs.pytest.org/en/latest/reference.html#confval-python_files
 [`python_functions`]: https://docs.pytest.org/en/latest/reference.html#confval-python_functions
+[test package name]: https://docs.pytest.org/en/latest/goodpractices.html#test-package-name
 [`testpaths`]: https://docs.pytest.org/en/latest/reference.html#confval-testpaths
 [basic]: https://docs.pytest.org/en/latest/example/simple.html
 [builtin]: https://docs.pytest.org/en/latest/builtin.html
@@ -309,7 +311,7 @@ XXX To-do
 [plugins]: https://docs.pytest.org/en/latest/plugins.html
 [pt-warnings]: https://docs.pytest.org/en/latest/warnings.html
 [pytest]: https://pytest.org/
+[python-W]: ../exceptions.md#command-line-and-environment
 [rootdir]: https://docs.pytest.org/en/latest/customize.html
 [test discovery]: https://docs.pytest.org/en/latest/goodpractices.html#test-discovery
 [writing hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#writing-hook-functions
-[python-W]: ../exceptions.md#command-line-and-environment
