@@ -36,8 +36,9 @@ like Markdown. See also the [quickref].
   'interpreted text' when not followed by an underscore to be a link.)
 - Indented blocks are quotes, not code. (You can also still use `> `
   at the start of a line.
-- For code blocks, use `::` starting a line alone before the indented
-  code.
+- For code blocks ("literal quotes"), use `::`. This may start a line alone
+  before the indented code or be the last two characters at the end of
+  the previous paragraph, where it will be rendered as a single ":".
 - Comment blocks use `..` starting a line alone before the indented
   comment.
 - Bullets for lists are `*`, `-` or `+`.
