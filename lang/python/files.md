@@ -76,7 +76,7 @@ patterns.
 pathlib and Path classes
 ------------------------
 
-The [`pathlib`] standard library (≥3.4, backported to 2.x as PyPI
+The [`pathlib`] standard library (≥3.4, backported PyPI
 [`pathlib2`]) offers classes `PurePosixPath`, `PureWindowsPath`,
 `PosixPath` and `WindowsPath`. The Pure versions do not include I/O
 functionality and can be instantiated on any platform. The `Path()`
@@ -183,7 +183,20 @@ File/directory modification:
 * `write_text(data, encoding=None, errors=None)`: (≥3.5)
 
 
+Other Libraries
+---------------
 
+- [`pathlib2`], as mentioned above, backports newer functionality to
+  older versions of Python that are missing newer features (e.g. 3.4)
+  or don't have `pathlib` at all (2.x).
+- The [py] library is deprecated, but is still used by
+  [pytest](test/pytest.md). and it offers a [`py.path`] module with a
+  `py.path.LocalPath` class offering `os.path` operations on
+  instances, similar to `pathlib`.
+
+
+
+<!-------------------------------------------------------------------->
 [PEP 519]: https://www.python.org/dev/peps/pep-0519
 [`open()`]: https://docs.python.org/3/library/functions.html#open
 [`os.DirEntry`]: https://docs.python.org/3/library/os.html?highlight=direntry#os.DirEntry
@@ -192,6 +205,8 @@ File/directory modification:
 [`os`]: https://docs.python.org/3/library/os.html
 [`pathlib2`]: https://github.com/mcmtroffaes/pathlib2
 [`pathlib`]: https://docs.python.org/3/library/pathlib.html
+[`py.path`]: https://py.readthedocs.io/en/latest/path.html
 [file objects]: https://docs.python.org/3/glossary.html#term-file-object
+[py]: https://py.readthedocs.io/
 [stdlib-filedir]: https://docs.python.org/3/library/filesys.html
 [stdlib-genos]: https://docs.python.org/3/library/allos.html
