@@ -6,7 +6,33 @@ a `FROM` line in the Dockerfile) or a layer on top of [another image],
 e.g. `alpine`.
 
 Images are built from a [`Dockerfile`][] (see also [best practices])
-using `docker build . -t name:tag`.
+using [`docker build`]. The build happens in a "context", the set of
+files that can be referred to in the build by `COPY` and similar
+instructions. This is:
+- A directory (most frequently `.`).
+- A URL to a Git repo (cloned by the current user). A `#ref:subdir`
+  fragment may be appended to the URL to indicate which ref is to be
+  checked out and which subdir is to be used as the context.
+- A URL to a tarball (fetched by the daemon) which will use the
+  context.
+- `-` to indicate that the `Dockerfile` is being given on `stdin`.
+  `-f`/`--file` is ignored in this case, and commands requiring
+  the context such as `COPY` cannot be used.
+
+A `.dockerignore` file in the context dir can list patterns matching
+files not to upload to the daemon when uploading context.
+
+`docker build` options include:
+- `-f`, `--file`: Use the given filename instead of `Dockerfile` in the
+  context as the list of instructions for building the image. Must be
+  within the build context.
+- `-q`, `--quiet`: Suppress build output; print image ID on success.
+- `-t`, `--tag`: Name and optional tag for image in `name:tag` format.
+- `--no-cache`: Do not re-use cached image layers. Useful when the
+  exact same `RUN` command may produce different output.
+- `--ssh`: SSH agent socket/keys to expose to build.
+- `--build-arg`: Set build-time variable.
+- `--label`: Set image metadata.
 
 For ideas about testing docker images and the software they contain,
 see [Testing Strategies for Docker Containers][terra-testing].
@@ -88,7 +114,9 @@ Setting values:
 
 
 
+<!-------------------------------------------------------------------->
 [`Dockerfile`]: https://docs.docker.com/engine/reference/builder/
+[`docker build`]: https://docs.docker.com/engine/reference/commandline/build/
 [alp-pkg]: https://pkgs.alpinelinux.org/packages
 [alpine]: https://hub.docker.com/_/alpine/
 [another image]: config.md#public-docker-images
