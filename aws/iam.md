@@ -109,6 +109,7 @@ Policies come in several forms:
 
 
 
+<!-------------------------------------------------------------------->
 [AWS Cognito]: http://docs.aws.amazon.com/cognito/devguide/
 [AWS]: https://en.wikipedia.org/wiki/Amazon_Web_Services
 [EC2 instance profiles]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html

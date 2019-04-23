@@ -157,6 +157,7 @@ To verify you're configured correctly:
 
 
 
+<!-------------------------------------------------------------------->
 [EC2 IAM Role]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
 [`boto3`]: https://github.com/boto/boto3
 [`botocore`]: https://botocore.amazonaws.com/v1/documentation/api/latest/index.html

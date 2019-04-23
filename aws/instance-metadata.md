@@ -76,6 +76,7 @@ software subscriptions.
 
 
 
+<!-------------------------------------------------------------------->
 [identity-doc]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html
 [instance metadata]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
 [imqt]: https://aws.amazon.com/code/ec2-instance-metadata-query-tool/
