@@ -65,7 +65,7 @@ See the [Dockerfile reference][`Dockerfile`] for full details.
 Lines starting with `#` are comment lines; mid-line comments are not
 allowed.
 
-##### Variables
+### Variables
 
 Expansion:
 - References `$name` or `${name}` are expanded to values set by `ARG`
@@ -92,7 +92,7 @@ Setting values:
     value etc.` does not require escapes.
 
 
-##### Build-time commands
+### Build-time commands
 
 - `FROM name:tag`: Use _name:tag_ as the base image for the new image.
 - `RUN`: Run command and add results to new lyaer
@@ -100,16 +100,19 @@ Setting values:
   based on this image (stored commands are executed immediately after
   the child build's `FROM`).
 
-##### Run-time configuration
+### Run-time configuration
 
+- `CMD`: Default command or args if none specified on `docker run`
+  ocommand line. Without `ENTRYPOINT` this specifies default command
+  to run. With `ENTRYPOINT`, specifies additional arguments. to be
+  appended to `ENTRYPOINT`. Must be an exec list if `ENTRYPOINT` is an
+  exec list.
 - `ENTRYPOINT`: Takes exec list (`["executable", "arg1", "arg2"]`) or
   remainder of line is passed to `/bin/sh -c` (this will not pass
   signals to the subprocess). `docker run` command arguments (or `CMD`
   args in a list) will be appened to an exec list, but not shell form.
   Can override with `docker run --entrypoint ''` and then specify
   command in the normal way.
-- `CMD`: Default command args if none specified on command line. Must
-  be exec list if `ENTRYPOINT` is using exec list.
 - `EXPOSE`
 
 
