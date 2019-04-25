@@ -36,7 +36,18 @@ Also `Ctrl-K` for links and `Ctrl-Shift-N` to clear formatting.
 `Ctrl-Z` or `Backspace` will roll back emoji replacement.
 
 
+Slack
+-----
 
+Tips:
+* Copying a message link in Slack produces a URL like
+  `https://something.slack.com/archive/CE7MF912Q/p1555997770049100`.
+  In a browser this will attempt to open the Slack app. To jump
+  directly to the message, replace `archive` with `message`.
+
+
+
+<!-------------------------------------------------------------------->
 [Gitter]: https://gitter.im/apps
 [gitter-zoom]: https://gist.github.com/MadLittleMods/fd8cebe7e370a471b073
 [tel-md]: http://telegra.ph/markdown-07-07
