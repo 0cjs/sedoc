@@ -62,7 +62,9 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
 
 * `script`: Commands to be executed (list or multi-line string). These
   are fed into whichever of the [shells] is available on the runner system.
-* `image`, `services`: [Docker config][] (if using the [Docker executor])
+* `image`, `services`: [Docker config][] (if using the [Docker executor]).
+  [Extended Docker configuration options][ext-docker] are available to set
+  `entrypont`, etc.
 * `stage`: Stage to contain this job; default `test`.
   (`type` is a deprecated alias.)
 * `variables`: Map of job [variables]; if present, entirely replaces
@@ -175,6 +177,7 @@ removed).
 [caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
 [directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
+[extended-docker]: https://docs.gitlab.com/ce/ci/docker/using_docker_images.html#extended-docker-configuration-options
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
 [fair usage queue]: https://docs.gitlab.com/ee/ci/runners/README.html#how-shared-runners-pick-jobs
 [install]: https://about.gitlab.com/installation/
