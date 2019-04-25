@@ -62,7 +62,7 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
 
 * `script`: Commands to be executed (list or multi-line string). These
   are fed into whichever of the [shells] is available on the runner system.
-* `image`, `services`: [Docker config] (if using the [Docker executor])
+* `image`, `services`: [Docker config][] (if using the [Docker executor])
 * `stage`: Stage to contain this job; default `test`.
   (`type` is a deprecated alias.)
 * `variables`: Map of job [variables]; if present, entirely replaces
@@ -158,6 +158,7 @@ removed).
 
 
 
+<!-------------------------------------------------------------------->
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
 [Docker executor]: https://docs.gitlab.com/runner/executors/docker.html
 [Environments]: https://docs.gitlab.com/ee/ci/environments.html
