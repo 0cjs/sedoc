@@ -250,9 +250,24 @@ executed. This can be used for security purposes....
 * `volumes`: List of storage paths persisted between builds (see below).
   The default cache dir is automatically in this list.
 * `privileged`: Enable privileged mode to use Docker-in-Docker.
-* [`pull_policy`]: `never` (use only local images), `if-not-present`
-  (faster; will not fetch updated images unless local image manually
-  deleted), `always` (default).
+* [`pull_policy`]: `always` (default); `never` (use only local
+  images); `if-not-present`. See below for more.
+
+Some pull policies have several implications:
+- `always` disallows the use of local-only images, since even if it's
+  locally present the runner will abort if it can't access the server
+  or find a copy of the image on the server. The credentials used to
+  access the registry are those of the GitLab who triggered the build,
+  ensuring that he is allowed to access data in that image. (For more
+  on this, see [issue 1905].) This pull policy will ensure that the
+  latest update of the requested image tag is always used.
+- `if-not-present` has security issues where users may be able to use
+  images which to which their credentials do not allow access, since
+  no repository check is made. (For more on this, see the [runner
+  image security note].) This also will not fetch an updated image
+  unless the local copy of the image is manually deleted, making it
+  problematic for tags that are updated (e.g., `:latest`). This can be
+  faster if repository access is slow.
 
 ###### Volume Configuration
 
@@ -310,10 +325,12 @@ See [Using a private container registry][priv-cont-reg].
 [gitlab-runner-service]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/dockerfiles/build/gitlab-runner-service
 [glentry]: https://docs.gitlab.com/runner/executors/docker.html#the-entrypoint
 [glr-dockerized]: https://docs.gitlab.com/runner/install/docker.html
+[issue 1905]: https://gitlab.com/gitlab-org/gitlab-runner/issues/1905#note_18854574
 [manual install]: https://docs.gitlab.com/runner/install/linux-manually.html
 [package install]: https://docs.gitlab.com/runner/install/linux-repository.html
 [post-install]: https://gitlab.com/gitlab-org/gitlab-runner/blob/master/packaging/root/usr/share/gitlab-runner/post-install
 [priv-cont-reg]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#using-a-private-container-registry
 [register]: https://docs.gitlab.com/runner/register/index.html
+[runner image security note]: https://docs.gitlab.com/runner/security/index.html#usage-of-private-docker-images-with-if-not-present-pull-policy
 [service container examples]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/services/README.md
 [volumes]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runners-docker-section
