@@ -310,7 +310,7 @@ See [Using a private container registry][priv-cont-reg].
 [FAQ]: https://docs.gitlab.com/runner/faq/README.html
 [GitLab CI Runners]: https://docs.gitlab.com/ee/ci/runners/README.html
 [GitLab CI and conda]: https://beenje.github.io/blog/posts/gitlab-ci-and-conda
-[TOML]: https://en.wikipedia.org/wiki/TOML
+[TOML]: ../lang/toml.md
 [`config.toml`]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
 [`executor`]: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-executors
 [`pull_policy`]: https://docs.gitlab.com/runner/executors/docker.html#how-pull-policies-work
