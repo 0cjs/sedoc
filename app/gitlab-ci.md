@@ -40,25 +40,36 @@ are assigned to the `test` stage if not explicitly assigned.
 
 Pipelines must have at least one (visible) job.
 
+GitLab provides a validator form for `.gitlab-ci.yml` files under:
+- `/GROUP/PROJECT/-/ci/lint` (GitLab ≥11.x)
+- `/ci/lint` (GitLab ≤9.x)
+
 The `/ci/lint` path in your GitLab instance contains a validator for
-`.gitlab-ci.yml` files. There are also [example build configs].
+There are also [example build configs].
 
-#### [Directives]
+#### Configuration Parameters
 
-The [YAML] ([refcard]) build description is a combination of the
-following top-level elements.
+The build description is [YAML][] ([refcard]). Thus values like `true`
+and `false` may cause issues when used alone as a YAML item; quote
+them to make them strings rather than booleans. Details of all
+the following are in the [configuration reference].
+
+__Top-level elements:__
 
 * `stages`: List of stages; default `[build, test, deploy]`).
   Stages are run in order listed. (`types` is a deprecated alias.)
 * `image`, `services`, `before_script`, `after_script`, `variables`,
   `cache`: As per job elements below. These are defaults that are
   entirely overridden by (not combined with) settings in a job.
-* [Jobs]; see below.
+* [Jobs] and hidden jobs; see below.
 
-All other top level elements are names of [jobs], each of which is a
-dictionary with a required `script` parameter and any other optional
-parameters. Job names starting with `.` are 'hidden' and will be ignored;
-[special YAML features] can turn them into templates.
+All other top level elements are names of [jobs], which may not use
+any of the above names. Each job is a dictionary with a required
+`script` parameter and any other optional parameters. Job names
+starting with `.` are 'hidden' and will be ignored; [special YAML
+features] can turn them into templates.
+
+__Job parameters:__
 
 * `script`: Commands to be executed (list or multi-line string). These
   are fed into whichever of the [shells] is available on the runner system.
@@ -96,7 +107,11 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
     `3 min 4 sec`, `2h20min`, `6 mos 2 weeks and 1d`.
 * `cache`: See <https://docs.gitlab.com/ee/ci/yaml/README.html#cache>.
   You can use `*` globs, but may not end dirs with a `/`.
-* `before_script`, `after_script`: list or multi-line string
+* `before_script`, `after_script`: list or multi-line string (but
+  multi-line string not accepted in older versions?). `before_script` and
+  and the job script are run in sequence in a single container run; the
+  container is then shut down and restarted for `after_script`, which is
+  run whether the job succeeds or fails.
 * [`environment`]: [Environments] for continuous deployment. Deployments are
   recorded under 'Piplines / Environments' in the project pages.
   Sub-vars: `environment:name`, `url`, `on_stop`, `action`.
@@ -104,11 +119,12 @@ parameters. Job names starting with `.` are 'hidden' and will be ignored;
    output, e.g., `'/Coverage: \d+\.\d+/'`.
 * `retry`: How many times (up to 2) to retry job.
 
-#### [Variables]
+#### Variables
 
-Variable values must be strings, even for ostensibly boolean or
-numeric values. Thus, while `foo: bar` will work, `foo: true` will
-not; you must instead write `foo: 'true'`.
+[Variables] can be set and interpolated into the build description.
+Values must be strings, even for ostensibly boolean or numeric values.
+Thus, while `foo: bar` will work, `foo: true` will not; you must
+instead write `foo: 'true'`.
 
 Variable definitions may include other variables interpolated with `$`.
 Escape `$` by doubling it, `$$`.
@@ -126,7 +142,7 @@ protected branches/tags. They can also be limited to certain [environments].
 'true'`. This appears to be `bash -x`, is very, very noisy and will
 probably display all your secrets in the output log.
 
-##### Environment Variables
+__Environment variables:__
 
 As well as any variables defined in the build configuration, there are
 also a large number of predefined environment variables. These are
@@ -176,7 +192,7 @@ removed).
 [cache key]: https://docs.gitlab.com/ce/ci/yaml/README.html#cache-key
 [caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
-[directives]: https://docs.gitlab.com/ee/ci/yaml/README.html
+[configuration reference]: https://docs.gitlab.com/ee/ci/yaml/README.html
 [extended-docker]: https://docs.gitlab.com/ce/ci/docker/using_docker_images.html#extended-docker-configuration-options
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
 [fair usage queue]: https://docs.gitlab.com/ee/ci/runners/README.html#how-shared-runners-pick-jobs
