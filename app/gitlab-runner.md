@@ -49,9 +49,9 @@ Logs go to `/var/log/messages` on Ubuntu 14.04.
 #### Manually Removing Cache Containers
 
 You may need to manually delete the cache containers (see below) from
-time to time. This can be done for all projects with:
+time to time. This can be done for all projects with a command like:
 
-    sudo docker rm $(sudo docker ps --format='{{.ID}}" \
+    sudo docker rm $(sudo docker ps -a --format='{{.ID}}' \
         --filter name=runner-9b285da7-project-[0-9]*-concurrent-[0-9]*-cache-)
 
 Replace the first `[0-9]*` with a project number, available from
