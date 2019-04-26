@@ -34,6 +34,18 @@ a system that can spin up and down EC2 instances as the load varies.
 Management
 ----------
 
+#### Daemon Management and Logging
+
+The `gitlab-runner` command-line program knows how to start, stop,
+restart, etc. the daemon. No args gives help.
+
+The running daemon detects changes to `/etc/gitlab-runner/config.toml`
+and reloads the config file. Some bad syntax may cause it to exit;
+other bad configuration directives (such as `image: { name: ...`) may
+not be detected until it tries to run a job.
+
+Logs go to `/var/log/messages` on Ubuntu 14.04.
+
 #### Manually Removing Cache Containers
 
 You may need to manually delete the cache containers (see below) from
