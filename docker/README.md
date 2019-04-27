@@ -22,11 +22,12 @@ for a container is created from an __image__.
 
 Each Docker instance has a local set of images; these are either
 created locally using the [docker build] process or pulled (copied)
-from a registry. Images are identified by a unique __image id__; this is
-generated at the time it's built and will be different for another
+from a registry. Images are identified by a unique __image id__; this
+is generated at the time it's built and will be different for another
 build from the same image description. Images may also be identified
-by a __tag__ local to the image store (e.g. `alpine:latest`); the tag
-within a store may point to different images over time.
+by a __name__ and __tag__, together forming an __alias__, local to the
+image store (e.g. `alpine:latest`). An alias within a store may point
+to different images over time.
 
 Images include a list of references to __layers__ containing the
 changed files that [contribute to a derived container's
