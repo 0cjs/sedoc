@@ -27,6 +27,35 @@ sorted by size:
 Note that this shows what would be the installed size of removed but
 non-purged packages.
 
+Backports
+---------
+
+Debian supplies a ["backports" repository][backports] with packages
+from the next release ported back to the previous release. For Debian
+9 (stretch) this is `stretch-backports`. The definitions are normally
+already installed in `/etc/apt/sources.list`, and are also shown
+below.
+
+All backports are deactivated by default via using
+`ButAutomaticUpgrades: yes` (which pins them to 100) in the Release
+files. The `-t` option to apt commands tweaks the policy engine to
+prefer the backports packages.
+
+    #   Upgrade just kernel
+    apt-get -t stretch-backports upgrade linux-headers-amd64 linux-image-amd64
+    #   Upgrade everything with new versions in backports
+    apt -t stretch-backports full-upgrade
+
+
+But though [Jensd's I/O buffer][jensd] suggests upgrading everything,
+the [backports] page suggests upgrading only the individual packages
+you need.
+
+For kernels, maybe it's also reasonable to install just the exact
+kernel versions:
+
+    apt-get install linux-image-4.19.0-0.bpo.4-amd64
+
 
 Repository Configuration Format
 -------------------------------
@@ -160,5 +189,8 @@ Automated Installs
 
 
 
+<!-------------------------------------------------------------------->
 [`ARG`]: https://docs.docker.com/engine/reference/builder/#arg
 [`ENV`]: https://docs.docker.com/engine/reference/builder/#env
+[backports]: https://backports.debian.org/
+[jensd]: http://jensd.be/818/linux/install-a-newer-kernel-in-debian-9-stretch-stable
