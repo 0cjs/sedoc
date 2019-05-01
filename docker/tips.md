@@ -34,6 +34,12 @@ container ID with `basename $(cat /proc/1/cpuset`.
 * `-i`: Interactive, keep STDIN open even if not attached
 * `-t`: Allocate a pseudo-TTY
 
+Processes started with `exec` will start independent process trees in
+the container (with the immediate parent a process outside the
+container, rather than process 1 in the container), so `ps -ejH` will
+show multiple "root" processes and `pstree` will not show all
+processes in the container.
+
 ### Usage of Docker Volumes
 
     docker volume create VOL
