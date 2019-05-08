@@ -2,7 +2,7 @@ Docker Tips
 -----------
 
 * [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Security](security.md) | [Tips](tips.md)
+  | [Registries](registries.md) | [Security](security.md) | [Tips](tips.md)
 
 ### Checking If You're Running in a Container
 

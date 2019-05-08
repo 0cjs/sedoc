@@ -4,6 +4,7 @@ Docker
 Other pages here:
 * [Docker Installation and Configuration](config.md)
 * [Docker Image Creation and Maintenance](image.md)
+* [Docker Registries, Private and Public Images](registries.md)
 * [Docker Security](security.md)
 * [Docker Tips](tips.md) for handy commands and the like.
 
