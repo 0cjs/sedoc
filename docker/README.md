@@ -1,11 +1,13 @@
 Docker
 ======
 
-Documentation:
-* [Docker Image Creation and Maintenance](image.md)
+Other pages here:
 * [Docker Installation and Configuration](config.md)
+* [Docker Image Creation and Maintenance](image.md)
 * [Docker Security](security.md)
 * [Docker Tips](tips.md) for handy commands and the like.
+
+External Documentation:
 * [Reference documentation] for complete documentation.
 * [Engine CLI] for `docker` command details.
   (This provides a lot of information not in the manpages.)
