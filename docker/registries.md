@@ -49,6 +49,12 @@ inspecting/copying/etc. images both locally and in registries.
 - [Amazon Elastic Container Registry][aws-ecr].
 - [GitLab].
 
+### Registry Operations
+
+The original Docker API offered no means of deleting an image (as
+opposed to all images in a repo) from a registry. Some solutions
+(including those for an updated API) are offered at [SO 25436742].
+
 
 Public Docker Images
 --------------------
@@ -79,13 +85,16 @@ Extended information about these repos may be found in [repo-info].
 
 There is also a [Docker Store]; dunno how this relates to the Hub.
 
-[so 28320134] may help with ways of listing images and tags from
+[SO 28320134] may help with ways of listing images and tags from
 various remotes.
+
 
 
 <!-------------------------------------------------------------------->
 [Docker Hub]: https://hub.docker.com/explore/
 [Docker Store]: https://store.docker.com/
+[SO 25436742]: https://stackoverflow.com/q/25436742/107294
+[SO 28320134]: https://stackoverflow.com/q/28320134/107294
 [authentication]: https://docs.docker.com/registry/spec/auth/jwt/
 [aws-ecr]: https://aws.amazon.com/ecr/
 [docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
@@ -96,4 +105,3 @@ various remotes.
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
 [repository]: https://docs.docker.com/docker-hub/repos/
 [scopeo]: https://github.com/projectatomic/skopeo
-[so 28320134]: https://stackoverflow.com/q/28320134/107294
