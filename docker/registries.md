@@ -25,23 +25,6 @@ slashes:
 The port is optional, but the registry name/port must contain a `.` or
 `:`. If the hostname has no `.`, add the default port of `:5000`.
 
-Registries may require [authentication]. The `docker login` command
-can do this; it stores the credentials in `~/.docker/config.json`.
-
-To list a registry's repositories and a respository's tags:
-
-    curl https://myregistry:5000/v2/_catalog
-    curl https://myregistry:5000/v2/REPONAME/tags/list
-
-If authorization is required you can check the headers (with `-i` or
-`-v`) for the auth type, or try `--auto-auth --user USERNAME` or try
-`-H 'Authorization: Bearer TOKEN'` where _TOKEN_ is taken from your
-`~/.docker/config.json` file, [docker-ls], [registry-cli] or something
-else. I've not been able to get anything to work.
-
-The [scopeo] command line tool offers further tools for
-inspecting/copying/etc. images both locally and in registries.
-
 ### Alternative Registries to Docker Hub
 
 - Set up your own: [Deploy a registry server][registry-deploy].
@@ -49,11 +32,40 @@ inspecting/copying/etc. images both locally and in registries.
 - [Amazon Elastic Container Registry][aws-ecr].
 - [GitLab].
 
-### Registry Operations
+
+Registry Operations
+-------------------
+
+### Authentication
+
+Use `docker login` to [authenticate] if the registry requires it.
+Credentials are stored in `~/.docker/config.json`.
+
+If authentication is required when using the REST API with `curl`,
+you can:
+- check the headers (with `-i` or `-v`) for the auth type, or
+- try `--auto-auth --user USERNAME` or,
+- try `-H 'Authorization: Bearer TOKEN'` where _TOKEN_ is taken from
+  your `~/.docker/config.json` file, [docker-ls], [registry-cli], or
+- something else. I've not been able to get anything to work.
+
+### Listing Images/Repositories/Tags
+
+To list a registry's repositories and a respository's tags:
+
+    curl https://myregistry:5000/v2/_catalog
+    curl https://myregistry:5000/v2/REPONAME/tags/list
+
+### Deleting Images
 
 The original Docker API offered no means of deleting an image (as
 opposed to all images in a repo) from a registry. Some solutions
 (including those for an updated API) are offered at [SO 25436742].
+
+### Other Operations
+
+The [scopeo] command line tool offers further tools for
+inspecting/copying/etc. images both locally and in registries.
 
 
 Public Docker Images
@@ -95,7 +107,7 @@ various remotes.
 [Docker Store]: https://store.docker.com/
 [SO 25436742]: https://stackoverflow.com/q/25436742/107294
 [SO 28320134]: https://stackoverflow.com/q/28320134/107294
-[authentication]: https://docs.docker.com/registry/spec/auth/jwt/
+[authenticate]: https://docs.docker.com/registry/spec/auth/jwt/
 [aws-ecr]: https://aws.amazon.com/ecr/
 [docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
 [gcp-registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US
