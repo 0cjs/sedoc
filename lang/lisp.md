@@ -5,6 +5,9 @@ Impelementation
 ---------------
 
 General:
+- John McCarthy, [Recursive functions of symbolic expressions and their
+  computation by machine, Part I][mccarthy], Communications of the ACM
+  Volume 3 Issue 4, April 1960.
 - [SICP Interactive Version][isicp]
 
 Memory Representation:
@@ -35,6 +38,7 @@ Multiple:
 [altos-lisp]: https://keithp.com/blogs/AltOS-Lisp/
 [altos]: https://altusmetrum.org/AltOS/
 [isicp]: https://xuanji.appspot.com/isicp/
+[mccarthy]: https://dl.acm.org/citation.cfm?id=367199
 [pdp1-alt]: https://archive.computerhistory.org/resources/text/DEC/pdp-1/DEC.pdp_1.1964.102650371.pdf
 [pdp1-memo]: https://archive.org/details/bitsavers_mitrlepdp1P_420747
 [pdp1]: https://www.computerhistory.org/pdp-1/_media/pdf/DEC.pdp_1.1964.102650371.pdf
