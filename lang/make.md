@@ -43,7 +43,21 @@ From manual chapter 8, [Functions for Transforming Text][funcs].
   `space := $(empty) $(empty)`.
 
 
+Rules
+-----
+
+From manual chapter 10, [Using Implicit Rules][implicit].
+
+The [Catalogue of Built-In Rules][implicit-builtin] includes:
+* `a.o` ← `a.c`: `$(CC) $(CPPFLAGS) $(CFLAGS) -c`
+* `a.o` ← `a.{cc,cpp,C}`: `$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c`.
+  (`.cc` suffix is preferrred.)
+* `a` ← `a.o ...`: `$(CC) $(LDFLAGS) a.o ... $(LOADLIBES) $(LDLIBS)`
+
+
+
 <!-------------------------------------------------------------------->
 [vars]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_6.html
 [funcs]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
-
+[implicit]: http://www.gnu.org/software/make/manual/make.html#Implicit-Rules
+[implicit-builtin]: https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
