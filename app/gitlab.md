@@ -1,6 +1,9 @@
 [GitLab]
 ========
 
+* [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
+  | [GitLab Runner](gitlab-runner.md)
+
 Much like GitHub, UI isn't as good, but does have some features that
 GitHub doesn't have. Main selling point over GitHub Enterprise is a
 free ("Community") version you can [install] on your own servers. They

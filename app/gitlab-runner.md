@@ -1,6 +1,9 @@
 [GitLab CI Runners]
 ===================
 
+* [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
+  | [GitLab Runner](gitlab-runner.md)
+
 This covers the administrative side of GitLab runner configuration;
 see [gitlab-ci](gitlab-ci.md) for documentation on how to set up your
 `.gitlab-ci.yml` file.

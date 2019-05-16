@@ -1,11 +1,8 @@
 [GitLab]
 ========
 
-Other documents related to this:
-* [GitLab](gitlab.md) for general details about GitLab
-* [GitLab Runner](gitlab-runner.md) for admin configuration of the
-  runner software.
-
+* [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
+  | [GitLab Runner](gitlab-runner.md)
 
 [GitLab CI]
 -----------
