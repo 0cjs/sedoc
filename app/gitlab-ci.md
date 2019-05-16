@@ -1,13 +1,10 @@
-[GitLab]
-========
+GitLab CI - Continuous Integration
+==================================
 
 * [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
   | [GitLab Runner](gitlab-runner.md)
 
-[GitLab CI]
------------
-
-You specify build descriptions in `.gitlab-ci.yml`.
+You specify [GitlLab CI] build descriptions in `.gitlab-ci.yml`.
 [Runners](gitlab-runner.md) are triggered by the Web UI, [triggers] or
 new commits that do not contain `[ci skip]` or `[skip ci]`) in the
 message. The Web UI and triggers require appropriate [permissions]

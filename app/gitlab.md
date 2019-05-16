@@ -1,10 +1,10 @@
-[GitLab]
-========
+GitLab
+======
 
 * [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
   | [GitLab Runner](gitlab-runner.md)
 
-Much like GitHub, UI isn't as good, but does have some features that
+[GitLab] is much like GitHub with a poorer UI but some extra features that
 GitHub doesn't have. Main selling point over GitHub Enterprise is a
 free ("Community") version you can [install] on your own servers. They
 have official Docker images which may be the easiest way to use it.

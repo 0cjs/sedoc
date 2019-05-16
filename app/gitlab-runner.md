@@ -1,14 +1,15 @@
-[GitLab CI Runners]
-===================
+GitLab CI Runners
+=================
 
 * [GitLab](gitlab.md) | [GitLab CI](gitlab-ci.md)
   | [GitLab Runner](gitlab-runner.md)
 
-This covers the administrative side of GitLab runner configuration;
-see [gitlab-ci](gitlab-ci.md) for documentation on how to set up your
+This covers the sysadmin side of GitLab runner configuration. See
+[GitLab CI](gitlab-ci.md) for documentation on how to set up your
 `.gitlab-ci.yml` file.
 
-Source code repo: <https://gitlab.com/gitlab-org/gitlab-runner>
+- Documentation: [GitLab CI Runners]
+- Source code repo: <https://gitlab.com/gitlab-org/gitlab-runner>
 
 Runners get jobs from the 'coordinator', which is the GitLab
 installation to which they've been registered. The entire runner
