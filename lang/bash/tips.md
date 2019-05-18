@@ -1,6 +1,16 @@
 Bash Tips
 =========
 
+### Inline Comments
+
+In a multiline bash statement, inline comments (in the middle of a
+command, with more command after them) can be handy. Use a subshell
+with an "no effect" `:` command:
+
+    wget --no-verbose \
+        $(: '--mirror options: recursive, infinite levels, timestamp checks') \
+        -r -l inf -N "$@"
+
 ### Assigning Default Values
 
 To assign a default value to a variable if it's empty or unset:
