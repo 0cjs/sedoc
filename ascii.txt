@@ -36,4 +36,7 @@ ______________________ bit6 _____________________
 078 x4e N    094 x5e ^    110 x6e n    126 x7e ~
 079 x4f O    095 x5f _    111 x6f o    127 x7f DEL
 
-Also see: https://en.wikipedia.org/wiki/ASCII#Character_set
+Also see:
+  https://en.wikipedia.org/wiki/ASCII#Character_set
+  https://www.kreativekorp.com/charset/encoding/
+
