@@ -97,11 +97,36 @@ Setting values:
 
 ### Build-time commands
 
+Configuration:
 - `FROM name:tag`: Use _name:tag_ as the base image for the new image.
-- `RUN`: Run command and add results to new lyaer
 - `ONBUILD`: Store a command to be run in an immediate child build
   based on this image (stored commands are executed immediately after
   the child build's `FROM`).
+
+Layer filesystem updates:
+- `RUN`: Run command and add results to new layer.
+- `ADD`: Copy files from the build context into the container. Arg is
+  - `["<src>", ... "<dest">]` but may be unquoted if no whitespace.
+  - `<src>` files/dir paths are relative to the build context.
+    Wildcards are matched using Go's [filepath.Match] rules; escape
+    special chars that you do not want be patterns. Only contents of a
+    dir are copied.
+  - `<src>`, if _local_ and contents are tar+gz/bzip2/xz, is unpacked
+    into dest.
+  - `<src>` may be a remote URL (HTTP authentication not supported);
+    dest perms will be `0600`.
+  - `<dest>` is absolute or relative to `WORKDIR`. Trailing slash
+    forces directory name into which files will be copied. All missing
+    intermediate dirs are created.
+  - Dest perms/timestamp are that of source file, or
+    `0600`/`Last-modified:` for remote URLs.
+  - Default UID:GID is 0:0; `--chown=<user>:<group>` option available
+    in Linux containers.
+- `COPY`: Similar to `ADD`, but copies only from build context.
+  - `--from=<name|index>` copies from a previous build stage.
+    - `<index>`th previous build stage with a `FROM` instruction.
+    - Build stage created with `FROM ... AS <name>`.
+    - Image named `<name>`.
 
 ### Run-time configuration
 
@@ -128,4 +153,5 @@ Setting values:
 [another image]: config.md#public-docker-images
 [base]: https://docs.docker.com/develop/develop-images/baseimages/
 [best practices]: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+[filepath.Match]: http://golang.org/pkg/path/filepath#Match
 [terra-testing]: https://alexei-led.github.io/post/docker_testing/
