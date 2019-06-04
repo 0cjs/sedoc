@@ -103,6 +103,19 @@ From an install started with non-free components:
     deb     http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
     deb-src http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
 
+#### Repository Format
+
+The prefix generated from the `deb`/`deb-src` line is
+`{uri}/dists/{suite}/{component}/binary-{arch}/`. From this one can
+fetch `Release` (a text file with information about this component)
+and `Packages.xz`, containing the packages index for that component.
+The index has records separated by blank lines and each line is a
+`Name: value` field. The `Filename:` field contains the path to the
+`.deb` file relative to `{uri}/`.
+
+Beware using old `Packages.xz` files; packages with security
+vulnerabilities are often removed.
+
 
 Cryptographic Keys
 ------------------
