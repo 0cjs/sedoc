@@ -136,6 +136,8 @@ Automated Installs
 Package System Commands and Tips
 --------------------------------
 
+Below, `PAT` indicates a glob pattern to match package names.
+
 #### Listing Packages, Versions and Dependencies
 
     apt list --installed            # Show all installed packages
@@ -153,6 +155,12 @@ Package System Commands and Tips
 package in the database (or all versions, with `-a`); this is not
 necessarily the one installed. To see which version is installed, use
 `dpkg -s PACKAGE`.
+
+#### Marking Packages
+
+Use `apt-mark CMD [PAT]` to show and mark packages as autoinstalled or
+manually installed. (The latter will not be removed by `autoremove`).
+`CMD` is `showauto|showmanual|auto|manual`.
 
 #### Restoring Original Package Config Files
 
