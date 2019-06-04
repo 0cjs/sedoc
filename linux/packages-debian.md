@@ -123,22 +123,38 @@ following error:
     gpg: keyserver receive failed: No dirmngr
 
 
-Downloading and Extracting Packages
------------------------------------
+Automated Installs
+------------------
 
-    apt-get download pkgname    # download current version .deb file
-    dpkg -i pkgnameetc.deb      # install
-    dpkg -I pkgnameetc.deb      # show info
-    dpkg -c pkgnameetc.deb      # show contents (file list)
-    dpkg -x pkgnameetc.deb dir  # extract contents to `dir`
-
-Also handy:
-
-    dpkg -S /etc/ssh/ssh_config # Show package whence file comes
+* Use `apt-get`; the `apt` interface is not stable. Set
+* `DEBIAN_FRONTEND=noninteractive` to avoid complaints from dpkg
+  about not having a terminal. In a Dockerfile, make sure you use
+  [`ARG`] not [`ENV`] to avoid propagating it to the command running
+  in the container, which causes confusion.
 
 
-Restoring Original Package Config Files
----------------------------------------
+Package System Commands and Tips
+--------------------------------
+
+#### Listing Packages, Versions and Dependencies
+
+    apt list --installed            # Show all installed packages
+
+    apt-cache depends pkgname       # show what pkgname depends on
+    apt-cache rdepends pkgname      # pkgs that directly depend on pkgname
+
+    dpkg -L pkgname                 # List files installed by pkgname.
+    dpkg -S /etc/ssh/ssh_config     # Show package whence file comes
+    apt-file search PATH            # Search for file in package database
+    apt-file list pkgname-pattern   # List files in packages
+    apt-file update                 # Update package DB used by apt-file
+
+`apt show` (and `aptitude show`) will show the latest version of a
+package in the database (or all versions, with `-a`); this is not
+necessarily the one installed. To see which version is installed, use
+`dpkg -s PACKAGE`.
+
+#### Restoring Original Package Config Files
 
 If the package has the config file stored, rather than generating it,
 you can extract the files as per above and take the config from there.
@@ -150,22 +166,13 @@ technique from SO](https://askubuntu.com/a/67028):
     apt-get -o Dpkg::Options::="--force-confmiss"
             install --reinstall openssh-server
 
+#### Downloading and Extracting
 
-Dependency Management
----------------------
-
-    apt-cache depends pkgname       # show what pkgname depends on
-    apt-cache rdepends pkgname      # pkgs that directly depend on pkgname
-
-
-Package Versions
-----------------
-
-`apt show` (and `aptitude show`) will show the latest version of a
-package (or all versions, with `-a`); this is not necessarily the one
-installed. To see which version is installed, use `dpkg -s PACKAGE`.
-
-For a list of all installed packages, use `apt list --installed`.
+    apt-get download pkgname    # download current version .deb file
+    dpkg -i pkgnameetc.deb      # install
+    dpkg -I pkgnameetc.deb      # show info
+    dpkg -c pkgnameetc.deb      # show contents (file list)
+    dpkg -x pkgnameetc.deb dir  # extract contents to `dir`
 
 
 Package Verification
@@ -176,16 +183,6 @@ files against packages, like `rpm -v` (from this [StackExchange
 question](https://askubuntu.com/q/9463/354600)):
 
     sudo debsums -c [PACKAGE ...]
-
-
-Automated Installs
-------------------
-
-* Use `apt-get`; the `apt` interface is not stable. Set
-* `DEBIAN_FRONTEND=noninteractive` to avoid complaints from dpkg
-  about not having a terminal. In a Dockerfile, make sure you use
-  [`ARG`] not [`ENV`] to avoid propagating it to the command running
-  in the container, which causes confusion.
 
 
 
