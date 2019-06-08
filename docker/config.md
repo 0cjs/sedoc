@@ -87,6 +87,27 @@ containers. See also:
 [CoreOS]: https://coreos.com/
 [coreos-update]: https://coreos.com/os/docs/latest/update-strategies.html
 
+#### Windows
+
+Documentation: [Docker for Windows][dfw] (also called "Docker Desktop").
+
+The link to the [Docker for Windows Installer][dfwi] is not visible
+except when logged into [Docker Hub][hub], though it can be downloaded
+without authentication from that link. There is also an [sha256sum][dfwi-sha]
+file available.
+
+The installer will enable Microsoft [Hyper-V] on the Windows host (this may
+require at least one reboot) and add and start a 2 GB "MobyLinuxVM" VM.
+Hyper-V will disable Oracle [VirtualBox]; trying to start a VM with
+VirtualBox will produce a "Raw-mode is unavailable courtesy of Hyper-V"
+message.
+
+[dfw]: https://docs.docker.com/docker-for-windows/
+[dfwi]: https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe
+[dfwi-sha]: https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe.sha256sum
+[Hyper-V]: https://en.wikipedia.org/wiki/Hyper-V
+[VirtualBox]: https://en.wikipedia.org/wiki/VirtualBox
+
 
 Managment Systems
 -----------------
@@ -113,6 +134,7 @@ Managment Systems
 [docker build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker-ls]: https://github.com/mayflower/docker-ls
 [engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
+[hub]: https://hub.docker.com/
 [reference documentation]: https://docs.docker.com/reference/
 [registry-cli]: https://github.com/andrey-pohilko/registry-cli
 [storage driver]: https://docs.docker.com/storage/storagedriver/
