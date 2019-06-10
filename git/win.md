@@ -60,12 +60,21 @@ program and sets `credential.helper=manager` in the Git system
 configuration. That configuration key is multivalue (each helper is
 tried in turn) and thus cannot be overridden; you need to remove it
 from the system gitconfig or, possibly, setting `$GIT_CONFIG_NOSYSTEM`.
+For manual setting:
+
+    git config -g credential.helper manager
 
 Git Credential Manager for Windows will store the credentials in the
-Windows Credential Manager, accessible from the top level of the
-Control Panel. This isn't particularly secure; you can get the
-cleartext of a password stored there by sending a request to it using
-the [git-credential] protocol, e.g.,
+Windows Credential Manager, accessible from "Control Panel » User
+Accounts Credential Manager." The "Windows Credentials" section will
+have "Generic Credentials" list which will include the HTTP URLs
+prefixed with `git:`, e.g., `git:https://git@git.mydomain.com/`. If
+you have an incorrect credential in the manager, you can replace it or
+delete it here.
+
+This isn't particularly secure; you can get the cleartext of a
+password (and the username) stored there by sending a request to it
+using the [git-credential] protocol, e.g.,
 
     echo "protocol=https
     host=git.mycompany.com
