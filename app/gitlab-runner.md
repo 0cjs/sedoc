@@ -131,13 +131,15 @@ running `gitlab-runner` and the GitLab server.
 There are two tokens discussed here:
 * The _registration token_ which is used only when creating a new
   runner on the GitLab server.
-  * Shared runners use the token from the `/admin/runners` page.
-  * Specific runner runners use the token from from project page
-    under 'Settings', 'CI/CD Pipelines'.
-* The _(runner) token_ which identifies and authenticastes an existing
+  * Shared runners (usable by any projects) use the token from the
+    `/admin/runners` page.
+  * Runners created as locked to a specific project use the token from
+    from project page under "Settings » CI/CD Pipelines."
+* The _(runner) token_ which identifies and authenticates an existing
   runner on the GitLab server. For shared runners this is visible to
-  admins on the GitLab server; for specific runners this appears to be
-  visible to anybody with admin rights for a project using it.
+  admins on the GitLab server; for project-specific runners this
+  appears to be visible to anybody with admin rights for a project
+  using it.
 
 #### Registration of a New Runner
 
