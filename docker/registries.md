@@ -5,8 +5,9 @@ Docker Registries, Private and Public Images
   | [Registries](registries.md) | [Security](security.md) | [Tips](tips.md)
 
 
-Terminology reminder: a _registry_ serves multiple
-_[repositories][repository]_ which are sets of related images.
+Terminology reminder: a _registry_ is a single server that serves
+multiple _[repositories][repository]_ which are sets of related
+images.
 
 
 Registries
@@ -27,7 +28,8 @@ The port is optional, but the registry name/port must contain a `.` or
 
 ### Alternative Registries to Docker Hub
 
-- Set up your own: [Deploy a registry server][registry-deploy].
+- Set up your own [Docker Registry][registry].  
+  (See section below for more information on this.)
 - [Google Cloud][gcp-registry].
 - [Amazon Elastic Container Registry][aws-ecr].
 - [GitLab].
@@ -101,6 +103,93 @@ There is also a [Docker Store]; dunno how this relates to the Hub.
 various remotes.
 
 
+Setting up a Registry
+---------------------
+
+The `registry:2` image from Docker Hub is the standard registry
+server, documented under [Docker Registry][registry].
+
+Image naming is slightly different from Hub (plain names or
+`docker.io/` followed by the name). Rather than the fixed
+`user/imagename` format, with `ubuntu` being translated to
+`library/ubuntu`, image names are any arbitrary path with 1 or more
+components. (File name conflicts are avoided because path components
+may not start with `_`.)
+
+### Test Registry Server
+
+[Deploy a registery server][registry-deploy] gives a tutorial on
+starting a test version of the server accessed via
+`localhost:5000/imagename`. Images are stored in the container itself
+and will vanish when the container is deleted.
+
+The server will be listening on all the host's addresses and not using
+TLS. The Docker client will access it without TLS when the repository
+is given as , but will fail with `remote error: tls: handshake
+failure` when trying to access it via the other addresses on which
+it's listening. (But see below to change this.)
+
+### Configuration
+
+#### `docker run` Options
+
+Some configuration via `docker run` options, typically:
+- `--name registry`: Container name
+- `--restart=always`: Restart automatically when Docker daemon (re)starts.
+- `-p 5000:5000`: Use standard Docker registry port.
+- `-p 127.0.0.1:5000:5000`: Listen on just one interface, not `0.0.0.0`.
+  (Both ports must be present only IP addrs, not hostnames, can be used.)
+- `-p 5001:5000`: Listen on different port. (Also can use  `-e
+  REGISTRY_HTTP_ADDR=0.0.0.0:5001` to change port in container. Note that
+  `0.0.0.0` is all interfaces _within the container_.)
+- `-v /my/path/to/data:/var/lib/registry`: Use bind mount instead of Docker
+  volume for image and data storage.
+
+#### Configuration File and Environment Overrides
+
+See [Configuring a registry][registry-config] for all config options.
+Some params (e.g., `version`) are required. Required child params are
+needed only if their parent param exists.
+
+A YAML file holds the base configuration; the values can be overridden
+via environment variables of form `REGISTRY_*`, e.g. use
+`REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/somewhere` to override:
+
+    storage:
+        filesystem:
+            rootdirectory: /var/lib/registry
+
+Override the entire default config file by bind mounting your config
+over `/etc/docker/registry/config.yml`. You may base yours on the
+[example config file][registry-exampleconfig].
+
+#### Authentication and TLS Configuration
+
+[HTTP basic authentication][registry-basicauth] is built int. This
+will not work without TLS. (Nor will any other authentication system
+that sends credentials as clear text.)
+
+TLS setup can be done automatically with [Let's Encrypt ACME
+protocol][letsencrypt] (server must use port 443) with [config file
+vars][regconf-letsenrypt] `cachefile` (file for Let's Encrypt agent to
+cache data) and `email` (email address to register with Let's
+Encrypt).
+
+For manual TLS setup, certs are mounted into `/certs` in the container
+and `REGISTRY_HTTP_TLS_{CERTIFICATE,KEY}` env vars are set. Typically
+also TLS registries are seved on port 443.
+
+The daemon can also be [configured to use insecure
+registries][registry-insecure] for addresses other than localhost.
+
+#### Backend Storage
+
+Distributed storage drivers such as AWS S3 can share a single storage
+backend amongst multiple registry servers. They must also share the
+same HTTP secret to co-ordinate uploads. (And probably want to share
+the same Redis cache, if configured.)
+
+
 
 <!-------------------------------------------------------------------->
 [Docker Hub]: https://hub.docker.com/explore/
@@ -112,8 +201,14 @@ various remotes.
 [docker pull]: https://docs.docker.com/engine/reference/commandline/pull/
 [gcp-registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US
 [gitlab]: https://about.gitlab.com/2016/05/23/gitlab-container-registry/
+[letsencrypt]: https://letsencrypt.org/how-it-works/
 [official repos]: https://docs.docker.com/docker-hub/official_repos/
+[regconf-letsenrypt]: https://docs.docker.com/registry/#letsencrypt
+[registry-basicauth]: https://docs.docker.com/registry/#native-basic-auth
+[registry-config]: https://docs.docker.com/registry/configuration/
 [registry-deploy]: https://docs.docker.com/registry/deploying/
+[registry-exampleconfig]: https://github.com/docker/distribution/blob/master/cmd/registry/config-example.yml
+[registry-insecure]: https://docs.docker.com/registry/insecure/
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
 [repository]: https://docs.docker.com/docker-hub/repos/
 [scopeo]: https://github.com/projectatomic/skopeo
