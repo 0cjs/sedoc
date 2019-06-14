@@ -157,6 +157,52 @@ Selected variables are: , and include (but are not limited to):
   `RESTORE_CACHE_ATTEMPTS`: default 1
 * `GIT_DEPTH`: for shallow clones
 
+#### Inheritance, Templates and Reducing Code Duplication
+
+There are various methods for consolidating duplicate code for DRY.
+
+##### YAML Anchors
+
+≥8.6 supports [YAML anchors][yaml-anchors]. The key here is that a job
+named with a leading `.` will not be executed. This allows us to
+mark the whole job or specific items with `&name` and then reference
+the AST from that name downward with `*name`:
+
+    .build: &build
+        script: ./Test
+    .otherstuff:
+        tags: &ubuntu
+            - ubuntu-dev
+    build-18:
+        <<: *build
+        image: ubuntu:18.04
+        tags: *ubuntu
+
+##### Extending Definitions
+
+≥11.3 supports [`extends`] directives.
+
+##### Including Files
+
+≥11.4 (≥10.5 [Premium][pricing], ≥10.6 Starter, Ultimate) support
+[`include`] directives, which allow the inclusion of other files.
+(This is particularly useful for local definitions.)
+- The extension must be `.yml` or `.yaml`.
+- YAML anchors/aliases do not work across files, but [`extends`] does.
+- Regardless of where the `include` directive is, the included files
+  are always evaluated first and then merged with the content of
+  `.gitlab-ci.yml`.
+- The include processing is done once when the pipeline is started and
+  that version is used for all jobs; if jobs change included files,
+  later stages will not see those changes.
+- Includes may be nested.
+
+There are four include methods:
+- `local`
+- `file`
+- `template`
+- `remote`
+
 ### Runners Cache
 
 See the [caching] documentation for full information.
@@ -186,6 +232,8 @@ removed).
 [`artifacts`]: https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts
 [`dependencies`]: https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies
 [`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
+[`extends`]: https://docs.gitlab.com/ee/ci/yaml/#extends
+[`include`]: https://docs.gitlab.com/ee/ci/yaml/#include
 [cache key]: https://docs.gitlab.com/ce/ci/yaml/README.html#cache-key
 [caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
@@ -199,6 +247,7 @@ removed).
 [manual action]: https://docs.gitlab.com/ee/ci/yaml/README.html#manual-actions
 [only and except]: https://docs.gitlab.com/ee/ci/yaml/README.html#only-and-except-simplified
 [permissions]: https://docs.gitlab.com/ee/user/project/new_ci_build_permissions_model.html
+[pricing]: https://about.gitlab.com/pricing/
 [refcard]: http://yaml.org/refcard.html
 [secret variables]: https://docs.gitlab.com/ee/ci/variables/README.html#secret-variables
 [shared or specific]: https://docs.gitlab.com/ee/ci/runners/README.html#shared-vs-specific-runners
@@ -207,3 +256,4 @@ removed).
 [tracing]: https://docs.gitlab.com/ee/ci/variables/README.html#debug-tracing
 [triggers]: https://docs.gitlab.com/ee/ci/triggers/README.html
 [variables]: https://docs.gitlab.com/ee/ci/variables/README.html
+[yaml-anchors]: https://docs.gitlab.com/ee/ci/yaml/#anchors
