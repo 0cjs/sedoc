@@ -209,6 +209,7 @@ the same Redis cache, if configured.)
 [registry-deploy]: https://docs.docker.com/registry/deploying/
 [registry-exampleconfig]: https://github.com/docker/distribution/blob/master/cmd/registry/config-example.yml
 [registry-insecure]: https://docs.docker.com/registry/insecure/
+[registry]: https://docs.docker.com/registry
 [repo-info]: https://github.com/docker-library/repo-info/tree/master/repos
 [repository]: https://docs.docker.com/docker-hub/repos/
 [scopeo]: https://github.com/projectatomic/skopeo
