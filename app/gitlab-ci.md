@@ -86,10 +86,13 @@ __Job parameters:__
   - `always`: always regardless of any prior job status
   - `manual`: [manual action] started by user in console (blocks pipeline at
     this stage by default; set `allow_failure: false` for non-blocking)
-* [`dependencies`]: List of jobs from previous (completed) stages from which
-  artifacts should be downloaded. Default is all jobs from previous stages.
-  Status is ignored so there's no error trying to download artifacts that
-  weren't created due to failure or a manual job that wasn't run.
+* [`dependencies`]: List of jobs from previous stages from which artifacts
+  should be downloaded.
+  - Name collisions will leave only file last written during extraction.
+  - Default is all artifacts from previous stages.
+  - ≥10.3 the job will fail if the dependences can't be downloaded
+    (because they expired or a manual job creating them wasn't run).
+  - Not a failure <10.3 or if [dependency validation is disabled][depval].
 * [`artifacts`]: Build products to keep after the job has finished.
   These can be downloaded from the GitLab UI. Keys in this map:
   - `paths` (list of shell globs?): files to keep
@@ -187,8 +190,9 @@ removed).
 [caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
 [configuration reference]: https://docs.gitlab.com/ee/ci/yaml/README.html
-[extended-docker]: https://docs.gitlab.com/ce/ci/docker/using_docker_images.html#extended-docker-configuration-options
+[depval]: https://docs.gitlab.com/ee/administration/job_artifacts.html#validation-for-dependencies
 [example build configs]: https://docs.gitlab.com/ee/ci/examples/README.html
+[extended-docker]: https://docs.gitlab.com/ce/ci/docker/using_docker_images.html#extended-docker-configuration-options
 [fair usage queue]: https://docs.gitlab.com/ee/ci/runners/README.html#how-shared-runners-pick-jobs
 [install]: https://about.gitlab.com/installation/
 [jobs]: https://docs.gitlab.com/ee/ci/yaml/README.html#jobs
