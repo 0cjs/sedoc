@@ -133,7 +133,11 @@ it's listening. (But see below to change this.)
 
 #### `docker run` Options
 
-Some configuration via `docker run` options, typically:
+The registry container is typically started with:
+
+    docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+Some configuration is done via `docker run` options, typically:
 - `--name registry`: Container name
 - `--restart=always`: Restart automatically when Docker daemon (re)starts.
 - `-p 5000:5000`: Use standard Docker registry port.
