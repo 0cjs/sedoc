@@ -31,10 +31,22 @@ Each Docker instance has a local set of images; these are either
 created locally using the [docker build] process or pulled (copied)
 from a registry. Images are identified by a unique __image id__; this
 is generated at the time it's built and will be different for another
-build from the same image description. Images may also be identified
-by an __alias__ formed from the __repository name__ and __tag__, e.g.
-`alpine:latest`. An alias within a store may point to different images
-over time.
+build from the same image description. (But layer caching!) Images may
+also be identified by an __alias__ formed from the __repository name__
+and __tag__, e.g. `alpine:latest`. An alias within a store may point
+to different images over time.
+- The name portion of an alias is slash-separated components
+  consisting of lower-case letters, digits, and separators that may
+  not start the name. Separators are single `.`, one or two `_`, and
+  any number of `-`.
+- The name portion is optionally prefixed by a registry hostname that
+  cannot contain `_`. The hostname must either contain a `.` or be
+  followed by a `:` and port number. If no hostname is present,
+  `registry-1.docker.io` is used.
+- The tag portion of an alias is separated by a colon from the name,
+  no more than 128 characters, may not start with `.`/`-`, and is
+  otherwise letters, digits, and `_`/`.`/`-`. If not specified it
+  defaults to `:latest`.
 
 Images include a list of references to __layers__ containing the
 changed files that [contribute to a derived container's
