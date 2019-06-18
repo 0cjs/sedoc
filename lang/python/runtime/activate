@@ -1,7 +1,7 @@
 [ -n "$BASH_SOURCE" ] \
     || { echo 1>&2 "source (.) this with Bash."; exit 2; }
 __activate_quiet=
-[[ $@ = -q ]] && { shift; __activate_quiet=-q; }
+[[ ${1-} = -q ]] && { shift; __activate_quiet=-q; }
 (
     basedir=$(cd "$(dirname "$BASH_SOURCE")" && pwd -P)
     cd "$basedir"
