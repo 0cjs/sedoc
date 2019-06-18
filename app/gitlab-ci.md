@@ -221,6 +221,25 @@ should also be removed (but can't be removed until the container is
 removed).
 
 
+Build Artifacts Management
+--------------------------
+
+Detailed info at [Introduction to job artifacts][artifacts].
+
+The [well-known URLs][artifacts-wkurls] for downloading artifacts from
+the latest build for a ref (names, but probably not SHA1 IDs) changed
+at some point. The current (11.x, maybe earlier?) URLs and their old
+9.1 equivalants are:
+
+    #   Current
+    https://example.com/GROUP/PROJECT/-/jobs/artifacts/REF/download?job=JOBNAME
+    https://example.com/GROUP/PROJECT/-/jobs/artifacts/REF/raw/FILEPATH?job=JOBNAME
+
+    #   9.1
+    https://example.com/GROUP/PROJECT/builds/artifacts/REF/download?job=JOBNAME
+    https://example.com/GROUP/PROJECT/builds/artifacts/REF/file/FILEPATH?job=JOBNAME
+
+
 
 <!-------------------------------------------------------------------->
 [Docker config]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
@@ -237,6 +256,8 @@ removed).
 [`environment`]: https://docs.gitlab.com/ee/ci/yaml/README.html#environment
 [`extends`]: https://docs.gitlab.com/ee/ci/yaml/#extends
 [`include`]: https://docs.gitlab.com/ee/ci/yaml/#include
+[artifacts-wkurls]: https://docs.gitlab.com/ee/user/project/pipelines/job_artifacts.html#downloading-the-latest-artifacts
+[artifacts]: https://docs.gitlab.com/ee/user/project/pipelines/job_artifacts.html
 [cache key]: https://docs.gitlab.com/ce/ci/yaml/README.html#cache-key
 [caching]: https://docs.gitlab.com/ce/ci/caching/
 [clear-cache]: https://docs.gitlab.com/ce/ci/runners/README.html#manually-clearing-the-runners-cache
