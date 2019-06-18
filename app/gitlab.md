@@ -84,6 +84,8 @@ public data.) Methods are:
    generated as described above.
 2. OAuth2 tokens (`Authorization:`, `access_token=`).
 3. Session cookie `_gitlab_session` set at login to the web UI.
+   <10.2 there was a `/session` endpoint to get a session cookie;
+   now you must do it manually by [emulating a login][session-cookie].
 4. [RFC-7644][] (cross-domain HTTP auth) provided in GitLab Silver and
    above via the [SCIM API].
 
@@ -126,4 +128,5 @@ permissions.
 [python-gitlab-github]: https://github.com/python-gitlab/python-gitlab
 [scopes]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#limiting-scopes-of-a-personal-access-token
 [services api]: https://docs.gitlab.com/ce/api/services.html
+[session-cookie]: https://gist.github.com/gpocentek/bd4c3fbf8a6ce226ebddc4aad6b46c0a
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
