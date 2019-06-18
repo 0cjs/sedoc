@@ -33,8 +33,11 @@ the user) is used for display within the web interface, but externally
 ### SSH Keys
 
 "[Deploy keys]" (SSH public keys) giving read-only or read-write
-access to all or specific projects may also be added; these are not
-associated with an account but are designed for use by applications.
+access to all or specific projects may also be added. These are
+silently associated with the account that added the key; this is not
+displayed in the interface. Actions such as sending email on failures
+of pipelines triggered by that key will use the address set for that
+account.
 
 ### Access Tokens
 
