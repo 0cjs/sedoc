@@ -24,7 +24,8 @@ The CI system includes continuous deployment (CD) support with
 [environments] which, as well as being deployed to, can be monitored,
 accessed via web terminals, etc.
 
-### Build Configuration
+Build Configuration
+-------------------
 
 The build description in `.gitlab-ci.yml` specifies a __pipeline__
 with multiple __stages__, each containing zero or more __jobs__ that
@@ -41,7 +42,7 @@ GitLab provides a validator form for `.gitlab-ci.yml` files under:
 The `/ci/lint` path in your GitLab instance contains a validator for
 There are also [example build configs].
 
-#### Configuration Parameters
+### Configuration Parameters
 
 The build description is [YAML][] ([refcard]). Thus values like `true`
 and `false` may cause issues when used alone as a YAML item; quote
@@ -116,7 +117,7 @@ __Job parameters:__
    output, e.g., `'/Coverage: \d+\.\d+/'`.
 * `retry`: How many times (up to 2) to retry job.
 
-#### Variables
+### Variables
 
 [Variables] can be set and interpolated into the build description.
 Values must be strings, even for ostensibly boolean or numeric values.
@@ -157,11 +158,11 @@ Selected variables are: , and include (but are not limited to):
   `RESTORE_CACHE_ATTEMPTS`: default 1
 * `GIT_DEPTH`: for shallow clones
 
-#### Inheritance, Templates and Reducing Code Duplication
+### Inheritance, Templates and Reducing Code Duplication
 
 There are various methods for consolidating duplicate code for DRY.
 
-##### YAML Anchors
+#### YAML Anchors
 
 ≥8.6 supports [YAML anchors][yaml-anchors]. The key here is that a job
 named with a leading `.` will not be executed. This allows us to
@@ -178,11 +179,11 @@ the AST from that name downward with `*name`:
         image: ubuntu:18.04
         tags: *ubuntu
 
-##### Extending Definitions
+#### Extending Definitions
 
 ≥11.3 supports [`extends`] directives.
 
-##### Including Files
+#### Including Files
 
 ≥11.4 (≥10.5 [Premium][pricing], ≥10.6 Starter, Ultimate) support
 [`include`] directives, which allow the inclusion of other files.
@@ -203,7 +204,9 @@ There are four include methods:
 - `template`
 - `remote`
 
-### Runners Cache
+
+Runners Cache
+-------------
 
 See the [caching] documentation for full information.
 
