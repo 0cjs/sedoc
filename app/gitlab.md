@@ -47,7 +47,7 @@ these types of access if 2FA is enabled.) Users may have as many of
 these as they need, and may expire them by hand or set an expiry date.
 
 It's not clear how tokens are created for services not associated with
-a user, but perhaps the [services api] would have some clues.
+a user.
 
 Access tokens have various [scopes]:
 * `api` (≥8.15): Complete read-write API access; HTTP fetch for Git repos
@@ -58,22 +58,61 @@ Access tokens have various [scopes]:
 * `sudo` (≥10.2): Allow API actions as any user if authenticated user
   is admin
 
-Examples of use:
-
-    curl https://gitlab.example.com/api/v4/projects?private_token=9koXpg98eAheJpvBs5tK
-    curl --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
-        https://gitlab.example.com/api/v4/projects
-
 #### Impersonation Tokens
 
-Sysadmins may create [impersonation tokens] for arbitrary users that
-function in the same way. Admin accounts may also use [sudo] access
-against the API to take actions as another user.
+Sysadmins may create [impersonation tokens] for users that function in
+the same way as the user's own tokens. (The user will not see these in
+her list of tokens.) Admin accounts using the API may also use [sudo]
+access for individual requests take actions as another user using
+their own access token.
 
 
+GitLab API
+----------
+
+GitLab offers a [REST API][api] in two major versions; V4 is preferred
+since GitLab 9.0. V3 was deprecated in 9.5 and removed in 11.0. New
+features may be added to a version without a version number change.
+The API is moving toward [GraphQL], but that's currently alpha; it
+will be versionless and co-exist with V4 (or V5, which would be a
+compatibility layer).
+
+Authentication information is passed in via an HTTP header or URL
+query parameter. (Unauthenticated requests will fail or return only
+public data.) Methods are:
+1. Personal Access Tokens (`Private-token:`, `private_token=`)
+   generated as described above.
+2. OAuth2 tokens (`Authorization:`, `access_token=`).
+3. Session cookie `_gitlab_session` set at login to the web UI.
+4. [RFC-7644][] (cross-domain HTTP auth) provided in GitLab Silver and
+   above via the [SCIM API].
+
+Examples of personal access tokens used with `curl`. Use `-L` to
+follow redirects and `--header` to ensure subsequent requests include
+the token if using URLs like well-known URLs for build artifact
+download.
+
+    curl https://gitlab.example.com/api/v4/projects?private_token=9koXpg98eAheJpvBs5tK
+    curl -L --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
+        https://gitlab.example.com/api/v4/projects
+
+### API Subgroups
+
+The [services API] configures GitLab's integrations with other
+services, such as pipeline-emails, Kubernetes, JIRA, and Slack
+notifications. It requires a token with Maintainer or owner
+permissions.
+
+
+
+<!-------------------------------------------------------------------->
+[GraphQL]: https://docs.gitlab.com/ce/api/graphql/index.html
+[RFC-7644]: https://tools.ietf.org/html/rfc7644
+[SCIM API]: https://docs.gitlab.com/ce/api/scim.html
+[api]: https://docs.gitlab.com/ce/api/README.html
 [deploy keys]: https://docs.gitlab.com/ce/ssh/README.html#deploy-keys
 [impersonation tokens]: https://docs.gitlab.com/ce/api/README.html#impersonation-tokens
 [personal access tokens]: https://docs.gitlab.com/ce/api/README.html#personal-access-tokens
+[scopes]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#limiting-scopes-of-a-personal-access-token
 [services api]: https://docs.gitlab.com/ce/api/services.html
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
-[scopes]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#limiting-scopes-of-a-personal-access-token
