@@ -96,6 +96,13 @@ download.
     curl -L --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
         https://gitlab.example.com/api/v4/projects
 
+### Libraries and CLI Tools
+
+There are [many API packages on PiPY][pipy-gitlab] for GitLab. The
+best I've found so far is [`python-gitlab`][]
+([GitHub][python-gitlab-github], [readthedocs][python-gitlab-docs]),
+which also provides a CLI tool. It supports V3 and V4 API.
+
 ### API Subgroups
 
 The [services API] configures GitLab's integrations with other
@@ -109,10 +116,14 @@ permissions.
 [GraphQL]: https://docs.gitlab.com/ce/api/graphql/index.html
 [RFC-7644]: https://tools.ietf.org/html/rfc7644
 [SCIM API]: https://docs.gitlab.com/ce/api/scim.html
+[`python-gitlab`]: https://pypi.org/project/python-gitlab/
 [api]: https://docs.gitlab.com/ce/api/README.html
 [deploy keys]: https://docs.gitlab.com/ce/ssh/README.html#deploy-keys
 [impersonation tokens]: https://docs.gitlab.com/ce/api/README.html#impersonation-tokens
 [personal access tokens]: https://docs.gitlab.com/ce/api/README.html#personal-access-tokens
+[pipy-gitlab]: https://pypi.org/search/?q=gitlab&o=&c=Intended+Audience+%3A%3A+Developers
+[python-gitlab-docs]: http://python-gitlab.readthedocs.org/en/stable/
+[python-gitlab-github]: https://github.com/python-gitlab/python-gitlab
 [scopes]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#limiting-scopes-of-a-personal-access-token
 [services api]: https://docs.gitlab.com/ce/api/services.html
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
