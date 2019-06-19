@@ -1,5 +1,45 @@
-Sample [`jq`] Queries
-=====================
+jq - Command-line JSON Processor
+================================
+
+The [manual] is a web version of the manpage.
+
+The jq language is basically filter combinators (even literals are
+filters with constant output) whose inputs and outputs are wired
+together to make the overall filter executed by the command-line tool.
+A filter that produces multiple results on its output will run filter
+to which it's wired multiple times.
+
+The language is rich, including conditionals, comparisons, variables
+(rarely needed), functions, recursion with tail-call optimization,
+math, I/O, and a module system.
+
+[jqplay] offers a web REPL, including a cheat-sheet with examples.
+
+
+Filters
+-------
+
+Basic filters:
+- `.`: identity
+- `.name`: Dictionary index.
+  - For non-identifier keys, use `.["name"]`.
+  - `.name?` for no output instead of error when field not present.
+  - `.abc.def` == `.abc|.def`.
+- `.[0]`: Array index.
+  - `.[-1]` is the last element.
+  - `.[7:10]` slices, giving indices 7-9.
+  - `.[]` gives all elements of the array.
+- `,`: Parallel filters duplicating input; output in order listed.
+  Entire set of filters will be run once for each input object when
+  predecessor produces multiple objects as output: `.[] | .id, .name`
+  will produce alternating lines of _id_ and _name_.
+- `|`: Output of left filter to input of right. E.g., `.[] | .name`.
+  As above, `.a.b` == `.a | . | .b`.
+- `()`: Grouping.
+
+
+Sample Queries
+--------------
 
 In the terminology here, an 'Array' is specifically a JSON array
 object:
@@ -16,8 +56,7 @@ and a 'List' is a sequence of one or more JSON objects not in an array
 deconstruct the former to the latter.
 
 
-Field Selection and Extraction
-------------------------------
+### Field Selection and Extraction
 
 Input JSON (basic structure; many fields removed):
 
@@ -112,4 +151,6 @@ Query:
 
 
 
-[`jq`]: https://stedolan.github.io/jq/manual/
+<!-------------------------------------------------------------------->
+[jqplay]: https://jqplay.org/
+[manual]: https://stedolan.github.io/jq/manual/
