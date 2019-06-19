@@ -98,6 +98,14 @@ download.
     curl -L --header "Private-Token: 9koXpg98eAheJpvBs5tK" \
         https://gitlab.example.com/api/v4/projects
 
+HTTP query parameters can be used to pass additional arguments to API
+calls.
+
+For almost all API calls that produce a list of results the results
+are paginated. The `per_page` parameter specifies the number of
+results per page (default 20, max 100) and `page` specifies which page
+to show (default 1, the first page).
+
 ### Libraries and CLI Tools
 
 There are [many API packages on PiPY][pipy-gitlab] for GitLab. The
