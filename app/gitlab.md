@@ -99,12 +99,17 @@ download.
         https://gitlab.example.com/api/v4/projects
 
 HTTP query parameters can be used to pass additional arguments to API
-calls.
+calls. Calls that use POST/PUT/PATCH support params in the request
+body with with `Content-Type`s `application/x-www-form-urlencoded`,
+`multipart/form-data`, `application/json`.
 
-For almost all API calls that produce a list of results the results
-are paginated. The `per_page` parameter specifies the number of
-results per page (default 20, max 100) and `page` specifies which page
-to show (default 1, the first page).
+API calls that produce a list of results are paginated. The `per_page`
+parameter specifies the number of results per page (default 20, max
+100) and `page` specifies which page to show (default 1, the first
+page).
+
+Various [status codes][api-statuscodes] are returned based on the
+request result.
 
 ### Libraries and CLI Tools
 
@@ -138,3 +143,4 @@ permissions.
 [services api]: https://docs.gitlab.com/ce/api/services.html
 [session-cookie]: https://gist.github.com/gpocentek/bd4c3fbf8a6ce226ebddc4aad6b46c0a
 [sudo]: https://docs.gitlab.com/ce/api/README.html#sudo
+[api-statuscodes]: https://docs.gitlab.com/ee/api/#status-codes
