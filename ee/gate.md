@@ -1,15 +1,17 @@
 Logic Gates
 -----------
 
+The [binary truth table][binop].
+
     0 0 1 1      A
     0 1 0 1  in  B
     -----------------------------------
-    0 0 0 0   ₀  FALSE    0                 A∙/A
+    0 0 0 0   ₀  FALSE    0                 A∙/A, contradiction
     1 1 1 1   ₀  TRUE     1                 A+/A
-    0 0 1 1   ₁  A        A
-    1 1 0 0   ₁  NOTA     /A
-    0 1 0 1   ₁  B        B
-    1 0 1 0   ₁  NOTB     /B
+    0 0 1 1   ₁  A        A                 projection
+    1 1 0 0   ₁  NOTA     /A                negation
+    0 1 0 1   ₁  B        B                 projection
+    1 0 1 0   ₁  NOTB     /B                negation
     0 0 0 1      AND      A∙B
     1 1 1 0      NAND     /(A∙B)
     0 1 1 1      OR       A+B
@@ -47,3 +49,7 @@ Adders
   - Carry input → B2
   - A2∙B2 → C2
   - C1+C2 → Carry Output (short for wired-OR, assuming no backfeed)
+
+
+<!-------------------------------------------------------------------->
+[binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
