@@ -104,6 +104,9 @@ anything sophisticated, but even something as simple as Python's
 `getpass()` can break/block the terminal. `winpty` below can help fix
 this if you don't want to use CMD or PowerShell.
 
+Ctrl-Tab and Shift-Ctrl-Tab will cycle focus between all mintty
+windows, similar to Alt-Tab for all windows.
+
 ### winpty
 
 [winpty] acts as a shim between Windows native console programs and
