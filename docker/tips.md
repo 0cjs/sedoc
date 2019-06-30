@@ -20,7 +20,7 @@ Simpler but less reliable:
     grep -s -q ':/docker/' /proc/1/cgroup
 
 If you are certain you're in a container you can probably get your
-container ID with `basename $(cat /proc/1/cpuset`.
+container ID with `basename $(cat /proc/1/cpuset)`.
 
 ### Start/Detach/Stop/Restart
 
