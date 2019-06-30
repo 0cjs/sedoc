@@ -1,25 +1,25 @@
 Logic Gates
 -----------
 
-    0 1 0 1      A
-    0 0 1 1  in  B
+    0 0 1 1      A
+    0 1 0 1  in  B
     -----------------------------------
-    0 0 0 0   ₀  FALSE    A∙/A
-    1 1 1 1   ₀  TRUE     A+/A
-    0 1 0 1   ₁  A        A
-    1 0 1 0   ₁  NOTA     /A
-    0 0 1 1   ₁  B        B
-    1 1 0 0   ₁  NOTB     /B
+    0 0 0 0   ₀  FALSE    0                 A∙/A
+    1 1 1 1   ₀  TRUE     1                 A+/A
+    0 0 1 1   ₁  A        A
+    1 1 0 0   ₁  NOTA     /A
+    0 1 0 1   ₁  B        B
+    1 0 1 0   ₁  NOTB     /B
     0 0 0 1      AND      A∙B
     1 1 1 0      NAND     /(A∙B)
     0 1 1 1      OR       A+B
     1 0 0 0      NOR      /(A+B), /A∙/B
     0 1 1 0      XOR      A⊕B, A≠B
-    1 0 0 1      XNOR     A=B               IFF, biconditional
-    0 1 0 0               A∙/B
-    0 0 1 0               /A∙B
-    1 1 0 1               A+/B
-    1 0 1 1               /A+B
+    1 0 0 1      XNOR     A=B,              A⇔B, iff, biconditional
+    0 0 1 0               A∙/B
+    0 1 0 0               /A∙B
+    1 0 1 1               A+/B
+    1 1 0 1               /A+B              A⇒B, implication
 
 Adders
 ------
