@@ -93,9 +93,19 @@ of the token and easily cancel it without affecting other tokens used
 by other machines or applications.
 
 
+TortoiseGit
+-----------
 
+[TortoiseGit] provides a Windows File Explorer extension for Git
+commands, a nice stand-alone Git log browser, and copies of PuTTY's
+`pageant.exe` and `puttygen.exe`.
+
+
+
+<!-------------------------------------------------------------------->
 [2FA]: https://help.github.com/articles/about-two-factor-authentication/
 [Git for Windows]: http://gitforwindows.org/
+[TortoiseGit]: https://tortoisegit.org/
 [Win32-OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
 [gh-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
