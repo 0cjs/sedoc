@@ -11,10 +11,59 @@ The major options are:
 * See [ssh.com/ssh/client] for further options.
 
 
-OpenSSH for Windows
--------------------
+Windows OpenSSH Client and Server
+-----------------------------
 
-The port I use is the one included in [Git for Windows]. It's not
+As of Windows 10 1809 (and Server 2019) [Microsoft supplies
+OpenSSH][ms-ssh] client and server. As well as the docs linked below,
+there is a [wiki][ms-ssh-wiki] along with the [source on
+GitHub][ms-ssh-github] on GitHub.
+
+[Install][ms-ssh-inst] from __Settings » Apps » Apps and Features
+» Manage Optional Features__. The binaries will be placed in
+`C:\Windows\System32\OpenSSH\`. Installing the server creates/enables
+a firewall rule named `OpenSSH-Server-In-TCP` allowing inbound traffic
+on port 22.
+
+Startup can be done from an admin PowerShell:
+
+    Get-NetFirewallRule -Name *ssh*     # Confirm firewall rule present.
+    Start-Service sshd
+    Set-Service -Name sshd -StartupType 'Automatic'     # Optional
+
+The server is listed as "OpenSSH SSH Server" in the __Services__ app.
+Logs are available from the Event Viewer under __Applications and
+Services Logs » OpenSSH__. Not sure how to tail this; perhaps [so
+15262196] offers some ideas.
+
+The default shell is `CMD.EXE` and password logins are allowed.
+[Configure][ms-ssh-conf] the default shell with:
+
+    New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH"  -Name DefaultShell \
+        -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" \
+        -PropertyType String -Force
+
+The standard keys, config files etc. are under `%programdata%\ssh\`
+(usually `C:\ProgramData\ssh\`). Suggested Windows-specific
+[configuration options][ms-ssh-conf]:
+
+    AllowUsers  cjs
+    AllowUsers  otheruser
+    #   Alternatively, to just deny admins (PermitRootLogin not applicable)
+    #DenyGroups  Administrators
+
+`.ssh/authorized_keys` in the user's homedir works as usual. The
+default `sshd_config` uses `administrators_authorized_keys` in the
+config dir for admin users.
+
+Running `C:\Program Files\Git\usr\bin\bash.exe -l` will start a Bash
+login session.
+
+
+OpenSSH from Git for Windows
+----------------------------
+
+[Git for Windows](../git/win.md) supplies the OpenSSH suite as well. It's not
 clear if this is the same as other ports, such as the [MLS installer].
 All appear to be based on the [OpenSSH Portable Release][openssh-portable].
 There is also the [PowerShell] fork of on the portable release which
@@ -78,15 +127,21 @@ that [`ssh-keygen`](../app/openssh.md) can't handle.
 
 
 <!-------------------------------------------------------------------->
-
 [Chrome SSH App]: https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo
-[Git for Windows]: git.md
+[ssh.com/ssh/client]: https://www.ssh.com/ssh/client/
+
+[ms-ssh-conf]: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
+[ms-ssh-github]: https://github.com/powershell/win32-openssh/
+[ms-ssh-inst]: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
+[ms-ssh-wiki]: https://github.com/powershell/win32-openssh/wiki
+[ms-ssh]: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview
+[so 15262196]: https://stackoverflow.com/q/15262196/107294
+
 [MLS installer]: http://www.mls-software.com/opensshd.html
 [PSBlog]: https://blogs.msdn.microsoft.com/powershell/2015/10/19/openssh-for-windows-update/
 [PowerShell]: https://github.com/PowerShell/openssh-portable
 [openssh-portable]: https://www.openssh.com/portable.html
 [openssl]: https://it.slashdot.org/story/14/04/30/1822209/openssh-no-longer-has-to-depend-on-openssl
-[ssh.com/ssh/client]: https://www.ssh.com/ssh/client/
 
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty
 [putty-portable]: https://portableapps.com/apps/internet/putty_portable
