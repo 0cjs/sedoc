@@ -92,28 +92,7 @@ On Windows 10 with Git for Windows installed:
 Terminals
 ---------
 
-### mintty
-
-[mintty] \([WP][mintty-wp]) is a Windows terminal emulator designed
-for use with Cygwin, MSYS, MSYS2, and WSL (Windows Subsystem for
-Linux). It provides a POSIX pty interface (based on Cygwin's ptys) to
-the application it's displaying.
-
-It will display text I/O from native Windows programs that don't do
-anything sophisticated, but even something as simple as Python's
-`getpass()` can break/block the terminal. `winpty` below can help fix
-this if you don't want to use CMD or PowerShell.
-
-Ctrl-Tab and Shift-Ctrl-Tab will cycle focus between all mintty
-windows, similar to Alt-Tab for all windows.
-
-### winpty
-
-[winpty] acts as a shim between Windows native console programs and
-Cygwin/MSYS ptys. It starts a hidden Windows console window and polls
-its screen buffer for text that it sends to the pty. It's particuarly
-useful when logged in with SSH, where a Windows console isn't
-available.
+See [Terminals, Terminal Emulators and SSH for Windows](term-ssh.md).
 
 
 Toolsets
@@ -122,8 +101,8 @@ Toolsets
 ### Git for Windows
 
 [Git for Windows](../git/win.md) is a MinGW-based build of Git that
-includes various other utilities (mintty, Bash, `grep`, etc.) as well.
-See the link for detailed documentation.
+includes various other utilities (mintty, winpty, Bash, `grep`, etc.)
+as well.
 
 ### Python for Windows
 
@@ -141,6 +120,7 @@ Tips and Tricks
 
 
 
+<!-------------------------------------------------------------------->
 [Cyg-hi]: https://www.cygwin.com/cygwin-ug-net/highlights.html
 [Cyg-use]: https://www.cygwin.com/cygwin-ug-net/using.html#
 [Cygwin-wp]: https://en.wikipedia.org/wiki/Cygwin
@@ -150,10 +130,7 @@ Tips and Tricks
 [MSYS]: http://www.mingw.org/wiki/MSYS
 [MinGW]: https://en.wikipedia.org/wiki/MinGW
 [Qt]: https://en.wikipedia.org/wiki/Qt_(software)
-[mintty-wp]: https://en.wikipedia.org/wiki/Mintty
-[mintty]: https://mintty.github.io/
 [msys2-diff]: https://github.com/msys2/msys2/wiki/How-does-MSYS2-differ-from-Cygwin
 [py-win-dl]: https://www.python.org/downloads/windows/
 [so-41318586]: https://stackoverflow.com/a/41318586/107294
 [so-771756]: https://stackoverflow.com/q/771756/107294
-[winpty]: https://github.com/rprichard/winpty
