@@ -50,6 +50,38 @@ Adders
   - A2∙B2 → C2
   - C1+C2 → Carry Output (short for wired-OR, assuming no backfeed)
 
+ALUs
+----
+
+The [74181 set][74181],  [74x181][TI SN74LS181] 4-bit ALU and [74x182]
+look-ahead carry generator, are the "standard" bit-slice ALU components.
+Data can be active-low or active-high. Pins are:
+- `A0…A3 B0…B3` data inputs, `Cₙ` ripple carry input
+- `S0…S3` function selection inputs, `M` mode control (high disables carry)
+- `F0…F3` data outputs, `Cₙ₊₄` ripple carry output
+- `P` (propagate), `G` (generate) cascade outputs for carry look-ahead
+- `A=B` equality output (both inputs same; open collector for wired-or)
+
+A simple design using this is the [PISC].
+
+A similar unit made from multiplexors and a quad XOR gate is the [roelh 4
+bit TTL ALU]. The [project log][roelh log 1] gives a lot of details about
+ALU design with gates, links to transistor and relay verions, using fewer
+control lines, and detailed information about how a [fast carry
+circuit][roelh log 2] works. The parts are mounted on 1 sq. in. DIP circuit
+board (with a couple of 100 nF caps):
+- 1× 74HC151 8-input multiplexer SO-16
+- 4× 74HC153 Dual 4-input multiplexer SO-16
+- 2× 74HC86  Quad XOR gate SO-8
+
+
 
 <!-------------------------------------------------------------------->
+[74181]: https://en.wikipedia.org/wiki/74181
+[PISC]: https://www.bradrodriguez.com/papers/piscedu2.htm
+[TI SN74LS181]: http://www.ti.com/lit/gpn/sn54ls181
+[TI SN74LS182]: http://www.ti.com/lit/ds/symlink/sn54s182.pdf
 [binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
+[roelh 4 bit TTL ALU]: https://hackaday.io/project/160506-4-bit-ttl-alu
+[roelh log 1]: https://hackaday.io/project/160506-4-bit-ttl-alu/log/151031-the-multiplexer-is-the-heart-of-the-alu
+[roelh log 2]: https://hackaday.io/project/160506-4-bit-ttl-alu/log/151032-the-fast-carry-circuit
