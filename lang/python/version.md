@@ -6,7 +6,12 @@ latest versions for various releases are listed on the [downloads]
 page. There are two major versions; details about all versions are
 listed in a later section.
 * 3.7.2 (2018-12-24): current
-* 2.7 (2010): [legacy], supported until 2020 (latest 2.7.16 2019-03-04)
+* 2.7 (2010): [legacy], supported until 2020 (latest 2.7.16 2019-03-04).
+
+The [EOL for Python 2.7][27eol] is 2020; there will be no 2.8. Many
+major sofware packages will [drop support for Python 2][27drop] by the
+end of 2020 as well.
+
 
 Version Attributes
 ------------------
@@ -174,6 +179,8 @@ build it:
 
 
 <!-------------------------------------------------------------------->
+[27drop]: https://python3statement.org/
+[27eol]: https://www.python.org/dev/peps/pep-0373/#update
 [API and ABI versioning]: https://docs.python.org/3/c-api/apiabiversion.html#apiabiversion
 [PEP 394]: https://www.python.org/dev/peps/pep-0394
 [RHEL8]: https://developers.redhat.com/blog/2018/11/27/what-no-python-in-rhel-8-beta
