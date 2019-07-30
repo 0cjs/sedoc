@@ -61,22 +61,25 @@ info.
 
 ### OS- and Distribution-shipped Versions
 
-| OS/Distro     | `python`  |`python3`  | Distro Release Date
-|---------------|-----------|-----------|----------------------
+Distro EOL is EOL for maintenance releases; full updates may have
+stopped earlier. EOL dates in the past are in parens.
+
+| OS/Distro     | `python`  |`python3`  | Distro EOL | Distro Release
+|---------------|-----------|-----------|------------|----------------
 | CentOS 8      | varies[3] | ?         |
-| AWS Lambda    | 2.7.?     | 3.6.1     | 2018-05 (last check)
-| Ubuntu 18.04  | 2.7.14+   | 3.6.4+    | 2018-04
-| Debian 9      | 2.7.13    | 3.5.3     | 2017-06
-| Ubuntu 16.04  | 2.7.12    | 3.5.2     | 2016-04
-| Debian 8      | 2.7.9     | 3.4.2     | 2015-05
-| CentOS 7      | 2.7.5 [1] | [2]       | 2014-06
-| Ubuntu 14.04  | 2.7.6     | 3.4.3     | 2014-04
-| Debian 7      | 2.7.3     | 3.2.3     | 2013-05
-| Ubuntu 12.04  | 2.7.3     | 3.2.3     | 2012-04 x
-| CentOS 6      | 2.6.6 [1] | [2]       | 2011-06 x
-| Debian 6      | ?         | ?         | 2011-02 x
-| Ubuntu 10.04  | 2.6.5     | 3.1.2     | 2010-04 x
-| CentOS 5      | 2.4.3     | -         | 2007-04 x
+| AWS Lambda    | 2.7.?     | 3.6.1     |            | 2018-05 (last check)
+| Ubuntu 18.04  | 2.7.14+   | 3.6.4+    | 2028-04    | 2018-04
+| Debian 9      | 2.7.13    | 3.5.3     | 2022       | 2017-06
+| Ubuntu 16.04  | 2.7.12    | 3.5.2     | 2021-04    | 2016-04
+| Debian 8      | 2.7.9     | 3.4.2     | 2020-06    | 2015-05
+| CentOS 7      | 2.7.5 [1] | [2]       | 2024-06    | 2014-06
+| Ubuntu 14.04  | 2.7.6     | 3.4.3     | (2019-04)  | 2014-04
+| Debian 7      | 2.7.3     | 3.2.3     | (2018-05)  | 2013-05
+| Ubuntu 12.04  | 2.7.3     | 3.2.3     | (2017-04)  | 2012-04 x
+| CentOS 6      | 2.6.6 [1] | [2]       | 2020-11    | 2011-06 x
+| Debian 6      | ?         | ?         | (2016-02)  | 2011-02 x
+| Ubuntu 10.04  | 2.6.5     | 3.1.2     |            | 2010-04 x
+| CentOS 5      | 2.4.3     | -         |            | 2007-04 x
 
 Notes:
 
