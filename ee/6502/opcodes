@@ -1,0 +1,58 @@
+6510 Instructions by Addressing Modes
+https://codebase64.org/doku.php?id=base:6510_instructions_by_addressing_modes
+
+
+off- ++++++++++ Positive ++++++++++  ---------- Negative ----------
+set  00      20      40      60      80      a0      c0      e0      mode
+
++00  BRK     JSR     RTI     RTS     NOP*    LDY     CPY     CPX     Impl/immed
++01  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     (indir,x)
++02   t       t       t       t      NOP*t   LDX     NOP*t   NOP*t     ? /immed
++03  SLO*    RLA*    SRE*    RRA*    SAX*    LAX*    DCP*    ISB*    (indir,x)
++04  NOP*    BIT     NOP*    NOP*    STY     LDY     CPY     CPX     Zeropage
++05  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     Zeropage
++06  ASL     ROL     LSR     ROR     STX     LDX     DEC     INC     Zeropage
++07  SLO*    RLA*    SRE*    RRA*    SAX*    LAX*    DCP*    ISB*    Zeropage
+
++08  PHP     PLP     PHA     PLA     DEY     TAY     INY     INX     Implied
++09  ORA     AND     EOR     ADC     NOP*    LDA     CMP     SBC     Immediate
++0a  ASL     ROL     LSR     ROR     TXA     TAX     DEX     NOP     Accu/impl
++0b  ANC**   ANC**   ASR**   ARR**   ANE**   LXA**   SBX**   SBC*    Immediate
++0c  NOP*    BIT     JMP     JMP ()  STY     LDY     CPY     CPX     Absolute
++0d  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     Absolute
++0e  ASL     ROL     LSR     ROR     STX     LDX     DEC     INC     Absolute
++0f  SLO*    RLA*    SRE*    RRA*    SAX*    LAX*    DCP*    ISB*    Absolute
+
++10  BPL     BMI     BVC     BVS     BCC     BCS     BNE     BEQ     Relative
++11  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     (indir),y
++12   t       t       t       t       t       t       t       t         ?
++13  SLO*    RLA*    SRE*    RRA*    SHA**   LAX*    DCP*    ISB*    (indir),y
++14  NOP*    NOP*    NOP*    NOP*    STY     LDY     NOP*    NOP*    Zeropage,x
++15  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     Zeropage,x
++16  ASL     ROL     LSR     ROR     STX  y) LDX  y) DEC     INC     Zeropage,x
++17  SLO*    RLA*    SRE*    RRA*    SAX* y) LAX* y) DCP*    ISB*    Zeropage,x
+
++18  CLC     SEC     CLI     SEI     TYA     CLV     CLD     SED     Implied
++19  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     Absolute,y
++1a  NOP*    NOP*    NOP*    NOP*    TXS     TSX     NOP*    NOP*    Implied
++1b  SLO*    RLA*    SRE*    RRA*    SHS**   LAS**   DCP*    ISB*    Absolute,y
++1c  NOP*    NOP*    NOP*    NOP*    SHY**   LDY     NOP*    NOP*    Absolute,x
++1d  ORA     AND     EOR     ADC     STA     LDA     CMP     SBC     Absolute,x
++1e  ASL     ROL     LSR     ROR     SHX**y) LDX  y) DEC     INC     Absolute,x
++1f  SLO*    RLA*    SRE*    RRA*    SHA**y) LAX* y) DCP*    ISB*    Absolute,x
+
+ROR intruction is available on MC650x microprocessors after
+June, 1976.
+
+Legend:
+    t       Jams the machine
+    *t      Jams very rarely
+    *       Undocumented command
+    **      Unusual operation
+    y)      indexed using Y instead of X
+    ()      indirect instead of absolute
+
+Note that the NOP instructions do have other addressing modes than the
+implied addressing. The NOP instruction is just like any other load
+instruction, except it does not store the result anywhere nor affects
+the flags.
