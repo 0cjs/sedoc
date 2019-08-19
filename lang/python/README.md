@@ -13,6 +13,7 @@ Python Summary/Quickref
 * Language Features
   - [Exceptions and Warnings](exceptions.md)
   - [Iterators and Generators](iter.md)
+  - [Sequences](sequence.md)
   - [Modules, Packages and Importing](import.md)
 * [Standard Libraries](stdlib.md)
   - [Regular Expressions](regexp.md)
