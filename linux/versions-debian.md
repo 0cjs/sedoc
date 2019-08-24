@@ -5,9 +5,9 @@ Debian Releases and Upgrading
 
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
-| 2018-?? | 10    | Buster   |          |           |
+| 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
-| 2017-06 | 9     | Stretch  | 2022     | 4.9       |
+| 2017-06 | 9     | Stretch  | 2022-07  | 4.9, 4.19 |
 | 2016-04 | 16.04 | Xenial   | 2021-04  | 4.4, 4.15 | systemd
 | 2015-05 | 8     | Jessie   | 2020-06  | 3.16      | systemd
 | 2014-04 | 14.04 | Trusty   | 2019-04  | 3.13, 4.4 |
@@ -22,6 +22,19 @@ major) kernel/X11 versions at point releases; see [LTSEnablementStack].
 
 Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
+
+#### Release Notes
+
+* [Debian 10][deb10]:
+  - Uses the Wayland display server instead of XOrg for GNOME (3.3), but
+    XOrg is still installed by default and the display manager allows
+    choosing it for the next session.
+  - AppArmor is also now installed and enabled by default.
+  - `nf_tables` is now available along with the traditional `iptables`;
+    _alteratives_ chooses between them.
+  - Bash is now version 5.
+  - The [/usr merge][usr-merge] of /bin etc. into /usr/bin etc. started.
+  - [Calamares installer][calamares] (for Live only?)
 
 
 Project and Support Sites
@@ -110,5 +123,8 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [Salsa]: https://wiki.debian.org/Salsa
 [`alioth.debian.org`]: https://wiki.debian.org/Alioth/FAQ
 [bug 844611]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844611
+[calamares]: https://calamares.io/about/
+[deb10]: https://www.debian.org/News/2019/20190706
 [debrel]: https://wiki.debian.org/DebianReleases
 [so 314792]: https://unix.stackexchange.com/questions/314792/
+[usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
