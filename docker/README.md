@@ -1,8 +1,9 @@
 Docker
 ======
 
-* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Registries](registries.md) | [Security](security.md) | [Tips](tips.md)
+* [Overview](README.md) | [Install/Config](config.md)
+  | [Image Build](image.md) | [Registries](registries.md)
+  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
 
 Detailed list of pages here:
 * [Overview](README.md)
@@ -10,6 +11,7 @@ Detailed list of pages here:
 * [Image Build](image.md): Docker Image Creation and Maintenance
 * [Registries](registries.md): Docker Registries, Private and Public Images
 * [Security](security.md): Docker Security
+* [Miscellaneous Information](misc.md)
 * [Tips](tips.md): Docker Tips; handy commands and the like
 
 External Documentation:

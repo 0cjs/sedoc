@@ -1,8 +1,9 @@
 Docker Installation and Configuration
 =====================================
 
-* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Registries](registries.md) | [Security](security.md) | [Tips](tips.md)
+* [Overview](README.md) | [Install/Config](config.md)
+  | [Image Build](image.md) | [Registries](registries.md)
+  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
 
 Install Docker
 --------------
