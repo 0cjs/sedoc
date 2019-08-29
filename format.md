@@ -15,6 +15,8 @@ following languages as _class_: Bash, Diff, JSON, Perl, C#, HTML/XML
 (tags must be encoded), Java, Python, C++, HTTP, JavaScript, Ruby, CSS
 Ini, PHP, SQL.
 
+[disqus]: https://help.disqus.com/commenting/what-html-tags-are-allowed-within-comments
+
 
 StackExchange
 -------------
@@ -65,9 +67,29 @@ text.
 - `[chat]`: "{site name} Chat", chat site.
 - `[ask],` `[answer]`: How to Ask, How to Answer.
 
-
-<!-------------------------------------------------------------------->
-[disqus]: https://help.disqus.com/commenting/what-html-tags-are-allowed-within-comments
 [se-html]: https://meta.stackexchange.com/q/1777/142445
 [se-help]: https://retrocomputing.meta.stackexchange.com/editing-help
 [se-comment]: https://retrocomputing.meta.stackexchange.com/editing-help#comment-formatting
+
+
+Telegram
+--------
+
+The formatting you add to messages seems to [vary by client][tg-vary].
+[These tests on an old version][tg-clients] show some of the
+not-too-major differences.
+
+The desktop clients offer [keyboard shortcuts][tg-desktop] to format
+text after selecting it: __Ctrl-B__ for bold, __Ctrl-I__ for italic,
+__Ctrl-Shift-M__ for monospace and __Ctrl-K__ to enter a URL for a
+link.
+
+Markdown-style formatting can be done as `__italic__`, `**bold**` and
+`` `monospace` ``; multi-line code blocks can be delimited with three
+backticks alone on a line at the start and end. URLs will be turned
+into links, but to link text without showing the URL you need to use
+Ctrl-K as above.
+
+[tg-clients]: https://telegra.ph/markdown-07-07
+[tg-desktop]: https://www.techmesto.com/telegram-desktop-now-supports-text-formatting-using-keyboard-shortcuts/
+[tg-vary]: https://www.reddit.com/r/Telegram/comments/5eh3uk/how_do_i_format_text_without_using_bots/daceczy/
