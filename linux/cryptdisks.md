@@ -42,6 +42,8 @@ Use `cryptdisks_start TARGET` and `cryptdisks_stop TARGET` to do bring
 the target on or off-line. You will be prompted for a password if
 necessary.
 
+#### Key Files
+
 In many situations it's reasonably safe to add a key file as an
 additional unlock key to a LUKS filesystem and store that on your
 encrypted main disk (readable root only of course). This means that
@@ -52,6 +54,19 @@ type two passwords at boot.
 Be careful that your key material doesn't accidentally get into your
 initramfs image, e.g., via setting of `KEYFILE_PATTERN` in
 `/etc/cryptsetup-initramfs/conf-hook`.
+
+To set it up, create a new keyfile with random data and then configure
+it as a keyfile for the encrypted partition
+
+    dd if=/dev/urandom of=/etc/crypt.my-thing.key bs=4K count=1
+    chmod 0500 /etc/crypt.my-thing.key
+    cryptsetup luksAddKey /dev/sdx1 /etc/crypt.my-thing.key
+    #       Add to /etc/crypttab:
+    # my-thing UUID=... /etc/crypt.my-thing.key luks
+    #       Add to /etc/fstab (FS UUID, not luks UUID!)
+    # UUID=...  /u ext4  nosuid  0 2
+
+#### Debugging
 
 If `cryptdisks_start` gives you an error along the following lines,
 you've most likely left out or mispelled the `luks` option in the
