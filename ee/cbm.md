@@ -1,6 +1,10 @@
 Commodore Info
 ==============
 
+General documentation:
+
+- [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
+
 
 Commodore (IEC) Serial Bus
 --------------------------
@@ -29,13 +33,21 @@ processing for up to 42 μs.
 
 DIN-6 connector. Pins numbered clockwise from 1 o'clock, then pin 6 in
 middle. Devices must provide their own power. All signals are
-true-low, open-collector w/1KΩ pullups in the C64.
-1. `S̅R̅Q̅I̅N̅`: "Service request"; unused on C64, C128 uses for fast xfer clock.
+true-low, open-collector w/pullups in the C64 as below. (Schematic on
+p.13/PDF 17 of the [service manual][c64service].)
+
+1. `S̅R̅Q̅I̅N̅`: "Service request"; unused on C64, C128 uses for fast xfer clock.  
+   3.3 KΩ  pullup. Also on cassette port. To F̅L̅A̅G̅ (CASS RD) on CIA1.
 2. `GND`
-3. `A̅T̅N̅`: Held low by master when doing transfer setup.
-4. `C̅L̅K̅`: Serial clock in/out.
-5. `D̅A̅T̅A̅`:  Serial data in/out.
-6. `R̅E̅S̅E̅T̅`: Resets peripherals and also older C64s.
+3. `A̅T̅N̅`: Held low by master when doing transfer setup.  
+   1KΩ pullup. Also on user port. Output via CIA2 PA3 and inverting buffer.
+4. `C̅L̅K̅`: Serial clock in/out.  
+   1KΩ pullup. Output from CIA2 PA4 (CLK OUT) via inverting buffer,
+   and input to CIA2 PA6 (CLK).
+5. `D̅A̅T̅A̅`:  Serial data in/out.  
+   1KΩ pullup. Output from CIA2 PA5 (DATA OUT) via inverting buffer
+   and input to CIA2 PA7 (DATA).
+6. `R̅E̅S̅E̅T̅`: Resets peripherals on bus; also computer on older C64s.
 
 ### Protocol Overview
 
@@ -162,6 +174,7 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 <!-------------------------------------------------------------------->
 [Commodore bus]: https://en.wikipedia.org/wiki/Commodore_bus
 [IEC disected]: http://www.zimmers.net/anonftp/pub/cbm/programming/serial-bus.pdf
+[c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 [cb64]: https://codebase64.org/doku.php?id=base:how_the_vic_64_serial_bus_works
 [cbmbus.git]: https://github.com/mist64/cbmbus_doc
 [cbmbus0]: https://www.pagetable.com/?p=1018
