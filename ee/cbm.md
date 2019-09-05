@@ -3,6 +3,7 @@ Commodore Info
 
 General documentation:
 
+- [Commodore 64 Programmer's Reference Guide][c64progref], 1982, CBM.
 - [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
 
 
@@ -174,6 +175,7 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 <!-------------------------------------------------------------------->
 [Commodore bus]: https://en.wikipedia.org/wiki/Commodore_bus
 [IEC disected]: http://www.zimmers.net/anonftp/pub/cbm/programming/serial-bus.pdf
+[c64progref]: https://archive.org/details/c64-programmer-ref
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 [cb64]: https://codebase64.org/doku.php?id=base:how_the_vic_64_serial_bus_works
 [cbmbus.git]: https://github.com/mist64/cbmbus_doc
