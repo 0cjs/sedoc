@@ -1,19 +1,11 @@
-Commodore Info
-==============
-
-General documentation:
-
-- [Commodore 64 Programmer's Reference Guide][c64progref], 1982, CBM.
-- [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
-
-
-Commodore (IEC) Serial Bus
---------------------------
+Commodore Serial (IEC) Bus
+==========================
 
 Used on VIC-20, C64, etc. Reduced-cost version of IEEE-488 interface
 used on PETs.
 
 Docs:
+- [Commodore 64 Programmer's Reference Guide][c64progref], p. 362 et seq.
 - [Commodore bus] on Wikipedia
 - [Commodore Peripheral Bus][cbmbus0] on pagetable.com and [cbmbus.git]. In
   particular, [Part 4][cbmbus4] discusses the physical layer of the serial
