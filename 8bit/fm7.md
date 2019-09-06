@@ -54,22 +54,20 @@ same same physical format as:
   composite output on pin 3 is on the amplifer left audio in/tape
   recorder left audio out.
 
-    color CRT cable, CRT side digital 8pin (I-shape 8pin connector, S1308-SB)
-        +----------+
-        !5  6  7  8!
-        !1  2  3  4!
-        +----------+
+There is a seemingly standard-in-Japan 8-pin rectangular connector for
+RGBI on monitors. Viewed looking at the CRT connector, an I-shaped
+8-pin connector S1308-SB:
 
-    1:open
-    2:red
-    3:green
-    4:blue
-    5:ground
-    6:ground
-    7:horizontal sync
-    8:verticle sync
+    +--------------------------------+
+    ! 5:GND  6:GND  7:HSYNC  8:VSYNC !
+    ! 1:N/C  2:RED  3:GREEN  4:BLUE  !
+    +--------------------------------+
 
-    4-position DIP switch info
+
+DIP Switches
+------------
+
+4-position switch at the right of the computer as viewed from the back.
 
     (1) ROM mode/DISK mode* (FBASIC mode)
     1=ON, 2=ON, 3=OFF, 4=OFF
@@ -83,6 +81,7 @@ same same physical format as:
           MAIN CPU   SUB CPU
     4=ON   1.2Mhz    1.0Mhz (FM-8 compatible mode)
     4=OFF  2.0Mhz    2.0Mhz
+
 
 
 <!-------------------------------------------------------------------->
