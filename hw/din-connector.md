@@ -54,11 +54,32 @@ not the female jack as above.
     4   GND
     5   VCC (+5 V from computer)
 
+##### European-standard Analogue Audio
+
+See [euaudio].
+
+    2   GND
+
+
+Related Notes
+-------------
+
+Japanese 8-bit computers often use DIN-8 for digital RGB and RGBI;
+these almost invariably hook up to a standard 8-pin rectangular
+connector on the monitor. Viewed looking at the CRT connector, an
+I-shaped 8-pin connector S1308-SB:
+
+    +--------------------------------+
+    ! 5:GND  6:GND  7:HSYNC  8:VSYNC !
+    ! 1:N/C  2:RED  3:GREEN  4:BLUE  !
+    +--------------------------------+
+
+
 
 <!-------------------------------------------------------------------->
-[???]: https://www.electronics2000.co.uk/pin-out/dincon.php
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 
 [MIDI]: https://en.wikipedia.org/wiki/MIDI#Electrical_specifications
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
+[euaudio]: https://en.wikipedia.org/wiki/DIN_connector#Analog_audio
