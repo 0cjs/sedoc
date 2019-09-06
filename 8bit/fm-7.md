@@ -8,18 +8,12 @@ descriptions.
 Video Outputs
 -------------
 
-This is copied directly from lgreen's page; he in turn received it
-from a Japanese FM-8 user on the Internet.
+See [DIN Connectors](../hw/din-connector.md) for pin numbering details.
 
-    COLOR CRT (DIN8):
+This is what lgreen received from "a Japanese FM-8 user on the
+Internet."
 
-           x
-        7     6
-           8
-      3         1
-
-        5     4
-           2
+#### Color CRT: 8-pin DIN 270° (horseshoe, not "U")
 
     1: +12V
     2: GND
@@ -30,14 +24,7 @@ from a Japanese FM-8 user on the Internet.
     7: green
     8: blue
 
-    MONOCHROME CRT (DIN5):
-
-           x
-
-      3         1
-
-        5     4
-           2
+#### Monochrome CRT: 5-pin DIN 180°
 
     1: +12V
     2: GND
@@ -45,9 +32,8 @@ from a Japanese FM-8 user on the Internet.
     4: horizontal sync signal
     5: vertical sync signal
 
-The above pin numbering is looking at the female socket on the
-computer. This monochrome output is a 180° 5-pin DIN connector, the
-same same physical format as:
+This monochrome output is a 180° 5-pin DIN connector, the same
+physical format as:
 - MIDI, but MIDI cables cannot be used because they don't use pins 1
   and 3, and the composite output is on 3.
 - [European-standard analog audio][euaudio]: where 2 is ground. The
