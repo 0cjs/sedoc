@@ -36,7 +36,12 @@ ______________________ bit6 _____________________
 078 x4e N    094 x5e ^    110 x6e n    126 x7e ~
 079 x4f O    095 x5f _    111 x6f o    127 x7f DEL
 
+"Safe" characters (unlikely to be interpreted wrongly
+in national variants, etc.) are all chars from rows
+2 and 3 (x20-x3f) excluding '#' and '$'.
+
 Also see:
   https://en.wikipedia.org/wiki/ASCII#Character_set
   https://www.kreativekorp.com/charset/encoding/
-
+  http://jkorpela.fi/chars/
+  https://czyborra.com/charsets/iso8859.html
