@@ -125,8 +125,8 @@ be a pull-up (but not sure).
     1   +12 V (for TV adapter)
     2   GND
     3   2 MHz video clock (for light pen interface)
-    4   horizontal sync signal
-    5   vertical sync signal
+    4   horizontal sync signal (TTL or video level?)
+    5   vertical sync signal (TTL or video level?)
     6   red
     7   green
     8   blue
