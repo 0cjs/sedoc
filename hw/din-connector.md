@@ -30,6 +30,12 @@ Five-pin and eight-pin, looking into female jack:
         5     4           5     4
            2                 2
 
+#### cjs's DIN-8 Breakout
+
+    1-Orange  2-Black   3-Yellow  # [V+/audio], GND, [clock]
+    4-White   5-Grey              # hsync/vsync (usu. grey/black); MIC/EAR
+    6-Red     7-Green   8-Blue    # TTL RGB; 6/7 cassette relay
+
 
 Common Pinouts
 --------------
