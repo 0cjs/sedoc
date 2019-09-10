@@ -54,9 +54,10 @@ Error messages are explained in §3.5.12.
 
 #### Output Formats
 
-- `-i`: [Intel HEX] §3.8 `.i` file. Use `-i1` for legacy type 1 start record.
-- `-s`: [Motorola S-record][srec] §3.10 `.s` file.
-- `-t`: Tandy CoCo Disk BASIC binary §3.13 `.bi` file.
+Uses only the last one of these specified:
+- `-i`: [Intel HEX] §3.8 `.ihx` file. Use `-i1` for legacy type 1 start record.
+- `-s`: [Motorola S-record][srec] §3.10 `.s19` file.
+- `-t`: Tandy CoCo Disk BASIC binary §3.13 `.bin` file.
 
 [Intel HEX]: https://en.wikipedia.org/wiki/Intel_HEX
 [srec]: https://en.wikipedia.org/wiki/SREC_(file_format)
