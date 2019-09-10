@@ -25,10 +25,14 @@ Flags
 Tips and Tricks
 ---------------
 
+- `BRK` [increments PC by 2][brk-pc2] before pushing it; follow with a
+  filler byte unless your assembler does this automatically. Or consider an
+  `INT n` macro that inserts _n_ after `BRK` as a param to the IRQ routine.
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`.
   Same size as `JMP` but 2+2 cycles instead of 3.
 
 
 
 <!-------------------------------------------------------------------->
+[brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
