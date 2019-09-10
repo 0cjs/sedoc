@@ -22,6 +22,13 @@ Flags
 - [Status flags: Nesdev wiki][nesdev-flags]
 
 
+Tips and Tricks
+---------------
+
+- Unconditional relative branch (relocatable): `CLC`, `BCC addr`.
+  Same size as `JMP` but 2+2 cycles instead of 3.
+
+
 
 <!-------------------------------------------------------------------->
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
