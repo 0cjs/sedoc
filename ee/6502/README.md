@@ -21,7 +21,7 @@ to `P`. However, many sources call these the "flags."
     0  C    carry       SEC/CLC; ADC, SBC, CMP, ASL/LSR/ROL/ROR
 
 - [Status flags: Nesdev wiki][nesdev-flags]
-- The [WDC W65C02S datasheet][wdc65c02] (2018-10) indicates in the
+- The [WDC W65C02S datasheet][ds2018] (2018-10) indicates in the
   register diagram on p.8 that bit 5 is always `1`; it gives bit 4 as
   "1 = BRK, 0 = IRQB." In the opcode table 6-4 it indicates that both
   bits 5 and 4 are `1`.
@@ -38,7 +38,7 @@ Execution Cycles
 
 The following sources give cycle-by-cycle breakdowns of the execution
 of individual 6502 opcodes and their operands.
-- [MCS 6500 Hardware Family Hardware Manual][6500hm], MOS Technology,
+- [MCS 6500 Hardware Family Hardware Manual][hm1976], MOS Technology,
   Inc., 1976-01. Appendix A, "Summary of Single Cycle Execution."
   There is also considerable other timing information here, including
   expected oscilloscope waveforms.
@@ -46,6 +46,8 @@ of individual 6502 opcodes and their operands.
 
 Tips and Tricks
 ---------------
+
+#### Software
 
 - `BRK` [increments PC by 2][brk-pc2] before pushing it; follow with a
   filler byte unless your assembler does this automatically. Or
@@ -57,15 +59,19 @@ Tips and Tricks
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
   size as `JMP` but 2+2 cycles instead of 3.
 
+#### Hardware
+
+- See [MCS6500 Family Hardware Manual][hm1976] pp. 123-132 (Chapter 3)
+  for suggestions on bring-up testing, including static testing,
+  single cycle and instruction execution, bus data latching,
+  hardware-induced loops via RESET and scope sync for them, etc.
 
 
 <!-------------------------------------------------------------------->
-[6500hm]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
 [ds1976]: http://archive.6502.org/datasheets/mos_6500_mpu_preliminary_may_1976.pdf
 [ds1980]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
 [ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
-[wdc65c02]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
