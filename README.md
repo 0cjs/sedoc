@@ -1,8 +1,8 @@
 sedoc - Systems Engineering Notes
 =================================
 
-These are personal notes I find handy when I'm doing systems
-administration, network engineering, and the like.
+These are personal notes I find handy when I'm doing programming,
+systems administration, network engineering, and the like.
 
-Currently most of my notes reside in private repos; I'm slowly copying
-things to here as I use and update them.
+All material here is available [under the MIT license](LICENSE);
+feel free to do with it what you wish.
