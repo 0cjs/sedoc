@@ -22,6 +22,18 @@ Flags
 - [Status flags: Nesdev wiki][nesdev-flags]
 
 
+Execution Cycles
+----------------
+
+The following sources give cycle-by-cycle breakdowns of the execution
+of individual 6502 opcodes and their operands.
+- [MCS 6500 Hardware Family Hardware Manual][6500hm], MOS Technology,
+  Inc., 1976-01. Appendix A, "Summary of Single Cycle Execution."
+  There is also considerable other timing information here, including
+  expected oscilloscope waveforms.
+
+
+
 Tips and Tricks
 ---------------
 
@@ -34,5 +46,6 @@ Tips and Tricks
 
 
 <!-------------------------------------------------------------------->
+[6500hm]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
