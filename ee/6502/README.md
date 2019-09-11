@@ -5,21 +5,32 @@ MOS Technology 6502
 - [OUPRG Programmer's card](progcard)
 
 
-Flags
------
+Program Status Register (P, Flags)
+----------------------------------
 
-[Flags][6502flags], bits 7 to 0:
+This is officially called the "program status register," abbreviated
+to `P`. However, many sources call these the "flags."
 
     7  N    negative    BIT, most instrs with a result
     6  V    overflow    CLV; ADC, SBC, BIT
-    5  -                0 on push, ignored on pull
-    4  -    how stacked 0=I̅R̅Q̅,N̅M̅I̅ 1=PHP,BRK; ignored on PLP/RTI
+    5  1                0 on push, ignored on pull
+    4  1    how stacked on stack only; 0=I̅R̅Q̅,N̅M̅I̅ 1=PHP,BRK; ignored on PLP/RTI
     3  D    decimal     SED/CLD; no effect on some clones
     2  I    I̅R̅Q̅ mask    SEI/CLI; I̅R̅Q̅, RTI
     1  Z    zero        most instrs with a result
     0  C    carry       SEC/CLC; ADC, SBC, CMP, ASL/LSR/ROL/ROR
 
 - [Status flags: Nesdev wiki][nesdev-flags]
+- The [WDC W65C02S datasheet][wdc65c02] (2018-10) indicates in the
+  register diagram on p.8 that bit 5 is always `1`; it gives bit 4 as
+  "1 = BRK, 0 = IRQB." In the opcode table 6-4 it indicates that both
+  bits 5 and 4 are `1`.
+- [Wilson Mines][wmint2.2] indicates that bit 4 is always set in the
+  PSR.
+- The `BRK` instruction does appear to set `I` (the IRQ mask). This is
+  is indicated in the [1976 preliminary data sheet][ds1976] and the
+  [2018 WDC 65C02S data sheet][ds2018], though not the [1980 data
+  sheet][ds1980].
 
 
 Execution Cycles
@@ -33,19 +44,28 @@ of individual 6502 opcodes and their operands.
   expected oscilloscope waveforms.
 
 
-
 Tips and Tricks
 ---------------
 
 - `BRK` [increments PC by 2][brk-pc2] before pushing it; follow with a
-  filler byte unless your assembler does this automatically. Or consider an
-  `INT n` macro that inserts _n_ after `BRK` as a param to the IRQ routine.
-- Unconditional relative branch (relocatable): `CLC`, `BCC addr`.
-  Same size as `JMP` but 2+2 cycles instead of 3.
+  filler byte unless your assembler does this automatically. Or
+  consider an `INT n` macro that inserts _n_ after `BRK` as a param to
+  the IRQ routine. [Wilson Mines][wmint2.2] has a good discussion of
+  how to write interrupt routines to use the second byte.
+- Stack-relative addressing can be done with `TSX`, `LDA 1aa,X`.
+  Described in [Wilson Mines][wmint2.2].
+- Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
+  size as `JMP` but 2+2 cycles instead of 3.
 
 
 
 <!-------------------------------------------------------------------->
 [6500hm]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
+[ds1976]: http://archive.6502.org/datasheets/mos_6500_mpu_preliminary_may_1976.pdf
+[ds1980]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
+[ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
+[hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
+[wdc65c02]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
+[wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
