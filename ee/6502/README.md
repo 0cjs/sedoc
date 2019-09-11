@@ -53,11 +53,24 @@ Tips and Tricks
   filler byte unless your assembler does this automatically. Or
   consider an `INT n` macro that inserts _n_ after `BRK` as a param to
   the IRQ routine. [Wilson Mines][wmint2.2] has a good discussion of
-  how to write interrupt routines to use the second byte.
+  how to write interrupt routines to use the second byte, and the
+  Apple II BIOS IRQ routine at `$FA86` ([Apple II Reference
+  Manual][a2ref] p. 81) demonstrates how to do a `BRK` vs. IRQ check.
 - Stack-relative addressing can be done with `TSX`, `LDA 1aa,X`.
   Described in [Wilson Mines][wmint2.2].
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
   size as `JMP` but 2+2 cycles instead of 3.
+- An indirect `JMP` sometimes is more efficiently done by pushing the
+  address on the stack and executing `RTS`, as explained in [Woz's
+  Sweet 16 article][sw16] (`SW16D` symbol in [listing][sw16asm]).
+
+
+Code
+----
+
+- The [Apple II Reference Manual][a2ref], as well as containing the
+  BIOS listing, also contains listings for floating point routines
+  and the miniassembler.
 
 #### Hardware
 
@@ -68,10 +81,13 @@ Tips and Tricks
 
 
 <!-------------------------------------------------------------------->
+[a2ref]: https://archive.org/details/bitsavers_appleapple_10059029/
 [brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
 [ds1976]: http://archive.6502.org/datasheets/mos_6500_mpu_preliminary_may_1976.pdf
 [ds1980]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
 [ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
+[sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
+[sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
