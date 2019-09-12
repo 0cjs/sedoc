@@ -4,6 +4,16 @@ MOS Technology 6502
 - [Opcodes by addressing mode](opcodes)
 - [OUPRG Programmer's card](progcard)
 
+#### References
+
+6502:
+- \[hm1976] [MCS6500 Family Hardware Manual][hm1976]. MOS, 1976-01.
+- \[pm1976] [MCS6500 Microcomputer Family Programming Manual][pm1976].
+  MOS, 1976.
+
+Systems:
+- \[a2ref] [Apple II Reference Manual][a2ref]. Apple, 1978-01.
+
 
 Program Status Register (P, Flags)
 ----------------------------------
@@ -24,15 +34,16 @@ to `P`. However, many sources call these the "flags."
 - The [WDC W65C02S datasheet][ds2018] (2018-10) indicates in the
   register diagram on p.8 that bit 5 is always `1`; it gives bit 4 as
   "1 = BRK, 0 = IRQB." In the opcode table 6-4 it indicates that both
-  bits 5 and 4 are `1`.
+  bits 5 and 4 are `1`. However, [pm1976] §3.5 p.27 says it's "likely"
+  `1` but not guaranteed.
 - [Wilson Mines][wmint2.2] indicates that bit 4 is always set in the
   PSR.
 - The `BRK` instruction does appear to set `I` (the IRQ mask). This is
   is indicated in the [1976 preliminary data sheet][ds1976] and the
   [2018 WDC 65C02S data sheet][ds2018], though not the [1980 data
   sheet][ds1980].
-- The [MCS6500 Microcomputer Family Programming Manual][pm1976] gives
-  exact details of flag set/reset behaviour for all instructions.
+- [pm1976] gives exact details of flag set/reset behaviour for all
+  instructions.
 
 
 Execution Cycles
@@ -40,10 +51,9 @@ Execution Cycles
 
 The following sources give cycle-by-cycle breakdowns of the execution
 of individual 6502 opcodes and their operands.
-- [MCS 6500 Hardware Family Hardware Manual][hm1976], MOS Technology,
-  Inc., 1976-01. Appendix A, "Summary of Single Cycle Execution."
-  There is also considerable other timing information here, including
-  expected oscilloscope waveforms.
+- [hm1976] Appendix A, "Summary of Single Cycle Execution." There is
+  also considerable other timing information here, including expected
+  oscilloscope waveforms.
 
 
 Tips and Tricks
@@ -51,15 +61,14 @@ Tips and Tricks
 
 #### Software
 
+- Clear C before `ADC`, set C before `SBC`.
 - `BRK` [increments PC by 2][brk-pc2] before pushing it; follow with a
   filler byte unless your assembler does this automatically. Or
   consider an `INT n` macro that inserts _n_ after `BRK` as a param to
   the IRQ routine. [Wilson Mines][wmint2.2] has a good discussion of
   how to write interrupt routines to use the second byte, and both the
-  Apple II BIOS IRQ routine at `$FA86` ([Apple II Reference
-  Manual][a2ref] p. 81) and the [MCS6500 Microcomputer Family
-  Programming Manual][pm1976] (p.144) demonstrate how to do a `BRK`
-  vs. IRQ check.
+  Apple II BIOS IRQ routine at `$FA86` ([a2ref] p.81) and [pm1976]
+  p.144 demonstrate how to do a `BRK` vs. IRQ check.
 - Stack-relative addressing can be done with `TSX`, `LDA 1aa,X`.
   Described in [Wilson Mines][wmint2.2].
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
@@ -72,16 +81,15 @@ Tips and Tricks
 Code
 ----
 
-- The [Apple II Reference Manual][a2ref], as well as containing the
-  BIOS listing, also contains listings for floating point routines
-  and the miniassembler.
+- [a2ref], as well as containing the BIOS listing, also contains
+  listings for floating point routines and the miniassembler.
 
 #### Hardware
 
-- See [MCS6500 Family Hardware Manual][hm1976] pp. 123-132 (Chapter 3)
-  for suggestions on bring-up testing, including static testing,
-  single cycle and instruction execution, bus data latching,
-  hardware-induced loops via RESET and scope sync for them, etc.
+- See [hm1976] pp. 123-132 (Chapter 3) for suggestions on bring-up
+  testing, including static testing, single cycle and instruction
+  execution, bus data latching, hardware-induced loops via RESET and
+  scope sync for them, etc.
 
 
 <!-------------------------------------------------------------------->
