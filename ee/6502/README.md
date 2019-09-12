@@ -31,6 +31,8 @@ to `P`. However, many sources call these the "flags."
   is indicated in the [1976 preliminary data sheet][ds1976] and the
   [2018 WDC 65C02S data sheet][ds2018], though not the [1980 data
   sheet][ds1980].
+- The [MCS6500 Microcomputer Family Programming Manual][pm1976] gives
+  exact details of flag set/reset behaviour for all instructions.
 
 
 Execution Cycles
@@ -53,9 +55,11 @@ Tips and Tricks
   filler byte unless your assembler does this automatically. Or
   consider an `INT n` macro that inserts _n_ after `BRK` as a param to
   the IRQ routine. [Wilson Mines][wmint2.2] has a good discussion of
-  how to write interrupt routines to use the second byte, and the
+  how to write interrupt routines to use the second byte, and both the
   Apple II BIOS IRQ routine at `$FA86` ([Apple II Reference
-  Manual][a2ref] p. 81) demonstrates how to do a `BRK` vs. IRQ check.
+  Manual][a2ref] p. 81) and the [MCS6500 Microcomputer Family
+  Programming Manual][pm1976] (p.144) demonstrate how to do a `BRK`
+  vs. IRQ check.
 - Stack-relative addressing can be done with `TSX`, `LDA 1aa,X`.
   Described in [Wilson Mines][wmint2.2].
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
@@ -88,6 +92,7 @@ Code
 [ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
+[pm1976]: https://archive.org/details/6500-50a_mcs6500pgmmanjan76
 [sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
 [sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
