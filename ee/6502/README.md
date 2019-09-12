@@ -1,6 +1,7 @@
 MOS Technology 6502
 ===================
 
+Contents:
 - [Opcodes by addressing mode](opcodes)
 - [OUPRG Programmer's card](progcard)
 
@@ -10,6 +11,9 @@ MOS Technology 6502
 - \[hm1976] [MCS6500 Family Hardware Manual][hm1976]. MOS, 1976-01.
 - \[pm1976] [MCS6500 Microcomputer Family Programming Manual][pm1976].
   MOS, 1976.
+- \[oxyron] [6502/6510/8500/8502 Opcode matrix][oxyron], oxyron.de.
+  Good reference, includes inst. oper. details and flag effects.
+
 
 Systems:
 - \[a2ref] [Apple II Reference Manual][a2ref]. Apple, 1978-01.
@@ -22,13 +26,36 @@ This is officially called the "program status register," abbreviated
 to `P`. However, many sources call these the "flags."
 
     7  N    negative    BIT, most instrs with a result
-    6  V    overflow    CLV; ADC, SBC, BIT
-    5  1                0 on push, ignored on pull
-    4  1    how stacked on stack only; 0=I̅R̅Q̅,N̅M̅I̅ 1=PHP,BRK; ignored on PLP/RTI
-    3  D    decimal     SED/CLD; no effect on some clones
+    6  V    overflow    BIT bit 6 test, same as C for signed arith.
+    5  1                usu. reads as 1; 0 on push, ignored on pull
+    4  1    how stacked as 5, but stacked as 0=I̅R̅Q̅,N̅M̅I̅ 1=PHP,BRK
+    3  D    decimal     decimal mode for ADC/SBC; no effect on some clones
     2  I    I̅R̅Q̅ mask    SEI/CLI; I̅R̅Q̅, RTI
     1  Z    zero        most instrs with a result
     0  C    carry       SEC/CLC; ADC, SBC, CMP, ASL/LSR/ROL/ROR
+
+The following instructions affect specific flags ([pm1976] pp.24).
+Additionally, `RTI` and `PLP` always set all flags.
+
+    C   SEC CLC
+        ADC SBC                                         ASL LSR ROL ROR
+        BIT CMP CPX CPY
+
+    Z           LDA LDX LDY TAX TXA TAY TYA         PLA
+        ADC SBC INC DEC INX DEX INY DEY     AND ORA EOR ASL LSR ROL ROR
+        BIT CMP CPX CPY
+
+    N           LDA LDX LDY TAX TXA TAY TYA     TSX PLA
+        ADC SBC INC DEC INX DEX INY DEY     AND ORA EOR ASL LSR ROL ROR
+        BIT CMP CPX CPY
+
+    V       CLV
+        ADC SBC
+        BIT
+
+    D   SED CLD
+    I   SEI CLI BRK
+    (4) BRK
 
 - [Status flags: Nesdev wiki][nesdev-flags]
 - The [WDC W65C02S datasheet][ds2018] (2018-10) indicates in the
@@ -43,7 +70,7 @@ to `P`. However, many sources call these the "flags."
   [2018 WDC 65C02S data sheet][ds2018], though not the [1980 data
   sheet][ds1980].
 - [pm1976] gives exact details of flag set/reset behaviour for all
-  instructions.
+  instructions. It sometimes forgets that ROR affects flags.
 
 
 Execution Cycles
@@ -59,16 +86,23 @@ of individual 6502 opcodes and their operands.
 Tips and Tricks
 ---------------
 
+#### Instruction Set Notes
+
+- ROL/ROR always rotate through carry.
+- SP always points to free byte below head of stack.
+- `BRK` [increments PC by 2][brk-pc2] before pushing it; append filler
+  byte if continuing after unless assembler does this automatically.
+  Sets I flag, only CMOS versions also clear D flag.
+
 #### Software
 
 - Clear C before `ADC`, set C before `SBC`.
-- `BRK` [increments PC by 2][brk-pc2] before pushing it; follow with a
-  filler byte unless your assembler does this automatically. Or
-  consider an `INT n` macro that inserts _n_ after `BRK` as a param to
-  the IRQ routine. [Wilson Mines][wmint2.2] has a good discussion of
-  how to write interrupt routines to use the second byte, and both the
-  Apple II BIOS IRQ routine at `$FA86` ([a2ref] p.81) and [pm1976]
-  p.144 demonstrate how to do a `BRK` vs. IRQ check.
+- To handle `BRK` PC+2 issue, consider an `INT n` macro that inserts
+  _n_ after `BRK` as a param to the IRQ routine. [Wilson
+  Mines][wmint2.2] has a good discussion of how to write interrupt
+  routines to use the second byte, and both the Apple II BIOS IRQ
+  routine at `$FA86` ([a2ref] p.81) and [pm1976] p.144 demonstrate how
+  to do a `BRK` vs. IRQ check.
 - Stack-relative addressing can be done with `TSX`, `LDA 1aa,X`.
   Described in [Wilson Mines][wmint2.2].
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
@@ -100,6 +134,7 @@ Code
 [ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
+[oxyron]: http://www.oxyron.de/html/opcodes02.html
 [pm1976]: https://archive.org/details/6500-50a_mcs6500pgmmanjan76
 [sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
 [sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
