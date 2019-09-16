@@ -1,11 +1,11 @@
 Apple II Logo
 =============
 
-Logo II is a later version, requiring a 128K Enhanced IIe or IIc (65C02).
+This documents Apple Logo II, a fairly late version ('84 or so?) requiring
+a 128K Enhanced IIe or IIc (65C02).
 
 References:
 - \[logo2ref] [Apple Logo II Reference Manual][logo2ref], Apple, 1984.
-- \[AppleWin] [Apple II Emulator for Windows][AppleWin]
 - \[cs61a] [CS 61A Programming project #4:  A Logo Interpreter][cs61a] has
   much useful information on implementing a Logo interpreter that explains
   a lot about the language.
@@ -13,6 +13,27 @@ References:
   books, etc.
 - \[csls2] [_Computer Science Logo Style:_ Volume 2: _Advanced
   Techniques_][csls2]. Shows why Logo is _way_ more powerful than BASIC.
+
+Source, Emulators and Disks Images:
+- \[a2mit80] [`logo.958` from ITS files][a2mit80] seems to be the earliest
+  version I can find. "Preliminary version," "assembled 8/06/80."
+- \[a2mit81] [`logo.299` from ITS files][a2mit81] is a slightly later
+  version, possibly "1.0", "assembled 7/9/81." Adds "music" stuff.
+- \[itsvault] [Source and Documentation from ITS][itsvault]. Many files,
+  including both above, and some documentation.
+- The `LOGO.dsk` image in [pnebauer/ptp2bin][ptp2bin] appears to have been
+  built from [a2mit80] above ("preliminary version," "assembled 8/06/80"),
+  though the link in the README points to the newer [a2mit81] source code.
+- The MIT version of the two from [106 MIT Terrapin Logo][106disk] appears
+  to be newer than [a2mit80] but earlier than [a2mit81], ("prototype
+  version 2," "assembled 8 February 1981").
+- [MIT LOGO for the Apple II (1981)][a2disk81], reassembled by Lars
+  Brinkhoff from [a2mit81] above. The other "1.0" versions on archive.org
+  appear to be the same version as this.
+- [Apple Logo 1.5][1.5disk]. Newer than 1.0 versions above, but still not
+  "Logo II." Has `NODES` procedure; 1627 free.
+- [Apple Logo II][a2logo2disk]: 1984 128K ProDOS version.
+- \[AppleWin] [Apple II Emulator for Windows][AppleWin]
 
 
 Input, Keystrokes, Editing
@@ -389,8 +410,16 @@ appearing to be 32-bit as well.
 
 
 <!-------------------------------------------------------------------->
-[AppleWin]: https://github.com/AppleWin/AppleWin
 [clls2]: https://people.eecs.berkeley.edu/~bh/v2-toc2.html
 [cs61a]: https://inst.eecs.berkeley.edu/~cs61a/reader/nodate-logo.txt
 [logo2ref]: https://archive.org/details/Apple_Logo_II_Reference_Manual_HiRes
 [ucblogo]: http://people.eecs.berkeley.edu/~bh/logo.html
+
+[1.5disk]: https://archive.org/details/Apple_Logo_1.5
+[106disk]: https://archive.org/details/106_MIT_Terrapin_Logo
+[AppleWin]: https://github.com/AppleWin/AppleWin
+[a2disk81]: https://archive.org/details/MIT_LOGO_for_the_Apple_II_1981
+[a2logo2disk]: https://archive.org/details/Apple_Logo_II
+[a2mit80]: https://github.com/PDP-10/its-vault/blob/master/files/aplogo/logo.958
+[a2mit81]: https://github.com/PDP-10/its-vault/blob/master/files/aplogo/logo.299
+[ptp2bin]: https://github.com/pneubauer/ptp2bin/
