@@ -37,6 +37,34 @@ General documentation:
 - [Commodore 64 Programmer's Reference Guide][c64progref], 1982, CBM.
 - [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
 
+#### ROMs
+
+The C64 has three ROMs, and the disk drives have their own as well.
+VICE and MAME use different names for these:
+
+     SIZE   VICE        MAME                Notes
+     8192   basic       901226-01.u3
+     8192   kernal      901227-03.u4
+     4096   chargen     901225-01.u5
+      245               906114-01.u17       PLA
+    16384   dos1541
+     8192               325302-01.uab4      dos1541 lower half
+     8192               901229-06 aa.uab5   dos1541 upper half MAME default
+     8192               901229-02.uab5      dos1541 upper half (older?)
+
+The 1541 ROM `901229-06 aa.uab5` file that MAME loads by default does
+not match the top half of the VICE `dos1541` ROM image I have but an
+alternate top-half image `901229-02.uab5` does. Probably not
+important.
+
+For VICE, install images in the `C64/` and `DRIVES/` directories under
+`/usr/lib/vice/` or `~/.vice/`.
+
+For MAME, install in the `c64/` and `c1541/` subdirectories of a ROM
+directory. Check the output of `mame c64 -showconfig` for paths or use
+the `-rompath` option. You can verify the ROMs are all present and
+correct with `-verifyroms`.
+
 
 
 <!-------------------------------------------------------------------->
