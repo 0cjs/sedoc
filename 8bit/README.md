@@ -37,6 +37,8 @@ Timeline
     1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 * Sharp MZ-80K ships
     1979-09 * NEC PC-8001 (Z80) ships
+    1981-05 * Fujitsu FM-8 released
+    1982-11 * Fujitsu FM-7 released
 
 
 
