@@ -21,6 +21,31 @@ Commands:
     from start (for chain loading), even if a binary module is loaded.
 
 
+Copying ROM to RAM
+------------------
+
+As mentioned in [CBM Address Decoding][ad-c64-mmap], when you write to
+mapped ROM it will actually write to the RAM underneath. You can thus
+copy the KERNAL ROM to RAM, map in that RAM, and the system will
+continue to work. This can be used to patch the KERNAL. Try:
+
+    10 REM This will take some time to run.
+    20 FOR I = 57344 to 65535 : REM $E000-$FFFF
+    30 X = PEEK(I)
+    40 POKE I,X
+    50 NEXT
+
+    PRINT PEEK(1)       # Returns 55, $37
+    POKE 1,53           # $35, i.e., assert H̅I̅R̅A̅M̅, unmapping KERNAL and BASIC
+
+Without running the program, the system will lock up due to having no
+KERNAL. If you run it, it will clear the screen and return to the
+`READY.` prompt with your program intact, having used KERNAL code in
+RAM. (The BASIC ROM, though mapped out by this, is apparently mapped
+back in automatically by code outside of that ROM.)
+
+
 
 <!-------------------------------------------------------------------->
+[ad-c64-mmap]: address-decoding.md#c64-memory-map
 [c64w-load]: https://www.c64-wiki.com/wiki/LOAD

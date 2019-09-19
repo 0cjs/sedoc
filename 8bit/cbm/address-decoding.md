@@ -13,7 +13,7 @@ Onboard memory devices are 64K RAM, 512 bytes color RAM (cRAM), 8K
 KERNAL ROM and 8K BASIC ROM. The cartridge may additionally supply two
 8K ROM banks, LOW and HIGH.
 
-### Memory map
+### C64 Memory map
 
 Devices have two sources: internal (RAM, IntROM, I/O + color RAM) or
 external (CartROM, unmapped). When a range is unmapped internally, the
@@ -22,6 +22,10 @@ requests in that range. Thus, CartROM low and high mappings are the
 same thing as unmapped, except that the R̅O̅M̅L̅ and R̅O̅M̅H̅ signals are
 asserted. So the cartridge can respond to any address except in 4K @
 `$0000` (RAM) and 4K @ `$D000` (RAM/CHAROM/IO+cRAM).
+
+Writes to internal ROM areas always pass through to RAM, even if the
+ROM is mapped, so this can be used to, e.g., copy ROM to RAM by simply
+reading a location and writing it back.
 
     Address Size    RAM  IntROM  internal  Cartridge
     ----------------------------------------------
