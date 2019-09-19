@@ -125,6 +125,13 @@ bank it out with L̅O̅R̅A̅M̅, and H̅I̅R̅A̅M̅ only still doesn't bank ou
     0 0 0 0 .    _  _  _  _  _  _  _
     0 0 0 0 0    _  _  _  _  _  _  _
 
+### Hints on Using Memory (Tricks)
+
+Things can get difficult if the $Dxxx area is switched out, since that
+has all IO. But if memory gets tight, you can [put your character and
+sprite info there][rc 5715] if it doesn't change often, since the VIC
+will still have that RAM mapped even when the CPU does not.
+
 
 MAX Machine
 -----------
@@ -229,3 +236,5 @@ MMU Configuration Register:
 [64w-maxmap]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine#Memory_map
 [6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
 [c64servman]: https://archive.org/details/C64-C64C_Service_Manual_1992-03_Commodore
+[map128]: https://archive.org/details/Compute_s_Mapping_the_Commodore_128
+[rc 5715]: https://retrocomputing.stackexchange.com/a/5715/7208
