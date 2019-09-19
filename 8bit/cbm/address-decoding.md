@@ -41,7 +41,7 @@ asserted. So the cartridge can respond to any address except in 4K @
     $DE00 - $DEFF   256   I/O 1 (cartridge)
     $DD00 - $DD0F    16   CIA 2
     $DC00 - $DC0F    16   CIA 1
-    $D800 - $DBFF  1024   Color RAM
+    $D800 - $DBFF  1024   Color RAM (cRAM)
     $D400 - $D7FF  1024   SID
     $D000 - $D02E    47   VIC
 
@@ -160,6 +160,64 @@ I/O map:
     $d000-$d3ff     VIC
     $0001           [6510] input/output register
     $0000           [6510] data direction register
+
+
+Commodore 128
+-------------
+
+Uses an 8502; has but 7-bit IO at $00 (DRR) and $01 (DR).
+MMU can remap zero-page and stack page to anywhere in memory.
+
+The C128 has "128 mode," "64 mode," and "CP/M" mode. This discusses
+only 128 mode. Reset clears $02-$FF; hold down RUN/STOP during reset
+to avoid running RAMTAS routine that clears this and instead drop to
+the monitor.
+
+See also:
+- Ottis R. Cowper, [_Mapping the Commodore 128_][map128]. COMPUTE!, 1986.
+
+The memory management unit and PAL map:
+- KERNAL ROM, character ROM and IO+color RAM (2×1K banks) in the same
+  positions as the C64.
+- BASIC ROM 28k@`$4000`, machine language monitor 4k@`$B000` screen
+  editor routines 4k@`$C000`.
+- 4×64K RAM blocks. 0, 1 installed in 128; neither board nor MMU
+  support 2, 3.
+- 32K @ `$8000` internal and external "function ROM" banks. Internal
+  is a socket on the mobo, external is a special ROM cartridge.
+- Cartridge etc.
+
+The 128 KB 1700 and 256 KB 1750 RAM expansion modules are not mapped
+by this; they use a separate REC (RAM Expansion Controller).
+
+In all mappings the following are constant:
+
+    $FF00   5b  MMU registers
+    $0000   1k  RAM (except $00, $01)
+    $0000   1b  8502 DR (data register)
+    $0000   1b  8502 DDR (data direction register); 1=output
+
+MMU Configuration Register:
+
+      7     No effect (would be for RAM blocks 3/4)
+      6     RAM Block
+    5-4     16k@$C000: 00=kernal/charom  01=int funcrom
+                       10=ext funcrom    11=RAM
+    3k2     16k@$8000: 00=BASIC/MLMON    01=int funcrom
+                       10=ext funcrom    11=RAM
+      1     16k@$4000:  0=BASIC (low)     1=RAM
+      0      4k@$D000:  0=I/O block       1=RAM/ROM (bits 4-5)
+
+8502 PIO Register ($00 data, $01 direction):
+
+      7     Unconnected; always 0 when read (or retains value?)
+      6 i   Caps Lock; 1=up/off, 0=down/on
+      5     CASS MTR; 1=off
+      4 i   CASS SENSE; 1 = any button pressed on Datasette
+      3     CASS WRT
+      2     VIC C̅H̅A̅R̅E̅N̅: 0=RAM 1=ROM, but screen editor copies shadow at $D9
+      1     cRAM block seen by VIC (0=text, 1=graphics)
+      0     cRAM block seen by processor
 
 
 <!-------------------------------------------------------------------->
