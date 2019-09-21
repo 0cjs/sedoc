@@ -8,6 +8,8 @@ General:
 - John McCarthy, [Recursive functions of symbolic expressions and their
   computation by machine, Part I][mccarthy], Communications of the ACM
   Volume 3 Issue 4, April 1960.
+- [LISP 1.5 Programmer's Manual][lisp1.5] 2nd Ed. MIT Press, 1962.
+  See §VII p.36 for internal data structures.
 - [SICP Interactive Version][isicp]
 
 Memory Representation:
@@ -38,6 +40,7 @@ Multiple:
 [altos-lisp]: https://keithp.com/blogs/AltOS-Lisp/
 [altos]: https://altusmetrum.org/AltOS/
 [isicp]: https://xuanji.appspot.com/isicp/
+[lisp1.5]: http://web.cse.ohio-state.edu/~rountev.1/6341/pdf/Manual.pdf
 [mccarthy]: https://dl.acm.org/citation.cfm?id=367199
 [pdp1-alt]: https://archive.computerhistory.org/resources/text/DEC/pdp-1/DEC.pdp_1.1964.102650371.pdf
 [pdp1-memo]: https://archive.org/details/bitsavers_mitrlepdp1P_420747
@@ -46,3 +49,4 @@ Multiple:
 [so 28128620]: https://stackoverflow.com/q/28128620/107294
 [so 6758308]: https://stackoverflow.com/q/6758308/107294
 [dusty]: https://mcjones.org/dustydecks/archives/category/lisp/
+
