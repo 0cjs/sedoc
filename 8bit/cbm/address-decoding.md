@@ -8,6 +8,7 @@ Commodore 64
 See also:
 - [C64 Wiki: Bank Switching][64w-bank]
 - [C64 Service Manual][c64servman]
+- [Christian Bauer's VIC-II article][vic-ii]
 
 Onboard memory devices are 64K RAM, 512 bytes color RAM (cRAM), 8K
 KERNAL ROM and 8K BASIC ROM. The cartridge may additionally supply two
@@ -23,9 +24,11 @@ same thing as unmapped, except that the R̅O̅M̅L̅ and R̅O̅M̅H̅ signals ar
 asserted. So the cartridge can respond to any address except in 4K @
 `$0000` (RAM) and 4K @ `$D000` (RAM/CHAROM/IO+cRAM).
 
-Writes to internal ROM areas always pass through to RAM, even if the
-ROM is mapped, so this can be used to, e.g., copy ROM to RAM by simply
-reading a location and writing it back.
+All writes to any address also pass through to RAM, regardless of
+what's mapped there. So this can be used to, e.g., copy ROM to RAM by
+simply reading a location and writing it back, but it can also cause
+problems if you are trying to write something else at an area of RAM
+in use by the VIC.
 
     Address Size    RAM  IntROM  internal  Cartridge
     ----------------------------------------------
@@ -48,6 +51,9 @@ reading a location and writing it back.
     $D800 - $DBFF  1024   Color RAM (cRAM)
     $D400 - $D7FF  1024   SID
     $D000 - $D02E    47   VIC
+
+The color RAM (cRAM) stores only the low four bits per byte of the
+data written; the high four bits will read as random data.
 
 ### PLA Inputs and Outputs
 
@@ -238,3 +244,4 @@ MMU Configuration Register:
 [c64servman]: https://archive.org/details/C64-C64C_Service_Manual_1992-03_Commodore
 [map128]: https://archive.org/details/Compute_s_Mapping_the_Commodore_128
 [rc 5715]: https://retrocomputing.stackexchange.com/a/5715/7208
+[vic-ii]: https://www.cebix.net/VIC-Article.txt
