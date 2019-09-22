@@ -25,7 +25,7 @@ chronological order.
   compiler and LAP assembler, both written in LISP.
 - David Moon, [_Maclisp Reference Manual_][moonual] revision 0.
   Project Mac, MIT. 1974-04.
-- Warren Tietelman, [_Interlisp Reference Manual_][interlisp74]. Xeros
+- Warren Tietelman, [_Interlisp Reference Manual_][interlisp74]. Xerox
   Palo Alto Research Center. 1974. (Formerly BBN LISP; originally
   developed on PDP-1 at Bolt, Beranek and Newman in 1966.)
 
