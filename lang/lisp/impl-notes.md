@@ -1,6 +1,18 @@
 LISP Implementation Notes
 =========================
 
+### General Terminology
+
+- _compiled open_: Compiled inline, rather than making a function call.
+- _push-down list_, _PDL_: A stack.
+
+### LISP I and 1.5
+
+The description of "TEN" mode on the LISP-Flexo system in the 1960
+_LISP I Programmer's Manual_ (p.75) is pretty hilarious. (Sample
+session starts on p.79.) As is the rest of the stuff about how to
+punch your decks.
+
 ### Maclisp (1974, Moonual)
 
 Maclisp had two additional functions: `PLUS` took any numbers as
@@ -12,6 +24,12 @@ the implementation?
 
 `(fix x)` and `(float x)` to convert to fixnum/bignum or
 flonum. `(minus x)` returns the negative of its argument.
+
+(§12.1) Top level function description. `toplevel` global contains the
+form to be executed or, if `nil` system standard one is executed. That
+sill store the result of last eval in `*` which references itself at
+startup and after an error. `errlist` global is a list of forms to
+execute on error.
 
 ### Interlisp (1974, Xerox manual)
 
