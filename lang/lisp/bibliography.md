@@ -1,6 +1,9 @@
 LISP Bibliography
 =================
 
+Within the sections these are in (at least approximately)
+chronological order.
+
 ### General
 
 - John McCarthy, [Recursive functions of symbolic expressions and
@@ -17,13 +20,16 @@ LISP Bibliography
 
 - [LISP 1.5 Programmer's Manual][lisp1.5] 2nd Ed. MIT Press, 1962. See
   §VII p.36 for internal data structures.
+- John L. White, [_An Interim LISP User's Guide_][aim-190]. MAC
+  AIM-190. 1970-03. MACLISP for the PDP-10. pp.34-39 cover the
+  compiler and LAP assembler, both written in LISP.
 - David Moon, [_Maclisp Reference Manual_][moonual] revision 0.
   Project Mac, MIT. 1974-04.
 - Warren Tietelman, [_Interlisp Reference Manual_][interlisp74]. Xeros
   Palo Alto Research Center. 1974. (Formerly BBN LISP; originally
   developed on PDP-1 at Bolt, Beranek and Newman in 1966.)
 
-### Memory Representation
+### Internals and Implementation
 
 - StackOverflow, [Memory representation of values in Lisp][so 28128620].
 - Stackoverflow, [Memory allocation in Lisp][so 6758308].
@@ -76,6 +82,7 @@ LISP Bibliography
 [r0rs]: https://web.archive.org/web/20171201033214/http://repository.readscheme.org/ftp/papers/ai-lab-pubs/AIM-349.pdf
 
 <!-- Manuals -->
+[aim-190]: http://www.softwarepreservation.org/projects/LISP/MIT/AIM-190-White-Interim_LISP_Users_Guide.pdf
 [interlisp74]: https://archive.org/details/bitsavers_xeroxinterfMan_35779510
 [lisp1.5]: http://web.cse.ohio-state.edu/~rountev.1/6341/pdf/Manual.pdf
 [moonual]: https://en.wikipedia.org/wiki/David_A._Moon
