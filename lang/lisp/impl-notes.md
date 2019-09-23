@@ -31,6 +31,16 @@ sill store the result of last eval in `*` which references itself at
 startup and after an error. `errlist` global is a list of forms to
 execute on error.
 
+### Maclisp (post-1974)
+
+AIM-421 1977-09 Steele "Fast Arithmetic in MACLISP":
+`PLUS` is generic; `+` is fixnum only, `+$` is flonum only.
+`(DECLARE (FIXNUM I J K) (FLONUM (CUBE-ROOT FLONUM)))` for compiler.
+Dropped small fixnums in tagged pointers because that needed format
+check/convert before open-coded machine arithmetic instructions.
+Avoided GC by pushing numbers on PDL (in same format as heap),
+making subroutine call, then popping. Much stuff re safety of this.
+
 ### Interlisp (1974, Xerox manual)
 
 (§13.1) Large integers and floating point numbers are 36 bits, and
