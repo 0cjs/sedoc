@@ -13,14 +13,16 @@ Documentation here:
 Summary of Machines
 -------------------
 
-- [VIC-20]: 5K; no bitmap graphics, programmable charset
+- 1980-06 __VIC-1001__: Japanese VIC-20; same hardware except
+  charom/keyboard. (Another alternate name is "VC-20" in Germany.)
+- 1981-?? __[VIC-20]__: 5K; no bitmap graphics, programmable charset
   - 22×23×2 (8×8 cells = 176×184)
   - 20×20×2 (8×8 cells = 160×160) "bitmap" w/1 programmed char/cell
   - 11×23×4 (4×8 cells = 88×184)
-- [MAX Machine]: 2K, no ROM; additional RAM/ROM supplied on carts.
-  No IEC serial, user ports. Otherwise C64 hardware (but different
-  memory map).
-- [C64]: 64K
+- 1982-?? __[MAX Machine]__: 2K, no ROM; additional RAM/ROM supplied on
+  carts. No IEC serial, user ports. Otherwise C64 hardware (but
+  different memory map).
+- 1982-08 __[Commodore 64][c64]__: 64K
   - Text: text 40x25×16 (8x8 cells = 320×200), programmable charset
   - Bitmap: 160×200×4, 320×200×2, sprites
 
@@ -98,9 +100,9 @@ port pins 9 and 10 have other purposes on the MAX.
 
 
 <!-------------------------------------------------------------------->
+[MAX Machine]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine
+[VIC-20]: https://www.c64-wiki.com/wiki/VIC-20
 [c64]: https://www.c64-wiki.com/wiki/C64
-[max machine]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine
-[vic-20]: https://www.c64-wiki.com/wiki/VIC-20
 
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
 [c64progref]: https://archive.org/details/c64-programmer-ref
