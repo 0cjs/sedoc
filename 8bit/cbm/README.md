@@ -33,6 +33,7 @@ Commodore 64
 General documentation:
 - [Commodore 64 Programmer's Reference Guide][c64progref], 1982, CBM.
 - [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
+- [Zimmers CBM Archive][zimmers] (software, mags, books, etc.)
 
 ### Cartridge/Expansion Port
 
@@ -98,6 +99,13 @@ CHAROM on the C64. Not sure what use that might be. Perhaps cartridge
 port pins 9 and 10 have other purposes on the MAX.
 
 
+Transferring Data to CBM Machines
+----------------------------------
+
+The [Data Transfers with Commodore Computers][transfer] page in
+[Zimmers CBM archive][zimmers] has a lot of good options for getting
+stuff on to a C64, some of them much faster than the disk drive.
+
 
 <!-------------------------------------------------------------------->
 [MAX Machine]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine
@@ -109,3 +117,6 @@ port pins 9 and 10 have other purposes on the MAX.
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 
 [multimax]: http://www.multimax.co/hardware/
+
+[transfer]: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/transfer/transfer.html
+[zimmers]: http://www.zimmers.net/anonftp/pub/cbm/
