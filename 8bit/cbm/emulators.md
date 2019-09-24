@@ -6,6 +6,7 @@ Commodore Emulators
 - [VICE](#VICE): The Versatile Commdore Emulator
 - [MAME/MESS](#MAME--MESS): Computer/console/arcade system emulator
 - [ROMs](#ROMs): ROM images for Commodore machines
+- [Disk, Tape and Cartridge Images](#disk-tape-and-cartridge-images)
 
 VICE
 ----
@@ -77,9 +78,69 @@ the `-rompath` option. You can verify the ROMs are all present and
 correct with `-verifyroms`.
 
 
+Disk, Tape and Cartridge Images
+--------------------------------
+
+### VICE
+
+Images can be attached from the command line with, e.g., `x64 -8
+disk1.img -9 disk2.img`. Changes made externally (e.g. with `c1541`)
+will not be visible while the image is mounted, nor will changes made
+in the emulator be visible externally until it exits.
+
+### c1541
+
+[c1541] is a stand-alone program distributed with VICE that
+manipulates Commodore disk and tape (`.t64`) images in the same way as
+can be done within VICE emulators. The usual extension for image files
+is `.d64`, even for VIC-20s; this actually specifies the disk format:
+
+    x64, d64    VC1541/2031
+    g64         VC1541/2031 but in GCR coding
+    d71         VC1571
+    g71         VC1571 but in GCR coding
+    d81         VC1581
+    d80         CBM8050
+    d82         CBM8250/1001
+
+Run without command-line arguments it will enter an interactive mode.
+Command line usage is:
+
+    c1541 [img₁ [img₂]] [command ...]
+
+If _img_ arguments are provided before commands, these will be
+attached as "drives" 8 and 9, respectively. Commands given on the
+command line are the same as in interactive mode except that they are
+prefixed with a hyphen. The `help` command or `-help` argument will
+print a summary of commands.
+
+Disks have a 16-character disk name and two-character disk ID; both
+of these default to spaces when specified as comma-separated empty
+strings in a format command:
+
+    c1541 -format , d64 disk.d64
+
+Other commonly used commands are:
+
+    c1541 disk.d64 -dir [pattern]
+    c1541 disk.d64 -write pcr.prg pcr       # Copy file to image
+    c1541 disk.d64 -read pcr pcr.prg        # Extract file from image
+    c1541 disk.d64 2.d64 -copy pcr @9       # Copy between images
+
+    #   Below given as in interactive mode
+    rename foo 'foo bar'
+    delete foo
+    block <track> <sector>          # Dump disk block in hex and ASCII
+
+
+See also the [Disk Drive Commands][doscmd] used from BASIC.
+
+
 
 <!-------------------------------------------------------------------->
 [MESS]: https://en.wikipedia.org/wiki/Multi_Emulator_Super_System
 [`gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
+[c1541]: http://vice-emu.sourceforge.net/vice_13.html
+[doscmd]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
 [vice]: http://vice-emu.sourceforge.net/index.html
 [viceman]: http://vice-emu.sourceforge.net/vice_toc.html
