@@ -8,6 +8,14 @@ LISP Implementation Notes
 
 ### LISP I and 1.5
 
+`(CAR A)` where `A` is an atom is always -1. (That's how you know it's
+an atom.) Thus, `(CDR A)` is its property list.
+
+If `COND` runs out of clauses an error is raised, unless it's at
+the top level of a `PROG`.
+
+Special forms in `PROG` are `COND`, `GO`, `RETURN`, `SETQ`, `SET`.
+
 The description of "TEN" mode on the LISP-Flexo system in the 1960
 _LISP I Programmer's Manual_ (p.75) is pretty hilarious. (Sample
 session starts on p.79.) As is the rest of the stuff about how to
