@@ -1,6 +1,12 @@
 Commodore Emulators
 ===================
 
+#### Contents
+
+- [VICE](#VICE): The Versatile Commdore Emulator
+- [MAME/MESS](#MAME--MESS): Computer/console/arcade system emulator
+- [ROMs](#ROMs): ROM images for Commodore machines
+
 VICE
 ----
 
@@ -34,8 +40,12 @@ mapping.
 For F2/F4/F6/F8 use those keys; you may need to use SHIFT as well.
 
 
-MAME
-----
+MAME / MESS
+-----------
+
+[MESS], an emulator for consoles and computer systems, was merged
+based on the MAME (an arcade machine emulator) core. It was merged
+into MAME on 2015-05-27.
 
 Harder to set up.
 
@@ -69,6 +79,7 @@ correct with `-verifyroms`.
 
 
 <!-------------------------------------------------------------------->
+[MESS]: https://en.wikipedia.org/wiki/Multi_Emulator_Super_System
 [`gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
 [vice]: http://vice-emu.sourceforge.net/index.html
 [viceman]: http://vice-emu.sourceforge.net/vice_toc.html
