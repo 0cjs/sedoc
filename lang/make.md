@@ -3,6 +3,18 @@ Make and GNU Make
 
 Just brief notes here.
 
+### Wildcards
+
+(§4, "Using Wildcard Characters in File Names.") Where a filename or
+space-separated list of filenames is expected, Bourne shell glob
+patterns `*`, `?`, `[…]` and `~` for home directories may be used;
+these are escaped with `\`.
+
+Expansion happens automatically by make in targets and prerequisites
+and is done by the shell in commands. Variables store the wildcard
+which expands when it's used in an expansion location. Elsewhere use
+the `wildcard` function (later in §4).
+
 Variables
 ---------
 
