@@ -3,10 +3,10 @@ Commodore (CBM) Computer Information
 
 Documentation here:
 - [PETSCII](petscii.md)
-- [CBM Address Decoding (Memory Maps)](address-decoding.md)
+- [Address Decoding (Memory Maps)](address-decoding.md)
 - [Machine Language](machlang.md)
 - [Commodore Serial (IEC) Bus](serial-bus.md)
-- [Commodore BASIC](basic.md)
+- [BASIC](basic.md)
 - [Emulators](emulators.md)
 
 
