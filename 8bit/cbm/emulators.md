@@ -84,18 +84,20 @@ Disk, Tape and Cartridge Images
 ### VICE
 
 Images can be attached from the command line with, e.g., `x64 -8
-disk1.img -9 disk2.img`. Changes made externally (e.g. with `c1541`)
-will not be visible while the image is mounted, nor will changes made
-in the emulator be visible externally until it exits.
+disk1.img -9 disk2.img` or from the status line menu in the emulator.
+When attached the image is cached in memory, so you must detach it
+before reading or writing it with an external program such as `c1541`.
 
 ### c1541
 
 [c1541] is a stand-alone program distributed with VICE that
 manipulates Commodore disk and tape (`.t64`) images in the same way as
-can be done within VICE emulators. The usual extension for image files
-is `.d64`, even for VIC-20s; this actually specifies the disk format:
+can be done within VICE emulators. The usual format/extension for
+image files is [`.d64`][vm-d64], even for VIC-20s; this actually
+specifies the [image format][vm-imgfmt]:
 
-    x64, d64    VC1541/2031
+    x64         64-byte header followed by another format, usually d64
+    d64         VC1541/2031
     g64         VC1541/2031 but in GCR coding
     d71         VC1571
     g71         VC1571 but in GCR coding
@@ -144,3 +146,5 @@ See also the [Disk Drive Commands][doscmd] used from BASIC.
 [doscmd]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
 [vice]: http://vice-emu.sourceforge.net/index.html
 [viceman]: http://vice-emu.sourceforge.net/vice_toc.html
+[vm-d64]: http://vice-emu.sourceforge.net/vice_16.html#SEC308
+[vm-imgfmt]: http://vice-emu.sourceforge.net/vice_16.html#SEC294
