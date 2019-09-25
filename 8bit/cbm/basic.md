@@ -1,6 +1,9 @@
 Commodore Basic Notes
 =====================
 
+References:
+- [Commodore 64 Programmer's Reference Guide][prg]
+
 Input:
 - `RUN/STOP` breaks; if that fails reset with BIOS `RUN/STOP`+`RESTORE`.
   - Deactivate w/`POKE 788,52`; reactivate w/`POKE 788,49`.
@@ -19,6 +22,9 @@ Commands:
   - In interactive mode, closes all open files and does `CLR`.
   - In a BASIC program, keeps existing variables/arrays and re-runs program
     from start (for chain loading), even if a binary module is loaded.
+- `SAVE "filename",8` will silently not save (except for green
+  blinking light) if the file already exists. Use `SAVE
+  "@0:filename",8` to overwrite.
 
 
 Copying ROM to RAM
@@ -45,7 +51,32 @@ RAM. (The BASIC ROM, though mapped out by this, is apparently mapped
 back in automatically by code outside of that ROM.)
 
 
+Machine Language
+----------------
+
+[`SYS loc`][c64w-sys] ([$E12A]) does a `JSR` to the given _loc_
+(0-65535); `RTS` returns to BASIC. Before call, loads registers from,
+and after call, stores registers to, the following locations:
+
+    A   $030C   780
+    X   $030D   781
+    Y   $030E   782
+    P   $030F   783
+
+[`USR(exp)`][c64w-usr] calls an ML routine via vector `$0311`. The
+function's parameter will be in the FAC (`$61–$66`) as a floating
+point number if numeric, or the string descriptor pointer at `$64-65`
+if a string.
+
+For using BASIC routines to continue parsing the line after the `SYS`
+call, see [Borrowing ML from BASIC][pickett85].
+
 
 <!-------------------------------------------------------------------->
+[$E12A]: http://unusedino.de/ec64/technical/aay/c64/rome12a.htm
 [ad-c64-mmap]: address-decoding.md#c64-memory-map
 [c64w-load]: https://www.c64-wiki.com/wiki/LOAD
+[c64w-sys]: https://www.c64-wiki.com/wiki/SYS
+[c64w-usr]: https://www.c64-wiki.com/wiki/USR
+[pickett85]: https://www.atarimagazines.com/compute/issue67/292_1_Readers_Feedback_Borrowing_ML_From_BASIC.php/
+[prg]: https://archive.org/details/Commodore_64_Programmers_Reference_Guide_1983_Commodore

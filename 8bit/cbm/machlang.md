@@ -22,6 +22,17 @@ In the code you can see following this the configuration for the CIAs
 (one on MAX, two on C64) and the VIC-II, followed by a memory test.
 
 
+ROM Routines
+------------
+
+- [Dreams AAY C64 helpfiles (HTML)][aay]
+- [C64 KERNAL ROM Listing][krnromma]
+- [C64 BASIC ROM Listing][basromma]
+
+
 
 <!-------------------------------------------------------------------->
 [MultiMax]: http://www.multimax.co/download/
+[krnromma]: http://unusedino.de/ec64/technical/aay/c64/krnromma.htm
+[basromma]: http://unusedino.de/ec64/technical/aay/c64/basromma.htm
+[aay]: http://unusedino.de/ec64/technical/aay/c64/
