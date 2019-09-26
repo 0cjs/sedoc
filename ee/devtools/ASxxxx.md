@@ -71,6 +71,12 @@ address.
     03-04   Load address for record: MSB-LSB (longer for 24-/32-bit)
     05-...  Data
 
+The only documentation I've ever seen for this is [p.17 of _Disk Basic
+Unravelled II_][dbunrav-p17] (a reverse-engineering job done by
+Spectral Associates) and the [ASlink documentation][aslink-coco]
+itself.
+
+
 
 General Assembler Syntax
 ------------------------
@@ -256,5 +262,7 @@ Targets:
 <!-------------------------------------------------------------------->
 [NoICE]: https://www.noicedebugger.com
 [SDCDB]: https://en.wikipedia.org/wiki/Small_Device_C_Compiler
+[aslink-coco]: http://shop-pdp.net/ashtml/asls01.htm#CoCoDiskBasic
+[dbunrav-p17]: https://archive.org/details/Disk_Basic_Unravelled_II_1999_Spectral_Associates/page/n18
 [noi-cmd]: https://www.noicedebugger.com/help/cmdfile.htm
 [noi-sym]: https://www.noicedebugger.com/help/symbols.htm
