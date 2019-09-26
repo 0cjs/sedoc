@@ -44,11 +44,23 @@ Common `aslink` options:
     -l              `.lib` filename to read
     -m              Generate .map file (-m1 to include linker-generated syms)
     -u              Update listing file(s) .rst
+    -b area=expr    Define base address for an area
 
 The `.lib` library file contains a list of object modules (without `.rel`
 extension?) with absolute paths or paths relative to the dir containing
 the `.lib` file; these files (both given paths and in dirs specified
 with `-k`) are searched to resolve undefined symbols.
+
+The `-b` option is processed before relocation (because it determines
+the relocation values), so any symbols used in an expression you give
+it will take on their _pre-relocation_ values. Thus, you can't use
+this to place one area after another.
+
+By default areas will be placed one after starting at `$0000` in the
+order they are encountered. The starting points can be explicitly set
+with the `-b` option; this can produce overlapping areas (with
+overlapping values at the same memory location in the output files)
+without warnings.
 
 Error messages are explained in §3.5.12.
 
@@ -76,6 +88,75 @@ Unravelled II_][dbunrav-p17] (a reverse-engineering job done by
 Spectral Associates) and the [ASlink documentation][aslink-coco]
 itself.
 
+
+Areas
+-----
+
+The assembler generates output into one or more _areas_ selected via
+`.area NAME (OPT,OPT,...)` directives whose characteristics influence
+the output addresses. (§1.4.22 and §3.4 for linker processing.) (Names
+and options are not case sensitive.)
+
+Normally you want everything going into the default `_CODE` area
+unless you are using bank switching, overlay code loaded over other
+code, or similar.
+
+The options for areas are as follows.
+
+- `ABS`: The area is absolute and will be assembled to locations
+  starting with an absolute location given by the `.org` directive (or
+  0 if no `.org` is given). `ABS` areas are automatically `OVR`.
+- `REL`: The area will be relocated as necessary by the linker. `.org`
+  directives may not be used, though the current location may be
+  changed with relative expressions: `. = . + EXPR`.
+- `CON`: Each new section starting with `.area NAME` for a _NAME_
+  that's already been used will start immediately after the end of the
+  previous section with that area name; i.e., all sections with that
+  area name will be concatenated.
+- `OVR`: Each new section starting with `.area NAME` will start at the
+  same address as the previous section with that name; i.e., they will
+  be overlaid on top of each other. (It's not clear how you separate
+  these out after the link; perhaps by detecting the overlaid
+  addresses in the output files?)
+- `PAG`, `NOPAG`: Paged areas must be on a 256 byte boundary and no
+  more than 256 bytes long; this is checked by the linker. Typically
+  used for direct page areas.
+- `CSEG`, `DSEG`: Used when the microprocessor has different
+  allocation units for code and data areas, e.g., if the code is
+  always allocated in two-byte words.
+- `BANK=name`: Specify the bank this area is associated with; see
+  `.bank` (§1.4.23) for further details.
+
+The default area type is `REL,CON`. After the first `.area` directive
+with a given name, subsequent ones must use the same options or leave
+the options blank.
+
+Two predefined areas are provided, `_CODE (REL,CON,CSEG)` and `_DATA
+(REL,CON,DSEG)`. Not mentioned in the docs is that `_DATA` is in bank
+`_DSEG (FSFX=_DS)` which goes to a separate output file.
+
+If the linker is given `-b` options that would cause differently-named
+areas to overlap, it will overlap them in the output file. (This is
+usually a hint that you should have been using `.bank` to make separate
+output files.)
+
+The linker generates "internal" symbols " `a_<areaname>` and
+`l_<areaname>` for the address and length of each area, and further
+ones for each segment within an area. (§3.4) It's not clear how these
+can be used; they don't work with the `-b` option.
+
+### Banks
+
+Areas can be grouped into banks, which can go to separate output
+files. Use `.bank (OPT,...)` to declare a bank and `.area (BANK=...)`
+to assign an area to a bank. Bank options are:
+
+- `FSFX`: Suffix added to output file; typically first char is `_`.
+- `BASE`: Default starting address; may be overridden by giving the
+  linker `-b` with the first area in the bank.
+- `SIZE`: Maximum length in bytes.
+- `MAP`,`NOTICE`: The "mapping parameter for this bank of code/data."
+  Dunno exactly what this is.
 
 
 General Assembler Syntax
