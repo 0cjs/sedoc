@@ -68,6 +68,16 @@ to be incorrect. According to the schematic the CPU's RDY line
 asserted and D̅M̅A̅ are 1. The BA line appears to be an output from the
 VIC II sent to the RDY gate, PLA and cartridge port.
 
+[rc 10850] and its answers make some good points:
+- Except when asserting G̅A̅M̅E̅ and not asserting E̅X̅R̅O̅M̅, without knowing
+  the internal state of the C64 (i.e., someone else's software is
+  running) you must use the I̅O̅n̅ (and sometimes R̅O̅M̅x̅) lines to
+  determine whether internal memory or your cart is being accessed.
+- The address bus is actually bidirectional when DMA is being used;
+  carts can read/write system RAM.
+
+
+
 
 MAX Machine
 -----------
@@ -115,6 +125,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
 [c64progref]: https://archive.org/details/c64-programmer-ref
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
+[rc 10850]: https://retrocomputing.stackexchange.com/q/10850/7208
 
 [multimax]: http://www.multimax.co/hardware/
 
