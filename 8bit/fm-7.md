@@ -1,5 +1,5 @@
-FM-7 Notes
-==========
+Fujitsu FM-7 Notes
+==================
 
 
 Specs:
