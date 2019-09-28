@@ -201,13 +201,13 @@ Expressions evaluate to one of:
 - Symbol assignement is `=`, `X .equ Y`, `.equ X, Y`.
   These do not start/end a reusable symbol block.
 - Labels in the first field end with `:`. A line may have multiple labels.
-- Force symbols to global (export) with `::`, `==`, `.gblequ`.
-- Force symbols to local (no export) with `=:`, `.lclequ`.
+- Force symbols to global (export) with `.globl SYM,...`, `::`, `==`, `.gblequ`.
+- Force symbols to local (no export) with `.local SYM,...`, `=:`, `.lclequ`.
 - Local overrides `-a` "all globals" option.
 - Last local/global directive is used.
 
 Resuable symbols are decimal numbers with `$` appended. The scope is from
-the previous to the next non-reusable label.
+the previous to the next non-reusable label. (§1.3.3)
 
 `.` is location counter. In instruction, referrs to start of instr, e.g.,
 `LDA <#.`. In `.byte`/`.word`/etc., refers to current pos in data list.
@@ -327,9 +327,9 @@ Addressing modes:
     aaaa        absolute (extended)
     aaaa,x      absolute indexed
     aaaa,y      absolute indexed
-    [aaaa]      indirect
-    [aaaa,x]    indexed indirect
-    [aaaa],y    indirect indexed
+    [aaaa]      indirect                JMP only; watch for page boundary bug!
+    [zp,x]      indexed indirect
+    [zp],y      indirect indexed
 
 Targets:
 
