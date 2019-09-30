@@ -60,16 +60,79 @@ Rules
 
 From manual chapter 10, [Using Implicit Rules][implicit].
 
-The [Catalogue of Built-In Rules][implicit-builtin] includes:
+The [Catalogue of Built-In Rules][imp-builtin] includes:
 * `a.o` ← `a.c`: `$(CC) $(CPPFLAGS) $(CFLAGS) -c`
 * `a.o` ← `a.{cc,cpp,C}`: `$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c`.
   (`.cc` suffix is preferrred.)
 * `a` ← `a.o ...`: `$(CC) $(LDFLAGS) a.o ... $(LOADLIBES) $(LDLIBS)`
 
+Implicit rules may be [cancelled][imp-cancel] by redefining them with
+an empty recipe.
+
+
+### Defining Pattern Rules
+
+Implicit rules are defined by writing a _[pattern rule]_. These rules
+have a `%` in the target that matches one or more characters, called
+the _stem_, and `%` when used in the prerequisites will match the same
+stem. If multiple pattern rules match, the one with the shortest stem
+is used.
+
+Unlike regular rules, the recipe will be run only once even if there
+are multiple targets and all targets will be marked as updated once
+the recipe has run.
+
+When targets are built via a [chain of implicit rules][imp-chain]
+(e.g., `%.bin: %.o` and `%.o: %.c`) the "intermediate" files will be
+deleted automatically by make. Adding an empty `.SECONDARY` target
+will preserve all of these. (Preserving specific ones seems tricky.)
+
+#### Automatic Variables
+
+Within the recipe, the following _automatic variables_ may be used.
+When the variable expands to multiple filenames, they are
+space-separated.
+
+    $@  Filename of the target that caused the rule to be run.
+        If the target is an archive member, this is the name of the archive file.
+    $%  The target member name, when the target is an archive file.
+    $<  The name of the first prerequisite.
+    $?  The names of all prerequisites newer than the target.
+    $^  The names of all prerequesites.
+    $+  As $^, but prerequisites listed more than once are duplicated
+        in the order they were listed in the makefile.
+    $|  The names of all order-only prerequesites.
+    $*  The stem with which the implicit rule matched. E.g., if
+        a.%.b matched foo/a.bar.b, the stem is foo/bar. Use to
+        construct related filenames.
+
+There are further variables in the docs for various parts of the
+filenames and paths.
+
+
+Special Targets
+---------------
+
+Make has various [special built-in target][spectarg]; making an actual
+target the dependency of one of these changes the build behaviour.
+Commonly used ones include the following.
+
+__[`.PHONY`]__. All dependencies of this are targets unconditionally
+rebuilt when found in the build graph, regardless of existence or
+state of the file named for that target. Used for the default target
+(usu. `all`), subdirectories, etc.
+
+__[`.SECONDARY`][imp-chain]__.
+
 
 
 <!-------------------------------------------------------------------->
-[vars]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_6.html
+[`.PHONY`]: https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
 [funcs]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
+[imp-builtin]: https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
+[imp-cancel]: https://www.gnu.org/software/make/manual/make.html#Canceling-Rules
+[imp-chain]: https://www.gnu.org/software/make/manual/make.html#Chained-Rules
 [implicit]: http://www.gnu.org/software/make/manual/make.html#Implicit-Rules
-[implicit-builtin]: https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
+[pattern rule]: https://www.gnu.org/software/make/manual/make.html#Pattern-Rules
+[spectarg]: https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
+[vars]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_6.html
