@@ -72,11 +72,33 @@ For using BASIC routines to continue parsing the line after the `SYS`
 call, see [Borrowing ML from BASIC][pickett85].
 
 
+Internals
+---------
+
+#### Line Format
+
+Each line is:
+
+    llhh    Start address of next BASIC line; $0000 for last line.
+    llhh    Line number (int16).
+    ....    Tokenized program code (up to 250 bytes).
+    00      Terminator.
+
+#### Handy Addresses
+
+[`petmem.txt`][petmem] gives 0-page addresses for useful stuff.
+
+Start of BASIC text is at $28-29 (40-41); this is 400 on PET but
+800 on C64, so POKE it to load a C64 program. (But doesn't run;
+something else is broken.)
+
+
 <!-------------------------------------------------------------------->
 [$E12A]: http://unusedino.de/ec64/technical/aay/c64/rome12a.htm
 [ad-c64-mmap]: address-decoding.md#c64-memory-map
 [c64w-load]: https://www.c64-wiki.com/wiki/LOAD
 [c64w-sys]: https://www.c64-wiki.com/wiki/SYS
 [c64w-usr]: https://www.c64-wiki.com/wiki/USR
+[petmem]: http://www.classiccmp.org/dunfield/pet/petmem.txt
 [pickett85]: https://www.atarimagazines.com/compute/issue67/292_1_Readers_Feedback_Borrowing_ML_From_BASIC.php/
 [prg]: https://archive.org/details/Commodore_64_Programmers_Reference_Guide_1983_Commodore
