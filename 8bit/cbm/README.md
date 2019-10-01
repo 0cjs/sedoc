@@ -3,7 +3,8 @@ Commodore (CBM) Computer Information
 
 Documentation here:
 - [PETSCII](petscii.md)
-- [Address Decoding (Memory Maps)](address-decoding.md)
+- [PET](pet.md)
+- [C64 Address Decoding (Memory Maps)](address-decoding.md)
 - [Machine Language](machlang.md)
 - [Commodore Serial (IEC) Bus](serial-bus.md)
 - [BASIC](basic.md)
@@ -92,8 +93,6 @@ VIC II sent to the RDY gate, PLA and cartridge port.
   determine whether internal memory or your cart is being accessed.
 - The address bus is actually bidirectional when DMA is being used;
   carts can read/write system RAM.
-
-
 
 
 MAX Machine
