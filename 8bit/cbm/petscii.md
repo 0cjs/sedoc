@@ -13,7 +13,10 @@ References:
 - Two sets:
   - Unshifted/graphics": upper case only
   - Shifted/text: lower case in u/c area; upper case in l/c area
-  - On C64 toggle w/Shift-`C=` or `POKE 59468,12` (graphics), `,14` (text).
+  - PET: `POKE 59468,12` for graphics, `,14` for text.
+  - C64: Toggle w/Shift-`C=`, or:
+    - Graphics: print `CHR$(14)` or `POKE 53272,23`
+    - Text: print `CHR$(142)` or `POKE 53272,21`
 - Output control chars include: `{HOME}`, `{CLR}`, `{RVS ON}`, etc.;
   appear as reversed chars on screen.
 - C64 set 1 input: `C=` gives graphic on left of key, shift gives
