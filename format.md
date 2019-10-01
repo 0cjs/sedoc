@@ -33,6 +33,7 @@ Differences from Markdown:
   stripped.
 
 Extras:
+- `<kbd>...</kbd>` Displays text as "key" box.
 - `[tag:NAME]` for a boxed link to tag _NAME_.
 - `>!` starting a line gives "spoiler" blockquote.
 
