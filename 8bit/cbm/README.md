@@ -13,14 +13,30 @@ Documentation here:
 Summary of Machines
 -------------------
 
+PET info from the [commodore.ca PET history][pet-history]. This may
+nto be entirely reliable.
+
+- 1977-10 __PET 2001__: Chiclet keyboard. $600 (4K) $800 (8K).
+- 1979-spring: Graphics keyboard, BASIC 1.1, 16/32K.
+- 1979-fall __CBM 3000__: European name for PET 2001.
+- 1980-summer __PET 4016, 4032__: 16/32K, BASIC4, disk commands.
+- 1980/1981: __PET 8032__: Business keyboard, 80 cols, 12" screens.
+- 1981-summer: "FAT-40" adds 12" screens to 40 col. models, too.
+- 1981-summer __SuperPET__: Adds 6809, serial, UWaterloo software.
+
+By 1980 the Business keyboard was backported to the 2001/30xx series,
+given designation 2001/B.
+
+Non-PET models:
+
 - 1980-06 __VIC-1001__: Japanese VIC-20; same hardware except
   charom/keyboard. (Another alternate name is "VC-20" in Germany.)
 - 1981-?? __[VIC-20]__: 5K; no bitmap graphics, programmable charset
   - 22×23×2 (8×8 cells = 176×184)
   - 20×20×2 (8×8 cells = 160×160) "bitmap" w/1 programmed char/cell
   - 11×23×4 (4×8 cells = 88×184)
-- 1982-?? __[MAX Machine]__: 2K, no ROM; additional RAM/ROM supplied on
-  carts. No IEC serial, user ports. Otherwise C64 hardware (but
+- 1982-?? __[MAX Machine]__: 2K, no ROM; additional RAM/ROM supplied
+  on carts. No IEC serial, user ports. Otherwise C64 hardware (but
   different memory map).
 - 1982-08 __[Commodore 64][c64]__: 64K
   - Text: text 40x25×16 (8x8 cells = 320×200), programmable charset
@@ -121,6 +137,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [MAX Machine]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine
 [VIC-20]: https://www.c64-wiki.com/wiki/VIC-20
 [c64]: https://www.c64-wiki.com/wiki/C64
+[pet-history]: https://www.commodore.ca/commodore-products/commodore-pet-the-worlds-first-personal-computer/
 
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
 [c64progref]: https://archive.org/details/c64-programmer-ref
