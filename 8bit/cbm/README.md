@@ -13,8 +13,9 @@ Documentation here:
 Summary of Machines
 -------------------
 
-PET info from the [commodore.ca PET history][pet-history]. This may
-nto be entirely reliable.
+Dates from the [commodore.ca PET history][pet-history]. This may nto
+be entirely reliable. See [PET index - versions][pi-ver] for more
+details on individual modules and how they mixed into each other.
 
 - 1977-10 __PET 2001__: Chiclet keyboard. $600 (4K) $800 (8K).
 - 1979-spring: Graphics keyboard, BASIC 1.1, 16/32K.
@@ -138,6 +139,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [VIC-20]: https://www.c64-wiki.com/wiki/VIC-20
 [c64]: https://www.c64-wiki.com/wiki/C64
 [pet-history]: https://www.commodore.ca/commodore-products/commodore-pet-the-worlds-first-personal-computer/
+[pi-ver]: http://www.6502.org/users/andre/petindex/versions.html
 
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
 [c64progref]: https://archive.org/details/c64-programmer-ref
