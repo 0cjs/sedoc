@@ -27,6 +27,8 @@ Timeline
     1976-02 * Commercial Tiny BASIC for 6800
     1976-03 * Z-80 ships
     1976-04 * Altair 680 ships (delayed from late 1975)
+    1976-06 * Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
+    1976-06   SWTPC AC-30 cassette interface
     1976-06   MS BASIC-80 ported to 6502 (summer)
     1976-09   PET 2001 design starts (turned down prototype Apple II)
     1976-12   TRS-80 Mod1 design starts
