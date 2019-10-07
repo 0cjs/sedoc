@@ -75,14 +75,25 @@ call, see [Borrowing ML from BASIC][pickett85].
 Internals
 ---------
 
-#### Line Format
+For VIC-20 information, most general to the C64 and v2 ROM PETs, see
+also [_VIC-20 Programmer's Reference Guide_][v20-prg] pp. 119-122.
 
-Each line is:
+#### Program and Data Storage
+
+The "text" area contains lines of BASIC code, starting from an
+address set in a zero-page location. The format is:
 
     llhh    Start address of next BASIC line; $0000 for last line.
-    llhh    Line number (int16).
+    llhh    Line number (int16), max 63999.
     ....    Tokenized program code (up to 250 bytes).
     00      Terminator.
+
+Keywords are 1-byte tokens with the high bit set, except inside a
+double-quoted string.
+
+Variables are stored above the program text, arrays above variables,
+and strings are stored from the top of the BASIC memory area working
+downwards.
 
 #### Handy Addresses
 
@@ -102,3 +113,4 @@ something else is broken.)
 [petmem]: http://www.classiccmp.org/dunfield/pet/petmem.txt
 [pickett85]: https://www.atarimagazines.com/compute/issue67/292_1_Readers_Feedback_Borrowing_ML_From_BASIC.php/
 [prg]: https://archive.org/details/Commodore_64_Programmers_Reference_Guide_1983_Commodore
+[v20-prg]: https://archive.org/details/VIC-20_Programmers_Reference_Guide_1983_Commodore_fourth_printing

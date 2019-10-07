@@ -1,6 +1,12 @@
 CBM Address Decoding (Memory Maps)
 ==================================
 
+Contents:
+- Commodore 64
+- MAX Machine
+- C128
+- VIC-20
+
 
 Commodore 64
 ------------
@@ -237,11 +243,73 @@ MMU Configuration Register:
       0     cRAM block seen by processor
 
 
+VIC-20
+------
+
+    Addr   Size Description
+    ---------------------------------------------
+    $E000   8K  KERNAL
+    $C000   8K  BASIC
+    $A000   8K  Cartridge ROM (BLK5); may contain autostart signature
+    $9C00   1K  IO 3
+    $9800   1K  IO 2
+    $9400   1K  Color RAM
+    $9000   1K  Internal VIA ports
+    $8000   4K  Character ROM
+    $6000   4K  Expansion RAM/ROM BLK3
+    $4000   4K  Expansion RAM/ROM BLK2
+    $2000   4K  Expansion RAM/ROM BLK1
+    $1000   4K  Internal RAM
+    $0400   3K  Expansion RAM area (/RAM1, /RAM2, /RAM3 lines enable)
+    $0200   2p  KERNAL and BASIC working area
+    $0000   2p  Zero page, stack
+
+Carts may put ROM only in $2000-$7FFF, in which case they require a
+`SYS` to start (e.g., Scott Adams adventures).
+
+In the KERNAL/BASIC working area, $33C-3FF ($C4/194 bytes) is the
+cassette tape buffer, free for other purposes when not using the
+cassette.
+
+The character ROM's four 1K blocks are:
+$8000 graphics, $8400 reversed graphics, $8800 text, $8A00 reversed text.
+
+The screen and BASIC memory areas vary based on the size of RAM
+expansion beyond the on-board 5K. `bstart` marks the start of BASIC
+RAM (text), `screen` the 512 bytes of screen RAM, and `color` the 512
+bytes (nybbles, actually?) of color RAM. This setup is not done for
+autostart carts.
+
+    Addr    0K        3K        8K+
+    ------------------------------------
+    $9600   color     color
+    $9400                       color
+    $1E00   screen    screen
+    $1200                       bstart
+    $1000   bstart              screen
+    $0400   -         bstart    -
+
+References:
+- [_VIC-20 Programmer's Reference Guide_][v20-prg]:
+  - Memory map: pp.114 et seq.
+  - BASIC memory formats, pp.119-122.
+  - KERNAL/BASIC RAM locations: pp.170 et seq.
+  - KERNAL routines: pp.183 et seq.
+  - KERNAL startup: p.211
+- DenialWIKI [Memory Map][dw-memmap]
+- Zimmers.net [`/pub/cbm/src/vic20/`][z-src-vic20] has ROM disassemblies.
+
+
 <!-------------------------------------------------------------------->
 [64w-bank]: https://www.c64-wiki.com/wiki/Bank_Switching
 [64w-maxmap]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine#Memory_map
 [6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
 [c64servman]: https://archive.org/details/C64-C64C_Service_Manual_1992-03_Commodore
-[map128]: https://archive.org/details/Compute_s_Mapping_the_Commodore_128
 [rc 5715]: https://retrocomputing.stackexchange.com/a/5715/7208
 [vic-ii]: https://www.cebix.net/VIC-Article.txt
+
+[map128]: https://archive.org/details/Compute_s_Mapping_the_Commodore_128
+
+[dw-memmap]: https://sleepingelephant.com/denial/wiki/index.php?title=Memory_Map
+[v20-prg]: https://archive.org/details/VIC-20_Programmers_Reference_Guide_1983_Commodore_fourth_printing
+[z-src-vic20]: http://www.zimmers.net/anonftp/pub/cbm/src/vic20/
