@@ -72,6 +72,24 @@ text.
 [se-help]: https://retrocomputing.meta.stackexchange.com/editing-help
 [se-comment]: https://retrocomputing.meta.stackexchange.com/editing-help#comment-formatting
 
+#### Image Sizing
+
+The Markdown extensions for image sizing don't work, but you can use
+[`<img>` tags][se-html] to resize images on display if you're careful
+about the _exact_ formatting. This includes properties names, the order
+of properties, double-quotes, and spacing; getting any of these wrong
+will cause the tag to be stripped.
+
+    src=""
+    width=""    up to 999; do not include the 'px' extension
+    height=""   up to 999; do not include the 'px' extension
+    alt=""
+    title=""
+
+Working example:
+
+    <img src="https://i.stack.imgur.com/Xaqf0.png" width="200" height="100" alt="alt text" title="title text"/>
+
 
 Telegram
 --------
