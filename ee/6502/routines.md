@@ -1,6 +1,30 @@
 6502 Routines
 =============
 
+### Stack-relative Indexing
+
+            STA $100,X      ; PHA equivalant using X as stack pointer
+            DEX
+
+            INX             ; PLA equivalant using X as stack pointer
+            LDA $100,X
+
+Stack-relative indexing with another register assumes a non-wrapping
+stack, i.e., that it's been initialized with `LDX, #$FF; TXS`.
+
+After a `TSX`, offset `$101,X` is current stop of stack; add values into
+that to do stack-relative indexing. Less efficiently, you can load the
+base into ZP and index off it with Y:
+
+            LDX #$01        ; init hibyte of addr; never changes
+            STX spbase+1
+            ...
+            TSX
+            INX             ; use 0-based indexing
+            STX spbase      ; lobyte must be updated for particular stack state
+            LDY 3           ; fourth byte  on stack
+            LDA (spbase),Y
+
 ### Saving registers and flags for printing
 
 To preserve registers and get the value of the flags to print them
