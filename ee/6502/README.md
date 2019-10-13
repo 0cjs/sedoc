@@ -13,10 +13,25 @@ Contents:
   MOS, 1976.
 - \[oxyron] [6502/6510/8500/8502 Opcode matrix][oxyron], oxyron.de.
   Good reference, includes inst. oper. details and flag effects.
-
+- \[wmcdiff] Wilson Mines' [NMOS 6502/CMOS 65C02 Differences][wmcdiff].
+- \[nw-guide] Nesdev Wiki [Programming Guide][nw-guide].
+  Has significant generaic 6502 information, and particularly a good
+  [optimizations][nw-optimize] page..
 
 Systems:
 - \[a2ref] [Apple II Reference Manual][a2ref]. Apple, 1978-01.
+
+
+Vectors
+-------
+
+See also pp. 124-147 from [pm1976] for exact details of what happens
+(particularly on the address bus with "ignored fetch" cycles) during
+interrupt handling, the `RTI` instruction, etc.
+
+    $FFFA $FFFB     NMI (has prioirty over IRQ)
+    $FFFC $FFFD     RESET
+    $FFFE $FFFF     IRQ, BRK
 
 
 Program Status Register (P, Flags)
@@ -41,11 +56,7 @@ Additionally, `RTI` and `PLP` always set all flags.
         ADC SBC                                         ASL LSR ROL ROR
         BIT CMP CPX CPY
 
-    Z           LDA LDX LDY TAX TXA TAY TYA         PLA
-        ADC SBC INC DEC INX DEX INY DEY     AND ORA EOR ASL LSR ROL ROR
-        BIT CMP CPX CPY
-
-    N           LDA LDX LDY TAX TXA TAY TYA     TSX PLA
+    NZ          LDA LDX LDY TAX TXA TAY TYA     TSX PLA
         ADC SBC INC DEC INX DEX INY DEY     AND ORA EOR ASL LSR ROL ROR
         BIT CMP CPX CPY
 
@@ -98,6 +109,9 @@ Tips and Tricks
 
 #### Software
 
+- Always `CLD` on reset. Probably `CLD` in interrupt routines (unless
+  no `ADC/SBC`). Subroutines with totally unknown callers should
+  `PHP;CLD` then later `PLP`  to preserve caller's decimal mode.
 - Clear C before `ADC`, set C before `SBC`.
 - To handle `BRK` PC+2 issue, consider an `INT n` macro that inserts
   _n_ after `BRK` as a param to the IRQ routine. [Wilson
@@ -109,10 +123,36 @@ Tips and Tricks
   Described in [Wilson Mines][wmint2.2].
 - Unconditional relative branch (relocatable): `CLC`, `BCC addr`. Same
   size as `JMP` but 2+2 cycles instead of 3.
-- An indirect `JMP` sometimes is more efficiently done by pushing the
-  address on the stack and executing `RTS`, as explained in [Woz's
-  Sweet 16 article][sw16] (`SW16D` symbol in [listing][sw16asm]).
+- A calculated indirect `JMP` sometimes is more efficiently done by
+  pushing the address _minus one_ on the stack and executing `RTS`, as
+  explained in [Woz's Sweet 16 article][sw16] (`SW16D` symbol in
+  [listing][sw16asm]). (Or, faster yet, just use `JMP (nnnn)` with
+  self-modifying code, if not running in ROM.)
+- Set up loops to finish at $00 or $FF to branch on Z or N flags w/o
+  `CMP` instruction.
+- Use shift/rotate instructions to move bits into carry for testing
+  when you don't mind the value being changed.
 
+#### Wilson Mines Notes
+
+This is a summary (excluding 65C02 tips) of the Wilson Mines [Tips for
+Programming the 65(c)02][wmtips] page. Also see [routines](routines.md).
+
+- Use BIT _addr_ to to test bit 7 (N flag) or 6 (V flag) _addr_
+  without using a register. (C offers more extensive BB7 etc. instrs.)
+- To set high bits, DEC _addr_ if you know it's currently 0, otherwise
+  store any register that currently has the bit set. (C offers
+  TSB/TRB.)
+- To toggle bit 0, use INC _addr_ and DEC _addr_. On a port, chain for
+  fast positive pulse. Also sets N to bit 7, for a simultaneous test.
+- Use PHA/PHX/PHY for fast temporary storage.
+- DEC;BEQ/BNE is a slightly shorter (than CMP) destructive test for
+  $01. Same for $FF with INC.
+- CMP/CPX/CPY #$80 copies bit 7 of a register into carry. Follow w/ROR
+  for a sign-extended right shift.
+- Don't compare to zero or $80 after any of the instructions listed
+  above that already set Z/N flags. (Load/xfer/pull, inc/dec,
+  arithmetic/bits).
 
 Code
 ----
@@ -136,8 +176,12 @@ Code
 [ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
 [nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
+[nw-guide]: http://wiki.nesdev.com/w/index.php/Programming_guide
+[nw-optimize]: http://wiki.nesdev.com/w/index.php/6502_assembly_optimisations
 [oxyron]: http://www.oxyron.de/html/opcodes02.html
 [pm1976]: https://archive.org/details/6500-50a_mcs6500pgmmanjan76
 [sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
 [sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
+[wmcdiff]: http://wilsonminesco.com/NMOS-CMOSdif/
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
+[wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
