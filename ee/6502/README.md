@@ -88,8 +88,10 @@ Tips and Tricks
 
 #### Instruction Set Notes
 
-- ROL/ROR always rotate through carry.
 - SP always points to free byte below head of stack.
+- JSR stacks last byte of its instruction; RTS adds one to stacked
+  address before returning. RTI does not add one.
+- ROL/ROR always rotate through carry.
 - `BRK` [increments PC by 2][brk-pc2] before pushing it; append filler
   byte if continuing after unless assembler does this automatically.
   Sets I flag, only CMOS versions also clear D flag.
