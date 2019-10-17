@@ -57,6 +57,8 @@ Timeline
 
 
 Online references (some of dubious accuracy) include:
+- old-computers.com [Systems Released in 1975][oc-1975]. No months.
+  Similar pages exist for other years.
 - [uber-leet Computer Releases 1939-1995][uber]: No months, but lists
   a _lot_ of systems.
 - IPSJ Computer Museum [Personal Computers in Japan][ipsj] timeline.
@@ -75,4 +77,5 @@ Online references (some of dubious accuracy) include:
 [wj-mz80k]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K
 
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
+[oc-1975]: https://old-computers.com/museum/year.asp?y=1975
 [uber]: http://uber-leet.com/index.php?page=allsystems
