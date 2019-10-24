@@ -37,6 +37,17 @@ Extras:
 - `[tag:NAME]` for a boxed link to tag _NAME_.
 - `>!` starting a line gives "spoiler" blockquote.
 
+[Code formatting][se-code] is done with the standard four-space indent
+or triple-backticks. Syntax highlighting is automatic with default
+and specific language hints [based on the tags][se-taglang]. Override
+this for the following block or all following blocks with HTML comments
+that specify the SO tag or [Google Prettify][se-googpret] `lang-` class
+names:
+
+    <!-- language: lang-js -->
+    <!-- language: bash -->
+    <!-- language-all: lang-none -->
+
 Keyboard shortcuts on selected text:
 - Ctrl-I/B: Toggle italics/bold.
 - Ctrl-L: Selected text to link.
@@ -68,9 +79,6 @@ text.
 - `[chat]`: "{site name} Chat", chat site.
 - `[ask],` `[answer]`: How to Ask, How to Answer.
 
-[se-html]: https://meta.stackexchange.com/q/1777/142445
-[se-help]: https://retrocomputing.meta.stackexchange.com/editing-help
-[se-comment]: https://retrocomputing.meta.stackexchange.com/editing-help#comment-formatting
 
 #### Image Sizing
 
@@ -89,6 +97,13 @@ will cause the tag to be stripped.
 Working example:
 
     <img src="https://i.stack.imgur.com/Xaqf0.png" width="200" height="100" alt="alt text" title="title text"/>
+
+[se-code]: https://unix.stackexchange.com/help/formatting
+[se-comment]: https://retrocomputing.meta.stackexchange.com/editing-help#comment-formatting
+[se-googpret]: https://github.com/google/code-prettify
+[se-help]: https://retrocomputing.meta.stackexchange.com/editing-help
+[se-html]: https://meta.stackexchange.com/q/1777/142445
+[se-taglang]: https://meta.stackexchange.com/q/72082/142445
 
 
 Telegram
