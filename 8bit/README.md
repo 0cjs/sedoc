@@ -17,29 +17,36 @@ Timeline
 `*` indicates a ship date (not nesc. in large quantities).
 
     1975-01 * Altair 8800 ships; on cover of Popular Electronics
+    1975-02   Gates/Allen finish first BASIC, license it to MITS
     1975-05   _BYTE_ magazine work started
+    1975-06   Gates/Allen ship BASIC 2.0 to MITS
     1975-07 * Altair 8800 BASIC announced
     1975-09   _BYTE_ magazine first issue
     1975-11 * SWTPC 6800 shipped (on cover of Oct. BYTE)
     1975-12 * IMSAI 8080 ships
 
     1976-01 * Tiny BASIC 1.0 (8080, 3K) released in Dr. Dobbs issue #1
+    1976-01   Ric Weiland finishes 6800 BASIC for MS
     1976-02 * Commercial Tiny BASIC for 6800
+    1976-02   Gates writes diskette code for BASIC
     1976-03 * Z-80 ships
     1976-04 * Altair 680 ships (delayed from late 1975)
+    1976-05   Digital Research copyrights CP/M
     1976-06 * Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
+    1976-06 * Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
     1976-06   SWTPC AC-30 cassette interface
     1976-06   MS BASIC-80 ported to 6502 (summer)
     1976-09   PET 2001 design starts (turned down prototype Apple II)
     1976-12   TRS-80 Mod1 design starts
 
     1977-01   PET 2001 shown at Winter CES
-    1977-06 * Apple II ships, $1300+monitor
+    1977-06 * Apple II ships, $1300+monitor (first w/built-in colour graphics)
     1977-08   TRS-80 Mod1 press conference
     1977-09 * TRS-80 Mod1 ships, $600 (4K), +12K $289
     1977-10 * PET 2001 ships, $600 (4K) $800 (8K)
 
     1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
+    1978-06 * Apple Disk II released ($600)
     1978-12 * Sharp MZ-80K ships
 
     1979-09 * NEC PC-8001 (Z80) ships
