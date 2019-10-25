@@ -57,6 +57,10 @@ Timeline
 
 
 Online references (some of dubious accuracy) include:
+- Ken Polsson's [timelines][pol] are exhaustive and heavily referenced.
+  Particularly useful are his chronologies for [Personal Computers][pol-pc]
+  ([brief version][pol-pcmini]), [Microprocessors][pol-mp] and
+  [Software][pol-soft].
 - old-computers.com [Systems Released in 1975][oc-1975]. No months.
   Similar pages exist for other years.
 - [uber-leet Computer Releases 1939-1995][uber]: No months, but lists
@@ -78,4 +82,9 @@ Online references (some of dubious accuracy) include:
 
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
 [oc-1975]: https://old-computers.com/museum/year.asp?y=1975
+[pol-mp]: http://kpolsson.com/micropro/
+[pol-pc]: http://kpolsson.com/comphist/
+[pol-pcmini]: http://kpolsson.com/comphist/mini.htm
+[pol-soft]: http://kpolsson.com/software/
+[pol]: http://kpolsson.com/
 [uber]: http://uber-leet.com/index.php?page=allsystems
