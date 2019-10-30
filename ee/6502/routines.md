@@ -56,6 +56,23 @@ To preserve registers and get the value of the flags to print them
 (This is simpler on the 65C02 where you have PHX/PLX and PHY/PLY
 instructions.)
 
+
+Looping and Delays
+------------------
+
+### Run a Subroutine Two or More Times
+
+Similar to the tail call optimization where one subroutine drops
+straight into another, rather than calling it and returning, start
+with a `JSR` to the immediately following routine, which becomes a TCO
+call to itself. This can be stacked. From [this comment][6f-p67837] in
+forum.6502.org.
+
+    fourx:  JSR twice   ; executes `once` four times before returning
+    twice:  JSR once    ; executes the following routine twice before returning
+    once:   ...
+            RTS
+
 ### Easy Delay
 
 This delays 9×(256×A+Y)+8 cycles, i.e., 9 to 589,832 cycles, with
@@ -205,6 +222,7 @@ XXX The comments added to explain this need to be completed.
 
 <!-------------------------------------------------------------------->
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
+[6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
 [6t-decimal]: http://www.6502.org/tutorials/decimal_mode.html
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
