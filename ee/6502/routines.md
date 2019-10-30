@@ -1,6 +1,14 @@
 6502 Routines
 =============
 
+### Contents
+
+- Misc
+- Arithmetic, Boolean Algebra, Bit/Word Handling
+
+Misc
+----
+
 ### Stack-relative Indexing
 
             STA $100,X      ; PHA equivalant using X as stack pointer
@@ -47,6 +55,36 @@ To preserve registers and get the value of the flags to print them
 
 (This is simpler on the 65C02 where you have PHX/PLX and PHY/PLY
 instructions.)
+
+### Easy Delay
+
+This delays 9×(256×A+Y)+8 cycles, i.e., 9 to 589,832 cycles, with
+resolution of 9 cycles. From [Bruce Clark][6f-bclark] via [wmtips].
+
+    loop:   CPY #1      ; set carry if Y >= 1, i.e., if Y is not 0
+            DEY         ; does not affect carry
+            SBC #0      ; subtract ¬C from A; i.e., subtract 1 only if
+                        ; carry was 0 because Y is 0 after decrement
+            BCS loop
+
+
+Arithmetic, Boolean Algebra, Bit/Word Handling
+----------------------------------------------
+
+### Increment/Decrement
+
+From [6w-incdec]. Constant-time increment/decrement (both 6 cycles):
+
+        CPX #$FF                CPX #$01
+        INX                     DEX
+        ADC #$00                SBC #$00
+
+You can use the same "compare to set carry then add/subtract it"
+to increment and stop at $00, or decrement and stop at $FF:
+
+        CMP #1                  CMP #$FF
+        ADC #0                  SBC #0
+
 
 ### Arithmetic shift right
 
@@ -163,32 +201,6 @@ XXX The comments added to explain this need to be completed.
     digit:  .DS 1           ; current digit we're working on
     pzero   .DS 1           ; If this is 1, and X (current digit) > 1, we
                             ; are outputting leading zeros
-
-### Easy Delay
-
-This delays 9×(256×A+Y)+8 cycles, i.e., 9 to 589,832 cycles, with
-resolution of 9 cycles. From [Bruce Clark][6f-bclark] via [wmtips].
-
-    loop:   CPY #1      ; set carry if Y >= 1, i.e., if Y is not 0
-            DEY         ; does not affect carry
-            SBC #0      ; subtract ¬C from A; i.e., subtract 1 only if
-                        ; carry was 0 because Y is 0 after decrement
-            BCS loop
-
-### Increment/Decrement
-
-From [6w-incdec]. Constant-time increment/decrement (both 6 cycles):
-
-        CPX #$FF                CPX #$01
-        INX                     DEX
-        ADC #$00                SBC #$00
-
-You can use the same "compare to set carry then add/subtract it"
-to increment and stop at $00, or decrement and stop at $FF:
-
-        CMP #1                  CMP #$FF
-        ADC #0                  SBC #0
-
 
 
 <!-------------------------------------------------------------------->
