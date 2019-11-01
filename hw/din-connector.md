@@ -80,6 +80,28 @@ I-shaped 8-pin connector S1308-SB:
     ! 1:N/C  2:RED  3:GREEN  4:BLUE  !
     +--------------------------------+
 
+#### VGA Pinout
+
+DDC2 pinout here just for quick reference; see [pinouts.ru VGA
+pinout][pru-vga] for more details. Facing the male DE-15 plug on the
+cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
+
+     1  red (75 ohm, 0.7 V p-p)
+     2  green
+     3  blue
+     4  reserved (DDC1: ID2)
+     5  ground
+     6  red ground
+     7  green ground
+     8  blue ground
+     9  key (no pin); optionally 5 V output from graphics card
+    10  sync ground
+    11  ID0 monitor ID bit 0 (optional)
+    12  SDA I2C serial data (DDC1: ID1)
+    13  hsync or csync
+    14  vsync; also used as a data clock
+    15  SCL: I2C data clock (DDC1: ID3)
+
 
 
 <!-------------------------------------------------------------------->
@@ -89,3 +111,5 @@ I-shaped 8-pin connector S1308-SB:
 [MIDI]: https://en.wikipedia.org/wiki/MIDI#Electrical_specifications
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
 [euaudio]: https://en.wikipedia.org/wiki/DIN_connector#Analog_audio
+
+[pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
