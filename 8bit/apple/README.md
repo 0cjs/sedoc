@@ -68,6 +68,24 @@ BASIC):
 SWEET16 uses `$00`-`$1F`.
 
 
+Monitor Commands
+----------------
+
+`CALL -151` (65385, $FF69) enters monitor, giving a `*` prompt. Exit
+with Ctrl-Reset (uses vector at $3F2), Ctrl-C + Enter or `3D0G` (runs
+the resident program, usually Applesoft, which has set up a `JMP`
+instruction at $3D0). Loading `69 FF 5A` at $3F2 will make Ctrl-Reset
+bring up the monitor.
+
+Commands:
+- A single hex value (e.g., `E000`) displays the byte at a memory
+  location and sets the "last opened location" (_last_) and "next
+  changeable location" (_next_).
+- `.` followed by an address displays memory from _last_ to that
+  address. Two addresses separated by `.` displays that range. _last_
+  and _next_ are both the last location displayed.
+
+
 
 <!-------------------------------------------------------------------->
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
