@@ -1,9 +1,11 @@
 Apple IIc Notes
 ===============
 
-For full details, including hardware design details, ROM listings,
-etc., see [The Apple IIc Technical Reference Manual][techref]. This
-does not include [schematics] however.
+All page numbers below not otherwise indicated refer to [The Apple IIc
+Technical Reference Manual][techref]. See that for full details,
+including hardware design, ROM listings, and schematics (pp. 292-296).
+There is also a separate [schematics] PDF, but that's worse quality
+than the manual.
 
 Changes from IIe:
 - CMT (cassette) support dropped.
@@ -38,15 +40,23 @@ hook.
 Power
 -----
 
-Power input is unregulated 9 to 20 V DC max 25 W. The Apple external
-PSU is 15 V 1.2 A. The chassis connector is a male 7-pin DIN. The
-PSU plug is wired as follows:
+(p.234) Power input is unregulated 9 to 20 V DC max 25 W. The Apple
+external PSU is 15 V 1.2 A. The chassis connector is a male 7-pin DIN.
+Below, LI = "looking into."
 
-           ∪            Looking into female plug on cable
-        7     6         1,4: +15 V DC
-      3         1         2: Chassis ground (AC input ground)
-        5     4         3,5: Signal ground.
-           2            6,7: not connected
+    DIN Numbering       DIN Numbering    Apple Numbering
+    LI female plug      LI male jack      LI male jack
+          ∪                  ∪                  ∪
+       7     6            6     7            7     1
+     3         1        1         3        6         2
+       5     4            4     5            5     3
+          2                  2                  4
+
+    DIN    Apple   Function
+    1,4     2,3    +15 V DC
+      2       4    Chassis ground (AC input ground)
+    3,5     5,6    Signal ground
+    6,7     1,7    Not connected
 
 Internally the converter generates voltages +5 (1.5A), +12 (0.6 A, 1.5
 A surge), -12 (100 mA) and -5 (50 mA). It can run all internal
@@ -58,30 +68,92 @@ shorted to ground or if any output voltages goes outside normal range
 Max case temperature is 60°.
 
 
+Disk I/O
+--------
+
+(p.273-274) The manual says you should _not_ use power from the
+external DB-19 disk connector for any other purpose; instead get power
+from a different port and respect current limits.
+
+    10 9  8  7  6  5  4  3  2  1        ?Looking into connector on chassis?
+     19 18 17 16 15 14 13 12 11
+
+(p.296) The internal connector J8 is a 20-pin DIP header. This is
+almost identical to the Disk II controller from the Apple II, with the
+exception that on the Disk II pin 19 was +12V and pin 14 was called
+just `ENABLE*` (having the same function).
+
+    Ext  Int  IO  Function
+      1   1   -   GND
+      2   3   -   GND
+      3   5   -   GND
+      4   7   -   GND
+      5   9   -   -12V
+      6  11   -   +5V
+      7  13   -   +12V
+      8  15   -   +12V
+         17   -   +12V
+         19   O   DISKACTY  Disk activity light, to J9-11 (keyboard conn.)
+      9       i?  EXTINT*   External interrupt
+     10       i   WRPROT    Write-protect
+     11   2   O   SEEKPH0   Motor phase 0-3
+     12   4   O   SEEKPH1
+     13   6   O   SEEKPH2
+     14   8   O   SEEKPH3
+     15  10   ?   WRREQ*    Write request
+         12   -   +5V
+         14   ?   EN1*      Drive 1 select (ENABLE* on disk II)
+     16       -   n/c       (+5V on some controllers?)
+     17       O   DR2*      Drive 2 select (EN2* on schematic)
+     18  16   i   RDDATA    (in) Read data
+     19  18   O   WRDATA    (out) Write data
+         20   i   WRPROT
+
+The interface might be called ["SA390"], since it connects to on
+Shugart SA400 drives with most of their electronics removed.
+
+
 Models and ROM Versions
 -----------------------
 
-There are three versions of the IIc, identified by the ROM byte at
-`PEEK(-1089)` (64447, $FBBF).
-- Original (255, $FF). The only version that can boot external drive
-  with `PR#7`.
-- UniDisk 3.5 (0, $00): Expands ROM from 16K to 32K. Adds Protocol
-  Converter (earlier version of Smartport) routines to ROM to support
-  UniDisk 3.5 external drive. Adds Mini-Assembler and step/trace
-  monitor commands. Adds built-in diagnostics. Improved interrupt
-  handlers. New external drive startup procedures.
-- Memory expansion (3, $03): Uses four 64K×4bit RAM instead of sixteen
-  64K×1bit RAM chips and adds motherboard connectors for a RAM
-  expansion card. Updates ROM to SmartPort. Moves mouse to port 7;
-  memory expansion uses port 4.
+There are several versions of the IIc. ROM versions are identified by
+`PEEK(-1089)` (64447, $FBBF); hex values are given below.
 
-See Appendix F (pp.348-365) for more detailed information on
-differences between all models.
+- Original ($FF): 16K. The only version that can boot external drive
+  with `PR#7`.
+- Serial port timing fix: Replaces 74LS161 with an oscillator to bring
+  serial port timing within spec (it was 3% low).
+- UniDisk 3.5 (0, $00): 32K. Protocol Converter (earlier version of
+  Smartport) routines to support UniDisk 3.5 external drive.
+  Mini-Assembler and step/trace monitor commands. Built-in diagnostics
+  (Ctrl-OpenApple-Reset). Improved interrupt handlers. New external
+  drive startup procedures.
+- Memory expansion (3, $03): 32K. Uses four 64K×4bit RAM instead of
+  sixteen 64K×1bit RAM chips and adds motherboard connectors for a RAM
+  expansion card (expands up to 1 MB). Updates ROM to SmartPort. Moves
+  mouse to port 7; memory expansion uses port 4.
+- Memory expansion (4, $04): Version 3 with bugfixes.
+- Apple IIc+ (5): next generation of IIc machines.
+
+16K ROM systems have trace W1 closed and W2 open; to change to 32K cut
+the former and bridge the latter.
+
+Further references:
+- [techref] Appendix F (pp.348-365) gives more detailed information on
+  differences between all models.
+- [Apple IIc ROM Versions][romver]
+- BMOW's [Apple IIc ROM Upgrade][bmow-2crom] has additional
+  information and covers how to do an upgrade.
+- [ROM images][a2za-a2crom].
 
 
 
 <!-------------------------------------------------------------------->
+["SA390"]: https://apple2history.org/history/ah05/
+[a2za-a2crom]: http://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Computers/Apple%20II/Apple%20IIc/ROM%20Images/
+[bmow-2crom]: https://www.bigmessowires.com/2015/05/29/apple-iic-rom-upgrade/
 [evb-teardown]: https://www.youtube.com/watch?v=JsUM-ZcBFE0
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
+[romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
 [techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
