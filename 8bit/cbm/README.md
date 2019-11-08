@@ -43,6 +43,7 @@ Non-PET models:
 - 1982-08 __[Commodore 64][c64]__: 64K
   - Text: text 40x25×16 (8x8 cells = 320×200), programmable charset
   - Bitmap: 160×200×4, 320×200×2, sprites
+- 1984? __[Commodore Plus/4][plus4]__: 64K
 
 
 Commodore 64
@@ -125,6 +126,45 @@ CHAROM on the C64. Not sure what use that might be. Perhaps cartridge
 port pins 9 and 10 have other purposes on the MAX.
 
 
+Plus/4
+------
+
+- CBM BASIC 3.5 ($8000-$BFFF) and newer KERNAL ($D800-$FFFF)
+- Second bank of ROM ($8000-$FFFF) for office software suite
+
+### Cartridge/Expansion Port
+
+50-pin, labeled 1-25 and A-Z,AA-CC skipping G, I, O, Q.
+
+     1      GND
+     2-3    +5 V
+     4      IRQ
+     5      R/W̅
+     6      C1 HIGH
+     7      C2 LOW
+     8      C2 HIGH
+     9      C̅S̅1̅
+    10      C̅S̅0̅
+    11      C̅A̅S̅
+    12      MUX
+    13      BA
+    14-21   D7-D0
+    22      AEC
+    23      EXT AUDIO
+    24      Φ2
+    25      GND
+     A      GND
+     B      C1 LOW
+     C      B̅R̅R̅E̅S̅E̅T̅
+     D      R̅A̅S̅
+     E      Φo
+     F-Y    A15-A0
+     Z      n/c (also marked "RAMEN" on schematic)
+    AA      n/c
+    BB      n/c
+    CC      GND
+
+
 Transferring Data to CBM Machines
 ----------------------------------
 
@@ -139,6 +179,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [c64]: https://www.c64-wiki.com/wiki/C64
 [pet-history]: https://www.commodore.ca/commodore-products/commodore-pet-the-worlds-first-personal-computer/
 [pi-ver]: http://www.6502.org/users/andre/petindex/versions.html
+[plus/4]: https://www.c64-wiki.com/wiki/Commodore_Plus/4
 
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
 [c64progref]: https://archive.org/details/c64-programmer-ref
