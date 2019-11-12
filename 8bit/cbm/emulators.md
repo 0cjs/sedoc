@@ -37,6 +37,7 @@ mapping.
     STOP/RUN    Esc
     CLR/HOME    Home
     RESTORE     PgUp
+    £           \
 
 For F2/F4/F6/F8 use those keys; you may need to use SHIFT as well.
 
