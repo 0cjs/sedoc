@@ -54,6 +54,18 @@ General documentation:
 - [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
 - [Zimmers CBM Archive][zimmers] (software, mags, books, etc.)
 
+### 6510
+
+The [6510 data sheet][6510] shows three versions; 6510, 6510-1 and
+6510-2. The C64 uses the first of these. (The second and third replace
+RDY and NMI pins with PIO pins P₆ and P₇.)
+
+Unlike the 6502, A₀-A₁₅, D₀-D₇ and R/W̅ can be tri-stated by bringing
+AEC (Address Enable Control) low. Not clear what the CPU actually sees
+when this happens; maybe the design is to test a pin on the I/O port?
+Or perhaps the RDY must be used to pause the CPU. Possibly the [REU
+documentation][reutech] offers insight.
+
 ### Cartridge/Expansion Port
 
 The [cartridge/expansion port][64w-cport] pins are, left to right,
@@ -182,9 +194,11 @@ stuff on to a C64, some of them much faster than the disk drive.
 [plus/4]: https://www.c64-wiki.com/wiki/Commodore_Plus/4
 
 [64w-cport]: https://www.c64-wiki.com/wiki/Expansion_Port
+[6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
 [c64progref]: https://archive.org/details/c64-programmer-ref
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 [rc 10850]: https://retrocomputing.stackexchange.com/q/10850/7208
+[reutech]: https://codebase64.org/doku.php?id=base:thirdparty#reu
 
 [multimax]: http://www.multimax.co/hardware/
 
