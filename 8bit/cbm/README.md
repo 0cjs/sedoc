@@ -8,6 +8,7 @@ Documentation here:
 - [Machine Language](machlang.md)
 - [Commodore Serial (IEC) Bus](serial-bus.md)
 - [BASIC](basic.md)
+- [DOS Wedge](doswedge.md)
 - [Emulators](emulators.md)
 
 
