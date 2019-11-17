@@ -152,6 +152,25 @@ By David Galloway. See [wm-SWM].
             ADC #$80
             ROL A
 
+### ASCII decimal digit to binary
+
+From [Henning Jensen][yt-hj]. (Also see [yt-ytvu].)
+
+            EOR #$30    ; clears bits 4,5 if in range '0'-'?'
+            CMP #$0A
+            BCS notdigit
+
+- Input $40/'@' or above will have two top bits set and be caught by
+  the CMP/BCS.
+- EOR will set one or both of bits 4,5 for input below the $30/'0'
+  stick and also be caught by the CMP/BCS.
+- Otherwise the EOR brought the $30/'0' to $3F/'?' range down to
+  $00-$0F.
+- Thus, input in the '0' stick but $3A/':' or above will be caught
+  after that EOR by the CMP/BCS.
+- If none of those conditions hold the EOR turned $30/'0'-$39/'9' into
+  $00-$09.
+
 ### Binary digit to ASCII HEX digit
 
 From [6t-decimal]:
@@ -230,3 +249,5 @@ XXX The comments added to explain this need to be completed.
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
 [wm-SWM]: http://6502.org/source/general/SWN.html
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
+[yt-hj]: https://www.youtube.com/watch?v=bDbpntumA6A&lc=Ugw4AnVKe4y6_INt1FV4AaABAg
+[yt-ytvu]: https://www.youtube.com/watch?v=bDbpntumA6A&lc=UgzUx3ScG6-3lXWMNq54AaABAg.9-yXOn4CLwJ90M2ZlcJW8d
