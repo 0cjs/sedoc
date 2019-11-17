@@ -48,7 +48,9 @@ Directory:
     C0  non-ASCII format, read-after-write
 
 Clusters are 8 sectors (2 KB) in size. The FAT is an array with an
-entry for each cluster, containing one of the following values:
+entry for each cluster, and appears to be interleaved between sides
+1 and 2 (on double-sided disks). Each entry contains one of the
+following values:
 
     00-9F   Cluster in use. Value is the next cluster number.
     C1-C8   Last cluster in file. Bits 0-3 are number of sectors used
