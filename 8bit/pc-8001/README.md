@@ -94,8 +94,9 @@ used (in Japan only) an "intelligent" external disk unit (the PC-8031,
 presumably) with its own Z-80 controlling the disks; the FDD port used
 an [i8255]-compatible PIO chip for communications with the peripheral.
 
-The [SD6031] is a PC-6001mkII FDD Emulator that may have a similar
-interface. More technical details are given on the [spec page][SD6031-spec].
+The [SD6031] is a PC-6001mkII FDD Emulator that can work with the
+PC-8001mkII (though the pinout looks to be different. See the README
+in the [firmware source](sd6031/) is here for more details.
 
 
 Character Set and Colors
