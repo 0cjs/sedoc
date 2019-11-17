@@ -98,6 +98,8 @@ The [SD6031] is a PC-6001mkII FDD Emulator that can work with the
 PC-8001mkII (though the pinout looks to be different. See the README
 in the [firmware source](sd6031/) is here for more details.
 
+See [floppy](floppy.md) for more on the disk format.
+
 
 Character Set and Colors
 ------------------------

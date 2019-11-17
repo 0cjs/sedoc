@@ -22,8 +22,9 @@ file it finds as drive one, and `*.P32` through `*.P34` as drives 2-4.
 `.D88` files can be converted using `d88_p31` and `p31_d88` utilities,
 though the links to them from that page are broken.
 
-Disk images for utilities (to format disks, etc.) are available from
-the [SD6031] page in [`UTILITY.ZIP`].
+The floppy format is [described here](../floppy.md). Disk images for
+utilities (to format disks, etc.) are available from the [SD6031] page
+in [`UTILITY.ZIP`].
 
 ### Technical Details
 
@@ -62,4 +63,5 @@ PC-6001 PCB edge connector pinout (from the spec page):
 
 [fd]: ../README.md#floppy-disk
 [i8255]: https://en.wikipedia.org/wiki/Intel_8255
+[marugoto]: http://www8.plala.or.jp/ita-sys/K02B_PC8001-Marugoto.html
 [wj-pc6000]: https://ja.wikipedia.org/wiki/PC-6000シリーズ
