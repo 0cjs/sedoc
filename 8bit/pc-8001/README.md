@@ -25,6 +25,10 @@ Documentation:
 - [パソコンPCシリーズ 8001 6001 ハンドブック][asahi], covers BASIC, machine
   language, hardware details, etc.
 - [Enri's PC-8001 page][enri]:
+- [sbeach.seesaa.net] is the blog for a project to create the PC-6001F, an
+  FPGA clone of the 6001. It has articles with extensive information on
+  many aspects of PC-6000/PC-8000 hardware and software.
+- [electric.com][er] has many posts on various PC-8001 topics.
 
 
 Connector Pinouts
@@ -54,6 +58,9 @@ Roughly, the passive conversion described above and in
 - To get composite sync, run hsync and vsync each into a 1N4148, tie the
   ouputs together with a 200Ω pulldown. 330Ω works too.
 - Run R, G, B through 150Ω resistors, per [x1/rgb21]?
+
+See also [RGBコンバータ(11)][sb-rgb11] (and updates [here][sb-rgb13] for an
+FPGA-based RGB converter project.
 
 #### B/W Composite (5-pin 180° DIN)
 
@@ -87,18 +94,20 @@ is the same except:
 
 PC-8801 pins 1 and 3 are `VCC` and `/ INT5`.
 
-##### Floppy Disk
+#### Floppy Disk
 
-According to the [PC-8800シリーズ][wj-pc8800], the PC-8001/8801 series
-used (in Japan only) an "intelligent" external disk unit (the PC-8031,
-presumably) with its own Z-80 controlling the disks; the FDD port used
-an [i8255]-compatible PIO chip for communications with the peripheral.
+- [Hardware interface and commands](floppyif.md).
+- [Disk data format](floppy.md).
 
-The [SD6031] is a PC-6001mkII FDD Emulator that can work with the
-PC-8001mkII (though the pinout looks to be different. See the README
-in the [firmware source](sd6031/) is here for more details.
+#### Expansion Cards
 
-See [floppy](floppy.md) for more on the disk format.
+The pinout is documented at [【コネクタ】 PC-8001,PC-8801シリーズ
+拡張スロット][er519]. It varies slightly between the PC-8012 expansion
+unit, PC-8001mkII and PC-8801.
+
+See [PC-8001mk2 拡張ボード][er78] for an example of a homebrew
+expansion card on protoboard adding a parallel port, ROM writer and FM
+sound generator.
 
 
 Character Set and Colors
@@ -178,23 +187,23 @@ Also see Table 2 (p.80) in [Byte] for summary and [asahi] for more details.
 
 
 <!-------------------------------------------------------------------->
-[retropc.net/404]: http://www.retropc.net/mm/archives/404
 [asahi]: https://archive.org/details/PC8001600100160011982
 [byte]: https://tech-insider.org/personal-computers/research/acrobat/8101.pdf
 [enri]: http://www43.tok2.com/home/cmpslv/Pc80/EnrPc.htm
+[er]: https://electrelic.com/
+[retropc.net/404]: http://www.retropc.net/mm/archives/404
+[sbeach.seesaa.net]: http://sbeach.seesaa.net/
 
 <!-- Connector Pinouts -->
+[er519]: https://electrelic.com/electrelic/node/519
+[er78]: https://electrelic.com/electrelic/node/78
 [hkjunk0]: https://hkjunk0.com/computer/hardware-and-maintenance/pc8001-rgb-output.html
 [kenko858]: http://kenko858.blog.fc2.com/blog-entry-4.html
 [pc6001]: https://archive.org/details/PC6001mkII
+[sb-rgb11]: http://sbeach.seesaa.net/article/450572908.html
+[sb-rgb13]: http://sbeach.seesaa.net/article/450981469.html
 [we-pc8000]: https://en.wikipedia.org/wiki/PC-8000_series
 [wj-pc8000]: https://ja.wikipedia.org/wiki/PC-8000シリーズ
 [x1/rgb21]: http://www.retropc.net/mm/x1/rgb21/index.html
-
-<!-- Floppy Disk Interface -->
-[SD6031-spec]: http://tulip-house.ddo.jp/DIGITAL/SD6031V1/spec.html
-[SD6031]: http://tulip-house.ddo.jp/DIGITAL/SD6031V1/
-[i8255]: https://en.wikipedia.org/wiki/Intel_8255
-[wj-pc8800]: https://ja.wikipedia.org/wiki/PC-8800シリーズ
 
 [chars]: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/PC-8001_character_set.png/330px-PC-8001_character_set.png

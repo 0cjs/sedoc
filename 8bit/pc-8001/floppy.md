@@ -6,6 +6,9 @@ References:
   on and a program to analyze/convert both BASIC and CP/M disk
   formats.
 
+Also see [floppyif](floppyif.md) for information on the interface
+between disk drive units and the computer.
+
 The double-sided double-density format is 40 tracks per side, 16
 sectors per track and 256 bytes per sector for a total of 320 KB of
 raw storage.

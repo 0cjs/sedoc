@@ -38,20 +38,7 @@ Further technical details about the `.P31` file format, communications
 protocol and pinouts are given on the [spec page][SD6031-spec] ([local
 copy](spec.html)).
 
-The computer side is likely an Intel [i8255] PIO compatible chip which
-has three 8-bit ports, or similar. See the § "Floppy Disk" in the
-[README above][fd] for references.
-
-PC-6001 PCB edge connector pinout (from the spec page):
-
-      1-8   PB0-PB7     out     data out
-        9   n/c         -
-    10-18   GND         -       signal ground
-    19-26   PA0-7       in      data in
-    27-30   PC4-7       out     ATN, DAC, RFD, DAV
-    31-34   PC0-3       in      ATN, DAC, RFD, DAV
-       35   RESET       out     reset
-       36   GND         -       signal ground
+See [../floppyif](../floppyif.md) for computer-side hardware information.
 
 
 
