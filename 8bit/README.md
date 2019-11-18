@@ -1,6 +1,13 @@
 8-bit Microcomputer Information
 ===============================
 
+General references:
+- [Japanese 8-bit DIN outputs][rc 12255] (RC.SE)
+
+
+Early Computers
+---------------
+
 The ["1977 trinity"][trinity] was the [Apple II][we-ap2], [TRS-80
 Model I][we-trs80i], and [Commodore PET 2001][we-pet2001], the first
 "appliance" computers.
@@ -77,6 +84,8 @@ Online references (some of dubious accuracy) include:
 
 
 <!-------------------------------------------------------------------->
+[rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
+
 [gosanke8]: https://ja.wikipedia.org/wiki/8ビット御三家
 [trinity]: https://retrocomputing.stackexchange.com/q/12343/7208
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
