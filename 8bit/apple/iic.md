@@ -113,6 +113,51 @@ The interface might be called ["SA390"], since it connects to on
 Shugart SA400 drives with most of their electronics removed.
 
 
+Other I/O
+---------
+
+#### Serial Ports
+
+(p.274) Two 6551 ACIAs; port/slot "printer" and port/slot 2 "modem."
+
+    DIN Numbering     DIN Numbering     Apple Numbering
+    LI male plug      LI female jack     LI female jack
+         ∪                  ∪                  ∪
+    1         3        3         1        5         1
+      4     5            5     4            4     2
+         2                  2                  3
+
+    DIN    Apple   Dir  Function
+     1       1     out   DTR  Data Terminal Ready
+     2       3      -    GND
+     3       5     in    DSR  Data Set Ready; input to DCD on ACIA
+     4       2     out   TD   Transmit Data
+     5       4     in    RD   Receive Data
+
+The DSR inputs on the ACIAs are not conected to the serial ports for
+reasons related to the routing of interrupts.
+- Port 1 DSR: `E̅X̅T̅I̅N̅T̅` from the external drive connector.
+- Port 2 DSR: `KSTRB` from keyboard.
+
+#### Mouse/Hand Controller (Paddles/Joystick)
+
+(p.282) DB-9 female jack. Supplies no more than 100 mA @ +5V. Paddles
+resistors should be 150 KΩ pots connected to +5V.
+
+    5 4 3 2 1     Looking into female jack on motherboard.
+     9 8 7 6
+
+    1  M̅O̅U̅S̅E̅I̅D̅,GAMESW1 Disables 556 paddle timer when asserted; paddle 1 button
+    2  +5V
+    3  GND
+    4  XDIR            Direction indicator
+    5  XMOVE,PDL0      Movement interrupt, paddle 1 resistor
+    6  n/c
+    7  M̅S̅W̅,GAMESW0     Mouse button, paddle 0 button
+    8  YDIR,PDL1       Direction indicator, paddle 1 resistor
+    9  YMOVE           Movement interrupt
+
+
 Models and ROM Versions
 -----------------------
 
