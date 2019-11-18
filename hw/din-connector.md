@@ -36,6 +36,47 @@ Five-pin and eight-pin, looking into female jack:
     4-White   5-Grey              # hsync/vsync (usu. grey/black); MIC/EAR
     6-Red     7-Green   8-Blue    # TTL RGB; 6/7 cassette relay
 
+#### cjs's Apple IIc Serial Breakout
+
+Using Ethernet cable; orange and green stripes tied together for ground.
+
+     blue   1  out   DTR  Data Terminal Ready
+     stripe 2   -    GND
+     brown  3  in    DSR  Data Set Ready; input to DCD on ACIA
+     orange 4  out   TD   Transmit Data
+     green  5  in    RD   Receive Data
+
+#### CMT (Cassette Tape) 8-pin DIN
+
+      4  REC        CMT microphone; output from computer
+      5  PLAY       CMT playback; input to computer
+    6,7  REM+,REM-  Relay open for stop; closed for motor run
+
+Apple standard headphone connectors and most (?) Android use the
+following TRRS, but some other phones ground and mic. In all cases,
+shorting mic and ground makes the device output only. The mic
+connection otherwise must see enough impedence to be detected; a
+resistor in series with the CMT output can help with this. See below
+for values.
+
+                    GALAXY¹ SAMSUNG
+    tip     left    green   green
+    ring 1  right   blue    red
+    ring 2  ground  copper  copper
+    sleeve  mic     red     black
+
+¹The Galaxy colours are also the ones in my white TRRS extension
+cables. Obviously these vary.
+
+On the [Apple iPhone-style pinout][pru-iphone], the headset button
+also shorts mic. to ground. CMT resistor 1.6 KΩ.
+
+[HTC pinout][pru-htc] (including many Android models, such as Nexus
+One) is the same, but Apple mics often don't work. Standard mic/gnd
+resistance with no button pressed 47 KΩ on Nexus One, 33 KΩ on
+Desire S. Multi-button remotes use various resistances between mic and
+ground for signalling, e.g. play=1Ω, back=220Ω, next=600Ω.
+
 
 Common Pinouts
 --------------
@@ -107,6 +148,8 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
+[pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
+[pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
 
 [MIDI]: https://en.wikipedia.org/wiki/MIDI#Electrical_specifications
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
