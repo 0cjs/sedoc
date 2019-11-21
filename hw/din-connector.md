@@ -15,8 +15,8 @@ plugs/sockets that are compatible or, worse yet, nearly but not quite
 compatible.
 
 
-Pin Numbering
--------------
+Pin Numbering and Breakouts
+---------------------------
 
 DIN plugs always use the same numbers for the same positions, so that
 e.g. pin 3 will be in the same place on any connector from 3 to 8
