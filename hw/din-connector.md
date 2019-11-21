@@ -30,13 +30,26 @@ Five-pin and eight-pin, looking into female jack:
         5     4           5     4
            2                 2
 
-#### cjs's DIN-8 Breakout
+For common pinouts for various devices, see:
+- Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255]
+  community wiki answer, covering CMT, composite/DRGB video.
+
+#### DIN-8 Breakout (cjs v1)
 
     1-Orange  2-Black   3-Yellow  # [V+/audio], GND, [clock]
     4-White   5-Grey              # hsync/vsync (usu. grey/black); MIC/EAR
     6-Red     7-Green   8-Blue    # TTL RGB; 6/7 cassette relay
 
-#### cjs's Apple IIc Serial Breakout
+#### DIN-5 Breakout (cjs v1)
+
+                # CMT       video
+    1-Blue      # "CMT1"    dot clock, audio
+    2-Black     # "CMT2"    GND
+    3-Yellow    # GND       composite video, A/V+5V on Yamaha/Victor MSX
+    4-Red       # REC       hsync
+    5-Green     # PLAY      vsync
+
+#### Apple IIc Serial DIN-5 Breakout (cjs v1)
 
 Using Ethernet cable; orange and green stripes tied together for ground.
 
@@ -45,6 +58,25 @@ Using Ethernet cable; orange and green stripes tied together for ground.
      brown  3  in    DSR  Data Set Ready; input to DCD on ACIA
      orange 4  out   TD   Transmit Data
      green  5  in    RD   Receive Data
+
+For [ADTPro], use a cable with hardware handshaking disabled by tying
+together DTR and DSR (1 and 3, DIN numbering) on the Apple side, and
+RTS and CTS (7 and 8) on the PC side. Here's the DB-9 pinout, looking
+into the male connector on the PC and the female connector on the IIc:
+
+    1 2 3 4 5       PC    Apple IIc        ∪
+     6 7 8 9                          3         1
+                 DCD 1 ←                5     4
+                  RD 2 ←  4 TD             2
+                  TD 3  → 5 RD
+                 DTR 4  →
+                 GND 5    2 GND
+                 DSR 6 ←
+             /-- RTS 7  →
+             \-- CTS 8 ←
+                 RI  9 ←
+                        ← 1 DTR -\
+                        → 3 DSR -/
 
 #### CMT (Cassette Tape) 8-pin DIN
 
@@ -147,9 +179,11 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
+[adtpro]: http://adtpro.com/connectionsserial.html#DIN5
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
 [pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
+[rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 
 [MIDI]: https://en.wikipedia.org/wiki/MIDI#Electrical_specifications
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
