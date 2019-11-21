@@ -27,6 +27,10 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
   - MCUs: AVR PIC ST8 
   - Missing: 6309
 
+- [naken_asm][] ([GitHub][naken-gh]): November 2, 2019
+  - Features: very simple; has simple disassembler and simulator for some archs
+  - CPUs: 1802 6502+ 65816 6800+ 68000 6809 Z80 AVR8 PIC Propeller ...
+
 - [WLA DX][] ([GitHub][wla-gh]) v9.9 2019-08-15
   - Families: 6502 6800 6801 6809 Z80 GB-Z80
   - Missing: 1802
@@ -56,6 +60,8 @@ Disassemblers
 [asx-dl]: http://shop-pdp.net/ashtml/asxget.php
 [asx-doc]: http://shop-pdp.net/ashtml/asmlnk.htm
 [asxxxx]: http://shop-pdp.net/ashtml/asxxxx.htm
+[naken-gh]: https://github.com/mikeakohn/naken_asm
+[naken_asm]: http://www.mikekohn.net/micro/naken_asm.php
 [wla dx]: http://www.villehelin.com/wla.html
 [wla-gh]: https://github.com/vhelin/wla-dx
 
