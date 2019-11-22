@@ -104,7 +104,15 @@ left/right braces or weird vertical bars. Also not clear about `$7e` tilde.
 The graphic, line drawing and kanji glyphs can be entered using the `GRAPH`
 key. (SS:1-33)
 
-A Kanji ROM option is available.
+A Kanji ROM option card is available. It has 256 KB of ROM (4×64 KB)
+with 16×16 patterns (40×12 CRT cells) for 2965 JIS level 1 kanji (of
+the 6,879 in JIS X 0208, presumably) and 453 non-kanji characters.
+Addresses (SS:1-56):
+
+    $FD20 write  ROM address select, high 8 bits
+    $FD21 write  ROM address select, low 8 bits
+    $FD22 read   ROM data left side 8 bits
+    $FD23 read   ROM data right side 8 bits
 
 
 Video Outputs
