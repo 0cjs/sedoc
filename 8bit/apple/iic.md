@@ -157,6 +157,16 @@ resistors should be 150 KΩ pots connected to +5V.
     8  YDIR,PDL1       Direction indicator, paddle 1 resistor
     9  YMOVE           Movement interrupt
 
+#### Keyboard
+
+There are two different [keyboard PCB assemblies]:
+- Composite (tan) board with male cross-shaped switch actuators
+  (older IIcs, I believe, such as mine).
+- Black, thin board with female rectangular switch actuators.
+
+The keycaps differ between the two models (female cross vs. male
+rectangular) to match the keyswitches.
+
 
 Models and ROM Versions
 -----------------------
@@ -199,6 +209,7 @@ Further references:
 [bmow-2crom]: https://www.bigmessowires.com/2015/05/29/apple-iic-rom-upgrade/
 [evb-teardown]: https://www.youtube.com/watch?v=JsUM-ZcBFE0
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
+[keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
 [techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
