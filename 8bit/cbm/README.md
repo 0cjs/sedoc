@@ -70,19 +70,20 @@ documentation][reutech] offers insight.
 
 ### A/V Jack
 
-The [A/V jack][cw-av] is an 8-pin 270° DIN (U, not horseshoe shaped).
-The oldest models use a 5-pin DIN incompatible with the VIC-20, with
-pins 1-5 having the same function on both connectors. Pin numbering is
-DIN standard.
+The [A/V jack][cw-av] is an 8-pin 268° DIN (U, not horseshoe shaped).
+Note that the pin numbering on the 268° connector is different from
+[the 270° connector][din]; pin the center pin is 6 instead of 8. The
+oldest models use a 5-pin DIN incompatible with the VIC-20, with pins
+1-5 having the same function on both connectors.
 
-    1   Luminance out
-    2   GND
-    3   Audio out
-    4   Composite video out
-    5   Audio in
-    6   Chroma out
-    7   n/c
-    8   +5 V (usually)
+                        1   Luminance out
+          ∪             2   GND
+     8         7        3   Audio out
+     3    6    1        4   Composite video out
+       5     4          5   Audio in
+          2             6   Chroma out
+                        7   n/c
+                        8   +5 V (usually)
 
 ### Cartridge/Expansion Port
 
@@ -216,6 +217,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [c64progref]: https://archive.org/details/c64-programmer-ref
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 [cw-av]: https://www.c64-wiki.com/wiki/A/V_Jack
+[din]: ../../../hw/din-connector.md
 [rc 10850]: https://retrocomputing.stackexchange.com/q/10850/7208
 [reutech]: https://codebase64.org/doku.php?id=base:thirdparty#reu
 

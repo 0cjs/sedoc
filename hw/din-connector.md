@@ -22,17 +22,19 @@ DIN plugs always use the same numbers for the same positions, so that
 e.g. pin 3 will be in the same place on any connector from 3 to 8
 pins.
 
-Five-pin and eight-pin, looking into female jack:
+Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack:
 
-           ∪                 ∪
-                          7     6
-      3         1       3    8    1
-        5     4           5     4
-           2                 2
+           ∪                 ∪                 ∪
+                          7     6         8         7
+      3         1       3    8    1       3    6    1
+        5     4           5     4           5     4
+           2                 2                 2
 
-For common pinouts for various devices, see:
-- Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255]
-  community wiki answer, covering CMT, composite/DRGB video.
+References:
+- [Hosiden DIN Connectors][hosiden] (PDF): Catalog with pin numbering and
+  references to standards.
+- Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
+  wiki answer: common pinouts covering CMT, composite/DRGB video.
 
 #### DIN-8 Breakout (cjs v1)
 
@@ -180,6 +182,7 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
+[hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
 [pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
