@@ -206,8 +206,8 @@ Expressions evaluate to one of:
 - Local overrides `-a` "all globals" option.
 - Last local/global directive is used.
 
-Resuable symbols are decimal numbers with `$` appended. The scope is from
-the previous to the next non-reusable label. (§1.3.3)
+Resuable symbols are decimal numbers from 0-65535 with `$` appended.
+The scope is from the previous to the next non-reusable label. (§1.3.3)
 
 `.` is location counter. In instruction, referrs to start of instr, e.g.,
 `LDA <#.`. In `.byte`/`.word`/etc., refers to current pos in data list.
