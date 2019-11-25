@@ -4,6 +4,7 @@
 ### Contents
 
 - Misc
+- Looping and Delays
 - Arithmetic, Boolean Algebra, Bit/Word Handling
 
 Misc
@@ -55,6 +56,34 @@ To preserve registers and get the value of the flags to print them
 
 (This is simpler on the 65C02 where you have PHX/PLX and PHY/PLY
 instructions.)
+
+### Store two conditional results for later use
+
+            JSR pred1       ; returns predicate value in carry
+            ROR $00         ; any zero page addr
+            JSR pred2
+            ROR $00
+            ...
+            BIT $00
+            BPL pred2true
+            BVC pred1false
+
+### BIT Interior-branch No-op
+
+The BIT instruction sets NVZ flags but is otherwise a no-op; the
+argument can be used to hold one or two bytes of instruction to which
+you can jump. From [KansasFest 2019 Assembly Language Lightning
+Talks][kf19alli].
+
+    ;   Obfuscate a CLC instruction; this is from a copy-protected game
+    09B9 C9 DE      CMP #$DE
+    09BB F0 02      BEQ $09BF   ; branch to argument of BIT instruction
+    09BD 38         SEC         ; next BIT does not affect C flag
+    09BE 24 18      BIT $18     ; 18 = CLC
+
+- Replace `JSR $8635` with `BIT $8635` (instead of `NOP; NOP; NOP`) to
+  avoid executing a subroutine, preserving the address, though one
+  must be careful if the subroutine returned flags.
 
 
 Looping and Delays
@@ -246,6 +275,7 @@ XXX The comments added to explain this need to be completed.
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
 [6w-outdec]: http://6502org.wikidot.com/software-output-decimal
+[kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
 [wm-SWM]: http://6502.org/source/general/SWN.html
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
