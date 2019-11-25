@@ -68,6 +68,8 @@ Additionally, `RTI` and `PLP` always set all flags.
     I   SEI CLI BRK
     (4) BRK
 
+- No `SEV` instruction; use `BIT` on a location with bit 6 set.
+- V flag very persistent; good for "saving" a predicate for later use.
 - [Status flags: Nesdev wiki][nesdev-flags]
 - The [WDC W65C02S datasheet][ds2018] (2018-10) indicates in the
   register diagram on p.8 that bit 5 is always `1`; it gives bit 4 as
