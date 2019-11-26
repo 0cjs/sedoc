@@ -60,10 +60,11 @@ The monitor uses the following zero-page and page-3 locations:
 
 See further tables in [a2ref] pp. 74-75 for Applesoft, DOS 3.2 and
 Integer BASIC usage. Roughly, the only bytes left free by Applesoft
-and DOS 3.2 are the following (removing also $Cx and $Dx for Integer
-BASIC):
+and DOS 3.2 are the following:
 
-    $06-$09  $CE $CF  $D6 $D7  $E3  $EB-$EF  $F9-$FF
+    $06-$09  $CE $CF  $D6 $D7  $E3  $EB-$EE $EF  $F9-$FF
+    $06-$09                    $E3  $EB-$EE $EF  $F9-$FF  # +Integer BASIC
+    $06-$09  $CE $CF                $EB-$EE      $FD $FE  # +ProDOS
 
 SWEET16 uses `$00`-`$1F`.
 
