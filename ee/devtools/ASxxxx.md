@@ -162,17 +162,17 @@ to assign an area to a bank. Bank options are:
 General Assembler Syntax
 ------------------------
 
-Comment char is `;`, to end of line.
+Comment char is `;`, to end of line. (§1.2.1.4)
 
 Default radix is decimal. `.radix` followed by one char `[boqd hx]` sets.
-Temporary radix prefixes:
+Temporary radix prefixes (§1.3.1 Table 6):
 
     $%  0b  0B              Binary
     $&  0o  0O  0q  0Q      Octal
     $#  0d  0D              Decimal
     $$  0h  0H  0x  0X      Hexadecimal
 
-Unary Operators (highest precedence):
+Unary Operators (highest precedence) (§1.3.1 Tables 3, 4):
 
     #n              Immediate value
     <n  >n          Lower/upper byte value
@@ -180,7 +180,7 @@ Unary Operators (highest precedence):
     'c              Byte value of char c
     "cc             Word value of chars cc
 
-Binary operators, high to low precedence:
+Binary operators, high to low precedence (§1.3.1 Table 5):
 
     *  /  %         Multiply, divide, modulus
     +  -            Add, subtract
