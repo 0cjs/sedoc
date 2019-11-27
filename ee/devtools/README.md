@@ -24,9 +24,9 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
 - [AS]  v1.42bld148 2019-07-20
   - [Features][as-doc]: macros, good local syms (2.9), structs/unions
     symbol export, in-file code switch.
-  - [CPUs][as-cpus]:
-    1802 6502 65816 6800+ 68000+ 6809+ 8008 8085 8086 TI Z80 Z180+
-  - MCUs: 8051+ AVR PIC ...
+  - [CPUs][as-cpus]: 1802 6502 65816 6800+ 68000+ 6809+ 8008 8085 8086
+    TI Z80 Z180+ many-many-more
+  - MCUs: 8051+ AVR PIC many-many-more
 
 - [ASxxxx][] ([Downloads][asx-dl])  v5.30 update 1 2019-03-10
   - [Features][asx-doc]: linker/relocation, macros
