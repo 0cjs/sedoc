@@ -174,11 +174,15 @@ Temporary radix prefixes (§1.3.1 Table 6):
 
 Unary Operators (highest precedence) (§1.3.1 Tables 3, 4):
 
-    #n              Immediate value
-    <n  >n          Lower/upper byte value
+    #n              Immediate value (low byte if value >$FF)
+    <n  >n          Lower/upper byte value (see note 1)
+    <#  >#          No error but invalid; do not use!
     +   -           No-op, 2s-complement negation
     'c              Byte value of char c
     "cc             Word value of chars cc
+
+- Note 1: `<`/`>` for lower/upper byte value may not work with
+  constants in a future version of the assembler.
 
 Binary operators, high to low precedence (§1.3.1 Table 5):
 
@@ -320,7 +324,10 @@ Specific Assemblers
 
 ### AS6500 (§AG)
 
-Addressing modes:
+Addressing modes (§AG.3). The assembler will not automatically use
+direct page references for addresses in the direct page but in
+different areas or file unless the instruction has no absolute
+addressing mode; you must use a `*` for these
 
     #nn         immediate
     *aa         direct page
@@ -328,8 +335,8 @@ Addressing modes:
     aaaa,x      absolute indexed
     aaaa,y      absolute indexed
     [aaaa]      indirect                JMP only; watch for page boundary bug!
-    [zp,x]      indexed indirect
-    [zp],y      indirect indexed
+    [*aa,x]     indexed indirect        `*` is optional
+    [*aa],y     indirect indexed        `*` is optional
 
 Targets:
 
