@@ -38,6 +38,12 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
   - Features: very simple; has simple disassembler and simulator for some archs
   - CPUs: 1802 6502+ 65816 6800+ 68000 6809 Z80 AVR8 PIC Propeller ...
 
+- [SB-Assembler][sbasm] ([GitHub][sbasm-gh]): V3.03.02 (2019-05-05)
+  - Features: Python; macros.
+  - [CPUs][sbasm-cpus]:
+    1802, 6502, 6800, 6804, 6805, 6809, 68HC11, 8008, 8080/5, Z80+
+  - MCUs: 8048, 8051, AVR, PIC, ST6, ST7, ACE1101, ACE1202, SC/MP
+
 - [WLA DX][] ([GitHub][wla-gh]) v9.9 2019-08-15
   - Families: 6502 6800 6801 6809 Z80 GB-Z80
   - Missing: 1802
@@ -69,6 +75,9 @@ Disassemblers
 [asxxxx]: http://shop-pdp.net/ashtml/asxxxx.htm
 [naken-gh]: https://github.com/mikeakohn/naken_asm
 [naken_asm]: http://www.mikekohn.net/micro/naken_asm.php
+[sbasm-cpus]: https://www.sbprojects.net/sbasm/crosses.php
+[sbasm-gh]: https://github.com/sbprojects/sbasm3
+[sbasm]: https://www.sbprojects.net/sbasm/
 [tack-cpus]: http://tack.sourceforge.net/about.html
 [tack]: http://tack.sourceforge.net/
 [wla dx]: http://www.villehelin.com/wla.html
