@@ -33,6 +33,13 @@ out-of-tolerance condition and after release/restoration will hold
 reset for 150 ms.
 
 
+Clock Circuits
+--------------
+
+- Consider a 74HCT4060. The data sheet also offers some useful info on
+  values for RC and oscillator/RC component combinations.
+
+
 SBC Designs
 -----------
 
