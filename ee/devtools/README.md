@@ -27,6 +27,7 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
   - [CPUs][as-cpus]: 1802 6502 65816 6800+ 68000+ 6809+ 8008 8085 8086
     TI Z80 Z180+ many-many-more
   - MCUs: 8051+ AVR PIC many-many-more
+  - No official source repo; try [KubaO's repo][as-KubaO].
 
 - [ASxxxx][] ([Downloads][asx-dl])  v5.30 update 1 2019-03-10
   - [Features][asx-doc]: linker/relocation, macros
@@ -66,6 +67,7 @@ Disassemblers
 
 
 <!-------------------------------------------------------------------->
+[as-KubaO]: https://github.com/KubaO/asl.git
 [as-cpus]: http://john.ccac.rwth-aachen.de:8000/as/cpulist.html
 [as-doc]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html
 [as]: http://john.ccac.rwth-aachen.de:8000/as/
