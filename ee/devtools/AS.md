@@ -117,13 +117,62 @@ These take `@FILE` and env var params (`$P2BIN` etc.) just like `asl`.
 - `p2bin`: Convert a code file to a binary image.
 
 
-Source Format
--------------
+Segments
+--------
 
-(§2.5)
+(§3.2.13)
+`DATA`, `IDATA`, `XDATA`, `YDATA`, `BITDATA`, `IO`, or `REG`.
+`MOMSEGMENT` is current segment.
+
+
+Source Format and Syntax (§2.5)
+-------------------------------
 
     [label[:]] op[.attr] [param[,param …]   [;comment]
 
+
+Assembler Directives
+--------------------
+
+### Code Generation (§3.2)
+
+- `cpu`
+- `org`, `rorg`, `phase`
+- `segment` (§3.2.13)
+- `save`, `restore` (§3.2.15): XXX Mainly for include files.
+- `assume`
+- `z80syntax`
+
+### Definitions (§3.1)
+
+- `equ`, `set`: Typeless constant; not allocated to a segment. `equ`
+  is single-assigment; `set`s are reassignable variables. (May be
+  allocated to a segment by providing segment name as additional
+  argument.)
+- `enum`: Sequential `equ` assigment of `0…` to arguments; use `=` to
+  override value. Continue immeidately previous enum with `nextenum`
+- `label`: XXX
+- `charset`, `codepage`: XXX
+- `pushv`, `popv`: XXX
+
+### Data Definitions (§3.3)
+
+These differ for different CPUs. General rules:
+- Numeric constants (bytes, words, …) can use a reptition factor in
+  brackets before a parameter, e.g. `[(*+255)&$FFFF00-*]0`. This may
+  overflow the limit of 1 KB code generated per line.
+- Strings can be delimited by double/single quotes and slashes.
+
+Common to all processors:
+- `align`: Aligns to the next byte boundary divisible by the given
+  arg. An optional second arg defines the fill used for the skipped area.
+
+6502:
+- `byt`, `fcb`: Byte constants or ASCII strings. ("Form Constant Byte")
+- `adr`, `fdb`: Word constants. ("Form Double Byte")
+- `fcc`: String constants; double-quoted only.
+- `dfs`, `rmb`: Reserve number of bytes given as parameter. ("Reserve
+  Memory Bytes")
 
 
 <!-------------------------------------------------------------------->
