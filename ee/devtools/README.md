@@ -2,6 +2,14 @@ Microprocessor/Microcontroller/Electronics Development Tools
 ============================================================
 
 
+Schematics/EDA/CAD
+------------------
+
+- [KiCad]: EDA for schematics and PCBs.
+- [CircuitLab.com][clab]: In-browser editing/simulation. Also
+  publishes a free electronics textbook.
+
+
 Cross-assemblers
 ----------------
 
@@ -67,6 +75,9 @@ Disassemblers
 
 
 <!-------------------------------------------------------------------->
+[clab]: https://www.circuitlab.com/
+[kicad]: kicad.md
+
 [Kuba0/asl]: https://github.com/KubaO/asl.git
 [as-cpus]: http://john.ccac.rwth-aachen.de:8000/as/cpulist.html
 [as-doc]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html
