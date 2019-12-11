@@ -184,6 +184,41 @@ defines conflicting ones. The three forms of temporary symbols are:
 
 ### Sections / Local Symbols (§3.8)
 
+Sections are declared with `section NAME` and `endsection NAME`
+(_NAME_ optional) directives, which may be nested. Unqualified
+references are searched from inner to outer sections. Section names
+conflict only at the same level; a section name does not conflict with
+any parent or child with the same name, nor with section names in
+other branches of the hierarchy.
+
+References may be qualified with `name[secname]` to reference (only)
+enclosing sections; _secname_ may be `parent0`…`parent9` for current
+and parent sections. `parent` is the same as `parent1`.
+
+Symbols defined in sections are not visible outside those sections
+except when one of the following is used:
+- `public NAME`: Make _NAME_ a global symbol rather than a
+  section-qualified symbol. Must appear before symbol definition.
+- `public NAME:SECNAME`: Lifts _NAME_ to enclosing section _SECNAME_.
+
+If a symbol is referenced before definition and a parent section
+contains a symbol of the same name, a forward reference must be
+declared before use: `forward NAME`.
+
+#### Sections in Listings and Map Files
+
+Sectioned symbols appear in the `.map` file as `name[#]` where `#` is
+a number referencing a later `Info for Section # name` line whence the
+section name can be read. This distinguishes separate sections with
+the same name.
+
+Section symbols in the listing symbol table appear as `name
+[secname]`; these entries appear to be duplicated for different
+sections with the same name; they can be distinguished only in the
+`.map` file. The `-s` option makes no difference to the listing symbol
+table; it merely adds an additonal page to the listing output with a
+hierarchical listing of section names.
+
 
 Source Format and Syntax (§2.5)
 -------------------------------
@@ -202,6 +237,8 @@ Assembler Directives
 - `save`, `restore` (§3.2.15): XXX Mainly for include files.
 - `assume`
 - `z80syntax`
+- `radix N`: Default radix for integer constants, _N_ = `2`…`36`.
+- `outradix N`: Output radix for `"…\{…}…"` interpolation of integers.
 
 ### Definitions (§3.1)
 
@@ -233,6 +270,24 @@ Common to all processors:
 - `fcc`: String constants; double-quoted only.
 - `dfs`, `rmb`: Reserve number of bytes given as parameter. ("Reserve
   Memory Bytes")
+
+### Listing Control (§3.7)
+
+- `title TITLE`
+- `page LINES,WIDTH`: Number of lines at which to emit a form feed,
+  not including header lines. `1`-`255` or `0` for none between
+  initial header and symbol table. Optional _WIDTH_ (`5`-`255`) wraps
+  lines at that column; default 0 does not wrap.
+- `newpage N`: Force a new page. Optional section depth N (`0`-`4`)
+  controls generation of `3.2`, `4.1.1` etc chapter depths.
+- `macexp_dft`, `macexp_ovr`: Control of macro expansion.
+- `listing ARG`: _ARG_ is `off`, `on`, `noskipped` (don't print
+  conditional assembly not assembled) and `purecode` (as `noskipped`
+  but suppress `if` etc. as well). Sets values `0` to `3` resp. of
+  `LISTING` symbol.
+- `prtinit SI`, `prtexit SO`: Emit _SI_ and _SO_ before and after
+  listing. Used for, e.g., setting compressed mode on printers.
+
 
 
 <!-------------------------------------------------------------------->
