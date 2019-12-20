@@ -47,6 +47,11 @@ Numbered 1-4 from left to right; up=ON, down=OFF.
     4=ON   1.2Mhz    1.0Mhz (FM-8 compatible mode)
     4=OFF  2.0Mhz    2.0Mhz
 
+When set to DOS mode, the FM-7 produces an immediate sustained
+beep/tone at startup if no disk controller card is plugged in to the
+chassis. If a disk controller card is plugged without drives attached,
+the tone will be produced after about 15 seconds.
+
 A pair of the DIP switches can be used to ground boot ROM A9/A10 lines,
 which appear to have pullups otherwise. This gives a choice of four
 different 480 byte sets of bootcode. The boot ROM C̅S̅ is selected by `AB9 ∧
