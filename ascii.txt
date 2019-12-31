@@ -40,6 +40,18 @@
 in national variants, etc.) are all chars from sticks
 2 and 3 ($20-$3F) excluding '#' ($23) and '$' ($24).
 
+Earlier glyphs include:
+
+    Code 1963 1965 1967
+    -------------------
+    $40    @    `    @
+    $5C    \    ~    \
+    $5E    ↑    ^    ^
+    $5F    ←    _    _
+    $60    `    @
+    $7C    |    ¬   ACK
+    $7E    ~    |   ESC
+
 Also see:
   https://en.wikipedia.org/wiki/ASCII#Character_set
   https://www.kreativekorp.com/charset/encoding/
