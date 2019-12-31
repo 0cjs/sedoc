@@ -73,6 +73,27 @@ Disassemblers
   - No custom label support
 
 
+Assembler Pseudo-op Notes
+-------------------------
+
+WDC _65816 Programming Manual_ §5 p.66 "The Assembler Used in This Book":
+
+    ORG addr
+    GEQU        global equate
+    DS n        define storage; _n_ bytes
+    DC arg      define constant, arg starts with:
+                    A=addr, I1=1-byte int, H=hex bytes, C=char string
+
+Leventhal's _6502 Assembly Language Subroutines_ p.viii:
+
+    *=          set location counter
+    =, .EQU
+    .BLOCK n    reserve _n_ bytes of storage
+    .BYTE n     form byte-length data; n=byte value
+    .DBYTE n    form word MSB first
+    .WORD n     form word in machine order
+    .TEXT
+
 
 <!-------------------------------------------------------------------->
 [clab]: https://www.circuitlab.com/
