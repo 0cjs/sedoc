@@ -6,6 +6,9 @@ References:
   Includes images of all chars from all models.
 - c64.org [Commodore 64 PETSCII codes][c64.org]
   Good side-by-side quick reference as HTML table.
+- pagetable.com, [Why does PETSCII have upper case and lower case
+  reversed?][pt-857], 2016-07-17.  
+  Possibly not a correct explanation; see the comment below the post.
 
 [PETSCII] is also known as "CBM ASCII."
 - Based on ASCII 1963 (not [1967][ascii]),
@@ -61,4 +64,5 @@ Keyboards
 [c64.org]: http://sta.c64.org/cbm64pet.html
 [c64w-keyboard]: https://www.c64-wiki.com/wiki/Keyboard
 [c64w-restore]: https://www.c64-wiki.com/wiki/RESTORE_(Key)
+[pt-857]: https://www.pagetable.com/?p=857
 [rc 11191]: https://retrocomputing.stackexchange.com/a/11191/7208
