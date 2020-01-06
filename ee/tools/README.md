@@ -68,9 +68,19 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
 Disassemblers
 -------------
 
-- Jeff Tranter's Python dissassemblers ([GitHub][jt-gh])
+- Jeff Tranter's Python disassemblers ([GitHub][jt-gh])
   - Families 6502, 65816, 6800, 6811
   - No custom label support
+
+
+Other Software
+--------------
+
+The [SRecord] suite (Debian `srecord` package) includes `srec_cat`,
+`srec_cmp` and `srec_info` programs for manipulating, comparing and
+describing various EPROM load file formats, including Motorola
+S-Record, Intel hex, "ASCII hex" and many other formats. Manipulation
+includes filters to generate CRCs, modify addresses and so on.
 
 
 Assembler Pseudo-op Notes
@@ -124,3 +134,4 @@ Leventhal's _6502 Assembly Language Subroutines_ p.viii:
 
 [jt-gh]: https://github.com/jefftranter/6502/tree/master/disasm
 
+[SRecord]: http://srecord.sourceforge.net/
