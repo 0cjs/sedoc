@@ -22,7 +22,8 @@ DIN plugs always use the same numbers for the same positions, so that
 e.g. pin 3 will be in the same place on any connector from 3 to 8
 pins.
 
-Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack:
+Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack
+on device:
 
            ∪                 ∪                 ∪
                           7     6         8         7
@@ -142,18 +143,29 @@ See [euaudio].
     2   GND
 
 
-Related Notes
--------------
+Video Connectors
+----------------
+
+Sources for DIN, D-sub, etc. pinouts:
+- [OLD Hard Connector Information デジタル８ピン][ohd8]
+
+#### S1308
 
 Japanese 8-bit computers often use DIN-8 for digital RGB and RGBI;
-these almost invariably hook up to a standard 8-pin rectangular
-connector on the monitor. Viewed looking at the CRT connector, an
-I-shaped 8-pin connector S1308-SB:
+these often use an S1308 (female) 8-pin rectangular connector on the
+monitor side (P1308 male on cable). One set of pins is separated from
+the others by a larger gap (exaggerated below). The standard pin
+numbering is (ref. [minicon1300] and printing on Jr.200 video cable):
 
-    +--------------------------------+
-    ! 5:GND  6:GND  7:HSYNC  8:VSYNC !
-    ! 1:N/C  2:RED  3:GREEN  4:BLUE  !
-    +--------------------------------+
+              +-----------+     +-----------+
+    male plug ! 1 7 6   5 !     ! 5   6 7 8 ! female jack
+      (cable) ! 4 3 2   1 !     ! 1   2 3 4 ! (monitor)
+              +-----------+     +-----------+
+
+Pin assignments vary wildly. Sources include:
+- [OLD Hard Connector Information デジタル８ピン][ohd8]
+- [Larry Green's FM-7 page][fm7]
+- [MSX Wiki][msxw-drgb]
 
 #### VGA Pinout
 
@@ -178,6 +190,13 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
     15  SCL: I2C data clock (DDC1: ID3)
 
 
+Other Pinouts
+-------------
+
+A massive source for all sorts of Japanese computer connectors is
+[OLD Hard Connector Information ][oh].
+
+
 
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
@@ -192,4 +211,10 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
 [euaudio]: https://en.wikipedia.org/wiki/DIN_connector#Analog_audio
 
+[fm7]: http://www.nausicaa.net/~lgreenf/fm7page.htm
+[msxw-drgb]: https://www.msx.org/wiki/Digital_RGB_connector
 [pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
+[minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
+[ohd8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
+
+[oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
