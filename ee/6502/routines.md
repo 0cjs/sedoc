@@ -71,6 +71,19 @@ To preserve registers and get the value of the flags to print them
 (This is simpler on the 65C02 where you have PHX/PLX and PHY/PLY
 instructions.)
 
+### Store Carry Flag for Later Use
+
+You can store it in bit 0 of X, with the other bits being rubbish. Or
+even just leave it in A if you don't need A for other things during
+`...`. From Jean-Charles Meyrignac on [cowlark].
+
+            LDX #0          ; clear carry
+    loop:   TXA             ; get saved carry from X
+            LSR             ;   and shift it into carry flag
+            ...
+            ROL             ; carry flag → A bit 0
+            TAX             ;   and save in X
+
 ### Store two conditional results for later use
 
             JSR pred1       ; returns predicate value in carry
@@ -145,6 +158,14 @@ to increment and stop at $00, or decrement and stop at $FF:
         CMP #1                  CMP #$FF
         ADC #0                  SBC #0
 
+### 16-bit Decrement
+
+From Peter Ferrie commenting on [cowlark]:
+
+            LDA addr
+            BNE .skip
+            DEC addr+1
+    .skip   DEC addr
 
 ### Arithmetic shift right
 
