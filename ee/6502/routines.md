@@ -7,6 +7,8 @@
 - Looping and Delays
 - Arithmetic, Boolean Algebra, Bit/Word Handling
 
+Also see Nesdev Wiki [6502 assembly optimisations][nw-opt].
+
 Misc
 ----
 
@@ -294,6 +296,7 @@ table (e.g., for a video game level).
 [6w-outdec]: http://6502org.wikidot.com/software-output-decimal
 [harper]: https://retrocomputing.stackexchange.com/a/12974/7208
 [kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
+[nw-opt]: http://wiki.nesdev.com/w/index.php/6502_assembly_optimisations
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
 [wm-SWM]: http://6502.org/source/general/SWN.html
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
