@@ -12,6 +12,18 @@ Also see Nesdev Wiki [6502 assembly optimisations][nw-opt].
 Misc
 ----
 
+### "Negative" Indexes
+
+Mentioned in [6502 arithemtic and why it is terrible][cowlark],
+possibly it comes from commenter Anonymous Cow. See `negoff` in
+[8bitdev:src/simple-asl.a65][simple-asl] for a unit-tested example.
+
+            LDY #-5             ; length of array
+    loop:   LDA arr_end,$100,y  ; arr_end is location after last byte of array
+            ...
+            INY
+            BNE loop
+
 ### Stack-relative Indexing
 
             STA $100,X      ; PHA equivalant using X as stack pointer
@@ -294,10 +306,12 @@ table (e.g., for a video game level).
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
 [6w-outdec]: http://6502org.wikidot.com/software-output-decimal
+[cowlark]: http://cowlark.com/2018-02-27-6502-arithmetic/
 [harper]: https://retrocomputing.stackexchange.com/a/12974/7208
 [kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
 [nw-opt]: http://wiki.nesdev.com/w/index.php/6502_assembly_optimisations
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
+[simple-asl]: https://github.com/0cjs/8bitdev/blob/master/src/simple-asl.a65
 [wm-SWM]: http://6502.org/source/general/SWN.html
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
 [yt-hj]: https://www.youtube.com/watch?v=bDbpntumA6A&lc=Ugw4AnVKe4y6_INt1FV4AaABAg
