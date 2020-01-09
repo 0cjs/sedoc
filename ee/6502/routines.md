@@ -267,6 +267,23 @@ XXX The comments added to explain this need to be completed.
     pzero   .DS 1           ; If this is 1, and X (current digit) > 1, we
                             ; are outputting leading zeros
 
+### Compact ROM Multi-table
+
+[Harper's answer on RCSE][harper] describes a very efficient technique
+for storing three boolean flags plus a 5-bit value in a single array
+of bytes in ROM. Bits 0, 6 and 7 are three tables of flag values, and
+bits 1-5 are another value. Below, Y register is the offset into the
+table (e.g., for a video game level).
+
+* Bit 0 value: `ROR (table),y` loads bit 0 into the carry flag. This
+  would modify RAM, but does not affect ROM. (This can serve as a form
+  of copy-protection.)
+* Bit 7 or 6 value: `ASL` loads bit 7 into the carry flag and bit 6
+  into the negative flag. Again, table must be in ROM to avoid modification.
+* Bits 1-5 are loaded via the obvious `LDA (table),y; LSR; AND #$1F`,
+  which also leaves bit 0 in the carry.
+
+
 
 <!-------------------------------------------------------------------->
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
@@ -275,6 +292,7 @@ XXX The comments added to explain this need to be completed.
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
 [6w-outdec]: http://6502org.wikidot.com/software-output-decimal
+[harper]: https://retrocomputing.stackexchange.com/a/12974/7208
 [kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
 [wm-SWM]: http://6502.org/source/general/SWN.html
