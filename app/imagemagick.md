@@ -30,3 +30,16 @@ Left mouse button turns menu on/off.
   - `/`, `\`, backtick:  clockwise/widdershins/specify rotate
   - `S`, `R`, `T`: shear, roll, trim edges
   - Various contrast/color/etc manipulations available
+
+
+Resizing an Image
+-----------------
+
+See [examples here][im-resize].
+
+    convert foo.jpg -resize 50% foo-small.jpg
+
+
+
+<!-------------------------------------------------------------------->
+[im-resize]: https://www.imagemagick.org/Usage/resize/
