@@ -127,3 +127,9 @@ Ctrl-K as above.
 [tg-clients]: https://telegra.ph/markdown-07-07
 [tg-desktop]: https://www.techmesto.com/telegram-desktop-now-supports-text-formatting-using-keyboard-shortcuts/
 [tg-vary]: https://www.reddit.com/r/Telegram/comments/5eh3uk/how_do_i_format_text_without_using_bots/daceczy/
+
+
+YouTube
+-------
+
+Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`.
