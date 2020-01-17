@@ -1,5 +1,5 @@
-Apple IIc Notes
-===============
+Apple IIc Hardware
+==================
 
 All page numbers below not otherwise indicated refer to [The Apple IIc
 Technical Reference Manual][techref]. See that for full details,
@@ -21,9 +21,14 @@ Misc Notes
 
 Always run propped up on handle (folded down) for airflow.
 
+[ADTPro][adtpro-din5] client (Apple II) defaults are serial port 2
+(phone icon) and 115,200 bps. Tie together Apple DTR and DSR, also PC
+RTS and CTS. See [`/hw/din-connector`][hwdin] for more info. Possibly
+need to start ADTPro server (PC) _after_ client is started on Apple II.
 
-Disassembly
------------
+
+Main Unit Disassembly
+---------------------
 
 Photos at [ifixit]. EEVblog has a [teardown video][evb-teardown].
 
@@ -206,8 +211,10 @@ Further references:
 <!-------------------------------------------------------------------->
 ["SA390"]: https://apple2history.org/history/ah05/
 [a2za-a2crom]: http://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Computers/Apple%20II/Apple%20IIc/ROM%20Images/
+[adtpro-din5]: https://adtpro.com/connectionsserial.html#DIN5
 [bmow-2crom]: https://www.bigmessowires.com/2015/05/29/apple-iic-rom-upgrade/
 [evb-teardown]: https://www.youtube.com/watch?v=JsUM-ZcBFE0
+[hwdin]: ../../hw/din-connector.md
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
 [keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
