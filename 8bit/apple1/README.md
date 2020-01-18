@@ -6,6 +6,12 @@ Apple I Notes
 Memory Map
 ----------
 
+    $0000 - $7FFF  32K RAM
+    $D000 - $DFFF   4K I/O area
+    $E000 - $EFFF   4K RAM in original; ROM on most replicas
+    $F000 - $FEFF   4K ???
+    $FF00 - $FFFF  256 WozMon
+
 ### I/O ports
 
     $D010   KBD: keyboard input register. Valid when KBDCR bit 7 is 1.
