@@ -28,6 +28,27 @@ Communications are at 115,200 bps. At startup or when the Arduino is
 reset it will print `RC6502 Apple 1 Replica`.
 
 
+Keyboard I/O
+------------
+
+Unlike the real Apple I, which leaves MC6820 PIA `CA2` unconnected,
+this board wires `CA2` to an input on the Arduino Nano. The [current
+software][piacom] (`1907bba` 2017-06-02) uses this to detect that the
+data on port A has been read so it can delay writing further
+keystrokes until the current keystroke has been read and avoid
+overflowing the Apple on fast input.
+
+
+Video I/O
+---------
+
+The [current software][piacom] (`1907bba` 2017-06-02) does not
+correctly translate output; the character is ANDed with $7F to clear
+the top bit but is then directly sent out the serial port. This will
+print control characters other than CR; the original Apple printed
+nothing for these.
+
+
 ICs and Pinouts
 ---------------
 
@@ -61,6 +82,10 @@ ICs and Pinouts
 
 
 <!-------------------------------------------------------------------->
+[1rep-sbc]: https://github.com/tebl/RC6502-Apple-1-Replica/tree/master/RC6502%20Apple%201%20SBC
+
+[piacom]: https://github.com/tebl/RC6502-Apple-1-Replica/blob/master/RC6502%20Serial%20IO/pia_communicator/pia_communicator.ino
+
 [2519]: https://www.applefritter.com/files/signetics2519.pdf
 [555]: http://www.ti.com/lit/gpn/sn74s175
 [74157]: http://www.ti.com/lit/gpn/sn74ls157
@@ -72,4 +97,3 @@ ICs and Pinouts
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
 [62256]: https://ecee.colorado.edu/~mcclurel/hm62256b.pdf
 
-[1rep-sbc]: https://github.com/tebl/RC6502-Apple-1-Replica/tree/master/RC6502%20Apple%201%20SBC

@@ -3,6 +3,10 @@ Apple 1 Notes
 
 - [_Apple-1 Operation Manual_][a1man].
 
+The original Apple I used an [MC6820] PIA, but the RC6502 replica uses
+an [MC6821].
+
+
 Memory Map
 ----------
 
@@ -21,6 +25,7 @@ Memory Map
     $D012   DSP: when bit 7 is 0, write bits 0-6 to output char and
             set bit 7.
     $D013   DSPCR: control register for output; init'd by WozMon
+
 
 ROM Software
 ------------
@@ -58,6 +63,43 @@ being set.
 - SB-Projects, ["The Apple 1 Basic"][sbp-basic]
 
 
+I/O, MC6820
+-----------
+
+The configuration is the same for both ports (control registers `CRA`
+and `CRB`) of the 6820: $A7 = `10100111`. However, though interrupts
+are inabled, normally /IRQB and /IRQB outputs are not jumpered to go
+through to CPU /IRQ and /NMI, respectively.
+
+- b0-1 (CA1 control) = `11`: enable interrupt when CA1 input goes low to high.
+- b2 (DDR access): `1`: other register address is port, not direction register.
+- b3-5 (CA2 control) = `100`: CA2 is output, read strobe with CA1 restore.
+  CA2 goes low on read from MPU and back to high when CA1 goes low again.
+- b6: Read-only: unused because CA2 is not an input.
+- b7: Read-only: goes high when CA1 goes high; cleared on MPU read of data.
+
+### Keyboard
+
+The keyboard connector is a DIP-16 socket. It has inputs for 7 data
+lines `B1-B7`, a strobe line `STR`, and two NO pushbutton switches for
+reset and clearing the screen. `B1-B7` connect to `PA0-PA6` on the
+MC6820 PIA; pin 15 also connects to `PA7` but that's expected to be
+tied to +5V (note 10 on schematic) because WozMon etc. assumes that
+bit 7 of characters is always high.
+
+`STR` (strobe) connects to `CA1`, which is configured to mark data as
+available on a low to high transition. (The manual claims that, "The
+strobe can be either positive or negative, of long or short duration."
+Clearly "strobe" here means it always transitions twice within a short
+time of the keypress.)
+
+### Video
+
+On PIA port PB. `PB0-PB6` are outputs, `PB7` is input. `CB1` and `CB2`
+both used.
+
+
+
 Video Circuit
 -------------
 
@@ -79,6 +121,8 @@ Parts included:
 
 
 <!-------------------------------------------------------------------->
+[MC6820]: http://archive.pcjs.org/pubs/c1p/datasheets/pdfs/MC6820.pdf
+[MC6821]: http://archive.pcjs.org/pubs/c1p/datasheets/pdfs/MC6821.pdf
 [a1man]: https://www.applefritter.com/files/a1man.pdf
 [jt-wozmon]: https://github.com/jefftranter/6502/tree/master/asm/wozmon
 [sbp-basic]: https://www.sbprojects.net/projects/apple1/a1basic.php
