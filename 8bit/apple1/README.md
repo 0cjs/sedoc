@@ -98,6 +98,20 @@ time of the keypress.)
 On PIA port PB. `PB0-PB6` are outputs, `PB7` is input. `CB1` and `CB2`
 both used.
 
+Character output translation:
+
+    $00-$1F  Print nothing (excepting $0D)
+        $0D  (CR) Moves to the beginning of the next line.
+    $20-$5F  (space through underbar) prints given char
+    $60-$7F  (lower-case etc.) prints same as $40-$5F
+
+The high bit is ignored on output, producing the same results as above.
+
+This was tested on the [Apple 1js emulator][a1js] and confirmed by
+looking at the behaviour of a real Apple 1 in [this video][breker].
+
+The character ROM is available in `Apple1_bios.zip` from the
+[Call-A.P.P.L.E emulation page][ca-emul].
 
 
 Video Circuit
@@ -127,6 +141,10 @@ Parts included:
 [jt-wozmon]: https://github.com/jefftranter/6502/tree/master/asm/wozmon
 [sbp-basic]: https://www.sbprojects.net/projects/apple1/a1basic.php
 [sbp-wozmon]: https://www.sbprojects.net/projects/apple1/wozmon.php
+
+[a1js]: https://www.scullinsteel.com/apple1/
+[breker]: https://youtu.be/wTgyll6IqJY?t=33
+[ca-emul]: https://www.callapple.org/soft/ap1/emul.html
 
 [2519]: https://www.applefritter.com/files/signetics2519.pdf
 [555]: http://www.ti.com/lit/gpn/sn74s175
