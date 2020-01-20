@@ -1,8 +1,8 @@
-Apple I ROM Notes
+Apple-1 ROM Notes
 =================
 
 
-RC6502 Apple I Replica
+RC6502 Apple 1 Replica
 ----------------------
 
 ### Bank 0

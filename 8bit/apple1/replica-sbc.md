@@ -1,4 +1,4 @@
-RC6502 Apple I Replica SBC
+RC6502 Apple 1 Replica SBC
 --------------------------
 
 Details in [this GitHub project][1rep-sbc].

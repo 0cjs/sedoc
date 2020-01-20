@@ -1,7 +1,7 @@
-Apple I Notes
+Apple 1 Notes
 =============
 
-- [_Apple I Manual_][a1man].
+- [_Apple-1 Operation Manual_][a1man].
 
 Memory Map
 ----------
@@ -61,7 +61,7 @@ being set.
 Video Circuit
 -------------
 
-Schematic on second-last page of the [Apple I Manual][a1man].
+Schematic on second-last page of the [manual][a1man].
 
 Parts included:
 - [555] timer
