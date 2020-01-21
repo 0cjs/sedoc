@@ -3,8 +3,6 @@ Bash Tips
 
 ### Error Aborts
 
-
-
 For more reliable scripts, set error-catching [options] at the start
 and catch ERR to print a message on error exit:
 
@@ -40,6 +38,11 @@ with an "no effect" `:` command:
 To assign a default value to a variable if it's empty or unset:
 
     : ${SOMEVAR:=default value}
+
+### Optional Arguments Based on Presence of Parameters
+
+    #configfile="My Config"     # Uncomment to use config file
+    someprogram ${configfile:+--config-file "$configfile"}
 
 ### Determining If a Glob Pattern Matched
 
