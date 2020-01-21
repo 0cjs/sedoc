@@ -122,7 +122,7 @@ Schematic on second-last page of the [manual][a1man].
 Parts included:
 - [555] timer
 - 2504 possibly RAM? (?×)
-- 2513 character ROM (1×)
+- Signetics [2513]: 2560 bit 64×8×5 character generator ROM (1×)
 - [2519] hex 40-bit shift register (1×)
 - [74157] quad 2-line to 1-line data selector/multiplexer (2×)
 - [74161] 4-bit binary counters (5×, plus one decade 74160)
@@ -146,6 +146,8 @@ Parts included:
 [breker]: https://youtu.be/wTgyll6IqJY?t=33
 [ca-emul]: https://www.callapple.org/soft/ap1/emul.html
 
+[2513]: https://www.applefritter.com/files/signetics2513.pdf
+[2513b]: https://www.datasheetarchive.com/pdf/download.php?id=5065adad5e4757ac90073038091de3931e7380&type=M&term=2513
 [2519]: https://www.applefritter.com/files/signetics2519.pdf
 [555]: http://www.ti.com/lit/gpn/sn74s175
 [74157]: http://www.ti.com/lit/gpn/sn74ls157
