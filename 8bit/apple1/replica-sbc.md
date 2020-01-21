@@ -62,7 +62,7 @@ ICs and Pinouts
     A12  2 -|     |- 27 /WE      RDY  2 -|     |- 39 Φ2out
      A7  3 -|     |- 26 A13    Φ1out  3 -|     |- 38 /SO
      A6  4 -|     |- 25  A8     /IRQ  4 -|     |- 37 Φ2in
-     A5  5 -|     |- 24  A9      /ML  5 -|     |- 36 BE
+     A5  5 -|     |- 24  A9      /ML  5 -|     |- 36 NC (WDC: BE)
      A4  6 -|     |- 23 A11     /NMI  6 -|     |- 35 NC
      A3  7 -|     |- 22 /OE     SYNC  7 -|     |- 34 RW̅
      A2  8 -|     |- 21 A10      Vcc  8 -|     |- 33 D0
