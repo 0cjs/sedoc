@@ -95,6 +95,8 @@ time of the keypress.)
 
 ### Video
 
+See [`charrom`](charrom.md) for character ROM details.
+
 On PIA port PB. `PB0-PB6` are outputs, `PB7` is input. `CB1` and `CB2`
 both used.
 
@@ -115,12 +117,6 @@ The [nappel1] emulator is quite inaccurate (though convenient to use).
 It backspaces and erases the previous character when either `_` or
 backspace is typed, prints a space for nonprinting chars, and prints
 lower-case.
-
-#### Character ROM
-
-The character ROM is available in `Apple1_bios.zip` from the
-[Call-A.P.P.L.E emulation page][ca-emul] and in the [Pom1]
-distribution. (These versions are different in the last 25%.)
 
 
 Video Circuit
