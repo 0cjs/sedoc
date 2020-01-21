@@ -107,11 +107,20 @@ Character output translation:
 
 The high bit is ignored on output, producing the same results as above.
 
-This was tested on the [Apple 1js emulator][a1js] and confirmed by
-looking at the behaviour of a real Apple 1 in [this video][breker].
+This was confirmed by observing the behaviour of a real Apple 1 in
+[this Breker auction video][breker]. The [Apple 1js emulator][a1js]
+and [Pom1 1.0.0][pom1] are also consistent with this.
+
+The [nappel1] emulator is quite inaccurate (though convenient to use).
+It backspaces and erases the previous character when either `_` or
+backspace is typed, prints a space for nonprinting chars, and prints
+lower-case.
+
+#### Character ROM
 
 The character ROM is available in `Apple1_bios.zip` from the
-[Call-A.P.P.L.E emulation page][ca-emul].
+[Call-A.P.P.L.E emulation page][ca-emul] and in the [Pom1]
+distribution. (These versions are different in the last 25%.)
 
 
 Video Circuit
@@ -145,6 +154,8 @@ Parts included:
 [a1js]: https://www.scullinsteel.com/apple1/
 [breker]: https://youtu.be/wTgyll6IqJY?t=33
 [ca-emul]: https://www.callapple.org/soft/ap1/emul.html
+[nappel1]: https://github.com/nobuh/napple1
+[pom1]: http://pom1.sourceforge.net/
 
 [2513]: https://www.applefritter.com/files/signetics2513.pdf
 [2513b]: https://www.datasheetarchive.com/pdf/download.php?id=5065adad5e4757ac90073038091de3931e7380&type=M&term=2513
