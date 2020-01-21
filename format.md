@@ -105,6 +105,10 @@ Working example:
 [se-html]: https://meta.stackexchange.com/q/1777/142445
 [se-taglang]: https://meta.stackexchange.com/q/72082/142445
 
+### stackoverflow.blog
+
+HTML formatting seems to be accepted.
+
 
 Telegram
 --------
