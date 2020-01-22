@@ -107,7 +107,8 @@ Working example:
 
 ### stackoverflow.blog
 
-HTML formatting seems to be accepted.
+HTML formatting seems to be accepted. Use `<code>…</code>` for in-line
+fixed-width formatting.
 
 
 Telegram
