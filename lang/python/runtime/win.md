@@ -5,7 +5,7 @@ Python has a [Windows download page][win-dl] and Windows-specific
 documentation at [Using Python on Windows][py-win-using]. Be careful
 to use the x86-64 version unless you are on a 32-bit machine.
 
-The [Windows downloads][py-win-dl] of Python are native Windows apps,
+The [Windows downloads][win-dl] of Python are native Windows apps,
 not ports of the Unix version over a compatibility layer. This means
 that OS-dependent things such as terminal, process and file handling
 will be Windows-specific and may break in Unix emulation environments.
@@ -68,7 +68,7 @@ are installed. Without special handling the most recently installed
 version will be used by default for scripts and shebangs such as
 `#!/usr/bin/env python3` will be ignored.
 
-The separate [Python Launcher for Windows][[py] application ([PEP
+The separate [Python Launcher for Windows][py] application ([PEP
 397]), which is not specific to any particular version of Python, will
 normally be installed with the first version of Python you install.
 This provides a `py` program that selects a requested version of
