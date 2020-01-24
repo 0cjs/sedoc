@@ -112,6 +112,22 @@ Talks][kf19alli].
   avoid executing a subroutine, preserving the address, though one
   must be careful if the subroutine returned flags.
 
+### Detecting 6502 vs. 65C02
+
+Without undefined opcodes ([BDD on 6502.org][6f-p73063]):
+
+           SED                   ; select decimal mode
+           CLC
+           LDA #$99
+           ADC #$01              ; produces $00 with carry
+           CLD                   ; back to binary mode
+           BEQ is_cmos           ; is a 65C02/65C802/65C816
+           BNE is_nmos           ; is a 6502/6510/8502, etc.
+
+Using `BRA` ($80), which is undefined but a two-byte NOP on the NMOS
+CPUs, is faster, and should be reliable according to Chromatix in a
+follow-up post to the above.
+
 
 Looping and Delays
 ------------------
@@ -323,6 +339,7 @@ table (e.g., for a video game level).
 <!-------------------------------------------------------------------->
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
+[6f-p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922&view=unread#p73063
 [6t-decimal]: http://www.6502.org/tutorials/decimal_mode.html
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
