@@ -6,6 +6,18 @@ Apple 1 Notes
 The original Apple I used an [MC6820] PIA, but the RC6502 replica uses
 an [MC6821].
 
+The Apple I had some additional circuitry to allow the use of a 6501
+or 6800; this was basically just to supply a "faster, harder" clock
+signal (for the 6800 it also needed to be two phase, because the 6800
+used a quadrature clock) to the chip. This was never tested though;
+see [yt-6800]. The original 256 byte monitor is in the manual; this
+was burned into a pair of 6301-1J PROMs. The cassette board had its
+own 256 byte program in PROM. [a1cb-1309]
+
+The reason for choosing the 650x was that Woz liked the indexed
+addressing modes. Cost wasn't an issue for him, since he could get a
+6800, PIA and UART for $40 through HP. [a1cb-1211]
+
 
 Memory Map
 ----------
@@ -142,10 +154,13 @@ Parts included:
 <!-------------------------------------------------------------------->
 [MC6820]: http://archive.pcjs.org/pubs/c1p/datasheets/pdfs/MC6820.pdf
 [MC6821]: http://archive.pcjs.org/pubs/c1p/datasheets/pdfs/MC6821.pdf
+[a1cb-1211]: https://apple1computer.blogspot.com/2012/11/early-apple-1-pcb.html
+[a1cb-1309]: https://apple1computer.blogspot.com/2013/09/6800-info-from-woz-per-lionel.html
 [a1man]: https://www.applefritter.com/files/a1man.pdf
 [jt-wozmon]: https://github.com/jefftranter/6502/tree/master/asm/wozmon
 [sbp-basic]: https://www.sbprojects.net/projects/apple1/a1basic.php
 [sbp-wozmon]: https://www.sbprojects.net/projects/apple1/wozmon.php
+[yt-6800]: https://www.youtube.com/watch?v=ag6pWUhps7U
 
 [a1js]: https://www.scullinsteel.com/apple1/
 [breker]: https://youtu.be/wTgyll6IqJY?t=33
