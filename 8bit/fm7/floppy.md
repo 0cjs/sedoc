@@ -9,6 +9,13 @@ contains the controller; the card in the computer doesn't seem to do
 much but provide a bit of logic for the parallel interface between the
 card and disk unit.
 
+The external disk unit itself has a large 40-pin chip of some sort
+(Intel? microcontroller?) and a Fujitsu [MB8877][] (MB8876A in the
+case of the Epson TF-10 disk unit) Floppy Disk Formatter/Controller
+(FDC). This may be similar to the WD1793 except not needing a +12V
+supply; a CoCo user has claimed that he's swapped the two without
+problems.
+
 
 Connectors and Cabling
 ----------------------
@@ -17,10 +24,43 @@ SS:1-74 gives the 本体 interface, which I believe is between
 the card and the expansion bus, and the cable interface, between
 the card and the external drive unit.
 
-The drive unit interface has all ground on odd pins (excepting 1,3,7,
-n/c). Even pins include `D0-7`, `RS0-2` and negative logic control
-signals `DRQ`, `INTRQ`, `WE`, `CS`, `RE` and `MR`.
+For the 34-pin interface to the drive unit, all odd pins (1-33) are
+GND, excepting 1,3,7 which are N/C. The even pins are:
 
+        2  •DRQ
+        4  •INTRQ
+        6  •WE
+        8  •CS
+       10  •RE
+       12  RS0
+       14  RS1
+       16  RS2
+    18-32  D0-D7
+       34  •MR
+
+These appear to have a close correspondence with the following MB8877
+MPU interface pins:
+
+    DRQ         Data Request: data reg filled (read) or empty (write)
+    IRQ         Set when command completed or TYPE IV command executed;
+                reset when next command written or status read
+    W̅E̅          Write Enable
+    C̅S̅          Chip Select (DALs high impedence when deasserted)
+    R̅E̅          Read Enable
+    A₀, A₁      Register select
+    DAL₀ - DAL₇ 8-bit bidirectional data bus between FDC and MPU
+                (pos. logic for 8877, neg. logic for 8876)
+    M̅R̅          Master Reset
+
+(Missing MB8877 MPU interface pins are `T̅E̅S̅T̅` and `D̅D̅E̅N̅`, to enable
+FDC test mode and double density when asserted.)
+
+The register select addresses 0=command/status, 1=track, 2=sector, and
+3=data registers match up to the first for I/O addresses at $FD18
+below.
+
+Pp. 6-7 of the data sheet give commands, status register descriptions,
+etc.
 
 Memory I/O Addresses
 --------------------
@@ -75,5 +115,6 @@ Disk code is loaded from $7000-$7FFF, if used.
 
 
 <!-------------------------------------------------------------------->
-[fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
+[MB8877]: https://www.datasheetarchive.com/MB8877A-datasheet.html
 [fm7basic]: https://archive.org/details/FM7FBASICBASRF
+[fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
