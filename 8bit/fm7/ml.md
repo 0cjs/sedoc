@@ -37,8 +37,18 @@ SS:1-6 gives both main processor and sub-processor memory maps.
     $FC00 - $FC7F   RAM
     $FC80 - $FCFF   Shared RAM (with sub-CPU)
     $FD00 - $FDFF   I/O area
-    $FE00 - $FFFF   Boot ROM (1 of 2, depending on switch settings)
+    $FE00 - $FFDF   Boot ROM (1 of 2, depending on switch settings)
+    $FFE0 - $FFEF   RAM?
     $FFF0 - $FFFF   Vector area
+
+It's not clear what's going on with the 16-byte "pre-vector" area
+($FFE0) and the 16-byte vector area ($FFEF). These may not be mapped
+in by ROM. The meory block diagram (SS:1-15) indicates that ROM
+extends to $FFE0 (a misprint, I think; it must be one less) and that
+$FFE0-$FFFD go through an address multiplexer to RAM. The reset vector
+$FFFE/F is detected by an address decoder that detects it and triggers
+a "reset vector 発生回路" (generation circuit) that I guess dumps the
+reset vector on the data bus.
 
 
 I/O Map
@@ -53,7 +63,9 @@ given.
     $FD01           Read: keyboard D0-7. Write: Printer D0-7 output.
     $FD02           CMT/printer (read); Device IRQ mask bits (write)
     $FD03           Device IRQ status bits (read); Buzzer (write)
-    ...
+    $FD04           Subproc FIRQ status (see "Interrupts" below)
+    $FD05           Read: Subproc/expansion status
+                    Write: Z80-related halt/cancel/wait
     $FD06 - $FD07   RS-232C option
     ...
     $FD0D - $FD0E   PSG (programmable sound generator)
@@ -64,8 +76,18 @@ given.
     $FD24 - $FD36   Unused
     $FD37 - $FD3F   Graphics-related stuff
 
-(Unverified) Writing $00 to the Boot ROM Switch maps the two boot ROM
-banks to $7800-$79FF and $7A00-$7BFF; writing $02 to it unmaps them.
+`$FD03`: bits 5-1 unused
+  - 7: Continuous buzzer; 0=off 1=on
+  - 6: Momentary buzzer; 0=off 1=on
+  - 0: Speaker; 0=on, 1=off
+
+`$FD05`: bits 6-1 unused
+  - 7: appears to to be 0=busy=/1=ready status for the sub-processor.
+  - 0: "EXTDET" 0=present, 1=absent
+
+`$FD10`: (Unverified) Writing $00 to the Boot ROM Switch maps the two
+boot ROM banks to $7800-$79FF and $7A00-$7BFF; writing $02 to it
+unmaps them.
 
 
 Interrupts

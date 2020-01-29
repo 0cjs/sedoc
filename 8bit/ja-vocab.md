@@ -7,3 +7,5 @@ Stuff I've encountered while reading Japanese manuals.
     領域    りょういき      area (of memory)
     拡張    かくちょう      expansion, extension; maybe "ESC"
     割込    わりこみ        interrupt
+    回路    かいろ          circuit
+    発生    はっせい        generate
