@@ -17,6 +17,10 @@ The Japanese parallel, 1-2 years later, was the
 [Hitachi Basic Master MB-6880][wj-bm], [Sharp MZ-80K][wj-mz80k] [NEC
 PC-8001][wj-pc8001].
 
+In 1988 NEC had the largest market share (51%), followed by Fujitsu
+(14%), Toshiba (10%), and Epson (10%). From 1992 NEC's share started
+decreasing, to 33% in 1996. [source](https://i.imgur.com/4fpXzKr.jpg)
+
 
 Timeline
 --------
