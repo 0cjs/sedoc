@@ -52,11 +52,11 @@ beep/tone at startup if no disk controller card is plugged in to the
 chassis. If a disk controller card is plugged without drives attached,
 the tone will be produced after about 15 seconds.
 
-A pair of the DIP switches can be used to ground boot ROM A9/A10 lines,
-which appear to have pullups otherwise. This gives a choice of four
-different 480 byte sets of bootcode. The boot ROM C̅S̅ is selected by `AB9 ∧
-#FCXX` to enable only during the upper 1/2 KB. (XXX But how do the vectors
-get read from RAM?
+A pair of the DIP switches can be used to ground boot ROM A9/A10
+lines, which appear to have pullups otherwise. (SE:1-15) This gives a
+choice of four different 480 byte sets of bootcode. The boot ROM C̅S̅ is
+selected by `AB9 ∧ #FCXX` to enable only during the upper 1/2 KB. (XXX
+But how do the vectors get read from RAM?)
 
 Per SS:1-25, a flip-flop determines whether the top 31K is mapped to BASIC
 ROM (`Q` high) or RAM (`Q` low). Reading `$fd0f` sets the flip-flip
