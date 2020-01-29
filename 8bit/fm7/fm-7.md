@@ -184,6 +184,80 @@ I/O Ports:
     $fd02 bit 7      input
 
 
+Parallel Printer Interface
+--------------------------
+
+(SS:1-39)
+
+
+Expansion Interfaces
+--------------------
+
+Option slots ×2 (SS:1-55): Internal. 32 pins, 2×16 .1" female. These
+bring out only 8 bits of address, so there must be some decoding going
+on there. (Perhaps it's the $FD00 page?) They also offer ±12V power.
+Only interrupt is /IRQ (and /RESET).
+
+Z80 Card Slot (SS:1-64): Internal. 40-pins, 2×20 .1" female. For just
+this slot an additional clock, `Φ`, is generated from `Q⊕E` (XOR).
+There's also a `W̅A̅I̅T̅` signal used to halt the Z80 when the 6809 is
+running and vice versa; a flipflop (on `D0`, address unknown) switches
+between the two (also switching on/off bus buffers on each MPU),
+qualified by `BA` and `BS`. (Someone's also made an 8088 card for
+this.)
+
+    A- 1  AB0       B- 1  DB0
+       2  AB1          2  DB1
+       3  AB2          3  DB2
+       4  AB3          4  DB3
+       5  AB4          5  DB4
+       6  AB5          6  DB5
+       7  AB6          7  DB6
+       8  AB7          8  DB7
+       9  AB8          9  Z80 Φ
+      10  AB9         10  /RESET
+      11  AB10        11  /IRQ
+      12  AB11        12  /NMI
+      13  AB12        13  GND
+      14  AB13        14  GND
+      15  AB14        15  /FIRQ
+      16  AB15        16  E
+      17  Z80W        17  +5V
+      18  BS          18  /REFCK
+      19  BA          19  +5V
+      20  RW          20  Q
+
+Expansion (拡張) Connector (SS:1-56): External on back. 50 pins, 2×25
+.1" male. Looking into the connector on the back, pin 1 is at the
+upper right; below is looking outward from the system unit.
+
+     1  /RESET       2
+     3               4  /IOREL
+     5  /IRQ         6  D0
+     7  /NMI         8  D1
+     9  /FIRQ       10  D2
+    11              12  D3
+    13  BA          14  D4
+    15  BS          16  D5
+    17              18  D6
+    19              20  D7
+    21              22  /EXTDET
+    23  R/W̅         24  GND
+    25  GND         26  A0
+    27  A1          28  A2
+    29  A3          30  A4
+    31  A5          32  A6
+    33  A7          34  A8
+    35  A9          36  A10
+    37  A11         38  A12
+    39  A13         40  A14
+    41  A15         42
+    43  /MRDY       44
+    45  +5V         46  +5V
+    47  Q           48  GND
+    49  E           50  GND
+
+
 
 <!-------------------------------------------------------------------->
 [fm7assem]: https://archive.org/details/FM7MC6809ASM
