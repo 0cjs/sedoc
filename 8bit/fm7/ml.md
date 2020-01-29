@@ -68,6 +68,21 @@ given.
 banks to $7800-$79FF and $7A00-$7BFF; writing $02 to it unmaps them.
 
 
+Interrupts
+----------
+
+### FIRQ
+
+The BREAK key directly generates an FIRQ. The display subsystem
+interrupts for interval timers, clocks, PF keys, etc. (SS:1-28) The
+$FD04 sub-interface FIRQ register indicates the source of such
+interrupts (SS:1-8):
+
+       bit 0  ATENT: 0=present 1=absent
+       bit 1  BREAK key: 0=on, 1=off
+    bits 7…2  unused
+
+
 BIOS Usage
 ----------
 
