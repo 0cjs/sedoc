@@ -37,7 +37,7 @@ SS:1-6 gives both main processor and sub-processor memory maps.
     $FC00 - $FC7F   RAM
     $FC80 - $FCFF   Shared RAM (with sub-CPU)
     $FD00 - $FDFF   I/O area
-    $FE00 - $FEFF   Boot ROM (1 of 4, depending on switch settings)
+    $FE00 - $FFFF   Boot ROM (1 of 2, depending on switch settings)
     $FFF0 - $FFFF   Vector area
 
 
@@ -47,6 +47,9 @@ I/O Map
 See SS:1-8 _et seq._ After the basic map tables, extensive details are
 given.
 
+    $FD00           Read Bit 0: 0=1.2 MHz, 1=2 MHz clock
+                         Bit 7: "D8"
+                    Write: printer strobe, etc.
     $FD02           CMT/printer (read); Device IRQ mask bits (write)
     $FD03           Device IRQ status bits (read); Buzzer (write)
     ...
@@ -54,10 +57,15 @@ given.
     ...
     $FD0D - $FD0E   PSG (programmable sound generator)
     $FD0F           Bank mode: read for ROM, write for RAM. (SS:1-25)
+    $FD10           Boot ROM Switch
     $FD18 - $FD1F   Mini-floppy; see [floppy.md]
     $FD20 - $FD23   Kanji ROM
     $FD24 - $FD36   Unused
     $FD37 - $FD3F   Graphics-related stuff
+
+(Unverified) Writing $00 to the Boot ROM Switch maps the two boot ROM
+banks to $7800-$79FF and $7A00-$7BFF; writing $02 to it unmaps them.
+
 
 BIOS Usage
 ----------
