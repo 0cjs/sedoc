@@ -50,6 +50,7 @@ given.
     $FD00           Read Bit 0: 0=1.2 MHz, 1=2 MHz clock
                          Bit 7: "D8"
                     Write: printer strobe, etc.
+    $FD01           Read: keyboard D0-7. Write: Printer D0-7 output.
     $FD02           CMT/printer (read); Device IRQ mask bits (write)
     $FD03           Device IRQ status bits (read); Buzzer (write)
     ...
