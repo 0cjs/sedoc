@@ -112,9 +112,18 @@ catalogue, etc.
 Disk code is loaded from $7000-$7FFF, if used.
 
 
+Sample Code
+-----------
+
+The [XM7-for-SDL `linux-sdl/Tool` subdir][xm7tool] contains 6809 code
+to dump the ROMs to disk; it offers plenty of examples of direct
+access via the registers above, and even formatting I think.
+
 
 
 <!-------------------------------------------------------------------->
 [MB8877]: https://www.datasheetarchive.com/MB8877A-datasheet.html
 [fm7basic]: https://archive.org/details/FM7FBASICBASRF
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
+
+[xm7tool]: https://github.com/Artanejp/XM7-for-SDL/tree/master/linux-sdl/Tool
