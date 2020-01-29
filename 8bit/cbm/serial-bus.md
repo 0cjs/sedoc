@@ -5,7 +5,8 @@ Used on VIC-20, C64, etc. Reduced-cost version of IEEE-488 interface
 used on PETs.
 
 Docs:
-- [Commodore 64 Programmer's Reference Guide][c64progref], p. 362 et seq.
+- [_Commodore 64 Programmer's Reference Guide_][c64progref], p. 362 et seq.
+- [_Inside Commodore DOS_][c64dos]
 - [Commodore bus] on Wikipedia
 - [Commodore Peripheral Bus][cbmbus0] on pagetable.com and [cbmbus.git]. In
   particular, [Part 4][cbmbus4] discusses the physical layer of the serial
@@ -167,6 +168,7 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 <!-------------------------------------------------------------------->
 [Commodore bus]: https://en.wikipedia.org/wiki/Commodore_bus
 [IEC disected]: http://www.zimmers.net/anonftp/pub/cbm/programming/serial-bus.pdf
+[c64dos]: https://www.pagetable.com/docs/Inside%20Commodore%20DOS.pdf
 [c64progref]: https://archive.org/details/c64-programmer-ref
 [c64service]: https://www.retro-kit.co.uk/user/custom/Commodore/C64/manuals/C64C_Service_Manual.pdf
 [cb64]: https://codebase64.org/doku.php?id=base:how_the_vic_64_serial_bus_works
