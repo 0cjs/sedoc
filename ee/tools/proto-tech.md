@@ -5,6 +5,15 @@ This is mainly about breadboarding; see also [Build
 Techiques](build-tech.md) for anything involving soldering.
 
 
+Wire Lengths
+------------
+
+Fujiya auto-stripper removes 5 mm insulation at shortest setting.
+Extend slightly to 7 mm for breadboard hookup wires. For short
+hookups, strip 10 mm, cut to length at far end, and slide insulation
+down slightly.
+
+
 Breadboards vs. Dual-Row Pin Headers
 ------------------------------------
 

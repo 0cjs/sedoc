@@ -7,6 +7,13 @@ There are four basic families of the 6502 CPU:
 - __S__ 65SC02: 65C02 but without the bit manipulation instructions.
 - __8__ 65C802 or 65C816: 16-bit processor in 8-bit mode
 
+The CMOS versions should draw between 4 mA and 16 mA; the NMOS between
+70 mA and 160 mA.
+
+References:
+- Wilson Mines Co., [Differences between NMOS 6502 and CMOS 65c02][wm-diff]
+
+
 
 Model Detection
 ----------------
@@ -46,5 +53,7 @@ accumulator indicating the family of the CPU it's run on.
 
 <!-------------------------------------------------------------------->
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
+[wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
+
 [73307]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73307
 [73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73317
