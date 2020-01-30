@@ -29,6 +29,11 @@ A CMOS version draws between 4-16 mA; an NMOS one between 70-160 mA.
 This [program from Chromatix][73317] leaves an ASCII code in the
 accumulator indicating the family of the CPU it's run on.
 
+This will detect as `S` NMOS simulators that do only documented
+opcodes, since the $47 $83 sequence will be a `NOP` (or whatever)
+instead of the merge of `LSR $83` and `EOR $83` that the original NMOS
+implementation happened to do.
+
     ; Left in A register at end:
     ;      'N' - NMOS 6502
     ;      'S' - 65SC02
