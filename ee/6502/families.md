@@ -29,26 +29,23 @@ A CMOS version draws between 4-16 mA; an NMOS one between 70-160 mA.
 This [program from Chromatix][73317] leaves an ASCII code in the
 accumulator indicating the family of the CPU it's run on.
 
-    ;   N - NMOS 6502
-    ;   S - 65SC02
-    ;   C - 65C02 or 65CE02
-    ;   8 - 68C816 or 65C802
+    ; Left in A register at end:
+    ;      'N' - NMOS 6502
+    ;      'S' - 65SC02
+    ;      'C' - 65C02 or 65CE02
+    ;      '8' - 68C816 or 65C802
+    2B0 : A9 00     lda   #0
+    2B2 : 85 84     sta  $84
+    2B4 : 85 85     sta  $85
+    2B6 : A9 1D     lda  #$1D       ; 'N' EOR 'S'
+    2B8 : 85 83     sta  $83
+    2BA : A9 25     lda  #$25       ; 'N' EOR 'S' EOR '8'
+    2BC : 85 1D     sta  $1D
+    2BE : A9 4E     lda  #$4E       ; 'N'
+    2C0 : 47 83     rmb4 $83        ; magic $47 opcode
+    2C2 : 45 83     eor  $83
+    2C4 : 60        rts
 
-    TestCPU:    lda #0
-                sta $84
-                sta $85
-                lda #$1D    ; 'N' EOR 'S'
-                sta $83
-                lda #$25    ; 'N' EOR 'S' EOR '8'
-                sta $1D
-                lda #$4E    ; 'N'
-                rmb4 $83    ; magic $47 opcode
-                eor $83
-
-                ; output routine for BBC Micro
-                jsr $FFEE   ; OSWRCH
-                jsr $FFE7   ; OSNEWL
-                rts
 
 
 <!-------------------------------------------------------------------->
