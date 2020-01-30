@@ -44,7 +44,7 @@ implementation happened to do.
     2B4 : 85 85     sta  $85
     2B6 : A9 1D     lda  #$1D       ; 'N' EOR 'S'
     2B8 : 85 83     sta  $83
-    2BA : A9 25     lda  #$25       ; 'N' EOR 'S' EOR '8'
+    2BA : A9 6B     lda  #$6B       ; 'N' EOR 'S' EOR '8'
     2BC : 85 1D     sta  $1D
     2BE : A9 4E     lda  #$4E       ; 'N'
     2C0 : 47 83     rmb4 $83        ; magic $47 opcode
