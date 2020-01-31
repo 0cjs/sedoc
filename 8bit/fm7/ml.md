@@ -26,6 +26,10 @@ entering the monitor as well). `JMP $ABF9` to return to the monitor
 after a `G` command to avoid problems with `RTS` causing errors in
 BASIC.
 
+[番外編７：FM-8/7/77/77AVシリーズの微妙な非互換性][haserin] (also
+copied [here][rpcg1]) gives cosiderable detail on hardware and firmware
+and the differences between the various models.
+
 
 Memory Map
 ----------
@@ -191,3 +195,5 @@ include:
 
 <!-------------------------------------------------------------------->
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
+[haserin]: http://haserin09.la.coocan.jp/difference.html
+[rpcg1]: http://rpcg1.home.mindspring.com/difference.html

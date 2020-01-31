@@ -143,6 +143,21 @@ See [euaudio].
     2   GND
 
 
+Mini-DIN
+--------
+
+The following is a mini-DIN-4 connector, looking into the female jack
+on a device, with the S-Video pinout.
+
+     /¯¯¯U¯¯¯\      1   GND (Y)
+    |  4   3  |     2   GND (C)
+    | 2     1 |     3   Y Intensity/Luminance
+     \_|■■■|_/      4   C Color/Chrominance
+
+Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
+3 and 4 cabled, but leave pin 1 unconnected at the mini-DIN end.
+
+
 Video Connectors
 ----------------
 
