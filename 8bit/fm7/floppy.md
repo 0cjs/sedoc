@@ -17,6 +17,13 @@ supply; a CoCo user has claimed that he's swapped the two without
 problems.
 
 
+Flexonsbd has created an [FM-7 disk controller board][flexonsbd] with
+an MB8877A on-board, so you can connect that directly to external
+drives rather than a controller. (It should let you use 3.5" drives!)
+The board there still has design issues, though, like the floppy drive
+connector being on the wrong side.
+
+
 Connectors and Cabling
 ----------------------
 
@@ -125,5 +132,6 @@ access via the registers above, and even formatting I think.
 [MB8877]: https://www.datasheetarchive.com/MB8877A-datasheet.html
 [fm7basic]: https://archive.org/details/FM7FBASICBASRF
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
+[flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
 
 [xm7tool]: https://github.com/Artanejp/XM7-for-SDL/tree/master/linux-sdl/Tool
