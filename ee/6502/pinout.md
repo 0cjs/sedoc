@@ -27,9 +27,9 @@ This is from [`progcard`](progcard), not verified with data sheet and
 probably has some errors.
 
            +---__---+
-       Vss | 1    40| /RES  ←
+       Vss | 1    40| /RES ←
     →  RDY | 2    39| CLK2 →
-    ← CLK1 | 3    38| SOB
+    ← CLK1 | 3    38| SOB  ←
     →  IRQ | 4    37| CLK0 ←
         NC | 5    36| NC
     →  NMI | 6    35| NC
@@ -56,7 +56,7 @@ probably has some errors.
            +---__---+
        Vss | 1    40| /RES ←
     →  RDY | 2    39| Φ2   →
-    ←   Φ1 | 3    38| /SO
+    ←   Φ1 | 3    38| /SO  ←
     → /IRQ | 4    37| Φ0   ←
         NC | 5    36| NC        (BE for '102 and '112)
     → /NMI | 6    35| NC
