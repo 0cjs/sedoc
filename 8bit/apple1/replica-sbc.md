@@ -52,6 +52,28 @@ nothing for these.
 ICs and Pinouts
 ---------------
 
+RC6502 Bus Pinout
+
+       A15 →  1
+         …   …
+        A0 → 16
+       GND   17
+       Vcc   18
+     Φ2out → 19
+    /RESET ← 20
+      Φ0in ← 21
+      /IRQ ← 22
+       R/W̅ → 23
+       RDY ← 24
+      SYNC → 25
+        D0 ↔ 26
+        D7 ↔ 34
+        TX ↔ 35
+        RX ↔ 35
+      /NMI ← 37
+         ×   38
+         ×   39
+
 - [555] timer
 - [HM62256BLP][62256] 32K×8 SRAM
 - [AT28C256] 32K×8 EEPROM
