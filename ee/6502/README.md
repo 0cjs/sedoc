@@ -49,6 +49,9 @@ to `P`. However, many sources call these the "flags."
     1  Z    zero        most instrs with a result
     0  C    carry       SEC/CLC; ADC, SBC, CMP, ASL/LSR/ROL/ROR
 
+`V` is an XOR between `C` and the carry from bit 6 to 7. (This is true
+in decimal mode, too; so it's never a decimal overflow.)
+
 The following instructions affect specific flags ([pm1976] pp.24).
 Additionally, `RTI` and `PLP` always set all flags.
 
