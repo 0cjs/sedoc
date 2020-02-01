@@ -28,8 +28,15 @@ Communications are at 115,200 bps. At startup or when the Arduino is
 reset it will print `RC6502 Apple 1 Replica`.
 
 
-Keyboard I/O
-------------
+Keyboard and Video I/O Emulation
+--------------------------------
+
+An Arduino Nano monitors and talks to the MC6821 PIA and emulates the
+keyboard and video circuitry. The Nano talks to a computer via a
+115kbps USB serial connection; connect to it with `minicom -8 -b
+115200 -D /dev/ttyUSB0`. Note the issues described below.
+
+### Keyboard I/O
 
 Unlike the real Apple I, which leaves MC6820 PIA `CA2` unconnected,
 this board wires `CA2` to an input on the Arduino Nano. The [current
@@ -38,9 +45,7 @@ data on port A has been read so it can delay writing further
 keystrokes until the current keystroke has been read and avoid
 overflowing the Apple on fast input.
 
-
-Video I/O
----------
+### Video I/O
 
 The [current software][piacom] (`1907bba` 2017-06-02) does not
 correctly translate output; the character is ANDed with $7F to clear
@@ -63,10 +68,11 @@ RC6502 Bus Pinout
     /RESET ← 20
       Φ0in ← 21
       /IRQ ← 22
-       R/W̅ → 23
-       RDY ← 24
-      SYNC → 25
-        D0 ↔ 26
+     Φ1out → 23
+       R/W̅ → 24
+       RDY ← 25
+      SYNC → 26
+        D0 ↔ 27
         D7 ↔ 34
         TX ↔ 35
         RX ↔ 35
