@@ -221,6 +221,19 @@ From Nesdev Wiki [Synthetic Instructions][nw-syn].
             SEC
             ADC value
 
+### Fast Accumulate in Registers
+
+From [BigEd][6f-t5945] (also [here][rcf-929]): accumate in X and Y (15
+cycles for zero-page operand, otherwise 17).
+
+            TXA
+            CLC
+            ADC lowbyte
+            TAX
+            TYA
+            ADC highbyte
+            TAY
+
 ### Fast nybble swap
 
 By David Galloway. See [wm-SWM].
@@ -340,6 +353,7 @@ table (e.g., for a video game level).
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
 [6f-p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922&view=unread#p73063
+[6f-t5945]: http://forum.6502.org/viewtopic.php?f=2&t=5945
 [6t-decimal]: http://www.6502.org/tutorials/decimal_mode.html
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
@@ -349,6 +363,7 @@ table (e.g., for a video game level).
 [kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
 [nw-opt]: http://wiki.nesdev.com/w/index.php/6502_assembly_optimisations
 [nw-syn]: http://wiki.nesdev.com/w/index.php/Synthetic_instructions
+[rcf-929]: https://retrocomputingforum.com/t/life-4-gosper-glider-guns-on-pdp-7-type-340-display/929/9
 [simple-asl]: https://github.com/0cjs/8bitdev/blob/master/src/simple-asl.a65
 [wm-SWM]: http://6502.org/source/general/SWN.html
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
