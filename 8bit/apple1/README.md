@@ -74,6 +74,10 @@ being set.
 
 - SB-Projects, ["The Apple 1 Basic"][sbp-basic]
 
+### Other Tools
+
+- [Krusader](krusader.md), a symbolic assembly development environment.
+
 
 I/O, MC6820
 -----------
