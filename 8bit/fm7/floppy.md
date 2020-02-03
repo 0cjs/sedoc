@@ -16,12 +16,19 @@ case of the Epson TF-10 disk unit) Floppy Disk Formatter/Controller
 supply; a CoCo user has claimed that he's swapped the two without
 problems.
 
-
 Flexonsbd has created an [FM-7 disk controller board][flexonsbd] with
 an MB8877A on-board, so you can connect that directly to external
 drives rather than a controller. (It should let you use 3.5" drives!)
 The board there still has design issues, though, like the floppy drive
 connector being on the wrong side.
+
+### FM77
+
+FM77 and FM-77AV use 320 KB 40-track 3.5" floppies; the drives are
+proabably compatible with 5.25" controllers (but I've not tried it).
+FM77AV20 and beyond uses 640 KB 80-track floppies. These can format
+and write 40-track diskettes, but 40-track drives will have problems
+reading these.
 
 
 Connectors and Cabling
