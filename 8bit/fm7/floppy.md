@@ -1,5 +1,5 @@
-FM-7 Floppy Disk Information
-============================
+FM-7/77 Floppy Disk Information
+===============================
 
 _SS:n-m_ references refer to section-page numbers in the [富士通 FM-7
 ユーザーズマニュアル システム仕様][fm7sysspec].
@@ -31,8 +31,10 @@ and write 40-track diskettes, but 40-track drives will have problems
 reading these.
 
 
-Connectors and Cabling
-----------------------
+Drives, Connectors and Cabling
+------------------------------
+
+### FM-7
 
 SS:1-74 gives the 本体 interface, which I believe is between
 the card and the expansion bus, and the cable interface, between
@@ -75,6 +77,44 @@ below.
 
 Pp. 6-7 of the data sheet give commands, status register descriptions,
 etc.
+
+### FM77AV
+
+The FM77AV has [Y-E Data YD-625][yd-625] floppy drives. ([Data
+sheet][yd-600].) These seem to have standard headers: data/control on
+2×17 .1" male header, power on a standard 4-pin amphenol .1" male
+power connector (for AMP170204-2 plug) as with most 3.5" drives, and a
+2×3 .1" male header presumably for jumpers, both unjumpered in my
+system. Control/data cable is a standard 36-conductor ribbon cable
+with no twist, to a 2×17 male header on the motherboard. Termination
+is 1000Ω, but maybe different from other drives, or maybe 1 drive
+only. Compatible with 5.25" YD-580.
+
+From the page above, odd pins 1-33 are all GND; even pins are all
+active low unless specified otherwise:
+
+     2  (reserved)
+     4  in use (active high?)
+     6  drive select 3
+     8  index (out); 1 pulse per rotation
+    10  drive select 0
+    12  drive select 1
+    14  drive select 2
+    16  motor on
+    18  direction select (low=inward to centre, high=outwards to edge)
+    20  step
+    22  write data
+    24  write gate (low=write; high=read/seek)
+    26  track 00 (out)
+    28  write protect (out) low=protected
+    30  read data (out)
+    32  side one select (high=side 0, low=side 1)
+    34  ready out (low if +5/+12 normal and index detected 4 times)
+
+Jumpers given in page above are 1=short, 2=open. P3 controls whether
+the front light follows the drive select signal or not. Max
+control/data cable length is 1.5 m.
+
 
 Memory I/O Addresses
 --------------------
@@ -141,4 +181,9 @@ access via the registers above, and even formatting I think.
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
 [flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
 
+<!-- Drives, Connectors and Cabling -->
+[yd-600]: http://www.textfiles.com/bitsavers/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
+[yd-625]: http://ja1wby.art.coocan.jp/hamg/7-fm7-fdd/2-yd-625.html
+
+<!-- Sample Code -->
 [xm7tool]: https://github.com/Artanejp/XM7-for-SDL/tree/master/linux-sdl/Tool
