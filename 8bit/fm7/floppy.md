@@ -16,6 +16,9 @@ case of the Epson TF-10 disk unit) Floppy Disk Formatter/Controller
 supply; a CoCo user has claimed that he's swapped the two without
 problems.
 
+The FM-7 external drive unit [MB27611] appears to have had a pair of
+[YD-580] drives in it.
+
 Flexonsbd has created an [FM-7 disk controller board][flexonsbd] with
 an MB8877A on-board, so you can connect that directly to external
 drives rather than a controller. (It should let you use 3.5" drives!)
@@ -176,10 +179,13 @@ access via the registers above, and even formatting I think.
 
 
 <!-------------------------------------------------------------------->
+[MB27611]: http://ja1wby.art.coocan.jp/hamg/7-fm7-fdd/1-fm7-fdd.htm
 [MB8877]: https://www.datasheetarchive.com/MB8877A-datasheet.html
+[YD-580]: http://ja1wby.art.coocan.jp/hamg/7-fm7-fdd/2-yd-580.html
+[flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
 [fm7basic]: https://archive.org/details/FM7FBASICBASRF
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
-[flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
+
 
 <!-- Drives, Connectors and Cabling -->
 [yd-600]: http://www.bitsavers.org/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
