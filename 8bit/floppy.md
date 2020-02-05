@@ -121,6 +121,48 @@ Flux Level
   sophisticated software (Windows only)?
 
 
+USB UFI - Universal Floppy Interface
+------------------------------------
+
+[UFI spec].
+
+Supported media are all double-sided: $1E DD "720KB", $93 HD "1.25MB"
+and $94 HHD "1.44 MB" (all nominal formatted capacities; non-IBM-PC
+formats are possible). \[§4.5.3 p.25]
+
+#### Some Details
+
+I/O retry is automatic; the PER (post error) bit indicates whether the
+device should inform the host that an error occurred if a retry was
+successful. \[§4.5.4 p.25]
+
+You can request to set RPM (300 or 360) and raw transfer rate to media
+(250, 300, 500 kbps, 1, 2, 5 mbps). Also sectors per track, data bytes
+per sector, etc. \[§4.5.5 p.26] Not clear how many drives actually
+support unusual options.
+
+The READ CAPACITY ($25) command returns last logical block address and
+block length in bytes. \[§4.9 p.32]. The READ FORMAT CAPACITIES ($23)
+command returns the current capacity of the formatted floppy in the
+drive (if present), maximum formattable capacity, and a list of
+eight-byte capacity descriptors. This includes only capacities the
+drive can format, not additional capacities that it can read. \[$4.10
+p.33]
+
+### Experimentation
+
+Toshiba USB drive with HD DOS floppy inserted (write protected), sd
+driver says `[sdc] Mode Sense: 00 46 94 80.` No idea what parts of the
+very long mode sense data these are (need to read the driver source).
+
+Does not read 40-track diskettes. Gives:
+
+    [sdc] Unit Not Ready
+    [sdc] Sense Key : Medium Error [current]
+    [sdc] Add. Sense: Cannot read medium - unknown format
+    [sdc] Read Capacity(10) failed: Result: hostbyte=DID_OK driverbyte=DRIVER_SENSE
+
+
 
 <!-------------------------------------------------------------------->
 [MB8877]: https://www.tim-mann.org/max80/Appendix_D_Updated.pdf
@@ -147,3 +189,6 @@ Flux Level
 [scp]: https://www.cbmstuff.com/proddetail.php?prod=SCP
 [scpman]: https://www.cbmstuff.com/downloads/scp/scp_manual.pdf
 [stmfake]: https://github.com/keirf/Greaseweazle/wiki/STM32-Fakes
+
+<!-- UFI -->
+[UFI spec]: https://usb.org/sites/default/files/usbmass-ufi10.pdf
