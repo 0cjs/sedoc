@@ -182,7 +182,8 @@ access via the registers above, and even formatting I think.
 [flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
 
 <!-- Drives, Connectors and Cabling -->
-[yd-600]: http://www.textfiles.com/bitsavers/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
+[yd-600]: http://www.bitsavers.org/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
+[yd-600-tf]: http://www.textfiles.com/bitsavers/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
 [yd-625]: http://ja1wby.art.coocan.jp/hamg/7-fm7-fdd/2-yd-625.html
 
 <!-- Sample Code -->
