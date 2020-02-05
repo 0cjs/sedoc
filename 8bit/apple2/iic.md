@@ -207,6 +207,16 @@ Further references:
 - [ROM images][a2za-a2crom].
 
 
+The Apple IIc Plus
+------------------
+
+This was model A2S4500. Differences include:
+- 3.5" internal drive
+- Mains voltage PSU is now internal, with standard PC IEC C14 jack on
+  the chassis.
+- Serial ports now use miniDIN-9 (or something?)
+
+
 
 <!-------------------------------------------------------------------->
 ["SA390"]: https://apple2history.org/history/ah05/
