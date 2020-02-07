@@ -13,7 +13,7 @@ To make available the standard extra stuff, add `contrib` and
 
 Other commonly wanted packages are:
 
-* `build-essential`: Tools to build programs (gcc, make, etc.)
+* `build-essential`: Development tools to build programs (gcc, make, etc.)
 
 ### Installed Packages and Sizes
 
