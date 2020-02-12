@@ -59,6 +59,15 @@ nothing for these.
 ICs and Pinouts
 ---------------
 
+#### Power
+
+- Power header above Nano: top=+5V bus, bottom=Nano +5V supply. Jumper
+  to have USB power the board, which pulls < 250 mA.
+- On 1-based bus pins, 17=GND, 18=+5V. These are to the right and left
+  of the center pin of the RAM_EN jumper.
+- A handy ground bus pin is the bottom pin of the PIA_EN jumper (when
+  PIA_EN is enabled via jumpering top-two pins, CS and +5).
+
 RC6502 Bus Pinout
 
        A15 →  1
@@ -85,6 +94,7 @@ RC6502 Bus Pinout
 - [555] timer
 - [HM62256BLP][62256] 32K×8 SRAM
 - [AT28C256] 32K×8 EEPROM
+- [MC6821](../../ee/mc6820.md) PIA
 
       HM62256BLP, AT28C256               6502
              _____                        _____
