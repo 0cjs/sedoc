@@ -347,9 +347,24 @@ table (e.g., for a video game level).
 * Bits 1-5 are loaded via the obvious `LDA (table),y; LSR; AND #$1F`,
   which also leaves bit 0 in the carry.
 
+### Bit-banging I/O
+
+Absolute-addresed `INC/DEC` can do input and output simultaneously for
+things like synchronous serial interfaces because it does both a read
+and write of the memory location. Make bit 0 the clock output and bit
+7 the input:
+- With the clock bit clear, `INC portaddr` will set the clock bit and
+  copy the input bit to the N flag.
+- With the clock bit set, `DEC portaddr` will clear the clock bit and
+  copy the input bit to the N flag.
+
+([Dr. Jefyll][6f p73765]. Also see [his SPI post][6f p45555].)
+
 
 
 <!-------------------------------------------------------------------->
+[6f p45555]: http://forum.6502.org/viewtopic.php?p=45555#p45555
+[6f p73765]: http://forum.6502.org/viewtopic.php?f=4&t=6021#p73765
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
 [6f-p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922&view=unread#p73063
