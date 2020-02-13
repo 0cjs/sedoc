@@ -36,7 +36,7 @@ keyboard and video circuitry. The Nano talks to a computer via a
 115kbps USB serial connection; connect to it with the following
 command (but note the issues described below).
 
-    minicom -8 -b 115200 -D /dev/ttyUSB0
+    minicom -w -8 -b 115200 -D /dev/ttyUSB0
 
 ### Keyboard I/O
 
