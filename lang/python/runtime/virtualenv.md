@@ -62,7 +62,7 @@ in the path to that interpreter:
 
 See [Python Versions][version] for details on how to build alternate
 versions of Python. Once you have one, you can set up a virtualenv to
-use it with commands like:
+use it with locally installed or compiled versions, e.g.:
 
     virtualenv -p ~/.local/python34/bin/python3
     virtualenv -p $(pythonz locate 2.7.3) python2.7.3

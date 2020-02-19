@@ -104,8 +104,8 @@ Notes:
    See [What, No Python in RHEL 8 Beta?][RHEL8].
 
 
-Building Alternative Versions
------------------------------
+Building/Compiling Alternative Versions
+---------------------------------------
 
 ### libssl Versions
 
