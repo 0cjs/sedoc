@@ -122,6 +122,11 @@ install the 1.0 version and reinstall the 1.1 version afterwards:
 
 [Pythonz] downloads and builds source for various Python
 implementations and versions, storing all work in `~/.pythonz`.
+
+When buidling Python versions it will automatically disable features
+such as gzip, TLS, and curses unless you have their dev libraries
+installed; see below under "Building from Source" for a package list.
+
 Install with:
 
     curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
