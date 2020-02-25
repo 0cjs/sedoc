@@ -122,6 +122,7 @@ Character output translation:
         $0D  (CR) Moves to the beginning of the next line.
     $20-$5F  (space through underbar) prints given char
     $60-$7F  (lower-case etc.) prints same as $40-$5F
+             ($7F is not treated as a control character)
 
 The high bit is ignored on output, producing the same results as above.
 
