@@ -23,6 +23,8 @@ XXX Add pin 1 change, `BE`, etc. for CMOS that have it.
 
 #### Pinout Diagram
 
+Also see [families](families.md) for further information on variants.
+
       W65C02           NMOS/R65C02          W65C02
                        +---__---+
          /VP       Vss | 1    40| /RES ←

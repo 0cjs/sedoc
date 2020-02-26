@@ -14,6 +14,38 @@ References:
 - Wilson Mines Co., [Differences between NMOS 6502 and CMOS 65c02][wm-diff]
 
 
+Variant List
+------------
+
+    CPU       Inst  ClkOut     RDY  TS  ML  Pn
+    ------------------------------------------------------------------------
+    6502      N      Φ12       R    -   -
+    6512      N       Φ2 Φ1in  R     D  -
+    65C02     C,R    Φ12       RW   -   -
+    65C102    C,R     Q        RW   AD  +   39:Q
+    65C112    C,R     Φ2       RW   AD  +
+    65SC02    C      Φ12       RW   -   -
+    65SC12    C       Φ2       -?    D  -
+    65SC102   C       Q        RW   AD  +   39:Q
+    65SC112   C       Φ2       RW   AD  +
+    65CE02    C,E    Φ12       RW   -   -
+    W65C802S  C,W,L  Φ12       RWH  AD  +   1:/VP
+    W65C816S  C,W,L      Φ2in  RWH  AD  +   1:/VP 7:VPA 38:MX 39:VDA
+    W65C02S   C,R,W  Φ12       RWH  AD  +   1:/VP
+
+- Inst (instruction set):
+  N=NMOS, C=CMOS, R=Rockwell, E=Extended, W=WDC, L=Long.
+- ClkOut: Q=quadrature out
+- `RDY` (ready pin halts on): R=read, W=write, H=halt.
+- TS (bus tristate): A=address, D=data.
+- ML (memory lock)
+- Pn (special pins):
+  - Pin 1 is normally GND, but `/VP` (interrupt vector being read) on WDC CPUs
+  - Pin 39 Φ2out is 1/4 clock speed on Q (quadrature out) CPUs
+  - '816 replaces 7:SYNC,38:/SO,39:Φ2out with VPA,MX,VDA.
+
+[Source][variant-chart].
+
 
 Model Detection
 ----------------
@@ -56,6 +88,7 @@ implementation happened to do.
 <!-------------------------------------------------------------------->
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
 [wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
+[variant-chart]: http://forum.6502.org/viewtopic.php?f=4&t=6027&view=unread#p73881
 
 [73307]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73307
 [73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73317

@@ -4,6 +4,8 @@ MOS Technology 6502
 Contents:
 - [Opcodes by addressing mode](opcodes)
 - [OUPRG Programmer's card](progcard)
+- [Pinouts](pinout.md)
+- [Families and Variants](families.md)
 
 #### References
 
