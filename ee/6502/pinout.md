@@ -47,7 +47,6 @@ XXX Add pin 1 change, `BE`, etc. for CMOS that have it.
                 ←  A11 |20    21| Vss
                        +--------+
 
-
 References:
 - [Image][multipinimg] by [Dr Jefyll][multipin]
 - [Rockwell R65C02 data sheet][rock]
@@ -55,8 +54,26 @@ References:
 Do not use [`progcard`](progcard); it has several errors.
 
 
+Variants
+--------
+
+See the [Mock-A-65xx_Pins PDF](Mock-A-65xx_Pins.pdf) file (from forum64.de
+[MockA65xx - Universal MOS 65xx / 85xx CPU replacement][mock65]; see second
+post for English, and also discussed on [forum.6502.org][mock65f6o]) for
+pinouts for the following Commodore parts:
+- 6502: PET
+- 6508: C900 FDC
+- 6509: P500, P6x0/7x0
+- 6510/8500: C64
+- 6510T: 1551 FDC
+- 8501: C16, Plus/4
+- 8502: C128
+
+
 
 <!-------------------------------------------------------------------->
+[mock65]: https://www.forum64.de/index.php?thread/84266-mocka65xx-universeller-mos-65xx-85xx-cpu-ersatz/
+[mock65f6o]: http://forum.6502.org/viewtopic.php?f=1&t=5347
 [multipin]: http://forum.6502.org/viewtopic.php?f=4&t=6027#p73889
 [multipinimg]: http://forum.6502.org/download/file.php?id=9416&mode=view
 [rock]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
