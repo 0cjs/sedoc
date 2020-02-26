@@ -52,6 +52,10 @@ footprint and square 8-pin footprint):
       8  5  output
      14  8  Vdd (+5)
 
+Also see:
+- Dr Jefyll, [RDY vs. Clock Stretching][stretch].
+
+
 
 SBC Designs
 -----------
@@ -66,7 +70,8 @@ Minimal chip count design for 6502/[6809][searle-6809]/Z-80.
 [Bench-1 QRG]: http://wilsonminesco.com/BenchCPU/B1QRG/
 [Maxim DS1813]: https://datasheets.maximintegrated.com/en/ds/DS1813.pdf
 [cypress-decoup]: http://www.cypress.com/file/135716/download
+[mcp130]: https://www.microchip.com/wwwproducts/en/MCP130
 [searle-6809]: http://searle.hostei.com/grant/6809/Simple6809.html
+[stretch]: http://forum.6502.org/viewtopic.php?f=4&t=5504#p66907
 [wmc-reset]: http://wilsonminesco.com/6502primer/RSTreqs.html
 [wp-decoup-cap]: https://en.wikipedia.org/wiki/Decoupling_capacitor
-[mcp130]: https://www.microchip.com/wwwproducts/en/MCP130
