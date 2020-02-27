@@ -24,6 +24,15 @@ standardized across all operating systems:
 * `/dev/stdin`, `/dev/stdout`, `/dev/stderr`: File descriptors 0, 1 and 2.
 * `/dev/fd/N`: File descriptor _N_.
 
+#### Redirection
+
+See `^REDIRECTION` in the manpage.
+
+- `[n]<<[-]word`: Here document.
+- `[n]<<<word`: Here string. _word_ is fully expanded, except for
+  pathname expansion and word splitting. The result with a newline
+  appended is supplied as standard input (or FD _n_) to the program.
+
 #### Expressions
 
 XXX fill this in
