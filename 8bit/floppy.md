@@ -91,6 +91,10 @@ read/write at a supported kbps rate, though often certain other signal
 connectors (reduce write current, etc.) and sometimes termination have
 to be tweaked. See [[hj-replace]] for more details.
 
+#### 3.5" Drive Information
+
+The power plug on the cable is an AMP 170204-2 or 171822-4. FDDs
+often (but not always) need only +5 V.
 
 
 Flux Level
