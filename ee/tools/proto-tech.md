@@ -27,4 +27,20 @@ Breadboards vs. Dual-Row Pin Headers
   board for breadboards. These usually have a shrouded header 0.6" DIP
   connection to the breadboard.
 
+
+Prototype Board (Protoboard) Sizes
+----------------------------------
+
+         PB-37       protoboard 10×24  3×7cm
+         PB-46       protoboard 14×20  4×6cm
+         PB-57       protoboard 18×24  5×7cm
+         PB-68       protoboard 22×27  6×8cm
+         PB-79       protoboard 26×31  7×9cm
+         PB-812      protoboard 30×41  8×12cm
+         PB-915      protoboard 34×53  9×15cm
+         PB-1218     protoboard 48×65 12×18cm
+         PB-1520     protoboard 57×73 15×20cm
+
+
+<!-------------------------------------------------------------------->
 [msg2860602]: https://www.eevblog.com/forum/projects/breadboards-vs-dual-row-pin-headers-(dupont-berg)/msg2860602/
