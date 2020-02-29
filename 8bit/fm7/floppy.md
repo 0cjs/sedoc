@@ -9,6 +9,9 @@ contains the controller; the card in the computer doesn't seem to do
 much but provide a bit of logic for the parallel interface between the
 card and disk unit.
 
+(Note the Epson TF-10 came in both FM-7 and PC-8001 versions; the
+latter has "PC専用機" written under the connector on the drive.)
+
 The external disk unit itself has a large 40-pin chip of some sort
 (Intel? microcontroller?) and a Fujitsu [MB8877][] (MB8876A in the
 case of the Epson TF-10 disk unit) Floppy Disk Formatter/Controller
