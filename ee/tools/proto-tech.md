@@ -41,6 +41,10 @@ Prototype Board (Protoboard) Sizes
          PB-1218     protoboard 48×65 12×18cm
          PB-1520     protoboard 57×73 15×20cm
 
+Fujitsu FM-7 I/O card protoboard is approx 25×43 ?×? cm.:
+.15" border, 10 holes, 20×2-pin connector, 13 holes;
+
+
 
 <!-------------------------------------------------------------------->
 [msg2860602]: https://www.eevblog.com/forum/projects/breadboards-vs-dual-row-pin-headers-(dupont-berg)/msg2860602/
