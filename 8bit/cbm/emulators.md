@@ -130,8 +130,10 @@ Other commonly used commands are:
     c1541 disk.d64 -write pcr.prg pcr       # Copy file to image
     c1541 disk.d64 -read pcr pcr.prg        # Extract file from image
     c1541 disk.d64 2.d64 -copy pcr @9       # Copy between images
+    c1541 disk.d64 -tape file.t64           # Copy tape image to disk
 
     #   Below given as in interactive mode
+    attach name                     # additional param is optional unit number
     rename foo 'foo bar'
     delete foo
     block <track> <sector>          # Dump disk block in hex and ASCII
