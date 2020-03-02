@@ -15,6 +15,7 @@ Changes from IIe:
 - Adds built-in support for interrupt handling, including new vertical
   blank interrupt. (IIe could poll vertical blank; not available on
   earlier models.)
+- Easter egg: `IN#5 : INPUT A$ : PRINT A$`.
 
 Misc Notes
 ----------
