@@ -71,6 +71,20 @@ if a string.
 For using BASIC routines to continue parsing the line after the `SYS`
 call, see [Borrowing ML from BASIC][pickett85].
 
+### Saving Memory/Machine-Language Programs
+
+A secondary address of `1` on a `SAVE` command will mark the file as
+a binary file to be loaded at the location given in the first two bytes,
+when later loaded with `,8,1`. (This will not clear the current BASIC
+program, but may make it unrunnable.)
+
+    REM Save $C000-$CFFF
+    POKE 43,0:POKE 44,192
+    POKE 45,0:POKE 46,208
+    POKE 55,255:POKE 56,255
+    SAVE "ML",8,1
+    REM Reset above to previous values when done.
+
 
 Internals
 ---------
