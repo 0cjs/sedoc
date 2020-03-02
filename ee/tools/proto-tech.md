@@ -28,8 +28,16 @@ Breadboards vs. Dual-Row Pin Headers
   connection to the breadboard.
 
 
-Prototype Board (Protoboard) Sizes
-----------------------------------
+Protoboard Info and Techniques
+------------------------------
+
+- To connect adjacent pin components (headers, ICs), drop a "U" of
+  bare wire-wrap wire (or a bent lead) into the two holes before
+  putting in the headers/sockets/whatever. May also be useful for
+  GND/Vcc buses and whatever.
+
+
+### Prototype Board (Protoboard) Sizes
 
          PB-37       protoboard 10×24  3×7cm
          PB-46       protoboard 14×20  4×6cm
