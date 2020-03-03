@@ -35,6 +35,8 @@ Protoboard Info and Techniques
   bare wire-wrap wire (or a bent lead) into the two holes before
   putting in the headers/sockets/whatever. May also be useful for
   GND/Vcc buses and whatever.
+- To test during the build, use IC test clips to subtitute for
+  yet-unwired connections on the board.
 
 
 ### Prototype Board (Protoboard) Sizes
