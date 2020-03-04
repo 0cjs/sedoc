@@ -1,6 +1,52 @@
 Build Techniques
 ================
 
+Soldering
+---------
+
+- [JRE] suggests 0.5 mm solder. I've been using 0.8 ok, but I'd
+  definitely not want to go larger.
+- Thoroughly tin tip, leaving lots of solder on it, before first use
+  and before putting iron back in stand. Wipe when removing from
+  stand. [jre-sol05]
+- For conical tip, use edge in preferent to point (where room) for
+  better heat transfer.
+- Primary heat transfer is _through solder_. Use blob of fresh solder
+  on tip to help heat transfer, but not to solder the work. Solder
+  bonding the work should be melted on the work itself, not on the iron.
+- Generally no need to remove solder from holes when re-soldering;
+  just cut off device and remove pins. [jre-sol09]
+
+Desoldering ([jre-sol10]):
+- For removing solder alone (no part), clean tip and touch to solder;
+  after it melts some will come away with the iron when you lift it off.
+- Add solder first to help with heat transfer and remove oxidization.
+- Raise rather than slide iron when done to help avoid lifiting pads.
+  (Also never slide wick across a pad.)
+- Clean solder sucker tip after every suck.
+- Notch the tip (just one side) of a solder sucker to let it get
+  closer to a PCB hole while still leaving space for the soldering
+  iron to get in.
+- For SMD discrete parts add solder to get big blobs on both ends so
+  you can then touch/melt both at once with the iron. Put solder on
+  iron tip for heat xfer before removing part.
+
+Heat shrink can also be shrunk by rubbing the shank of the soldering
+iron against not (not too slowly).
+
+[jre]: https://josepheoff.github.io/posts/howtosolder-toc
+[jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
+[jre-sol09]: https://josepheoff.github.io/posts/howtosolder-9throughhole-remove
+[jre-sol10]: https://josepheoff.github.io/posts/howtosolder-10soldersucker
+
+
+SMD
+---
+
+Smaller parts (<`0805`) are not marked. Keep only one value at a time
+open on the workbench, and put all parts away before opening up
+another value part.
+
 
 Wire Wrap without Wire-wrap Sockets
 -----------------------------------
