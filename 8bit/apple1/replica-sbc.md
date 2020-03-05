@@ -120,6 +120,40 @@ RC6502 Bus Pinout
                                  A11 20 -|_____|- 21 GND
 
 
+ROM
+---
+
+Amtel 28C256 32K×8 ROM. The replica maps 8 KB of it to $E000-$FFFF.
+The bank is selected by shorting the left or right pair on pins on
+3-pin headers (left=Vcc, right=GND), setting the high address bits A13
+and A14 on the ROM.
+
+    Bank  Addr  A14_W A13_W
+      0    00    □■■   □■■
+      1    01    □■■   ■■□
+      2    10    ■■□   □■■
+      3    11    ■■□   ■■□
+
+### Bank 0
+
+As programmed by fumi_i2, the board vendor on ﾔﾌｵｸ.
+
+    $E000   Woz BASIC
+    $F000   KRUSADER 1.2 BY KEN WESSEN
+    $FF00   Woz Monitor, last byte $01 instead of $00
+
+### Bank 1
+
+Appears unprogrammed (all $FF).
+
+### Bank 2
+
+Appears unprogrammed (all $FF).
+
+### Bank 3
+
+Appears unprogrammed (all $FF).
+
 
 <!-------------------------------------------------------------------->
 [1rep-sbc]: https://github.com/tebl/RC6502-Apple-1-Replica/tree/master/RC6502%20Apple%201%20SBC
