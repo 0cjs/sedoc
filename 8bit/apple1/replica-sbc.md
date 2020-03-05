@@ -68,56 +68,38 @@ ICs and Pinouts
 - A handy ground bus pin is the bottom pin of the PIA_EN jumper (when
   PIA_EN is enabled via jumpering top-two pins, CS and +5).
 
-RC6502 Bus Pinout
+Pinouts:
 
-       A15 →  1
-         …   …
-        A0 → 16
-       GND   17
-       Vcc   18
-     Φ2out → 19
-    /RESET ← 20
-      Φ0in ← 21
-      /IRQ ← 22
-     Φ1out → 23
-       R/W̅ → 24
-       RDY ← 25
-      SYNC → 26
-        D0 ↔ 27
-        D7 ↔ 34
-        TX ↔ 35
-        RX ↔ 35
-      /NMI ← 37
-         ×   38
-         ×   39
+          Bus                 6502                   HM62256BLP, AT28C256
+                              _____                        _____
+       A15 →  1      /VP  1 -|     |- 40 /RESET   A14  1 -|     |- 28 Vcc
+         …   …       RDY  2 -|     |- 39 Φ2out    A12  2 -|     |- 27 /WE
+        A0 → 16    Φ1out  3 -|     |- 38 /SO       A7  3 -|     |- 26 A13
+       GND   17     /IRQ  4 -|     |- 37 Φ2in      A6  4 -|     |- 25  A8
+       Vcc   18      /ML  5 -|     |- 36 NC†       A5  5 -|     |- 24  A9
+     Φ2out → 19     /NMI  6 -|     |- 35 NC        A4  6 -|     |- 23 A11
+    /RESET ← 20     SYNC  7 -|     |- 34 RW̅        A3  7 -|     |- 22 /OE
+      Φ0in ← 21      Vcc  8 -|     |- 33 D0        A2  8 -|     |- 21 A10
+      /IRQ ← 22       A0  9 -|     |- 32 D1        A1  9 -|     |- 20 /CS
+     Φ1out → 23       A1 10 -|     |- 31 D2        A0 10 -|     |- 19  D7
+       R/W̅ → 24       A2 11 -|     |- 30 D3        D0 11 -|     |- 18  D6
+       RDY ← 25       A3 12 -|     |- 29 D4        D1 12 -|     |- 17  D5
+      SYNC → 26       A4 13 -|     |- 28 D5        D2 13 -|     |- 16  D4
+        D0 ↔ 27       A5 14 -|     |- 27 D6       Vss 14 -|_____|- 15  D3
+        D7 ↔ 34       A6 15 -|     |- 26 D7
+        TX ↔ 35       A7 16 -|     |- 25 A15
+        RX ↔ 35       A8 17 -|     |- 24 A14
+      /NMI ← 37       A9 18 -|     |- 23 A13
+         ×   38      A10 19 -|     |- 22 A12
+         ×   39      A11 20 -|_____|- 21 GND
 
+                    † BE on WDC CPUs
+
+Parts:
 - [555] timer
 - [HM62256BLP][62256] 32K×8 SRAM
 - [AT28C256] 32K×8 EEPROM
 - [MC6821](../../ee/mc6820.md) PIA
-
-      HM62256BLP, AT28C256               6502
-             _____                        _____
-    A14  1 -|     |- 28 Vcc      /VP  1 -|     |- 40 /RESET
-    A12  2 -|     |- 27 /WE      RDY  2 -|     |- 39 Φ2out
-     A7  3 -|     |- 26 A13    Φ1out  3 -|     |- 38 /SO
-     A6  4 -|     |- 25  A8     /IRQ  4 -|     |- 37 Φ2in
-     A5  5 -|     |- 24  A9      /ML  5 -|     |- 36 NC (WDC: BE)
-     A4  6 -|     |- 23 A11     /NMI  6 -|     |- 35 NC
-     A3  7 -|     |- 22 /OE     SYNC  7 -|     |- 34 RW̅
-     A2  8 -|     |- 21 A10      Vcc  8 -|     |- 33 D0
-     A1  9 -|     |- 20 /CS       A0  9 -|     |- 32 D1
-     A0 10 -|     |- 19  D7       A1 10 -|     |- 31 D2
-     D0 11 -|     |- 18  D6       A2 11 -|     |- 30 D3
-     D1 12 -|     |- 17  D5       A3 12 -|     |- 29 D4
-     D2 13 -|     |- 16  D4       A4 13 -|     |- 28 D5
-    Vss 14 -|_____|- 15  D3       A5 14 -|     |- 27 D6
-                                  A6 15 -|     |- 26 D7
-                                  A7 16 -|     |- 25 A15
-                                  A8 17 -|     |- 24 A14
-                                  A9 18 -|     |- 23 A13
-                                 A10 19 -|     |- 22 A12
-                                 A11 20 -|_____|- 21 GND
 
 
 ROM
