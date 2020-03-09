@@ -6,6 +6,8 @@ used on PETs.
 
 Docs:
 - [_Commodore 64 Programmer's Reference Guide_][c64progref], p. 362 et seq.
+- [_Service Manual: C64/C64C_][c64service], p. 13. Schematic and brief
+  circuit theory description.
 - [_Inside Commodore DOS_][c64dos]
 - [Commodore bus] on Wikipedia
 - [Commodore Peripheral Bus][cbmbus0] on pagetable.com and [cbmbus.git]. In
@@ -124,21 +126,27 @@ Typical messaging:
 
     LOAD "filename",8,1
 
-            # host asserts `A̅T̅N̅`
+            # host asserts A̅T̅N̅
     28      listen dev 8
+            # host releases A̅T̅N̅
     f0      open channel 0
     ...     filename bytes
-    3f      unlisten all
+    3f      unlisten all (A̅T̅N̅ handling here as per above)
     48      talk dev 8
     60      reopen channel 0
+            # listener asserts D̅A̅T̅A̅ to indicate byte accepted
+            # host releases A̅T̅N̅, CLK, asserts D̅A̅T̅A̅ (bus turnaround)
             # dev 8 becomes bus master
     ...     byte data of file sent by dev 8
-            # EOI, host asserts `A̅T̅N̅` to become master
+            # EOI, host asserts A̅T̅N̅ to become master
     5f      untalk all devices
     28      listen dev 8
     e0      close channel 0
     3f      unlisten all devs
-            # host releases `A̅T̅N̅`
+            # host releases A̅T̅N̅
+
+There are minimum timings for the above, e.g. between `A̅T̅N̅` and `CLK`
+release. See pp. 10-11 of [IEC disected] for details.
 
 ### Device Numbers
 
