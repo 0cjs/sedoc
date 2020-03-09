@@ -124,7 +124,8 @@ Other I/O
 
 #### Serial Ports
 
-(p.274) Two 6551 ACIAs; port/slot "printer" and port/slot 2 "modem."
+(p.274) Two 6551 ACIAs; port/slot 1 "printer" and port/slot 2 "modem."
+The control registers are at $C09B and $C0AB, respectively. (p.279)
 
     DIN Numbering     DIN Numbering     Apple Numbering
     LI male plug      LI female jack     LI female jack
