@@ -41,8 +41,7 @@ The command delimiter may not be used in arguments to `Find`, `Change`
 or `Edit`.
 
 Parameters (optional params in brackets):
-- `Rnum`: Required decimal number.
-- `Onum`: Optional decimal number.
+- `num`: Decimal number.
 - `line#`: Line number, 1-65519.
 - `lrange`: Optional line number range, one or two _line#_ separated
   by `-`. With no hyphen, the number is beginning and end of range.
@@ -50,18 +49,13 @@ Parameters (optional params in brackets):
   is less than the first, it is a line count rather than line number.
 - `lranges`: One or more _lrange_s separated by commas. E.g.,
   `2,1,4-2` for lines 2, 1, 4, 5.
-- `Dstring`: Delimited string; inital char is delimiter and cannot
+- `dstr`: Delimited string; inital char is delimiter and cannot
   appear in the string.
-- `Chgstring`: Two strings between three delimiters: `/old/new/`.
-- `Rfilename`, `Ofilename`: 1-30 char filename for text file.
-- `OObjfilename`: 1-30 char filename for object (binary) file.
+- `dstr2`: Two strings between three delimiters: `/old/new/`.
+- `file`, `objfile`: 1-30 char filename for text/object (binary) file.
 
 Edit Commands:
 - `? [cmd]`: Print help. Shows only the most common forms of commands.
-- `.cmd`: Issue _cmd_ to DOS to execute. Designed only for `RENAME`,
-  `LOCK`, `UNLOCK`, `MON` and `NOMON`, but other commands (e.g.,
-  `BLOAD`) will execute. `INIT` will produce disks without a `HELLO`
-  program that will not boot.
 - `List lranges`, `Print lranges`: List (with preceeding line number) or
   print (at left margin with no line number) lines. Space pauses listing;
   Ctrl-C aborts.
@@ -70,35 +64,42 @@ Edit Commands:
   can be followed by the command delimiter like any other command.)
 - `Add [line#]`: Append new lines after EOF or _line#_. Terminate with
   Ctrl-D or Ctrl-Q at start of line, followed by Return.
-- `Insert line#`: Insert lines before _line#_. Terminate as with
-  `Add`.
-- `Delete`
+- `Insert line#`: Insert lines before _line#_. Terminate as with `Add`.
+- `Delete lrange`: Delete the lines _lrange_.
+- `Replace lrange`: Delete the lines in _lrange_ and then enter insert
+  mode to insert where the lines were deleted.
+
+Display commands:
+- `TRuncON`, `TRuncOFF`: Enable/disable truncation. When enabled, the
+  portion of a line starting starting with ` ;`/space-semicolon will
+  not be printed by the `List` and `Print` commands, though it will
+  still be present (and appear for `Edit` etc.).
+- `Tabs tablist dstr`: _tablist_ is a comma-separated list of screen
+  columns - 2 (i.e., `T6` will set a tab at column 8) at which to
+  place the second and subsequent space-separated fields.
+  - This makes `Print` have different tabbing from `List` since it
+    prints lines from the left edge rather than after a 6-character
+    line number field.)
+  - The field separator may be changed by supplying a new _dstr_, but
+    the assembler accepts only space.
+  - No tablist clears all tabs.
+  - Default setting is `T14,19,29`.
+  - My "condensed" setting is `T12,16,24` for `List` mode and
+    `T7,11,19` for `Print` mode.
 
 Operation Commands:
 - `FILE`: Display current file/drive/memory info.
 - `MON`: Enter monitor. Return with monitor Ctrl-Y command or `3D0G`.
 - `CATalog`: As with `.CATALOG` but does not accept `,Dn,Sn` options.
+- `END`: Exit to BASIC interpreter.
+- `.cmd`: Issue _cmd_ to DOS to execute. Designed only for `RENAME`,
+  `LOCK`, `UNLOCK`, `MON` and `NOMON`, but other commands (e.g.,
+  `BLOAD`) will execute. `INIT` will produce disks without a `HELLO`
+  program that will not boot.
 
-### Editor Memory Usage
-
-
-    $0200 - $02FF   Input buffer for command/text entry
-    $0300 - $03CF   Numeric input stack, flags, ASMIDSTAMP
-    $03D0 - $03FF   Unused (assembler/monitor DOS interface)
-    $0400 - $07FF   Screen RAM
-    $0800 - $1FFF   Editor/assembler code and data
-    $2000           Editor buffer start (default)
-    $9600 - $BFFF   DOS (48K)
-
-- `LOMEM=nnn`: Set start of edit buffer, default $2000 (8192).
-- `HIMEM=nnn`: Set end of edit buffer; default 38400 (48K), 26112
-  (36K), 22016 (32K).
-- `WHERE line#`: Show hex address of _line#_ in memory. `W1` will show
-  LOMEM pointer.
-- `LENGTH`: Show bytes used and remaining (as with `FILE`). Add these
-  to LOMEM to get HIMEM.
-
-Set `HIMEM=36864` to leave $9000-$9600 free on a 48K system.
+Memory usage:  
+`LOMEM=nnn`, `HIMEM=nnn`, `WHERE line#` and `LENGTH` are described in
+the "Memory Usage" section.
 
 
 Assembler
@@ -141,13 +142,13 @@ Expressions:
 
 #### Data Definition
 
-`Dstring` is a delimited string; the first character is the delimiter
+`dstr` is a delimited string; the first character is the delimiter
 and may not be present in the string itself. Termination with the same
 delimiter is optional if there is no comment after the string.
 
-- `ASC Dstring`: ASCII string. The `MSB` directive determines whether
+- `ASC dstr`: ASCII string. The `MSB` directive determines whether
   the MSB is set for each character.
-- `DCI Dstring`: As `ASC` but with MSB always 0 for all bytes except
+- `DCI dstr`: As `ASC` but with MSB always 0 for all bytes except
   the last, for which MSB is 1.
 - `DFB expr[,expr…]`: Define byte(s). Expressions are modulo 256.
   Bytes defined with relocatable expressions generate a relocation
@@ -164,11 +165,48 @@ A `DO expr` directive assembles the following code up to an `ELSE` or
 `FIN` (finish). No statements are required between `DO` and `ELSE`.
 
 
+External Listings
+-----------------
+
+After the slot number, `PR#` can take a comma followed by output to
+send to the driver for that slot. On the IIc, the default control
+character for driver commands is Ctrl-A, and the commands are
+documented on [page 170][a2r-170] of the _Apple IIc Technical
+Reference Manual_. For 19,200 bps ouput to a Unix terminal window:
+
+- Apple II: `PR#2,`\<Ctrl-A>`15B`
+- Linux: `stty </dev/ttyUSB0 19200 -parenb istrip icrnl; cat /dev/ttyUSB0`
+
+
+Memory Usage
+------------
+
+    $0200 - $02FF   Input buffer for command/text entry
+    $0300 - $03CF   Numeric input stack, flags, ASMIDSTAMP
+    $03D0 - $03FF   Unused (assembler/monitor DOS interface)
+    $0400 - $07FF   Screen RAM
+    $0800 - $1FFF   Editor/assembler code and data
+    $2000           Editor buffer start (default)
+    $9600 - $BFFF   DOS (48K)
+
+- `LOMEM=nnn`: Set start of edit buffer and assembler work area,
+  default $2000 (8192).
+- `HIMEM=nnn`: Set end of edit buffer and assembler work area; default
+  38400 (48K), 26112 (36K), 22016 (32K).
+- `WHERE line#`: Show hex address of _line#_ in memory. `W1` will show
+  LOMEM pointer.
+- `LENGTH`: Show bytes used and remaining (as with `FILE`). Add these
+  to LOMEM to get HIMEM.
+
+Set `HIMEM=36864` to leave $9000-$9600 free on a 48K system.
+
+
 
 <!-------------------------------------------------------------------->
+[a2r-170]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual/page/n197/mode/1up
 [astk1]: https://archive.org/details/applesoft_toolkit_part_1/
 [astk2]: https://archive.org/details/applesoft_toolkit_part_2/
 [dtk1.0]: https://archive.org/search.php?query=dos%20tool%20kit
-[edasm]]: https://archive.org/details/apple-6502-assembler-editor/
+[edasm]: https://archive.org/details/apple-6502-assembler-editor/
 [pat]: https://archive.org/details/EDASM-ProDOS_Assembler_Tools_Manual/mode/2up
 [pdasmtools]: https://archive.org/details/EDASM-ProDOS_Assembler_Tools_Manual/mode/1up
