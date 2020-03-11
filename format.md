@@ -137,4 +137,5 @@ Ctrl-K as above.
 YouTube
 -------
 
-Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`.
+- Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`.
+- Bare links only.
