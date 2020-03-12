@@ -48,9 +48,9 @@ Earlier glyphs include:
     $5C    \    ~    \
     $5E    ↑    ^    ^
     $5F    ←    _    _
-    $60    `    @
-    $7C    |    ¬   ACK
-    $7E    ~    |   ESC
+    $60         @    `
+    $7C   ACK   ¬    |
+    $7E   ESC   |    ~
 
 Also see:
   https://en.wikipedia.org/wiki/ASCII#Character_set
