@@ -21,6 +21,8 @@ Breadboards vs. Dual-Row Pin Headers
 
 - Plug male jumper pins into female connector on the end of an IDC cable.
 - Solder a breakout board with perfboard.
+- Just bend the pins (90° out then down again) of a PCB-mount IDC
+  socket to make it reach across the centre gap..
 - Use DIP IDC connectors, e.g. CW Industries CWR-130 series. (These
   have fragile pins, so best to use in a sacrificial socket.)
 - If using 26- or 40-pin IDC cable, use a Raspberry PI GPIO extension
