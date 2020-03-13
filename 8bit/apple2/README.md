@@ -130,7 +130,6 @@ Commands:
   source/dest bytes will be displayed like `02FB-0B (0A)`.
 - `^E` displays the register values from locations $45‥49. (_+:_ This
   includes the `M` memory state from $44; see [a2cref-355].)
-- `^Y` jumps to $3F8.
 - `G` starts executing at _next_. `RTS` or `BRK` will return to the
   monitor; the latter displays the PC and registers.
 - _+:_ `S` steps one instruction; `T` traces execution until
@@ -139,9 +138,13 @@ Commands:
   per second.
 - `I` and `N` set output to inverse and normal, respectively.
 - `port^P` and `port^K` set output and input to _port_.
+- `^Y` jumps to $3F8.
+- `^B`, `^C`: ROM language cold ($E000) and warm ($E003) start.
+- `3D0G`: Re-enter DOS interpreter.
 - Setting location $34 (`34:n`) sets the current read position in the
   input buffer; this can be used to repeat commands by following it
   with a space, e.g., `L 34:0 `. Ctrl-Reset stops the loop.
+- `N`, `I`: Normal and inverse display mode.
 
 Detailed documentation is in [Chapter 10][a2cref-c10] of the _Apple
 IIc Technical Reference Manual_.
