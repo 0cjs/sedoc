@@ -18,7 +18,8 @@ Files and Startup
 `EDASM` and `INTEDASM` are BASIC programs that  show and update the
 `ASMIDSTAMP` file and then `BRUN EDASM.OBJ`. The timestamp file is
 a 17 byte binary file that contains an ASCII (with high bit set)
-timestamp, usually of the format `29-NOV-79 #000000`.
+timestamp, usually of the format `29-NOV-79 #000000`. The assembler
+will increment the number in the `#000000` with each assembly.
 
 `EDASM.OBJ` is the command interpreter and is always in memory. When
 the editor is loaded a `:` prompt will be given. The `ASM` command
