@@ -21,6 +21,8 @@ a 17 byte binary file that contains an ASCII (with high bit set)
 timestamp, usually of the format `29-NOV-79 #000000`. The assembler
 will increment the number in the `#000000` with each assembly.
 
+#000027
+
 `EDASM.OBJ` is the command interpreter and is always in memory. When
 the editor is loaded a `:` prompt will be given. The `ASM` command
 replaces the editor with the assembler, erasing any edit file in
@@ -57,9 +59,9 @@ Parameters (optional params in brackets):
 
 Edit Commands:
 - `? [cmd]`: Print help. Shows only the most common forms of commands.
-- `List lranges`, `Print lranges`: List (with preceeding line number) or
-  print (at left margin with no line number) lines. Space pauses listing;
-  Ctrl-C aborts.
+- `List lranges`, `Print lranges`: List (with preceeding line number)
+  or print (at left margin with no line number) lines. Space pauses
+  listing; Ctrl-C aborts.
 - `<Ctrl-R>`: Re-list: repeat of the last `List` command with all
   parameters. (The command char is not displayed on the screen, but
   can be followed by the command delimiter like any other command.)
@@ -69,6 +71,29 @@ Edit Commands:
 - `Delete lrange`: Delete the lines _lrange_.
 - `Replace lrange`: Delete the lines in _lrange_ and then enter insert
   mode to insert where the lines were deleted.
+- `Find dstr`: Print lines with text matching _dstr_. Ctrl-A is
+  single-character wildcard.
+- `Change [lrange] dstr2`: Change first string to second. Prompts `ALL
+  OR SOME? (A/S)`; the latter will prompt for verification of every
+  change. Ctrl-C cancels further changes. Ctrl-A in old string is
+  single-character wildcard.
+- `COpy line# [-line#] TO line#`: Copies line or range to just before
+  target _line#_.
+
+`Edit lrange` brings up an interactive "visual" editor for each line
+in turn. The commands are:
+- Return: Accept the line as it appears on the screen, replacing the
+  old version of the line.
+- Ctrl-X: Cancel changes, leaving the original version of the line.
+- Ctrl-T: Truncate current line from cursor position onward and save
+  changes.
+- Ctrl-R: Restore original line and continue editing.
+- Ctrl-D: Delete char at current position, shortening line.
+- Ctrl-I: Change to insert mode; subsequent chars will insert rather
+  than overwrite.
+- Arrows keys: Move cursor forward/backward.
+- Ctrl-F: Find: jump to next occurance in line of next char typed.
+- Ctrl-V: Next char is inserted verbatim, even if normally a command.
 
 Display commands:
 - `TRuncON`, `TRuncOFF`: Enable/disable truncation. When enabled, the
@@ -176,7 +201,10 @@ documented on [page 170][a2r-170] of the _Apple IIc Technical
 Reference Manual_. For 19,200 bps ouput to a Unix terminal window:
 
 - Apple II: `PR#2,`\<Ctrl-A>`15B`
-- Linux: `stty </dev/ttyUSB0 19200 -parenb istrip icrnl; cat /dev/ttyUSB0`
+- Linux: `stty </dev/ttyUSB0 19200 min 1 -parenb istrip icrnl; cat /dev/ttyUSB0`
+
+(The `min 1` setting ensures that `cat` will not immediately exit when
+no characters are available to read.)
 
 
 Memory Usage
