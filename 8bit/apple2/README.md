@@ -51,6 +51,22 @@ The Language Card had 16K of RAM. 8K could be mapped at $E000, and two
     $C08B   read/write RAM (bank 1)
 
 
+Video
+-----
+
+As described on [pp. 14-16][a2ref-14] of the _Apple II Reference Manual_,
+the Apple II character ROM has 64 characters, the ASCII upper case sticks
+(`@A…Z[\]^_`) and punctuation/number sticks (` !"#$%&'()*+,-./0…9:;<=>?`).
+The may be displayed as normal, inverse or flashing characters:
+
+    $00-$3F  inverse
+    $40-$7f  flashing
+    $80-$9F  normal alphabet (`@A…`)
+    $A0-$BF  normal punctuation/numbers (` !…0…`)
+    $C0-$DF  normal alphabet
+    $E0-$FF  normal punctuation/numbers
+
+
 Memory Usage
 ------------
 
@@ -135,6 +151,7 @@ IIc Technical Reference Manual_.
 [a2cref-355]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual/page/n362
 [a2cref-c10]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual/page/n230
 [a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
+[a2ref-14]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n24/mode/1up
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
