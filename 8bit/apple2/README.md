@@ -67,6 +67,15 @@ The may be displayed as normal, inverse or flashing characters:
     $C0-$DF  normal alphabet
     $E0-$FF  normal punctuation/numbers
 
+Screen scan, from [this vapor lock description][vapor]:
+- 65 cycles for for each of the 192 scan lines: 40 cycles of drawing
+  and 25 cycles of hblank. (65th cycle is stretched.)
+- 4550 cyles of vblank (70 scan lines).
+- [Sync can be found][rcse 14027] by putting an appropriate pattern
+  into the frame buffer and reading the select soft switch for the
+  current mode (e.g., $C051 for text mode) which will usually return
+  the data most recently read by the last video read φ1 cycle.
+
 
 Memory Usage
 ------------
@@ -157,9 +166,11 @@ IIc Technical Reference Manual_.
 [a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
 [a2ref-14]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n24/mode/1up
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
+[bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
 [p67532]: http://forum.6502.org/viewtopic.php?f=3&t=5517&sid=f6734cd034b51b20dcd393f67a3c48fe&start=30#p67532
+[rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
 [relay]: https://www.kreativekorp.com/miscpages/a2info/index.shtml
-[bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
+[vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
