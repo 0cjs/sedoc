@@ -8,6 +8,7 @@ References:
 - \[lanc84] Don Lancaster, [_Tearing Into Machine Code_][lanc84],
   referenced from [this 6502.org post][p67532]. A small book on Apple
   II architecture and reverse-engineering 6502 software.
+- \[bados] Don Worth and Pieter Lechner, [_Beneath Apple DOS_], 1981.
 
 
 Memory Map
@@ -158,3 +159,4 @@ IIc Technical Reference Manual_.
 [p67532]: http://forum.6502.org/viewtopic.php?f=3&t=5517&sid=f6734cd034b51b20dcd393f67a3c48fe&start=30#p67532
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
 [relay]: https://www.kreativekorp.com/miscpages/a2info/index.shtml
+[bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
