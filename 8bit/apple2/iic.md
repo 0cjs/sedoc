@@ -17,6 +17,11 @@ Changes from IIe:
   earlier models.)
 - Easter egg: `IN#5 : INPUT A$ : PRINT A$`.
 
+Models:
+- A2S4000: Original model, 128K as 16×64 kbit, Apple/generic keyswitches.
+- A2S4100: Memory expansion connector, 128K as 4×256 kbit, Alps keyswitches.
+
+
 Misc Notes
 ----------
 
