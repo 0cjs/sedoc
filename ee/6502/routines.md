@@ -114,7 +114,7 @@ Talks][kf19alli].
 
 ### Detecting 6502 vs. 65C02
 
-Without undefined opcodes ([BDD on 6502.org][6f-p73063]):
+Without undefined opcodes ([BDD on 6502.org][6f p73063]):
 
            SED                   ; select decimal mode
            CLC
@@ -127,6 +127,33 @@ Without undefined opcodes ([BDD on 6502.org][6f-p73063]):
 Using `BRA` ($80), which is undefined but a two-byte NOP on the NMOS
 CPUs, is faster, and should be reliable according to Chromatix in a
 follow-up post to the above.
+
+[Chromatic provides a more precise routine.][6f p73317] This is
+modified by me for Apple II output, but it's necessary for it to stomp
+on zero-page addresses used by Applesoft and Integer BASIC.
+
+    ; One of the following codes is left in the accumulator:
+    ;    N - NMOS 6502         S - 65SC02
+    ;    C - 65C02 or 65CE02   8 - 68C816 or 65C802
+
+    02E8 A9 00      LDA #0
+    02EA 85 84      STA $84
+    02EC 85 85      STA $85
+    02EE A9 1D      LDA #$1D    ; 'N' EOR 'S'
+    02F0 85 83      STA $83
+    02F2 A9 25      LDA #$25    ; 'N' EOR 'S' EOR '8'
+    02F4 85 1D      STA $1D
+    02F6 A9 4E      LDA #$4E    ; 'N'
+    02F8 47 83      RMB4 $83    ; magic $47 opcode
+    02FA 45 83      EOR $83
+
+    ; Output routine for Apple II (we leave it as a flashing char).
+    02FC 20 ED FD   JSR COUT    ; Or use $FFEF for Apple 1 Wozmon.
+    02FF 60         RTS
+
+    ; output routine for BBC Micro
+                    JSR $FFEE   ; OSWRCH
+                    JSR $FFE7   ; OSNEWL
 
 
 Looping and Delays
@@ -364,10 +391,11 @@ and write of the memory location. Make bit 0 the clock output and bit
 
 <!-------------------------------------------------------------------->
 [6f p45555]: http://forum.6502.org/viewtopic.php?p=45555#p45555
+[6f p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922#p73063
+[6f p73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=15#p73317
 [6f p73765]: http://forum.6502.org/viewtopic.php?f=4&t=6021#p73765
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
-[6f-p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922&view=unread#p73063
 [6f-t5945]: http://forum.6502.org/viewtopic.php?f=2&t=5945
 [6t-decimal]: http://www.6502.org/tutorials/decimal_mode.html
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
