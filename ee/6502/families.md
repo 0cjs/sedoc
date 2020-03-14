@@ -10,8 +10,16 @@ There are four basic families of the 6502 CPU:
 The CMOS versions should draw between 4 mA and 16 mA; the NMOS between
 70 mA and 160 mA.
 
+Many CPUs described as a "65C02" are actually __S__ models without the
+bit instructions. (These are not that useful outside of embedded
+systems anyway, since they can only be used on the ZP without
+indexing.) Examples include GTE and NCR CPUs, and whatever Apple used
+in the IIc and Enhanced IIe. (NCR called their model with bit
+instructions the 65CX02.)
+
 References:
 - Wilson Mines Co., [Differences between NMOS 6502 and CMOS 65c02][wm-diff]
+- Chromatix, [Re: R65C02P4 fake chips][6f p74156].
 
 
 Variant List
@@ -87,8 +95,9 @@ implementation happened to do.
 
 <!-------------------------------------------------------------------->
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
-[wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
+[6f p74156]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=45#p74156
 [variant-chart]: http://forum.6502.org/viewtopic.php?f=4&t=6027&view=unread#p73881
+[wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
 
 [73307]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73307
 [73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73317
