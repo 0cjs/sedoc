@@ -27,6 +27,16 @@ sorted by size:
 Note that this shows what would be the installed size of removed but
 non-purged packages.
 
+### Dependencies, Recommended and Suggested Packages
+
+There are [three grades of dependencies][ause 1216894]:
+- `depends`: required; requested package will not work without this installed.
+- `recommends`: optional, but strongly suggested for normal operation.
+  Skipped only with `--no-install-recommends`.
+- `suggests`: optional, adds additional functionality.
+  Installed only with `--install-suggests`.
+
+
 Backports
 ---------
 
@@ -210,5 +220,6 @@ question](https://askubuntu.com/q/9463/354600)):
 <!-------------------------------------------------------------------->
 [`ARG`]: https://docs.docker.com/engine/reference/builder/#arg
 [`ENV`]: https://docs.docker.com/engine/reference/builder/#env
+[ause 1216894]: https://askubuntu.com/a/1216894/354600
 [backports]: https://backports.debian.org/
 [jensd]: http://jensd.be/818/linux/install-a-newer-kernel-in-debian-9-stretch-stable
