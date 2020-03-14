@@ -15,6 +15,10 @@ Editors
   remove and re-arrange pages to create a new PDF document from
   existing ones. Written in Python
 
+Also see [JakeLittle's post][jakelittle] discussing the Linux
+toolchain he uses for PDF editing (pdftk, qpdf, pdfbeads, pdftotext,
+pdfimages, ImageMagick, ScanTailor).
+
 
 Web-based
 ---------
@@ -23,3 +27,7 @@ Web-based
   rotate, optimize, reorder, delete pages. For some reason the
   multipage/N-up tool isn't linked from the top page, but is at
   <https://pdfresizer.com/multipage>.
+
+
+<!-------------------------------------------------------------------->
+[jakelittle]: http://forum.6502.org/viewtopic.php?f=4&t=5952#p73594
