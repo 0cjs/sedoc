@@ -104,3 +104,17 @@ substitutions where there aren't enough wire colors.
     5   green
     6   blue
     7   violet, orange
+
+
+Mechanical Connections
+----------------------
+
+- [Superglue (cyanoacrylate) and baking soda][cabs] creates a very
+  sturdy filler compound especially good for filling porous materials.
+  Use baking soda to fill the gap and then drop on the superglue. The
+  reaction is exothermic and produces noxious vapors.
+
+
+
+<!-------------------------------------------------------------------->
+[cabs]: https://en.wikipedia.org/wiki/Cyanoacrylate#Filler
