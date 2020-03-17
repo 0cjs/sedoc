@@ -5,6 +5,8 @@ References:
 - \[a2ref] [_Apple II Reference Manual_][a2ref], 1979 edition.
 - \[relay] [Jon Relay's Apple II Info Archives][relay]. Memory areas,
   zero page addresses, etc.
+- \[sather] Jim Sather, [_Understanding the Apple II_][sather], 1983.
+  Detailed hardare description.
 - \[lanc84] Don Lancaster, [_Tearing Into Machine Code_][lanc84],
   referenced from [this 6502.org post][p67532]. A small book on Apple
   II architecture and reverse-engineering 6502 software.
@@ -173,4 +175,5 @@ IIc Technical Reference Manual_.
 [rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
 [relay]: https://www.kreativekorp.com/miscpages/a2info/index.shtml
+[sather]: https://archive.org/details/Understanding_the_Apple_II_1983_Quality_Software/mode/1up
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
