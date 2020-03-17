@@ -5,14 +5,31 @@ Apple II ROM Information
 Useful ROM Routines
 -------------------
 
-See also [pp. 61-64][a2ref-61] of [a2ref].
+#### All ROMs
 
+$F800-$FFFF Monitor; see also [[a2ref] pp. 61-64]:
 - $FDED COUT: Print ASCII char (MSB set) in A.
 - $FC58 HOME: Clear screen and move cursor to upper left.
 - $FCA8 WAIT: Short delays related to the square of the value in A.
   The comment in the non-autostart monitor source code ((512a² + 2712a
   + 13) × 1.0204 μsec) seems bogus; it's actually approximately 5a²/2
   + 12a + 8. Some analysis at [blondihacks-151011].
+
+$F689-$F7FC Sweet-16 interpreter:
+
+#### Autostart ROMs only
+
+$D000-$F7FF Applesoft BASIC?
+
+#### Non-Autostart ROMs Only
+
+$F500-$F63C, $F666-$F668 Mini-assembler:
+
+$F425-$F4FB, $F63D-$F65D Floating point routines:
+
+$E000-$F424 Integer BASIC:
+
+$D000-$D7FF Programmer's Aid #1:
 
 
 Zero Page
