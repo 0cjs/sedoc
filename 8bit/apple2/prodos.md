@@ -34,6 +34,14 @@ available for BASIC programs. Later versions remove 48K support even
 for ProDOS kernel. Integer BASIC unspported. ASCII text files have
 MSbit clear, not set. `BRUN` uses `JSR`, not `JMP`.
 
+
+Memory Locations
+----------------
+
+    BEC8  48840 w  Last BLOAD length
+    BEB9  48825 w  Last BLOAD start
+
+
 File System
 -----------
 

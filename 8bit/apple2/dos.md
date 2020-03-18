@@ -21,11 +21,6 @@ Memory Locations
     B3C1  46017 b  Disk volume number
     9DBF -25153 c  Reconnect DOS (when $3D0 not available)
 
-ProDOS:
-
-    BEC8  48840 w  Last BLOAD length
-    BEB9  48825 w  Last BLOAD start
-
 
 Avoiding Language Card Reload
 -----------------------------
