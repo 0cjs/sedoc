@@ -2,9 +2,10 @@ Apple I Character ROM
 =====================
 
 The character ROM is a [Signetics 2513][2513] "64×8×5 Character
-Generator," a 2560-bit static ROM. A1-A3 selects one of the eight rows
-of five pixels for a character (the top row is usually all-zero for a
-5×7 matrix) and and A4-A9 indicating the character code.
+Generator," a 2560-bit static ROM. (Earlier Apple II models use the
+same ROM.) A1-A3 selects one of the eight rows of five pixels for a
+character (the top row is usually all-zero for a 5×7 matrix) and and
+A4-A9 indicating the character code.
 
 The standard version (2513N/CM2140) had ASCII sticks 4-5 (upper-case
 characters) in addresses 0-31 and ASCII sticks 2-3 (punctuation and
@@ -76,10 +77,10 @@ bottom row, instead of the top, is the empty one. Bits 1-6 contain the
 six bits from the ROM in reverse order, with bits 0 and 7 always 0.
 
 
-
 <!-------------------------------------------------------------------->
 [2513]: https://www.applefritter.com/files/signetics2513.pdf
 [2513b]: https://www.datasheetarchive.com/pdf/download.php?id=5065adad5e4757ac90073038091de3931e7380&type=M&term=2513
+[Apple2CharGen]: https://github.com/dschmenk/Apple2CharGen
 [ca-emul]: https://www.callapple.org/soft/ap1/emul.html
 [mobopic1]: https://pccdn.perfectchannel.com/christies/live/images/item/TSN11675/5944434/original/CSK_11675_0018.jpg
 [mobopic2]: https://www.christies.com/img/LotImages/2017/NYR/2017_NYR_14376_0378_002(a_working_apple-1_personal_computer_palo_alto_1976).jpg
