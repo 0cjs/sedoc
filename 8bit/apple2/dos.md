@@ -11,15 +11,95 @@ References:
 Memory Locations
 ----------------
 
-`b`=byte, `w`=word, `v`=vector `c`=call (first byte $A5=JMP).
+All addresses marked "(48K)" are for DOS relocated for a ≥48K system;
+they will be different if DOS is relocated for a smaller-memory
+system. See "Vector Table," [bad 5-5]; "Memory Use," [bad 5-1].
 
-     3D0    976 c  DOS entry vector
-     3F5   1013 c  Ampersand (&) vector
-    AA60  43616 w  Last BLOAD length
-    AA72  43634 w  Last BLOAD start
-    AC01  44033 b  Catalog track
-    B3C1  46017 b  Disk volume number
-    9DBF -25153 c  Reconnect DOS (when $3D0 not available)
+Key: `b`=byte, `w`=word, `v`=vector (pointer); `c`=call (first byte
+$A5=JMP, or complete routine), `s`=soft switch (read to trigger),
+`r`=I/O input, `w`=I/O output.
+
+     3D0    976  c  DOS entry
+     3D3    979  c  DOS coldstart
+     3D6    982  c  File manager subroutine
+     3D9    985  c  RTWS
+     3DC    988  c  Returns file manager call param table address
+     3E3    991  c  Returns RTWS call param table address
+     3EA   1002  c  Reconnects DOS keyboard/screen routine hooks
+     3EF   1007  c  JMP to BRK handler (autostart ROM only); default monitor
+     3F2   1010  w  Address of RESET handler (autostart ROM only); default DOS
+     3F4   1012  b  Power-up byte (distinguishes cold/warm reset)
+                    EOR of $3F3 and #$A5
+     3F5   1013  c  JMP to Applesoft & routine
+     3F8   1016  c  JMP to monitor Ctrl-Y routine
+     3FB   1019  c  JMP to NMI routine
+     3FE   1022  w  Address if IRQ routine
+    AA60  43616  w  Last BLOAD length
+    AA72  43634  w  Last BLOAD start
+    AC01  44033  b  Catalog track
+    B3C1  46017  b  Disk volume number
+    9DBF -25153  c  Reconnect DOS (when $3D0 not available)
+    9600  38400  -  DOS work areas/buffers (48K)
+    9D00  40192  w  Start of DOS (48K), pointer to work-area/buffer chain
+                    Contains BASIC interface, command interpretation, etc.
+    AAC9  43721  -  File manager (OPEN/CLOSE/etc. API)
+    B600  46592  -  RWTS (Read/Write Track/Sector)
+    BFFF  49151  -  Top of RAM
+    C000  49152  -  Start of I/O address space
+
+#### Buffers
+
+DOS requires 595 bytes of work area and buffer space for each open
+file and/or disk operation (e.g., `CATALOG`). Three work/buffer areas
+are allocated by DOS below DOS itself, from $9600 to $9CFF on a 48K
+system; the application may allocate further work/buffer areas if necessary.
+
+The format is described at [bad 6-13]. DOS allocates these adjacent
+(with the offsets given below), but they need not be. The file name
+and following pointers are the root of the data structure. The start
+of DOS's work-area/buffer chain is at the first two bytes of DOS
+($9D00 on a 48K system).
+
+    000 0FF  Data sector buffer
+    100 1FF  Track/sector list sector buffer
+    200 22C  Work area
+
+    22D 24A  File name (30 bytes); first byte $00 if work/buffer area is free
+    24B      Address of work area
+    24D      Address of track/sector list sector buffer
+    24F      Address of data sector buffer
+    251      Address of file name of next buffer in chain ($0000 = last entry)
+
+See [bad 6-16] for code to:
+- locate a free DOS buffer
+- check version of DOS
+- check presence of DOS
+- check which version of BASIC is selected
+- see if a BASIC program is currently executing
+
+
+Disk II Hardware and I/O
+------------------------
+
+See "Hardware Addresses" [bad 6-2].
+Add slot number × 16 to all addresses below ($C0Ex for slot 6).
+
+    C080  49280  s  PHASEOFF: Stepper motor phase 0 off
+    C081  49281  s  PHASEON: Stepper motor phase 0 on
+    C082  49282  s  PHASE1OFF
+    C083  49283  s  PHASE1ON
+    C084  49284  s  PHASE2OFF
+    C085  49285  s  PHASE2ON
+    C086  49286  s  PHASE3OFF
+    C087  49287  s  PHASE3ON
+    C088  49288  s  MOTOROFF: Drive motor off
+    C089  49289  s  MOTORON: Drive motor on
+    C08A  49290  s  DRIVE0EN: Select drive 1
+    C08B  49291  s  DRIVE1EN: Select drive 2
+    C08C  49292     Q6L: Strobe data latch for I/O
+    C08D  49293     Q6H: Load data latch
+    C08E  49294     Q7L: Prepare latch for input
+    C08F  49295     Q7H: Parepare latch for output
 
 
 Avoiding Language Card Reload
@@ -50,6 +130,9 @@ File Types and Formats
 
 
 <!-------------------------------------------------------------------->
+[bad 5-1]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n53/mode/1up
+[bad 6-13]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n73/mode/1up
+[bad 6-2]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n62/mode/1up
 [bad 7-2]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n80/mode/1up
 [bad]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
 [tdm 127]: https://archive.org/details/a2_the_DOS_Manual/page/n69/mode/1up
