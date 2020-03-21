@@ -16,7 +16,8 @@ __activate_quiet=
             -b "$bsdir/build" -t "$bsdir/target" virtualenv
 
         echo 'Building virtualenv...'
-        $py $bsdir/target/virtualenv.py --prompt="($(basename "$basedir")) " \
+        PYTHONPATH="$bsdir/target" $py -s -m virtualenv \
+            --prompt="($(basename "$basedir")) " \
             $__activate_quiet .build/virtualenv "$@" \
         && . .build/virtualenv/*/activate \
         && pip install $__activate_quiet -r requirements.txt
