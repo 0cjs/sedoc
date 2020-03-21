@@ -3,8 +3,8 @@
 
 There are four basic families of the 6502 CPU:
 - __N__ 6502: Original NMOS (with and without the ROR bug)
-- __C__ [65C02] or 65CE02: Bugfixes, more instructions, etc.
 - __S__ 65SC02: 65C02 but without the bit manipulation instructions.
+- __C__ [65C02] or 65CE02: Bugfixes, more instructions, etc.
 - __8__ 65C802 or 65C816: 16-bit processor in 8-bit mode
 
 The CMOS versions should draw between 4 mA and 16 mA; the NMOS between
@@ -18,6 +18,7 @@ in the IIc and Enhanced IIe. (NCR called their model with bit
 instructions the 65CX02.)
 
 References:
+- Roger Wagner, ["Assembly Lines" part 33][al33]  _Softalk_, June 1983.
 - Wilson Mines Co., [Differences between NMOS 6502 and CMOS 65c02][wm-diff]
 - Chromatix, [Re: R65C02P4 fake chips][6f p74156].
 
@@ -92,12 +93,44 @@ implementation happened to do.
     2C4 : 60        rts
 
 
+Additional Features
+--------------------
+
+See also ["Assembly Lines" part 33][al33].
+
+New addressing modes (__S__+):
+- Implicit `INC`/`DEC`: on accumulator. (Sometimes `INA` or `INC A`.)
+- `BIT` gains immeidate and absolute/zp indexed: `#$nn`, `$(addr,X)`.
+- Indirect `(aa)` (without X, Y registers).
+  `LDA`, `STA`, `CMP`, `ADC`, `SBC`, `AND`, `EOR`, `ORA`.
+- Indexed absolute indirect (i.e., not just zero page): `(aaaa,X)`.
+  `JMP`, `LDA`, `STA`, `CMP`, `ADC`, `SBC`, `AND`, `EOR`, `ORA`.
+
+New instructions (__S__+):
+- `STZ addr` stores zero.
+- `PHX`/`PLX`/`PHY`/`PLY`: Direct stack push/pull for X and Y registers.
+- `BRA`: Branch always.
+
+New instructions (__C__):
+- `SMBbit zp`/`RMBbit zp`: Set or reset bit _bit_ of address _zp_.
+  Zero page only.
+- `BBS bit,zp,dest`/`BBR`: Branch to _dest_ if bit _bit_ in location
+  _zp_ is set/reset. Zero page only.
+- `TSB zp`/`TRB xp`: AND A with _zp_ to set flags then set/clear in
+  _zp_ the bits set in A.
+
+New instructions (WDC):
+- `STP`: Halt until hardware reset.
+- `WAI`: Halt until IRQ (or NMI?). (Intererupt vector is not taken?)
+
+
 
 <!-------------------------------------------------------------------->
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
 [6f p74156]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=45#p74156
 [variant-chart]: http://forum.6502.org/viewtopic.php?f=4&t=6027&view=unread#p73881
 [wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
+[al33]: https://archive.org/details/softalkv3n10jun1983/page/199/mode/1up
 
 [73307]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73307
 [73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73317
