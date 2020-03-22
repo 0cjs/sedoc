@@ -96,15 +96,17 @@ implementation happened to do.
 Additional Features
 --------------------
 
-See also ["Assembly Lines" part 33][al33].
+References:
+- Page 1-10 of the [Rockwell R65C02 datasheet][r65c02]
+- Wilson Mines Co., ["Differences between NMOS 6502 and CMOS 65c02"][wm-diff]
+- Roger Wagner, ["Assembly Lines" part 33][al33] (wrong on some details)
 
 New addressing modes (__S__+):
 - Implicit `INC`/`DEC`: on accumulator. (Sometimes `INA` or `INC A`.)
-- `BIT` gains immeidate and absolute/zp indexed: `#$nn`, `$(addr,X)`.
-- Indirect `(aa)` (without X, Y registers).
+- `BIT` gains immediate and zp/absolute indexed: `#$nn`, `$addr,X`.
+- `JMP` gains indexed absolute indirect `(addr,X)`
+- Indirect `(zp)` (without X, Y registers).
   `LDA`, `STA`, `CMP`, `ADC`, `SBC`, `AND`, `EOR`, `ORA`.
-- Indexed absolute indirect (i.e., not just zero page): `(aaaa,X)`.
-  `JMP`, `LDA`, `STA`, `CMP`, `ADC`, `SBC`, `AND`, `EOR`, `ORA`.
 
 New instructions (__S__+):
 - `STZ addr` stores zero.
@@ -128,9 +130,11 @@ New instructions (WDC):
 <!-------------------------------------------------------------------->
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
 [6f p74156]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=45#p74156
+[al33]: https://archive.org/details/softalkv3n10jun1983/page/199/mode/1up
+[r65c02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
 [variant-chart]: http://forum.6502.org/viewtopic.php?f=4&t=6027&view=unread#p73881
 [wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
-[al33]: https://archive.org/details/softalkv3n10jun1983/page/199/mode/1up
+
 
 [73307]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73307
 [73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&view=unread#p73317
