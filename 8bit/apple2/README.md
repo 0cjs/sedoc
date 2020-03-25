@@ -20,7 +20,7 @@ See [a2ref] Ch.4 pp.67-75. "Programmer's Aid #1" could go in $D000
 socket. Applesoft uses all 10K of non-monitor ROM space.
 
     $F800   2k  ROM (Monitor), Language Card RAM
-    $F400   1k  ROM Miniassembler, etc.
+    $F400   1k  ROM Mini-assembler, etc.
     $E000   5k  ROM (Integer BASIC), Langauge Card RAM
     $D800   2k  ROM (empty socket), Language Card RAM Banks 1 and 2
     $D000   2k  ROM (empty socket), Language Card RAM Banks 1 and 2
@@ -158,7 +158,8 @@ Commands:
 - `N`, `I`: Normal and inverse display mode.
 
 Detailed documentation is in [Chapter 10][a2cref-c10] of the _Apple
-IIc Technical Reference Manual_.
+IIc Technical Reference Manual_. Also see [Apple-II
+Mini-Assembler][a2mini-asm] instructions and listing.
 
 
 
@@ -166,6 +167,7 @@ IIc Technical Reference Manual_.
 [a2cref-355]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual/page/n362
 [a2cref-c10]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual/page/n230
 [a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
+[a2mini-asm]: https://archive.org/details/Apple2_Woz_MiniAssembler/page/n1/mode/1up
 [a2ref-14]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n24/mode/1up
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
 [bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
