@@ -1,0 +1,71 @@
+Garbage Collection (GC) Notes
+=============================
+
+
+Deutsch/Bobrow Transaction File Collector
+-----------------------------------------
+
+Described in L. Peter Deutsch and Daniel G. Bobrow, "An efficient,
+incremental, automatic garbage collector" (CACM 19, 9; September
+1976). [dbtf-DOI] [dbtf-acmdl]. See also Minsky, "A LISP Garbage
+Collector Algorithm Using Serial Secondary Storage." [AIM-058]
+
+[dbtf-doi]: https://doi.org/10.1145/360336.360345
+[dbtf-acmdl]: https://dl.acm.org/doi/10.1145/360336.360345
+[aim-058]: https://dspace.mit.edu/handle/1721.1/6080
+
+Assumes core storage is at a premium, disk accesses expensive (if
+paging out objects), but computation is relatively cheap. Oriented
+towards systems that page out objects.
+
+Also points out that it might be useful to send the generated events
+to another processor that, if it has access to main memory, could also
+do the GC.
+
+#### Refcount System
+
+Structure:
+- Reference counts are not stored with the objs themselves.
+- Two hash tables, keyed by pointer value:
+  - MRT (multireference table): ref count, only for ref count ≥2.
+  - ZCT (zero count table): objs ref'd only from stack or not at all.
+- Track only 1. allocation, 2. creation of a pointer to an obj, and 3.
+  desctruction of a pointer to an obj.
+- Above events go to a transaction file which is later (at GC time)
+  played back to update in-core info.
+
+Procedures:
+- Allocate: add entry to ZCT
+- Create pointer:
+  - If immediately following allocate for that obj, ignore.
+  - If obj in ZCT, remove it.
+  - If in MRT, increment MRT count (if not at max).
+  - If not in MRT, enter in MRT with count=2.
+- Destroy pointer:
+  - If in MRT, remove if count=2, else decrement count.
+  - If not in MRT, enter in ZCT.
+
+Once tables have been updated, reclaim entries that are in ZCT and not
+referenced by stack. This can be done by creating a VRT (variable
+reference table) of all pointers referenced from the stack and then
+scanning the ZCT, freeing all objects not in the VRT.
+
+Freeing an object requires decrementing ref counts of objects to which
+it points. Skip transaction log for this, since tables are in memory
+anyway. New entries created in the ZCT due to this must be checked
+against the VRT.
+
+Optimizations:
+- For the current log block in memory, immediately drop an adjacent
+  allocate-create sequence. Non-adjacent can be easily detected by
+  maintaining a hash index of the in-memory blocks of the transaction
+  log.
+
+### Tracing Collection
+
+Needed to find unreferenced circular structures. Run infrequently.
+Main function is compaction and reorganization to produce more linear
+lists, as opposed to dynamic reclamation of abandoned data above.
+
+Uses algorithm similar to Minsky's above; see paper for details. Also
+provides for incremental linearization (of only part of the heap).
