@@ -1,6 +1,48 @@
 Garbage Collection (GC) Notes
 =============================
 
+Structure of a LISP system using two-level storage
+--------------------------------------------------
+
+Daniel G. Bobrow and Daniel L. Murphy. 1967. Structure of a LISP
+system using two-level storage. Commun. ACM 10, 3 (March 1967),
+155–159. [bobrow-DOI] [bobrow-acmdl]
+
+[bobrow-DOI]: https://doi.org/10.1145/363162.363185
+[bobrow-acmdl]: https://dl.acm.org/doi/10.1145/363162.363185
+
+Some of this could possibly apply to a system with code and several
+(per-type) heaps in separate banks of memory.
+
+Swapping design for a LISP system as used on a PDP-1 with 17-bit
+(128 KW) address space (other half used for smallints), 16 KW of core
+(5 μs) and 88 KW of drum (17 ms).
+
+- 4 KW system code. Core not swapped. Overlays for major system
+  segments (interpter and compiled code runner, I/O and formatting,
+  tape package, GC, initilization package).
+- 4 KW compiled code. Programs compiled from sexprs stored in
+  relocatable form on drum and loaded into 3.4 KW ring buffer on
+  demand, with in-core hash table mapping names to in-core addresses.
+  (Calls contain atom/symbol naming the function.) When load required,
+  data written into ring buffer and overwritten functions removed from
+  hash table.
+- 8 KW heap, 256 word pages; paged in the usual way. Types determined
+  by area of memory in which they're stored, to avoid having to
+  examine the memory itself.
+
+Linearization:
+- Cons attempts to allocate new cell for car in same page as cdr or,
+  if cdr is an atom, on same page as car. (Separate free storage list
+  is used for each page.)
+- GC does not compact to avoid thrashing.
+
+Performance:
+- Loses a factor of 2 vs. entirely in-core version due to
+  software-based page mapping.
+- One test paged on only 2.5% of references, about 10% of run time
+  waiting for the drum.
+
 
 Deutsch/Bobrow Transaction File Collector
 -----------------------------------------
