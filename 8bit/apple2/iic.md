@@ -171,13 +171,19 @@ resistors should be 150 KΩ pots connected to +5V.
 
 #### Keyboard
 
-There are two different [keyboard PCB assemblies]:
-- Composite (tan) board with male cross-shaped switch actuators
-  (older IIcs, I believe, such as mine).
-- Black, thin board with female rectangular switch actuators.
+There are two different [keyboard PCB assemblies], with differing
+keycaps to match the keyswitch stems:
+- On A2S4000, composite (tan) board with unnamed ("generic" or
+  "Apple") keyswitches using male cross-shaped stems. Black rubber
+  spill guard.
+- On A2S4100, black, thin board with Alps keyswitches using female
+  rectangular stems.
 
-The keycaps differ between the two models (female cross vs. male
-rectangular) to match the keyswitches.
+[Michael Spector says][mspec] that you can improve the keyboard feel
+by removing the black rubber mat, which is a spill guard that was not
+included in the Alps IIc. Removing the small metal clips between each
+key stem (producing the clicks) my also help. Both these mods are
+reversible.
 
 
 Models and ROM Versions
@@ -234,6 +240,7 @@ This was model A2S4500. Differences include:
 [hwdin]: ../../hw/din-connector.md
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
 [keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
+[mspec]: http://apple2.org.za/gswv/a2zine/faqs/Csa2KBPADJS.html#024
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
 [techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
