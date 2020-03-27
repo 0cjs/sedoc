@@ -1,6 +1,11 @@
 Apple II Monitor Symbol Table
 =============================
 
+Source code for the monitor (modified and ported to a different
+assembler) is available in [Jeff Tranter's 6502 repo][a2monsource].
+
+[a2monsource]: https://github.com/jefftranter/6502/blob/master/asm/Apple%5D%5BMonitor/appleiimonitor.s
+
 Autostart ROM symbol table reference. Copied from
 [pp.174-176][a2ref-174] of the _Apple II Reference Manual_.
 Many errors due to OCR and manual copy/reformat from PDF.
@@ -27,7 +32,7 @@ Many errors due to OCR and manual copy/reformat from PDF.
     002E  CHKSUM
     002E  FORMAT
     002E  MASK
-    002F  LAST IN
+    002F  LASTIN
     002F  LENGTH
     002F  SIGN
     0030  COLOR
