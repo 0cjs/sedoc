@@ -14,6 +14,7 @@ $F800-$FFFF Monitor; see also [[a2ref] pp. 61-64]:
   The comment in the non-autostart monitor source code ((512a² + 2712a
   + 13) × 1.0204 μsec) seems bogus; it's actually approximately 5a²/2
   + 12a + 8. Some analysis at [blondihacks-151011].
+- $FF69: Monitor entry point.
 
 $F689-$F7FC Sweet-16 interpreter:
 
@@ -24,6 +25,7 @@ $D000-$F7FF Applesoft BASIC?
 #### Non-Autostart ROMs Only
 
 $F500-$F63C, $F666-$F668 Mini-assembler:
+- $F666: Mini-assembler entry point
 
 $F425-$F4FB, $F63D-$F65D Floating point routines:
 
