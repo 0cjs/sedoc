@@ -1,6 +1,14 @@
 Apple II ROM Information
 ========================
 
+There are two ROM versions:
+- Apple II: Monitor ROM with Integer BASIC and the Mini Assembler.
+- Apple II Plus: Autostart ROM with Applesoft BASIC.
+
+The original "langauge card" for the II contained the Autostart and
+Applesoft ROMs; the later language card for the II Plus contained RAM
+that could be loaded with Monitor ROM and Integer BASIC.
+
 
 Useful ROM Routines
 -------------------
@@ -57,6 +65,35 @@ Zero Page
     73 115 w  HIMEM (one past highest usable addr)
     AF 175 w  end of Applesoft program
 
+    45  69 b  ACC: A register; set by monitor on BRK, loaded by G command
+    46  70 b  XREG: X register
+    47  71 b  YREG: Y register
+    48  72 b  STATUS: P register (flags)
+    49  73 b  SPNT: S register (stack)
+
+
+Page $300 Vectors
+-----------------
+
+$3F0-$3FF is used by the monitor/OS. Entries marked `(+)` are
+Autostart ROM-only; all others are both Autostart and Monitor ROM.
+Default values given in parens at end of entry. Default values when
+DOS loaded are for a 48K system.
+
+$3D0-$3F0 is used by [DOS 3.3](dos.md) and [ProDOS](prodos.md); see
+those docs for details.
+
+     3F0   1008  w  (+) Address of BRK handler ($FA59)
+     3F2   1010  w  (+) "Soft entry vector"; RESET handler ($E003, DOS:$9DBF)
+     3F4   1012  b  Power-up byte (distinguishes cold/warm reset)
+                    EOR of $3F3 and #$A5
+     3F5   1013  c  JMP to Applesoft & routine (-, DOS:$FF58)
+     3F8   1016  c  JMP to monitor Ctrl-Y routine (-, DOS:$654C)
+     3FB   1019  c  JMP to NMI routine (-, DOS:$FF65)
+     3FE   1022  w  Address if IRQ routine (-, $FF65)
+
+Sources: [a2ref-65]
+
 
 References
 ----------
@@ -67,6 +104,7 @@ References:
 
 <!-------------------------------------------------------------------->
 [a2ref-61]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n71/mode/1up
+[a2ref-65]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n75/mode/1up
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
 
 [blondihacks-151011]: https://blondihacks.com/apple-iic-plus-fixing-the-beep/

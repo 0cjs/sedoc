@@ -13,7 +13,8 @@ Memory Locations
 
 All addresses marked "(48K)" are for DOS relocated for a ≥48K system;
 they will be different if DOS is relocated for a smaller-memory
-system. See "Vector Table," [bad 5-5]; "Memory Use," [bad 5-1].
+system. See "Vector Table," [bad 5-5]; "Memory Use," [bad 5-1]. Also
+see [the ROM document](rom.md) for details of the $3F0-$3FF locations.
 
 Key: `b`=byte, `w`=word, `v`=vector (pointer); `c`=call (first byte
 $A5=JMP, or complete routine), `s`=soft switch (read to trigger),
@@ -27,13 +28,8 @@ $A5=JMP, or complete routine), `s`=soft switch (read to trigger),
      3E3    991  c  Returns RTWS call param table address
      3EA   1002  c  Reconnects DOS keyboard/screen routine hooks
      3EF   1007  c  JMP to BRK handler (autostart ROM only); default monitor
-     3F2   1010  w  Address of RESET handler (autostart ROM only); default DOS
-     3F4   1012  b  Power-up byte (distinguishes cold/warm reset)
-                    EOR of $3F3 and #$A5
-     3F5   1013  c  JMP to Applesoft & routine
-     3F8   1016  c  JMP to monitor Ctrl-Y routine
-     3FB   1019  c  JMP to NMI routine
-     3FE   1022  w  Address if IRQ routine
+     3F0-3FF        ROM locations: see ROM document
+     3F2   1010  w  RESET vector; updated by DOS
     AA60  43616  w  Last BLOAD length
     AA72  43634  w  Last BLOAD start
     AC01  44033  b  Catalog track
