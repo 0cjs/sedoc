@@ -54,6 +54,7 @@ Zero Page
     24  36 b  cursor pos., horizontal (0-39)
     25  37 b  cursor pos., vertical (0-23)
     2B  43 b  boot slot * 16
+    31  49 b  MODE: something to do with monitor mode?
     32  50 b  text output (normal:$FF/255, inverse:$3F/63, flash:$7F/127)
     33  51 b  prompt character
     4E  71 w  random number field
