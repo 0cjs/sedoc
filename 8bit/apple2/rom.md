@@ -76,24 +76,23 @@ Zero Page
 Page $300 Vectors
 -----------------
 
-$3F0-$3FF is used by the monitor/OS. Entries marked `(+)` are
-Autostart ROM-only; all others are both Autostart and Monitor ROM.
-Default values given in parens at end of entry. Default values when
-DOS loaded are for a 48K system.
+$3F0-$3FF is used by the monitor/OS. Entries start with the symbol
+name from the Autostart monitor; a `+` prefix indicates
+Autostart-only. Default values given in parens at end of entry.
+Default values when DOS loaded are for a 48K system.
 
 $3D0-$3F0 is used by [DOS 3.3](dos.md) and [ProDOS](prodos.md); see
 those docs for details.
 
-     3F0   1008  w  (+) Address of BRK handler ($FA59)
-     3F2   1010  w  (+) "Soft entry vector"; RESET handler ($E003, DOS:$9DBF)
-     3F4   1012  b  Power-up byte (distinguishes cold/warm reset)
-                    EOR of $3F3 and #$A5
-     3F5   1013  c  JMP to Applesoft & routine (-, DOS:$FF58)
-     3F8   1016  c  JMP to monitor Ctrl-Y routine (-, DOS:$654C)
-     3FB   1019  c  JMP to NMI routine (-, DOS:$FF65)
-     3FE   1022  w  Address if IRQ routine (-, $FF65)
+     3F0  1008  +BRKV     address of BRK handler ($FA59)
+     3F2  1010  +SOFTEV   entry vector from RESET handler ($E003, DOS:$9DBF)
+     3F4  1012  +PWREDUP  distinguishes cold/warm reset, $3F3 EOR #$A5
+     3F5  1013  +         Applesoft & entry (-, DOS:$4C $FF58)
+     3F8  1016  USRADR    Monitor Ctrl-Y entry (-, DOS:$4C $654C)
+     3FB  1019  NMI       NMI entry (-, DOS:$4C $FF65)
+     3FE  1022  IRQLOC    address of (non-BRK) IRQ routine ($0000)
 
-Sources: [a2ref-65]
+Sources: [a2ref-65], monitor code.
 
 
 References

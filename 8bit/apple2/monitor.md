@@ -1,6 +1,12 @@
 Apple II Monitor
 ================
 
+Set `SOFTEV` vector to `MON`: (`3F2: 65 FF 5A`, note `PWREDUP` set
+too) to enter Monitor. Unfortunately the reset routine does not
+preserve the registers; you'd need to use the `NMI` JMP ($3FB) to do
+this.
+
+
 Monitor Commands
 ----------------
 
