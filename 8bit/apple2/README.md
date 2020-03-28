@@ -34,7 +34,9 @@ socket. Applesoft uses all 10K of non-monitor ROM space.
     $0C00   5k  Free RAM
     $0800   1k  Screen: text/lo-res page 2 (secondary)
     $0400   1k  Screen: text/lo-res page 1 (primary)
-    $0300   1p  Monitor vector locations ($3F0-$3FF only; see p.62)
+    $0300 308b  Free, or used by programs
+    $03D0  32p  DOS 3.3 vector locations
+    $03F0  16b  ROM/Monitor vector locations (see p.62)
     $0200   1p  GETLN input buffer
     $0000   2p  Zero page, stack
 
