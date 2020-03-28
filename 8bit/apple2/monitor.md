@@ -1,30 +1,29 @@
 Apple II Monitor
 ================
 
+`CALL -151` (65385, $FF69) enters monitor, giving a `*` prompt. Also,
+default `BRKV $3F0` vector followed on `BRK` instruction is `OLDBRK
+$FA59`, which saves registers A, X, Y, P (status), S (stack) at at
+locations $45‥$49, displays PC/regs and enters monitor.
+
 Set `SOFTEV` vector to `MON`: (`3F2: 65 FF 5A`, note `PWREDUP` set
-too) to enter Monitor. Unfortunately the reset routine does not
-preserve the registers; you'd need to use the `NMI` JMP ($3FB) to do
-this.
+too) to enter Monitor on reset. Unfortunately the reset routine does
+not preserve the registers; you'd need to use the `NMI` JMP ($3FB) to
+do this.
 
 
 Monitor Commands
 ----------------
 
-`CALL -151` (65385, $FF69) enters monitor, giving a `*` prompt. Exit
-with Ctrl-Reset (uses vector at $3F2), Ctrl-C + Enter or `3D0G` (runs
-the resident program, usually Applesoft, which has set up a `JMP`
-instruction at $3D0). Loading `69 FF 5A` at $3F2 will make Ctrl-Reset
-bring up the monitor.
-
-If the monitor was entered via a `BRK` ($00) instruction and `FF 69`
-at the break vector $3F0‥$3F1, the registers registers A, X, Y, P
-(status), S (stack) at entry are stored at location $45‥$49.
-
 Multiple commands may be entered on a single line, separated by
-spaces. `:` must end with a commant >`F`; `N` is good for this.
+spaces. "©" indicates a feature available only in version 00 or higher
+of the Apple IIc ROM.
 
-"_+:_" indicates a feature available only in version 00 or higher of
-the Apple IIc ROM.
+Exiting:
+- Ctrl-Reset exits w/$3F2 vector.
+- Ctrl-B cold starts starts current interpreter.
+- Ctrl-C warm starts current interpreter.
+- `3D0G` relinks DOS and starts current interpreter.
 
 Misc. commands:
 - `n+m` and `n-m` do 8-bit two's-complement arithmetic.
@@ -43,12 +42,13 @@ Memory commands:
   address. _last_ and _next_ are both the last location displayed.
 - `L` disassembles ("lists") 20 instructions starting at the address
   given or the current program counter (stored at $3A).
-- `:` followed by space-separated hex numbers (`3e 3f`) (_+:_ or
+- `:` followed by space-separated hex numbers (`3e 3f`) (© or
   single-quote followed by a character: `'A 'B`) deposits that byte at
-  _next_.
-- _+:_ `!` starts the mini-assembler (prompt `!`). Enter `addr:inst
-  args` to assemble an instruction; space for _addr_ uses the next
-  location. All numbers are in hex; `$` prefixes are optional.
+  _next_. Input terminated with CR or a command (`N` is good for
+  this).
+- ©`!` starts the mini-assembler (prompt `!`). Enter `addr:inst args`
+  to assemble an instruction; space for _addr_ uses the next location.
+  All numbers are in hex; `$` prefixes are optional.
 - `dest<start.endM` moves memory from _start_ to _end_ to locations
   starting at _dest_ (the _dest_ range may overlap the source range)
   and sets _last_ to the last location read and _next_ to the last
@@ -56,13 +56,13 @@ Memory commands:
 - `dest<start.endV` compares ("verifies") memory. Non-matching
   source/dest bytes will be displayed like `02FB-0B (0A)`.
 - `^E` displays the register values A,X,Y,P,S from locations $45‥49
-  and sets _next_ to $45. (_+:_ This includes the IIe/IIc `M` memory
-  state from $44; see [a2cref-355].)
+  and sets _next_ to $45. (©This includes the IIe/IIc `M` memory state
+  from $44; see [a2cref-355].)
 
 Execution and exit commands:
 - `G` starts executing at _next_. `RTS` or `BRK` will return to the
   monitor; the latter displays the PC and registers.
-- _+:_ `S` steps one instruction; `T` traces execution until
+- ©`S` steps one instruction; ©`T` traces execution until
   solid-apple is pressed or `BRK` is executed (`RTS` will not return
   to the monitor). Holding open-apple will slow the trace to one step
   per second.
