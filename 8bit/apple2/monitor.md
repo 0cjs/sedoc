@@ -21,8 +21,8 @@ of the Apple IIc ROM.
 
 Exiting:
 - Ctrl-Reset exits w/$3F2 vector.
-- Ctrl-B cold starts starts current interpreter.
-- Ctrl-C warm starts current interpreter.
+- Ctrl-B cold starts Applesoft/Integer BASIC ($E000)
+- Ctrl-C warm starts Applesoft/Integer BASIC ($E003)
 - `3D0G` relinks DOS and starts current interpreter.
 
 Misc. commands:
@@ -67,10 +67,6 @@ Execution and exit commands:
   to the monitor). Holding open-apple will slow the trace to one step
   per second.
 - `^Y` jumps to $3F8.
-- Ctrl-B: Cold start current interpreter (usually BASIC, w/DOS if
-  loaded; default $E000).
-- Ctrl-C: Warm start current interpreter (default $E003).
-- `3D0G`: Re-enter DOS interpreter.
 
 Tricks:
 - Setting location $34 (`34:n`) sets the current read position in the
