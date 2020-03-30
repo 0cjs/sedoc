@@ -19,3 +19,13 @@ This is a quick reference for hand-assembly.
     STX             86      8E      96,Y
     LDY     A0      A4      AC      B4      BC
     STY             84      8C      94
+
+           #nn      zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
+    ORA     09      05      0D      15      1D      19      01      11
+    AND     29      25      2D      35      3D      39      21      31
+    EOR     49      45      4D      55      5D      59      41      51
+    ADC     69      65      6D      75      7D      79      61      71
+    SBC     E9      E5      ED      F5      FD      F9      E1      F1
+
+    CLC  SEC  CLV  CLI  SEI  CLD  SED
+     18   38   B8   58   78   D8   F8
