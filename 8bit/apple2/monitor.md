@@ -86,6 +86,12 @@ Depositing data into memory:
   terminate the list if you want to continue the line with an
   address.) © data bytes may also be a single quote followed by a
   character, e.g. `'A 'B`.
+- `dest<addr`: Sets `A4L,A4H $42,$43` and `A5L,A5H $44,$45` to _dest_
+  (note that `A5H` is also `ACC`, overwriting the saved A register)
+  and `A2L,A2H $3E,$3F` to _addr_. (_addr_ also has the normal effect
+  of setting _next_ and _load_.) Does nothing if not followed by an
+  address. (This is not normally used alone, but to set up `M` and `V`
+  commands, and could also be used to set up a `Ctrl-Y` command.
 - `dest<start.endM` moves memory from _start_ through _end_ to
   locations starting at _dest_ (the _dest_ range may overlap the
   source range), sets _load_ to _dest_ and _next_ to _end+1_.
