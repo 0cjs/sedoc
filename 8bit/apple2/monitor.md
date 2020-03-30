@@ -20,6 +20,8 @@ of the Apple IIc ROM.
 
 Input to the monitor is a sequence of hexadecimal addresses and
 commands, with multiple addresses and commands allowed on a line.
+(Note that there are no "separators"; space is a valid command and
+other whitespace will be read as invalid commands.)
 - Addresses are any sequence of `0-9` and `A-F`. Only the lowest
   sixteen bits of an address will be used; the higher bits are
   ignored.
