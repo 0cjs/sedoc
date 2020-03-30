@@ -99,11 +99,11 @@ substitutions where there aren't enough wire colors.
     0   black               (arrow/triangle on connector)
     1   brown, blue
     2   red
-    3   orange
+    3   orange, white
     4   yellow
     5   green
     6   blue
-    7   violet, orange
+    7   violet, orange, white
 
 
 Mechanical Connections
