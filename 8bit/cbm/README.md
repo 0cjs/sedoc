@@ -60,13 +60,13 @@ General documentation:
 
 The [6510 data sheet][6510] shows three versions; 6510, 6510-1 and
 6510-2. The C64 uses the first of these. (The second and third replace
-RDY and NMI pins with PIO pins P₆ and P₇.)
+`RDY` and `NMI` pins with PIO pins `P₆` and `P₇`.)
 
-Unlike the 6502, A₀-A₁₅, D₀-D₇ and R/W̅ can be tri-stated by bringing
-AEC (Address Enable Control) low. Not clear what the CPU actually sees
-when this happens; maybe the design is to test a pin on the I/O port?
-Or perhaps the RDY must be used to pause the CPU. Possibly the [REU
-documentation][reutech] offers insight.
+Unlike the 6502, `A₀`-`A₁₅`, `D₀`-`D₇` and `R/W̅` can be tri-stated by
+bringing `AEC` (Address Enable Control) low. Not clear what the CPU
+actually sees when this happens; maybe the design is to test a pin on
+the I/O port? Or perhaps the `RDY` must be used to pause the CPU.
+Possibly the [REU documentation][reutech] offers insight.
 
 ### A/V Jack
 
@@ -113,15 +113,15 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
      →   Z      GND
 
 [64w-cport] says that pin 12 BA is an input signal, but this appears
-to be incorrect. According to the schematic the CPU's RDY line
-(indicating that it can continue running) is high only when both BA
-asserted and D̅M̅A̅ are 1. The BA line appears to be an output from the
-VIC II sent to the RDY gate, PLA and cartridge port.
+to be incorrect. According to the schematic the CPU's `RDY` line
+(indicating that it can continue running) is high only when both `BA`
+asserted and `D̅M̅A̅` are 1. The `BA` line appears to be an output from
+the VIC II sent to the `RDY` gate, PLA and cartridge port.
 
 [rc 10850] and its answers make some good points:
-- Except when asserting G̅A̅M̅E̅ and not asserting E̅X̅R̅O̅M̅, without knowing
-  the internal state of the C64 (i.e., someone else's software is
-  running) you must use the I̅O̅n̅ (and sometimes R̅O̅M̅x̅) lines to
+- Except when asserting `G̅A̅M̅E̅` and not asserting `E̅X̅R̅O̅M̅`, without
+  knowing the internal state of the C64 (i.e., someone else's software
+  is running) you must use the `I̅O̅n̅` (and sometimes `R̅O̅M̅x̅`) lines to
   determine whether internal memory or your cart is being accessed.
 - The address bus is actually bidirectional when DMA is being used;
   carts can read/write system RAM.
@@ -146,15 +146,15 @@ the cartridge ROM. (On the C64 the VIC sees the onboard CHAROM at 4K @
 `$1000`.)
 
 Cartridge port pin 7 is the external RAM enable signal, asserted when
-accessing `$0800`-`$0FFF`. (This is I̅O̅1̅ for page `$DExx` on the C64.)
+accessing `$0800`-`$0FFF`. (This is `I̅O̅1̅` for page `$DExx` on the C64.)
 
-Pin 8 on cartridges is grounded, thus asserting G̅A̅M̅E̅ on the C64
-to put it into MAX mode.
+Pin 8 on cartridges is grounded, thus asserting `G̅A̅M̅E̅` on the C64 to
+put it into MAX mode.
 
-The [MultiMAX] cart connects 9 E̅X̅R̅O̅M̅ being connected to 10 I̅O̅2̅; this
-would allow you to access the top 256 bytes (32 char definitions) of
-CHAROM on the C64. Not sure what use that might be. Perhaps cartridge
-port pins 9 and 10 have other purposes on the MAX.
+The [MultiMAX] cart connects `E̅X̅R̅O̅M̅` (9) to `I̅O̅2̅` (10); this would
+allow you to access the top 256 bytes (32 char definitions) of CHAROM
+on the C64. Not sure what use that might be. Perhaps cartridge port
+pins 9 and 10 have other purposes on the MAX.
 
 
 Plus/4
