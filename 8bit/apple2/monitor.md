@@ -69,12 +69,12 @@ Hexadecimal data dumps:
 Disassembly and running code:
 - `L` disassembles 20 lines of code and sets _PC_ to the next address
   after the disassembly. When immediately preceded by an address it
-  starts at that address, otherwise it starts at _PC_. (A preceding
-  address also still sets _next_ and _load_.)
+  first sets _PC_ to that address. (A preceding address also still
+  sets _next_ and _load_.)
 - `G` loads the registers from the saved values (`ACC`, `XREG`,
   `YREG`, `STATUS` and `SPNT` at $45-$49) and does a `JSR` to _PC_.
   When immediately preceded by an address, it first sets _PC_ to that
-  address.
+  address. (A preceding address also still sets _next_ and _load_.)
 - ©`S` steps one instruction. ©`T` traces execution until solid-apple
   is pressed or `BRK` is executed (`RTS` will not return to the
   monitor). Holding open-apple will slow the trace to one step per
