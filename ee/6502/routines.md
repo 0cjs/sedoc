@@ -234,6 +234,22 @@ From Nesdev Wiki [Synthetic Instructions][nw-syn].
 To get the sign extension of the of the X or Y register, instead of
 `ASL A` use `CPX #$80` or `CPY #$80`.
 
+For extension in the zero page, [Mike B.][6f t6069] offers:
+
+      ; Sign-extend A to 16 bits in ZP
+            STA zp
+            LDA #$7F
+            CMP zp          ; C=0 for <0, C=1 for >= 0
+            SBC #$7F
+            STA ZP+1
+
+      ; Promote int16 in ZP to int32
+            LDA #$7F
+            CMP zp+1        ; C=0 for <0, C=1 for >=0
+            SBC #$7F
+            STA ZP+2        ; $FF for <0, $00 for >0
+            STA ZP+3
+
 ### Negation and Reversed Subtraction
 
 From Nesdev Wiki [Synthetic Instructions][nw-syn].
@@ -394,6 +410,7 @@ and write of the memory location. Make bit 0 the clock output and bit
 [6f p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922#p73063
 [6f p73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=15#p73317
 [6f p73765]: http://forum.6502.org/viewtopic.php?f=4&t=6021#p73765
+[6f t6069]: http://forum.6502.org/viewtopic.php?f=2&t=6069
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
 [6f-t5945]: http://forum.6502.org/viewtopic.php?f=2&t=5945
