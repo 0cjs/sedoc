@@ -71,9 +71,38 @@ pinouts for the following Commodore parts:
 - 8501: C16, Plus/4
 - 8502: C128
 
+#### 6510
+
+The [6510] includes a PIA and has a substantially different pinout. It
+came in several variations; below is the most common. We give the 6809
+pin, the 6502 pin that originally had that signal (if it was moved),
+the 6510 function, and the function that from the 6502 that was
+replaced.
+
+    Pin MvFr  6510          Replaces    Notes
+     1   39   Φ0 (CLKIN)    Vss, /VP
+     2    2   /HALT         READY       Same signal; changed name/active level
+     3    4   /IRQ          Φ1 out
+     4    6   /NMI          /IRQ
+     5    -   AEC           NC          Address bus enable; otherwise tri-state
+     6    8   Vcc           NMI
+     7    9   A0            SYNC
+     ~~~ 8…20 are A1…A13 ~~~
+     21  21   GND           GND
+     22  24   A14
+     23  25   A15
+     24   -   P5                        PIA I/O 5
+     ...
+     29   -   P0                        PIA I/O 0
+     30  26   D7
+     ...
+     37  33   D0
+     38  34   R/W̅
+
 
 
 <!-------------------------------------------------------------------->
+[6510]: https://en.wikipedia.org/wiki/MOS_Technology_6510
 [mock65]: https://www.forum64.de/index.php?thread/84266-mocka65xx-universeller-mos-65xx-85xx-cpu-ersatz/
 [mock65f6o]: http://forum.6502.org/viewtopic.php?f=1&t=5347
 [multipin]: http://forum.6502.org/viewtopic.php?f=4&t=6027#p73889
