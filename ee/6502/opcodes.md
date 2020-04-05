@@ -4,42 +4,50 @@
 This is a quick reference for hand-assembly.
 
     JSR  RTS  JMP (JMP)      BRK  RTI       NOP
-     20   60   4C   6C        00   40        EA
+    20₆  60₆  4C₃  6C₅       00₇  40₆       EA₂
 
     BEQ  BNE  BMI  BPL  BCS  BCC  BVS  BVC
-     F0   D0   30   10   B0   90   70   50
+    F0₂₊ D0₂₊ 30₂₊ 10₂₊ B0₂₊ 90₂₊ 70₂₊ 50₂₊
 
     CLC  SEC  CLV  CLI  SEI  CLD  SED
-     18   38   B8   58   78   D8   F8
+    18₂  38₂  B8₂  58₂  78₂  D8₂  F8₂
 
     TAX  TXA  TAY  TYA  TSX  TXS       PHA  PLA  PHP  PLP
-     AA   8A   A8   98   BA   9A        48   68   08   28
+    AA₂  8A₂  A8₂  98₂  BA₂  9A₂       48₃  68₃  08₄  28₄
 
                                    zp  addr zp,X  aaaa,X
-    INX  DEX  INY  DEY        INC  E6   EE   F6     FE
-     E8   CA   C8   88        DEC  C6   CE   D6     DE
+    INX  DEX  INY  DEY        INC  E6₅  EE₆  F6₆    FE₆
+    E8₂  CA₂  C8₂  88₂        DEC  C6₅  CE₆  D6₆    DE₆
 
-           #nn      zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
-    LDA     A9      A5      AD      B5      BD      B9      A1      B1
-    STA             85      8D      95      9D      99      81      91
-    LDX     A2      A6      AE      B6,Y            BE
-    STX             86      8E      96,Y
-    LDY     A0      A4      AC      B4      BC
-    STY             84      8C      94
+            #nn     zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
+    LDA     A9₂     A5₂     AD₃     B5₄     BD₄₊    B9₄₊    A1₆     B1₅₊
+    STA             85₃     8D₄     95₄     9D₅     99₅     81₆     91₆
+    LDX     A2₂     A6₃     AE₄     B6₄y            BE₄₊
+    STX             86₃     8E₄     96₄y
+    LDY     A0₂     A4₃     AC₄     B4₄     BC₄₊
+    STY             84₃     8C₄     94₄
 
-           #nn      zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
-    ADC     69      65      6D      75      7D      79      61      71
-    SBC     E9      E5      ED      F5      FD      F9      E1      F1
-    CMP     C9      C5      CD      D5      DD      D9      C1      D1
-    CPX     E0      E4      EC
-    CPX     C0      C4      CC
+            #nn     zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
+    ADC     69₂     65₃     6D₄     75₄     7D₄₊    79₄₊    61₆     71₅₊
+    SBC     E9₂     E5₃     ED₄     F5₄     FD₄₊    F9₄₊    E1₆     F1₅₊
+    CMP     C9₂     C5₃     CD₄     D5₄     DD₄₊    D9₄₊    C1₆     D1₅₊
+    CPX     E0₂     E4₃     EC₄
+    CPX     C0₂     C4₃     CC₄
 
-           #nn      zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
-    ORA     09      05      0D      15      1D      19      01      11
-    AND     29      25      2D      35      3D      39      21      31
-    EOR     49      45      4D      55      5D      59      41      51
-    BIT             24      2C
-    ASL     0A      06      0E      16      1E
-    LSR     4A      46      4E      56      5E
-    ROL     2A      26      2E      36      3E
-    ROR     6A      66      6E      76      7E
+            #nn     zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
+    ORA     09₂     05₃     0D₄     15₄     1D₄₊    19₄₊    01₆     11₅₊
+    AND     29₂     25₃     2D₄     35₄     3D₄₊    39₄₊    21₆     31₅₊
+    EOR     49₂     45₃     4D₄     55₄     5D₄₊    59₄₊    41₆     51₅₊
+    BIT             24₃     2C₄
+    ASL     0A₂     06₅     0E₆     16₆     1E₇
+    LSR     4A₂     46₅     4E₆     56₆     5E₇
+    ROL     2A₂     26₅     2E₆     36₆     3E₇
+    ROR     6A₂     66₅     6E₆     76₆     7E₇
+
+Notes:
+- Subscripts are cycle counts.
+- `n+` subscript indicates an extra cycle for branch taken or page
+  boundary crossed (two extra cycles for both).
+- Indirect jump does not use an extra cycle on NMOS because (due to
+  the bug) it loads MSB of address from _same page_.
+- `zp,X` column for `LDX/STX` indexes with Y register
