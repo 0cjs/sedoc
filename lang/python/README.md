@@ -24,7 +24,7 @@ Python Summary/Quickref
   - [Pickle](pickle.md) object seralization
   - [Argument Parsing](argparse.md)
   - [Logging](logging.md)
-  - [Concurrency](concurrency.md), subprocesses
+  - [Concurrency, subprocesses](concurrency.md)
   - [Internet Protocols and Support](internet.md)
   - [Python Language Services](ast.md) (manipulating Python code)
 * [Functional Programming](fp.md)
