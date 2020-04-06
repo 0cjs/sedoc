@@ -1,7 +1,15 @@
 Make and GNU Make
 =================
 
-Just brief notes here.
+Resources:
+- [POSIX make][posix] manpage
+- [BSD make][bsd] manpage
+- [_GNU Make_][gnu] manual
+- [A Tutorial on Portable Makefiles][nullprog]
+
+
+Misc
+----
 
 ### Wildcards
 
@@ -14,6 +22,7 @@ Expansion happens automatically by make in targets and prerequisites
 and is done by the shell in commands. Variables store the wildcard
 which expands when it's used in an expansion location. Elsewhere use
 the `wildcard` function (later in §4).
+
 
 Variables
 ---------
@@ -133,6 +142,11 @@ __[`.SECONDARY`][imp-chain]__.
 
 
 <!-------------------------------------------------------------------->
+[bsd]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html
+[gnu]: https://www.gnu.org/software/make/manual/make.html
+[nullprog]: https://nullprogram.com/blog/2017/08/20/
+[posix]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html
+
 [`.PHONY`]: https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
 [funcs]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
 [imp-builtin]: https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
