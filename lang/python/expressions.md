@@ -157,17 +157,19 @@ Full details at [Compound Statements][stmts] in the Python docs.
   - [Examples and recipes][contextlib-ex], e.g., optional context managers
     (particularly note rentrancy and reusability considerations)
 - [Function definitions](functions.md)
-- Class definitions
+- [Class definitions][classdef]
 - Coroutines
 
 
 
+<!-------------------------------------------------------------------->
 [Batchelder]: https://nedbatchelder.com/blog/201812/a_thing_i_learned_about_python_recursion.html
 [PEP 3132]: https://www.python.org/dev/peps/pep-3132/
 [PEP 448]: https://www.python.org/dev/peps/pep-0448/
 [PPR]: http://shop.oreilly.com/product/0636920028338.do
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
 [callable]: functions.md
+[classdef]: https://docs.python.org/3/reference/compound_stmts.html#class-definitions
 [context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
 [contextlib-ex]: https://docs.python.org/3/library/contextlib.html#examples-and-recipes
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
