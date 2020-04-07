@@ -7,6 +7,8 @@ References:
 - Don Worth and Pieter Lechner, [_Beneath Apple DOS_][bad] (1981).
 - Apple Computer Inc., [_Apple II: The DOS Manual_][tdm] (1981).
 
+The [Apple IIjs README][a2js] has links to further references.
+
 
 Memory Locations
 ----------------
@@ -126,6 +128,7 @@ File Types and Formats
 
 
 <!-------------------------------------------------------------------->
+[a2js]: https://github.com/whscullin/apple2js#readme
 [bad 5-1]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n53/mode/1up
 [bad 6-13]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n73/mode/1up
 [bad 6-2]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n62/mode/1up
