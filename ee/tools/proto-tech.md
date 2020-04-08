@@ -59,6 +59,10 @@ Protoboard Info and Techniques
   bare wire-wrap wire (or a bent lead) into the two holes before
   putting in the headers/sockets/whatever. May also be useful for
   GND/Vcc buses and whatever.
+- For non-socket/header components, remember you can solder/wire on
+  the top side as well. Wires can also go through holes to change
+  sides, esp. useful for boards plugging into IC sockets. ([Picture,
+  scroll down.][p74792].)
 - To test during the build, use IC test clips to subtitute for
   yet-unwired connections on the board.
 
@@ -77,3 +81,8 @@ Protoboard Info and Techniques
 
 Fujitsu FM-7 I/O card protoboard is approx 25×43 ?×? cm.:
 .15" border, 10 holes, 20×2-pin connector, 13 holes;
+
+
+
+<!-------------------------------------------------------------------->
+[p74792]: http://forum.6502.org/viewtopic.php?f=4&t=1457#p74792
