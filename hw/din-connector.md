@@ -28,7 +28,7 @@ last. By [Hosiden][] (p.3) designations:
 Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack
 on device:
 
-        DIN-3,5a        DIN-5b,6         DIN-8a           DIN-8b
+        DIN-3,5a        DIN-5b,6         DIN-7,8a         DIN-8b
            ∪               ∪                ∪                ∪
                        5       1         7     6        8         7
       3         1          6           3    8    1      3    6    1
