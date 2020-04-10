@@ -55,6 +55,22 @@ The Language Card had 16K of RAM. 8K could be mapped at $E000, and two
     $C089   read ROM; write RAM (bank 1)
     $C08B   read/write RAM (bank 1)
 
+### Zero-page Usage
+
+The monitor uses the following zero-page and page-3 locations:
+
+    $20--$2F  $30--$3F  $40-$49 $4E $4F  $50-$55   $3F0-$3FF
+
+See further tables in [a2ref] pp. 74-75 for Applesoft, DOS 3.2 and
+Integer BASIC usage. Roughly, the only bytes left free by Applesoft
+and DOS 3.2 are the following:
+
+    $06-$09  $CE $CF  $D6 $D7  $E3  $EB-$EE $EF  $F9-$FF
+    $06-$09                    $E3  $EB-$EE $EF  $F9-$FF  # +Integer BASIC
+    $06-$09  $CE $CF                $EB-$EE      $FD $FE  # +ProDOS
+
+SWEET16 uses `$00`-`$1F`.
+
 
 Video
 -----
@@ -79,24 +95,6 @@ Screen scan, from [this vapor lock description][vapor]:
   into the frame buffer and reading the select soft switch for the
   current mode (e.g., $C051 for text mode) which will usually return
   the data most recently read by the last video read φ1 cycle.
-
-
-Memory Usage
-------------
-
-The monitor uses the following zero-page and page-3 locations:
-
-    $20--$2F  $30--$3F  $40-$49 $4E $4F  $50-$55   $3F0-$3FF
-
-See further tables in [a2ref] pp. 74-75 for Applesoft, DOS 3.2 and
-Integer BASIC usage. Roughly, the only bytes left free by Applesoft
-and DOS 3.2 are the following:
-
-    $06-$09  $CE $CF  $D6 $D7  $E3  $EB-$EE $EF  $F9-$FF
-    $06-$09                    $E3  $EB-$EE $EF  $F9-$FF  # +Integer BASIC
-    $06-$09  $CE $CF                $EB-$EE      $FD $FE  # +ProDOS
-
-SWEET16 uses `$00`-`$1F`.
 
 
 
