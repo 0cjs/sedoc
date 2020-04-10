@@ -148,6 +148,12 @@ the VIC II sent to the `RDY` gate, PLA and cartridge port.
 - The address bus is actually bidirectional when DMA is being used;
   carts can read/write system RAM.
 
+### Joystick Ports
+
+Read port 2 from $DC00 (56320) and port 1 from $DC01. Bits 0-4 are
+up/down/left/right/fire. Port 1 left will also scan as CTRL key with
+the KERNAL keyboard scanning routines.
+
 
 MAX Machine
 -----------
