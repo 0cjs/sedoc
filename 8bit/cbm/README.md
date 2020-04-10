@@ -70,11 +70,13 @@ Possibly the [REU documentation][reutech] offers insight.
 
 ### A/V Jack
 
-The [A/V jack][cw-av] is an 8-pin 268° DIN (U, not horseshoe shaped).
-Note that the pin numbering on the 268° connector is different from
-[the 270° connector][din]; pin the center pin is 6 instead of 8. The
-oldest models use a 5-pin DIN incompatible with the VIC-20, with pins
-1-5 having the same function on both connectors.
+The [A/V jack][cw-av] is a DIN-8b 268° (U, not horseshoe shaped). Note
+that the pin numbering on the -8b connector is different from [the
+DIN-8a 270° connector][din]; pin the center pin is 6 instead of 8. The
+diagram below uses 8a numbering, however, for compatibility with the
+DIN-5 plug that also fits it. The five pins on the DIN-5 have the same
+function on both jacks, and is incompatible with the VIC-20 DIN-5
+video output.
 
                         1   Luminance out
           ∪             2   GND

@@ -18,18 +18,22 @@ compatible.
 Pin Numbering and Breakouts
 ---------------------------
 
-DIN plugs always use the same numbers for the same positions, so that
-e.g. pin 3 will be in the same place on any connector from 3 to 8
-pins.
+Certain DIN plugs always use the same numbers for the same positions,
+so that e.g. pin 3 will be in the same place on any connector from 3
+to 8 pins. Others simply number "going around" with the centre pin
+last. By [Hosiden][] (p.3) designations:
+- Positional: DIN-3, -5a, -7, -8a (270°)
+- "Around": DIN-4, -5b, -6, -8b (268°)
 
 Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack
 on device:
 
-           ∪                 ∪                 ∪
-                          7     6         8         7
-      3         1       3    8    1       3    6    1
-        5     4           5     4           5     4
-           2                 2                 2
+        DIN-3,5a        DIN-5b,6         DIN-8a           DIN-8b
+           ∪               ∪                ∪                ∪
+                       5       1         7     6        8         7
+      3         1          6           3    8    1      3    6    1
+        5     4         4     2          5     4          5     4
+           2               3                2                2
 
 References:
 - [Hosiden DIN Connectors][hosiden] (PDF): Catalog with pin numbering and

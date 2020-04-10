@@ -27,10 +27,17 @@ Theoretical maximum rate (using minimum 20 μs data hold) is 50 kpbs.
 Practical max on C64 was 20 kbps because video interrupt could block
 processing for up to 42 μs.
 
-DIN-6 connector. Pins numbered clockwise from 1 o'clock, then pin 6 in
-middle. Devices must provide their own power. All signals are
-true-low, open-collector w/pullups in the C64 as below. (Schematic on
-p.13/PDF 17 of the [service manual][c64service].)
+         ∪                 u
+     5       1      5:D̅A̅T̅A̅  1:S̅R̅Q̅I̅N̅
+         6              6:R̅E̅S̅E̅T̅
+      4     2        4:C̅L̅K̅   2:GND
+         3              3:`A̅T̅N̅`
+
+[DIN-6 connector][din]. Pins numbered clockwise from 1 o'clock
+(looking into the male plug), then pin 6 in middle. Devices must
+provide their own power. All signals are true-low, open-collector
+w/pullups in the C64 as below. (Schematic on p.13/PDF 17 of the
+[service manual][c64service].)
 
 1. `S̅R̅Q̅I̅N̅`: "Service request"; unused on C64, C128 uses for fast xfer clock.  
    3.3 KΩ  pullup. Also on cassette port. To F̅L̅A̅G̅ (CASS RD) on CIA1.
@@ -183,5 +190,6 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 [cbmbus.git]: https://github.com/mist64/cbmbus_doc
 [cbmbus0]: https://www.pagetable.com/?p=1018
 [cbmbus4]: https://www.pagetable.com/?p=1135
+[din]: ../../hw/din-connector.md
 [mjk]: https://ist.uwaterloo.ca/~schepers/MJK/serialbus.html
 [petieee]: https://archive.org/details/PET_and_the_IEEE488_Bus_1980_McGraw-Hill
