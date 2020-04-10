@@ -99,7 +99,7 @@ The cjs DIN-5 adapter is wired as follows:
 ### Cartridge/Expansion Port
 
 The [cartridge/expansion port][64w-cport] pins are, left to right,
-`22`-`1` on the top edge and `Z`-`A` on the bottom edge.
+`22`-`1` on the top edge and `Z`-`A` on the bottom edge.  
 `●` = input, `→` = ouput.
 
      →   1      GND
