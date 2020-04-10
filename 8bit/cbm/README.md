@@ -68,6 +68,17 @@ actually sees when this happens; maybe the design is to test a pin on
 the I/O port? Or perhaps the `RDY` must be used to pause the CPU.
 Possibly the [REU documentation][reutech] offers insight.
 
+### Power Jack
+
+DIN-7:
+
+    1,3     GND or N/C
+     2      GND
+     4      +5 VDC or N/C
+     5      +5 VDC, 1.5 A (1.7 in later PSUs)
+     6      9 VAC phase 1
+     7      9 VAC phase 2
+
 ### A/V Jack
 
 The [A/V jack][cw-av] is a DIN-8b 268° (U, not horseshoe shaped). Note
