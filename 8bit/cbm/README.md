@@ -87,6 +87,15 @@ video output.
                         7   n/c
                         8   +5 V (usually)
 
+The cjs DIN-5 adapter is wired as follows:
+
+    DIN   RCA       C64            Plus/4                VIC-20
+     1    black     luminance      luminance             +6 VDC, 10 mA
+     2    sleeve    ground         ground                ground
+     3    white     audio out      audio out (1V pp)     audio out
+     4    yellow    comp. video    comp. video           VLOW video low
+     5    red       audio in       audio out (.5V pp)    VHIGH video high
+
 ### Cartridge/Expansion Port
 
 The [cartridge/expansion port][64w-cport] pins are, left to right,
