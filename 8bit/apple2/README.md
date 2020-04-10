@@ -97,8 +97,47 @@ Screen scan, from [this vapor lock description][vapor]:
   the data most recently read by the last video read φ1 cycle.
 
 
+Other I/O
+---------
+
+#### Paddles/Joystick (Mouse/Hand Controller)
+
+Apple II uses a DIP-16 socket ([techref] p.23, p.100), Apple IIc and
+others a DE-9 female jack ([IIc techref] pp.199, 284, 287 ). Paddle
+resistors should be 150 KΩ pots connected to +5V. Paddles are numbered
+from 0 to 3.
+
+    5 4 3 2 1     Looking into female jack on motherboard.
+     9 8 7 6
+
+    DIP DE9
+      1  2   +5V            max 100 mA
+      2  7   PB0,GAMESW     paddle 0 button ($C061 b7)
+         7   M̅S̅W̅            (IIc) mouse button
+      3  1   PB1,GAMESW1    paddle 1 button ($C062 b7)
+         1   M̅O̅U̅S̅E̅I̅D̅        (IIc) assert to disable paddles (556 paddle timer)
+      4      PB2            paddle 2 button ($C063 b7)
+         6   n/c            (IIc) may be paddle 2 button on GS?
+      5      C̅0̅4̅0̅ ̅S̅T̅R̅O̅B̅E̅    .5 μs low strobe on read from $C040 (2× on write)
+      6  5   GC0,PDL0       paddle 0 pot, joystick 0 X
+             XMOVE          (IIc) movement interrupt
+      7      GC2            paddle 2 pot, joystick 1 X
+      8  3   GND
+      ₉                     (GS only) paddle 3 button; not on Apple II
+     10  8   GC1,PDL1       paddle 1 pot, joystick 0 Y
+         8   YDIR,PDL1      Direction indicator, paddle 1 resistor
+     11      GC3            paddle 3 pot, joystick 1 Y
+     12                     annunciator 3 ($C05E off, $C05F on)
+     13                     annunciator 2 ($C05C off, $C05D on)
+     14                     annunciator 1 ($C05A off, $C05B on)
+     15                     annunciator 0 ($C058 off, $C059 on)
+     16      n/c
+         4   XDIR           (IIc only) Direction indicator
+         9   YMOVE          (IIc only) Movement interrupt
+
 
 <!-------------------------------------------------------------------->
+[IIc techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
 [a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
 [a2ref-14]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n24/mode/1up
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
