@@ -137,6 +137,11 @@ from 0 to 3.
 
 #### Other
 
+System timing is from a 14.318 MHz master oscillator `14M`, divided
+down to `7M`⁼, `COLOR REF`, `Q3`⁼ (2.046 MHz, 60% high duty cycle),
+`Φ0`⁼/`Φ2` (1.023 MHz) and `Φ1`⁼ (inverted Φ2). Those marked ⁼ are
+available on the peripheral slots.
+
 - [Diskette controllers and drives](disk.md)
 
 
@@ -156,3 +161,4 @@ from 0 to 3.
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
 
 [a2ref 14]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n24/mode/1up
+[a2ref 90]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n100/mode/1up
