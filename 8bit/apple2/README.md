@@ -75,7 +75,7 @@ SWEET16 uses `$00`-`$1F`.
 Video
 -----
 
-As described on [pp. 14-16][a2ref-14] of the _Apple II Reference Manual_,
+As described on [pp. 14-16][a2ref 14] of the _Apple II Reference Manual_,
 the Apple II character ROM has 64 characters, the ASCII upper case sticks
 (`@A…Z[\]^_`) and punctuation/number sticks (` !"#$%&'()*+,-./0…9:;<=>?`).
 The may be displayed as normal, inverse or flashing characters:
@@ -144,8 +144,7 @@ from 0 to 3.
 <!-------------------------------------------------------------------->
 [IIc techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
 [a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
-[a2ref-14]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n24/mode/1up
-[a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
+[a2ref]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n3/mode/1up
 [bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
@@ -155,3 +154,5 @@ from 0 to 3.
 [relay]: https://www.kreativekorp.com/miscpages/a2info/index.shtml
 [sather]: https://archive.org/details/Understanding_the_Apple_II_1983_Quality_Software/mode/1up
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
+
+[a2ref 14]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n24/mode/1up
