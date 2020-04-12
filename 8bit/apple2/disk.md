@@ -33,4 +33,4 @@ Add slot number × 16 to all addresses below ($C0Ex for slot 6).
 
 <!-------------------------------------------------------------------->
 [bad]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
-[tdm]: https://archive.org/details/a2_the_DOS_Manual/page/n2/mode/1up
+[tdm]: https://archive.org/stream/The_DOS_Manual_HQ#page/n3/mode/1up

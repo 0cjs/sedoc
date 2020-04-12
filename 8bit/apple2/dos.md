@@ -6,8 +6,8 @@ See [disk](disk.md) for hardware information.
 Alternatives include Diversi-DOS and of course ProDOS.
 
 References:
-- Don Worth and Pieter Lechner, [_Beneath Apple DOS_][bad] (1981).
-- Apple Computer Inc., [_Apple II: The DOS Manual_][tdm] (1981).
+- [bad] Don Worth and Pieter Lechner, [_Beneath Apple DOS_][bad] (1981).
+- [tdm] Apple Computer Inc., [_Apple II: The DOS Manual_][tdm] (1981).
 
 The [Apple IIjs README][a2js] has links to further references.
 
@@ -107,10 +107,12 @@ File Types and Formats
 
 <!-------------------------------------------------------------------->
 [a2js]: https://github.com/whscullin/apple2js#readme
+[bad]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
+[tdm]: https://archive.org/stream/The_DOS_Manual_HQ#page/n3/mode/1up
+
 [bad 5-1]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n53/mode/1up
 [bad 6-13]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n73/mode/1up
 [bad 6-2]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n62/mode/1up
 [bad 7-2]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n80/mode/1up
-[bad]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
-[tdm 127]: https://archive.org/details/a2_the_DOS_Manual/page/n69/mode/1up
-[tdm]: https://archive.org/details/a2_the_DOS_Manual/page/n2/mode/1up
+
+[tdm 127]: https://archive.org/stream/The_DOS_Manual_HQ#page/n138/mode/1up
