@@ -142,7 +142,8 @@ down to `7M`⁼, `COLOR REF`, `Q3`⁼ (2.046 MHz, 60% high duty cycle),
 `Φ0`⁼/`Φ2` (1.023 MHz) and `Φ1`⁼ (inverted Φ2). Those marked ⁼ are
 available on the peripheral slots.
 
-- [Diskette controllers and drives](disk.md)
+- Expansion slot pinout and signal descriptions: [a2ref 106].
+- [Diskette controllers and drives.](disk.md)
 
 
 
@@ -160,5 +161,6 @@ available on the peripheral slots.
 [sather]: https://archive.org/details/Understanding_the_Apple_II_1983_Quality_Software/mode/1up
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
 
+[a2ref 106]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n116/mode/1up
 [a2ref 14]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n24/mode/1up
 [a2ref 90]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n100/mode/1up
