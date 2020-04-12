@@ -54,20 +54,25 @@ Examples from [bad 6-3]:
 
 ### Controller Hardware Design (schematic: [tdm 145])
 
-#### Apple II bus interface ([a2ref 80]):
+#### Apple II bus interface ([a2ref 80], [a2ref 106]):
 
 - `R̅E̅S̅`: System power-on reset.
 - `I̅O̅S̅E̅L̅`: "I/O" ROM select; low when $Cnxx (_n_ = slot #) referenced.
 - `D̅E̅V̅`: Device select; low when $C0nx (_n_ = slot # + 8) referenced.
 - `AD0`-`AD7`: low bits of address bus, buffered by P5AD3.
 - `DA0`-`DA7`: data bus.
-- `Q3`: 2 MHz asymmetrical clock
+- `Q3`: 2 MHz asymmetrical clock (300 ns high, 200 low [a2ref 91])
 
 #### ICs and Logic (see also [7400 summaries]):
 
-- P5A (P5AD3): 6309 256×8 PROM, selected by `I̅O̅S̅E̅L̅`. Output to data bus
-  and C3 shift register parallel inputs (D0-D3,D4-D7 → H-E,A-D).
-
+- P5A (P5AD3): [6309] 256×8 PROM, selected by `I̅O̅S̅E̅L̅`.
+  - Output to data bus and C3 shift register parallel inputs.
+  - `AD0…AD7` are pins 6…9,14…11 of the chip (the schematic correctly
+    labels data bus lines as `D0…D7`); `D4…D7` are reversed from the
+    [standard `O5…O8`][6309] numbering of the PROM.
+  - I can't tell from the schematic or board images, so I'm assuming
+    that shift register I/O `H…A` map directly to `AD0…AD7`, though
+    this could be wrong.
 - C3 [74LS323]: 8-bit universal shift storage register (sync clear).
   - Selected by `D̅E̅V̅` and `AD0` low.
   - `SL` (low shift input), `S1,S0` (mode select) and `C̅L̅R̅` from P6A
@@ -75,7 +80,7 @@ Examples from [bad 6-3]:
   - `S0`: Wired-AND of P6A `D1` and MOTOR ON (through 2× '05 open
     collector inverter gates).
 
-- P6A (B3): 6309 256×8 PROM (always selected) used for controller
+- P6A (B3): [6309] 256×8 PROM (always selected) used for controller
   state machine.
 
 - A3 [74LS174] hex D flip-flop, async clear.
@@ -126,7 +131,8 @@ The state machine shifts data into the shift register via:
 
 This attaches to a Shugart SA390, replacing the standard logic board
 supplied with an SA400. The core is an [MC3470] Floppy Disk
-Read-Amplifier Systems chip (B1).
+Read-Amplifier Systems chip (B1). It was designed by Rod Holt, Apple
+employee #5.
 
 The differential R/W signals from the drive head are sent to the
 amplifer inputs (MC3470 pins 1 and 2). For each peak of the input
@@ -142,16 +148,19 @@ logic on the controller board schematic, but negative logic,
 [a2ref]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple
 [bad]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
 [tdm]: https://archive.org/stream/The_DOS_Manual_HQ#page/n3/mode/1up
-[ua2]: https://archive.org/details/Understanding_the_Apple_II_1983_Quality_Software/mode/1up
+[ua2]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n230/mode/1up
 
+[6309]: https://archive.org/stream/6309PROM#page/n1/mode/1up
 [7400 summaries]: ../../ee/7400.md
 [74LS174]: https://www.ti.com/lit/ds/symlink/sn74s175.pdf
 [74LS259]: https://www.ti.com/lit/ds/symlink/sn74ls259b.pdf
 [74LS323]: https://www.ti.com/lit/ds/symlink/sn54ls323.pdf
 [MC3470]: http://www.applelogic.org/files/MC3470.pdf
 
-[a2ref 107]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n117/mode/1up
+
+[a2ref 106]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n116/mode/1up
 [a2ref 80]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n90/mode/1up
+[a2ref 91]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n101/mode/1up
 [bad 6-2]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n62/mode/1up
 [bad 6-3]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n63/mode/1up
 [tdm 145]: https://archive.org/stream/The_DOS_Manual_HQ#page/n156/mode/1up
