@@ -47,6 +47,9 @@ $A5=JMP, or complete routine), `s`=soft switch (read to trigger),
     BFFF  49151  -  Top of RAM
     C000  49152  -  Start of I/O address space
 
+RWTS destroys location $48 (`STATUS`), so you should always store `0`
+there after calling RTWS to keep the Monitor happy.
+
 #### Buffers
 
 DOS requires 595 bytes of work area and buffer space for each open
