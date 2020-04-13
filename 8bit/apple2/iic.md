@@ -151,6 +151,15 @@ reasons related to the routing of interrupts.
 - Port 1 DSR: `E̅X̅T̅I̅N̅T̅` from the external drive connector.
 - Port 2 DSR: `KSTRB` from keyboard.
 
+Sending a "command character" (`Ctrl-I` port 1, `Ctrl-A` port 2) will
+cause the firmware to change the serial port settings (p.155, 169):
+
+    nnn     line width (1-255); follow with N or CR
+    nnB     bps rate: 15=19200 14=9600  12=4800 10=2400 8=1200 6=300 3=110
+     nD     serial format: 0=8p1 1=7p1 7=5p2 (parity set with nP)
+     nP     parity: 0=none 1=odd 3=even 5=mark 7=space
+      I     echo output to screen as well
+
 #### Mouse/Hand Controller (Paddles/Joystick)
 
 (p.282) DB-9 female jack. Supplies no more than 100 mA @ +5V. Paddles
