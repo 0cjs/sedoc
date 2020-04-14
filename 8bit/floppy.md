@@ -38,7 +38,11 @@ The primary reference is Herb Johnson's [Tech information on floppy
 disks drives and media][hjt]. Links to this are given below as
 [[HJ-xxx]] references. All references to orientation of holes and
 notches assuming looking at the top of the diskette with the label in
-the upper left and the oval access hole at the bottom.
+the upper left and the oval access hole at the bottom. Other useful
+references include:
+- Shugart [SA800/801 Diskette Storage Drive OEM Manual][sa800oem]
+- Shugart SA400 minifloppy™ Diskette Storage Drive [Service
+  Manual][sa400sm] and [OEM Manual][sa400oem]
 
 For standard drives there are only two types of diskette magnetic
 media: what is now called "double density" (DD, 2DD and many other
@@ -58,8 +62,7 @@ Double-density:
 - __8" DD__ 77-track (1 MiB). Index hole above and to the right of the
   center hole, write protect notch on the bottom towards the right.
   360 RPM, 48 tpi, 250/500 kbps. (Typically 26×128 byte sectors.)
-  Write current reduced for tracks >43. See Shugart [SA800/801
-  Diskette Storage Drive OEM Manual][sa800].
+  Write current reduced for tracks >43.
 - __5.25" DD 40-track__ (320/360 KiB). 35 tracks for early drives and
   C64. 300 RPM, 48-tpi, 125/250 kbps. Fujitsu called these "2D".
 - __5.25" DD 80-track__ (720 KiB). 300 RPM, 96 tpi, 125/250 kbps.
@@ -179,7 +182,9 @@ Does not read 40-track diskettes. Gives:
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
 [hj-replace]: http://www.retrotechnology.com/herbs_stuff/drive.html#threefive
 [hjt]: http://www.retrotechnology.com/herbs_stuff/drive.html
-[sa800]: https://deramp.com/downloads/floppy_drives/shugart/SA800%20OEM%20Manual.pdf
+[sa400oem]: https://archive.org/stream/bitsavers_shugartSA478_3019449#mode/1up
+[sa400sm]: https://archive.org/stream/bitsavers_shugartSA4eManualApr1979_2873568#mode/1up
+[sa800oem]: https://deramp.com/downloads/floppy_drives/shugart/SA800%20OEM%20Manual.pdf
 [wp-fmtlist]: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
 
 <!-- image file formats and software -->
