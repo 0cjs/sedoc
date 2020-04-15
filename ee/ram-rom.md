@@ -1,8 +1,10 @@
-JEDEC RAM/ROM/etc. pinouts
-==========================
+RAM/ROM/etc. Pinouts, Specs
+===========================
 
-From Ciarcia, "Build an Intelligent Serial EPROM Programmer," _BYTE_
-Oct. 1986, [p.106][byte-8610-106]. `O̅E̅+` is `O̅E̅/Vpp`.
+JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
+EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
+
+        `O̅E̅+` = `O̅E̅/Vpp`.
 
     '512 '256 '128  '64 '32A  '16         '16 '32A  '64 '128 '256 '512
                                   +--∨--+
@@ -23,7 +25,7 @@ Oct. 1986, [p.106][byte-8610-106]. `O̅E̅+` is `O̅E̅/Vpp`.
                                   +-----+
     '512 '256 '128  '64 '32A  '16         '16 '32A  '64 '128 '256 '512
 
-Amtel AT28C devices, from data sheets.
+Amtel AT28C devices, from data sheets. Slightly different from JEDEC?
 
                              '256         '256
                                   +--∨--+
