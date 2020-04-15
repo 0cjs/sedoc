@@ -79,6 +79,41 @@ shorted to ground or if any output voltages goes outside normal range
 Max case temperature is 60°.
 
 
+I/O Areas
+---------
+
+### Onboard and "Slot" I/O and ROM Address Space
+
+All ROM space, including the dedicated "slot" ranges $C100-$C7FF and
+the shared slot range $C800-$CFFF, are used by the IIc onboard ROM.
+The I/O spaces (p.316) have many reserved ranges (both in onboard and
+slot areas) that appear from testing not to be decoded to a chip
+select. (`b`=onboard area; `0…7`=slot area.)
+
+    $C000-$C07F  b   Apple II onboard I/O
+    $C080-$C08F  0   RAM/ROM bank switching
+    $C090-$C09F  1   Port 1 ACIA
+    $C0A0-$C0AF  2   Port 2 ACIA
+    $C0B0-$C0BF  3   Reserved
+    $C0C0-$C0CF  4   Reserved
+    $C0D0-$C0DF  5   Reserved
+    $C0E0-$C0EF  6   Reserved
+    $C0F0-$C0FF  7   Reserved
+
+### Video
+
+There is a built-in 80-column card. `PR#3` and `PR#0` switch to 80 and
+40 column modes. The character ROM has original Apple II and modern
+MouseText character sets available.
+
+          W = write once to set soft switch
+
+    C00C  W    80Col off: 40-column display
+    C00D  W    80Col  on: 80-column display
+    C00E  W    AltChar off: display primary (original Apple II) character set
+    C00F  W    AltChar  on: display alternate (MouseText) character set
+
+
 Disk I/O
 --------
 
