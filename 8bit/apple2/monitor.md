@@ -35,8 +35,13 @@ There are three addresses that the monitor remembers and uses as
 default addresses for its commands:
 - _next_: the default address for dumping data, and some other
   commands. (Stored at `A1L $3C`,`A1H $3D`.)
+- _end_: The address given as the argument to the `.` command. (Stored
+  at `A2L $3E`, `A2H $3F`; cleared immediately after a command.)
 - _load_: the default address at which data entry will start with the
   `:` command. (Stored at `A3L $40`,`A3H $41`.)
+- _dest_: An third argument, for those commands that need it, set by
+  the `<` command copying the _next_ value. Stored at `A4L $42`, `A4H
+  $43`. (Some details of this may still need to be worked out.)
 - _PC_: the saved program counter providing the default address for
   the `G` and `L` commands. (Stored at `PCL $3A`, `PCH $3B`.)
 
@@ -51,20 +56,16 @@ Exiting the Monitor:
 - Ctrl-C warm starts Applesoft/Integer BASIC ($E003)
 - `3D0G` relinks DOS and starts current interpreter.
 
-Hexadecimal data dumps:
-- Following an address _addr_ with a space or CR will print _addr_
-  followed by its contents and set _next_ to _addr+1_. A space not
-  preceded by an address does nothing.
-- A CR at the start of a line prints address _next_ only if it is a
-  multiple of 8, dumps memory contents from _next_ up to (but not
-  including) the next multiple of 8, and sets _next_ to the last
-  dumped address + 1.
-- `.`, when followed by an address _addr_ will print the address
-  _next_, dump memory from _next_ through _addr_, and set _next_ to
-  _addr+1_. `.` not followed by an address does nothing.
-- `Ctrl-E` displays the register values A,X,Y,P,S from locations $45‥49
-  and sets _load_ to $45. (_next_ is unaffected.) (©This includes the
-  IIe/IIc `M` memory state from $44; see [a2cref-355].)
+Argument-setting commands:
+- `.` followed by an address will load the address into _end_. `.` is
+  often preceeded by a an address that will set _next_, but need not
+  be. Unlike _next_, _end_ is cleared to $0000 after a command has
+  been executed. This is used for commands that take start and end
+  addresses: memory dumps, `M`, `V`. It can also be useful for Ctrl-Y
+  user commands.
+- `<`: Copies _next_ to _dest_. Typically used as `dest<next.end` to
+  set _dest_, _next_ and _end_ for the following command (`M`, `V` or
+  user command Ctrl-Y.)
 
 Disassembly and running code:
 - `L` disassembles 20 lines of code and sets _PC_ to the next address
@@ -88,12 +89,6 @@ Depositing data into memory:
   terminate the list if you want to continue the line with an
   address.) © data bytes may also be a single quote followed by a
   character, e.g. `'A 'B`.
-- `dest<addr`: Sets `A4L,A4H $42,$43` and `A5L,A5H $44,$45` to _dest_
-  (note that `A5H` is also `ACC`, overwriting the saved A register)
-  and `A2L,A2H $3E,$3F` to _addr_. (_addr_ also has the normal effect
-  of setting _next_ and _load_.) Does nothing if not followed by an
-  address. (This is not normally used alone, but to set up `M` and `V`
-  commands, and could also be used to set up a `Ctrl-Y` command.
 - `dest<start.endM` moves memory from _start_ through _end_ to
   locations starting at _dest_ (the _dest_ range may overlap the
   source range), sets _load_ to _dest_ and _next_ to _end+1_.
