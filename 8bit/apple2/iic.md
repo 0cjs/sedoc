@@ -113,6 +113,11 @@ MouseText character sets available.
     C00E  W    AltChar off: display primary (original Apple II) character set
     C00F  W    AltChar  on: display alternate (MouseText) character set
 
+Further display and memory control switches are documented in
+Table 2-6 (p.44-46). These allow switching the frame buffer banks
+separately from the rest of memory and enabling double high-res
+graphics.
+
 
 Disk I/O
 --------
