@@ -9,13 +9,20 @@ to manage and switch to environments (including command-line
 completion).
 
 Related Software:
+* [`get-pip.py`] for installing pip, required for installing virtualenv
+  (and perhaps by virtualenv itself, though that's not clear).
 * [pyenv] for using different versions of Python (à la rbenv)
 * [pipenv]: manages `Pipfile{.lock}`, etc. à la Ruby Bundler
   (supersedes `requirements.txt`)
 * [zc.buildout] for application-centric (between Make and Chef)
   assembly and deployment, including non-Python software
 
-Also see [this SO answer][so-41573588] for a summary virtualenv,
+If the system doesn't have `pip` or it's old, it's probably best to
+install it with:
+
+  curl https://bootstrap.pypa.io/get-pip.py | python
+
+Also see [this SO answer][so-41573588] for a summary of virtualenv,
 pyenv, pyenv-virtualenv, virtualenvwrapper, pyenv-virtualenvwrapper,
 pipenv, pyvenv, and venv.
 
@@ -202,7 +209,8 @@ it's in `$PATH`.
 
 
 
-[vw-projects]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
+<!-------------------------------------------------------------------->
+[`get-pip.py`]: https://bootstrap.pypa.io/get-pip.py
 [activate-raw]: https://github.com/0cjs/sedoc/raw/master/lang/python/runtime/activate
 [downloads]: http://www.python.org/ftp/python
 [github]: https://github.com/python/cpython
@@ -217,5 +225,6 @@ it's in `$PATH`.
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [virtualenvwrapper]: http://virtualenvwrapper.readthedocs.io/en/latest/
 [vw-commands]: https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
+[vw-projects]: http://virtualenvwrapper.readthedocs.io/en/latest/projects.html
 [wheel]: http://wheel.rtfd.org/
 [zc.buildout]: http://docs.buildout.org/
