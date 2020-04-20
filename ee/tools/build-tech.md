@@ -80,11 +80,19 @@ connection a good strong tug before inserting it into the housing.
 - The amount of bare wire you need to strip is less than you might
   think; only about 3 mm or so. 5 mm is too long and will interfere
   with pin insertion for female connectors.
-- Ensure the connector lines up the insulation ("wrap") and wire
-  ("curl in") with the proper spots on the crimper.
-- Close the crimper only one notch after first inserting the
-  connector; using two may close it too much for the insulation to get
-  completely through to the end of the insulation tabs.
+- However, you can strip twice the length and fold the bare wire back
+  at the half-way point, if you need more thickness. This will only
+  work with very thin wire; normal 24 gauge will be too thick if you
+  do this.
+- Ensure the connector lines up the insulation ("wrap") tabs and wire
+  ("curl in") tabs with the proper spots on the crimper. It may be
+  easier to insert the tabs into the slot, even if this means turning
+  the tool around until you can use that direction, but that makes it
+  harder to align the gap between the two sets of tabs to the centre
+  of the die.
+- Sometimes closing the crimper more than one notch will not allow the
+  insulation to get into the insulation tabs. Other times it's ok. I
+  often use two.
 - When inserting the wire, angle it down from the top (open side) of
   the connector in the block; this will help get the bare wire through
   the smaller wire tabs and the insulation completely to the end of
@@ -92,6 +100,14 @@ connection a good strong tug before inserting it into the housing.
   it's better to have a little insulation in the wire tabs than not to
   have it fully to the end of the insulation tabs. (Again, give it a
   good tug.)
+- Needs more testing, but: for depth aligment of the wire, align it
+  into one of the unused notches where you can see that the insulation
+  is actually getting to the centre and you can feel it bump up
+  against the ledge between the two sections. Press your fingers
+  against the outside edge of the die to mark this distance, and then
+  insert it to the same distance into the die containing the
+  connector, and then just a bit further to compenstate for your
+  finger puffyness.
 
 Colors follow, as much as possible, the electronics color code, with
 substitutions where there aren't enough wire colors.
