@@ -41,7 +41,7 @@ All operators in subgroups have equal precedence. From highest to lowest:
 - `&`               bitwise AND, set intersection
 - `^`               bitwise XOR, set symmetric difference
 - `|`               bitwise OR, set union
-- Comparisons (when chanined, each _x_ evaled only once)
+- [Comparisons] (when chanined, each _x_ evaled only once)
   - `== !=`         equality
   - `< <= > >=`,    ordering, set subset and superset
   - `is`, `is not`  object identity
@@ -170,6 +170,7 @@ Full details at [Compound Statements][stmts] in the Python docs.
 [`sys.exec_info()`]: https://docs.python.org/3/library/sys.html#sys.exc_info
 [callable]: functions.md
 [classdef]: https://docs.python.org/3/reference/compound_stmts.html#class-definitions
+[comparisons]: https://docs.python.org/3/reference/expressions.html#comparisons
 [context manager]: https://docs.python.org/3/library/stdtypes.html#context-manager-types
 [contextlib-ex]: https://docs.python.org/3/library/contextlib.html#examples-and-recipes
 [contextlib]: https://docs.python.org/3/library/contextlib.html#module-contextlib
