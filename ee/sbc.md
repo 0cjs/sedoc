@@ -4,19 +4,11 @@ Single-board Computer (SBC) Notes
 Also see:
 - [Switch Input Debouncing](debounce.md)
 - [Address Decoding Notes](addr-decoding.md).
+- [Capacitors](capacitor.md) (for bypass caps)
 
 Many handy circuits for reset, clock, address decoding, interfacing,
 I/O, etc. can be found in the Wilson Mines Co. [Bench-1 workbench
 computer quick reference guide][Bench-1 QRG].
-
-
-Bypass Caps
------------
-
-[Wikipedia][wp-decoup-cap] mentions ~100 nF ceramic per IC with
-up to a few hundred μF electrolytic/tantalum per board section.
-Cypress note [Using Decoupling Capacitors][cypress-decoup] goes
-into much more detail.
 
 
 Reset Circuits
@@ -75,10 +67,8 @@ Minimal chip count design for 6502/[6809][searle-6809]/Z-80.
 <!-------------------------------------------------------------------->
 [Bench-1 QRG]: http://wilsonminesco.com/BenchCPU/B1QRG/
 [Maxim DS1813]: https://datasheets.maximintegrated.com/en/ds/DS1813.pdf
-[cypress-decoup]: http://www.cypress.com/file/135716/download
 [eese 486167]: https://electronics.stackexchange.com/a/486167/15390
 [mcp130]: https://www.microchip.com/wwwproducts/en/MCP130
 [searle-6809]: http://searle.x10host.com/6809/Simple6809.html
 [stretch]: http://forum.6502.org/viewtopic.php?f=4&t=5504#p66907
 [wmc-reset]: http://wilsonminesco.com/6502primer/RSTreqs.html
-[wp-decoup-cap]: https://en.wikipedia.org/wiki/Decoupling_capacitor
