@@ -118,7 +118,7 @@ and A14 on the ROM.
 
 ### Bank 0
 
-As programmed by fumi_i2, the board vendor on ﾔﾌｵｸ.
+As programmed by [fumi_i2], the board vendor on ﾔﾌｵｸ.
 
     $E000   Woz BASIC
     $F000   KRUSADER 1.2 BY KEN WESSEN
@@ -153,3 +153,4 @@ Appears unprogrammed (all $FF).
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
 [62256]: https://ecee.colorado.edu/~mcclurel/hm62256b.pdf
 
+[fumi_i2]: https://auctions.yahoo.co.jp/seller/fumi_i2
