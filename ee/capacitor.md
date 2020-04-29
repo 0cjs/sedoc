@@ -77,17 +77,22 @@ General Notes
 - Hybrids add an Li-ion battery to the cathode for more capacity, but
   supposedly giving power delivery of a cap.
 
-### Sources and References
+
+Sources and References
+----------------------
 
 - [[lewis]] [James Lewis - They're JUST Capacitors][lewis] (YouTube, 50 min.)
 - [[ksim]] Kemet K-Sim capacitor simulator
-
+- [[eevbypass]] EEVblog #859 - Bypass Capacitor Tutorial. Simple coverage
+  of why one uses bypass caps (supply current "bursts") and why to use
+  multiple caps (different impedences).
 
 
 
 <!-------------------------------------------------------------------->
+[1210]: https://en.wikipedia.org/wiki/Surface-mount_technology#Packages
 [cypress-decoup]: http://www.cypress.com/file/135716/download
+[eevbypass]: https://www.youtube.com/watch?v=BcJ6UdDx1vg
+[ksim]: http://ksim.kemet.com/
 [lewis]: https://www.youtube.com/watch?v=ZAbOHFYRFGg
 [wp-decoup-cap]: https://en.wikipedia.org/wiki/Decoupling_capacitor
-[1210]: https://en.wikipedia.org/wiki/Surface-mount_technology#Packages
-[ksim]: http://ksim.kemet.com/
