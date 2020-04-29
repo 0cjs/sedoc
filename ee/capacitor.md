@@ -9,6 +9,13 @@ up to a few hundred μF electrolytic/tantalum per board section.
 Cypress note [Using Decoupling Capacitors][cypress-decoup] goes
 into much more detail.
 
+Bypass caps have an equivalent series inductance (ESL) that rises with
+frequency, dominating (increasing overall impedance) above the
+resonant frequency. As it rises, the bypass capability (ability to
+deliver current bursts) is reduced.
+- Smaller packages (e.g., 0402 vs. 0603 vs. 0805) have less ESL.
+- Higher capacitance values have lower resonant frequencies.
+
 
 General Notes
 -------------
@@ -85,7 +92,9 @@ Sources and References
 - [[ksim]] Kemet K-Sim capacitor simulator
 - [[eevbypass]] EEVblog #859 - Bypass Capacitor Tutorial. Simple coverage
   of why one uses bypass caps (supply current "bursts") and why to use
-  multiple caps (different impedences).
+  multiple caps (different impedances). No real discussion of values;
+  example set given is 1 μF, 0.1 μF, 10 nF. Also shows a test case
+  where multiple values are worse than a single 10 μF value.
 
 
 
