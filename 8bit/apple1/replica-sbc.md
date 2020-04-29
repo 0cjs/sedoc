@@ -22,7 +22,8 @@ pins that enable.
 - `A14_W`, `A13_W`: Middle pin to `A14`, `A13` of ROM (there are no
   other connections to these address lines). Allows choice of the four
   8K "banks" in the 32K ROM. Left pin Vcc. Right pin ground. Both to
-  ground for first bank.
+  ground for first bank. `A13` should probably be left unjumpered for
+  an AT28C64 (8KB×8) EEPROM, as that's the `RDY/B̅U̅S̅Y̅` output pin.
 
 Communications are at 115,200 bps. At startup or when the Arduino is
 reset it will print `RC6502 Apple 1 Replica`.
