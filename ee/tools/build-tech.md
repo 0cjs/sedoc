@@ -48,6 +48,16 @@ open on the workbench, and put all parts away before opening up
 another value part.
 
 
+Sockets
+-------
+
+DIP sockets come in two types: machine-tooled with gold flashed
+contacts (more reliable long term) and cheaper tin wiper contacts
+which are more suited to frequent removal and reinstallation. For
+wiper, always use double-wipe, where there are contacts on both sides
+of the IC pin.
+
+
 DIP I-leads (Butts) on Multi-layer PCBs
 ---------------------------------------
 
