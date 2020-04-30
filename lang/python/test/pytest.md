@@ -1,9 +1,7 @@
+» Overview | [Assertions][sp-a] | [Configuration/Customization][sp-conf]
+
 Python Pytest Library
 =====================
-
-Below is general information. Also here:
-* [Assertions](pytest-assert.md)
-* [Configuration and Customization](pytest-config.md)
 
 Documentation:
 * [Standard Homepage/Documentation][pytest]
@@ -225,6 +223,10 @@ Doctest config options:
 * `doctest_encoding`: Encoding used for doctest files.
 
 
+<!-------------------------------------------------------------------->
+[sp-o]: pytest.md
+[sp-a]: pytest-assert.md
+[sp-conf]: pytest-config.md
 
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
 [`@pytest.fixture()`]: https://docs.pytest.org/en/latest/reference.html#fixtures

@@ -1,8 +1,11 @@
+» [Overview][sp-o] | Assertions | [Configuration/Customization][sp-conf]
+
 Pytest Assertions and Checks
 ============================
 
-See [assertions] for the basics, and [builtin] for details on the API
-and fixtures. The following is an incomplete summary:
+See pytest docs on [assertions] for the basics, and [builtin] for
+details on the API and fixtures. The following is an incomplete
+summary.
 
 Assertions
 ----------
@@ -126,6 +129,11 @@ output and clears the capture buffer. `disabled()` pauses capture.
         assert ('', '') == capsys.readouterr()
 
 
+
+<!-------------------------------------------------------------------->
+[sp-o]: pytest.md
+[sp-a]: pytest-assert.md
+[sp-conf]: pytest-config.md
 
 [Warnings Filter Configuration]: pytest-config.md#warnings-filter-configuration
 [`ExceptionInfo`]: https://docs.pytest.org/en/latest/reference.html#exceptioninfo

@@ -1,8 +1,7 @@
+» [Overview][sp-o] | [Assertions][sp-a] | Configuration/Customization
+
 Pytest Configuration
 ====================
-
-For information on writing Pytest tests, see [pytest](pytest.md).
-
 
 Test Discovery
 --------------
@@ -280,8 +279,11 @@ XXX To-do
 * [background](https://docs.pytest.org/en/documentation-restructure/background/)
 
 
-
 <!-------------------------------------------------------------------->
+[sp-o]: pytest.md
+[sp-a]: pytest-assert.md
+[sp-conf]: pytest-config.md
+
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
 [`addopts`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-addopts
 [`cache_dir`]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#confval-cache_dir
