@@ -50,6 +50,12 @@ footprint and square 8-pin footprint):
       8  5  output
      14  8  Vdd (+5)
 
+It's a good idea to run the oscillator output through a '74 flip-flop
+to produce a properly symmetrical clock (at half the rate). This also
+allows you to replace the oscillator with a pushbutton (two presses
+per clock cycle) if you're using CMOS chips that can handle a clock
+halted arbitrarily long in either state.
+
 Also see:
 - Dr Jefyll, [RDY vs. Clock Stretching][stretch].
 
