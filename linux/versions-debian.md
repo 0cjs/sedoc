@@ -5,6 +5,7 @@ Debian Releases and Upgrading
 
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
+| 2020-04 | 20.04 | Focal    | 2030-04  |           |
 | 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
 | 2017-06 | 9     | Stretch  | 2022-07  | 4.9, 4.19 |
