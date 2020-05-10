@@ -49,6 +49,41 @@ there are still many links pointing to it. It's been replaced by
 Installing
 ----------
 
+### From USB Media
+
+Download from [Debian Internet Install image page][dinst]. See
+[Installation Guide §4.3][dig-4.3] for details on preparing a USB
+stick. Options include:
+
+- (§4.3.1) Hybrid CD/DVD image copied to `/dev/sdX`, wiping out
+  anything else on USB stick. May leave room to create a DOS partition
+  for additional files and other use.
+- (§4.3.2) Bootable 1 GB DOS partition table/filesystem (`zcat
+  hd-media/boot.img.gz >/dev/sdX`) to which you can copy install
+  files.
+- (§4.3.3) Manually configured DOS loader and files
+  (`hd-media/{vmlinuz,initrd.gz}`) on existing or new DOS partition.
+
+The third option is roughly as follows. Package names containing the
+commands are given in parens. The netinst image is an ISO file such as
+the "Small CDs or USB sticks" image from [[dinst]].
+
+    install-mbr /dev/sdX        # (mbr)
+    cfdisk /dev/sdX             # (util-linux) create partitions
+    mkdosfs /dev/sdX1           # (dosfstools)
+    syslinux /dev/sdX1          # (syslinux, mtools)
+    mount /dev/sdX1 /mnt
+    cp vmlinuz initrd.gz /mnt/
+    echo 'default vmlinuz initrd=initrd.gz' >/mnt/syslinux.cfg
+    echo 'prompt 1' >>/mnt/syslinux.cfg
+    #   copy a netinst image to /mnt/
+    #   copy driver packages to /mnt/
+
+For booting on an EFI-only system, consider using `gdisk` to create a
+GPT partition table and `cgdisk` to set up the partitions.
+
+### From an Already Booted System
+
 Up to Debian 8, you could `sudo debian-installer-launcher --text` to
 run the same installer that the live CD uses. This has been removed
 in Debian 9.[so 314792][bug 844611].
@@ -127,5 +162,7 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [calamares]: https://calamares.io/about/
 [deb10]: https://www.debian.org/News/2019/20190706
 [debrel]: https://wiki.debian.org/DebianReleases
+[dig-4.3]: https://www.debian.org/releases/stable/amd64/ch04s03.en.html
+[dinst]: https://www.debian.org/distrib/netinst
 [so 314792]: https://unix.stackexchange.com/questions/314792/
 [usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
