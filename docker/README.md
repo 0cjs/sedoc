@@ -23,20 +23,56 @@ External Documentation:
 Terminology
 -----------
 
+#### Containers, Images, Filesystems
+
 A Docker __container__ is one or more process with their own
 configuration for access to disk/network resources, UIDs/GIDs, etc. on
-the host. Each container has its own disk store for the root volume
-and may also have host resources mounted in it. The initial disk store
-for a container is created from an __image__.
+the host. Each container has its own _layer_ for the root filesystem
+and may also have other filesystems mounted in it. A container is
+created from an _image_. A container's root layer and default
+configuration may be copied out to a new image with `docker commit`,
+which also allows `Dockerfile` commands to be executed as it does
+this.
 
-Each Docker instance has a local set of images; these are either
-created locally using the [docker build] process or pulled (copied)
-from a registry. Images are identified by a unique __image id__; this
-is generated at the time it's built and will be different for another
-build from the same image description. (But layer caching!) Images may
-also be identified by an __alias__ formed from the __repository name__
-and __tag__, e.g. `alpine:latest`. An alias within a store may point
-to different images over time.
+An __image__ (since Docker 1.10) is a set of container configuration
+defaults, including a list of _layer IDs_ (not the actual layers
+themselves). (Pre-1.10 the image IDs were were conflated with layer
+IDs.) The hash/digest of the configuration and layer IDs [determines
+the __image ID__][image-ids]. The image ID will not be the same
+between two independent builds due to timestamps included in the
+configuration information.
+
+Filesystem storage for a container is in one of three forms. All but
+layers are configured with `docker run --mount`.
+- A __layer__, which stores files changed/deleted its parent layer.
+  (These are slower than other forms of storage.) The __layer ID__ is
+  [a hash (or digest) of its contents][image-ids] in the form
+  _algo:hexstring_, e.g., `sha256:fc92ee...`. There is also a separate
+  ID for the compressed version of the layer used in registry manifests.
+- __Bind mounts__ (`--mount`) which map an arbitrary host directory or
+  file into a container's directory tree. (Devices must be mapped
+  separately with `--device`.) Usually used for sharing data between
+  host and container. 
+- A Docker __volume__, which is an independent store in the host
+  filesystem (usu. `/var/lib/docker/volumes`) and not removed when a
+  container using it is removed. New empty volumes mounted over an
+  existing directory tree in a container will be filled with a copy of
+  that directory tree before being mounted over it (hiding it as usual
+  for mounts).
+
+#### Image and Layer Management, Aliases, Repositories, Registries
+
+Each Docker instance (daemon) has a local set of images and their
+associated layers; these are either created locally using the [`docker
+build`] process or pulled (copied) from a registry. Newly built images
+will always have a new image ID (see above), but commands that can be
+determined to create a layer with identical content to an existing
+layer will re-use that existing layer.
+
+As well as their image IDs, images may also be identified by an
+__alias__ formed from the __repository name__ and __tag__, e.g.
+`alpine:latest`. An alias within a store may point to different images
+over time.
 - The name portion of an alias is slash-separated components
   consisting of lower-case letters, digits, and separators that may
   not start the name. Separators are single `.`, one or two `_`, and
@@ -50,15 +86,6 @@ to different images over time.
   otherwise letters, digits, and `_`/`.`/`-`. If not specified it
   defaults to `:latest`.
 
-Images include a list of references to __layers__ containing the
-changed files that [contribute to a derived container's
-filesystem][image-ids]. The layers are identified by a __digest__ of
-the tarball containing the files changed in that layer in the form
-_algo:hexstring_, e.g., `sha256:fc92ee...`. There is also a separate
-digest for the compressed version of the layer used in registry
-manifests. Layers have no notion of an image or of belonging to an
-image, they are merely collections of files and directories.
-
 A __registry__ is an image store from which one can __pull__ images to
 or __push__ images from a local Docker instance. Registries use a
 standard [HTTP API] currently at version 2. Images in registries are
@@ -67,17 +94,21 @@ usually contains different versions of an image designed for a
 particular purpose (e.g., `alpine`). See the [Docker Hub] registry
 (and below) for an example.
 
-[image-ids]: https://windsock.io/explaining-docker-image-ids/
-
 
 Further Reading
 -------------
 
-* [Terra Nullius](https://alexei-led.github.io/).
-  Blog that covers "everday hacks for docker," e.g. [multi-stage
-  build](https://alexei-led.github.io/post/node_docker_multistage/).
+* [Explaining Docker Image IDs][image-ids].
+* [Terra Nullius]. Blog that covers
+  "everyday hacks for Docker," e.g. [multi-stage build][multistage].
+
 
 
 <!-------------------------------------------------------------------->
+[`docker build`]: https://docs.docker.com/engine/reference/commandline/build/
 [engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
 [reference documentation]: https://docs.docker.com/reference/
+
+[Terra Nullius]: https://alexei-led.github.io/
+[image-ids]: https://windsock.io/explaining-docker-image-ids/
+[multistage]: https://alexei-led.github.io/post/node_docker_multistage/
