@@ -1,9 +1,9 @@
 Docker Registries, Private and Public Images
 ============================================
 
-* [Overview](README.md) | [Install/Config](config.md)
-  | [Image Build](image.md) | [Registries](registries.md)
-  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
+  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
+  | [Tips](tips.md) | [Compose](compose.md)
 
 Terminology reminder: a _registry_ is a single server that serves
 multiple _[repositories][repository]_ which are sets of related

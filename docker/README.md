@@ -1,9 +1,9 @@
 Docker
 ======
 
-* [Overview](README.md) | [Install/Config](config.md)
-  | [Image Build](image.md) | [Registries](registries.md)
-  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
+  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
+  | [Tips](tips.md) | [Compose](compose.md)
 
 Detailed list of pages here:
 * [Overview](README.md)

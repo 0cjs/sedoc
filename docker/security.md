@@ -1,9 +1,9 @@
 Docker Security Notes
 =====================
 
-* [Overview](README.md) | [Install/Config](config.md)
-  | [Image Build](image.md) | [Registries](registries.md)
-  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
+  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
+  | [Tips](tips.md) | [Compose](compose.md)
 
 Secure Your Server and Be Careful of Malicious Images
 -----------------------------------------------------
