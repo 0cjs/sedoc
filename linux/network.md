@@ -61,7 +61,8 @@ Directory integration.
 - `ethtool DEVNAME` queries and sets driver/hardware settings for
   network interfaces with a particular focus on wired Ethernet
   devices.
-- `ifconfig`, `route`: legacy programs replaced by `ip`.
+- `ifconfig`, `route`, etc. (`net-tools` package): legacy programs
+  replaced by `iproute2` tools.
 
 #### nmcli Quickref
 
@@ -99,14 +100,61 @@ RH has something along those lines as well; possibly it's related to
 their `biosdevname` command and package.
 
 
-Debian Legacy Network Config
-----------------------------
+netconf: Debian Legacy Network Config
+-------------------------------------
 
-Debian systems' legacy configuration package is `ifupdown` using
-configuration in `/etc/network/interfaces` (and files in
-`interfaces.d/`).
+Debian systems' legacy configuration package is __netconf__, with
+`ifupdown` using configuration in `/etc/network/interfaces` (and files
+in `interfaces.d/`). This is still set up by the installer as of of
+Debian 10.
+
+### /etc/network/interfaces
+
+`ifup eth0`/`ifdown eth0` bring up/down the provided config name (the
+interface name, when renaming is not used) if an `iface eth0` stanza
+exists in `interfaces`. The `-a ` option brings up/down all auto
+interfaces; see below. Hook scripts under `if-*.d/` can be provided
+for special configuration.
+
+Generally, don't use `ifconfig` etc. on an interface brought up with
+`ifup`.
+
+Config file syntax (details in `interfaces(5)`):
+- `#`: Full line comment (end-of-line comments not supported)
+- `\`: Append next line to current line.
+- Patterns can be used to match multiple interfaces.
+- Add a period and number after the interface name for VLAN
+  interfaces, e.g., `eth0.1`.
+- `no-scripts eth0`: Do not run `if-*.d/` scripts.
+- `auto eth0`: Start `eth0` on system startup or `ifup -a`.
+- `no-auto-down eth0`: Do not stop `eth0` on `ifdown -a`.
+- `allow-*`: Sets configs to be brought up automatically by various
+  subsystems, e.g., `allow-auto eth0`
+- `allow-hotplug eth0`: Bring up when kernel detects hotplug event for
+  the device itself (not the network cable).
+- `iface <config_name> <addr_family> <method> `: Interface
+  configuration stanza. Followed by indented `key value` lines.
+
+The common families are `inet` and `inet6`. Common methods are:
+- `loopback`: IPv4 loopback interface
+- `auto`: IPv6 autoconfiguration
+- `static`
+- `manual`: No configuration done by default; hook scripts may configure.
+- `dhcp`
+- `tunnel`
+- `ppp`
+
+Standard options to all `iface` families/methods are:
+- `description NAME`: Alias interface by _NAME_.
+- `pre-up`, `up`, `post-up`: Commands before/after bringing interface
+  up, or down for `-down` variants.
+
+Each family and method has its own additional options, and various
+packages may add to these. E.g., the `resolvconf` package adds
+`dns-domain` and `dns-nameservers` options.
 
 References:
+- `interfaces(5)` manpage.
 - [Debian Network Setup reference][debnet]
 - [NetworkConfiguration][dw-netconf] Debian wiki page
 
