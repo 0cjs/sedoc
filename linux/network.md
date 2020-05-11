@@ -45,10 +45,8 @@ chosen based on highest priority.
 Modern `systemd` systems use configuration in `/etc/systemd/network`;
 see the `systemd-networkd` manpage for details.
 
-Debian systems' legacy configuration package is `ifupdown` using
-`/etc/network/interfaces`. For more see the [Debian Network Setup
-reference][debnet]. The [NetworkConfiguration][dw-netconf] Debian
-wiki page also has lots of good info.
+Debian systems' legacy configuration is in `/etc/network/interfaces`.
+See below for more details.
 
 Red Hat systems (at least up to RHEL 7) configure via
 `/etc/sysconfig/network`; see below for more details. There are also
@@ -80,8 +78,6 @@ All subcommands may be abbreviated to one letter. Completion is available.
 [BSS]: http://bss.technology/tutorials/
 [Netplan]: https://netplan.io
 [NetworkManager]: https://en.wikipedia.org/wiki/NetworkManager
-[debnet]: https://www.debian.org/doc/manuals/debian-reference/ch05
-[dw-netconf]: https://wiki.debian.org/netconf
 
 
 Interface Naming
@@ -101,6 +97,21 @@ when a new network interface is detected and stored in
 
 RH has something along those lines as well; possibly it's related to
 their `biosdevname` command and package.
+
+
+Debian Legacy Network Config
+----------------------------
+
+Debian systems' legacy configuration package is `ifupdown` using
+configuration in `/etc/network/interfaces` (and files in
+`interfaces.d/`).
+
+References:
+- [Debian Network Setup reference][debnet]
+- [NetworkConfiguration][dw-netconf] Debian wiki page
+
+[debnet]: https://www.debian.org/doc/manuals/debian-reference/ch05
+[dw-netconf]: https://wiki.debian.org/netconf
 
 
 RHEL/CentOS Old Static Network Config
