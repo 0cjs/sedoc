@@ -21,7 +21,7 @@ EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
      D0   D0   D0   D0   D0   D0  |11 18|  D6   D6   D6   D6   D6   D6
      D1   D1   D1   D1   D1   D1  |12 17|  D5   D5   D5   D5   D5   D5
      D2   D2   D2   D2   D2   D2  |13 16|  D4   D4   D4   D4   D4   D4
-     GND  GND  GND  GND  GND  GND |14 15|  O3   O3   O3   O3   O3   O3
+     GND  GND  GND  GND  GND  GND |14 15|  D3   D3   D3   D3   D3   D3
                                   +-----+
     '512 '256 '128  '64 '32A  '16         '16 '32A  '64 '128 '256 '512
 
