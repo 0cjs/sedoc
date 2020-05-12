@@ -25,12 +25,13 @@ EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
                                   +-----+
     '512 '256 '128  '64 '32A  '16         '16 '32A  '64 '128 '256 '512
 
-Amtel AT28C devices, from data sheets. Slightly different from JEDEC?
+Amtel AT28C devices, from data sheets.
+Some pins, marked with `•`, are different from JEDEC.
 
                              '256         '256
                                   +--∨--+
-                              A14 | 1 28| Vcc
-                              A12 | 2 27|  W̅E̅
+                             •A14 | 1 28| Vcc
+                              A12 | 2 27|  W̅E̅•
                               A7  | 3 26| A13
                               A6  | 4 25|  A8
                               A5  | 5 24|  A9
