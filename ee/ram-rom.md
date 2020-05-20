@@ -49,6 +49,18 @@ Two pins, marked with `●`, are different from JEDEC.
                                   └───────┘
                        '256  '256          '256  '256
 
+AT28C notes:
+- No writes for 5 ms after Vcc reaches 3.8V.
+- Device identification memory: 32 bytes, $1FE0-$1FFFF. Raise `A9` to
+  12V ±0.5V to read/write in the same way as regular memory.
+- Chip clear:
+  - '64: `C̅E̅` low, `O̅E̅` 12V, 10 ms low pulse on `W̅E̅`.
+  - '256: 6-byte software code.
+- Software data protection (SDP): enable/disable with special 3-byte
+  command sequence. Write timers still active when SDP enabled, but the
+  data is not actually written.
+
+
 Data Sheets
 -----------
 
