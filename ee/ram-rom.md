@@ -4,7 +4,7 @@ RAM/ROM/etc. Pinouts, Specs
 JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
 EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
 
-        `O̅E̅+` = `O̅E̅/Vpp`.
+        O̅E̅+ = O̅E̅/Vpp
 
     '512 '256 '128  '64 '32A  '16           '16 '32A  '64 '128 '256 '512
                                   ┌───∪───┐
