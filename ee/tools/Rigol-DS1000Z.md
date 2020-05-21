@@ -30,6 +30,11 @@ bottom. May need `Sel Item` to switch between displayed stats.
 UI Hints
 --------
 
+- For single-shot captures, generally capture the full waveform you
+  want to see and view details by pressing the horizontal scale
+  (large) knob to get into zoom mode to see specific sections. (Press
+  again to leave zoom mode; this resets the zoom value but not the
+  horizontal position if you go back into zoom.)
 - Use `Measure → Clear → ItemX → Delete` to gray out bottom-line
   measurements to be the first to be removed when new ones are added.
   See "Measurement" below for more details on handling this.
@@ -99,6 +104,10 @@ sophisticated stuff including:
 Real-time graph and table history of measurement values is available
 from `Measure → History`.
 
+Cursor mode Auto can set cursor lines for any one of the current quick
+measure items at the bottom of the screen to give you a better sense
+of where the thresholds are. New measurements will become the auto item.
+
 #### Clearing Measurements
 
 To delete measurements created from the left-hand buttons, use
@@ -112,5 +121,5 @@ measurements for a while.
 Pressing and holding `Measure` or `Measure → Clear → All Items` will
 turn off bottom measurement display completely. Doing that again will
 recover all items, or you can recover them individually as above. A
-clear plus one or two recoveries can be faster than individual
+clear all plus one or two recoveries can be faster than individual
 deletions.
