@@ -16,7 +16,7 @@ on the LEDs at the lower left. Two reference voltages are generated:
 RefHigh (usually 2.0 or 2.7 V) and RefLow (usually 0.5 or 0.8 V). For
 each test input a red "low" LED lights when the voltage is below
 RefLow, and the green "high" LED lights when the voltage is above
-RefHigh.
+RefHigh. Both lights lit dimly indicates an oscillating signal.
 
 The right-hand side is the reference voltage generation section. The
 pins at the right are used for checking the reference voltages; they
