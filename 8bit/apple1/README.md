@@ -38,9 +38,36 @@ Memory Map
             set bit 7.
     $D013   DSPCR: control register for output; init'd by WozMon
 
+### Address Decoding
+
+A 74154 4 to 16 decoder decodes `A15`-`A12` to `C̅S̅0`-`C̅S̅F`, each a 4K
+block. These are brought out to pads marked `0`-`F` which then can be
+jumpered to device select pads above them:
+
+    Pad    Function      Default    Notes
+    -------------------------------------------------------------------------
+     Z   6820 PIA C̅S̅2   C̅S̅D $D000   A4 → PIA G̅0: odd 16-byte blocks
+     Y   PROM           C̅S̅F $F000   Φ1 → PROM C̅S̅₁; mirrored in full 4K?
+     X   RAM X0-7       C̅S̅0 $0000
+     W   RAM W0-7       C̅S̅E $E000   Typ. for Integer BASIC, per ACI manual
+                        C̅S̅1 $1000   According to note 8 on schematic
+     T   slot pin 21        -
+     S   slot pin 11        -
+     R   slot pin L     C̅S̅C $C000   Typ. for use w/Apple Cassette Interface
+
+![74154 and jumpers](a1decode.jpg)
+
+The [Apple Cassette Interface (ACI)][aci] required block $C000 decode
+to be jumpered to `R` and further decoded A9-A11 = 000 to use address
+range $C000-$C1FF. The $C100 page PROM (mirrored in the $C000 page);
+access to any address in the $C000 page will toggle the output
+flip-flop.
+
 
 ROM Software
 ------------
+
+Original monitor ROM was 2× [Intel 3601] 256b×4.
 
 ### ROM Routines
 
@@ -74,13 +101,20 @@ being set.
 
 - SB-Projects, ["The Apple 1 Basic"][sbp-basic]
 
+### Apple Cassette Interface (ACI)
+
+The [ACI] contained 256 bytes of PROM with code designed to run from
+$C100 (but mirrored into the I/O area at $C000). There's a bug in the
+address parsing; always use 4-digit addresses before the `R` and `W`
+commands.
+
 ### Other Tools
 
 - [Krusader](krusader.md), a symbolic assembly development environment.
 
 
-I/O, MC6820
------------
+MC6820 Keyboard and Video I/O
+-----------------------------
 
 The configuration is the same for both ports (control registers `CRA`
 and `CRB`) of the 6820: $A7 = `10100111`. However, though interrupts
@@ -146,6 +180,8 @@ lower-case.
 [a1cb-1211]: https://apple1computer.blogspot.com/2012/11/early-apple-1-pcb.html
 [a1cb-1309]: https://apple1computer.blogspot.com/2013/09/6800-info-from-woz-per-lionel.html
 [a1man]: https://www.applefritter.com/files/a1man.pdf
+[aci]: https://www.sbprojects.net/projects/apple1/aci.php
+[intel 3601]: https://drive.google.com/file/d/0B9rh9tVI0J5mNDc4NDI4NTEtZmU0MC00MTM5LTg3NTMtODk5NDFiODViZDdj/view
 [jt-wozmon]: https://github.com/jefftranter/6502/tree/master/asm/wozmon
 [sbp-basic]: https://www.sbprojects.net/projects/apple1/a1basic.php
 [sbp-wozmon]: https://www.sbprojects.net/projects/apple1/wozmon.php
