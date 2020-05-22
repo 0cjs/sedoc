@@ -71,6 +71,15 @@ pinouts for the following Commodore parts:
 - 8501: C16, Plus/4
 - 8502: C128
 
+Excepting the earliest 400 and 800 models, all Atari 8-bit computers used a
+slightly customized 6502 called the [SALLY][], always marked with Atari
+part number C014806 or UMC UM6502I. It was sometimes called "6502C"
+(particularly in XE user manuals); this is _not_ the same as the
+Rockwell/etc. 6502C (a higher speed part). This part had:
+- `H̅A̅L̅T̅` on pin 35. Possibly this releases the bus. used by ANTIC for DMA.
+- `R/W̅` duplicated on pin 36.
+
+
 #### 6510
 
 The [6510] includes a PIA and has a substantially different pinout. It
@@ -108,3 +117,4 @@ replaced.
 [multipin]: http://forum.6502.org/viewtopic.php?f=4&t=6027#p73889
 [multipinimg]: http://forum.6502.org/download/file.php?id=9416&mode=view
 [rock]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
+[sally]: http://www.atarimania.com/faq-atari-400-800-xl-xe-what-are-sally-antic-ctia-gtia-fgtia-pokey-and-freddie_14.html
