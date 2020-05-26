@@ -66,15 +66,35 @@ see how those will work out.
 
 #### Wire Wrapping Technique
 
+- Avoid touching wires or pins to avoid skin oils. [[wmco]] (Clean
+  pins w/IPA?)
 - Ensure both sides of the wire are at 90° from the cutter edge in the
-  wire wrap tool and pull straight to avoid nicking the wire.
+  wire wrap tool and pull straight to avoid nicking the wire. Use the
+  direction that pulls the blade against the tool, not outward, to
+  avoid breakage.
 - Stripping 20 mm (the length of the removal end of the wire wrap
   tool) seems to produce about 7 turns. This is slightly less than the
   [inch suggested by Bil Herd][yt IXvEDM-m9CE] as standard, may be
   slightly less than but gives ample room for two connections to the
-  long side of an 11 mm (overall) header pin.
+  long side of an 11 mm (overall) header pin. (Standard wirewrap
+  two-level protrudes .4" [[wmco]] or 10 mm, equivalant to 15 mm
+  (overall) header pin.)
+- First wrap should be all insulation to avoid strain breakages, per
+  Bil Herd above (or at least 1/2 insulation according to other
+  sources). My tool doesn't seem to do this, at least not by default;
+  how to make that happen? (The WSU30 doesn't do this, but my WSU-30M
+  should, per [[wmco]].) Perhaps push insulation through hole so you
+  can see it in the external wire channel.
 - Use very gentle pressure on the tool when wrapping, and you _must_
-  let it rise naturally as you wrap.
+  let it rise naturally as you wrap. Avoid overlap!
+- Removal can be done with just a few turns to loosen the wrap and
+  then pulling up.
+
+Other notes:
+- For quick hacks, you can wrap the lead of a part (resistor, etc.)
+  directly. This will not be reliable, however, unless the component
+  has square posts (e.g., some LEDs) or you later solder those
+  connections.
 
 
 Protoboard Info and Techniques
@@ -140,4 +160,5 @@ Fujitsu FM-7 I/O card protoboard is approx 25×43 ?×? cm.:
 
 <!-------------------------------------------------------------------->
 [p74792]: http://forum.6502.org/viewtopic.php?f=4&t=1457#p74792
+[wmco]: http://wilsonminesco.com/6502primer/WireWrap.html
 [yt IXvEDM-m9CE]: https://www.youtube.com/watch?v=IXvEDM-m9CE
