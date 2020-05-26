@@ -145,6 +145,12 @@ the command line; pre-defined symbols are upper-case. Each symbol is part
 of a segment, default `CODE`. (See above.) Each symbol also has a type
 of `String`, `Int` or `Float`.
 
+Constants/vars (§3.1.1) are defined with: `set` or `:=`, which allows
+later redefinition, and `equ` or `=`, which is constant. When not
+prefixed by a label the first argument is the label. An additional
+argument may be given to restrict the definition to a given address
+space.
+
 Symbol values may be subtituted using braces. This can be used to produce
 new symbol names; be careful not to produce invalid ones.
 
