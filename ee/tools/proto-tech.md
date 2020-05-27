@@ -53,10 +53,9 @@ the chips top-down instead of bottom-up.
 
 ### Notes
 
-- On .1" perfboard you must leave a pad between the socket and header
-  pin to be able to use the bottom of the pin; otherwise the socket
-  will block the wire-wrap tool and you get one less connection on the
-  pin (just one with standard header pins).
+- For posts next to IC sockets, take care to get the tool down past
+  the socket. (This may require very slightly bending the pin out.)
+  Otherwise you get only one wrap on the top half of a standard post.
 - Standard header pins are  11mm overall height, with 5.5 mm of
   exposed pin on the long side. This is long enough to wrap two 7-turn
   connections. (Remember there's a third soldered connection on the
@@ -74,12 +73,16 @@ the chips top-down instead of bottom-up.
 Wire Wrapping Technique
 -----------------------
 
-- Avoid touching wires or pins to avoid skin oils. [[wmco]] (Clean
-  pins w/IPA?)
+- Avoid touching wires or pins to avoid skin oils. [[wmco]]
+  (Clean pins w/IPA?)
+- Measure length first:
+  - Insulation strip length by removal end of WW tool, bend wire there.
+  - Wrap bend point around post, route to to other post, 2nd bend there.
+  - Strip just a bit short of the bend to account for insulation wrap.
 - Ensure both sides of the wire are at 90° from the cutter edge in the
-  wire wrap tool and pull straight to avoid nicking the wire. Use the
+  wire wrap tool and pull straight to avoid nicking the wire.
   direction that pulls the blade against the tool, not outward, to
-  avoid breakage.
+  avoid breakage, if not inconvenient.)
 - Stripping 20 mm (the length of the removal end of the wire wrap
   tool) seems to produce about 7 turns. This is slightly less than the
   [inch suggested by Bil Herd][yt IXvEDM-m9CE] as standard, may be
@@ -87,12 +90,12 @@ Wire Wrapping Technique
   long side of an 11 mm (overall) header pin. (Standard wirewrap
   two-level protrudes .4" [[wmco]] or 10 mm, equivalant to 15 mm
   (overall) header pin.)
-- First wrap should be all insulation to avoid strain breakages, per
-  Bil Herd above (or at least 1/2 insulation according to other
-  sources). My tool doesn't seem to do this, at least not by default;
-  how to make that happen? (The WSU30 doesn't do this, but my WSU-30M
-  should, per [[wmco]].) Perhaps push insulation through hole so you
-  can see it in the external wire channel.
+- First turn (or first 1/2, some sources) should be all insulation to
+  avoid strain breakages. My WSU-30M (not WSU-30) should do this
+  [[wmco]], but doesn't, and I can't get insulation to show in
+  external wire channel. So I don't hold the wire when wrapping,
+  allowing the tool to draw up a bit of tension and insulated section
+  at start.
 - Use very gentle pressure on the tool when wrapping, and you _must_
   let it rise naturally as you wrap. Avoid overlap!
 - Removal can be done with just a few turns to loosen the wrap and
