@@ -125,10 +125,14 @@ link.
 
 Textual markup:
 - `__italic__`, `**bold**` and `` `monospace` ``
-- Multi-line code blocks can be delimited with three backticks alone
-  on a line at the start and end.
+- Multi-line code blocks can be delimited with three backticks before
+  and after. (These need not be on separate lines.)
 - URLs will automatically be turned into links, but to link text
   without showing the URL you need to use Ctrl-K as above.
+- `@name` will be replaced with a clickable representation of the
+  channel user matching _name_ (does completion).
+- `#text` will make _text_ a hashtag and link to a search for that
+  hashtag.
 
 [tg-clients]: https://telegra.ph/markdown-07-07
 [tg-desktop]: https://www.techmesto.com/telegram-desktop-now-supports-text-formatting-using-keyboard-shortcuts/
