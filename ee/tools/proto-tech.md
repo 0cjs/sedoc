@@ -46,16 +46,18 @@ the bottom, but the logic is wired using wire-wrap between the header
 pins on the top. This also makes wiring easier since you're looking at
 the chips top-down instead of bottom-up.
 
-Standard header pins are  11mm overall height, with 5.5 mm of exposed
-pin on the long side. This is long enough to wrap two 7-turn
-connections. (Remember there's a third soldered connection on the
-short side.) I have 15, 17 and 19 mm (overall) header pins on order to
-see how those will work out.
-
 <img src="http://forum.6502.org/download/file.php?id=9202&mode=view" width="400" alt="top side" title="top side"/>
 <img src="http://forum.6502.org/download/file.php?id=9203&mode=view" width="400" alt="bottom side" title="bottom side"/>
 
 [jg-ww]: http://forum.6502.org/viewtopic.php?f=12&t=5811&start=45#p72988
+
+### Notes
+
+- Standard header pins are  11mm overall height, with 5.5 mm of
+  exposed pin on the long side. This is long enough to wrap two 7-turn
+  connections. (Remember there's a third soldered connection on the
+  short side.) I have 15, 17 and 19 mm (overall) header pins on order
+  to see how those will work out.
 
 #### Related Techniques
 
@@ -64,7 +66,9 @@ see how those will work out.
 - For 74xx decoding logic sockets, use a 16-pin with 16=Vcc and 8=GND;
   you can jumper 8→7 for use with a 14-pin chip.
 
-#### Wire Wrapping Technique
+
+Wire Wrapping Technique
+-----------------------
 
 - Avoid touching wires or pins to avoid skin oils. [[wmco]] (Clean
   pins w/IPA?)
