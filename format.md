@@ -123,11 +123,12 @@ text after selecting it: __Ctrl-B__ for bold, __Ctrl-I__ for italic,
 __Ctrl-Shift-M__ for monospace and __Ctrl-K__ to enter a URL for a
 link.
 
-Markdown-style formatting can be done as `__italic__`, `**bold**` and
-`` `monospace` ``; multi-line code blocks can be delimited with three
-backticks alone on a line at the start and end. URLs will be turned
-into links, but to link text without showing the URL you need to use
-Ctrl-K as above.
+Textual markup:
+- `__italic__`, `**bold**` and `` `monospace` ``
+- Multi-line code blocks can be delimited with three backticks alone
+  on a line at the start and end.
+- URLs will automatically be turned into links, but to link text
+  without showing the URL you need to use Ctrl-K as above.
 
 [tg-clients]: https://telegra.ph/markdown-07-07
 [tg-desktop]: https://www.techmesto.com/telegram-desktop-now-supports-text-formatting-using-keyboard-shortcuts/
