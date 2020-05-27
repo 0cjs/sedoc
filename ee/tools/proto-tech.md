@@ -53,6 +53,10 @@ the chips top-down instead of bottom-up.
 
 ### Notes
 
+- On .1" perfboard you must leave a pad between the socket and header
+  pin to be able to use the bottom of the pin; otherwise the socket
+  will block the wire-wrap tool and you get one less connection on the
+  pin (just one with standard header pins).
 - Standard header pins are  11mm overall height, with 5.5 mm of
   exposed pin on the long side. This is long enough to wrap two 7-turn
   connections. (Remember there's a third soldered connection on the
@@ -144,6 +148,10 @@ Adjacent connected components:
   bent lead) into the two holes before putting in the
   headers/sockets/whatever. May also be useful for GND/Vcc buses and
   whatever.
+
+Component placement:
+- Leave plenty of room at each end of an IC socket to be able to get
+  the chip out.
 
 ### Prototype Board (Protoboard) Sizes
 
