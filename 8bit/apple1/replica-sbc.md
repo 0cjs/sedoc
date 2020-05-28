@@ -24,6 +24,12 @@ pins that enable.
   8K "banks" in the 32K ROM. Left pin Vcc. Right pin ground. Both to
   ground for first bank. `A13` should probably be left unjumpered for
   an AT28C64 (8KB×8) EEPROM, as that's the `RDY/B̅U̅S̅Y̅` output pin.
+- `USB_POWER`: Top (pin 2) is board Vcc; bottom (pin 1) is 5V from
+  Arduino Nano board. (The Nano output voltage is a bit low, 4.78 V
+  vs. 4.91 V on the SBC from the backplane regulator.)
+
+The most convenient test point for ground in the standard
+configuration (everything enabled) is the bottom pin of `PIA_EN`.
 
 Communications are at 115,200 bps. At startup or when the Arduino is
 reset it will print `RC6502 Apple 1 Replica`.
