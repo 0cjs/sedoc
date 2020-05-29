@@ -305,9 +305,12 @@ machine; the canonical addresses, actual ranges and functions are:
     IIe card  $C028  ?            switches to main ROM
               $C029  ?            switches to aux. ROM
 
+$C780-$C7FF of the ROM (p. 416) is the same in both banks and contains
+code to switch between the two in various circumstances (RTS, RTI,
+etc.).
+
 XXX stuff to check out:
 - 'Scope `CASS0` pin on old ROM system.
-- Disassemble return stub in allegedly in $C7xx region.
 
 ROM map summaries and firmware listings are in Appendix I (p. 396).
 Enhanced video firmware in $C300-$C3FF and much of $C800-$CFFF.
