@@ -270,20 +270,20 @@ no ports (emulating slots) need it.
 There are several versions of the IIc. ROM versions are identified by
 `PEEK(-1089)` (64447, $FBBF); hex values are given below.
 
-- Original ($FF): 16K. The only version that can boot external drive
+- Original (__$FF__): 16K. The only version that can boot external drive
   with `PR#7`.
 - Serial port timing fix: Replaces 74LS161 with an oscillator to bring
   serial port timing within spec (it was 3% low).
-- UniDisk 3.5 (0, $00): 32K. Protocol Converter (earlier version of
+- UniDisk 3.5 (0, __$00__): 32K. Protocol Converter (earlier version of
   Smartport) routines to support UniDisk 3.5 external drive.
   Mini-Assembler and step/trace monitor commands. Built-in diagnostics
   (Ctrl-OpenApple-Reset). Improved interrupt handlers. New external
   drive startup procedures.
-- Memory expansion (3, $03): 32K. Uses four 64K×4bit RAM instead of
+- Memory expansion (3, __$03__): 32K. Uses four 64K×4bit RAM instead of
   sixteen 64K×1bit RAM chips and adds motherboard connectors for a RAM
   expansion card (expands up to 1 MB). Updates ROM to SmartPort. Moves
   mouse to port 7; memory expansion uses port 4.
-- Memory expansion (4, $04): Version 3 with bugfixes.
+- Memory expansion (4, __$04__): Version 3 with bugfixes.
 - Apple IIc+ (5): next generation of IIc machines.
 
 Ch. 11 §"MMU" (p.242) and §"ROM addressing" (pp. 249-250) describe the
