@@ -294,8 +294,20 @@ is said to enable decoding of $C100-$DFFF; `ROMEN2*` is not mentioned.
 
 IOU (I/O Unit UE14) `CASSO` (pin 7) is tied to MON `A14` (pin 27) in
 32K ROM systems. p. 244 describes this only as "Reserved", but clearly
-it's dealing with ROM bank switching, which seems otherwise
-undocumented.
+it's dealing with ROM bank switching, which is undocumented by Apple.
+[rcse 14999] indicates that writing $C028 flips the two halves
+(there's no way to tell which is the current half, except by checking
+the contents of that address space). The exact behaviour varies per
+machine; the canonical addresses, actual ranges and functions are:
+
+    IIc       $C028  $C020-$C02F  flips $C100-$FFFF range
+    IIgs      $C028  ?            flips $D000-$FFFF range
+    IIe card  $C028  ?            switches to main ROM
+              $C029  ?            switches to aux. ROM
+
+XXX stuff to check out:
+- 'Scope `CASS0` pin on old ROM system.
+- Disassemble return stub in allegedly in $C7xx region.
 
 ROM map summaries and firmware listings are in Appendix I (p. 396).
 Enhanced video firmware in $C300-$C3FF and much of $C800-$CFFF.
@@ -352,6 +364,7 @@ This was model A2S4500. Differences include:
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
 [keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
 [mspec]: http://apple2.org.za/gswv/a2zine/faqs/Csa2KBPADJS.html#024
+[rcse 14999]: https://retrocomputing.stackexchange.com/a/14999/7208
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
 [sams]: https://archive.org/stream/Sams_Computer_Facts_Apple_IIc#mode/1up
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
