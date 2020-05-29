@@ -4,8 +4,6 @@ RAM/ROM/etc. Pinouts, Specs
 JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
 EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
 
-        O̅E̅+ = O̅E̅/Vpp
-
     '512 '256 '128  '64 '32A  '16           '16 '32A  '64 '128 '256 '512
                                   ┌───∪───┐
      A15  Vpp  Vpp  Vpp           │1    28│           Vcc  Vcc  Vcc  Vcc
@@ -14,7 +12,7 @@ EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
      A6   A6   A6   A6   A6   A6  │4    25│  A8   A8   A8   A8   A8   A8
      A5   A5   A5   A5   A5   A5  │5    24│  A9   A9   A9   A9   A9   A9
      A4   A4   A4   A4   A4   A4  │6    23│ Vpp  A11  A11  A11  A11  A11
-     A3   A3   A3   A3   A3   A3  │7    22│  O̅E̅  O̅E̅+   O̅E̅   O̅E̅   O̅E̅  O̅E̅+
+     A3   A3   A3   A3   A3   A3  │7    22│  O̅E̅ O̅E̅/Vpp O̅E̅   O̅E̅   O̅E̅ O̅E̅/Vpp
      A2   A2   A2   A2   A2   A2  │8    21│ A10  A10  A10  A10  A10  A10
      A1   A1   A1   A1   A1   A1  │9    20│  C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅
      A0   A0   A0   A0   A0   A0  │10   19│  D7   D7   D7   D7   D7   D7
@@ -65,6 +63,7 @@ Data Sheets
 -----------
 
 - Microchip [27C256]
+- Winbond [27C512]
 - Catalyst Semiconductor [CAT28F512]; 12 V programming/erase
 - Amtel [AT28C64], [AT28C256]; 5 V programming/erase
 
@@ -76,3 +75,4 @@ Data Sheets
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
 [AT28C64]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
 [CAT28F512]: https://datasheet.octopart.com/CAT28F512PI-90-Catalyst-Semiconductor-datasheet-1983.pdf
+[W27C512]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
