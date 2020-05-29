@@ -333,6 +333,15 @@ To use other chips, the following need to be dealt with:
   - pin 1: `Vpp`→`A14`, cut link to 5 V and jumper.
   - pin 27: `A14` → `W̅E̅`
 
+If the version __$FF__ image is written to any device larger than 16K
+it must be written twice.
+* On a system wired for a 16K ROM, A14 (connected to `S5/N̅M̅I̅`) will
+  normally be high, selecting the second copy, but when `N̅M̅I̅` is low,
+  the first copy will be selected.
+* On a system wired for a 32K ROM this ensures that if the $C020-C02F
+  (canonical port, $C028) range is accessed it will not switch to an
+  "empty" ROM.
+
 #### Further references:
 
 - [techref] Appendix F (pp.348-365) gives more detailed information on
