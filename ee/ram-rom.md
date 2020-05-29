@@ -4,53 +4,58 @@ RAM/ROM/etc. Pinouts, Specs
 JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
 EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
 
-    ¶ = Pin that additionally uses a higher voltage for programming,
-        erase or identification area access.
+- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS and EEPROMS
+  unless otherwise noted.
+- 28xxx series is 5V programmable, except for ID area. Two pins
+  different from JEDEC marked with `●`.
 
-    '512 '256 '128  '64 '32A  '16           '16 '32A  '64 '128 '256 '512
-                                  ┌───∪───┐
-     A15  Vpp  Vpp  Vpp           │1    28│           Vcc  Vcc  Vcc  Vcc
-     A12  A12  A12  A12           │2    27│           P̅G̅M̅  P̅G̅M̅  A14  A14
-     A7   A7   A7   A7   A7   A7  │3    26│ Vcc  Vcc  N/C  A13  A13  A13
-     A6   A6   A6   A6   A6   A6  │4    25│  A8   A8   A8   A8   A8   A8
-     A5   A5   A5   A5   A5   A5  │5    24│  A9   A9   A9   A9   A9   A9¶
-     A4   A4   A4   A4   A4   A4  │6    23│ Vpp  A11  A11  A11  A11  A11
-     A3   A3   A3   A3   A3   A3  │7    22│  O̅E̅   O̅E̅¶  O̅E̅   O̅E̅   O̅E̅   O̅E̅¶
-     A2   A2   A2   A2   A2   A2  │8    21│ A10  A10  A10  A10  A10  A10
-     A1   A1   A1   A1   A1   A1  │9    20│  C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅
-     A0   A0   A0   A0   A0   A0  │10   19│  D7   D7   D7   D7   D7   D7
-     D0   D0   D0   D0   D0   D0  │11   18│  D6   D6   D6   D6   D6   D6
-     D1   D1   D1   D1   D1   D1  │12   17│  D5   D5   D5   D5   D5   D5
-     D2   D2   D2   D2   D2   D2  │13   16│  D4   D4   D4   D4   D4   D4
-     GND  GND  GND  GND  GND  GND │14   15│  D3   D3   D3   D3   D3   D3
-                                  └───────┘
-    '512 '256 '128  '64 '32A  '16           '16 '32A  '64 '128 '256 '512
+Chart:
 
-Amtel AT28C devices, from data sheets.
-Two pins, marked with `●`, are different from JEDEC.
+         ¶  Pin addt'ly uses high-V for prog/erase/ID area or similar
+      RBNC  RDY/B̅U̅S̅Y̅ (or NC)
 
-        RBNC = RDY/B̅U̅S̅Y̅ (or NC)
+                        28C                  28C
+          16  32A   64   64   128  256  512  256
+    ┌──∪                                           ┌───∪
+    │1             Vpp RBNC  Vpp  Vpp  A15  A14    │1
+    │2             A12  A12  A12  A12  A12  A12    │2
+    │3    A7   A7   A7   A7   A7   A7   A7   A7    │3
+    │4    A6   A6   A6   A6   A6   A6   A6   A6    │4
+    │5    A5   A5   A5   A5   A5   A5   A5   A5    │5
+    │6    A4   A4   A4   A4   A4   A4   A4   A4    │6
+    │7    A3   A3   A3   A3   A3   A3   A3   A3    │7
+    │8    A2   A2   A2   A2   A2   A2   A2   A2    │8
+    │9    A1   A1   A1   A1   A1   A1   A1   A1    │9
+    │10   A0   A0   A0   A0   A0   A0   A0   A0    │10
+    │11   D0   D0   D0   D0   D0   D0   D0   D0    │11
+    │12   D1   D1   D1   D1   D1   D1   D1   D1    │12
+    │13   D2   D2   D2   D2   D2   D2   D2   D2    │13
+    │14  GND  GND  GND  GND  GND  GND  GND  GND    │14
+    └───                                           └────
+          16  32A   64   64   128  256  512  256
+                        28C                  28C
+          16  32A   64   64   128  256  512  256
+    ∪──┐                                           ∪──┐
+     28│           Vcc  Vcc  Vcc  Vcc  Vcc  Vcc     28│
+     27│           P̅G̅M̅   W̅E̅  P̅G̅M̅  A14  A14   W̅E̅●    27│
+     26│ Vcc  Vcc  N/C   NC  A13  A13  A13  A13     26│
+     25│  A8   A8   A8   A8   A8   A8   A8   A8     25│
+     24│  A9   A9   A9   A9¶  A9   A9   A9   A9¶    24│
+     23│ Vpp  A11  A11  A11  A11  A11  A11  A11     23│
+     22│  O̅E̅   O̅E̅¶  O̅E̅   O̅E̅   O̅E̅   O̅E̅   O̅E̅¶  O̅E̅     22│
+     21│ A10  A10  A10  A10  A10  A10  A10  A10     21│
+     20│  C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅   C̅E̅     20│
+     19│  D7   D7   D7   D7   D7   D7   D7   D7     19│
+     18│  D6   D6   D6   D6   D6   D6   D6   D6     18│
+     17│  D5   D5   D5   D5   D5   D5   D5   D5     17│
+     16│  D4   D4   D4   D4   D4   D4   D4   D4     16│
+     15│  D3   D3   D3   D3   D3   D3   D3   D3     15│
+    ───┘                                           ───┘
+          16  32A   64   64   128  256  512  256
+                        28C                  28C
 
-                       '256  '64            '64   '256
-                                  ┌───∪───┐
-                       ●A14 ●RBNC │1    28│ Vcc   Vcc
-                        A12   A12 │2    27│  W̅E̅    W̅E̅●
-                        A7    A7  │3    26│  NC   A13
-                        A6    A6  │4    25│  A8    A8
-                        A5    A5  │5    24│  A9¶   A9¶
-                        A4    A4  │6    23│ A11   A11
-                        A3    A3  │7    22│  O̅E̅    O̅E̅
-                        A2    A2  │8    21│ A10   A10
-                        A1    A1  │9    20│  C̅E̅    C̅E̅
-                        A0    A0  │10   19│  D7    D7
-                        D0    D0  │11   18│  D6    D6
-                        D1    D1  │12   17│  D5    D5
-                        D2    D2  │13   16│  D4    D4
-                        GND   GND │14   15│  D3    D3
-                                  └───────┘
-                       '256  '256          '256  '256
+#### AT28C notes
 
-AT28C notes:
 - No writes for 5 ms after Vcc reaches 3.8V.
 - Device identification memory: 32 bytes, $1FE0-$1FFFF. Raise `A9` to
   12V ±0.5V to read/write in the same way as regular memory.
