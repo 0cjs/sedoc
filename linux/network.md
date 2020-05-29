@@ -63,6 +63,7 @@ Directory integration.
   devices.
 - `ifconfig`, `route`, etc. (`net-tools` package): legacy programs
   replaced by `iproute2` tools.
+- `iw`: Configures WiFi devices
 
 #### nmcli Quickref
 
@@ -71,10 +72,14 @@ All subcommands may be abbreviated to one letter. Completion is available.
 - `nmcli`: Long summary of whole system state.
 - `nmcli device`: All device states, one per line.
 - `nmcli device show [DEV]`: Current interface config details.
+- `nmcli device wifi list`: List access point information.
 - `nmcli connection`: List all connections, one per line.
 - `nmcli connection show CON`: Very detailed connection information,
   including NM configuration settings, DHCP option details, etc.
 - `nmcli connection up|down CON`: Connect/disconnect.
+- `nmcli connection edit CON`: Interactive editor with completion and
+  help for all settings. The `nm-settings(5)` manpage may provide
+  slightly more information.
 
 [BSS]: http://bss.technology/tutorials/
 [Netplan]: https://netplan.io
