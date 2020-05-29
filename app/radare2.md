@@ -1,9 +1,10 @@
 Radare2
 =======
 
-A good inspection tool for binary files, disk images, etc. (Kind of a super
-`od` or `xxd`.) Disassembly good for fragments of code, but not for full
-reverse-engineering of a ROM image.
+A good inspection tool for binary files, disk images, etc. (Kind of a
+super `od` or `xxd`.) Has an excellent visual mode. Disassembly good
+for fragments of code, but not for full reverse-engineering of a ROM
+image.
 
 - [Website]
 - [GitHub repo `radare/radare2`][repo]
@@ -38,6 +39,7 @@ General:
 
 Setup commands:
 - `e`: settings. `e asm.` to display all `asm.*` vars.
+  `e.asm.arch=m680x` to set 6800 disassembly.
 - `i`: info about file
 - `om`: map offsets. `om`, `om=` to list.
   `omb. 0xNNNN` to relocate current map.
@@ -52,6 +54,43 @@ Examination commands:
 
 Other commands:
 - `d` debugger.
+
+### Visual Mode
+
+- `v` to enter. (Starts in panel mode; `!` to switch.)
+- `q`/`Q` to quit tab/all tabs
+- `?` for help. (`q` to back up in help)
+
+#### Non-panel Mode Commands
+
+Change current display (non-panel mode):
+- `p`,`P`: rotate print modes
+- `Tab`: next configuration of current print mode
+- `\`: split/unsplit horizontally
+- `m□`,`'□`: set/goto mark for key □
+
+#### Panel Mode Commands
+
+- `!`: enable/disable panels. (Default start is with panels enabled.)
+- `Tab`: move to next panel.
+- `X`: delete panel.
+- `:`: enter command-line mode; empty line exits
+
+Change current panel display:
+- `"`: choose panel display from a list (hexdump, etc.)
+- `D`: disassembly
+- `e`: change title and command
+- `|`,`-`: Vertical/horizontal display split
+
+Current panel movement:
+- `hkjl`,`HJKL`: 1 char/page in that direction
+- `^F`,`^B`: forward/back a block
+- `u`,`U`: undo/redo seek
+- `g`,`G`: go (seek) given offset/end of file
+- `^`,`$`: seek to beginning/end of curent map
+
+Misc:
+- `;`: Add comment
 
 
 Configuration Files
