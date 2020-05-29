@@ -1,11 +1,16 @@
 Apple IIc Hardware
 ==================
 
-All page numbers below not otherwise indicated refer to [The Apple IIc
-Technical Reference Manual][techref]. See that for full details,
-including hardware design, ROM listings, and schematics (pp. 292-296).
-There is also a separate [schematics] PDF, but that's worse quality
-than the manual.
+All page numbers below not otherwise indicated refer to the _Apple IIc
+Technical Reference Manual_. See that for full details, including
+hardware design, ROM listings, and schematics.
+
+References:
+- [_The Apple IIc Technical Reference Manual_][techref]
+  - Schematics on pp. 292-296 (newer model)
+- [Schematic Diagram of the Apple IIc][schematics] (A2S4000 model).
+- [_SAMS COMPUTERFACTS™: Apple® IIc A2S4000, Monitor A2M4090_][sams].
+  Includes alternative schematics.
 
 Changes from IIe:
 - CMT (cassette) support dropped.
@@ -191,6 +196,8 @@ reasons related to the routing of interrupts.
 - Port 1 DSR: `E̅X̅T̅I̅N̅T̅` from the external drive connector.
 - Port 2 DSR: `KSTRB` from keyboard.
 
+The serial port firmware has buffers in auxiliary memory page $08.
+
 Sending a "command character" (`Ctrl-I` port 1, `Ctrl-A` port 2) will
 cause the firmware to change the serial port settings (p.155, 169):
 
@@ -238,6 +245,28 @@ reversible.
 Models and ROM Versions
 -----------------------
 
+#### Full II Series
+
+Integer BASIC loaded from a DOS or BASICS disk loads the original
+Apple II monitor into the language card as well. Typing `INT` will
+switch to both Integer BASIC _and_ the original monitor, until you
+type `FP` or activate the 80-column firmware.
+
+"Appendix F: Apple II Series Differences" (p. 348) gives an overview
+followed by some details of differences between all models in the
+line, IIs, IIes and IIcs. ROM difference summary:
+
+    II         8K  $E000-$FFFF
+    II+       12K  $D000-$FFFF  miniasm/step/trace removed
+    IIe       16K  $C100-$FFFF  at start, self test code in $C400-$C7FF
+    IIc $FF   16K  $C100-$FFFF
+    IIc $00+  32K  $C100-$FFFF  bank swiched, miniasm/step/trace added
+
+Unlike the IIe, the IIc always maps $C800-$CFFF to system ROM because
+no ports (emulating slots) need it.
+
+#### IIc Models and ROMs
+
 There are several versions of the IIc. ROM versions are identified by
 `PEEK(-1089)` (64447, $FBBF); hex values are given below.
 
@@ -257,10 +286,43 @@ There are several versions of the IIc. ROM versions are identified by
 - Memory expansion (4, $04): Version 3 with bugfixes.
 - Apple IIc+ (5): next generation of IIc machines.
 
-16K ROM systems have trace W1 closed and W2 open; to change to 32K cut
-the former and bridge the latter.
+Ch. 11 §"MMU" (p.242) and §"ROM addressing" (pp. 249-250) describe the
+decoding. The MMU (UE16) generates `ROMEN1*` (pin 19, also `H`?) and
+`ROMEN2*` (pin 20, also `P`?); these are tied (through diodes)
+together to MON (UD18) `C̅E̅`, which also has a 1 kΩ pullup. `ROMEN1*`
+is said to enable decoding of $C100-$DFFF; `ROMEN2*` is not mentioned.
 
-Further references:
+IOU (I/O Unit UE14) `CASSO` (pin 7) is tied to MON `A14` (pin 27) in
+32K ROM systems. p. 244 describes this only as "Reserved", but clearly
+it's dealing with ROM bank switching, which seems otherwise
+undocumented.
+
+ROM map summaries and firmware listings are in Appendix I (p. 396).
+Enhanced video firmware in $C300-$C3FF and much of $C800-$CFFF.
+
+#### ROM Socket Pinout
+
+IC MON (UD18) is a 27128 (16K) in $FF models and 27256 in later models.
+The A2S4000 motherboard has provisions for upgrading to a 32K ROM:
+- `W1` cuttable trace to to signal `S5`.
+  - '128 (16K) ROM pin 27 = `P̅G̅M̅`.
+  - Connects: `N̅M̅I̅` on CPU, probably other things.
+  - Pin 27 marked as "(N.C.)" on p. 249; differs from schematic.
+  - Not sure why they'd bring `P̅G̅M̅` low on NMI.
+- `W2` solderable split pad jumper to `RA14`.
+  - '256 (32K) ROM pin 27 = `A14`.
+  - Connects: IOU (Input/Output Unit, UE14) pin 7 (`CASS0`?).
+
+To use other chips, the following need to be dealt with:
+- 27512 (64K): pin 1 `Vpp`→`A15`
+  - Use top half without modifications.
+  - To use bottom half, cut pin 1 link to 5 V and jumper to switch.
+- 28C256 (32K, 5V programmable):
+  - pin 1: `Vpp`→`A14`, cut link to 5 V and jumper.
+  - pin 27: `A14` → `W̅E̅`
+
+#### Further references:
+
 - [techref] Appendix F (pp.348-365) gives more detailed information on
   differences between all models.
 - [Apple IIc ROM Versions][romver]
@@ -291,5 +353,6 @@ This was model A2S4500. Differences include:
 [keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
 [mspec]: http://apple2.org.za/gswv/a2zine/faqs/Csa2KBPADJS.html#024
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
+[sams]: https://archive.org/stream/Sams_Computer_Facts_Apple_IIc#mode/1up
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
 [techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
