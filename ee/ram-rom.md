@@ -4,20 +4,19 @@ RAM/ROM/etc. Pinouts, Specs
 JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
 EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
 
-- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS and EEPROMS
-  unless otherwise noted.
-- 28xxx series is 5V programmable, except for ID area. Pins notably
-  different from JEDEC marked with `●`.
+- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS/EEPROMS.
+- 28xxx series is 5V programmable, except for ID area.
+  Pins notably different from JEDEC marked with `●`.
 
 Chart:
 
          ¶  Pin addt'ly uses high-V for prog/erase/ID area or similar
        RBN  RDY/B̅U̅S̅Y̅ or NC
 
-                        28C                  28C
-          16  32A   64   64   128  256  512  256
+                        28C            28C
+          16  32A   64   64  128  256  256  512
     ┌──∪                                           ┌───∪
-    │1             Vpp  RBN● Vpp  Vpp  A15  A14●   │1
+    │1             Vpp  RBN● Vpp  Vpp  A14● A15    │1
     │2             A12 ──────────────────── A12    │2
     │3    A7 ──────────────────────────────  A7    │3
     │4    A6 ──────────────────────────────  A6    │4
@@ -32,17 +31,17 @@ Chart:
     │13   D2 ──────────────────────────────  D2    │13
     │14  GND ────────────────────────────── GND    │14
     └───                                           └────
-          16  32A   64   64   128  256  512  256
-                        28C                  28C
-          16  32A   64   64   128  256  512  256
+          16  32A   64   64  128  256  256  512
+                        28C            28C
+          16  32A   64   64  128  256  256  512
     ∪──┐                                           ∪──┐
      28│           Vcc  Vcc  Vcc  Vcc  Vcc  Vcc     28│
-     27│           P̅G̅M̅   W̅E̅  P̅G̅M̅  A14  A14   W̅E̅●    27│
-     26│ Vcc  Vcc  N/C   NC  A13 ────────── A13     26│
+     27│           P̅G̅M̅   W̅E̅  P̅G̅M̅  A14   W̅E̅● A14     27│
+     26│ Vcc  Vcc   NC   NC  A13 ────────── A13     26│
      25│  A8 ──────────────────────────────  A8     25│
-     24│  A9   A9   A9   A9¶  A9   A9   A9   A9¶    24│
+     24│  A9   A9   A9   A9¶  A9   A9   A9¶  A9     24│
      23│ Vpp  A11 ───────────────────────── A11     23│
-     22│  O̅E̅   O̅E̅¶  O̅E̅   O̅E̅   O̅E̅   O̅E̅   O̅E̅¶  O̅E̅     22│
+     22│  O̅E̅   O̅E̅   O̅E̅   O̅E̅¶  O̅E̅   O̅E̅   O̅E̅¶  O̅E̅     22│
      21│ A10 ────────────────────────────── A10     21│
      20│  C̅E̅ ──────────────────────────────  C̅E̅     20│
      19│  D7 ──────────────────────────────  D7     19│
@@ -51,16 +50,16 @@ Chart:
      16│  D4 ──────────────────────────────  D4     16│
      15│  D3 ──────────────────────────────  D3     15│
     ───┘                                           ───┘
-          16  32A   64   64   128  256  512  256
-                        28C                  28C
+          16  32A   64   64  128  256  256  512
+                        28C            28C
 
 #### AT28C notes
 
 - No writes for 5 ms after Vcc reaches 3.8V.
-- Device identification memory: 32 bytes, $1FE0-$1FFFF. Raise `A9` to
-  12V ±0.5V to read/write in the same way as regular memory.
+- Device identification memory: 32 bytes, $1FE0-$1FFFF. Raise `A9¶`
+  to 12V ±0.5V to read/write in the same way as regular memory.
 - Chip clear:
-  - '64: `C̅E̅` low, `O̅E̅` 12V, 10 ms low pulse on `W̅E̅`.
+  - '64: `C̅E̅` low, `O̅E̅¶` 12V, 10 ms low pulse on `W̅E̅`.
   - '256: 6-byte software code.
 - Software data protection (SDP): enable/disable with special 3-byte
   command sequence. Write timers still active when SDP enabled, but the
