@@ -81,9 +81,32 @@ All subcommands may be abbreviated to one letter. Completion is available.
   help for all settings. The `nm-settings(5)` manpage may provide
   slightly more information.
 
+#### iw Quickref
+
+Some cards supported multiple connections at once via virtual
+interfaces [[ause 488604]]:
+
+    iw dev wlan0 interface add wlan1 type station
+    ip link set dev <dev-name> address <new-mac-address>  # if on same net
+    sudo iw dev wlan1 del
+
+However, for some reason on my Deb9/Linux4.19 system the interface is
+immediately renamed from the one I gave to `rename11` or similar, and
+NetworkManager says the device is "unavailable" (not "unmanaged").
+
+Documentation at:
+- [[iw-doc]], [[iw-doc-vif]]: Old wireless.wiki.kernel.org
+  documentation, main page and virtual interfaces/ad-hoc/mesh/monitor.
+- [[iw-ict]]: includes command-line `iw`, `iwconfig` and `ifconfig`
+  commands for manual configuration of WiFi interfaces.
+
 [BSS]: http://bss.technology/tutorials/
 [Netplan]: https://netplan.io
 [NetworkManager]: https://en.wikipedia.org/wiki/NetworkManager
+[ause 488604]: https://askubuntu.com/a/488604
+[iw-doc-vif]: https://web.archive.org/web/20160611122424/https://wireless.wiki.kernel.org/en/users/documentation/iw/vif
+[iw-doc]: https://web.archive.org/web/20160422194703/https://wireless.wiki.kernel.org/en/users/documentation/iw
+[iw-ict]: http://ict.siit.tu.ac.th/help/iw
 
 
 Interface Naming
@@ -96,13 +119,69 @@ following chars may include `o` (onboard), `s` (hotplug slot), `p`
 as `eth0` will be used if a name following the scheme above cannot be
 constructed.
 
+### Changing Interface Names
+
+Much of information below is documented in more detail in answers to
+question [[unse 386925]] on the Unix StackExchange.
+
+#### udev
+
 Debian also has `udev` to try to give fixed names to devices even when
 they're moved around (typically by MAC address0); rules are generated
 when a new network interface is detected and stored in
-`/etc/udev/rules.d/70-local-persistent-net.rules`.
+`/etc/udev/rules.d/70-local-persistent-net.rules`. Some docs at
+[[weinimo]].
 
 RH has something along those lines as well; possibly it's related to
 their `biosdevname` command and package.
+
+#### systemd.link
+
+systemd provides the [`systemd.link(5)`][systemd.link] layer over udev
+configure changing of device names. above. Also see [Renaming an
+interface][arch-sn-ren] on Archwiki. Example for WiFi interfaces to
+fix the bug described below:
+
+
+    [Match]
+    Type=wlan                       # from `networkctl list`
+    MACAddress=72:cd:c6:bf:07:b6    # may change each time device inserted?
+
+    [Link]
+    Description=USB Wifi Adapter, white, "Eon"
+    Name=wlanUw
+    MACAddressPolicy=persistent
+
+`systemctl restart systemd-networkd` should reload the config. In
+systemd ≥v244 there are also `networkctl reload` and `networkctl
+reconfigure` commands.
+
+This is a part of the more general `systemd.networkd(8)` configuration;
+see `systemd.network(5)` for more details.
+
+#### iw
+
+See the `iw` command quickref above for adding new devices based on an
+existing one; this might be usable as a substitute for changing names.
+
+### Bugs Related to Interface Naming
+
+NetworkManager (as of Debian 9) has a bug where if the WiFi interface
+name is too long (like `wlx000f009a0b1c` above) it will authenticate
+and then deauth with a message like `aborting authentication with ...
+by local choice (Reason: 3=DEAUTH_LEAVING)`. Renaming the interface
+using one of the methods above can fix this. More at [[unse 386925]].
+
+If you can't get one of the above solutions working (I can't), `touch
+/etc/systemd/network/99-default.link` will inhibit the default
+configuration for long name behaviour by overriding
+`/lib/systemd/network/99-default.link`. [[deblist 01045]]
+
+[arch-sn-ren]: https://wiki.archlinux.org/index.php/Systemd-networkd#Renaming_an_interface
+[deblist 01045]: https://lists.debian.org/debian-user/2017/06/msg01045.html
+[systemd.link]: https://www.freedesktop.org/software/systemd/man/systemd.link.html
+[unse 386925]: https://unix.stackexchange.com/q/386925/10489
+[weinimo]: https://weinimo.github.io/how-to-write-udev-rules-for-usb-devices.html
 
 
 netconf: Debian Legacy Network Config
