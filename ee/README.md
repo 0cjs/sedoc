@@ -18,7 +18,7 @@ Standard chars used here:
 - U+2295 `⊕`  `0+` circled plus (XOR); vim digraph is cjs config
 - U+2260 `≠`  `!=` not equal to
 
-Other characters I've considered:
+Other logic characters I've considered:
 - U+203E `‾ '-` [overline]
 - U+2218 `∘ Ob` ring operator
 - U+00AC `¬ NO` logical NOT
@@ -29,6 +29,11 @@ Other characters I've considered:
 - U+22BB `⊻   ` logical xor
 
 The [Unicode Mathematical Operators block][ucmath] has more ideas.
+
+Electronics symbols:
+- U+23DA `⏚` earth ground
+- U+238D `⎍` monostable symbol
+- U+238E `⎎` hysteresis symbol
 
 ### "NOT" Signals
 
