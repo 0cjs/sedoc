@@ -53,9 +53,9 @@ Adders
 ALUs
 ----
 
-The [74181 set][74181],  [74x181][TI SN74LS181] 4-bit ALU and [74x182]
-look-ahead carry generator, are the "standard" bit-slice ALU components.
-Data can be active-low or active-high. Pins are:
+The [74181 set][74181],  [74x181] 4-bit ALU and [74x182] look-ahead carry
+generator, are the "standard" bit-slice ALU components. Data can be
+active-low or active-high. Pins:
 - `A0…A3 B0…B3` data inputs, `Cₙ` ripple carry input
 - `S0…S3` function selection inputs, `M` mode control (high disables carry)
 - `F0…F3` data outputs, `Cₙ₊₄` ripple carry output
@@ -79,8 +79,8 @@ board (with a couple of 100 nF caps):
 <!-------------------------------------------------------------------->
 [74181]: https://en.wikipedia.org/wiki/74181
 [PISC]: https://www.bradrodriguez.com/papers/piscedu2.htm
-[TI SN74LS181]: http://www.ti.com/lit/gpn/sn54ls181
-[TI SN74LS182]: http://www.ti.com/lit/ds/symlink/sn54s182.pdf
+[74x181]: http://www.ti.com/lit/gpn/sn54ls181
+[74x182]: https://web.archive.org/web/20160418004301/http://www.ti.com/lit/ds/symlink/sn74s182.pdf
 [binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
 [roelh 4 bit TTL ALU]: https://hackaday.io/project/160506-4-bit-ttl-alu
 [roelh log 1]: https://hackaday.io/project/160506-4-bit-ttl-alu/log/151031-the-multiplexer-is-the-heart-of-the-alu
