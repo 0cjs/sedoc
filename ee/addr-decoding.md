@@ -4,7 +4,7 @@ Address Decoding Notes
 General Notes
 -------------
 
-* See [ram-rom](ram-rom.md) for memory device pinouts.
+* See [memory](memory.md) for memory device pinouts.
 * 0.1 μF between power and ground!
   - Every eight chips, 4.7 μF on array's power rails (PCB trace inductances).
   - When using multiple solderless breadboards, jumper between GND (and
