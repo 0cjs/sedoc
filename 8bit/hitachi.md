@@ -15,22 +15,24 @@ PC-6001 etc. spelled the end of home user popularity.
 character-based "graphics":
 
 - Basic Master __MB-6880__ (1978-09): 0.75 MHz, ROM/RAM 16K/4K.
-  300 bps cassette.
+  300 bps cassette. 64×48 monochrome graphics.
 - Basic Master Level 2 __MB-6880L2__ (1979-02): ROM/RAM 16K/8K.
   BASIC adds floating point.
 - Basic Master Level 2 II __MB-6881__ (1980): ROM/RAM 16K/16K.
+  MZ080 and PC-8001 become noticably more popular.
 - Basic Master Jr. __MB-6885__ (1981): ROM/RAM 18K/16K (63.5K).
-  Smaller case; VRAM for 256×192 b/w graphics. ROM upgrade increased
-  cassette speed to 1200 baud. Peripherals:
+  Smaller case; VRAM for 256×192 b/w graphics (no ROM BASIC support).
+  - Post-release ROM upgrade increased cassette speed to 1200 baud.
   - MP-9785 adds expanded RAM (64K?) allowing full RAM address space
     excepting I/O area.
   - MP-1710 Color Adapter (on expansion bus) allows 8-color graphics.
   - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
 
-6809 Models (predate FM-8):
+6809 Models (predates FM-8 by one year, FM-7 by 2.5 years):
 
-- Basic Master Level 3 __MB-6890__ (1980-05): 1 MHz. 640×200 b/w,
-  320×200×8. 600 bps cassette; optional floppies.
+- Basic Master Level 3 __MB-6890__ (1980-05): 1 MHz.
+  640×200 b/w, 320×200×8 (per-byte color bits, FB in main addr space).
+  600 bps cassette; optional floppies.
 - Mark II __MB6891__ (1982-04):
 - Mark 5 __MB6892__ (1983-04): Programmable character generator.
 
@@ -52,9 +54,18 @@ Emulators:
 Connectors
 ----------
 
+Basic Master MB-6890 (and probably later models):
+- PRINTER (36 pin micro-ribbon)
+- RS-232C (female DB-25)
+- (Unlabled) RCA: Composite output
+- COLOR (DIN-8 270°): Analog RGB on at least MB-6891.
+- L/PEN (DIN-5)
+- CASSETTE (DIN-6): Supports 2 units?
+- Internal expansion slots w/panels on back (6?).
+
 [Basic Master Jr.][ar-bmj]:
 - ビデオ1 (RCA): Composite output
-- ビデオ2 (DIN-8 270°):
+- ビデオ2 (DIN-8 270°): Analog RGB on at least MB-6891.
 - カセット (DIN-6): Supports 2 units?
 - Printer: 36-pin mini-ribbon
 - Expansion: 50-pin mini-ribbon (color video adapter, etc.)
