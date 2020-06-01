@@ -52,17 +52,32 @@ Specific Techniques
 
 ### 6502
 
-Qualification of `C̅E̅`/`O̅E̅`/`W̅E̅` [[Searle 6502]]:
+#### Φ2 Qualification
+
+The criticial thing is to qualify RAM writes becuase there if the
+address bus is not stable it will change random areas of memory.
+Unqualified reads are no big deal; the CPU is will not latch the data
+bus before its address bus has settled.
+
+[[Searle 6502]] qualifying `C̅E̅`/`O̅E̅`/`W̅E̅` :
 - Read:  `Φ2` NAND  `R/W̅` → `O̅E̅` (RAM and ROM).
 - Write: `Φ2` NAND ¬`R/W̅` → `W̅E̅` (`O̅E̅` disabled by read qual.).
 - Do not qualify `C̅E̅` with `Φ2`, let it go out as soon as addr bus valid.
 
-The simpler versions from [[wm addr]] qualify only RAM `C̅S̅`, and link
-`O̅E̅` and `C̅S̅`/`C̅E̅`. This is fine at slow speeds. The criticial thing
-is to qualify RAM writes becuase there if the address bus is not
-stable it will change random areas of memory. Unqualified reads are no
-big deal; the CPU is will not latch the data bus before its address
-bus has settled.
+[[wm addr]] simple 3-NAND qualification/decoding:
+- Qualifies only RAM `C̅S̅`.
+- Links `O̅E̅` and `C̅S̅`/`C̅E̅`; fine at slow speeds.
+- Further variations later on page.
+
+Michael's [fast single-'139 qualification/decoding][f6-p43668]:
+- 32K RAM, 16K I/O, 16K ROM
+- 1: Φ2 Qualified /RD & /WR
+- 2: Φ2 Qualified RAM Select
+- Later post 3rd method: drive active high chip select on RAM from Φ2.
+- Thread has more designs and discusses chip select vs. read/write
+  signal timing.
+
+#### Other
 
 Extended memory:
 * Use `S̅Y̅N̅C̅` to identify when `LDA/STA (zp),Y` ($91/$B1) is being read
@@ -208,6 +223,7 @@ More chip pinouts to use in further examples.
 [Searle 6809]: http://searle.wales/6809/Simple6809.html
 [Searle Z80]: http://searle.wales/z80/SimpleZ80.html
 [decoddown]: http://forum.6502.org/viewtopic.php?f=12&t=3620&sid=4c12bb500e4de4611e2dd902aed40ec7&start=15
+[f6-p43668]: http://forum.6502.org/viewtopic.php?f=12&t=3620&start=15#p43668
 [rcse-4932/7208]: https://retrocomputing.stackexchange.com/a/4932/7208
 [wm addr]: http://wilsonminesco.com/6502primer/addr_decoding.html
 
