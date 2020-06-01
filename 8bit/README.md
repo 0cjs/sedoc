@@ -47,6 +47,7 @@ Timeline
     1976-06 * Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
     1976-06   SWTPC AC-30 cassette interface
     1976-06   MS BASIC-80 ported to 6502 (summer)
+    1976-08   NEC TK-80 (kit)
     1976-09   PET 2001 design starts (turned down prototype Apple II)
     1976-12   TRS-80 Mod1 design starts
 
