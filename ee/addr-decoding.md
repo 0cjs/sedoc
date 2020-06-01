@@ -59,6 +59,10 @@ address bus is not stable it will change random areas of memory.
 Unqualified reads are no big deal; the CPU is will not latch the data
 bus before its address bus has settled.
 
+However, there are some peripheral chips, such as some 65C22s, that
+may need [chip selects, register selects and `R/W̅` all valid before
+`Φ2` rises][f6-p8953].
+
 [[Searle 6502]] qualifying `C̅E̅`/`O̅E̅`/`W̅E̅` :
 - Read:  `Φ2` NAND  `R/W̅` → `O̅E̅` (RAM and ROM).
 - Write: `Φ2` NAND ¬`R/W̅` → `W̅E̅` (`O̅E̅` disabled by read qual.).
@@ -224,6 +228,7 @@ More chip pinouts to use in further examples.
 [Searle Z80]: http://searle.wales/z80/SimpleZ80.html
 [decoddown]: http://forum.6502.org/viewtopic.php?f=12&t=3620&sid=4c12bb500e4de4611e2dd902aed40ec7&start=15
 [f6-p43668]: http://forum.6502.org/viewtopic.php?f=12&t=3620&start=15#p43668
+[f6-p8953]: http://forum.6502.org/viewtopic.php?p=8953#p8953
 [rcse-4932/7208]: https://retrocomputing.stackexchange.com/a/4932/7208
 [wm addr]: http://wilsonminesco.com/6502primer/addr_decoding.html
 
