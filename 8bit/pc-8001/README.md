@@ -38,13 +38,16 @@ See [DIN Connectors](../hw/din-connector.md) for pin numbering details.
 
 #### RGBI (8-pin 270° DIN)
 
-RGB connector, from Nishida Radio [デジタル RGB コンポーネント・アダプタ
-][nr-drgb] and [PC-8001用RGBケーブルを作成してみよう！！ ][hkjunk0], which
-also seems to contain information on converting it (via passive parts only)
-to analogue RGB. (WARNING: This pinout needs to be confirmed on the
-hardware; Nishida Radio claims the same pinout for the PC-8801mkII and
-first-gen FM-7, but [Leaded Solder][ls-pc88cv] has a PC-8801mkII pinout
-with green/red swapped and +12V on pin 3.)
+Sources:
+- [デジタル RGB コンポーネント・アダプタ][nr-drgb]
+- [PC-8001用RGBケーブルを作成してみよう！！ ][hkjunk0], which also has
+  information on converting it via passive parts only to analogue RGB.
+- [デジタルRGB(8ピン）はアナログRGBの夢を見れるか？ ][def_int].
+
+(WARNING: This pinout needs to be confirmed on the hardware; Nishida
+Radio claims the same pinout for the PC-8801mkII and first-gen FM-7,
+but [Leaded Solder][ls-pc88cv] has a PC-8801mkII pinout with green/red
+swapped and +12V on pin 3.)
 
     ＃      PC-8001mkII     備考
     1       VCC (12V?)      N/C
@@ -199,6 +202,7 @@ Also see Table 2 (p.80) in [Byte] for summary and [asahi] for more details.
 [sbeach.seesaa.net]: http://sbeach.seesaa.net/
 
 <!-- Connector Pinouts -->
+[def_int]: https://web.archive.org/web/20191127114212/blogs.yahoo.co.jp/def_int/34113679.html
 [er519]: https://electrelic.com/electrelic/node/519
 [er78]: https://electrelic.com/electrelic/node/78
 [hkjunk0]: https://hkjunk0.com/computer/hardware-and-maintenance/pc8001-rgb-output.html
