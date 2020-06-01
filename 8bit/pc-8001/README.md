@@ -38,12 +38,16 @@ See [DIN Connectors](../hw/din-connector.md) for pin numbering details.
 
 #### RGBI (8-pin 270° DIN)
 
-RGB connector, from [PC-8001用RGBケーブルを作成してみよう！！ ][hkjunk0],
-which also seems to contain information on converting it (via passive parts
-only) to analogue RGB.
+RGB connector, from Nishida Radio [デジタル RGB コンポーネント・アダプタ
+][nr-drgb] and [PC-8001用RGBケーブルを作成してみよう！！ ][hkjunk0], which
+also seems to contain information on converting it (via passive parts only)
+to analogue RGB. (WARNING: This pinout needs to be confirmed on the
+hardware; Nishida Radio claims the same pinout for the PC-8801mkII and
+first-gen FM-7, but [Leaded Solder][ls-pc88cv] has a PC-8801mkII pinout
+with green/red swapped and +12V on pin 3.)
 
     ＃      PC-8001mkII     備考
-    1       VCC             N/C
+    1       VCC (12V?)      N/C
     2       GND
     3       Clock(14MHz)    N/C
     4       HSync           水平同期信号 (TTL or video level?)
@@ -199,6 +203,8 @@ Also see Table 2 (p.80) in [Byte] for summary and [asahi] for more details.
 [er78]: https://electrelic.com/electrelic/node/78
 [hkjunk0]: https://hkjunk0.com/computer/hardware-and-maintenance/pc8001-rgb-output.html
 [kenko858]: http://kenko858.blog.fc2.com/blog-entry-4.html
+[ls-pc88cv]: https://www.leadedsolder.com/2018/09/24/pc88-colour-video.html
+[nr-drgb]: http://tulip-house.ddo.jp/DIGITAL/DIGITAL_RGB_COMPONENT/
 [pc6001]: https://archive.org/details/PC6001mkII
 [sb-rgb11]: http://sbeach.seesaa.net/article/450572908.html
 [sb-rgb13]: http://sbeach.seesaa.net/article/450981469.html
