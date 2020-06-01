@@ -165,14 +165,15 @@ $8000-$BFFF to a single select.
       A12 → A   │1  16│ Vcc
       A13 → B   │2  15│ Y̅0 → $8000
       A14 → C   │3  14│ Y̅1 → $9000
-        ⏚ → G̅2A │4  13│ Y̅2 → $A000
-        ⏚ → G̅2B │5  12│ Y̅3 → $B000
+      Gnd → G̅2A │4  13│ Y̅2 → $A000
+      Gnd → G̅2B │5  12│ Y̅3 → $B000
       A15 → G1  │6  11│ Y̅4 → $C000
     $F000 ← Y̅7  │7  10│ Y̅5 → $D000
-            ⏚   │8   9│ Y̅6 → $E000
+            Gnd │8   9│ Y̅6 → $E000
                 └─────┘
 
-'138 decodes 1K blocks $A000-$BFFF. Requires inverter for A14.
+'138 decodes 1K blocks $A000, $A400, ..., $B800, $BC00.
+Requires inverter for A14.
 
                 ┌──∪──┐
       A10 → A   │1  16│ Vcc
@@ -182,30 +183,30 @@ $8000-$BFFF to a single select.
       A14 → G̅2B │5  12│ Y̅3 → $AA00
       A15 → G1  │6  11│ Y̅4 → $B000
     $BC00 ← Y̅7  │7  10│ Y̅5 → $B400
-            ⏚   │8   9│ Y̅6 → $BC00
+            Gnd │8   9│ Y̅6 → $BC00
                 └─────┘
 
 More chip pinouts to use in further examples.
 
-                        '08 AND
+                       '08 AND
                 ┌──∪──┐ '00 NAND
-           → 1A │1  14│ Vcc
-           → 1B │2  13│ 4A →
-           → 1Y │3  12│ 4B →
-           → 1A │4  11│ 4Y →
-           → 1B │5  10│ 3A →
-           → 1Y │6   9│ 3B →
-           ← ⏚  │7   8│ 3Y →
+          → 1A  │1  14│ Vcc
+          → 1B  │2  13│ 4A →
+          → 1Y  │3  12│ 4B →
+          → 1A  │4  11│ 4Y →
+          → 1B  │5  10│ 3A →
+          → 1Y  │6   9│ 3B →
+          ← Gnd │7   8│ 3Y →
                 └─────┘
 
                 ┌──∪──┐ '04 NOT
-           → 1A │1  14│ Vcc
-           → 1Y │2  13│ 6A →
-           → 2A │3  12│ 6Y →
-           → 2Y │4  11│ 5A →
-           → 3A │5  10│ 5Y →
-           → 3Y │6   9│ 4A →
-           ← ⏚  │7   8│ 4Y →
+          → 1A  │1  14│ Vcc
+          → 1Y  │2  13│ 6A →
+          → 2A  │3  12│ 6Y →
+          → 2Y  │4  11│ 5A →
+          → 3A  │5  10│ 5Y →
+          → 3Y  │6   9│ 4A →
+          ← Gnd │7   8│ 4Y →
                 └─────┘
 
                 ┌──∪──┐ '85 =,<,>
@@ -216,7 +217,7 @@ More chip pinouts to use in further examples.
           ← A>B │5  12│ A1 →
           ← A=B │6  11│ B1 →
           ← A<B │7  10│ A0 →
-            ⏚   │8   9│ B0 →
+            Gnd │8   9│ B0 →
                 └─────┘
 
 
