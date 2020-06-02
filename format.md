@@ -144,3 +144,40 @@ YouTube
 
 - Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`.
 - Bare links only.
+
+
+MediaWiki/Wikipedia Wikitext
+----------------------------
+
+Reference: [[Wikitext]].
+
+#### General Inline Formatting
+
+- Unicode non-breaking spaces, `&nbsp;`, `{{Nowrap| this and that}}`.
+- `''italics''`, `'''bold'''`, `'''''italic+bold'''''`.
+- `<code>computer text</code>`
+- `<sub>subscript</sub>`, `<sup>superscript</sup>`.
+- `<small>smaller text</small>` can be useful for "small caps."
+- [Math][wt math]: `<math>LaTeX code</math>`.
+
+#### General Block Formatting
+
+- Two newlines for paragraph break; `<br/>` for line break.
+- Indented paragarphs use one or more `:` at start of line.
+- `<blockquote>...</blockquote>`
+- Sections: `= Level 1 =`, `== Level 2 ==`.
+- Lists: `* Level 1`, `** Level 2`; `#` for numbered lists.
+- Description lists: `; Term : Definition`, or multiple definitions on new
+  lines starting with `:`.
+
+#### Links
+
+- "Free links" to pages: `[[Page Name]]`, `[[Page Name#section name]]`,
+  `[[#section]]`.
+- Renamed links: `[[Page Name#section|text to display]]`, or
+  `[[Page Name|]]` for automatic renaming (removal of parens, etc.)
+- Blending: `[[Page]]es`. Suppressed: `[[Page]]<nowiki/>ing`.
+- External links: `[http://foo.com text to display]`.
+
+[wikitext]: https://en.wikipedia.org/wiki/Help:Wikitext
+[wt math]: https://en.wikipedia.org/wiki/Help:Displaying_a_formula
