@@ -15,7 +15,11 @@ Stuff I've encountered while reading Japanese manuals.
     倍密度      ばいみつど      double density
     倍密度倍    ばいみつどばい  double-density double ???
     書き込む    かきこむ        fill in, post, store
+    信号        しんごう        signal
     制御        せいぎょ        control, management
+    色相        しきそう        huge, colour phase
+    色相制御信号                RGBI intensity bit
+
 
 Stuff from dictionaries:
 
