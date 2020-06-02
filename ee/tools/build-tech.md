@@ -40,6 +40,31 @@ iron against not (not too slowly).
 [jre-sol10]: https://josepheoff.github.io/posts/howtosolder-10soldersucker
 
 
+### Soldering Iron
+
+[Goot PX-201], 70 W temperature controlled. Tip base is ∅7mm × 37.
+
+                     R      Style
+    ●PX-2RT-SB      0.3     conical
+    ●PX-2RT-B       0.5     conical             standard tip/w PX-201
+    ●PX-2RT-BC      1.0     45° conic section
+     PX-2RT-2C
+     PX-2RT-3C
+     PX-2RT-4C
+     PX-2RT-5C
+     PX-2RT-1.6D
+    ●PX-2RT-2.4D    2.4     chisel
+     PX-2RT-3.2D
+     PX-2RT-4D
+     PX-2RT-5D
+     PX-2RT-5K
+
+The above came off a shop inventory listing; there are more on the
+[Goot site][goot px-201].
+
+[goot px-201]: http://www.goot.jp/en/handakote/px-201/
+
+
 SMD
 ---
 
