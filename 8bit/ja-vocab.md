@@ -19,6 +19,7 @@ Stuff I've encountered while reading Japanese manuals.
     制御        せいぎょ        control, management
     色相        しきそう        huge, colour phase
     色相制御信号                RGBI intensity bit
+    初期化      しょきか        initialization
 
 
 Stuff from dictionaries:
