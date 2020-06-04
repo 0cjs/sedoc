@@ -7,7 +7,9 @@ Things related to this include:
 * The built-in function [`open()`]
 * [File and Directory Access][stdlib-filedir] libraries,
   especially [`pathlib`] and [`os.path`]
+* [`shutil`] for high-level file operations such as recursive copies.
 * [Generic Operating System Services][stdlib-genos] (`os` and `io`)
+
 
 Also see [File and Network I/O](io.md).
 
@@ -206,6 +208,7 @@ Other Libraries
 [`pathlib2`]: https://github.com/mcmtroffaes/pathlib2
 [`pathlib`]: https://docs.python.org/3/library/pathlib.html
 [`py.path`]: https://py.readthedocs.io/en/latest/path.html
+[`shutil`]: https://docs.python.org/3/library/shutil.html
 [file objects]: https://docs.python.org/3/glossary.html#term-file-object
 [py]: https://py.readthedocs.io/
 [stdlib-filedir]: https://docs.python.org/3/library/filesys.html
