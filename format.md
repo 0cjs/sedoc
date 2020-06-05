@@ -1,6 +1,13 @@
 Text Format Codes
 =================
 
+#### Embedded URL Reformatting
+
+Extract URLs from other URLs with
+
+    sed -e 's,.*https%3A,https:,; s,%2F,/,g; s,%3F,?,g; s,%3D,=,g'
+
+
 Disqus
 ------
 
@@ -181,3 +188,5 @@ Reference: [[Wikitext]].
 
 [wikitext]: https://en.wikipedia.org/wiki/Help:Wikitext
 [wt math]: https://en.wikipedia.org/wiki/Help:Displaying_a_formula
+
+
