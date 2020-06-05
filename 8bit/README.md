@@ -69,8 +69,10 @@ Timeline
 
     1981-   * VIC-20 released
     1981-05 * Fujitsu FM-8 released
+    1981-11 * Panasonic/National JR-100 released
 
     1982-   * Commodore MAX Machine released
+    1982-     Panasonic/National JR-200 released
     1982-08 * Commodore 64 Released
     1982-11 * Fujitsu FM-7 released
 
