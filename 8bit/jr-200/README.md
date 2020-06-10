@@ -3,10 +3,15 @@ National/Panasonic Personal Computer Jr.200
 
 6800-based machine (actually 6802 clone). 32 KB RAM; 16 KB ROM.
 
+It was also sold in Finland as the Panasonic JR-200UP. It got far enough
+into a U.S. release that there was a [_Creative Computing_ review in May
+1983][ccreview] (2nd/3rd pages are swapped).
+
 References:
 - \[Reunanen] Markku Reunanen, [Discovering the Panasonic JR-200U][Reunanen]
   Excellent resource for both info and projects, including device to
   DMA into memory from expansion bus..
+- \[Heikkinen] Tero Heikkinen, [Old Machinery][Heikkinen] blog `jr200up` tag.
 
 
 Internal Hardware
@@ -152,5 +157,7 @@ __外部バス__, 25 pin × 2 row 0.1" male header in IDC surround.
 
 
 <!-------------------------------------------------------------------->
+[Heikkinen]: https://oldmachinery.blogspot.com/search/label/jr200up
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
+[ccreview]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up
 [oh-c]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
