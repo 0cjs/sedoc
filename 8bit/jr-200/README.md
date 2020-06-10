@@ -3,9 +3,10 @@ National/Panasonic Personal Computer Jr.200
 
 6800-based machine (actually 6802 clone). 32 KB RAM; 16 KB ROM.
 
-It was also sold in Finland as the Panasonic JR-200UP. It got far enough
-into a U.S. release that there was a [_Creative Computing_ review in May
-1983][ccreview] (2nd/3rd pages are swapped).
+It was also sold in Finland as the Panasonic JR-200UP (PAL output). The
+North American edition, the JR-200U, got far enough into a U.S. release
+that there was a [_Creative Computing_ review in May 1983][ccreview]
+(2nd/3rd pages are swapped).
 
 References:
 - \[Reunanen] Markku Reunanen, [Discovering the Panasonic JR-200U][Reunanen]
@@ -30,7 +31,7 @@ MN = Matsushita (Panasonic). HD,HM = Hitachi.
   - IC5 (twoards front). Seen labels: "A1".
 - 4× HM4864P-3 64K×1 DRAM. (DIP-16)
 - 2× HM6116P-3 6116 2K×8 static RAM (DIP-28)
-- MN1544CJR 4-bit sub-CPU (HD-DIP-40)
+- MN1544CJR 4-bit sub-CPU (HD-DIP-40); 4K ROM, 128 bytes RAM
 
 DRAM is only 4-bits wide; presumably a memory controller handles doing
 two-cycle reads/writes. This slows down the system; [[Reunanen]]
@@ -48,8 +49,7 @@ Power Supply
 - Internal PSU; input 100 VAC 50/60 Hz 8 W.
 - AC goes through switch to step-down transformer:
   - Label: TI-219; IKD-2H; 100 V; 27 V 12 VA
-  - Measured output on motherboard connector: 22.5 VAC
-label, measured 22.5 VAC.
+  - Measured output on mobo connector: 22.5 VAC label, measured 22.5 VAC.
 
 I/O Interfaces
 --------------
@@ -57,6 +57,8 @@ I/O Interfaces
 DIP switches on bottom: CH2/CH1, ｶﾗｰ/ﾓﾉｸﾛ, 2400ﾎﾞｰ/600ﾎﾞｰ (for CMT).
 
 ### Video
+
+See also [video](video.md) for addressing/software details.
 
 __RF出力__ RCA jack. Internal coax cable terminating with RCA plug
 plugged into the RCA jack on the internal RF modulator case. Easy
@@ -151,8 +153,14 @@ Possibly CN10 (see above) is the internal connector for this.
 
 ### Expansion Bus
 
-__外部バス__, 25 pin × 2 row 0.1" male header in IDC surround.
+__外部バス__, 25 pin × 2 row 0.1" male header in IDC surround. May have
+serial port lines as well.
 
+
+Peripherals
+-----------
+
+Supposedly a 5.25" floppy drive was made.
 
 
 
