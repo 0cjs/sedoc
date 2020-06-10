@@ -87,9 +87,15 @@ into the male connector on the PC and the female connector on the IIc:
 
 #### CMT (Cassette Tape) 8-pin DIN
 
+      2  GND        Computer usu. also 1, 3, 8; cable usu. unconnected.
       4  REC        CMT microphone; output from computer
       5  PLAY       CMT playback; input to computer
     6,7  REM+,REM-  Relay open for stop; closed for motor run
+
+Manufacturer cables I have invariably connect only 2 to ground, leaving 1,
+3, 8 and shield unconnected. Also invariably, relay ring is 6 and relay tip
+is 7. (All came with used equipment, one with a Panasonic JR-200, one with
+a NEC PC-DR311 data recorder, one from unknown source.)
 
 Apple standard headphone connectors and most (?) Android use the
 following TRRS, but some other phones ground and mic. In all cases,
