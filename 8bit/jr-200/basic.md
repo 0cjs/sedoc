@@ -57,9 +57,12 @@ Unknown:
 Sources
 -------
 
-- [_Creative Computing_ review][ccreview], May 1983. (2nd/3rd pages swapped.)
+- [_Creative Computing_ review][ccreview], May 1983. The [original
+  scan][ccreview-orig] has the photos and code, but the 2nd and 3rd pages
+  are swapped.
 
 
 
 <!-------------------------------------------------------------------->
-[ccreview]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up
+[ccreview]: https://www.atarimagazines.com/creative/v9n5/16_Panasonic_JR200.php
+[ccreview-orig]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up
