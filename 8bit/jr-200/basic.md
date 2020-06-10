@@ -8,6 +8,8 @@ Written by Matsushita System Engineering (not an MS BASIC). It has a
 - Integers and 9-digit floating point numbers are available. Integers
   prefixed with `$` are hexadecimal.
 - Variable names are 2-chars only; more gives syntax error.
+- CMT save filenames may include any combination of underscore, numbers and
+  mixed-case letters. Other chars will cause a syntax error.
 
 Many keywords and functions are on the keytops (entered with the CTRL key).
 
@@ -31,8 +33,16 @@ I/O:
 - `STICK`: Read joystick ports.
 - `LPRINT`, `LLIST`
 - `HCOPY`: Screen dump to printer. (Not clear what it does with graphics.)
-- `LOAD "name"`, `SAVE "name"`. BASIC tape load/save. _name_ optional.
-- `MLOAD "name",...`, `MSAVE "name",...`: Memory load/save.
+
+Save/load:
+- `SAVE "name"`. Save BASIC program to tape. _name_ must not be empty
+  string. Five seconds silence before data starts.
+- `VERIFY "name"`: Verify save matches in-memory program. _name_ optional.
+- `LOAD "name"` Load BASIC program from tape. _name_ optional.
+- `MSAVE "name",start,end`: Save memory, from _start_ though _end_
+  inclusive.
+- `MLOAD "name",start`: Load memory, save address used if _start_ not
+  provided.
 
 Programming:
 - `RUN n`: (Re-)run program, optionally at a given line number. Given a
