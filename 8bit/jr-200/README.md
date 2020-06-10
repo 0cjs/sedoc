@@ -149,55 +149,8 @@ Possibly CN10 (see above) is the internal connector for this.
 __外部バス__, 25 pin × 2 row 0.1" male header in IDC surround.
 
 
-ROM
----
-
-The boot screen is as follows, and may come up in two different colours.
-
-    JR BASIC 5.0
-    (C) 1982 by
-    Matsushita System Engineering
-    Free Bytes 30716
-    Ready
-
-- Dark blue text, cyan background, green border.
-- White text, black background, black border.
-
-\[Reunanen] has disassemblies of his [BASIC ($A000)][r-dis-bas] and
-[system ($E000)][r-dis-sys] ROMs, but they are completely raw, no
-comments, data/code separation, or labels for vectors.
-
-### Machine-language Monitor
-
-The system ROM has simple machine-language monitor built-in (at least
-on my white/black/black version); it comes up with a `> ` prompt by
-using the `MON` command from BASIC or when the machine is started
-without a BASIC ROM installed. Some experimentation discovered the
-following (case-sensitive) commands. When an address `aaaa` (upper or
-lower case) is not given, the default is just after the last address
-displayed.
-
-- `Daaaa`: Dump $80 bytes of memory starting at location _aaaa_.
-- `Maaaa`: Modify memory a byte at a time; old value displayed first.
-  Enter new value, RETURN to leave the same, or `.` to terminate entry.
-- `Gaaaa`: Call _aaaa_ (address required); RTS returns to monitor.
-
-A simple little program to test the monitor is:
-
-    7000 86 EE      LDAA #$EE
-    7002 B7 70 10   STAA $7010
-    7005 39         RTS
-
-`GA000` will display the start-up messages and give the BASIC prompt,
-without clearing the screen, though this doesn't seem to leave BASIC
-entirely initialized properly (e.g., control-letters no longer enter
-BASIC keywords but instead produce symbols; sending a screen code may
-fix this).
-
 
 
 <!-------------------------------------------------------------------->
-[r-dis-bas]: http://www.kameli.net/~marq/jr200/basic.lst
-[r-dis-sys]: http://www.kameli.net/~marq/jr200/sysrom.lst
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [oh-c]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
