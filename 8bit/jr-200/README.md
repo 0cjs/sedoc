@@ -132,6 +132,9 @@ Connector Information][oh-c] table. Supplied cable is:
 
     2-RWsleeve, 4-RedTip, 5-WhiteTip, 6-Bsleeve, 7-Btip
 
+Output recorded at 44.1 kHz unsigned 8-bit reads back fine if the volume is
+sufficient; generally, normalize the recording to -0 dB.
+
 ### Joysticks
 
 __ジョイスティック__, 2× DE-9 male jacks on left side, __1__ towards

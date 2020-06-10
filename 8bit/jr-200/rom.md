@@ -12,6 +12,13 @@ The boot screen is as follows, and may come up in two different colours.
 - Dark blue text, cyan background, green border.
 - White text, black background, black border.
 
+For use with [the emulator][vjr], the ROMs can be dumped to tape as
+follows:
+
+    MSAVE  "BASROM",$A000,$BFFF         # 8K
+    MSAVE "BIOSROM",$E000,$FFFF         # 8K
+    MSAVE "CHARROM",$D000,$D7FF         # 2K
+
 [[Reunanen]] has disassemblies of his [BASIC ($A000)][r-dis-bas] and
 [system ($E000)][r-dis-sys] ROMs, but they are completely raw, no
 comments, data/code separation, or labels for vectors.
@@ -46,6 +53,7 @@ fix this).
 
 
 <!-------------------------------------------------------------------->
+[Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [r-dis-bas]: http://www.kameli.net/~marq/jr200/basic.lst
 [r-dis-sys]: http://www.kameli.net/~marq/jr200/sysrom.lst
-[Reunanen]: http://www.kameli.net/marq/?page_id=1270
+[vjr]: http://www17.plala.or.jp/find_jr200/vjr200_en.html
