@@ -1,4 +1,5 @@
-» [Overview][sp-o] | [Assertions][sp-a] | Configuration/Customization
+» [Overview][sp-o] | [Assertions][sp-a] | [Fixtures][sp-f] |
+  Configuration/Customization
 
 Pytest Configuration
 ====================
@@ -126,12 +127,12 @@ flag will print information about them along with builtin and
 registered external plugins.
 
 Uses include:
-* [Sharing fixture functions][fixture-conftest] amongst many modules
-* [Per-directory plugins][plugin-conftest] using [hook functions] such
-  as [`pytest_runtest_setup()`]; also see the [hooks] reference and
-  [writing hooks].
-* [Basic patterns and examples][basic] has many examples of other
-  things
+* [Sharing fixture functions](pytest-fixture.md#sharing-fixtures) amongst
+  many modules
+* [Per-directory plugins][plugin-conftest] using [hook functions] such as
+  [`pytest_runtest_setup()`]; also see the [hooks] reference and [writing
+  hooks].
+* [Basic patterns and examples][basic] has many examples of other things
 * [Non-Python Test Execution][nonpython]
 
 Command-line options:
@@ -282,6 +283,7 @@ XXX To-do
 <!-------------------------------------------------------------------->
 [sp-o]: pytest.md
 [sp-a]: pytest-assert.md
+[sp-f]: pytest-fixture.md
 [sp-conf]: pytest-config.md
 
 [PEP 420]: https://www.python.org/dev/peps/pep-0420/
@@ -304,7 +306,6 @@ XXX To-do
 [config-cache-API]: https://docs.pytest.org/en/latest/reference.html#cache-api
 [confopts]: https://docs.pytest.org/en/documentation-restructure/how-to/customize.html#builtin-configuration-file-options
 [custom-disc]: https://docs.pytest.org/en/documentation-restructure/example/pythoncollection.html
-[fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
 [hook functions]: https://docs.pytest.org/en/latest/reference.html#hooks
 [hooks]: https://docs.pytest.org/en/documentation-restructure/how-to/writing_plugins.html#pytest-hook-reference
 [import]: https://docs.pytest.org/en/latest/pythonpath.html

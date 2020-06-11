@@ -1,4 +1,5 @@
-» Overview | [Assertions][sp-a] | [Configuration/Customization][sp-conf]
+» Overview | [Assertions][sp-a] | [Fixtures][sp-f] |
+  [Configuration/Customization][sp-conf]
 
 Python Pytest Library
 =====================
@@ -52,11 +53,11 @@ Pytest has at least two different kinds of scoping.
 Run scoping (my term) is one of _session_, _module_, _class_ or
 _function_ and refers to particular start and end points during a test
 session.
-* A run scope can be passed (as `scope=...`) to [`@pytest.fixture`] to
-  determine when a fixture is to be torn down.
+* A run scope can be passed (as `scope=...`) to `@pytest.fixture` to
+  determine when a [fixture][sp-f] is to be torn down.
 * Various [hooks] are called at their defined points in the run scope.
 
-Package or directory scoping is used by `config.py` files; fixtures
+Package or directory scoping is used by `config.py` files; [fixtures][sp-f]
 and hooks in a `config.py` are used only by modules in that directory
 and below. (XXX confirm this.)
 
@@ -124,18 +125,9 @@ a `pytest.param` with the mark set:
 
     [ (1, 2), pytest.param(3, 4, marks=pytest.mark.xfail(reason='blah'), ... ]
 
-Parametrization also occurs with [fixtures that have a `params`
-option][parametrizing-fixtures]. The test is called once for each
-value returned by the fixture (called once with each parameter). With
-multiple fixtures the test is called for the product of all parameters
-(i.e., all possible combinations).
-
-    @pytest.fixture(params=['a', 'b', 'c'])
-    def myfixture(request):
-        return request.param
-
-    def test_run_mutiple_times(myfixture):
-        assert 'b' == myfixture             # Passes once, fails twice
+Parametrization also occurs with [fixtures][sp-f]  with a `params`
+argument, once for each value in the sequence. See [fixtures][sp-f] for
+details.
 
 #### Custom Markers
 
@@ -226,6 +218,7 @@ Doctest config options:
 <!-------------------------------------------------------------------->
 [sp-o]: pytest.md
 [sp-a]: pytest-assert.md
+[sp-f]: pytest-fixture.md
 [sp-conf]: pytest-config.md
 
 [PEP 302]: https://www.python.org/dev/peps/pep-0302/
@@ -249,7 +242,6 @@ Doctest config options:
 [markers-custom]: https://docs.pytest.org/en/latest/example/markers.html
 [markers-register]: https://docs.pytest.org/en/latest/example/markers.html#registering-markers
 [markers]: https://docs.pytest.org/en/latest/mark.html
-[parametrizing-fixtures]: https://docs.pytest.org/en/latest/fixture.html#parametrizing-fixtures
 [parametrize]: https://docs.pytest.org/en/latest/parametrize.html
 [pytest.ini]: pytest-config.md#rootdir-and-configuration
 [pytest]: https://pytest.org/

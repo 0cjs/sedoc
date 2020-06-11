@@ -1,4 +1,5 @@
-» [Overview][sp-o] | Assertions | [Configuration/Customization][sp-conf]
+» [Overview][sp-o] | Assertions | [Fixtures][sp-f] |
+  [Configuration/Customization][sp-conf]
 
 Pytest Assertions and Checks
 ============================
@@ -107,9 +108,9 @@ See [capture] for full details.
 
 ### capsys, capfd Fixtures
 
-`capsys` captures `sys.{stdout,stderr}` as strings. `capfd` captures
-OS-level file descriptors as well. In pytest ≥ 3.3 there is also
-`capsysbinary` and `capfdbinary` capturing `bytes`.
+`capsys` is a [fixture][sp-f] that captures `sys.{stdout,stderr}` as
+strings. `capfd` captures OS-level file descriptors as well. In pytest
+≥ 3.3 there is also `capsysbinary` and `capfdbinary` capturing `bytes`.
 
 `readouterr()` returns a named tuple (`out`, `err`) of the captured
 output and clears the capture buffer. `disabled()` pauses capture.
@@ -133,6 +134,7 @@ output and clears the capture buffer. `disabled()` pauses capture.
 <!-------------------------------------------------------------------->
 [sp-o]: pytest.md
 [sp-a]: pytest-assert.md
+[sp-f]: pytest-fixture.md
 [sp-conf]: pytest-config.md
 
 [Warnings Filter Configuration]: pytest-config.md#warnings-filter-configuration
