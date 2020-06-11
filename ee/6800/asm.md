@@ -4,6 +4,9 @@
 ### References
 
 - [M6800 Programming Reference Manual][6800ref] M68PRM(D), Motorola, Nov. 1976.
+- [SB-Project 6800 Introduction][sb 6800intro]. Brief programming model
+  introduction and SB-Assembler support for the 6800/6802.
+
 
 ### Registers
 
@@ -102,3 +105,4 @@ offset (the operand) added to the X register:
 [6800ref]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
 [6801inst]: https://archive.org/stream/bitsavers_motorola68ReferenceManualMay84_19173732#page/n98/mode/1up
 [masm]: https://archive.org/details/bitsavers_motorola68ReferenceManualMay84_19173732/page/n91
+[sb 6800intro]: https://www.sbprojects.com/sbasm/6800.php
