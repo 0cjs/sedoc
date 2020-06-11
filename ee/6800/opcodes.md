@@ -20,6 +20,20 @@ This is a quick reference for hand-assembly.
     TAB   TBA   TAP   TPA   TXS   TSX      PSH A  PSH B  PUL A  PUL B
      16₂   17₂   06₂   07₂   35₄   30₄       36₄    37₄    32₄    33₄
 
+         INC A  INC B   INX   INS   INCᵢ  INCₓ
+    INC    4C₂    5C₂    08₄   31₄   7C₆   6C₇
+    DEC    4A₂    5A₂    09₄   34₄   7A₆   6A₇
+
+            #nn     zp     addr     n,X
+    LDA A   86₂     96₂     B6₄     A6₅
+    STA A           97₄     B7₅     A7₆
+    LDA B   C6₂     D6₂     F6₄     E6₅
+    STA B           D7₄     F7₅     E7₆
+    LDX     CE₃     DE₄     FE₅     EE₆
+    STX             DF₅     FF₆     EF₇
+    LDS     8E₃     9E₄     BE₅     AE₆
+    STS             9F₅     BF₆     AF₇
+
 ### Notes
 
 - Instruction subscripts:
