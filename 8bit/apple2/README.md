@@ -148,17 +148,17 @@ available on the peripheral slots.
 
 
 <!-------------------------------------------------------------------->
-[IIc techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
-[a2cref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
+[IIc techref]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual
+[a2cref]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual
 [a2ref]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n3/mode/1up
-[bados]: https://archive.org/details/Beneath_Apple_DOS_OCR/page/n2/mode/1up
+[bados]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
 [p67532]: http://forum.6502.org/viewtopic.php?f=3&t=5517&sid=f6734cd034b51b20dcd393f67a3c48fe&start=30#p67532
 [rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
 [relay]: https://www.kreativekorp.com/miscpages/a2info/index.shtml
-[sather]: https://archive.org/details/Understanding_the_Apple_II_1983_Quality_Software/mode/1up
+[sather]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n0/mode/1up
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
 
 [a2ref 106]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n116/mode/1up
