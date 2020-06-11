@@ -1,6 +1,10 @@
 6800 Assembler Syntax
 =====================
 
+### References
+
+- [M6800 Programming Reference Manual][6800ref] M68PRM(D), Motorola, Nov. 1976.
+
 ### Registers
 
 - `A`, `B`: 8-bit accumulators (no `D` on 6800/02)
@@ -9,9 +13,9 @@
 - `PC`: Program counter
 - `CCR`: Condition code register: `11HINZVC`
   - Half carry: set on b3→b4 carry for `ADD`, `ABA`, `ADC`
-  - Interrupt mask
+  - Interrupt mask (blocked if set)
   - Negative: high order bit of result
-  - Zero, oVerflow, Carry (borrow)
+  - Zero, oVerflow, Carry-Borrow
 
 ### Instruction Set Notes
 
@@ -25,6 +29,17 @@
   and remember interrupts when manipulating stack via `X`!
 - Signed uses V-bit branches (`BGT`), unsigned ignores V-bit (`BHI`).
 - `CPX` doesn't work w/all branches until 6801.
+
+### Branch Tests
+
+- Single Flag:
+  - Zero: `BEQ` `BNE`
+  - Negative: `BMI` `BPL`
+  - Carry: `BCS` `BCC`
+  - oVerflow: `BVS` `BVC`
+- Multi-flag comparison results:
+  - Unsigned: `BLS` (less-than/same) `BHI`
+  - Two's complement: `BLT` `BLE` `BGE` `BGT`
 
 ### Operands
 
@@ -84,5 +99,6 @@ offset (the operand) added to the X register:
 
 
 <!-------------------------------------------------------------------->
+[6800ref]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
+[6801inst]: https://archive.org/stream/bitsavers_motorola68ReferenceManualMay84_19173732#page/n98/mode/1up
 [masm]: https://archive.org/details/bitsavers_motorola68ReferenceManualMay84_19173732/page/n91
-[6801inst]: https://archive.org/details/bitsavers_motorola68ReferenceManualMay84_19173732/page/n97
