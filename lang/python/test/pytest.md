@@ -110,8 +110,10 @@ These may also be used programmatically within the test function; see
 
 #### Parametrization
 
-You can [parametrize] test functions; they will be run multiple times
-(each as an individual test) with the given parameters.
+You can [parametrize] test functions; they will be run multiple times (each
+as an individual test) with the given parameters. (Parametrization also
+occurs with [fixtures][sp-f]  with a `params` argument, once for each value
+in the sequence. See [fixtures][sp-f] for details.)
 
 * [`parametrize(argnames, argvalues, indirect=False, ids=None,
   scope=None)`][api-parametrize]
@@ -125,9 +127,21 @@ a `pytest.param` with the mark set:
 
     [ (1, 2), pytest.param(3, 4, marks=pytest.mark.xfail(reason='blah'), ... ]
 
-Parametrization also occurs with [fixtures][sp-f]  with a `params`
-argument, once for each value in the sequence. See [fixtures][sp-f] for
-details.
+__Parametrized Test Names__
+
+Parameterization generates a new test for each set of parameters; the names
+(test IDs) will be generated automatically based on the parameter values.
+(These names can be shown with the `--collect-only` option, and are usually
+used for selection with the `-k` option.)
+
+The standard names are `test_foo[…-…]`, with parameter values in brackets
+and separated by hyphens. You can use `parametrize(ids=['a', 'b', …])` to
+replace the content in brackets; the sequence must be the same length as
+the sequence specifying the parameters. You can also pass `ids=f` where `f`
+is a function that will receive each parameter in turn and may return a
+string to represent it, or `None` to let pytest do it's default. (You
+cannot tell which parameter is being passed; checking with `type()` may be
+helpful.)
 
 #### Custom Markers
 
