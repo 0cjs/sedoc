@@ -21,6 +21,18 @@ Fixtures may also be added by marking the test:
 `@pytest.mark.usefixtures("my_fixture")`. This can be is useful on
 `unittest` tests and similar.
 
+#### Fixture Parameters
+
+Fixtures can take other fixtures as parameters.
+
+The standard [`request` fixture][fixture-request] can be useful for getting
+information about the test using this fixture. (Also see "Parametrization"
+below for use of `request.param`.)
+
+    @pytest.fixture
+    def myfixture(request):
+        request.module      # module object where the test func was collected
+
 #### Parametrization
 
 As with tests, fixtures can be [parametrized](pytest.md#parametrization).
@@ -71,5 +83,6 @@ tests][collection-fixture].
 
 [collection-fixture]: https://docs.pytest.org/en/latest/example/special.html
 [fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
+[fixture-request]: https://doc.pytest.org/en/latest/reference.html#request
 [fixture-scope]: https://docs.pytest.org/en/latest/fixture.html#scope-sharing-a-fixture-instance-across-tests-in-a-class-module-or-session
 [parametrizing-fixtures]: https://docs.pytest.org/en/latest/fixture.html#parametrizing-fixtures
