@@ -1,5 +1,5 @@
-» Overview | [Assertions][sp-a] | [Fixtures][sp-f] |
-  [Configuration/Customization][sp-conf]
+__»__ Overview | [Assertions][sp-a] | [Fixtures][sp-f]
+    | [Configuration/Customization][sp-conf]
 
 Python Pytest Library
 =====================

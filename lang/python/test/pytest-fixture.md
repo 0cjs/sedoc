@@ -1,5 +1,5 @@
-» [Overview][sp-o] | [Assertions][sp-a] | Fixtures |
-  [Configuration/Customization][sp-conf]
+__»__ [Overview][sp-o] | [Assertions][sp-a] | Fixtures
+    | [Configuration/Customization][sp-conf]
 
 Pytest Fixtures
 ===============
