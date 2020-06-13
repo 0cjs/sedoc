@@ -4,9 +4,10 @@ National/Panasonic Personal Computer Jr.200
 6800-based machine (actually 6802 clone). 32 KB RAM; 16 KB ROM.
 
 It was also sold in Finland as the Panasonic JR-200UP (PAL output). The
-North American edition, the JR-200U, got far enough into a U.S. release
-that there was a [_Creative Computing_ review in May 1983][ccreview]
-(2nd/3rd pages are swapped).
+North American edition, the JR-200U, got a good [_Creative Computing_
+review in May 1983][ccreview] (2nd/3rd pages are swapped), but had bad
+timing; rather than race to the bottom in pricing it was discontinued in
+the North American market in Feb. 1984.
 
 References:
 - \[Reunanen] Markku Reunanen, [Discovering the Panasonic JR-200U][Reunanen]
@@ -82,6 +83,11 @@ position.
       8     4     Blue
 
 ### Keyboard
+
+The western editions use the exact same layout (even underbar between `/?`
+and right shift and a yen symbol next to RUB OUT), but the カナ key is
+removed, as are all katakana markings (leaving blank space), and the 英数
+and GRAPH keys have been relabeled GRAPH OFF and GRAPH ON.
 
 The keyboard is a standard [rubber chiclet keyboard][wp-chiclet] with
 rubber dome caps pressing a (carbon?) conductive (~80Ω) pad against
