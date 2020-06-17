@@ -123,7 +123,7 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
     ●    9      E̅X̅R̅O̅M̅; disables internal RAM at $8000-$9FFF
      →  10      I̅O̅2̅; low when accessing page $DFxx
      →  11      R̅O̅M̅L̅; low when RAM off, accessing 8K @ $8000
-    ??  12      BA; VIC bus available (see below)
+     →  12      BA; VIC bus available (see below)
     ●   13      D̅M̅A̅; assert to make CPU release bus after next read cycle
     ●→  14-21   Data bus lines 7 to 0
      →  22-A    GND
@@ -134,11 +134,11 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
      →   F-Y    Address bus lines 15 to 0
      →   Z      GND
 
-[64w-cport] says that pin 12 BA is an input signal, but this appears
+[64w-cport] used to say that pin 12 BA is an input signal, but this appears
 to be incorrect. According to the schematic the CPU's `RDY` line
 (indicating that it can continue running) is high only when both `BA`
-asserted and `D̅M̅A̅` are 1. The `BA` line appears to be an output from
-the VIC II sent to the `RDY` gate, PLA and cartridge port.
+asserted and `D̅M̅A̅` are 1. The `BA` line appears to be an output from the
+VIC II sent to the `RDY` gate, PLA and cartridge port.
 
 [rc 10850] and its answers make some good points:
 - Except when asserting `G̅A̅M̅E̅` and not asserting `E̅X̅R̅O̅M̅`, without
