@@ -97,8 +97,10 @@ Manufacturer cables I have invariably connect only 2 to ground, leaving 1,
 is 7. (All came with used equipment, one with a Panasonic JR-200, one with
 a NEC PC-DR311 data recorder, one from unknown source.)
 
+__Smartphone Connections__
+
 Apple standard headphone connectors and most (?) Android use the
-following TRRS, but some other phones ground and mic. In all cases,
+following TRRS, but some other phones swap ground and mic. In all cases,
 shorting mic and ground makes the device output only. The mic
 connection otherwise must see enough impedence to be detected; a
 resistor in series with the CMT output can help with this. See below
