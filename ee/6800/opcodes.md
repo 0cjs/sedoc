@@ -3,7 +3,7 @@
 
 This is a quick reference for hand-assembly.
 
-    JMPᵢ  JMPₓ  BRA      JSRᵢ  JSRₓ  BSR   RTS      SWI   RTI      NOP
+    JMP   JMPx  BRA      JSR   JSRx  BSR   RTS      SWI   RTI      NOP
      7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂  3B₁₀     01₂
 
       Zero         Negative        Carry       oVerflow
@@ -20,7 +20,7 @@ This is a quick reference for hand-assembly.
     TAB   TBA   TAP   TPA   TXS   TSX      PSH A  PSH B  PUL A  PUL B
      16₂   17₂   06₂   07₂   35₄   30₄       36₄    37₄    32₄    33₄
 
-               INC A  INC B   INX   INS   INCᵢ  INCₓ
+               INC A  INC B   INX   INS   INC   INCx
     increment    4C₂    5C₂    08₄   31₄   7C₆   6C₇
     decrement    4A₂    5A₂    09₄   34₄   7A₆   6A₇
                DEC A  DEC B   DEX   DES   DEC₁  DECx
@@ -37,7 +37,8 @@ This is a quick reference for hand-assembly.
 
 ### Notes
 
-- Instruction subscripts:
-  - `i`: Immediate argument
-  - `x`: [X] plus one-byte offset
 - Opcode subscripts are cycle counts.
+- Instructions postfixed `x` use _indexed_ addressing mode: add one-byte
+  offset argument to X to produce the operand.
+- Identical instructions not postfixed `x` use _extended_ addressing mode:
+  the address is the following two bytes.
