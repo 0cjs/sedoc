@@ -10,15 +10,19 @@
 
 ### Registers
 
-- `A`, `B`: 8-bit accumulators (no `D` on 6800/02)
+- `A`, `B` (`ACCA/B`): 8-bit accumulators (no `D` on 6800/02)
 - `X` (`IX`): 16-bit index register
 - `SP`: Stack pointer, points to next "empty" location; `TSX`=`X←SP+1`
 - `PC`: Program counter
-- `CCR`: Condition code register: `11HINZVC`
-  - Half carry: set on b3→b4 carry for `ADD`, `ABA`, `ADC`
-  - Interrupt mask (blocked if set)
-  - Negative: high order bit of result
-  - Zero, oVerflow, Carry-Borrow
+- Condition codes or processor status byte: `11HINZVC`
+
+      1  Always 1 on read; ignored by by TAP, RTI, etc.
+      H   Half carry: set on b3→b4 carry for `ADD`, `ABA`, `ADC`
+      I   Interrupt mask; IRQ masked when set.
+      N   Negative: high order bit of result
+      Z   Zero: checked result == 0
+      V   Overflow
+      C   Carry for add; borrow for subtract.
 
 ### Instruction Set Notes
 
@@ -28,12 +32,10 @@
 - `CLR`/`CLRA`/`CLRB` to zero mem/reg clears carry; `LDAA #0` does not.
 - `INC`/`DEC` do not affect carry.
 - 8-bit rotate: `ASLA` / `BCC *+3` / `INCA`.
-- `TSX` increments when xfering; `TXS` decrements when xfering;
-  and remember interrupts when manipulating stack via `X`!
 - Signed uses V-bit branches (`BGT`), unsigned ignores V-bit (`BHI`).
 - `CPX` doesn't work w/all branches until 6801.
 
-### Branch Tests
+#### Branch tests
 
 - Single Flag:
   - Zero: `BEQ` `BNE`
@@ -43,6 +45,29 @@
 - Multi-flag comparison results:
   - Unsigned: `BLS` (less-than/same) `BHI`
   - Two's complement: `BLT` `BLE` `BGE` `BGT`
+
+### Stack, Subroutines and Interrupts
+
+- Stack grows down, points to empty location below most recent push.
+- Only A and B can be pushed/pulled directly.
+- `BSR`/`JSR` push PC to be used by `RTS`.
+- `TSX` increments when xfering; `TXS` decrements when xfering;
+  and remember interrupts when manipulating stack via `X`!
+
+On NMI, IRQ, `SWI`, `WAI` the PC is set to the next address after the
+instruction that just finished, the registers are pushed per below, and the
+`I` flag is set for IRQ and `SWI` response.
+
+    CC ACCA ACCB IXH IXL PCH PCL ___
+    downward →                    └── SP points here
+
+Interrupts on the last cycle of an instruction are held until the following
+instruction finishes exceucting. Vectors are:
+
+    $FFF8   IRQ
+    $FFFA   SWI
+    $FFFC   NMI
+    $FFFE   Reset
 
 ### Operands
 
