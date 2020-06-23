@@ -4,7 +4,7 @@
 This is a quick reference for hand-assembly.
 
     JMPᵢ  JMPₓ  BRA      JSRᵢ  JSRₓ  BSR   RTS      SWI   RTI      NOP
-     BD₉   AD₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂  3B₁₀     01₂
+     7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂  3B₁₀     01₂
 
       Zero         Negative        Carry       oVerflow
     BEQ   BNE      BMI   BPL     BCS   BCC     BVS   BVC
@@ -20,9 +20,10 @@ This is a quick reference for hand-assembly.
     TAB   TBA   TAP   TPA   TXS   TSX      PSH A  PSH B  PUL A  PUL B
      16₂   17₂   06₂   07₂   35₄   30₄       36₄    37₄    32₄    33₄
 
-         INC A  INC B   INX   INS   INCᵢ  INCₓ
-    INC    4C₂    5C₂    08₄   31₄   7C₆   6C₇
-    DEC    4A₂    5A₂    09₄   34₄   7A₆   6A₇
+               INC A  INC B   INX   INS   INCᵢ  INCₓ
+    increment    4C₂    5C₂    08₄   31₄   7C₆   6C₇
+    decrement    4A₂    5A₂    09₄   34₄   7A₆   6A₇
+               DEC A  DEC B   DEX   DES   DEC₁  DECx
 
             #nn     zp     addr     n,X
     LDA A   86₂     96₂     B6₄     A6₅
