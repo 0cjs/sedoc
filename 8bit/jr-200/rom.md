@@ -51,6 +51,11 @@ BASIC keywords but instead produce symbols; sending a screen code may
 fix this).
 
 
+ROM Routines
+------------
+
+    $E8CB   Read joysticks (STICK in BASIC); slow, about 1/4 frame
+
 
 <!-------------------------------------------------------------------->
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270

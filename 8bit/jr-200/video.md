@@ -9,3 +9,25 @@ Panasonic JR-200 Video
 "Low-res" video (`PLOT` in BASIC) is 64×32. It is not just using the block
 chars; a single character block can display four different colours with no
 problem.
+
+
+Details
+-------
+
+Most of the following information is from [[Reunanen]].
+
+The colour table has a byte for each character cell:
+
+    Bits  Purpose
+      7   0=text cell  1=low-res graphics cell
+      6   Charset base address: 0=$D000  1=$C000
+     5-3  Background color
+     2-0  Foreground color
+
+The low-res graphics mode breaks each 8×8 pixel character cell into four
+4×4 pixel blocks; each block can have its color set independently.
+
+
+
+<!-------------------------------------------------------------------->
+[Reunanen]: http://www.kameli.net/marq/?page_id=1270

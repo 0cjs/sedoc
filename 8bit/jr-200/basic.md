@@ -47,6 +47,7 @@ Save/load:
 Programming:
 - `RUN n`: (Re-)run program, optionally at a given line number. Given a
   filename will also load/run from tape.
+- `USR(addr)`: Run ML program, e.g., `mload:a=usr($1000)`.
 - `VARPTR(v)`: Gives address of variable _v_. (Do not use quotes.)
 - `MON`: Enter machine-language monitor. See [rom](rom.md).
 

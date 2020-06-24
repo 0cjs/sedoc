@@ -12,7 +12,8 @@ the North American market in Feb. 1984.
 References:
 - \[Reunanen] Markku Reunanen, [Discovering the Panasonic JR-200U][Reunanen]
   Excellent resource for both info and projects, including device to
-  DMA into memory from expansion bus..
+  DMA into memory from expansion bus. Also links to various bits of
+  code for the machine.
 - \[Heikkinen] Tero Heikkinen, [Old Machinery][Heikkinen] blog `jr200up` tag.
 
 
@@ -145,7 +146,7 @@ sufficient; generally, normalize the recording to -0 dB.
 
 __ジョイスティック__, 2× DE-9 male jacks on left side, __1__ towards
 front, __2__ towards back. MSX-compatible (not Atari). Pins 1-4 and
-6-7 are switch inputs, 8 is an output, 5 is +5V and 9 is GND.
+6-7 are switch inputs, 8 is an output ("strobe"), 5 is +5V and 9 is GND.
 
 ### Parallel Printer
 
@@ -164,6 +165,44 @@ Possibly CN10 (see above) is the internal connector for this.
 
 __外部バス__, 25 pin × 2 row 0.1" male header in IDC surround. May have
 serial port lines as well.
+
+Pins A19 and B19 supply +5 V but not much current; consider using an
+external PSU for devices connected to it.
+
+BIOS has code for autobooting ROM supplied on the expansion port.
+
+Pinout from Ardunio loader board diagram on [[Reunanen]]; not clear what
+the orientation is.
+
+            ○ ○
+     /reset ○ ○ /phi2s
+            ○ ○
+      /!vma ○ ○
+            ○ ○ R/W̅ or R̅/W
+
+        gnd ○ ○ gnd
+         5V ○ ○
+            ○ ○
+            ○ ○
+            ○ ○
+
+            ○ ○
+            ○ ○
+        A15 ○ ○ A14
+        A13 ○ ○ A12
+        A11 ○ ○ A10
+
+         A9 ○ ○ A8
+         A7 ○ ○ A6
+         A5 ○ ○ A4
+         A3 ○ ○ A2
+         A1 ○ ○ A0
+
+         D7 ○ ○ D6
+         D5 ○ ○ D4
+         D3 ○ ○ D2
+         D1 ○ ○ D0
+            ○ ○
 
 
 Peripherals
