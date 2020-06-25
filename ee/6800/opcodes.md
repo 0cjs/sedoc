@@ -3,8 +3,8 @@
 
 This is a quick reference for hand-assembly.
 
-    JMP   JMPx  BRA      JSR   JSRx  BSR   RTS      SWI   RTI      NOP
-     7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂  3B₁₀     01₂
+    JMP   JMPx  BRA      JSR   JSRx  BSR   RTS      SWI    WAI   RTI     NOP
+     7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂   3E₉   3B₁₀    01₂
 
       Zero         Negative        Carry       oVerflow
     BEQ   BNE      BMI   BPL     BCS   BCC     BVS   BVC
