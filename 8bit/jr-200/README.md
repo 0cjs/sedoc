@@ -15,6 +15,7 @@ References:
   DMA into memory from expansion bus. Also links to various bits of
   code for the machine.
 - \[Heikkinen] Tero Heikkinen, [Old Machinery][Heikkinen] blog `jr200up` tag.
+- \[FIND] find_jr200, [Hardware][FIND].
 
 
 Internal Hardware
@@ -213,6 +214,7 @@ Supposedly a 5.25" floppy drive was made.
 
 
 <!-------------------------------------------------------------------->
+[FIND]: http://www17.plala.or.jp/find_jr200/hard.html
 [Heikkinen]: https://oldmachinery.blogspot.com/search/label/jr200up
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [ccreview]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up

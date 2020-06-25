@@ -1,16 +1,30 @@
 National/Panasonic JR-200 ROM
 =============================
 
-The boot screen is as follows, and may come up in two different colours.
+There are two different ROM versions, with a version string [at $BFF2-$BFF6
+in the BASIC ROMs][FIND romver] and starting up BASIC with the same text
+(see below) but different foreground/background/border colours. (The BIOS
+ROMs are also different, but we don't yet know an easy way to distinguish
+them.)
+
+- `v5.00` (A1, B1 chip markings)
+  - Startup: White/Black/Black
+  - Serial nos. `2nnnnnnn` ([[FIND romver]]; cjs-owned unit, socketed).
+
+- `v5.01` (A2, B2 chip markings)
+  - Startup: Blue/Cyan/Green
+  - Serial nos. `3nnnnnnn` ([[FIND romver]]; croys-owned unit, soldered).
+    `0nnnnnnn` (cjs-owned unit, soldered).
+
+There are no doubt different versions for the PAL JR-200UP, and possibly
+also for the North American JR-200U. ([[FIND romver]] says that a JR-200U
+emulator also has `v5.01`.
 
     JR BASIC 5.0
     (C) 1982 by
     Matsushita System Engineering
     Free Bytes 30716
     Ready
-
-- Dark blue text, cyan background, green border.
-- White text, black background, black border.
 
 For use with [the emulator][vjr], the ROMs can be dumped to tape as
 follows:
@@ -58,6 +72,8 @@ ROM Routines
 
 
 <!-------------------------------------------------------------------->
+[FIND romver]: http://www17.plala.or.jp/find_jr200/romver.html
+[FIND]: http://www17.plala.or.jp/find_jr200/hard.html
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [r-dis-bas]: http://www.kameli.net/~marq/jr200/basic.lst
 [r-dis-sys]: http://www.kameli.net/~marq/jr200/sysrom.lst
