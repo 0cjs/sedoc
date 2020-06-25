@@ -43,6 +43,11 @@ Fixing/Changing Commits and Branches
       git rm --cached -r .
       git clean -fdx
 
+* Use `git repack -adk` to pack unreachable objects that are not yet ready
+  to prune. The default packs (by `gc` or otherwise) leave these loose, and
+  as individual files they can eat a lot more space than they would packed.
+  (Sometimes there's a 100× difference in disk space use.)
+
 * To identify large objects ([so-10622293]), in a few ways:
 
       git gc              # Get all commits into a packfile
