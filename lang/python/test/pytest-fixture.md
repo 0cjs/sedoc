@@ -33,6 +33,24 @@ below for use of `request.param`.)
     def myfixture(request):
         request.module      # module object where the test func was collected
 
+#### Fixtures and Markers
+
+[Fixtures have access to `@pytest.mark`][fixture-marker] attributes and data:
+
+
+    @pytest.fixture
+    def fixt(request):
+        marker = request.node.get_closest_marker('foo')
+        if marker is None:
+            ...
+        else:
+            data = marker.args[0]
+        return data
+
+    @pytest.mark.foo(42)
+    def test_foo_marker(fixt):
+        assert 42 == fixt
+
 #### Parametrization
 
 As with tests, fixtures can be [parametrized](pytest.md#parametrization).
@@ -83,6 +101,7 @@ tests][collection-fixture].
 
 [collection-fixture]: https://docs.pytest.org/en/latest/example/special.html
 [fixture-conftest]: https://docs.pytest.org/en/latest/fixture.html#conftest-py
+[fixture-marker]: https://docs.pytest.org/en/latest/fixture.html#using-markers-to-pass-data-to-fixtures
 [fixture-request]: https://doc.pytest.org/en/latest/reference.html#request
 [fixture-scope]: https://docs.pytest.org/en/latest/fixture.html#scope-sharing-a-fixture-instance-across-tests-in-a-class-module-or-session
 [parametrizing-fixtures]: https://docs.pytest.org/en/latest/fixture.html#parametrizing-fixtures
