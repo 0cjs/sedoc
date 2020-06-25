@@ -14,11 +14,11 @@ Much of this from [[Reunanen]].
     $8000   8K  unmapped
     $0000  32K  RAM
 
-### i/o map
+### I/O map
 
     $c081 r     Last key pressed (no key-up information)
 
-### video RAM Map
+### Video RAM Map
 
     $d800
     $d000  2K   character bitmaps
@@ -33,7 +33,7 @@ $C000. This overlaps with the character position and colour maps, but it
 looks like you can use the two ??? pages above for alternate character
 bitmaps.
 
-### ram map
+### RAM Map
 
     $0800   BASIC program start address
     $07ff   default stack
