@@ -68,6 +68,8 @@ fix this).
 ROM Routines
 ------------
 
+Also see [the memory map](./memory.md).
+
     $E8CB   Read joysticks (STICK in BASIC); slow, about 1/4 frame
 
 
