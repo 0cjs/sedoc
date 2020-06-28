@@ -1,3 +1,6 @@
+- [README](README.md), [asm](asm.md), [opcodes](opcodes.md),
+  [progcard](progcard)
+
 6800 Opcode Quickref
 ====================
 
