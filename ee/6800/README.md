@@ -29,9 +29,25 @@ References
   introduction and SB-Assembler support for the 6800/6802.
 
 
+Bibliography
+------------
+
+- \[fin76] Robert Findley, [_6800 Software Gourment Guide and
+  Coookbook_][fin76]. Hayden, 1976.
+  - Very much a beginners' book. Ch.5 floating point routines might be of
+    some interest. Written by Scelbi staff.
+
+There's a [very large bibliography][og bib] at orphanedgames.com.
+
+
 
 <!-------------------------------------------------------------------->
 [timeline]: https://retrocomputing.stackexchange.com/a/11933/7208
 
+<!-- References -->
 [6800ref]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
 [sb 6800intro]: https://www.sbprojects.com/sbasm/6800.php
+
+<!-- Bibliography -->
+[fin76]: https://archive.org/stream/6800-Software-Gourmet-Guide-and-Cookbook-Robert-Findley-1976#page/n0/mode/1up
+[og bib]: https://www.orphanedgames.com/APF/6800_cpu_programming/6800_cpu_programming.html
