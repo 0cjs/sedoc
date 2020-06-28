@@ -3,6 +3,7 @@
 
 General references:
 - [Japanese 8-bit DIN outputs][rc 12255] (RC.SE)
+- [Computers using the Kansas City standard][kctape]
 
 
 Early Computers
@@ -63,18 +64,23 @@ Timeline
 
     1979-09 * NEC PC-8001 (Z80) ships
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
+    1979      Microtan 65
 
     1980-05 * Hitachi Basic Master Level 3 (6809) ships.
     1980-06 * VIC-1001 released (Japan)
+    1980      Acorn Atom
 
     1981-   * VIC-20 released
     1981-05 * Fujitsu FM-8 released
     1981-11 * Panasonic/National JR-100 released
+    1981-12 * BBC Micro released
 
     1982-   * Commodore MAX Machine released
     1982-     Panasonic/National JR-200 released
     1982-08 * Commodore 64 Released
     1982-11 * Fujitsu FM-7 released
+
+    1983-08 * Acorn Electron released
 
 
 Online references (some of dubious accuracy) include:
@@ -91,6 +97,7 @@ Online references (some of dubious accuracy) include:
 
 
 <!-------------------------------------------------------------------->
+[kctape]: https://en.wikipedia.org/wiki/Kansas_City_standard#Computers_using_the_Kansas_City_standard
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 
 [gosanke8]: https://ja.wikipedia.org/wiki/8ビット御三家
