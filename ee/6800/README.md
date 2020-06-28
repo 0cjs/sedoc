@@ -24,7 +24,8 @@ This does not cover:
 References
 ----------
 
-- [M6800 Programming Reference Manual][6800ref] M68PRM(D), Motorola, Nov. 1976.
+- \[PRM] [M6800 Programming Reference Manual][PRM] M68PRM(D).
+  Motorola, Nov. 1976.
 - [SB-Project 6800 Introduction][sb 6800intro]. Brief programming model
   introduction and SB-Assembler support for the 6800/6802.
 
@@ -45,7 +46,7 @@ There's a [very large bibliography][og bib] at orphanedgames.com.
 [timeline]: https://retrocomputing.stackexchange.com/a/11933/7208
 
 <!-- References -->
-[6800ref]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
+[PRM]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
 [sb 6800intro]: https://www.sbprojects.com/sbasm/6800.php
 
 <!-- Bibliography -->
