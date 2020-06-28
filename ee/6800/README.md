@@ -33,6 +33,15 @@ References
 Bibliography
 ------------
 
+- \[mikrom] Mike Wiles, [_MCM6830L7 MIKBUG/MINIBUG ROM_][mikrom]. Motorola,
+  1977.
+  - Usage instructions and assembly listing.
+  - $E000-$E1FF MIKBUG v9. $A000-$A043 RAM. $8004-$8007 PIA (bit-bang serial).
+  - $FE00-$FEFF MINIBUG v4. $FF00-$FF36 RAM. $FCF4-$FCF5 ACIA control/status.
+  - 1024-byte ROM contained, low to high: MIKBUG, MINIBUG, test pattern.
+  - "Restart address generator" required for $FFFE word.
+
+  RAM @$A000. Bit-bangs serial IO via 6820 PIA @$8004.
 - \[fin76] Robert Findley, [_6800 Software Gourment Guide and
   Coookbook_][fin76]. Hayden, 1976.
   - Very much a beginners' book. Ch.5 floating point routines might be of
@@ -51,4 +60,5 @@ There's a [very large bibliography][og bib] at orphanedgames.com.
 
 <!-- Bibliography -->
 [fin76]: https://archive.org/stream/6800-Software-Gourmet-Guide-and-Cookbook-Robert-Findley-1976#page/n0/mode/1up
+[mikrom]: https://archive.org/stream/bitsavers_motorola680MCM6830L7MIKBUGMINBUGROMJul77_1952205#page/n0/mode/1up
 [og bib]: https://www.orphanedgames.com/APF/6800_cpu_programming/6800_cpu_programming.html
