@@ -3,9 +3,9 @@ National/Panasonic JR-200 ROM
 
 There are two different ROM versions, with a version string [at $BFF2-$BFF6
 in the BASIC ROMs][FIND romver] and starting up BASIC with the same text
-(see below) but different foreground/background/border colours. (The BIOS
-ROMs are also different, but we don't yet know an easy way to distinguish
-them.)
+(see below) but different foreground/background/border colours. The BIOS
+ROMs also contain a version string, `500` or `501`, at $FFF5, just before
+the vectors.
 
 - `v5.00` (A1, B1 chip markings)
   - Startup: White/Black/Black
