@@ -6,9 +6,23 @@ Panasonic JR-200 Video
   graphical symbols, 79 katakana, 10 music/other.)
 - Colors: 0=black 1=blue 2=red 3=magenta 4=green 5=cyan 6=yellow 7=white.
 
-"Low-res" video (`PLOT` in BASIC) is 64×32. It is not just using the block
-chars; a single character block can display four different colours with no
-problem.
+Screen codes for character ROM ($D000-$D800):
+
+    $00-$1F   kanji, symbols, Greek
+    $20-$7E   standard printable ASCII characters
+    $7F       high horizontal bar instead of ~
+    $80-$9F   graphics
+    $A0-$DF   katakana
+    $E0-$FF   graphics
+
+Using the standard character ROM, all printable ASCII codes render their
+glyphs as screen
+
+#### Low-res Graphics
+
+64×32. Use `PLOT` in BASIC. On screen, set bit 7 in color/attribute byte
+and other bits there and in char determine colours of each of the four
+pixels.
 
 
 Details
