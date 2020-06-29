@@ -10,6 +10,8 @@ timing; rather than race to the bottom in pricing it was discontinued in
 the North American market in Feb. 1984.
 
 References:
+- \[servman] Panasonic, [Personal Computer JR-200U Service Manual][servman],
+  EDCD 83-001.
 - \[Reunanen] Markku Reunanen, [Discovering the Panasonic JR-200U][Reunanen]
   Excellent resource for both info and projects, including device to
   DMA into memory from expansion bus. Also links to various bits of
@@ -219,3 +221,4 @@ Supposedly a 5.25" floppy drive was made.
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [ccreview]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up
 [oh-c]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
+[servman]: http://vintagevolts.com/wp-content/uploads/Panasonic-JR-200U-Service-Manual.pdf

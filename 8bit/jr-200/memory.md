@@ -7,9 +7,9 @@ Much of this from [[Reunanen]].
 
     $e000   8K  BIOS ROM
     $d800   2K  Cartridge area (if $D800=$7E, BIOS jumps there on boot)
-    $d000   2K  Character set ROM (Reunanen says "VRAM" on diagram?)
+    $d000   2K  Character set VRAM (loaded at boot)
     $c800   4K  I/O area
-    $c000   4K  VRAM
+    $c000   4K  Character and attribute VRAM
     $a000   8K  BASIC ROM (disabled via "!kill" signal on expansion bus)
     $8000   8K  unmapped
     $0000  32K  RAM
