@@ -14,5 +14,5 @@ General Speed and Size
 - Loading X from DP instead of immediate is -1b,+1c.
 - N flag on load good for testing string termination?
 - Incrementing a word (`INC` has no DP mode):
- - LDX/INX/STX: 5b/13c DP,   7b/15c extended
- - INC/BEQ/INC: 6b/18c `,X`, 8b/16c extended
+  - LDX/INX/STX: 5b/13c DP,   7b/15c extended
+  - INC/BEQ/INC: 6b/18c `,X`, 8b/16c extended
