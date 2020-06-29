@@ -68,15 +68,61 @@ fix this).
 ROM Routines
 ------------
 
-Also see [the memory map](./memory.md).
+Also see [the memory map](./memory.md). The names of these routines were
+assigned by me in [the disassembly][disasm].
 
-    $E8CB   Read joysticks (STICK in BASIC); slow, about 1/4 frame
+#### Summary
+
+    $E88C   keywait (doesn't update cursor for input status)
+    $E892   keycheck (doesn't update cursor for input status)
+    $E8CB   XXX joystick read
+    $E8DC   readch_nocursor
+    $E8E0   readch_check
+    $E8FE   readch
+    $E927   readln: zero-terminated input at $18E
+    $EAD0   prreadln: pstring + readln + CMP $03
+    $EB21   prcr: print a CR using prchar
+    $EC7F   clrscrp: clear screen
+    $EFF0   qprstr: prstr only if qprstr_quiet == $00
+    $EFF9   prstr: print chars at X, b7=1 terminated
+    $F002   qprstr00: qprstr for $00-terminated string
+    $F05F   errbeep
+
+#### Details
+
+- `$E8CB`: Read joysticks (STICK in BASIC); slow, about 1/4 frame
+- `clrscrp $EC7F`: Clear screen, filling with `pcolor $0E` .
+- `errbeep $F05F`: Generate error tone.
+- `prcr $EB21`: Print a carriage return.
+- `prreadln $EAD0`: Call `pstring` to print prompt pointed to by X, then
+  `readln` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
+- `prstr $EFF9`: Print chars pointed to by X. Set MSBit on last char.
+  (Cannot print chars \>$7F.)
+- `qprstr $EFF0`: As `prstr` but prints only if `qprstr_quiet $45` is $00.
+- `qprstr00 $F002`: As `qprstr` but string terminated by $00.
+- `readch $E8FE`: Wait for a char from the keyboard and return it in A. The
+  cursor will be displayed and updated for the input mode, continuing to
+  wait for another key, if 英数, GRAPH or カナ is pressed.
+- `readch_nocursor $E8DC`: Wait for a char from the keyboard and return it
+  in A. No cursor is displayed. An 英数, GRAPH or カナ keystroke will be
+  returned after processing.
+- `readch_check $E8E0`: Check if keyboard input is available, returning it
+  the char in A or $00 if no char is available. An 英数, GRAPH or カナ
+  keystroke will be returned after processing.
+- `keywait $E88C`: Return in A the next char from the keyboard buffer,
+  waiting if none are available. 英数, GRAPH or カナ will change the
+  keyboard's input status but will _not_ update the machine's cursor.
+- `keycheck $E892`: `keywait` without the wait.
+- `readln $E927`: Read a line into buffer at $18E-$1DF, terminating it with
+  $00. Char that ended entry ($0D or $03) returned in A.
+
 
 
 <!-------------------------------------------------------------------->
 [FIND romver]: http://www17.plala.or.jp/find_jr200/romver.html
 [FIND]: http://www17.plala.or.jp/find_jr200/hard.html
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
+[disasm]: https://gitlab.com/retroabandon/panasonic-jr/-/blob/master/Bn-BIOS/B1.dis
 [r-dis-bas]: http://www.kameli.net/~marq/jr200/basic.lst
 [r-dis-sys]: http://www.kameli.net/~marq/jr200/sysrom.lst
 [vjr]: http://www17.plala.or.jp/find_jr200/vjr200_en.html

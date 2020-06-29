@@ -36,9 +36,9 @@ bitmaps.
 ### RAM Map
 
     $0800   BASIC program start address
-    $07ff   default stack
+    $07FF   default stack
 
-    $016f   ╲
+    $016F   ╲
     $0152   STICK(1) data
     $0151   STICK(1) data
     $0150   32-byte keyboard buffer / STICK(0) data
@@ -55,9 +55,9 @@ bitmaps.
 
     $0116₂  keyboard ring buffer input pointer
     $0114₂  keyboard ring buffer output pointer
-    $010e₂  user hook: 1 second timer
-    $010c₂  user hook: 0.1 second timer
-    $010a₂  user hook: unknown
+    $010E₂  user hook: 1 second timer
+    $010C₂  user hook: 0.1 second timer
+    $010A₂  user hook: unknown
     $0108₂  user hook: unknown
     $0106₂  user hook: unknown
     $0104₂  IRQ ┐
@@ -69,16 +69,20 @@ bitmaps.
     $  D0   ┘
     $  CF   ┐
        │    Bits appear to be used here and there.
+    $  46   ┘
+    $  45   qprstr_quiet: non-0 suppresses some print routines
+    $  44   ┐
+       │    Bits appear to be used here and there.
     $  3A   ┘
     $  39   ┐
        │    Sound generation data; see [Reunanen].
-    $  2c   ┘
-    $  2b   Tape load speed: 0=2400 bps  1=600 bps
-    $  2a   ┐
-       │    ???
-    $  0e   ┘
-    $  0d   keyboard ring buffer fill count
-    $  0c   ┐
+    $  2C   ┘
+    $  2B   Tape load speed: 0=2400 bps  1=600 bps
+    $  1C   tmp2 ─┐
+    $  1A   tmp1  temporary storage not used across BIOS calls
+    $  18   tmp0 ─┘
+    $  0D   keyboard ring buffer fill count
+    $  0C   ┐
        │    Unused?
     $  08   ┘
     $  06 ₂ 16-bit 1-second down counter
