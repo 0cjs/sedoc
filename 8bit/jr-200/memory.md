@@ -43,8 +43,18 @@ bitmaps.
     $0151   STICK(1) data
     $0150   32-byte keyboard buffer / STICK(0) data
 
-    $0116₂  keyboard buffer pointer
-    $0114₂  (?) xfer buffer from 1544
+    $01FF   ┐
+       │    Unused by BIOS.
+    $01E0   ┘
+    $01DF   ┐
+       │    Buffer for BIOS read line routine ($E927)
+    $018E   ┘
+    $016F   ┐
+       │    Ring buffer for BIOS keyboard scan routine (filled by IRQ handler)
+    $0140   ┘
+
+    $0116₂  keyboard ring buffer input pointer
+    $0114₂  keyboard ring buffer output pointer
     $010e₂  user hook: 1 second timer
     $010c₂  user hook: 0.1 second timer
     $010a₂  user hook: unknown
@@ -67,7 +77,7 @@ bitmaps.
     $  2a   ┐
        │    ???
     $  0e   ┘
-    $  0d   Unhandled keypress counter, other 1544 comm purposes
+    $  0d   keyboard ring buffer fill count
     $  0c   ┐
        │    Unused?
     $  08   ┘
