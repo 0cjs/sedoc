@@ -217,6 +217,26 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
     15  SCL: I2C data clock (DDC1: ID3)
 
 
+Joystick Connectors
+-------------------
+
+The Atari-ish DE-9 standard ([more platforms here][wp atjoy other]).
+Directions and buttons are N.O., shorting to ground when activated.
+MSX is compatible but missing button 2.
+
+    Pin Atari   MSX
+    ──────────────────────────────────────────────────────
+     1  up      up
+     2  down    down
+     3  left    left
+     4  right   right
+     5  padl B  Vcc
+     6  button  btn 1
+     7  +5V     btn 2
+     8  GND     strobe out
+     9  padl A  GND
+
+
 Other Pinouts
 -------------
 
@@ -243,5 +263,7 @@ A massive source for all sorts of Japanese computer connectors is
 [pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
 [minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
 [ohd8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
+
+[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
 
 [oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm

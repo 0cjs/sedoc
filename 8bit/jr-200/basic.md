@@ -30,7 +30,10 @@ Sound:
 - `PLAY`, `TEMPO`: For up to 3-part sound, foreground or background.
 
 I/O:
-- `STICK`: Read joystick ports.
+- `STICK(n)`: Read keyboard (_n_ = 0) and joystick (_n_ = 1, 2) ports.
+  - Joystick bits go low for: 0=up 1=down 2=left 3=right 4=button
+  - Keyboard returns code (more or less ASCII) as long as key is pressed.
+    shift/英数/GRAPH/カナ still have modifier effect.
 - `LPRINT`, `LLIST`
 - `HCOPY`: Screen dump to printer. (Not clear what it does with graphics.)
 
