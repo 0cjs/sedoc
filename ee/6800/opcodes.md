@@ -33,10 +33,16 @@ This is a quick reference for hand-assembly.
     LDS     8E₃     9E₄     BE₅     AE₆
     STS             9F₅     BF₆     AF₇
 
-               INC A  INC B   INX   INS   INC   INCx
-    increment    4C₂    5C₂    08₄   31₄   7C₆   6C₇
-    decrement    4A₂    5A₂    09₄   34₄   7A₆   6A₇
-               DEC A  DEC B   DEX   DES   DEC₁  DECx
+             A       B     addr     n,X    X     S
+    CLR     4F₂     5F₂     7F₆     6F₇
+    COM     43₂     53₂     73₆     63₇
+    INC     4C₂     5C₂     7C₆     6C₇   08₄   31₄
+    DEC     4A₂     5A₂     7A₆     6A₇   09₄   34₄
+
+            #nn     zp     addr     n,X
+    CMP A   81₂     91₃     B1₄     A1₅
+    CMP B   C1₂     D1₃     F1₄     E1₅
+    CPX     8C₃     9C₄     BC₅     AC₆
 
 ### Notes
 
