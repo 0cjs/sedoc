@@ -82,6 +82,7 @@ assigned by me in [the disassembly][disasm].
     $E927   readln: zero-terminated input at $18E
     $EAD0   prreadln: pstring + readln + CMP $03
     $EB21   prcr: print a CR using prchar
+    $EBE7   prchar: print char in A, preserving A,B,X
     $EC7F   clrscrp: clear screen
     $EFF0   qprstr: prstr only if qprstr_quiet == $00
     $EFF9   prstr: print chars at X, b7=1 terminated
@@ -93,6 +94,8 @@ assigned by me in [the disassembly][disasm].
 - `$E8CB`: Read joysticks (STICK in BASIC); slow, about 1/4 frame
 - `clrscrp $EC7F`: Clear screen, filling with `pcolor $0E` .
 - `errbeep $F05F`: Generate error tone.
+- `prchar $EBE7`: Print character in A, doing control character processing.
+  Preserves A,B,X.
 - `prcr $EB21`: Print a carriage return.
 - `prreadln $EAD0`: Call `pstring` to print prompt pointed to by X, then
   `readln` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
