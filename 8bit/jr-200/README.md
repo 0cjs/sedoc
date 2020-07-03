@@ -1,6 +1,7 @@
 National/Panasonic Personal Computer Jr.200
 ===========================================
 
+Released 1982-Q4.
 6800-based machine (actually 6802 clone). 32 KB RAM; 16 KB ROM.
 
 It was also sold in Finland as the Panasonic JR-200UP (PAL output). The
