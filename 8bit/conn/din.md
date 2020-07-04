@@ -170,80 +170,6 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 3 and 4 cabled, but leave pin 1 unconnected at the mini-DIN end.
 
 
-Video Connectors
-----------------
-
-Sources for DIN, D-sub, etc. pinouts:
-- [OLD Hard Connector Information デジタル８ピン][ohd8]
-
-#### S1308
-
-Japanese 8-bit computers often use DIN-8 for digital RGB and RGBI;
-these often use an S1308 (female) 8-pin rectangular connector on the
-monitor side (P1308 male on cable). One set of pins is separated from
-the others by a larger gap (exaggerated below). The standard pin
-numbering is (ref. [minicon1300] and printing on Jr.200 video cable):
-
-              +-----------+     +-----------+
-    male plug ! 1 7 6   5 !     ! 5   6 7 8 ! female jack
-      (cable) ! 4 3 2   1 !     ! 1   2 3 4 ! (monitor)
-              +-----------+     +-----------+
-
-Pin assignments vary wildly. Sources include:
-- [OLD Hard Connector Information デジタル８ピン][ohd8]
-- [Larry Green's FM-7 page][fm7]
-- [MSX Wiki][msxw-drgb]
-
-#### VGA Pinout
-
-DDC2 pinout here just for quick reference; see [pinouts.ru VGA
-pinout][pru-vga] for more details. Facing the male DE-15 plug on the
-cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
-
-     1  red (75 ohm, 0.7 V p-p)
-     2  green
-     3  blue
-     4  reserved (DDC1: ID2)
-     5  ground
-     6  red ground
-     7  green ground
-     8  blue ground
-     9  key (no pin); optionally 5 V output from graphics card
-    10  sync ground
-    11  ID0 monitor ID bit 0 (optional)
-    12  SDA I2C serial data (DDC1: ID1)
-    13  hsync or csync
-    14  vsync; also used as a data clock
-    15  SCL: I2C data clock (DDC1: ID3)
-
-
-Joystick Connectors
--------------------
-
-The Atari-ish DE-9 standard ([more platforms here][wp atjoy other]).
-Directions and buttons are N.O., shorting to ground when activated.
-MSX is compatible but missing button 2.
-
-    Pin Atari   MSX
-    ──────────────────────────────────────────────────────
-     1  up      up
-     2  down    down
-     3  left    left
-     4  right   right
-     5  padl B  Vcc
-     6  button  btn 1
-     7  +5V     btn 2
-     8  GND     strobe out
-     9  padl A  GND
-
-
-Other Pinouts
--------------
-
-A massive source for all sorts of Japanese computer connectors is
-[OLD Hard Connector Information ][oh].
-
-
 
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
@@ -257,13 +183,3 @@ A massive source for all sorts of Japanese computer connectors is
 [MIDI]: https://en.wikipedia.org/wiki/MIDI#Electrical_specifications
 [e2k/din]: https://www.electronics2000.co.uk/pin-out/dincon.php
 [euaudio]: https://en.wikipedia.org/wiki/DIN_connector#Analog_audio
-
-[fm7]: http://www.nausicaa.net/~lgreenf/fm7page.htm
-[msxw-drgb]: https://www.msx.org/wiki/Digital_RGB_connector
-[pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
-[minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
-[ohd8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
-
-[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
-
-[oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
