@@ -33,22 +33,33 @@ The following is FM77AV-specific, for the moment.
                         \ 20 18 16 14 12 10 8 6 4 2  |
     chassis ground "21" →\ 19 17 15 13 11  9 7 5 3 1 |
 
-     1,5        audio left,right input (possibly vice versa)
-     2,6        audio left,right output
-     3,4        audio input,output ground
-     7,8        video input,output ground
-     9          composite/sync input (1 Vp-p, 75Ω, negative sync)
-    10          composite sync output (no video)
-    11          AV control input
-    12          Ym input; low <0.4V, high >1V, 75Ω
-                (switches RGB to half brightness for video overlay)
-    14          ground
-    16          Ys input; low=ground, high=1V or more
-    13,17,18    R,G,B ground
-    15,19,20    R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
-    21          shield
+    Clr Pins        Description
 
-Other useful references:
+         1,5        audio left,right input (possibly vice versa)
+    WR   2,6        audio left,right output
+         3,4        audio input,output ground
+         7,8        video input,output ground
+         9          composite/sync input (1 Vp-p, 75Ω, negative sync)
+    Y   10          composite sync output (no video)
+    W   11          AV control input
+    W   12          Ym input; low <0.4V, high >1V, 75Ω
+                    (switches RGB to half brightness for video overlay)
+        14          ground
+    W   16          Ys input; low=ground, high=1V or more
+        13,17,18    R,G,B ground
+    RGB 15,19,20    R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
+        21          shield
+
+####  Breakout Board
+
+`Clr` above has pin header colors on the JP-21 breakout board (excepting
+black). In pin order:
+
+        1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+        _  W  _  _  _  R  _  _  _  Y  W  W  _  _  R  W  _  _  G  B  _
+
+#### References
+
 - ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and
   SCART pinouts.
 - [OLD Hard アナログ２１ピン][oh-a21]
