@@ -53,10 +53,10 @@ The following is FM77AV-specific, for the moment.
 ####  Breakout Board
 
 `Clr` above has pin header colors on the JP-21 breakout board (excepting
-black). In pin order:
+black). In pin order (grounds marked with `=`):
 
         1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
-        _  W  _  _  _  R  _  _  _  Y  W  W  _  _  R  W  _  _  G  B  _
+        _  W  _  =  _  R  =  _  _  Y  W  W  =  =  R  W  =  =  G  B  _
 
 #### References
 
