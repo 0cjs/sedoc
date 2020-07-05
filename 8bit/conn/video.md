@@ -21,34 +21,42 @@ TODO
 JP-21 / "RGBマルチ" (RGB-21, SCART)
 -----------------------------------
 
-[JP-21] is a SCART-like connector with a slightly different pinout; it's
+[JP-21] is a [SCART]-like connector with a slightly different pinout; it's
 used by the [FM77AV][fm77].
 
-"CVBS" means composite video. "Output" appears to mean "from computer"; it
-does for what's been checked on my [FM77].
+SCART and JP-21 do not use straight-through cables; for signals marked
+"input" or "output," these are always the signals on the device connector
+and the cable is expected to swap them. (I.e., the computer sends audio on
+pin 2, but the monitor receives it on pin 1.)
 
-The following is FM77AV-specific, for the moment.
+- Signals below are referenced from the computer to the display, i.e.,
+  "output" is a signal recieved by the display. This is the opposite
+  covention of ja Wikipedia's [RGB21ピン].
+- Some of the following has been checked on my [FM77AV][fm77]; that pages
+  notes what has and hasn't.
 
                         ______________________________
                         \ 20 18 16 14 12 10 8 6 4 2  |
     chassis ground "21" →\ 19 17 15 13 11  9 7 5 3 1 |
 
-    Clr Pins        Description
+    Clr Pins       Dir  Description
 
-         1,5        audio left,right input (possibly vice versa)
-    WR   2,6        audio left,right output
-         3,4        audio input,output ground
-         7,8        video input,output ground
-         9          composite/sync input (1 Vp-p, 75Ω, negative sync)
-    Y   10          composite sync output (no video)
-    W   11          AV control input
-    W   12          Ym input; low <0.4V, high >1V, 75Ω
-                    (switches RGB to half brightness for video overlay)
-        14          ground
-    W   16          Ys input; low=ground, high=1V or more
-        13,17,18    R,G,B ground
-    RGB 15,19,20    R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
-        21          shield
+         1,5       in   audio left,right
+    WR   2,6       OUT  audio left,right
+         3         in   audio GND
+         4         OUT  audio GND
+         7         in   composite GND
+         8         OUT  composite GND
+         9         in   composite video
+    Y   10         OUT  composite video (sync only on FM77)
+    W   11         ???  AV control signal
+    W   12          ↔   Ym (RGB mask): low <0.4V, high >1V, 75Ω
+                        (switches RGB to half brightness for video overlay)
+        14          ↔   Ym,YS GND
+    W   16          ↔   Ys (RGB switch). RGB direction? FM77 +3.4 V out.
+        13,17,18    ↔   R,G,B ground
+    RGB 15,19,20    ↔   R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
+        21          ↔   shield
 
 ####  Breakout Board
 
@@ -56,7 +64,7 @@ The following is FM77AV-specific, for the moment.
 black). In pin order (grounds marked with `=`):
 
         1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
-        _  W  _  =  _  R  =  _  _  Y  W  W  =  =  R  W  =  =  G  B  _
+        _  W  =  =  _  R  =  =  _  Y  W  W  =  =  R  W  =  =  G  B  _
 
 #### References
 
@@ -125,6 +133,7 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 [pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
 
 [RGB21ピン]: https://ja.wikipedia.org/wiki/RGB21ピン
+[SCART]: https://en.wikipedia.org/wiki/SCART
 [fmavtw]: http://dempa.jp/rgb/drug/fmavtw01.html
 [jp-21]: https://en.wikipedia.org/wiki/SCART#JP-21
 [oh-a21]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/a21.htm
