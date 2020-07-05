@@ -35,6 +35,18 @@ Selected display-related commands:
 - `SCREEN` (3-111): Select VRAM usage.
 - `PSET`: Set/clear a point on the screen.
 
+Sound commands:
+- `PLAY` (v3): Plays music macro langage (MML).
+  - `A-G`,`R`: Notes and rests, optionally followed by `#` or `b`.
+  - `On`: Octave, default `4`.
+  - `Nn`: Note number (across all octaves)?
+  - `Ln`: Note length. 1=whole note, 16=16th note, default 4.
+  - `Tn`: Tempo, 32-255, default 120.
+  - `Vn`: Volume? 0-15, default 8.
+  - `Sn`, `Mn`: ???
+  - `=`: Variable substitution, `I=8:PLAY "L=I;"`.
+- `SOUND` (v3): Directly programs AY-3-8913 PSG.
+
 Selected BASIC commands:
 - `EDIT n`: Clear screen and edit line _n_ for with `←↓↑→`, `EL` etc.
 - `EXEC &Hnnnn`: Execute (JSR?) machine language code at address _nnnn_.
