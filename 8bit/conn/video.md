@@ -66,6 +66,33 @@ black). In pin order (grounds marked with `=`):
         1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
         _  W  =  =  _  R  =  =  _  Y  W  W  =  =  R  W  =  =  G  B  _
 
+The cables I have are colour coded as follows, with "end 1" and "end 2"
+picked arbitrarily. ("End 1" was used in the first breakout board attempt.)
+The wires are aluminum and cannot be soldered; they must be crimped.
+
+        Pin   End 1             End 2
+         1    brown/white
+         2    brown
+         3    orange/white
+         4    red/white
+         5    orange
+         6    red
+         7    yellow
+         8    red/black
+         9    green
+        10    green/white
+        11    blue
+        12    blue/white
+        13    purple
+        14    purple/white
+        15    gray
+        16    pink
+        17    black
+        18    black/white
+        19    cyan
+        20    white
+        21    bare
+
 #### References
 
 - ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and
