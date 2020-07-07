@@ -6,6 +6,7 @@
 - Misc
 - Looping and Delays
 - Arithmetic, Boolean Algebra, Bit/Word Handling
+- External Sources
 
 Also see Nesdev Wiki [6502 assembly optimisations][nw-opt].
 
@@ -404,6 +405,13 @@ and write of the memory location. Make bit 0 the clock output and bit
 ([Dr. Jefyll][6f p73765]. Also see [his SPI post][6f p45555].)
 
 
+External Sources
+----------------
+
+- [pfusik/zlib6502] is an INFLATE routine for [DEFLATE] protocol as used in
+  ZIP, gzip, PNG, etc. Uses 508 bytes of code and constants, 765 bytes of
+  data memory and 10 bytes of zero page memory.
+
 
 <!-------------------------------------------------------------------->
 [6f p45555]: http://forum.6502.org/viewtopic.php?p=45555#p45555
@@ -429,3 +437,7 @@ and write of the memory location. Make bit 0 the clock output and bit
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
 [yt-hj]: https://www.youtube.com/watch?v=bDbpntumA6A&lc=Ugw4AnVKe4y6_INt1FV4AaABAg
 [yt-ytvu]: https://www.youtube.com/watch?v=bDbpntumA6A&lc=UgzUx3ScG6-3lXWMNq54AaABAg.9-yXOn4CLwJ90M2ZlcJW8d
+
+<!-- External Sources -->
+[pfusik/zlib6502]: https://github.com/pfusik/zlib6502
+[DEFLATE]: https://en.wikipedia.org/wiki/DEFLATE
