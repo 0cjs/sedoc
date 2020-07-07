@@ -22,6 +22,7 @@ Stuff I've encountered while reading Japanese manuals.
     －化        －か            suffix for a changing action
     初期化      しょきか        initialization
     国際化      こくさいか      internationalization
+    汎用        はんよう        generic (e.g., PC-8801 汎用I/Oポート)
 
 
 Stuff from dictionaries:
