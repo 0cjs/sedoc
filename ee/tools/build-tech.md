@@ -135,7 +135,7 @@ connection a good strong tug before inserting it into the housing.
   it's better to have a little insulation in the wire tabs than not to
   have it fully to the end of the insulation tabs. (Again, give it a
   good tug.)
-- Needs more testing, but: for depth aligment of the wire, align it
+- Previously tried: for depth aligment of the wire, align it
   into one of the unused notches where you can see that the insulation
   is actually getting to the centre and you can feel it bump up
   against the ledge between the two sections. Press your fingers
@@ -143,6 +143,12 @@ connection a good strong tug before inserting it into the housing.
   insert it to the same distance into the die containing the
   connector, and then just a bit further to compenstate for your
   finger puffyness.
+- Current technique: anything related to feel has had very poor (<40%)
+  success rates for me. Best seems to be to use a magnifier and visually
+  watch the start of the insulation move past the insulation tabs, and go
+  just a bit further in from there. For easier viewing th wire can be along
+  the top of the crimp area when you do this, it still seems to wrap
+  properly no matter what the up/down position of the wire in the jaws.
 
 Colors follow, as much as possible, the electronics color code, with
 substitutions where there aren't enough wire colors.
