@@ -127,28 +127,19 @@ connection a good strong tug before inserting it into the housing.
   of the die.
 - Sometimes closing the crimper more than one notch will not allow the
   insulation to get into the insulation tabs. Other times it's ok. I
-  often use two.
-- When inserting the wire, angle it down from the top (open side) of
-  the connector in the block; this will help get the bare wire through
-  the smaller wire tabs and the insulation completely to the end of
-  the insulation tabs. Push hard enough to make sure it goes fully in;
-  it's better to have a little insulation in the wire tabs than not to
-  have it fully to the end of the insulation tabs. (Again, give it a
-  good tug.)
-- Previously tried: for depth aligment of the wire, align it
-  into one of the unused notches where you can see that the insulation
-  is actually getting to the centre and you can feel it bump up
-  against the ledge between the two sections. Press your fingers
-  against the outside edge of the die to mark this distance, and then
-  insert it to the same distance into the die containing the
-  connector, and then just a bit further to compenstate for your
-  finger puffyness.
-- Current technique: anything related to feel has had very poor (<40%)
-  success rates for me. Best seems to be to use a magnifier and visually
-  watch the start of the insulation move past the insulation tabs, and go
-  just a bit further in from there. For easier viewing th wire can be along
-  the top of the crimp area when you do this, it still seems to wrap
-  properly no matter what the up/down position of the wire in the jaws.
+  sometimes use two.
+- To get correct alignment: insert the connector until the wire tabs are
+  almost at the centre ledge between the two sets of tabs. There should be
+  more space between the centre ledge and the insulation tabs than between
+  the centre ledge and the wire tabs. Then when inserting the wire from the
+  other side, use the ledge at the top of the jaws (opposite the side on
+  which the connector rests as the "feel stop" for the insulation. This
+  should bring the insulation almost but not quite to the wire tabs,
+  ensuring that it's fully held by the insulation tabs.
+- When doing the crimp there's no need for the wire or insulation to be
+  resting on the connector; even resting against the top edge of the jaws,
+  as far away from the connector as it can get, it will still be crimped
+  properly.
 
 Colors follow, as much as possible, the electronics color code, with
 substitutions where there aren't enough wire colors.
