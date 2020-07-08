@@ -145,13 +145,19 @@ Colors follow, as much as possible, the electronics color code, with
 substitutions where there aren't enough wire colors.
 
     0   black               (arrow/triangle on connector)
-    1   brown, blue
+    1   brown, white        (draw black stripe on white with marker)
     2   red
     3   orange, white
     4   yellow
     5   green
     6   blue
-    7   violet, orange, white
+    7   violet, white       (tried orange, but found it confusing)
+
+References:
+- Matt Millman, [Common Wire-to-board, Wire-to-wire Connectors, and Crimp
+  Tools][millman]. Fantastic guide with many, many details.
+- Gogo:Tronics, [Crimping Electronics Connectors (Dupont, PH, XH, VH,
+  KF2510)][gogo].
 
 
 Mechanical Connections
@@ -166,3 +172,5 @@ Mechanical Connections
 
 <!-------------------------------------------------------------------->
 [cabs]: https://en.wikipedia.org/wiki/Cyanoacrylate#Filler
+[gogo]: https://sparks.gogo.co.nz/crimping/
+[millman]: http://tech.mattmillman.com/info/crimpconnectors/
