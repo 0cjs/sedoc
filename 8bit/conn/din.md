@@ -41,20 +41,27 @@ References:
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
   wiki answer: common pinouts covering CMT, composite/DRGB video.
 
-#### DIN-8 Breakout (cjs v1)
+#### DIN-5 and DIN-8 Breakouts (cjs v1)
 
-    1-Orange  2-Black   3-Yellow  # [V+/audio], GND, [clock]
-    4-White   5-Grey              # hsync/vsync (usu. grey/black); MIC/EAR
-    6-Red     7-Green   8-Blue    # TTL RGB; 6/7 cassette relay
+    C5   C8   Pin  CMT        Video
+    ───────────────────────────────────────────────────────────────────────
+    Blu  Orn   1   GND/cmt1   Vcc/12V; dot clock; audio; vsync/blank; GND
+    Blk  Blk   2   GND        GND
+    Yel  Yel   3   GND/cmt3   composite video; clock; AVC-TTL
+    Red  Wht   4   rec/mic    hsync (gray); GND
+    Grn  Gry   5   play/ear   vsync (black); GND
+         Red   6   rem+       DRGB
+         Grn   7   rem-       DRGB
+         Blu   8   GND        DRGB
 
-#### DIN-5 Breakout (cjs v1)
-
-                # CMT       video
-    1-Blue      # "CMT1"    dot clock, audio
-    2-Black     # "CMT2"    GND
-    3-Yellow    # GND       composite video, A/V+5V on Yamaha/Victor MSX
-    4-Red       # REC       hsync
-    5-Green     # PLAY      vsync
+Notes:
+- C8 colors on any breakouts; C5 colours may be used on some DIN-5 breakouts
+- DIN-5 breakout can be used for CMT if remote relay not required.
+- Pin 1 varies widely between machines; take care for +12V!
+- `cmt1/cmt3` are unknown PC-6001 "control" thing; PC-8801 may have Vcc, INT5
+- Yamaha and Victor MSX1 have audio on pin 1 and use AVC-TTL as a control
+  signal to JP-21 connectors to set aspect ratio (SCART pin 11 (8?), 0-12V).
+- Sync cable colors changed from standard gray/black due to GND conflict
 
 #### Apple IIc Serial DIN-5 Breakout (cjs v1)
 
