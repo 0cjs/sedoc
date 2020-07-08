@@ -104,7 +104,19 @@ connection as described at [so-3777141]:
         ProxyCommand corkscrew <proxyhost> <proxyport> %h %p [~/.ssh/proxy_auth]
 
 
+GitHub and Other Hosting Tips
+=============================
 
+GitHub renders HTML files only as source, which is annoying when a copy of
+the file isn't hosted elsewhere. `htmlpreview.github.io` will render these
+for you; simply pass the URL to the GitHub source rendering as the query
+parameter, e.g.
+
+    https://htmlpreview.github.io/?https://github.com/Arakula/f9dasm/blob/master/f9dasm.htm
+
+
+
+<!-------------------------------------------------------------------->
 [`git(1)`]: https://git-scm.com/docs/git
 [attributes]: https://www.git-scm.com/docs/gitattributes
 [corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
