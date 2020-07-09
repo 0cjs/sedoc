@@ -50,9 +50,9 @@ References:
     Yel  Yel   3   GND/cmt3   composite video; clock; AVC-TTL
     Red  Wht   4   rec/mic    hsync (gray); GND
     Grn  Gry   5   play/ear   vsync (black); GND
-         Red   6   rem+       DRGB
-         Grn   7   rem-       DRGB
-         Blu   8   GND        DRGB
+         Red   6   rem+       DRGB red
+         Grn   7   rem-       DRGB green
+         Blu   8   GND        DRGB blue
 
 Notes:
 - C8 colors on any breakouts; C5 colours may be used on some DIN-5 breakouts
