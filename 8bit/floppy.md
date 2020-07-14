@@ -40,9 +40,12 @@ disks drives and media][hjt]. Links to this are given below as
 notches assuming looking at the top of the diskette with the label in
 the upper left and the oval access hole at the bottom. Other useful
 references include:
+
 - Shugart [SA800/801 Diskette Storage Drive OEM Manual][sa800oem]
 - Shugart SA400 minifloppy™ Diskette Storage Drive [Service
   Manual][sa400sm] and [OEM Manual][sa400oem]
+- Jim Sather, _Understanding the Apple II_ [Chapter 9: The Disk
+  Controller][sather9]
 
 For standard drives there are only two types of diskette magnetic
 media: what is now called "double density" (DD, 2DD and many other
@@ -185,6 +188,7 @@ Does not read 40-track diskettes. Gives:
 [sa400oem]: https://archive.org/stream/bitsavers_shugartSA478_3019449#mode/1up
 [sa400sm]: https://archive.org/stream/bitsavers_shugartSA4eManualApr1979_2873568#mode/1up
 [sa800oem]: https://deramp.com/downloads/floppy_drives/shugart/SA800%20OEM%20Manual.pdf
+[sather9]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n230/mode/1up
 [wp-fmtlist]: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
 
 <!-- image file formats and software -->
