@@ -176,6 +176,7 @@ Does not read 40-track diskettes. Gives:
 
 <!-------------------------------------------------------------------->
 [MB8877]: https://www.tim-mann.org/max80/Appendix_D_Updated.pdf
+[MB8877]: https://archive.org/stream/Fujitsu-MB8876a-MB8877-FDC-datasheet#page/n2/mode/1up
 [fm7bios]: 8bit/fm7/ml.md
 [iec]: 8bit/cbm/serial-bus.md
 [pc8k]: 8bit/pc-8001/floppyif.md#protocol
