@@ -10,6 +10,15 @@ Sources for DIN, D-sub, etc. pinouts:
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
   wiki answer: common pinouts covering CMT, composite/DRGB video.
 
+Standard horizontal sync rates (kHz):
+
+     15.750     Old NTSC black and white
+     15.734     NTSC color
+     15.625     PAL
+     21.8       EGA (350 line)
+    ~24         400-line modes
+     31.469     VGA
+
 TODO
 ----
 
@@ -92,6 +101,18 @@ The wires are aluminum and cannot be soldered; they must be crimped.
         19    cyan
         20    white
         21    bare
+
+#### Dupont Headers
+
+Female dupont headers can be used on the other end of a JP-21 cable for
+breakout purposes. See [[header](header.md)] for numbering. Standard
+connections:
+
+    8-pin female    RGB
+    looking in      1:csync 2:csyncGND
+      8 6 4 2       3:blue  4:blueGND
+      7 5 3 1       5:grn   6:grnGND
+            ▲       7:red   8:redGND
 
 #### References
 
