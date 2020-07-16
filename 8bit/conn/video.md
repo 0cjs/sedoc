@@ -10,15 +10,6 @@ Sources for DIN, D-sub, etc. pinouts:
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
   wiki answer: common pinouts covering CMT, composite/DRGB video.
 
-Standard horizontal sync rates (kHz):
-
-     15.750     Old NTSC black and white
-     15.734     NTSC color
-     15.625     PAL
-     21.8       EGA (350 line)
-    ~24         400-line modes
-     31.469     VGA
-
 TODO
 ----
 
