@@ -4,11 +4,17 @@ NEC PC-8000 Series
 The Z80-based __PC-8001__ was one of the first micros introduced into
 Japan, in 1979-09, preceeded only by the Hitachi Basic Master. It could run
 CP/M.
+
 - __PC-8001A__ (1981-08): US release. Katakana replaced with Greek.
 - __PC-8001B__ (?): European release (240V). [Pictures][retropc.net/404].
 - __PC-8001mkII__ (1983-03): Improved graphics, many expansion modules
   (including FDC) built-in, two expansion slots.
 - __PC-8001mkIISR__ (1985-01) Improved graphics again.
+
+This was followed by the PC-8801 series, which started with a separate
+keyboard/system unit configuration and quickly added features, dropping
+earlier features and video modes along the way. See [8801](8801.md) for
+details.
 
 Specs:
 - CPU: μPD780C-1 (Z80 clone), 4 MHz.
