@@ -25,6 +25,10 @@ Systems are, roughly:
 
 #### Vertical Sync
 
+When identifying a video format, both [ITU BT.601] and [SMPTE 259M] append
+the field rate directly to the format or the frame rate with a slash,
+making "480i60" and "480i/30" the same thing.
+
 Standard vertical rates are almost invariably around 50-60 Hz (frame rate
 half that for interlaced output). The SD vsync signal goes low (-300 mV
 from black level) with the line 4 hsync pulse and returns to high (black
@@ -135,6 +139,8 @@ HD Retrovision articles and posts:
 
 
 <!-------------------------------------------------------------------->
+[ITU BT.601]: https://en.wikipedia.org/wiki/Rec._601
+[SMPTE 259M]: https://en.wikipedia.org/wiki/SMPTE_259M
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
 [hdr 240]: https://www.hdretrovision.com/240p
