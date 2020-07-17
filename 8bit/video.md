@@ -1,6 +1,8 @@
 Video on 8-bit Systems
 ======================
 
+For connector information, see [conn/video](conn/video.md).
+
 Video output is generally vertical sync for ~50-60 Hz frames or fields (two
 interlaced fields per frame), horizontal synchronization signals for 260 or
 more lines per frame/field, and image information encoded as a single (Y)
