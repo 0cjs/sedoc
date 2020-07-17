@@ -36,13 +36,20 @@ This is a quick reference for hand-assembly.
              A       B     addr     n,X    X     S
     CLR     4F₂     5F₂     7F₆     6F₇
     COM     43₂     53₂     73₆     63₇
+    NEG     40₂     50₂     70₆     60₇
     INC     4C₂     5C₂     7C₆     6C₇   08₄   31₄
     DEC     4A₂     5A₂     7A₆     6A₇   09₄   34₄
 
             #nn     zp     addr     n,X
-    CMP A   81₂     91₃     B1₄     A1₅
-    CMP B   C1₂     D1₃     F1₄     E1₅
+    CMP A   81₂     91₃     B1₄     A1₅             CBA
+    CMP B   C1₂     D1₃     F1₄     E1₅              11₂
     CPX     8C₃     9C₄     BC₅     AC₆
+
+
+
+    ABA     SBA     DAA
+     1B₂     10₂     19₂
+
 
 ### Notes
 
