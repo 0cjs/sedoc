@@ -49,12 +49,14 @@ equalization pulses around and during vsync; see "Composite Sync" below for
 more information on this.
 
 Many systems do a (non-standard as far as TV goes) progressive 262 or 263
-line 60 FPS display by always starting vsync on a line boundary. (This may
-leave "blank" scan lines between the rendered scan lines on the monitor.)
-This also affects csync; see below. It seems that most CRT monitors/TVs
-handle this, but many non-CRT monitors and digital capture devices may not.
-Additionally, some devices may handle it correctly through composite but
-not component inputs, and vice versa. [[hdr 240]]
+line 60 FPS display (240p) by always starting vsync on a line boundary.
+(This may leave "blank" scan lines between the rendered scan lines on the
+monitor.) This also affects csync; see below. It seems that most CRT
+monitors/TVs handle this, but many non-CRT monitors and digital capture
+devices may not. Additionally, some devices may handle it correctly through
+composite but not component inputs, and vice versa. [[hdr 240]] The [240p
+test suite][240p ts] may be useful when analyzing 240p output and how
+upscalers deal with it.
 
 #### Horizontal Sync
 
@@ -143,9 +145,13 @@ HD Retrovision articles and posts:
 - \[hdr jit] [Sync Jitter][hdr jit]
 - \[hdr 240] [More information than you need about “240p” video][hdr 240].
 
+Other sources
+- \[240p ts] Classic Console Upsaker wiki, [240p test suite][240p ts].
+
 
 
 <!-------------------------------------------------------------------->
+[240p ts]: http://junkerhq.net/xrgb/index.php?title=240p_test_suite
 [ISL4089]: https://www.renesas.com/jp/ja/www/doc/datasheet/isl4089.pdf
 [ITU BT.601]: https://en.wikipedia.org/wiki/Rec._601
 [LMH1981]: https://www.ti.com/lit/ds/symlink/lmh1981.pdf
