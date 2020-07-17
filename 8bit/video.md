@@ -23,7 +23,8 @@ Systems are, roughly:
 - RGB: Sync on green
 - Component video: Y+sync Cb Cr
 - S-video: Y+sync, chroma
-- Composite video+sync
+- Composite video: Y+sync+color, using one of several systems (NTSC, PAL,
+  etc.) to encode the color information.
 
 #### Vertical Sync
 
@@ -31,17 +32,21 @@ When identifying a video format, both [ITU BT.601] and [SMPTE 259M] append
 the field rate directly to the format or the frame rate with a slash,
 making "480i60" and "480i/30" the same thing.
 
-Standard vertical rates are almost invariably around 50-60 Hz (frame rate
-half that for interlaced output). The SD vsync signal goes low (-300 mV
-from black level) with the line 4 hsync pulse and returns to high (black
-level) with the line 7 hsync pulse (falling edge). [[hdr csync1]]
+Standard vertical field rates are almost invariably around 50-60 Hz, with a
+frame rate half that because the output is interlaced. The SD vsync signal
+goes low (-300 mV from black level) with the line 4 hsync pulse and returns
+to high (black level) with the line 7 hsync pulse (falling edge). [[hdr
+csync1]]
 
-However, standard SD systems are interlaced, and indicate odd-line (1,3,…)
-fields by starting vsync on a line boundary, and even-line (2,4,…) fields
-by starting vsync in the middle of a line boundary. (Thus, 262.5 lines per
-field in NTSC video.) In this case vsync returns to high between hsync
-pulses. See the [LMH1981] datasheet and [[hdr csync1]] for sample
-waveforms.
+Odd-line (1,3,…) fields are indicated by starting vsync with hsync;
+even-line (2,4,…) fields by starting and ending vsync half-way between two
+hsync pulses (after hsync 266 and hsync 269 of the frame), thus giving
+262.5 lines per field in NTSC video. See the [LMH1981] datasheet and [[hdr
+csync1]] for sample waveforms.
+
+The standard sytems also actually originate a composite sync that uses
+equalization pulses around and during vsync; see "Composite Sync" below for
+more information on this.
 
 Many systems do a (non-standard as far as TV goes) progressive 262 or 263
 line 60 FPS display by always starting vsync on a line boundary. (This may
@@ -141,7 +146,9 @@ HD Retrovision articles and posts:
 
 
 <!-------------------------------------------------------------------->
+[ISL4089]: https://www.renesas.com/jp/ja/www/doc/datasheet/isl4089.pdf
 [ITU BT.601]: https://en.wikipedia.org/wiki/Rec._601
+[LMH1981]: https://www.ti.com/lit/ds/symlink/lmh1981.pdf
 [SMPTE 259M]: https://en.wikipedia.org/wiki/SMPTE_259M
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
@@ -149,5 +156,3 @@ HD Retrovision articles and posts:
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
-[isl4089]: https://www.renesas.com/jp/ja/www/doc/datasheet/isl4089.pdf
-[lmh1981]: https://www.ti.com/lit/ds/symlink/lmh1981.pdf
