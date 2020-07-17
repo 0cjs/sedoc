@@ -117,17 +117,29 @@ variations they produce:
 
 [[TB476]] discusss how to try to recover from poor csync implementations.
 
-#### Input AC Coupling
+#### Input Conditioning
 
-The [LMH1981] datasheet discusses input coupling considerations for video
-(p. 14) and suggests 1 μF for DC-coupled inputs and 0.01 μF for AC-coupled
-inputs.
+The [LMH1981] datasheet discusses input AC coupling considerations for
+video (p. 14) and suggests 1 μF for DC-coupled inputs and 0.01 μF for
+AC-coupled inputs.
+
+The [LM1881] datasheet notes that for a 75 Ω input, 620 Ω in series with
+the source and 510 pF to ground will form a lowpass with a corner of 500
+kHz, easily passing the sync but reducing subcarrier by almost 18 dB,
+though delaying the output of the LM1881 by 40-200 ns.
+
+For converting TTL sync to video-level, RetroRGB suggests using a 470R (or
+sometimes 330R) in series, creating a voltage divider of 0.13 (0.18) with
+the 75Ω input impedence.
 
 
 References
 ----------
 
 Data Sheets and Application Notes:
+- TI [LM1881] Video Sync Separator. Classic chip to extract csync, vsync
+  odd/even and burst/back porch from a composite video signal. Includes
+  info on filtering colour information from composite video.
 - TI [LMH1981] Multi-Format Video Sync Separator. Includes waveforms for
   various SD and HD video and sync signals.
 - Analog Devices [ADV7170] Digital PAL/NTSC Video Encoder. Provides lots of
@@ -154,6 +166,7 @@ Other sources
 [240p ts]: http://junkerhq.net/xrgb/index.php?title=240p_test_suite
 [ISL4089]: https://www.renesas.com/jp/ja/www/doc/datasheet/isl4089.pdf
 [ITU BT.601]: https://en.wikipedia.org/wiki/Rec._601
+[LM1881]: https://www.ti.com/lit/ds/symlink/lm1881.pdf
 [LMH1981]: https://www.ti.com/lit/ds/symlink/lmh1981.pdf
 [SMPTE 259M]: https://en.wikipedia.org/wiki/SMPTE_259M
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
