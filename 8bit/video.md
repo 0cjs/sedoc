@@ -158,6 +158,9 @@ HD Retrovision articles and posts:
 - \[hdr 240] [More information than you need about “240p” video][hdr 240].
 
 Other sources
+- \[scanlines] [Scanlines Demystified / Special Downscaling Edition
+  Q&A][scanlines]. Extensive 240p discussion and pics; equipment
+  information.
 - \[240p ts] Classic Console Upsaker wiki, [240p test suite][240p ts].
 
 
@@ -175,3 +178,4 @@ Other sources
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
+[scanlines]: http://scanlines.hazard-city.de/
