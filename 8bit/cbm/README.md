@@ -39,7 +39,7 @@ Non-PET models:
   - 22×23×2 (8×8 cells = 176×184)
   - 20×20×2 (8×8 cells = 160×160) "bitmap" w/1 programmed char/cell
   - 11×23×4 (4×8 cells = 88×184)
-- 1982-?? __[MAX Machine]__: 2K, no ROM; additional RAM/ROM supplied
+- 1982-01 __[MAX Machine]__: 2K, no ROM; additional RAM/ROM supplied
   on carts. No IEC serial, user ports. Otherwise C64 hardware (but
   different memory map).
 - 1982-08 __[Commodore 64][c64]__: 64K
@@ -184,6 +184,11 @@ allow you to access the top 256 bytes (32 char definitions) of CHAROM
 on the C64. Not sure what use that might be. Perhaps cartridge port
 pins 9 and 10 have other purposes on the MAX.
 
+#### References
+
+- floodgap.com/retrobits, [The Game Machines: The Ultimax/Max Machine,
+  64GS, 64CGS][max].
+
 
 Plus/4
 ------
@@ -249,6 +254,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [rc 10850]: https://retrocomputing.stackexchange.com/q/10850/7208
 [reutech]: https://codebase64.org/doku.php?id=base:thirdparty#reu
 
+[max]: https://www.floodgap.com/retrobits/ckb/secret/ultimax.html
 [multimax]: http://www.multimax.co/hardware/
 
 [transfer]: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/transfer/transfer.html

@@ -93,6 +93,11 @@ Note that _only_ G̅A̅M̅E̅ unmaps `$1/$A/$C` blocks, and while you're
 supplying ROML/ROMH blocks from the cart, you can never supply the
 `$0` RAM or `$D` IO from the cart.
 
+This is the only mode in which the VIC-II can access external memory,
+$F000-$FFFF on the cart appearing at $3000 in the VIC-II address space.
+[[max]] (This is why you must copy $F000-$FFFF to $3000 when runing a MAX
+cart dump from RAM.)
+
     E G c h l   $0 $1 $8 $A $C $D $E
     . 0 x x x    _  *  L  *  *  i  H
 
@@ -305,6 +310,7 @@ References:
 [64w-maxmap]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine#Memory_map
 [6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
 [c64servman]: https://archive.org/details/C64-C64C_Service_Manual_1992-03_Commodore
+[max]: https://www.floodgap.com/retrobits/ckb/secret/ultimax.html
 [rc 5715]: https://retrocomputing.stackexchange.com/a/5715/7208
 [vic-ii]: https://www.cebix.net/VIC-Article.txt
 
