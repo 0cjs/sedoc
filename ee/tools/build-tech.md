@@ -62,7 +62,13 @@ iron against not (not too slowly).
 The above came off a shop inventory listing; there are more on the
 [Goot site][goot px-201].
 
+Other suggestions I've seen:
+- Hakko FX-888D is very standard.
+- [KSGER T12]: Hakko-compatible tips.
+- Anesty ZD-915 vacuum desoldering unit; cheap and works well.
+
 [goot px-201]: http://www.goot.jp/en/handakote/px-201/
+[KSGER T12]: https://www.amazon.com/dp/B07PMZGPQQ
 
 
 SMD
