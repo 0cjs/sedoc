@@ -118,10 +118,10 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
     ●    4      I̅R̅Q̅
      →   5      R/W̅
      →   6      Dot clock; NTSC = 8.181816 MHz, PAL = 7.881984 MHz
-     →   7      I̅O̅1̅; low when accessing page $DExx
+     →   7      I̅O̅1; low when accessing page $DExx
     ●    8      G̅A̅M̅E̅
     ●    9      E̅X̅R̅O̅M̅; disables internal RAM at $8000-$9FFF
-     →  10      I̅O̅2̅; low when accessing page $DFxx
+     →  10      I̅O̅2; low when accessing page $DFxx
      →  11      R̅O̅M̅L̅; low when RAM off, accessing 8K @ $8000
      →  12      BA; VIC bus available (see below)
     ●   13      D̅M̅A̅; assert to make CPU release bus after next read cycle
@@ -143,7 +143,7 @@ VIC II sent to the `RDY` gate, PLA and cartridge port.
 [rc 10850] and its answers make some good points:
 - Except when asserting `G̅A̅M̅E̅` and not asserting `E̅X̅R̅O̅M̅`, without
   knowing the internal state of the C64 (i.e., someone else's software
-  is running) you must use the `I̅O̅n̅` (and sometimes `R̅O̅M̅x̅`) lines to
+  is running) you must use the `I̅O̅n` (and sometimes `R̅O̅M̅x̅`) lines to
   determine whether internal memory or your cart is being accessed.
 - The address bus is actually bidirectional when DMA is being used;
   carts can read/write system RAM.
@@ -174,12 +174,12 @@ the cartridge ROM. (On the C64 the VIC sees the onboard CHAROM at 4K @
 `$1000`.)
 
 Cartridge port pin 7 is the external RAM enable signal, asserted when
-accessing `$0800`-`$0FFF`. (This is `I̅O̅1̅` for page `$DExx` on the C64.)
+accessing `$0800`-`$0FFF`. (This is `I̅O̅1` for page `$DExx` on the C64.)
 
-Pin 8 on cartridges is grounded, thus asserting `G̅A̅M̅E̅` on the C64 to
-put it into MAX mode.
+Pin 8 on cartridges is grounded, thus assert `G̅A̅M̅E̅` on the C64 to put it
+into MAX mode.
 
-The [MultiMAX] cart connects `E̅X̅R̅O̅M̅` (9) to `I̅O̅2̅` (10); this would
+The [MultiMAX] cart connects `E̅X̅R̅O̅M̅` (9) to `I̅O̅2` (10); this would
 allow you to access the top 256 bytes (32 char definitions) of CHAROM
 on the C64. Not sure what use that might be. Perhaps cartridge port
 pins 9 and 10 have other purposes on the MAX.
