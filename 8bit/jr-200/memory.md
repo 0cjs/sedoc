@@ -82,9 +82,11 @@ bitmaps.
     $  1A   tmp1  temporary storage not used across BIOS calls
     $  18   tmp0 ─┘
     $  0D   keyboard ring buffer fill count
-    $  0C   ┐
-       │    Unused?
-    $  08   ┘
+    $  0C   ??? (related to keyboard)
+    $  0B   nmi_enabled: 0=NMI handler returns immediately
+    $  0A   curlin (lower 5 bits: 0-23)
+    $  09   curcol (lower 5 bits: 0-31)
+    $  08   ??? (related to printing)
     $  06 ₂ 16-bit 1-second down counter
     $  05   8-bit 0.1 second down counter running from 10 to 1
     $  04   8-bit 0.1 second down counter
