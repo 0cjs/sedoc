@@ -66,6 +66,31 @@ Fixing/Changing Commits and Branches
 Configuration
 -------------
 
+### Finding Locations in the Repo
+
+`git rev-parse` options related to paths to and within repos.
+`root` below is the top-level directory of the current repo.
+
+Show information:
+
+    --local-env-vars
+    --show-toplevel     root directory of current repo
+    --git-dir           path to .git/
+    --git-common-dir    path to common-git, if defined, else .git/
+    --show-prefix       path to CWD from root of repo
+    --git-path PATH
+
+Tests:
+
+    --is-inside-git-dir
+    --is-inside-work-tree
+    --is-bare-repository
+
+Change behaviour:
+
+    --show-cdup         when displaying paths, show root relative to CWD
+    --prefix            generate path names relative to repo root
+
 ### Checking Line End Settings
 
 For debugging Git [attributes], the `core.eol` and `core.autocrlf`
