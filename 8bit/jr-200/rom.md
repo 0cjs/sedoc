@@ -71,6 +71,14 @@ ROM Routines
 Also see [the memory map](./memory.md). The names of these routines were
 assigned by me in [the disassembly][disasm].
 
+    ♡       indicates registers preserved by call
+    ♣       indicates registers destroyed after call
+            (flags assumed destroyed unless otherwise specified)
+    ♠       indicates an input parameter
+    ♠A      A register contains data to process
+    ♠X      X register points to the data or buffer to be used
+    ♠$18E   data stored in buffer at $18E
+
 #### Summary
 
     $E88C   keywait (doesn't update cursor for input status)
@@ -79,14 +87,15 @@ assigned by me in [the disassembly][disasm].
     $E8DC   readch_nocursor
     $E8E0   readch_check
     $E8FE   readch
-    $E927   readln: zero-terminated input at $18E
-    $EAD0   prreadln: pstring + readln + CMP $03
-    $EB21   prcr: print a CR using prchar
-    $EBE7   prchar: print char in A, preserving A,B,X
-    $EC7F   clrscrp: clear screen
-    $EFF0   qprstr: prstr only if qprstr_quiet == $00
-    $EFF9   prstr: print chars at X, b7=1 terminated
-    $F002   qprstr00: qprstr for $00-terminated string
+    $E927   readln      ♠$18E read and zero-terminate input
+    $EAD0   prreadln    pstring + readln + CMP $03
+    $EB21   prcr        ♣A print a CR using prchar
+    $EBE7   prchar      ♠A ♡ABX print char
+    $EC7F   clrscrp     clear screen
+    $EFF0   prstr8b     ♠X prstr8 unless prb_quiet ≠ $00
+    $EFF9   prstr8      ♠X print bit-7-set-terminated string
+    $F002   prstr0b     ♠X prstr0 unless prb_quiet ≠ $00
+    $F006   prstr0      ♠X print $00-terminated string
     $F05F   errbeep
 
 #### Details
@@ -99,10 +108,10 @@ assigned by me in [the disassembly][disasm].
 - `prcr $EB21`: Print a carriage return.
 - `prreadln $EAD0`: Call `pstring` to print prompt pointed to by X, then
   `readln` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
-- `prstr $EFF9`: Print chars pointed to by X. Set MSBit on last char.
+- `prstr8 $EFF9`: Print chars pointed to by X. Set MSBit on last char.
   (Cannot print chars \>$7F.)
-- `qprstr $EFF0`: As `prstr` but prints only if `qprstr_quiet $45` is $00.
-- `qprstr00 $F002`: As `qprstr` but string terminated by $00.
+- `prstr8b $EFF0`: As `prstr8` but prints only if `prb_quiet $45` is $00.
+- `prstr0b $F002`: As `prstr8b` but string terminated by $00.
 - `readch $E8FE`: Wait for a char from the keyboard and return it in A. The
   cursor will be displayed and updated for the input mode, continuing to
   wait for another key, if 英数, GRAPH or カナ is pressed.

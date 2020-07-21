@@ -70,7 +70,7 @@ bitmaps.
     $  CF   ┐
        │    Bits appear to be used here and there.
     $  46   ┘
-    $  45   qprstr_quiet: non-0 suppresses some print routines
+    $  45   prb_quiet: non-0 suppresses some print routines
     $  44   ┐
        │    Bits appear to be used here and there.
     $  3A   ┘
