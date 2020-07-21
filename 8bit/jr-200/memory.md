@@ -66,6 +66,9 @@ bitmaps.
 
     $  FF   ┐
        │    Looks unused, from glancing at a dump in the monitor.
+    $  E0   ┘
+    $  DF   ┐
+       │    Possibly used by tape routines.
     $  D0   ┘
     $  CF   ┐
        │    Bits appear to be used here and there.
