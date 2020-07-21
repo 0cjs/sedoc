@@ -89,13 +89,14 @@ assigned by me in [the disassembly][disasm].
     $E8FE   readch
     $E927   readln      ♠$18E read and zero-terminate input
     $EAD0   prreadln    pstring + readln + CMP $03
-    $EB21   prcr        ♣A print a CR using prchar
+    $EB21   prcr        ♣A print a CR using prchar; usu. use prnl instead
     $EBE7   prchar      ♠A ♡ABX print char
     $EC7F   clrscrp     clear screen
     $EFF0   prstr8b     ♠X prstr8 unless prb_quiet ≠ $00
     $EFF9   prstr8      ♠X print bit-7-set-terminated string
     $F002   prstr0b     ♠X prstr0 unless prb_quiet ≠ $00
     $F006   prstr0      ♠X print $00-terminated string
+    $F00F   prnl           print a newline
     $F05F   errbeep
 
 #### Details
@@ -105,7 +106,11 @@ assigned by me in [the disassembly][disasm].
 - `errbeep $F05F`: Generate error tone.
 - `prchar $EBE7`: Print character in A, doing control character processing.
   Preserves A,B,X.
-- `prcr $EB21`: Print a carriage return.
+- `prcr $EB21`: Print a carriage return using the current charset/graphics
+  settings. This may produce unepxected behaviour depending on those
+  settings; unless you know you want this, use `prnl` instead.
+- `prnl $F00F`: Print a newline, even if the current mode is an
+  alternate character set or graphics.
 - `prreadln $EAD0`: Call `pstring` to print prompt pointed to by X, then
   `readln` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
 - `prstr8 $EFF9`: Print chars pointed to by X. Set MSBit on last char.
