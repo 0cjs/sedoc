@@ -136,17 +136,30 @@ the 75Ω input impedence.
 Common Resolutions and Timings
 ------------------------------
 
-    H/V timings given in dots as: total, front porch/sync/back porch
-
-    Name        Sys   Res       dclk   vertical        horizontal
+    dotclk MHz  Resolution  Name [source]
+    hfreq  kHz      dots/μs      front       sync      back
+    vfreq   Hz      lines/ms     front       sync      back
     ───────────────────────────────────────────────────────────────────
-    PC-8801           640×400         440   /  /38    848 ?/64/80
+    14.31818    640×200     PC98 "15 kHz" [tim pc98]
+    15.98       896/62.58    64/4.47    64/4.47  128/8.94
+    61.23       261/16.33    15/0.94     8/0.50   38/2.38
+
+    21.0526     640×400     PC98 "24 kHz" [tim pc98]
+    24.83       848/40.28    64/3.04    64/3.04   80/3.8
+    56.42       440/17.72     7/0.28     8/0.32   25/1.01
+
+    25.175      640×400     PC98 "31 kHz" [tim pc98]
+    31.47       800/31.78    14/0.58    64/2.54  82/3.24
+    70.05       449/14.28    13/0.41     2/0.064 35/1.09
+
 
 References:
 - [[tim opt]] Classic Console Upscaler Wiki, ["Optimal timings"][tim opt].
   Timings for many consoles and a few computers from NES through Wii.
 - [[tim NES]] Nes Dev Wiki, ["NTSC Video"][tim nes]. Detailed Nintendo
   Entertainment System/Famicom timings and C++ code for emulation.
+- [Technical details of Display out [PC98]][tim pc98]. Waveforms and timing
+  details for 15/24/31 kHz modes.
 
 
 References
@@ -186,6 +199,7 @@ Other sources
 <!-- Common resolutions and timings -->
 [tim NES]: http://wiki.nesdev.com/w/index.php/NTSC_video
 [tim opt]: http://junkerhq.net/xrgb/index.php?title=Optimal_timings
+[tim pc98]: https://radioc.web.fc2.com/column/pc98bas/pc98dispout2_en.htm
 
 <!-- References -->
 [240p ts]: http://junkerhq.net/xrgb/index.php?title=240p_test_suite
