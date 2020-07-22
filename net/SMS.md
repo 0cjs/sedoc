@@ -1,7 +1,7 @@
 SMS
 ===
 
-Why SMS is Bad for Two-step (2FA, MFA) Authentication 
+Why SMS is Bad for Two-step (2FA, MFA) Authentication
 -----------------------------------------------------
 
 In 2016-06 NIST published a [public preview draft][800-63Bgit] of
@@ -53,7 +53,7 @@ Public Switched Telephone Network:
   Authentication][tidbits] (2018-02)  Includes many links to other
   references
 
-[800-63B]: https://pages.nist.gov/800-63-3/sp800-63b.html 
+[800-63B]: https://pages.nist.gov/800-63-3/sp800-63b.html
 [800-63Bgit]: https://github.com/usnistgov/800-63-3
 [beb5df7]: https://github.com/usnistgov/800-63-3/commit/beb5df714b8ac5dd95dcc07c3e7f66ad20401bd3
 [forbes]: https://www.forbes.com/sites/thomasbrewster/2017/09/18/ss7-google-coinbase-bitcoin-hack/

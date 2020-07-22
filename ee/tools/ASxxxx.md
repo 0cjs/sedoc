@@ -286,7 +286,7 @@ Enable/disable various parts of listing; see docs.
 Assembler Conditonal/Macro Directives
 -------------------------------------
 
-### Conditional Assembly 
+### Conditional Assembly
 
 Maximum nesting of 10 levels.
 

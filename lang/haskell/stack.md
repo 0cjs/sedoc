@@ -10,7 +10,7 @@ and there is a [comparison with other tools][st-comparison].
 A Stack _project_ is a directory containing a [`stack.yaml`] file
 specifying project-specific configuration and sources for fetching
 dependencies. Projects contain one or more [_packages_][st-package]
-specified by a `.cabal` file or an [Hpack] `package.yaml` file. 
+specified by a `.cabal` file or an [Hpack] `package.yaml` file.
 
 The most usual source for dependencies is a curated GHC and standard
 set of packages specified with the `resolver` setting in `stack.yaml`.

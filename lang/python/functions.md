@@ -133,7 +133,7 @@ them:
 Using `def`, parameters and the return may be annotated per [PEP 3107]
 "Function Annotations" (Python 3.4, maybe even 3.0). Lambdas cannot be
 annotated. Parameters are annotated as `identifier: expr` and the
-return as `) -> expr:`. 
+return as `) -> expr:`.
 
     def f(n: int = 0) -> str:
         return str(n)

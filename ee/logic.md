@@ -58,7 +58,7 @@ about plug-in replacement of TTL" section:
 > outputs, or an MM54HCT/MM74HCT TTL compatible circuit should be
 > used. This incompatibility tends to limit the designer’s ability to
 > intermingle TTL and HC-CMOS.
-> 
+>
 > Note, though, that HC outputs are completely compatible with the
 > various TTL family’s input specifications; therefore, there is no
 > problem when HC is driving TTL. Another source of possible problems

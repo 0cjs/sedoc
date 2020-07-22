@@ -40,7 +40,7 @@ family, e.g., "6800+" adds some of 6801/6805/68HC11, 6809+ adds 6309.
 - [ASxxxx][] ([Downloads][asx-dl])  v5.30 update 1 2019-03-10
   - [Features][asx-doc]: linker/relocation, macros
   - [CPUs][asx-cpus]: 1802 6502+ 6800+ 6809 8085 Z280 Z80 Z80gb AVR PIC ...
-  - MCUs: AVR PIC ST8 
+  - MCUs: AVR PIC ST8
   - Missing: 6309 65816
 
 - [naken_asm][] ([GitHub][naken-gh]): November 2, 2019

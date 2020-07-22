@@ -155,8 +155,8 @@ internally tries the hardcoded equivalant procedures of the above
 finders when no finder in `meta_path` is successful.)
 
 The arguments to [`find_spec()`] are:
-- The fully-qualified name of the module. _(str)_ 
-- Path entries to use for module search: _(iter)_ 
+- The fully-qualified name of the module. _(str)_
+- Path entries to use for module search: _(iter)_
   - `None` if it's a top-level module.
   - `a.b.__path__` where `a.b` is the parent module. If the parent
     module's `__path__` attribute is `None` or missing,

@@ -159,7 +159,7 @@ release. See pp. 10-11 of [IEC disected] for details.
 
 Kernal handles 0-3 internally; never sends to bus.
 
-    0       Keyboard 
+    0       Keyboard
     1       Cassette
     2       RS-232 on user port (2nd cassette on PETs)
     3       Screen

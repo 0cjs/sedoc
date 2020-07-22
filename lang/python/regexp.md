@@ -47,7 +47,7 @@ concatentate search strings as necessary (also see [tokenizer]):
     # Misc stuff
     re.escape('.*')                 # ⇒ '\\.\\*'
     re.purge()                      # Clear compiled regexp cache
-                            
+
 Flags can be passed as the last argument or `flags` to the functions:
 
     re.compile('b', re.ASCII | re.I)
@@ -121,7 +121,7 @@ These always have value `True` in boolean expressions.
     {m}             Exactly _m_ of prev expr
     {m,n}           From _m_ to _n_ of prev expr
     {m,n}?          Non-greedy version of above
-    \               Escapes special chars (`*` etc.); starts special sequence 
+    \               Escapes special chars (`*` etc.); starts special sequence
     []              Standard ranges; `\\` escapes special chars in ranges
     a|b             Match a or b
 

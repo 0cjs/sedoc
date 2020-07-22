@@ -31,7 +31,7 @@ anywhere you would use a device name. Commands useful here include:
 /etc/crypttab
 -------------
 
-`/etc/crypttab` is read on boot and by `cryptdisks_start NAME`. 
+`/etc/crypttab` is read on boot and by `cryptdisks_start NAME`.
 The four fields are:
 * _target_: name (`/` not allowed) to map to in `/dev/mapper`
 * _source device_: device name, UUID=partition-UUID, etc.

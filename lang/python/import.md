@@ -247,12 +247,12 @@ imported" boilerplate:
     if __name__ == '__main__':
         main()
 
-The possible ways to start the interpreter are as follows.`__name__` 
+The possible ways to start the interpreter are as follows.`__name__`
 in that starting module will always `__main__`.
 
 1. __python …/foo.py__:
    - Loads file `…/foo.py` from whatever path was specified.
-   - The directory in which `foo.py` lives will be added to`sys.path`. 
+   - The directory in which `foo.py` lives will be added to`sys.path`.
    - `sys.path` will _not_ include the current working directory.
    - `__spec__` will be None.
 2. __python -m bar__ where bar is not a package:

@@ -106,7 +106,7 @@ accept abbreviations unless disabled with `allow_abbrev=False`. See
 The parser returns an `argparse.Namespace` object; you can specify an
 existing object to have it add attributes to that.
 
-The parser does not modify its input. 
+The parser does not modify its input.
 
 
 

@@ -65,7 +65,7 @@ binding. Thus,
     x = 1
     def f():
         print('x=%s' % x)
-        x = 3    
+        x = 3
     f()
 
     ⇒ UnboundLocalError: local variable 'x' referenced before assignment

@@ -225,7 +225,7 @@ many details are available only in the source code in packages under
 
 2. Each [`Change`] object is delievered to every
    [`buildbot.schedulers`] object (instance of [`BaseScheduler`])
-   configured in `schedulers`. These create `BuildSet` objects, 
+   configured in `schedulers`. These create `BuildSet` objects,
 
    Each decides if it will generate and queue a build
    request for its configured set of builders.

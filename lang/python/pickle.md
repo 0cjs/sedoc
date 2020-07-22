@@ -55,7 +55,7 @@ Other modules:
 
 ### Picklable Types
 
-* `None`, `True`, `False` 
+* `None`, `True`, `False`
 * integers, floating point numbers, complex numbers
 * strings, bytes, bytearrays
 * tuples, lists, sets, and dictionaries containing only picklable objects

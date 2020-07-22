@@ -11,11 +11,11 @@ Functions
 All actions respond with one beep unless indicated otherewise.
 C
 
-| Action       | State         | Function       
+| Action       | State         | Function
 |:-------------|:--------------|:---------------
-| click        | call incoming | Answer call 
+| click        | call incoming | Answer call
 |              | on call       | Hold and answer call waiting
-|              |               | Play/pause     
+|              |               | Play/pause
 | double-click | playing       | Skip to next song
 |              |               | Redial last number ("last number redial")
 | hold 2 sec.  | on call       | Hang up and answer call waiting

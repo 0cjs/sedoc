@@ -139,7 +139,7 @@ separately?) using some $F682 routine (maybe monitor ML load/save?)
 Looks like they `DIM` an array first thing for the space, and look up
 top of BASIC variable area from $08/$09 (default $3FFF).
 
-Beyond that 
+Beyond that
 
 ### Monitor
 

@@ -52,7 +52,7 @@ layers are configured with `docker run --mount`.
 - __Bind mounts__ (`--mount`) which map an arbitrary host directory or
   file into a container's directory tree. (Devices must be mapped
   separately with `--device`.) Usually used for sharing data between
-  host and container. 
+  host and container.
 - A Docker __volume__, which is an independent store in the host
   filesystem (usu. `/var/lib/docker/volumes`) and not removed when a
   container using it is removed. New empty volumes mounted over an

@@ -24,7 +24,7 @@ classes that ...
 - An `Engine` is a simpified interface that encapsulates a connection,
   accepts queries and returns their results.
 - A `Connection` enc
-Offers connections and cursors 
+Offers connections and cursors
 
 ### Schema Definition
 
