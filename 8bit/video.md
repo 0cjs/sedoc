@@ -133,6 +133,22 @@ sometimes 330R) in series, creating a voltage divider of 0.13 (0.18) with
 the 75Ω input impedence.
 
 
+Common Resolutions and Timings
+------------------------------
+
+    H/V timings given in dots as: total, front porch/sync/back porch
+
+    Name        Sys   Res       dclk   vertical        horizontal
+    ───────────────────────────────────────────────────────────────────
+    PC-8801           640×400         440   /  /38    848 ?/64/80
+
+References:
+- [[tim opt]] Classic Console Upscaler Wiki, ["Optimal timings"][tim opt].
+  Timings for many consoles and a few computers from NES through Wii.
+- [[tim NES]] Nes Dev Wiki, ["NTSC Video"][tim nes]. Detailed Nintendo
+  Entertainment System/Famicom timings and C++ code for emulation.
+
+
 References
 ----------
 
@@ -166,6 +182,12 @@ Other sources
 
 
 <!-------------------------------------------------------------------->
+
+<!-- Common resolutions and timings -->
+[tim NES]: http://wiki.nesdev.com/w/index.php/NTSC_video
+[tim opt]: http://junkerhq.net/xrgb/index.php?title=Optimal_timings
+
+<!-- References -->
 [240p ts]: http://junkerhq.net/xrgb/index.php?title=240p_test_suite
 [ISL4089]: https://www.renesas.com/jp/ja/www/doc/datasheet/isl4089.pdf
 [ITU BT.601]: https://en.wikipedia.org/wiki/Rec._601
