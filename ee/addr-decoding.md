@@ -47,6 +47,7 @@ with those parameters:
 Specific Techniques
 -------------------
 
+* To AND two negative-logic signals, use an OR gate (74LS32).
 * On 32K split RAM/ROM+IO, use A15 as RAM `C̅E̅`.
 * Use quad SR latch to store bits for bank switching.
 
