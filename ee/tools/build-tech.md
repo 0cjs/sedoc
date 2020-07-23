@@ -4,6 +4,8 @@ Build Techniques
 Soldering
 ---------
 
+- On protoboard especially, but also with edge connectors, use tape to mask
+  off traces/holes that should remain solder-free. (Clean with IPA after.)
 - [JRE] suggests 0.5 mm solder. I've been using 0.8 ok, but I'd
   definitely not want to go larger.
 - Thoroughly tin tip, leaving lots of solder on it, before first use
@@ -32,7 +34,7 @@ Desoldering ([jre-sol10]):
   iron tip for heat xfer before removing part.
 
 Heat shrink can also be shrunk by rubbing the shank of the soldering
-iron against not (not too slowly).
+iron against it (not too slowly).
 
 [jre]: https://josepheoff.github.io/posts/howtosolder-toc
 [jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
