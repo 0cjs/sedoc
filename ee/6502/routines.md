@@ -113,6 +113,16 @@ Talks][kf19alli].
   avoid executing a subroutine, preserving the address, though one
   must be careful if the subroutine returned flags.
 
+### Autoamtic Long JMP vs. Short BRA
+
+Create macros `JEQ`, `JNE`, `JCC` etc. that assemble to the equivalent
+`BEQ` etc. instruction if the branch is in range for it, otherwise assemble
+to the opposite branch jumping over a `JMP`:
+
+    │ JNE target │    │ BNE target │       │       BEQ .skip  │
+    │            │ →  │            │  or   │       JMP target │
+    │            │    │            │       │ .skip            │
+
 ### Detecting 6502 vs. 65C02
 
 Without undefined opcodes ([BDD on 6502.org][6f p73063]):
@@ -183,6 +193,20 @@ resolution of 9 cycles. From [Bruce Clark][6f-bclark] via [wmtips].
             SBC #0      ; subtract ¬C from A; i.e., subtract 1 only if
                         ; carry was 0 because Y is 0 after decrement
             BCS loop
+
+### Short Delays
+
+`NOP` (2 cycles) helps created even-cycle-count delays. `JMP *+3` takes 3
+cycles. `BVC *+2` and `BVS *+2` both take exactly 5 cycles.
+
+For "run-time programmable," Jump to any byte from `delayJumpVectorInit` to
+the code following it to get a delay of the given number of cycles. [[White
+Flame][6f p77097]]
+
+    delayJumpVectorInit:
+            CMP #$C9    ; 7, 6 cycles
+            CMP #$C9    ; 5, 4 cycles
+            BIT $EA     ; 3, 2 cycles
 
 
 Arithmetic, Boolean Algebra, Bit/Word Handling
@@ -418,6 +442,7 @@ External Sources
 [6f p73063]: http://forum.6502.org/viewtopic.php?f=2&t=5922#p73063
 [6f p73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=15#p73317
 [6f p73765]: http://forum.6502.org/viewtopic.php?f=4&t=6021#p73765
+[6f p77097]: http://forum.6502.org/viewtopic.php?f=2&t=6177#p77097
 [6f t6069]: http://forum.6502.org/viewtopic.php?f=2&t=6069
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
