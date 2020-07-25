@@ -84,11 +84,11 @@ assigned by me in [the disassembly][disasm].
     $E88C   keywait (doesn't update cursor for input status)
     $E892   keycheck (doesn't update cursor for input status)
     $E8CB   XXX joystick read
-    $E8DC   readch_nocursor
-    $E8E0   readch_check
-    $E8FE   readch
-    $E927   readln      ♠$18E read and zero-terminate input
-    $EAD0   prreadln    pstring + readln + CMP $03
+    $E8DC   rdcharnc    ♠A read a char or mode change keystoke w/o cursor
+    $E8E0   rdcharnb    ♠A non-blocking rdchar; $00 = no char avail
+    $E8FE   rdchar      ♠A read a char from the keyboard
+    $E927   rdline      ♠$18E read and zero-terminate input
+    $EAD0   prrdline    pstring + rdline + CMP $03
     $EB21   prcr        ♣A print a CR using prchar; usu. use prnl instead
     $EBE7   prchar      ♠A ♡ABX print char
     $EC7F   clrscrp     clear screen
@@ -111,26 +111,26 @@ assigned by me in [the disassembly][disasm].
   settings; unless you know you want this, use `prnl` instead.
 - `prnl $F00F`: Print a newline, even if the current mode is an
   alternate character set or graphics.
-- `prreadln $EAD0`: Call `pstring` to print prompt pointed to by X, then
-  `readln` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
+- `prrdline $EAD0`: Call `pstring` to print prompt pointed to by X, then
+  `rdline` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
 - `prstr8 $EFF9`: Print chars pointed to by X. Set MSBit on last char.
   (Cannot print chars \>$7F.)
 - `prstr8b $EFF0`: As `prstr8` but prints only if `prb_quiet $45` is $00.
 - `prstr0b $F002`: As `prstr8b` but string terminated by $00.
-- `readch $E8FE`: Wait for a char from the keyboard and return it in A. The
+- `rdchar $E8FE`: Wait for a char from the keyboard and return it in A. The
   cursor will be displayed and updated for the input mode, continuing to
   wait for another key, if 英数, GRAPH or カナ is pressed.
-- `readch_nocursor $E8DC`: Wait for a char from the keyboard and return it
+- `rdcharnc $E8DC`: Wait for a char from the keyboard and return it
   in A. No cursor is displayed. An 英数, GRAPH or カナ keystroke will be
   returned after processing.
-- `readch_check $E8E0`: Check if keyboard input is available, returning it
+- `rdcharnb $E8E0`: Check if keyboard input is available, returning it
   the char in A or $00 if no char is available. An 英数, GRAPH or カナ
   keystroke will be returned after processing.
 - `keywait $E88C`: Return in A the next char from the keyboard buffer,
   waiting if none are available. 英数, GRAPH or カナ will change the
   keyboard's input status but will _not_ update the machine's cursor.
 - `keycheck $E892`: `keywait` without the wait.
-- `readln $E927`: Read a line into buffer at $18E-$1DF, terminating it with
+- `rdline $E927`: Read a line into buffer at $18E-$1DF, terminating it with
   $00. Char that ended entry ($0D or $03) returned in A.
 
 
