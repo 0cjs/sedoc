@@ -96,7 +96,7 @@ bitmaps.
     $  03   ┐
     $  02   Direct kbd/joystick call data area.
     $  01   ┘
-    $  00   Key click ($0=off, $40=on) (JP: $C0=on, $80=off?)
+    $  00   Keypress beep ($0=off, $40=on) (JP: $C0=on, $80=off?)
 
 
 
