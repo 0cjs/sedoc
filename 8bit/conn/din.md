@@ -15,8 +15,8 @@ plugs/sockets that are compatible or, worse yet, nearly but not quite
 compatible.
 
 
-Pin Numbering and Breakouts
----------------------------
+Pin Numbering
+-------------
 
 Certain DIN plugs always use the same numbers for the same positions,
 so that e.g. pin 3 will be in the same place on any connector from 3
@@ -41,7 +41,11 @@ References:
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
   wiki answer: common pinouts covering CMT, composite/DRGB video.
 
-#### DIN-5 and DIN-8 Breakouts (cjs v1)
+
+Breakouts
+---------
+
+#### DIN-5 and DIN-8 (cjs v1)
 
     C5   C8   Pin  CMT        Video
     ───────────────────────────────────────────────────────────────────────
@@ -63,7 +67,7 @@ Notes:
   signal to JP-21 connectors to set aspect ratio (SCART pin 11 (8?), 0-12V).
 - Sync cable colors changed from standard gray/black due to GND conflict
 
-#### CBM (Commodore 64, VIC-20) A/V DIN-5 RCA Breakout
+#### CBM (Commodore 64, VIC-20) A/V DIN-5 RCA
 
     Pin Wire    C64         RCA             VIC-20
     ─────────────────────────────────────────────────────────────
@@ -78,7 +82,7 @@ Notes:
   standard voltage (use 300R-2K if checkered pattern appears in colored
   areas).
 
-#### Apple IIc Serial DIN-5 Breakout (cjs v1)
+#### Apple IIc Serial DIN-5 (cjs v1)
 
 Using Ethernet cable; orange and green stripes tied together for ground.
 
