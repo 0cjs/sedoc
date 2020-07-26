@@ -63,6 +63,21 @@ Notes:
   signal to JP-21 connectors to set aspect ratio (SCART pin 11 (8?), 0-12V).
 - Sync cable colors changed from standard gray/black due to GND conflict
 
+#### CBM (Commodore 64, VIC-20) A/V DIN-5 RCA Breakout
+
+    Pin Wire    C64         RCA             VIC-20
+    ─────────────────────────────────────────────────────────────
+     1  Grn     luminance   Black           ● 6 VDC 10 mA (for RF modulator)
+     2  Blk     GND         Shields (all)   GND
+     3  Wht     audio out   White           audio out
+     4  Yel     video       Yellow          video (standard level)
+     5  Red     audio in    Red             video (higher level)
+
+- Reference: c64-wiki.com [A/V Jack][c64w av]
+- Chromanance is pin 6, not available on above breakout, at higher than
+  standard voltage (use 300R-2K if checkered pattern appears in colored
+  areas).
+
 #### Apple IIc Serial DIN-5 Breakout (cjs v1)
 
 Using Ethernet cable; orange and green stripes tied together for ground.
@@ -181,6 +196,7 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
+[c64w av]: https://www.c64-wiki.com/wiki/A/V_Jack
 [hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
