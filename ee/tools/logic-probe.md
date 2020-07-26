@@ -4,6 +4,8 @@ Logic Probes
 Octal TTL Logic Probe
 ---------------------
 
+<img src='logicp-front.jpg'><img src='logicp-back.jpg'>
+
 The probe can be run at any voltage from 3.0 to 12 V. Reference
 voltages are relative to the power supply voltage; voltages below
 assume Vcc is 5.0 V. Power input is a pair of 0.1" headers at the
