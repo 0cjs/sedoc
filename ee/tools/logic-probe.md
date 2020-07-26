@@ -86,14 +86,3 @@ For ease of use I use both male and female headers in parallel for all
 inputs, with the male on the outside so that they can be easily
 clipped with standard test clips. The test points for RefHigh and
 RefLow are male pins only; it didn't seem worth adding female ones.
-
-
-References
-----------
-
-- Dr Jefyll's [Throw-Together-Computer][ttc] (TTC) 6502 board
-
-
-
-<!-------------------------------------------------------------------->
-[ttc]: http://forum.6502.org/viewtopic.php?p=62120#p62120

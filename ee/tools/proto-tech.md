@@ -35,6 +35,12 @@ Breadboards vs. Dual-Row Pin Headers
 Wire Wrap without Wire-wrap Sockets
 -----------------------------------
 
+Summary:
+- Solder sockets to adjacent header pins
+- Solder ground, Vcc, bypass caps and other never-changed connections
+- Wire-wrap header pins for infrequently changed lines
+- Use female-female dupont jumper cables for frequently changed lines
+
 JuanGg [demonstrated a technique on 6502.org][jg-ww] for doing a
 partially wire-wrapped board without using (expensive) wire-wrap
 sockets. He soldered regular DIP sockets into perfboard with header
@@ -49,7 +55,15 @@ the chips top-down instead of bottom-up.
 <img src="http://forum.6502.org/download/file.php?id=9202&mode=view" width="400" alt="top side" title="top side"/>
 <img src="http://forum.6502.org/download/file.php?id=9203&mode=view" width="400" alt="bottom side" title="bottom side"/>
 
+You can also use female dupont jumper wires for connections that change
+often, as pointed out in Dr Jefyll's [Throw-Together-Computer][ttc] (TTC)
+6502. That's a similar idea to the above though the pins come out the
+bottom (like traditional wire wrap) and he uses more permanent soldered
+connections for things like data buses. He also adds headers for
+daughterboards.
+
 [jg-ww]: http://forum.6502.org/viewtopic.php?f=12&t=5811&start=45#p72988
+[ttc]: http://forum.6502.org/viewtopic.php?p=62120#p62120
 
 ### Notes
 
