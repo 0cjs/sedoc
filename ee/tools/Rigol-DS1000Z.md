@@ -1,6 +1,15 @@
 Rigol DS1000Z Series (1054Z) Oscilloscope Notes
 ===============================================
 
+References:
+- [User Guide, DS1000Z Series Digital Oscilloscope][manual] (PDF)
+- Videos in the [Basics of Oscilloscopes][rv bas] series.
+
+Specs:
+- 7.0" WVGA (800×480) screen
+- Sample rate 1 Gsa/s, 500 Msa/s, 256 Msa/s w/1, 2, 4 channels enabled.
+- 24 Mpoints memory (split between all enabled channels)
+
 ### Settings Reset/Save/Load
 
 `Utility → System → Power Set` determines whether at power-up the
@@ -51,6 +60,53 @@ lowest number starting from `1` that is not already on the USB disk. The
 file will always dated 2014-11-01 21:00:00.
 
 
+Acquisition and Memory Depth (Ch. 4)
+------------------------------------
+
+All under `Acquire` menu.
+
+Acquisition modes (`Acquire » Mode`):
+- `Normal` (default): Sampled at equal time intervals.
+- `Peak Detect`: Acquires min/max signal value during the sample period.
+  Ensures small pulses are not missed at cost of increased noise. All
+  pulses with width ≥ sample period will be captured.
+- `Average` (2-1024 in powers of 2): Multi-sample average. For repeating
+  waveforms, lowers noise and increases vert. resolution, but slows
+  response to waveform changes.
+- `High Resolution`: Single-sample average. Reduces noise/smooths waveform;
+  use when converter rate is higher than acquisition storage rate.
+
+`Sin(x)/x` disabled when less than 3 channels enabled. XXX Why?
+
+`Sa Rate` menu shows sample rate; max 1 GSa/s. Distortion and lost pulses
+when too low; "waveform confusion" when below Nyquist.
+
+The centre top of the screen displays a bar representing the waveform in
+memory, greying out the part of the buffer not displayed on the screen, if
+any. To the left is displayed the current sample rate (samples/sec) and
+memory depth (points).
+
+`Acquire » Mem Depth`
+- Maximum total depth (sample buffer size) is 24 Mpt across all enabled
+  channels. Depth options are `Auto, 3k, 30k, 3M, 6M` with 3-4 channels
+  enabled; all figures switch to ×2 or ×4 with 2 or 1 channels enabled.
+- The full time period of the display (horizontal scale) is always
+  buffered; sample rate is reduced as necessary to fit within 6M/12M/24M
+  points depth.
+- `Auto` mode sets depth to just enough memory to hold the display time
+  period of samples at the highest available rate, or uses max depth.
+- Manual depth uses a fixed depth that may leave undisplayed buffer on
+  either side (viewable by changing horiz offset or scale).
+- XXX Why would you ever use `Auto` mode or less than max depth? Speed?
+- Horizontal zoom mode uses only displayed part of buffer, not entire
+  capture buffer.
+- When `Storage » Storage` is set to `CSV`, the `DataSrc` parameter
+  determines whether it dumps `Screen` or `Memory`.
+
+`Acquire » Anti-aliasing` (default disabled): When not enabled, "waveform
+aliasing is more possible." ???
+
+
 Horizontal
 ----------
 
@@ -85,6 +141,33 @@ can be set to DC/AC/LFR/HFR independently of the input coupling:
 - `AC`: blocks all DC components, attenuates signals < 75 Hz.
 - `LFR` (LF reject): blocks DC components, rejects LF < 75 kHz.
 - `HFR` (HF reject): rejects high frequency components > 75 kHz.
+
+#### Video Triggering
+
+Notes from Rigol Video [Using Video Triggering][rv uvt]:
+- Explicitly set memory depth to max. (Not clear why; sync seems to work
+  even when vsync is off the left-hand side of the screen.)
+
+Trigger parameters:
+- `Sync`
+  - `All Line` triggers on the first line found.
+  - `Line`: a given line number (in odd or even field) from 0 to 525 (NTSC,
+    480p) or 625 (PAL/SECAM, 525p). But see below re 240p.
+  - `Odd`, `Even`: rising edge of first ramp pulse in odd or even field.
+- `Standard`:
+  - `NTSC`: 60 fields, 30 frames/sec; 525 lines. Even field first.
+  - `PAL/SECAM`: 50 fields, 25 frames/sec; 625 lines. Odd field first for PAL.
+  - `480P`, `576P`.
+
+Notes on 240p signals:
+- The NTSC line trigger will not sync if the line number is less than 5
+  (less than 8 for 480p). Setting the line between 5 and 10 will actually
+  sync at earlier lines and skip some lines, and the line numbers will be
+  wrong throughout. This is presumably because of the missing equalization
+  pulses around/during vsync.
+- Start of frame may also be caught with a pulse trigger set for a negative
+  pulse width >50 μs. (Possibly a trigger holdoff may be necessary to avoid
+  retrigger on the next two lines.)
 
 
 Measurement
@@ -123,3 +206,10 @@ turn off bottom measurement display completely. Doing that again will
 recover all items, or you can recover them individually as above. A
 clear all plus one or two recoveries can be faster than individual
 deletions.
+
+
+
+<!-------------------------------------------------------------------->
+[manual]: https://int.rigol.com/Public/Uploads/uploadfile/files/ftp/DS/手册/DS1000Z/EN/DS1000Z_UserGuide_EN.pdf
+[rv uvt]: https://www.youtube.com/watch?v=uAVDTghrqYc&pbjreload=101
+[rv bas]: https://www.rigolna.com/scopebasics/
