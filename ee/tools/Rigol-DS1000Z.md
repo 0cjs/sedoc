@@ -9,6 +9,10 @@ Specs:
 - 7.0" WVGA (800×480) screen
 - Sample rate 1 Gsa/s, 500 Msa/s, 256 Msa/s w/1, 2, 4 channels enabled.
 - 24 Mpoints memory (split between all enabled channels)
+- 64 levels of intensity grading for display persistence.
+- Hardware frequency counter (works when only part cycle on screen)
+- Decoding is on-screen only, but you can have two decoders running at once
+  and can trigger from the decode.
 
 ### Settings Reset/Save/Load
 
@@ -41,26 +45,50 @@ UI Hints
 
 - The `Clear` button only clears the waveform on the screen; it does not
   change any of the measurement parameters. (But the `Auto` button beside
-  it does!)
-- For single-shot captures, generally capture the full waveform you
-  want to see and view details by pressing the horizontal scale
-  (large) knob to get into zoom mode to see specific sections. (Press
-  again to leave zoom mode; this resets the zoom value but not the
-  horizontal position if you go back into zoom.)
+  it does!) Use to clear persistent and averaged data from screen,
+  including with stats.
+- For single-shot captures, generally capture the full waveform you want to
+  see and view details with zoom (see ["Horizontal"](#horizontal) below).
 - Use `Measure → Clear → ItemX → Delete` to gray out bottom-line
-  measurements to be the first to be removed when new ones are added.
-  See "Measurement" below for more details on handling this.
-- To use vertical scale controls for the Math channel, you need to
-  press `MATH` _twice_, to be not in the top level math menu but the
-  "Math" menu below that..
+  measurements to be the first to be removed when new ones are added. See
+  ["Measurement"](#measurement) below for more details on handling this.
+- `Measurement » Statistics` will display a diagram of how a stat at the
+  bottom of the screen is calculated. `Help` followed by a stat button will
+  give more details on any stat.
+- To use vertical scale controls for the Math channel, you need to press
+  `MATH` _twice_, to be not in the top level math menu but the "Math" menu
+  below that.
+- Reference waveforms always display in original time base, not scaled as
+  you change the current time base on screen.
+- `ASCII List` function may help with decoding longer chunks of data not
+  readable on the screen.
 
 
-Printing
---------
+Printing and Capture
+--------------------
 
 The print button will create a `DS1Z_QuickPrint#.png` file where `#` is the
 lowest number starting from `1` that is not already on the USB disk. The
 file will always dated 2014-11-01 21:00:00.
+
+### Network Access
+
+The 'scope has a built-in web server with some minimal status and
+configuration information. It supports [SCPI][] (Standard Commands for
+Programmable Instruments and [LXI][] (LAN eXtensions for Instrumentation);
+not sure of the relationship between the two, but SCPI seems lower level.
+Some computers use [VISA][] ( Virtual instrument software architecture)
+APIs to communicate with instruments via LAN/USB/etc.; The VISA address for
+the 'scope will look like `TCPIP::192.168.1.8::INSTR`.
+
+Software includes:
+- (Win) Rigol Ultrascope for DS1000Z Series software.
+- (Win) marmad software; EEVblog forums ["Software & tips for Rigol
+  DS2072"][marmad]. Record/playback control/setting, screen
+  grab/save/preview and animated GIF compilation, and markers when zooming
+  in large memory depths. Requires Rigol's software to be installed first
+  for VISA drivers etc.
+- Need to find the Python software that can pull screen caps.
 
 
 Acquisition and Memory Depth (Ch. 4)
@@ -113,17 +141,41 @@ aliasing is more possible." ???
 Horizontal
 ----------
 
-Horizontal section MENU button.
+Horizontal scale knob sets time base _H_ in time/division, displayed on top
+line of display. (Press for zoom.) Position knob sets trigger position on
+display, displayed on top line as _D_; press knob to reset to 0, Scale
+changes around centre, not trigger position (i.e., narrowing H can put
+trigger off screen).
 
-Time Base:
-- YT mode: X is voltage, Y is time.
-- XY mode: Voltage vs. voltage on two selected channels.
-- Roll mode: waveform scrolls across full display, new measurements
-  appearing at the right and scrolling left. No horizontal position
-  or trigger available.
+Horizontal section `MENU` button:
+- `Delayed`: __Zoom__, which Rigol calls "delayed sweep." Also available by
+  pushing horizontal time base button. See below.
+- `Time Base` (H) mode:
+  - `YT`: X is time, Y is voltage. At H ≥ 200 ms. enters "slow sweep" mode,
+    which adds a moving bar to show what part of the screen is being
+    updated. (This is not "similar to roll mode," as claimed by the
+    manual.)
+  - `XY`: Voltage vs. voltage on two selected channels.
+  - `Roll`: (H ≥ 200 ms. only.) No trigger, waveform does not restart at
+    left of screen. Instead new samples appear on right side of screen,
+    scrolling left.
 
-Delayed sweep: only in YT mode. Slow sweep when time base ≥ 200 ms.
-XXX figure this out.
+#### Zoom
+
+Widen horizontal scale to capture on the screen the entire waveform across
+which you wish to scroll/zoom (zoom will not view buffered data off of
+screen). Press the horizontal scale (large) knob to enter zoom mode; screen
+splits with full waveform on top and zoomed section on bottom. Press again
+to leave zoom mode; this resets the zoom value but not the horizontal
+position if you go back into zoom.
+
+Rigol calls this mode "delayed sweep" in the menu, but it's not; it's just
+zooming into the buffer rather than sampling twice. Analogue oscilloscopes
+could have a second time base generator synchronized with the main one but
+running faster, optionally with its trigger delayed; this was called the
+"delayed sweep," and painted a second waveform on the screen which was
+effectively a "zoomed in" section of the main waveform. Digital 'scopes
+simply zoom in on the measurement buffer.
 
 
 Triggering
@@ -137,6 +189,15 @@ Triggering and trigger status display (at upper left):
   and `T'D`) XXX How long does it scan before forcing?
 - _Force_ button forces a single capture (except when stopped) continuing
   in that mode after.
+
+`RUN/STOP` in stop mode will freeze the display on the current sample, but
+also continue to display previous waveforms shown via the persistence
+setting (`Display » Persis.Time`). To get just the current waveform, use
+`SINGLE` instead.
+
+Most trigger types have a `Setting » Holdoff` setting (min 16 ns), the
+amount of time after a trigger during which subsequent trigger events are
+ignored.
 
 Trigger coupling (Menu/Setting/Coupling), valid only with edge triggers,
 can be set to DC/AC/LFR/HFR independently of the input coupling:
@@ -176,16 +237,25 @@ Notes on 240p signals:
 Measurement
 -----------
 
-Hardware frequency counter at upper right; source channel set via
-`Measure → Source`.
+Hardware frequency counter at upper right; source channel set via `Measure
+» Counter`. This is both more accurate than the channel measurements menu
+at the left, and will also measure frequency even when only part of a cycle
+is on the screen. (The software measurement may need several cycles on
+screen, especially at lower frequencies, and possibly the trigger point,
+too.)
 
-Left-hand buttons for quick measuresments; `Measure` menu for more
+Left-hand buttons for quick measurements; `Measure` menu for more
 sophisticated stuff including:
+- `Measure All`: Toggle display of all 29 measurements for channels
+  selected via `All Measure Source` below it. Uses 1/3 to full screen.
+- `Statistic` to enable measurement diagrams and stats for individual
+  measurements at the bottom of the screen. `Extremum` for cur/avg/min/max;
+  `Difference` for cur/avg/deviation/count; `Reset` to clear stat history.
+  `CLEAR` button also resets stats.
 - `Range → Region` to measure full screen or within cursors only.
 - `Delay` and `Phase` for cross-channel measurements.
-- `Threshold` (min/mid/max def. 10%/50%/90%) for all time/delay/phase params.
-- `Statistic` to enable stats (`Extremum` for cur/avg/min/max;
-  `Difference` for cur/avg/deviation/count; `Reset` to clear stat history).
+- `Threshold` (min/mid/max def. 10%/50%/90%) for all time/delay/phase
+  params.
 
 Real-time graph and table history of measurement values is available
 from `Measure → History`.
@@ -198,21 +268,52 @@ of where the thresholds are. New measurements will become the auto item.
 
 To delete measurements created from the left-hand buttons, use
 `Measure → Clear → ItemX → Delete` to grey out the measurement; the
-greyed-out measurements will slowly be pushed off the screen as you
+greyed-out measurements will be pushed off the screen as you
 add new measurements. The `Recover` item in that deepest menu will
 restore a measurement, allowing you to bring back ones used previously
 in the current session if you've cleared the screen of the bottom
 measurements for a while.
 
-Pressing and holding `Measure` or `Measure → Clear → All Items` will
-turn off bottom measurement display completely. Doing that again will
-recover all items, or you can recover them individually as above. A
-clear all plus one or two recoveries can be faster than individual
-deletions.
+Pressing and holding `Measure` or using `Measure → Clear → All Items` will
+turn off bottom measurement display completely. The latter will also
+recover all items, or they can be recovered individually as above. A
+clear-all plus one or two individual recoveries can be faster than
+individual deletions.
+
+#### Other Notes
+
+`Measurements » Font size` is basically useless; `Large` and `Extra large`
+will display only three or two of the measurements, though all five are
+still there. You cannot see one of the hidden ones with the left-hand
+buttons (it says it's already displayed); you need to use the following
+select menu item to disable one of the displayed ones and enable a
+different one.
+
+
+Memory Segmentation
+-------------------
+
+`Utility » Record` lets you capture a sequence of screen-size buffers (YT
+timebase only), ignoring data except around the trigger. Good for capturing
+a sequence of data at triggers with a lot of unwanted signal between them.
+
+Upper-right control buttons:
+- `RUN/STOP` starts a new recording, as `Record » Record`.
+- `SINGLE` button (no menu option) single-steps a frame in the direction
+  set by `Record » Step Dir`; the step direction reverses at the end of the
+  recording when not in `Record » Play Opt » Mode » Loop`.
+- Play/pause only available in menu.
+
+If you're looking to find frames with out-of-bounds data, `Utility »
+Pass/Fail` might be a better option.
 
 
 
 <!-------------------------------------------------------------------->
+[LXI]: https://en.wikipedia.org/wiki/LAN_eXtensions_for_Instrumentation
+[SCPI]: https://en.wikipedia.org/wiki/Standard_Commands_for_Programmable_Instruments
+[VISA]: https://en.wikipedia.org/wiki/Virtual_instrument_software_architecture
 [manual]: https://int.rigol.com/Public/Uploads/uploadfile/files/ftp/DS/手册/DS1000Z/EN/DS1000Z_UserGuide_EN.pdf
-[rv uvt]: https://www.youtube.com/watch?v=uAVDTghrqYc&pbjreload=101
+[marmad]: https://www.eevblog.com/forum/projects/software-tips-and-tricks-for-rigol-ds200040006000-ultravision-dsos/
 [rv bas]: https://www.rigolna.com/scopebasics/
+[rv uvt]: https://www.youtube.com/watch?v=uAVDTghrqYc&pbjreload=101
