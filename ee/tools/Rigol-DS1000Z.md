@@ -39,6 +39,9 @@ bottom. May need `Sel Item` to switch between displayed stats.
 UI Hints
 --------
 
+- The `Clear` button only clears the waveform on the screen; it does not
+  change any of the measurement parameters. (But the `Auto` button beside
+  it does!)
 - For single-shot captures, generally capture the full waveform you
   want to see and view details by pressing the horizontal scale
   (large) knob to get into zoom mode to see specific sections. (Press
