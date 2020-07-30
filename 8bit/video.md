@@ -9,13 +9,15 @@ more lines per frame/field, and image information encoded as a single (Y)
 or three (RGB) luminance signals and, for non-RGB colour systems,
 additional encoded color information as either one or more separate signals
 (chroma for S-video; Cb and Cr for component video) or combined with the
-luma signal (composite color video).
+luma signal (CVBS/composite color video).
 
 Separate sync signals are typically TTL; RGB signals may or may not be TTL
 as well in digital RGB systems (8 colors, or 16 with an additional
 intensity signal). Standard luminance signals are generally about a volt
 into 75Ω; sync signals usually are reduced to similar levels when combined
-with a luminance.
+with a luminance. CVBS standard levels (from [[wp cvbslev]]):
+
+<img src='video-cvbs-levels.png'>
 
 Systems are, roughly:
 - RGBHV: Three luminance signals and separate H and V sync signals
@@ -23,8 +25,8 @@ Systems are, roughly:
 - RGB: Sync on green
 - Component video: Y+sync Cb Cr
 - S-video: Y+sync, chroma
-- Composite video (CVBS): Y+sync+color, using one of several systems
-  (NTSC, PAL, etc.) to encode the color information.
+- CVBS (baseband composite video): Y+sync+color, using one of several
+  systems (NTSC, PAL, etc.) to encode the color information.
 
 #### Vertical Sync
 
@@ -262,4 +264,5 @@ Other sources
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
 [scanlines]: http://scanlines.hazard-city.de/
+[wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal

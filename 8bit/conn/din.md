@@ -39,11 +39,13 @@ References:
 - [Hosiden DIN Connectors][hosiden] (PDF): Catalog with pin numbering and
   references to standards.
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
-  wiki answer: common pinouts covering CMT, composite/DRGB video.
+  wiki answer: common pinouts covering CMT, CVBS and DRGB video.
 
 
 Breakouts
 ---------
+
+CVBS is baseband composite video, usually color.
 
 #### DIN-5 and DIN-8 (cjs v1)
 
@@ -51,7 +53,7 @@ Breakouts
     ───────────────────────────────────────────────────────────────────────
     Blu  Orn   1   GND/cmt1   Vcc/12V; dot clock; audio; vsync/blank; GND
     Blk  Blk   2   GND        GND
-    Yel  Yel   3   GND/cmt3   composite video; clock; AVC-TTL
+    Yel  Yel   3   GND/cmt3   CVBS; clock; AVC-TTL
     Red  Wht   4   rec/mic    hsync (gray); GND
     Grn  Gry   5   play/ear   vsync (black); GND
          Red   6   rem+       DRGB red
@@ -74,8 +76,8 @@ Notes:
      1  Grn     luminance   Black           ● 6 VDC 10 mA (for RF modulator)
      2  Blk     GND         Shields (all)   GND
      3  Wht     audio out   White           audio out
-     4  Yel     video       Yellow          video (standard level)
-     5  Red     audio in    Red             video (higher level)
+     4  Yel     CVBS        Yellow          CVBS (standard level)
+     5  Red     audio in    Red             CVBS (higher level)
 
 - Reference: c64-wiki.com [A/V Jack][c64w av]
 - Chromanance is pin 6, not available on above breakout, at higher than
