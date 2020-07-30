@@ -273,7 +273,9 @@ from `Measure → History`.
 
 #### Cursors
 
-Cursors do not display in the zoom window.
+Cursors always must be on screen (though they make take some time to appear
+after a scroll); they will move if you change the time base, including
+changing the time base in the zoom window.
 
 When the cursor menu is not up, pressing or holding the `Cursor` button
 brings it up. When it is already up pressing `Cursor` switches to the next
