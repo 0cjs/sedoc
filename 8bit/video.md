@@ -23,8 +23,8 @@ Systems are, roughly:
 - RGB: Sync on green
 - Component video: Y+sync Cb Cr
 - S-video: Y+sync, chroma
-- Composite video: Y+sync+color, using one of several systems (NTSC, PAL,
-  etc.) to encode the color information.
+- Composite video (CVBS): Y+sync+color, using one of several systems
+  (NTSC, PAL, etc.) to encode the color information.
 
 #### Vertical Sync
 
@@ -78,6 +78,12 @@ tri-level sync going to -300 mV then +300 mV before returning to black
 level; the sync reference point is the zero-crossing between the two. Some
 cheaper HD systems will use the rising edge of SD sync too, causing
 problems. Others always use the first falling edge. [[hdr jit]]
+
+An individual line consists of _front porch_ before the sync, sync, _back
+porch_ (which is used to set 300 mV black level and may include color
+burst), and displayed data. See [Structure of a video signal][wp hline].
+The displayed data may include a border before and after reading from a
+frame buffer.
 
 #### Composite Sync (csync)
 
@@ -136,6 +142,12 @@ the 75Ω input impedence.
 Common Resolutions and Timings
 ------------------------------
 
+Individual timings are given as _i/t_, where _i_ is the number of dots or
+lines and _t_ is the (approximate) time. Line or frame time sets are given
+as groups of individual timings: total, front porch, sync, back porch and
+optionally displayed data, which may include the border or be broken down
+into _sb+dd+eb_ for start border, (user) display data and end border.
+
     dotclk MHz  Resolution  Name [source]
     hfreq  kHz      dots/μs      front       sync      back
     vfreq   Hz      lines/ms     front       sync      back
@@ -154,10 +166,10 @@ Common Resolutions and Timings
 
 Fujitsu FM-7:
 - Hsync: 4 μs wide (no change around vsync).
-- Vsync: 2.4 μs before hsync, 506 μs wide.
+- Vsync: 2.4 μs before hsync, 506 μs wide.  
   Covers 8 hsync pulses, including the one that starts just after vsync.
-- Compsite sync: XOR. No equalization pulses.
-- CVBS: No color burst. Colors produce eight equally-spaced luminance steps.
+- CVBS: XOR sync. No equalization pulses.  
+  No color burst. Colors produce eight equally-spaced luminance steps.
 - RGB: Vpp = 6.8 V into MΩ, 2.1 V into 75Ω (one chan. only).  
   Series resistor into PVM (Ω=V) and comparsion of white with composite:
   - 820=0.46    noticably dimmer, gray not white
@@ -173,6 +185,12 @@ Fujitsu FM-7:
     all three outputs.
 
 National/Panasonic JR-200:
+- Horizontal (in CVBS): 63.6 μs; ?/5.5 ?/4.5 ?/9 ?/44.7.
+  No change around vsync.
+- Vertical (in CVBS): 264?/16.32 5/318 3/191, 24/1526, 24+192+16/?
+  - Vsync leading edge is synchronous with hsync.
+  - Covers 3 hsync pulses, counting the end rise as hsync too.
+- CVBS: XOR sync. No equalization pulses. No color burst during vsync.
 - RGB: Vpp = 4 V into MΩ, .65 V into 75Ω (one chan. only).  
   Series resistor into PVM (Ω=V) and comparsion with composite output:
   - 470=0.46    brighter, but composite white was gray, and yellow was orange.
@@ -244,3 +262,4 @@ Other sources
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
 [scanlines]: http://scanlines.hazard-city.de/
+[wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
