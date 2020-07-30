@@ -152,8 +152,37 @@ Common Resolutions and Timings
     31.47       800/31.78    14/0.58    64/2.54  82/3.24
     70.05       449/14.28    13/0.41     2/0.064 35/1.09
 
+Fujitsu FM-7:
+- Hsync: 4 μs wide (no change around vsync).
+- Vsync: 2.4 μs before hsync, 506 μs wide.
+  Covers 8 hsync pulses, including the one that starts just after vsync.
+- Compsite sync: XOR. No equalization pulses.
+- CVBS: No color burst. Colors produce eight equally-spaced luminance steps.
+- RGB: Vpp = 6.8 V into MΩ, 2.1 V into 75Ω (one chan. only).  
+  Series resistor into PVM (Ω=V) and comparsion of white with composite:
+  - 820=0.46    noticably dimmer, gray not white
+  - 680=0.46    as 820 (???)
+  - 470=0.56    a bit dimmer, near monochrome gray 1 below white
+  - 330=0.66    slightly brighter
+  - 75=0.90     much brighter
+- Measurement notes:
+  - Vpp above is actually Vampl measurement from the scope, due to heavy
+    ringing on the RGB lines.
+  - There were a lot of consistency problems with the series resistor
+    tests. Possibly the voltage changes when not using the same resistor on
+    all three outputs.
 
-References:
+National/Panasonic JR-200:
+- RGB: Vpp = 4 V into MΩ, .65 V into 75Ω (one chan. only).  
+  Series resistor into PVM (Ω=V) and comparsion with composite output:
+  - 470=0.46    brighter, but composite white was gray, and yellow was orange.
+  - 680=0.46    same as 470!?
+  - 820=0.40    R,G,B dimmer; white still brighter (not gray)
+  - 330=0.68    W,G brighter; red similar, blue dimmer
+
+
+#### References
+
 - [[tim opt]] Classic Console Upscaler Wiki, ["Optimal timings"][tim opt].
   Timings for many consoles and a few computers from NES through Wii.
 - [[tim NES]] Nes Dev Wiki, ["NTSC Video"][tim nes]. Detailed Nintendo
