@@ -93,18 +93,6 @@ The wires are aluminum and cannot be soldered; they must be crimped.
         20    white
         21    bare
 
-#### Dupont Headers
-
-Female dupont headers can be used on the other end of a JP-21 cable for
-breakout purposes. See [[header](header.md)] for numbering. Standard
-connections:
-
-    8-pin female    RGB
-    looking in      1:csync 2:csyncGND
-      8 6 4 2       3:blue  4:blueGND
-      7 5 3 1       5:grn   6:grnGND
-            ▲       7:red   8:redGND
-
 #### References
 
 - ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and
@@ -157,6 +145,28 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
     13  hsync or csync
     14  vsync; also used as a data clock
     15  SCL: I2C data clock (DDC1: ID3)
+
+
+0.1" Pin Headers, Dupont Shrouds, BT224 IDC connectors, Breakouts
+-----------------------------------------------------------------
+
+Note that all dupont 2×n shrounds are marked for male; pin 1 will be at the
+other end from the marking when using female inserts. All outputs should be
+female to help prevent shorts; inputs are thus male. See [header](header.md)
+for more numbering and organization details.
+
+Analogue RGB:
+
+     Looking Into
+    Female     Male         1 redGND    2 red signal
+    ▼  ▄         ▄  ▼       3 greenGND  4 green signal
+    1 3 5 7   7 5 3 1       5 blueGND   6 blue signal
+    2 4 6 8   8 6 4 2       7 syncGND   8 sync (composite)
+
+This could be extended to add hsync (9, 10) and vsync (11, 12) if available.
+
+For DIN-8 breakouts, see [din](din.md).
+
 
 
 

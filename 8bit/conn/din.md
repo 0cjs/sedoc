@@ -51,14 +51,27 @@ CVBS is baseband composite video, usually color.
 
     C5   C8   Pin  CMT        Video
     ───────────────────────────────────────────────────────────────────────
-    Blu  Orn   1   GND/cmt1   Vcc/12V; dot clock; audio; vsync/blank; GND
+    Blu  Pnk   1   GND/cmt1   Vcc/12V; dot clock; audio; vsync/blank; GND
     Blk  Blk   2   GND        GND
     Yel  Yel   3   GND/cmt3   CVBS; clock; AVC-TTL
-    Red  Wht   4   rec/mic    hsync (gray); GND
-    Grn  Gry   5   play/ear   vsync (black); GND
+    Red  Wht   4   rec/mic    hsync (trad. gray); GND
+    Grn  Gry   5   play/ear   vsync (trad. black); GND
          Red   6   rem+       DRGB red
          Grn   7   rem-       DRGB green
          Blu   8   GND        DRGB blue
+
+Orange may be substituted for pink where pink not available.
+
+0.1" header breakouts (see [header](header.md), [video](video.md))
+use four or five female connectors:
+
+    Looking into female connector
+    ▼           DIN pins
+    1 2 3       6 7 8           red, green blue     rem+ rem- gnd
+    1 2         4 5             hsync, vsync        rec/mic play/ear
+    1           3               CVBS or sync
+    1           2               GND                 GND
+    1           1               (optional)
 
 Notes:
 - C8 colors on any breakouts; C5 colours may be used on some DIN-5 breakouts
