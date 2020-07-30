@@ -271,6 +271,29 @@ sophisticated stuff including:
 Real-time graph and table history of measurement values is available
 from `Measure → History`.
 
+#### Cursors
+
+Cursors do not display in the zoom window.
+
+When the cursor menu is not up, pressing or holding the `Cursor` button
+brings it up. When it is already up pressing `Cursor` switches to the next
+cursor mode and holding (4 seconds) will toggle between `OFF`/`Track` or
+`Manual`/`Auto`.
+
+There are always four cursors; the mode determines how they are set.
+- `OFF`
+- `Manual`: Use `Select` menu option to select current pair: AX/BX (measure
+  horizontally) or AY/BY (measure vertically). Further options below select
+  A, B or both for control by the knob. Pressing the knob rotates between
+  these three.
+- `Track`: As with manual but only AX/BX adjustable; 'scope will
+  automatically set AY/BY to current value at X.
+- `Auto`: Merely displays cursors matching the currently selected
+  measurement setting (left-hand buttons). The `Auto Item` setting will let
+  you choose any of the five current measurements displayed at the bottom
+  of the screen (or `NONE` to turn off the cursors). Adding a new
+  measurement will switch the auto cursors to that measurement.
+
 Cursor mode Auto can set cursor lines for any one of the current quick
 measure items at the bottom of the screen to give you a better sense
 of where the thresholds are. New measurements will become the auto item.
