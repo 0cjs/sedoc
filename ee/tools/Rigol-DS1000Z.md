@@ -206,6 +206,17 @@ can be set to DC/AC/LFR/HFR independently of the input coupling:
 - `LFR` (LF reject): blocks DC components, rejects LF < 75 kHz.
 - `HFR` (HF reject): rejects high frequency components > 75 kHz.
 
+### Trigger Types
+
+- `Edge`: cross voltage level on rising, falling or both
+- `Pulse`: minimumn pulse width to trigger; `+`/`-` for
+  positive/negative-going pulse. `When` sets width comparison to
+  `>`/`<`/between.
+- `Slope`: time difference between two voltage levels.
+- `Video`: parameters:
+  - `Polarity` ???. for sync?. Maybe just changes sign of trigger level.
+  - `Sync`: "all"=any line, specific line
+
 #### Video Triggering
 
 Notes from Rigol Video [Using Video Triggering][rv uvt]:
