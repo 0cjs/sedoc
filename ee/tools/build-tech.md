@@ -116,6 +116,10 @@ Preciva PR-3254 with three blocks:
 2. (middle) Molex IDE power, ATX power, VH3.96
 3. (handle) dupont 2.54 male/female
 
+When crimping, press the jaws together _very_ hard; it's easy to use too
+little force and get a loose connection, even if all else is done
+correctly.
+
 The insulated part _must_ be fully inserted to at least the inside end
 of the insulation grip tabs on the connector. It's seems ok if it
 extends very slightly into wire crimp tabs. Give the crimped
@@ -148,6 +152,26 @@ connection a good strong tug before inserting it into the housing.
   resting on the connector; even resting against the top edge of the jaws,
   as far away from the connector as it can get, it will still be crimped
   properly.
+
+#### Double Crimps
+
+It can be useful to crimp two wires into a single connector to duplicate a
+ground.
+1. Crimp a short wire as normal and cut it down to 3 cm from the back of
+   the crimp pin.
+2. Strip the other end of the short wire to 2-3× normal bare length; none
+   of the insulation should enter the crimp connector. (This wire should
+   need little strain relief; don't pull it!
+3. Strip the longer wire, the signal you're duplicating, as normal.
+4. Place longer wire on top of shorter wire, with the ends lining up, and
+   crimp so that only the long wire's insulation goes in the insulation
+   tabs.
+5. Get the longer wire's pin in the shroud first; it may require a bit of
+   squeezing due to the double-insulation at the entry to the shroud.
+   (Consider stripping bare wire to outside of shroud?)
+6. Loop the shorter wire's pin into its shroud slot.
+
+#### Colors
 
 Colors follow, as much as possible, the electronics color code, with
 substitutions where there aren't enough wire colors.
