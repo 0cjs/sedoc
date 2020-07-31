@@ -27,7 +27,7 @@ used by the [FM77AV][fm77].
 SCART and JP-21 do not use straight-through cables; for signals marked
 "input" or "output," these are always the signals on the device connector
 and the cable is expected to swap them. (I.e., the computer sends audio on
-pin 2, but the monitor receives it on pin 1.)
+pin 2 which is connected to the monitor's receive pin 1.)
 
 - Signals below are referenced from the computer to the display, i.e.,
   "output" is a signal recieved by the display. This is the opposite
@@ -155,17 +155,56 @@ other end from the marking when using female inserts. All outputs should be
 female to help prevent shorts; inputs are thus male. See [header](header.md)
 for more numbering and organization details.
 
-Analogue RGB:
-
-     Looking Into
-    Female     Male         1 redGND    2 red signal
-    ▼  ▄         ▄  ▼       3 greenGND  4 green signal
-    1 3 5 7   7 5 3 1       5 blueGND   6 blue signal
-    2 4 6 8   8 6 4 2       7 syncGND   8 sync (composite)
-
-This could be extended to add hsync (9, 10) and vsync (11, 12) if available.
+                  ▼  ▄             ▄  ▼
+     looking      1 3 5 7       7 5 3 1    looking   (pin 1 mark at opposite
+     into FEMALE  2 4 6 8       8 6 4 2  into MALE    end on dupont shrouds)
 
 For DIN-8 breakouts, see [din](din.md).
+
+#### Breakout Headers
+
+This is the breakout header assignment for a cable from a computer (or
+other video source). All headers on the cable are female.
+
+`wclr` is the wire insulation colour. The pin numbers on the computer
+connector are given for PC-8801 (`88`) and JP-21 (`21`). Pin `=` refers to
+a short on the connectors; pin `g` refers to ground shorted amongst some
+combination of the following computer pins (not all may be connected):
+- PC-8801: 8, 12, shield
+- JP-21: 3, 4, 7, 8, 14, shield
+
+The JP-21 colors are for one end of a random SCART cable; keep in mind the
+other will have input and output signals swapped.
+
+
+    Connector   wclr  Pin/Signal            88   21
+    ─────────────────────────────────────────────────────────────────────
+
+    RGB         blk   1  red GND             2   13 pur
+    2×3         red   2  red signal          1   15 gry
+                blk   3  green GND           4   17 blk
+                grn   4  green signal        3   19 wht
+                blk   5  blue GND            6   18 /blk
+                blu   6  blue signal         5   20 cyn
+
+    hvsync      blk   1  GND                 g
+    2×2         wht   2  hsync              14
+                blk   3  GND                 =
+                gry   4  vsync              15
+
+    csync       blk   1  GND                 g
+    1×2         org   2  csync               9
+
+    CVBS        blk   1  GND                 g    8 /red
+    1×2         yel   2  CVBS (YS)           7   10 /grn
+
+    audio out   blk   1  GND                 g    4 /orn
+                wht   2  left audio out     10    2 /brn
+                blk   3  GND                 =    =
+                red   4  right audio out    11    6 /yel
+
+The RGBS connector can be rotated left 90° (looking out the female) to plug
+into a GND, CVBS/csync (pins 2, 1) male header on a board.
 
 
 
