@@ -14,6 +14,7 @@ TODO
 ----
 
 - DIN: Composite and DRGB DIN, currently under [DIN](din.md).
+- DIN: Analogue RGB DIN started below
 - 15-pin analogue: PC-8801 post-mkII/FR systems?
 - 25-pin analogue: [FM77AV40SX][fm77].
 
@@ -101,6 +102,30 @@ The wires are aluminum and cannot be soldered; they must be crimped.
 - [FM-77AV用TOWNSモニター接続アダプター][fmavtw]. Cable to connect
   FM77 output to FM TOWNS monitor; [FM Towns Video pinout][towns] may
   be of help decoding the interface.
+
+
+DIN
+---
+
+Most systems are listed in their individual documentation.
+Some are also still listed in [conn/din.md](din.md).
+
+### PC Engine RGB Mod
+
+This is a mod on M's PC Engine, possibly done by "doujindance."
+Output is DIN-8 270°.
+
+XXX This needs to be rechecked; it probably has errors.
+
+    DIN-8   JP-21           Desc
+      1       3             comp video in (??? sync)
+      2       3,13,14,18    GND: audio, red, Ym/YS, blue
+      3       9             audio L in
+      4      11,16          AV control, Ys RGB switch (??? V)
+      5       5             audio R in
+      6      19             Green
+      7      15             Red
+      8      20             Blue
 
 
 Other Connectors
