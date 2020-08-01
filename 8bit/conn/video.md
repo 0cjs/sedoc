@@ -119,10 +119,32 @@ numbering is (ref. [minicon1300] and printing on Jr.200 video cable):
       (cable) ! 4 3 2   1 !     ! 1   2 3 4 ! (monitor)
               +-----------+     +-----------+
 
-Pin assignments vary wildly. Sources include:
+The pinout of the S1308 connector seems to be fairly standardized to one
+of two standards:
+
+        Pin  Non-MSX    MSX (above numbering)
+        ───────────────────────────────────────
+         1   varies     blue
+         2   red        green
+         3   green      red
+         4   blue       vsync
+         5   GND        hsync
+         6   GND        c.cont (intensity bit)
+         7   hsync      GND
+         8   vsync      n/c or 14.318 MHz video clock
+
+For non-MSX systems, pin 1 may be:
+- GND: D8A, D8A (MB-S1)
+- C.CONT (intensity): D8A2 (PC-6001mkII/SR/6601/SR 15-color)
+- +12 V: D8B (FM-77)
+- N/C: FM-7
+- Unconnected?: D8C (X1 except turbo40)
+- Video clock (14.318 MHz): some MSX (others N/C)
+
+Pin assignment sources:
 - [OLD Hard Connector Information デジタル８ピン][ohd8]
 - [Larry Green's FM-7 page][lgreenf]
-- [MSX Wiki][msxw-drgb]
+- [MSX Wiki][msxw-drgb]. Uses reversed pin numbering scheme.
 
 ### VGA Pinout
 
