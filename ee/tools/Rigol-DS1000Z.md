@@ -231,15 +231,18 @@ Trigger parameters:
   - `Odd`, `Even`: rising edge of first ramp pulse in odd or even field.
 - `Standard`:
   - `NTSC`: 60 fields, 30 frames/sec; 525 lines. Even field first.
+    Counts equalization pulses.
   - `PAL/SECAM`: 50 fields, 25 frames/sec; 625 lines. Odd field first for PAL.
-  - `480P`, `576P`.
+  - `480P`, `576P`. These do not count equalization pulses.
 
 Notes on 240p signals:
-- The NTSC line trigger will not sync if the line number is less than 5
-  (less than 8 for 480p). Setting the line between 5 and 10 will actually
-  sync at earlier lines and skip some lines, and the line numbers will be
-  wrong throughout. This is presumably because of the missing equalization
-  pulses around/during vsync.
+- The NTSC line trigger will not sync if the line number is less than 5.
+  Setting the line between 5 and 10 will actually sync at earlier lines and
+  skip some lines, and the line numbers will be wrong throughout. This is
+  presumably because of the missing equalization pulses around/during
+  vsync.
+- 480p sync can be used starting at line 8, which is the second line in vsync.
+  To convert screen line to 'scope line use 7+_vsync-lines+bplines+line_.
 - Start of frame may also be caught with a pulse trigger set for a negative
   pulse width >50 μs. (Possibly a trigger holdoff may be necessary to avoid
   retrigger on the next two lines.)
@@ -263,7 +266,9 @@ sophisticated stuff including:
   measurements at the bottom of the screen. `Extremum` for cur/avg/min/max;
   `Difference` for cur/avg/deviation/count; `Reset` to clear stat history.
   `CLEAR` button also resets stats.
-- `Range → Region` to measure full screen or within cursors only.
+- `Range → Region` to measure full screen or within cursors only. The
+  cursors used for this measurement are completely independent of the
+  cursors below. They also vanish a short time after you move them.
 - `Delay` and `Phase` for cross-channel measurements.
 - `Threshold` (min/mid/max def. 10%/50%/90%) for all time/delay/phase
   params.
@@ -272,6 +277,9 @@ Real-time graph and table history of measurement values is available
 from `Measure → History`.
 
 #### Cursors
+
+The cursors used for measurement ranges are _not_ these cursors; they're a
+separate set. See "Measurement" above.
 
 Cursors always must be on screen (though they make take some time to appear
 after a scroll); they will move if you change the time base, including
@@ -287,9 +295,13 @@ There are always four cursors; the mode determines how they are set.
 - `Manual`: Use `Select` menu option to select current pair: AX/BX (measure
   horizontally) or AY/BY (measure vertically). Further options below select
   A, B or both for control by the knob. Pressing the knob rotates between
-  these three.
+  these three. In zoom mode, manual cursors appear in the overview window
+  only.
 - `Track`: As with manual but only AX/BX adjustable; 'scope will
-  automatically set AY/BY to current value at X.
+  automatically set AY/BY to current value at X. In zoom mode, track
+  cursorsappear in zoom window only. _WARNING:_ This also seems to do some
+  sort of horizontal tracking; when moving both cursors together the width
+  between them will change slightly depending on where you move them.
 - `Auto`: Merely displays cursors matching the currently selected
   measurement setting (left-hand buttons). The `Auto Item` setting will let
   you choose any of the five current measurements displayed at the bottom
