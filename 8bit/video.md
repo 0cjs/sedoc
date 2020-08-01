@@ -17,7 +17,7 @@ intensity signal). Standard luminance signals are generally about a volt
 into 75Ω; sync signals usually are reduced to similar levels when combined
 with a luminance. CVBS standard levels (from [[wp cvbslev]]):
 
-<img src='video-cvbs-levels.png'>
+<img src='img/video-cvbs-levels.png'>
 
 Systems are, roughly:
 - RGBHV: Three luminance signals and separate H and V sync signals
