@@ -200,6 +200,13 @@ National/Panasonic JR-200:
   - 820=0.40    R,G,B dimmer; white still brighter (not gray)
   - 330=0.68    W,G brighter; red similar, blue dimmer
 
+Apple IIc:
+- Horizontal (in CVBS): 63.6 μs: `_/7.5 _/3.9 _/13.2 _/39.0`
+- Vertical (in CVBS): 262 lines; `32/_ 4/_ 34/_ 192/_`
+  - hsync on falling edge during vblank; not XOR
+- CVBS:
+  - Colour burst during vsync
+
 
 #### References
 
