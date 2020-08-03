@@ -190,3 +190,26 @@ Reference: [[Wikitext]].
 [wt math]: https://en.wikipedia.org/wiki/Help:Displaying_a_formula
 
 
+WordPress
+---------
+
+Comments allow limited HTML markup, as determined by the [KSES filter].
+This may be configured differently on a per site basis, but generally will
+be something like the following.
+
+    <a href title>
+    <abbr title>
+    <acronym title>
+    <b>
+    <blockquote cite>
+    <cite>
+    <code>
+    <del datetime>
+    <em>
+    <i>
+    <q>
+    <s>
+    <strike>
+    <strong>
+
+[KSES filter]: https://core.trac.wordpress.org/browser/trunk/src/wp-includes/kses.php#L414
