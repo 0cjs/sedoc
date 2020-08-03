@@ -112,20 +112,19 @@ Some are also still listed in [conn/din.md](din.md).
 
 ### PC Engine RGB Mod
 
-This is a mod on M's PC Engine, possibly done by "doujindance."
-Output is DIN-8 270°.
+This is a mod on M's PC Engine, possibly done by "doujindance." Output is
+DIN-8 270°. The JP-21 column gives the pin to which it should be connected
+at the monitor.
 
-XXX This needs to be rechecked; it probably has errors.
-
-    DIN-8   JP-21           Desc
-      1       3             comp video in (??? sync)
-      2       3,13,14,18    GND: audio, red, Ym/YS, blue
-      3       9             audio L in
-      4      11,16          AV control, Ys RGB switch (??? V)
-      5       5             audio R in
-      6      19             Green
-      7      15             Red
-      8      20             Blue
+    DIN-8   Desc                JP-21
+      1     audio left          1
+      2     GND                 3,7,14,13,17,18
+      3     CBVS                9
+      4     audio right         5
+      5     AV control/blanking 11,16
+      6     red                 15
+      7     green               19
+      8     blue                20
 
 
 Other Connectors
