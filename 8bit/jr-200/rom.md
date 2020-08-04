@@ -92,9 +92,9 @@ assigned by me in [the disassembly][disasm].
     $EB21   prcr        ♣A print a CR using prchar; usu. use prnl instead
     $EBE7   prchar      ♠A ♡ABX print char
     $EC7F   clrscrp     clear screen
-    $EFF0   prstr8b     ♠X prstr8 unless prb_quiet ≠ $00
+    $EFF0   prstr8q     ♠X prstr8 unless prb_suppress ≠ $00
     $EFF9   prstr8      ♠X print bit-7-set-terminated string
-    $F002   prstr0b     ♠X prstr0 unless prb_quiet ≠ $00
+    $F002   prstr0q     ♠X prstr0 unless prb_suppress ≠ $00
     $F006   prstr0      ♠X print $00-terminated string
     $F00F   prnl           print a newline
     $F05F   errbeep
@@ -115,8 +115,8 @@ assigned by me in [the disassembly][disasm].
   `rdline` to read a line, and set Z flag (`BEQ`) if Ctrl-C ended input.
 - `prstr8 $EFF9`: Print chars pointed to by X. Set MSBit on last char.
   (Cannot print chars \>$7F.)
-- `prstr8b $EFF0`: As `prstr8` but prints only if `prb_quiet $45` is $00.
-- `prstr0b $F002`: As `prstr8b` but string terminated by $00.
+- `prstr8q $EFF0`: As `prstr8` but prints only if `prb_suppress $45` is $00.
+- `prstr0q $F002`: As `prstr8q` but string terminated by $00.
 - `rdchar $E8FE`: Wait for a char from the keyboard and return it in A. The
   cursor will be displayed and updated for the input mode, continuing to
   wait for another key, if 英数, GRAPH or カナ is pressed.
