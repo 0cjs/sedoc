@@ -9,12 +9,12 @@ Multi-system Chat Clients
   Best feature may be getting all notifications from one place.
   UI is not great. Doesn't do [Line](https://line.me).
 
-[Gitter]
---------
+Gitter
+------
 
-In the old (now unsuable) version of the Gitter desktop client, the
-zoom [could be changed][gitter-zoom]. Bring up the console from menu
-`Gitter / Developer Tools` and enter:
+In the old (now unsuable) version of the [Gitter] desktop client, the zoom
+[could be changed][g zoom]. Bring up the console from menu `Gitter /
+Developer Tools` and enter:
 
     gui.Window.get().zoomLevel = -1.1;   // 0 is default zoom
 
@@ -25,7 +25,7 @@ of a replacement. (Help wanted on this!)
 Telegram
 --------
 
-[Telgram markdown formatting][tel-md] varies by client. For Android,
+[Telgram markdown formatting][t md] varies by client. For Android,
 Web and Win/Unix desktop:
 
     Markup:     __italic__   **bold**   `monspace`  ```multiline monospace```
@@ -34,6 +34,18 @@ Web and Win/Unix desktop:
 Also `Ctrl-K` for links and `Ctrl-Shift-N` to clear formatting.
 
 `Ctrl-Z` or `Backspace` will roll back emoji replacement.
+
+
+Discord
+-------
+
+[Quick Swicher][d qs] summary and prefixes:
+
+    Enter   (alone) switch to previous channel
+    *       server name search; goes to last-used channel on that server
+    @       user name search; goes to DM with user
+    #       text channel name
+    !       voice channel name
 
 
 Slack
@@ -49,5 +61,8 @@ Tips:
 
 <!-------------------------------------------------------------------->
 [Gitter]: https://gitter.im/apps
-[gitter-zoom]: https://gist.github.com/MadLittleMods/fd8cebe7e370a471b073
-[tel-md]: http://telegra.ph/markdown-07-07
+[g zoom]: https://gist.github.com/MadLittleMods/fd8cebe7e370a471b073
+
+[t md]: http://telegra.ph/markdown-07-07
+
+[d qs]: https://support.discord.com/hc/en-us/articles/115000070311
