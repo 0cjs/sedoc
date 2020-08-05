@@ -6,32 +6,20 @@ Much of this from [[Reunanen]].
 ### Overall Memory Map
 
     $e000   8K  BIOS ROM
-    $d800   2K  Cartridge area (if $D800=$7E, BIOS jumps there on boot)
+    $d800   2K  External memory supplied by expansion peripherals
+                (if $D800=$7E JMP, BIOS jumps there on boot)
     $d000   2K  Character set VRAM (loaded at boot)
-    $c800   4K  I/O area
-    $c000   4K  Character and attribute VRAM
+    $c800   2K  I/O area
+    $c000   2K  Character and attribute VRAM
     $a000   8K  BASIC ROM (disabled via "!kill" signal on expansion bus)
     $8000   8K  unmapped
     $0000  32K  RAM
 
+For details of the VRAM mapping, see [video](video.md).
+
 ### I/O map
 
     $c081 r     Last key pressed (no key-up information)
-
-### Video RAM Map
-
-    $d800
-    $d000  2K   character bitmaps
-    $c800  4K   I/O area
-    $c500  3p   character colors
-    $c400  1p   ???
-    $c100  3p   character positions
-    $c000  1p   ???
-
-The alternate area for character bitmaps (color cell bit 6 set to 1) is
-$C000. This overlaps with the character position and colour maps, but it
-looks like you can use the two ??? pages above for alternate character
-bitmaps.
 
 ### RAM Map
 
