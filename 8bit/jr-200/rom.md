@@ -105,7 +105,11 @@ assigned by me in [the disassembly][disasm].
 - `clrscrp $EC7F`: Clear screen, filling with `pcolor $0E` .
 - `errbeep $F05F`: Generate error tone.
 - `prchar $EBE7`: Print character in A, doing control character processing.
-  Preserves A,B,X.
+  Preserves A,B,X. If the current character attribute has the user-defined
+  charset bit (bit 6) set, codes $20-$3F and $40-$5F are translated to
+  block 0 and block 1 user-defined character bitmaps, respectively. (Other
+  codes should not be used for user-defined characters; they will display
+  random data from the character and attribute screen buffers.)
 - `prcr $EB21`: Print a carriage return using the current charset/graphics
   settings. This may produce unepxected behaviour depending on those
   settings; unless you know you want this, use `prnl` instead.
