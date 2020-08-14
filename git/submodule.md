@@ -29,10 +29,10 @@ Checking Out Submodules
 
 Submodules are not cloned by default when a repo is cloned and checked
 out; the `git clone --recursive` or `--recurse-submodule` options will
-clone and check out submodules as well. Since most people dont' do
+clone and check out submodules as well. Since most people don't do
 this by default, it's best to have the test script check that
-necessary submodules are present and either ask the user to `git
-submodule update --init` or do that itself.
+necessary submodules are present and either ask the user to
+`git submodule update --init` or do that itself.
 
     check_submodules() {
         count=$(git submodule status --recursive | sed -n -e '/^[^ ]/p' | wc -l)
