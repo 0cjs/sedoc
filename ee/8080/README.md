@@ -50,10 +50,11 @@ Summary: status register bit, 8080 name, Z80 name (if different) and function.
     4  AC H    auxiliary carry/half carry (carry from bit 3)
     3  X       unused
     2  P  P/V  parity/overflow
-    1     N    add/subtract (most recent operation)
+    1  X  N    8080: unused; Z80: add/subtract (most recent operation)
     0  C       carry/borrow (0=no borrow, 1=borrow)
 
 `AC` (`H`) and (`N`) not directly testable; used by `DAA`. decimal adjust.
+(Only Z80 has `N` and adjusts properly after a subtraction.)
 
 On the 8080/8085, `P` is always set to the parity of the result (odd/even)
 on the 8080/8085. The Z80  does that only for logical operations, instead
