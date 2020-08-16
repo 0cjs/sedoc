@@ -1,14 +1,42 @@
 Git for Windows
 ===============
 
-[Git for Windows] is a [MinGW](../win/unixy.md) build of Git and
-various other tools. It includes:
+[Git for Windows][gfw] (also available [from git-scm.com][gfw gsc]) is a
+[MinGW](../win/unixy.md) build of Git and various other tools. It includes:
 * Git, of course
 * OpenSSH (dunno if it's [Win32-OpenSSH] or not)
 * [ssh-pageant], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
 * [mintty] and Bash (used by 'Git Bash Here' menu item in Explorer)
 * zlib, curl, tcl/tk, perl, MSYS21
 * Root certs
+
+#### Installation Summary
+
+If you are going to use [Visual Studio Code][vsc], or have another
+favourite editor, install it before installing Git.
+
+1. Download the installer from the [gitforwindows.org][gfw] and run it; the
+   following steps/choices will appear as the install wizard progress (not
+   all steps are shown here).
+2. Select Components: ensure that the following are checked:
+   - Windows Explorer integration: Git Bash Here
+   - Associate .sh files to be run with Bash
+3. Default editor: If your preferred option is not in the list, leave it at
+   the default (Vim). This can easily be changed later.
+4. Adjusting PATH: "Git from the command line and also from 3rd-party
+   software."
+5. SSH executable: "Use OpenSSH."
+6. HTTPS backend: "Use the native Windows Secure Channel library."
+7. Line ending conversions: "Checkout as-is, commit as-is." (Line endings
+  should be handled by your editor, not by Git.)
+8. Terminal emulator: "Use MinTTY."
+9. Behaviour of `git pull`: "Only ever fast-forward."
+10. Credential helper: None.
+11. Extra options:
+    - ✓ Enable file system caching
+    - ✗ Enable symbolic links
+12. ✓ Enable experimental support for pseudo consoles.
+   (Do not use before 2.28.0.windows.1.)
 
 
 File Modes
@@ -68,7 +96,7 @@ issues when using Git.
 Credential Management
 ---------------------
 
-Recent versions of [Git for Windows] install and configure [Git
+Recent versions of [Git for Windows][gfw] install and configure [Git
 Credential Manager for Windows][gcmw] if that box is checked during
 the install process. This installs the `git credential-manager`
 program and sets `credential.helper=manager` in the Git system
@@ -119,13 +147,15 @@ commands, a nice stand-alone Git log browser, and copies of PuTTY's
 
 <!-------------------------------------------------------------------->
 [2FA]: https://help.github.com/articles/about-two-factor-authentication/
-[Git for Windows]: http://gitforwindows.org/
 [TortoiseGit]: https://tortoisegit.org/
 [Win32-OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH
 [gcmw]: https://github.com/Microsoft/Git-Credential-Manager-for-Windows
+[gfw gsc]: https://git-scm.com/download/win
+[gfw]: http://gitforwindows.org/
 [gh-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
 [git-config]: https://git-scm.com/docs/git-config
 [git-credential]: https://git-scm.com/docs/git-credential
 [mintty]: https://mintty.github.io/
 [so-winsecchan]: https://stackoverflow.com/a/46332681
 [ssh-pageant]: https://github.com/cuviper/ssh-pageant
+[vsc]: https://code.visualstudio.com/
