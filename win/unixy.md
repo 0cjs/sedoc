@@ -117,6 +117,10 @@ Tips and Tricks
 * Use `cygpath` to convert between MinGW Bash paths and Windows paths.
 * The MinGW programs can be run from CMD/PowerShell even if not in path
   by finding the full path to them: `cygpath -w /mingw64/bin`.
+* MSYS programs will do POSIX-to-Windows path conversion for command-line
+  parameters, e.g., `/c/foo/bar` to `C:\foo\bar`. To disable this for a
+  parameter (e.g., when it's being sent to another host) start the path
+  with a double slash: `//c/foo/bar` or set `MSYS_NO_PATHCONV=1`.
 
 
 
