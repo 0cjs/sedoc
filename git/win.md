@@ -35,8 +35,9 @@ favourite editor, install it before installing Git.
 11. Extra options:
     - ✓ Enable file system caching
     - ✗ Enable symbolic links
-12. ✓ Enable experimental support for pseudo consoles.
-   (Do not use before 2.28.0.windows.1.)
+12. × Enable experimental support for pseudo consoles.
+    (As of 2.28.0.windows.1 this produces odd behaviour such as dropping
+    CRs and spawning Windows consoles with your output.)
 
 
 File Modes
