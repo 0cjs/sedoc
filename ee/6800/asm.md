@@ -104,6 +104,50 @@ _accumulator addressing_ may be done either way in Motorola assemblers,
   - Unsigned: `BLS` (less-than/same) `BHI`
   - Two's complement: `BLT` `BLE` `BGE` `BGT`
 
+### 6801/6803 New/Changed Instructions/Mnemonics
+
+Some instruction timings have changed.
+
+Cycle counts given under `~`, Flags affected have `*` under `NZVC`.
+
+    mnem  op        ~  NZVC  descr
+    ─────────────────────────────────────────────────────────────────────
+    BRN   21 aa aa  3  ----  branch never
+    JSR   9D dd     5  ----  direct page addressing mode
+    ─────────────────────────────────────────────────────────────────────
+    PSHX  3C        4  ----  [SP--] ← X
+    PULX  38        5  ----  X ← [++SP]
+    ABX   3A        3  ----  X ← X + B (unsigned)
+    CPX                ****  all flags now affected; all Bxx can be used
+    ─────────────────────────────────────────────────────────────────────
+    LDD   CC nn nn  3  **0-  D ← nnnn
+          DC dd     4        D ← [dd, dd+1]
+          FC aa aa  5        D ← [aaaa,aaaa+1]
+          EC oo     5        D ← [X+oo]
+    STD   DD dd     4  **0-  D → [dd, dd+1]
+          FD aa aa  5        D → [aaaa,aaa+1]
+          ED oo     5        D → [X+oo, X+oo+1]
+    ADDD  C3 nn nn  4  ****  D ← D + nnnn               carry not added
+          D3 dd     5        D ← D + [dd, dd+1]
+          F3 aa aa  6        D ← D + [aaaa, aaaa+1]
+          E3 oo     6        D ← D + [X+oo, X+oo+1]
+    SUBD  83 nn nn  4  ****  D ← D - nnnn               carry not subtracted
+          93 dd     5        D ← D - [dd, dd+1]
+          B3 aa aa  6        D ← D - [aaaa, aaaa+1]
+          A3 oo     6        D ← D - [X+oo, X+oo+1]
+    MUL   3D        10       D ← X × Y
+    ASLD  05        3        D ← D«1, D₀ ← 0,  C ← D₁₅   also LSLD
+    LSRD  04        3        D ← D»1, D₁₅ ← C, C ← D₀
+    ─────────────────────────────────────────────────────────────────────
+    BHS   =BCC               branch if higher or same
+    BLO   =BCS               branch if lower
+    LSL   =ASL               logical shift left
+
+References:
+- Table 1 of the 6801/6803 data sheet. Table 10 is also an excellent list
+  of all opcodes, timings and affected flags.
+
+
 Motorola Assembler Syntax
 -------------------------
 
