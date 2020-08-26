@@ -1,3 +1,10 @@
+MSX
+===
+
+References:
+- [Wikipedia (en)][wpen]
+- [Wikipedia (ja)][wpja]
+- [msx.org wiki][mowiki] (MSX Resource Center)
 
 
 Brief Specs
@@ -15,14 +22,19 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 - __Casio PV-16__: 16k/16k 1C+E. Ext. PSU 10V 800 mA. Small chiclet keyboard.
 - __Casio KB-10__: PV-16 successor. No CMT interface (separate FA-32 req'd).
 
-
-Power Supplies
---------------
+#### Power Supplies
 
 The Sony [AC-HB3][] (for HB-FX1D) and Panasonic [FS-AA51][] (for for FS-A1,
 FS-A1mkII) external PSUs use the same 3-pin "mini-IEC" connector and supply
-9 VDC 1.2 A and 18 VAC 170 mA. The boards themselves apparently use only +5
-  VDC and ±12 VDC, the latter for the audio amplifier.
+9 VDC 1.2 A and 18 VAC 170 mA. The boards themselves apparently use only
++5 VDC and ±12 VDC, the latter for the audio amplifier.
+
+
+
+<!-------------------------------------------------------------------->
+[mowiki]: https://msx.org/wiki
+[wpen]: https://en.wikipedia.org/wiki/MSX
+[wpja]: https://ja.wikipedia.org/wiki/Msx
 
 [FS-AA51]: https://www.msx.org/wiki/Panasonic_FS-AA51
 [AC-HB3]: https://www.msx.org/wiki/Sony_AC-HB3
