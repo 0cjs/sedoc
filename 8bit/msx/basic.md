@@ -132,8 +132,7 @@ Program lines are stored as follows:
 
 Tokenization:
 
-    $00             program line terminator:
-    $01 $nn         graphics character: _$nn_-$40 is the character code
+    $00             program line terminator, when not part of token data
     $0B $nn $nn     &O octal number; unsigned 16-bit int
     $0C $nn $nn     &H hex number; unsigned 16-bit int
     $0D $nn $nn     line number (post-`RUN`); addr of destination line
@@ -158,6 +157,33 @@ following omissions and corrections:
   `:` to separate it from preceeding code on the line. It's tokenized as
   `3A 8F E6`, i.e., a `:`, `REM` token and `E6` to indicate it should not
   be LISTed as `:REM`.
+
+#### Character Encoding
+
+In programs entered in the BASIC interpreter, non-ASCII characters appear
+only in string constants (quoted strings and bare strings in `DATA`
+statements) and `REM` statements. The [256 code points][charset] are
+encoded as follows. `CP` means "code point"; all numeric values are
+hexadecimal.
+
+    CP      Encoding                            Description
+    ───────────────────────────────────────────────────────────────────────────
+            00                                  control character
+    00-1F   01 nn   CP = nn-40; 40≤ nn < 5F     "extended" characters
+            02-1F   control characters
+    20-7E   nn      cp = nn                     ASCII characters [1]
+    7F      --                                  control character [2]
+    80-FF   80-FF   cp = nn                     graphics characters/kana
+                                                (varying by charset)
+
+Notes:
+1. In the Japanese charset only, code point `5C` is `¥` instead of `\`.
+2. It seems that code point `7F` cannot be encoded or printed in BASIC. In
+   the Japanese charset this is a blank glyph, in other charsets it's `△`.
+
+References:
+- [MSX Characters and Control Codes][codes], msx.org wiki.
+- [`bastok`] MS-BASIC tokenization tools documentation.
 
 #### Tokenization Process
 
@@ -211,10 +237,13 @@ References:
 
 <!-------------------------------------------------------------------->
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
+[`bastok`]: https://github.com/0cjs/bastok
 [binfile]: https://www.msx.org/wiki/MSX-BASIC_file_formats#MSX-BASIC_binary_files
 [bload]: https://www.msx.org/wiki/BLOAD
 [bsave]: https://www.msx.org/wiki/BSAVE
+[charset]: ./charset.md
 [chibiaku]: https://www.chibiakumas.com/z80/msx.php
+[codes]: https://www.msx.org/wiki/MSX_Characters_and_Control_Codes
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [instr]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
