@@ -1,6 +1,8 @@
 MSX
 ===
 
+See [MSX ROM](rom.md) for some notes on system usage.
+
 References:
 - [Wikipedia (en)][wpen]
 - [Wikipedia (ja)][wpja]
