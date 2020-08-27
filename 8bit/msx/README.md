@@ -19,6 +19,10 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 - __Sony HB-F1XD__: 64k/128k 2C+D RGB. Ext. PSU.
 - __Panasonic FS-A1__: 64k/128k 2C RGB. Ext. PSU.
 - __Sanyo MPC-2 (Wavy2)__: 64k/16k 2C.
+- __National CF-3000__: 64k/16k 2C. Box+keyboard. JP21 RGB.
+  Separate superimpose unit. No space for floppy in box.
+- __Nationanl CF-2700__: 32k/16k 2C.
+- __National CF-2000__: 16k/16k 2C.
 - __Sony HB-55__:  16k/16k 1C+E. Cheap keyboard.
 - __Sony HB-55P__: 16k/16k 2C. European version.
 - __Casio PV-16__: 16k/16k 1C+E. Ext. PSU 10V 800 mA. Small chiclet keyboard.
