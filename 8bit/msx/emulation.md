@@ -12,6 +12,25 @@ Documentation:
 - [openMSX Console Command Reference][cmdref]
 - [Diskmanipulator][dm]
 
+### Default Key Bindings / MSX Key Mappings
+
+The [default MSX key mappings][keymap] are as follows.
+Note that on MSX the STOP key pauses output; Ctrl-STOP does a break.
+
+    MSX key             PC          Mac
+    CTRL                L-Ctrl      L-Ctrl
+    dead (accent) key   R-Ctrl      R-Ctrl
+    GRAPH               L-Alt       L-Alt
+    CODE/KANA           R-Alt       R-Alt
+    取消 (cancel)       L-Win
+    実行 (execute)      R-Win
+    SELECT              F7          F7
+    STOP                F8          F8
+    INS                 Insert      Cmd-I
+
+In the BASIC screen editor, Ctrl-R will also execute the toggle insert mode
+function.
+
 
 Setup
 -----
@@ -85,6 +104,7 @@ Other Emulators
 [cmdref]: https://openmsx.org/manual/commands.html
 [dm]: https://openmsx.org/manual/diskmanipulator.html
 [gh]: https://github.com/openMSX/openMSX
+[keymap]: https://openmsx.org/manual/user.html#keyboard
 [man]: http://openmsx.org/manual/
 [omsx]: https://openmsx.org/
 [setup]: https://openmsx.org/manual/setup.html
