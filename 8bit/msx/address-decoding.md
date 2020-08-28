@@ -59,10 +59,17 @@ I/O Address Map
 ---------------
 
 [td1 p.40]. But all I/O is supposed to be done via BIOS calls, except VDP.
-($0006 and $0007 contain VDP read/write register IO addrs.) FDC should
-have a disable mechanism so multiple FDCs can be present.
+($0006 and $0007 contain VDP read/write register IO addrs.) FDC should have
+a disable mechanism so multiple FDCs can be present. Some MSX machines will
+not let cartridge slots respond to certain I/O port requests.
 
-    F8-FF
+    FC-FF   MSX2 MegaMapper (write-only registers)
+              FF page 3 memory segment select (default 00)
+              FE  "   2   "       "      "    (default 01)
+              FD  "   1   "       "      "    (default 02)
+              FC  "   0   "       "      "    (default 03)
+
+    F8-FF   MSX1: reserved
 
     F7      Audio/Video Control
               b7 video select  0=TV
