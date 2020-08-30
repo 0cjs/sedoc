@@ -42,6 +42,7 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 
 - __Sony HB-F1XD__:         64k/128k 2C+D RGB. Ext. PSU.
 - __Panasonic FS-A1__:      64k/128k 2C RGB. Ext. PSU.
+- __Toshiba HX-22__:        64k/16k 2C RGB (RP13A). RS-232. "Pasopia IQ"
 - __Sanyo MPC-2 (Wavy2)__:  64k/16k 2C.
 - __National CF-3000__:     64k/16k 2C. Box+keyboard. JP21 RGB.
                             Separate superimpose unit. No space for floppy drv.
