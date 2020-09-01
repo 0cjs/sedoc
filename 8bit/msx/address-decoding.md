@@ -81,7 +81,7 @@ not let cartridge slots respond to certain I/O port requests.
     E0-F0
     D8-DF   Kanji ROM
     D0-D7   Floppy Disk Controller
-    C0-CF
+    C0-CF   (MSX-AUDIO $C0-$C3)
     B8-BF   Light pen interface (Sanyo)
     B5-B7
     B4      Calendar clock
@@ -114,6 +114,8 @@ not let cartridge slots respond to certain I/O port requests.
     88-8F
     80-87   RS-232C
     40-7F   Reserved
+              7C,7D: MSX-MUSIC register select/data
+
     00-3F   Unspecified
 
 
