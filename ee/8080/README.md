@@ -6,10 +6,6 @@ There's good documentation many different kinds of old systems at
 [`/dunfield/r`] subdir contains programming information for various
 architectures (and ZIPped docs on C64 cassette and video monitor).
 
-References:
-- [_8080/8085 Assembly Language Programming Manual_][i85], Intel, 1981
-- [_Z80 Programming Manual_][z80], MOSTEK, 1977. Note eratta on p.iv (PDF p.7).
-
 
 8080 Architecture
 -----------------
@@ -74,10 +70,14 @@ $0038 and _mode 2_, where the device supplies 8-bits of low address (LSbit
 must be 0), 8 bits of high address is supplied by `I` register, and the
 interrupt vector is looked up from that address.
 
+### Instruction Timings
+
+Here we use Z80 terminology. Clock cycles are _T cycles_; instructions use
+one or more _M cycles_ each of 2-5 T cycles. Generally, the first M-cycle
+(opcode fetch) is four T cycles. Intell calls M and T cycles _cycles_ and
+_states_.
 
 
 <!-------------------------------------------------------------------->
 [`/dunfield/r`]: http://www.classiccmp.org/dunfield/r/
 [dunfield]: http://www.classiccmp.org/dunfield/
-[i85]: https://archive.org/stream/bitsavers_intelISISIssemblyLanguageProgrammingManualMay81_7150831#page/n4/mode/1up
-[z80]: https://archive.org/stream/Z80ProgrammingManual#page/n3/mode/1up
