@@ -23,7 +23,7 @@ write 0-3 in the page's corresponding bits to set this.
        0    0000-3FFF   1,0  BIOS/BASIC ROM
 
 Devices responding to address space read/write requests are in one of four
-"primary" slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
+_primary_ slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
 `S̅L̅T̅S̅L̅3`. These are routed to onboard devices or `S̅L̅T̅S̅L̅` (slot select, pin
 4) on the corresponding cartridge connector.
 
@@ -33,10 +33,11 @@ Devices responding to address space read/write requests are in one of four
       Slot 3    Expansion bus connector         optional
 
 Each primary slot may optionally support up to four "expansion" slots
-associated with the primary slot. Expansion slot decoding is done by the
-primary slot device (suggested scheamtic at [td1 p.35]). The standard
-specifies that when a primary slot is selected for page 3, it should latch
-any write to $FFFF and interpret it as:
+associated with the primary slot, assigned _secondary slot numbers_ 0
+through 3. Expansion slot decoding is done by the primary slot device
+(suggested scheamtic at [td1 p.35]). The standard specifies that when a
+primary slot is selected for page 3, it should latch any write to $FFFF and
+interpret it as:
 
     | 7 6 | 5 4 | 3 2 | 1 0 |  $FFFF bits
     |  3  |  2  |  1  |  0  |  Page # sub-slot setting (0-3)
