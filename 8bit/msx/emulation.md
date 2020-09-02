@@ -61,7 +61,8 @@ See User's Manual [2. Starting the Emulator][starting] for more details.
 
 Neither of these include FM sound, but an FM-PAC cart can be added with
 [`ext fmpac`][ext]; this requires `fmpac.rom` from the [extension
-ROMs][erom].
+ROMs][erom] in `.openMSX/share/systemroms/` (not `share/extensions/` for
+some reason).
 
 #### Selected Console Commands and Settings
 
