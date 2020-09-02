@@ -196,7 +196,7 @@ connector. The ROM includes [MSX-AUDIO BASIC] extensions.
 [MSX-MUSIC] was a later but inferior system using the cheaper OPLL
 [YM2413], which is still partially compatible (only 1 user instrument; no
 ADPCM). It was built into most MSX2+ systems. The original cart is the
-Panasonic SW-M004 FM-PC; there were a few others, including stereo
+Panasonic SW-M004 FM-PAC; there were a few others, including stereo
 versions. [Detection/programming][mmus prog]
 - Scan for internal first, then external:
   - Internal: $4018-$401F signature `APRLOPLL` (also clone carts);
