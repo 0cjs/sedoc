@@ -10,6 +10,8 @@ Opcde lists: [85 193].
 8080
 ----
 
+- `CP n` / `CPI`: flags ← A - n; SZHP(V)C affected, (N) set.
+  - `FE` 7 (4,3)
 - `LD HL,nnnn` / `LXI H,nnnn`: HL ← nnnn
 - `LD (nnnn),A` / `STA nnnn`: (hhll) ← A
   - `32 nn nn` 13 (4,3,3,3)
