@@ -174,9 +174,9 @@ address of zero executes the next instruction.
 6801/03 Extensions over 6800/02
 -----------------------------------
 
-- 6801/03 changes some instruction timings.
-- "D" register is concatenation of A, B.
-- Complete [6801/03 instruction table][6801inst]
+Some instruction timings are different and there is a 
+"D" register that's a concatenation of A, B, and the following
+instructions are added/changed:
 
     D register:
       LDD, STD
@@ -189,14 +189,15 @@ address of zero executes the next instruction.
       ABX           B ← X + B
       PSHX, PULX
     Branches:
-      BHS       Branch higher or same, = BCC
-      BLO       Branch lower, = BCS
-      BRN       Branch never
-      JSR       Additional direct (1-byte operand) addressing mode.
+      BHS           Branch higher or same, = BCC
+      BLO           Branch lower, = BCS
+      BRN           Branch never
+      JSR           Additional direct (1-byte operand) addressing mode.
     Miscellaneous:
-      MUL       D ← A * B (unsigned)
-      CPX       Compare X now works with any conditional branch instr.
+      MUL           D ← A * B (unsigned)
+      CPX           Compare X now works with any conditional branch instr.
 
+Complete [6801/03 instruction table][6801inst].
 
 
 <!-------------------------------------------------------------------->
