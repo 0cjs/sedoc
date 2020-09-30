@@ -92,8 +92,8 @@ _accumulator addressing_ may be done either way in Motorola assemblers,
 #### Branch tests
 
 `CMP`,`SUB` carry flag is opposite of 6502:
-  A ≤ mem ⇒ 1,
-  A > mem ⇒ 0.
+- mem > A ⇒ 1
+- mem ≤ A ⇒ 0
 
 - Single Flag:
   - Zero: `BEQ` `BNE`
