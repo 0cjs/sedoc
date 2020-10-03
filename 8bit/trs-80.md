@@ -4,6 +4,21 @@ TRS-80 Model I Family
 References:
 - classiccmp.org [TRS-80 Model I Internals][ccmp-1-int]
 
+
+Case Screws
+-----------
+
+The bottom of the case is held on with six long screws of three different
+lengths, 39, 45 and 52 mm:
+
+
+           52    52
+
+    45   LABEL        45
+
+           39    39
+
+
 Power
 -----
 
