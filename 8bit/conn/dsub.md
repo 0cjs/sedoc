@@ -8,7 +8,7 @@ Jackscrews outside connector shield are 4-40.
 
 Numbering is always done from the male connctor (plug), starting at 1 at
 the upper left and going acrosss each row. Female connectors (sockets)
-correspondingly start at the upper left and go the other way. Examples:
+correspondingly start at the upper right and go the other way. Examples:
 
 
       DE-9M       DE-9F             DE-15M                DE-15F
