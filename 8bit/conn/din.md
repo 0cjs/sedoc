@@ -21,9 +21,9 @@ Pin Numbering
 Certain DIN plugs always use the same numbers for the same positions,
 so that e.g. pin 3 will be in the same place on any connector from 3
 to 8 pins. Others simply number "going around" with the centre pin
-last. By [Hosiden][] (p.3) designations:
-- Positional: DIN-3, -5a, -7, -8a (270°)
-- "Around": DIN-4, -5b, -6, -8b (268°)
+last. By [Hosiden-wb][] (p.3) designations:
+- Positional: DIN-3, -5a, -7, -8a (270°), -8b (268°)
+- "Around": DIN-4, -5b, -6
 
 Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack
 on device:
@@ -217,6 +217,7 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
 [c64w av]: https://www.c64-wiki.com/wiki/A/V_Jack
 [hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf
+[hosiden-wb]: https://web.archive.org/web/20180516230412/http://www.hosiden.com:80/product/pdf/e_din.pdf
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
 [pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
