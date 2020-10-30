@@ -32,6 +32,27 @@ References:
 - Wikipedia, [D-subminiature][wp dsub]
 
 
+RS-232 Serial Ports
+-------------------
 
+Pinouts [from Wikipedia][wp-serpin]. Signal names are from DTE point of
+view, so `dir` is DTE→DCE or DTE←DCE.
+
+    DE-9  DB-25  dir  Signal (DTE)
+    ────────────────────────────────────────────────────
+      1     8     ←   DCD data carrier detect
+      2     3     ←   RX  recieve data
+      3     2     →   TX  transmit data
+      4    20     →   DTR data terminal ready
+      5     7     ↔   GND
+      6     6     ←   DSR data set ready
+      7     4     →   RTS request to send
+      8     5     ←   CTS clear to send
+      9    22     ←   RI  ring indicator
+
+
+
+<!-------------------------------------------------------------------->
 [wp dsub]: https://en.wikipedia.org/wiki/D-subminiature
+[wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
 
