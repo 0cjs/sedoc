@@ -228,6 +228,11 @@ providing 5 channels of wavetable synthsis. It was included in some Konami
 game carts and in a standalone cart for use with disk games. There was also
 an improved SCC-1 version.
 
+### General Notes
+
+BiFi's Weblog post [Detection of FM sound chips][bifi] may provide further
+useful information on detecting MSX-AUDIO, MSX-MUSIC (both real and emulated
+by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 
 
@@ -247,6 +252,7 @@ an improved SCC-1 version.
 [MSX-MUSIC]: https://www.msx.org/wiki/MSX-MUSIC
 [Y8590]: https://en.wikipedia.org/wiki/Yamaha_Y8950
 [YMF-278B-F]: http://www.msxarchive.nl/pub/msx/docs/datasheets/opl4.pdf
+[bifi]: http://bifi.msxnet.org/blog/index.php?entry=entry110809-114719
 [maud bios]: http://map.grauw.nl/resources/datapack/Vol2-4.1MSX-AUDIOHardware.pdf
 [maud hw]: http://map.grauw.nl/resources/datapack/Vol2-4.3MSX-AUDIOExtendedBIOS.pdf
 [maud prog]: https://www.msx.org/wiki/MSX-AUDIO_programming
@@ -254,4 +260,3 @@ an improved SCC-1 version.
 [mmus prog]: https://www.msx.org/wiki/MSX-MUSIC_programming
 [opl3prog]: http://www.fit.vutbr.cz/~arnost/opl/opl3.html
 [scc tech]: http://bifi.msxnet.org/msxnet/tech/scc.html
-
