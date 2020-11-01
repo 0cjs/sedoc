@@ -119,6 +119,11 @@ Addresses (SS:1-56):
     $FD22 read   ROM data left side 8 bits
     $FD23 read   ROM data right side 8 bits
 
+A quick check to see if it's installed and working:
+
+    PRINT @(0,150), &H3441,&H3B7A,&H3D50,&H4E4F,&H493D,&H3C28
+    漢字出力表示
+
 
 Video Outputs
 -------------
