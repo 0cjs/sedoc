@@ -18,6 +18,30 @@ Syntax Notes
   size is 32000 bytes). List files on it with `CALL MFILES`, and erase with
   `CALL MKILL ("myfile.bas")`.
 
+Loading/saving:
+- `LOAD "<dev>[<filename>]"`. Non-empty string argument required. Default
+  device is cassette (`CAS:`?).
+- `CLOAD ["<filename>"]`: Load from cassette. Filename optional, baud rate
+  determined automatically. After reading the header, `Found:filename` will
+  be displayed.
+- `CLOAD? ["<filename>"]`: Verify in-memory program against cassette.
+  Prints `Found:<filename>` followed by ? or `Verify error`.
+- `CSAVE "<filename>"[,<baudrate>]`: _baudrate_ is `1`=1200 baud, `2`=2400
+  baud. (Default set with `SCREEN` command.)
+- `SAVE "<dev>[<filename>]"`
+- `BLOAD`, `BSAVE`: See below.
+
+Functions:
+- `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
+  beginning with the _I_th character. `1` is the first character of _X$_.
+
+Misc:
+- `DEFINT`, `DEFSNG`, `DEFDBL`, `DEFSTR`: Declares all variables starting
+  with a letter from the range (required parameter, e.g., `I-N`) to be
+  integer, floating point single or double precision, or string. Variables
+  with explicit type declarations (`%`, `!`, `#` for integer, single,
+  double precision) are excluded from this.
+
 References:
 - MSX Wiki: [MSX-BASIC]
 - MSX Wiki: [Instructions by category][instr]
