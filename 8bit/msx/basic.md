@@ -28,7 +28,6 @@ MSX BASIC Reference
 - `SAVE "<dev>[<filename>]"`
 - `BLOAD`, `BSAVE`: See [Technical/Internals](./bastech.md).
 
-
 ### Functions
 
 - `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
@@ -41,6 +40,14 @@ MSX BASIC Reference
   integer, floating point single or double precision, or string. Variables
   with explicit type declarations (`%`, `!`, `#` for integer, single,
   double precision) are excluded from this.
+
+### Special Variables
+
+- `TIME` (unsigned integer): Incremented by 1 every VDP interrupt (60 Hz on
+  NTSC systems). Not incremented when interrupts disabled, e.g. when doing
+  cassette I/O.
+- `SPRITE$(<pat no>)` (string), `VDP(<n>)` (unsigned byte), `BASE(<n>)`
+  (integer). Graphics-related.
 
 
 References
