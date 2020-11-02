@@ -24,11 +24,13 @@ turn off the function key labels.
 
 Timings (in seconds):
 
-                     w=38 h=21
-    ───────────────────────────
-      DBL           521.9
-      SNG           413.37
-      improvement    21%
+                  Sanyo MPC-2  Sony HB-55
+    ──────────────────────────────────────
+      DBL           521.9        521.98
+      SNG           413.37       413.45
+      improvement    21%          21%
+
+(HB-55 once produced 412.78, perhaps because first run after reset?)
 
 
 
