@@ -60,6 +60,15 @@ characters are:
     ED      line (XON/XOFF) status: E=enable D=disable
     ,10 ,20 pulse rate (2-digit number preceeded by comma), optional
 
+(PC82) parameters and values:
+
+    1-9     baud rate: 1=75, 3=300, 5=1200, 7=4800, 8=9600, 9=19200
+    IOEN    parity: ignore, odd, even, none
+    5678    word length: 5-8 bits
+    12      stop bits
+    SN      Si/SO flow control: S=on N=off
+    XN      XON/XOFF flow contro: X=on N=off
+
 In terminal mode:
 - `F5` Echo: turn local echo on/off.
 - `F3` Up: send contents of text file. Prompt for filename and width for
