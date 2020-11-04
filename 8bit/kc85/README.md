@@ -104,6 +104,8 @@ Documentation
 
 - [Model 100 Owner's Manual][m100 user]
 - [_Service Manual: TRS-80 Model 100 Portable Computer_][m100 service]
+- Carl Oppedahl, [_Inside the TRS-80® Model 100_][m100 inside].
+  - Ch.4 (p.73) has extensive details of Z80 instruction set differences.
 
 
 Cross-development Tools and Emulators
@@ -116,5 +118,6 @@ Cross-development Tools and Emulators
 <!-------------------------------------------------------------------->
 [m100 service]: https://archive.org/stream/m100service#page/n1/mode/1up
 [m100 user]: https://archive.org/stream/trs-80-m-100-user-guide#page/n4/mode/1up
+[m100 inside]: https://archive.org/stream/InsideTheTrs80Model100#page/n6/mode/1up
 
 [Virtual T]: https://sourceforge.net/projects/virtualt/
