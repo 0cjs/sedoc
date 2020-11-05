@@ -10,9 +10,10 @@ Models:
   - Add. ports: 300 baud modem, bar code reader.
   - Add. software: Address, Scheduler.
   - Mem: 8K or 24K, upgradable to 32K.
-- __PC82__ NEC PC-8201, PC-8300: built on KC85 platform.
+- __PC82__ NEC PC-8201 (1983-03): built on KC85 platform.
   - Add. SIO1, 2 (19.2 kbps), bar code reader, system RAM slot.
   - Internal: 2× ROM, 6× RAM (up to 96K) sockets.
+  - Outside Japan, PC-8201A and PC-8300 released.
 - __OM10__ Olivetti M-10: built on KC85 platform. Tilting LCD.
   - Add. ports: 300 baud modem (US only), bar code reader. 4 RAM/ROM.
   - Add. software: Address, Scheduler.
@@ -55,10 +56,20 @@ about eight days.
 
 (M100)
 - `SHIFT-BKSP` gives `DEL` char.
-- `GRPH` and `CODE` shifts can both be used with `SHIFT`.
+- `GRPH` and `CODE`/`カナ` shifts can both be used with `SHIFT`.
 - `LABEL` turns on/off F-key label row on screen.
 - `PRINT` prints screen contents.
 - `PAUSE` pauses, `SHIFT-PAUSE` breaks.
+- `F1`-`F8`. Typically `F8 Menu`.
+
+(PC82)
+- `SHIFT-BKSP` gives `DEL` char.
+- `GRPH` and `カナ` shifts can both be used with `SHIFT` (kana shifts
+  typically give small version of vowel).
+- `STOP`
+- `F1`-`F5`, `SHIFT-F1`-`SHIFT-F5`. Typically `SHIFT-F8 Menu`; sometimes
+  `SHIFT-F1 Keys` to toggle label line. (In BASIC, `SCREEN 0,n` where _n_
+  is 0=labels off, 1=labels on)
 
 ### Date/Time
 
@@ -67,12 +78,14 @@ about eight days.
 
 ### Files
 
-Names are 6 chars plus 2-char extension.
+Filenames are 6 chars plus 2 char extension, (M100) upper-case only or
+(PC82) upper/lower case-sensitive.
 
     .DO     ASCII text document
     .BA     BASIC program (tokenized)
     .CO     machine-language ("command") program
 
+Delete files from BASIC with `KILL "fname.ex"`.
 
 Connector Pinouts
 -----------------

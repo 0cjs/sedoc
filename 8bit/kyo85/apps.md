@@ -1,8 +1,6 @@
 Applications Programs
 =====================
 
-Filenames are 6 chars plus 2 char extension (`.DO` for "document" text
-file). Delete files from BASIC with `KILL "fname.ex"`.
 
 TEXT
 ----
@@ -10,7 +8,7 @@ TEXT
 (M100) Select file to edit, or `TEXT` to create new file (prompted for ≤6
 char name, `.DO` added automatically).
 
-Editing keys (prefixes are `␣`=Shift (digraph `Vs`), `^`=Ctrl):
+(M100) Editing keys (prefixes are `␣`=Shift (digraph `Vs`), `^`=Ctrl):
 
     ^M ENTER    newline (paragraph)
     ^H BS       delete prev char
@@ -26,14 +24,16 @@ Editing keys (prefixes are `␣`=Shift (digraph `Vs`), `^`=Ctrl):
 
     ^C          cancel SELECT/SAVE/LOAD/FIND/PRINT
     ^N F1       Find: prompted for string
-    ^L SELECT   select text; cursor not included
+    ^L SELECT   select text; cursor not included            (PC82: F3)
     ^O F5       Copy selection
-    ^U F6       cut
-       F2       load from device (appends to file)
-    ^G F3       save to device (CMT filename or `LPT:`)
+    ^U F6       Cut                                         (PC82: F4)
+       F2       load from device (appends to file)          (PC82: n/a)
+    ^G F3       save to device (CMT filename or `LPT:`)     (PC82: n/a)
         PRINT   print screen
     ^Y ␣PRINT   print file (prompts for width)
        F8       exit
+
+(PC82) F-key label line is always off at start; `SHIFT-F1` to turn it on.
 
 Standard printing will print control codes as `^c`; save to `LPT:` to print
 them literally. (This will not use the width feature to wrap the output.)
@@ -69,7 +69,7 @@ characters are:
     SN      Si/SO flow control: S=on N=off
     XN      XON/XOFF flow contro: X=on N=off
 
-In terminal mode:
+In terminal mode (M100; PC82 has same commands but different assignments):
 - `F5` Echo: turn local echo on/off.
 - `F3` Up: send contents of text file. Prompt for filename and width for
   word wrapping (empty = no wrap).

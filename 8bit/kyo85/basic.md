@@ -1,12 +1,17 @@
 KC85 Microsoft BASIC
 ====================
 
+Model 100 Microsoft BASIC seems to be a late 8080/8085 version, similar to
+MSX. PC-8201 "N₈₂-BASIC" seems very similar, but not identical.
+
+- (M100) `PAUSE` will pause output.
 - Lines are up to 255 chars long.
-- The screen is not editable; use `EDIT [nnn[-mmm]]` to bring up a
+- (M100) The screen is not editable; use `EDIT [nnn[-mmm]]` to bring up a
   full-screen editor (the TEXT program) on the entire program or a line or
   line range. Adding additional lines will add new lines to the program.
   De/re-tokenization make take some time.
-- `PAUSE` will pause output.
+- (PC82) Screen is editable. `SHIFT-F4 List.↑↑` will list current line and
+  move cursor back up to it. (But `EDIT` still available.)
 
 File management:
 - BASIC has a "current workspace" which is either a `fname.BA` file or the
@@ -81,13 +86,22 @@ Use `COM/MDM/KEY/TIME$` followed by `ON` to re-enable, `STOP` to mask
 (remembering `ON ...` settings), and `OFF` to clear `ON ...` settings.
 
 
-Statements and Functions
-------------------------
+General Statements and Functions
+--------------------------------
 
 - `MID$(a$, pos[, len])`. Evaluates to _len_ (default all) chars starting
   at 1-based _pos_. As LHS may be assigned to replace a substring, but
   length may not change; if replacement is less than _len_ the
   replacement's length is used; if greater only _len_ chars are replaced.
+
+
+Display-related Statements/Functions
+------------------------------------
+
+- (M100,PC82) `KEY ON|OFF`: Not present. (On MSX, this turns on and off the
+  label line. Do this with `SCREEN` or the `LABEL` key on M100.)
+- (M100,PC82) `SCREEN 0,n`: Disable/enable function key label line: _n_ is
+  0=off, 1=on.
 
 
 Machine Language Interface
