@@ -81,6 +81,15 @@ Use `COM/MDM/KEY/TIME$` followed by `ON` to re-enable, `STOP` to mask
 (remembering `ON ...` settings), and `OFF` to clear `ON ...` settings.
 
 
+Statements and Functions
+------------------------
+
+- `MID$(a$, pos[, len])`. Evaluates to _len_ (default all) chars starting
+  at 1-based _pos_. As LHS may be assigned to replace a substring, but
+  length may not change; if replacement is less than _len_ the
+  replacement's length is used; if greater only _len_ chars are replaced.
+
+
 Machine Language Interface
 --------------------------
 
