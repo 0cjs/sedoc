@@ -18,6 +18,11 @@ Models:
   - Add. software: Address, Scheduler.
   - Internal: 4× RAM/ROM socket.
 
+M100 and PC82 both appear to work with NiMH batteries and do not show a low
+battery light, but during TELCOM downloads and at other times the M100 shut
+off even with >1.2 V (no load) batteries, so it's probably best to stick
+with alkaline (1.5 V nominal) batteries.
+
 
 Usage Notes
 -----------
