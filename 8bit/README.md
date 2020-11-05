@@ -74,6 +74,7 @@ Timeline
     1981-05 * Fujitsu FM-8 released
     1981-08 * IBM PC released ($1565)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
+    1981-12 * NEC PC-8801 ships (released 1981-11?)
     1981-12 * BBC Micro released
 
     1982-   * Commodore MAX Machine released
