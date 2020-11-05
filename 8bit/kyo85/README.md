@@ -1,5 +1,5 @@
-Kyocera Kyotronic 85 etc.
-=========================
+Kyocera Kyotronic 85 Family
+===========================
 
 Models:
 - __KC85__ Kyocera Kyotronic 85: Original system.
