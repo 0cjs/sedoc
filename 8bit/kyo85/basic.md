@@ -1,10 +1,17 @@
 KC85 Microsoft BASIC
 ====================
 
+References:
+- Model 100 Owner's Manual, Part III [Ch.12-16][m100 user bas]
+- [_PC-8201 N₈₂-BASIC Reference Manual_][basref-j] (Japanese)
+- [_PC-8201A N₈₂-BASIC Reference Manual_][basref-e] (English)
+
 Model 100 Microsoft BASIC seems to be a late 8080/8085 version, similar to
 MSX. PC-8201 "N₈₂-BASIC" seems very similar, but not identical.
 
 - (M100) `PAUSE` will pause output.
+
+General:
 - Lines are up to 255 chars long.
 - (M100) The screen is not editable; use `EDIT [nnn[-mmm]]` to bring up a
   full-screen editor (the TEXT program) on the entire program or a line or
@@ -108,3 +115,10 @@ Machine Language Interface
 --------------------------
 
 - `CALL addr[,a[,hl]]`: Calls _addr_ with A register and HL register.
+
+
+
+<!-------------------------------------------------------------------->
+[basref-j]: https://archive.org/stream/n-82-basic-manual#page/n7/mode/1up
+[basref-e]: https://archive.org/stream/nec-pc8201-n82-basic-reference#page/n3/mode/1up
+[m100 user bas]: https://archive.org/stream/trs-80-m-100-user-guide#page/99/mode/1up
