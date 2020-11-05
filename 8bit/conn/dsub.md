@@ -8,12 +8,12 @@ Jackscrews outside connector shield are 4-40.
 
 Numbering is always done from the male connctor (plug), starting at 1 at
 the upper left and going acrosss each row. Female connectors (sockets)
-correspondingly start at the upper right and go the other way. Examples:
-
+correspondingly start at the upper right and go the other way. Examples,
+looking into the plug or jack:
 
       DE-9M       DE-9F             DE-15M                DE-15F
-    1 2 3 4 5    5 4 3 2       1   2   3   4   5     5   4   3   2   1
-     6 7 8 9      9 8 7      6   7   8   9  10  6      10   9   8   7   6
+    1 2 3 4 5   5 4 3 2 1      1   2   3   4   5     5   4   3   2   1
+     6 7 8 9     9 8 7 6     6   7   8   9  10         10   9   8   7   6
                               11  12  13  14  15     15  14  13  12  11
 
 Standard forms (from [Wikipedia][wp dsub]):
@@ -38,17 +38,18 @@ RS-232 Serial Ports
 Pinouts [from Wikipedia][wp-serpin]. Signal names are from DTE point of
 view, so `dir` is DTE→DCE or DTE←DCE.
 
-    DE-9  DB-25  dir  Signal (DTE)
-    ────────────────────────────────────────────────────
-      1     8     ←   DCD data carrier detect
-      2     3     ←   RX  recieve data
-      3     2     →   TX  transmit data
-      4    20     →   DTR data terminal ready
-      5     7     ↔   GND
-      6     6     ←   DSR data set ready
-      7     4     →   RTS request to send
-      8     5     ←   CTS clear to send
-      9    22     ←   RI  ring indicator
+    DE-9  DB-25  dir   color    Signal (DTE)
+    ──────────────────────────────────────────────────────────────
+      1     8     ←   yel+blk   DCD data carrier detect
+      2     3     ←     grn     RX  recieve data
+      3     2     →     red     TX  transmit data
+      4    20     →     orn     DTR data terminal ready
+      5     7     ↔     blk     GND
+      6     6     ←     yel     DSR data set ready
+      7     4     →     wht     RTS request to send
+      8     5     ←     blu     CTS clear to send
+      9    22     ←   wht+blk   RI  ring indicator
+            1     ↔             PG  protective ground
 
 
 

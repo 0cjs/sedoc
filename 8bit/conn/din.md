@@ -99,13 +99,16 @@ Notes:
 
 #### Apple IIc Serial DIN-5 (cjs v1)
 
-Using Ethernet cable; orange and green stripes tied together for ground.
+Using Ethernet cable. `Dsub` are my [DB-25/DE-9 colors](./dsub.md); `Eth`
+is Ethernet cable colors. Orange and green stripe are tied together for
+ground.
 
-     blue   1  out   DTR  Data Terminal Ready
-     stripe 2   -    GND
-     brown  3  in    DSR  Data Set Ready; input to DCD on ACIA
-     orange 4  out   TD   Transmit Data
-     green  5  in    RD   Receive Data
+     Dsub  Eth    pin dir  sig  description
+     orn   blue    1  out  DTR  Data Terminal Ready (orange on DB-25/DE-9)
+     blk   stripe  2   -   GND
+     yel   brown   3  in   DSR  Data Set Ready; input to DCD on ACIA (yel on DB-25/9)
+     red   orange  4  out  TD   Transmit Data (red on DB-25/DE-9)
+     grn   green   5  in   RD   Receive Data
 
 For [ADTPro], use a cable with hardware handshaking disabled by tying
 together DTR and DSR (1 and 3, DIN numbering) on the Apple side, and
