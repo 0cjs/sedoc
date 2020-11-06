@@ -130,6 +130,10 @@ Cross-development Tools and Emulators
 -------------------------------------
 
 - [Virtual T] Model 100 emulator. Includes dev/debugging tools.
+- [Virtual Vanessa]: Limited Model 100/102 emulator for DOS (1991). Does
+  not support full ROM operation (none of the built-in programs work); the
+  primary purpose is to play some M100 arcade games written by the same
+  author (included).
 
 
 
@@ -139,3 +143,4 @@ Cross-development Tools and Emulators
 [m100 inside]: https://archive.org/stream/InsideTheTrs80Model100#page/n6/mode/1up
 
 [Virtual T]: https://sourceforge.net/projects/virtualt/
+[Virtual Vanessa]: https://archive.org/details/VirtualVanessaTRS80Model100LIMITEDEmulator_1020
