@@ -66,8 +66,8 @@ characters are:
     IOEN    parity: ignore, odd, even, none
     5678    word length: 5-8 bits
     12      stop bits
-    SN      Si/SO flow control: S=on N=off
-    XN      XON/XOFF flow contro: X=on N=off
+    XN      XON/XOFF flow control: X=on N=off
+    SN      SI/SO (ASCII shift in/out?) flow control: S=on N=off
 
 In terminal mode (M100; PC82 has same commands but different assignments):
 - `F5` Echo: turn local echo on/off.
