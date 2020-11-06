@@ -1,0 +1,340 @@
+From: https://www.web8201.net/default.asp?content=xref.asp
+
+Gary Weber's M100/NEC Memory Map Cross Reference Table
+Addresses represented in decimal.
+
+* indicates routines that weren't documented for the NEC, but were
+  able to be found using ROM disassemblies of both machines.
+
+Format of file:
+    M100-address,NEC-address,Description
+
+1058,1348,INIT - Init system and go to BASIC ready *
+1094,1384,SNERR - Abort BASIC and issue syntax error message
+1097,1393,DVERR - Abort BASIC and issue divison by zero error
+1100,1396,NFERR - Abort BASIC and next without for error
+1103,1399,DDERR - Abort BASIC and double dimensioned array error
+1106,1402,REERR - Abort BASIC and issue resume without error message
+1109,1405,OVERR - Abort BASIC and issue overflow error message
+1112,1408,MOERR - Abort BASIC and issue missing operand error message
+1115,1411,TMERR - Abort BASIC and issue type mismatch error message
+1117,1413,ERROR - Abort BASIC and issue error message
+1281,1580,READY - JMP vector to enter BASIC interpreter/ pops HL 
+1282,1581,READY2 - JMP vector to enter BASIC interpreter/ no POP *
+1297,1596,RDYNOK - JMP vector to BASIC ready/ no Init or OK
+1315,1614,RUNCMD - Performs operation in (HL) buffer/ returns to "ready" *
+1520,1812,LINKER - Correct a BASIC program's links
+1524,1816,LINKER1 - Same as LINKER only start address is in DE
+1574,1883,FINDLIN - Find the line number in DE via 1576 *
+1576,1885,FINDLN2 - Find line # DE starting at the beginning of the current BASIC *
+1579,1888,FINDLN3 - Find line # DE starting where HL is pointing *
+1606,1916,TKNCMP -  Token compression routine *
+2052,2589,BASEXC - BASIC program execution routine/ HL->Basic code to exec
+2267,2951,FCERR - Abort BASIC and issue illegal function call error message
+2493,3248,LET - Parse & execute the LET statement
+2499,3254,LET2 *
+2518,3273,LETCN2 - Do variable assignment
+3129,3878,FINPNT - Final OPEN processing
+3499,4241,MNEVAL - Main evaluation routine *
+4072,4789,MAKUPS - Convert character in M to upper case & store in A
+4514,5218,LCDISP - Display string at [HL] until null is reached
+4522,5226,BUFCPY - Put chars into buffer until null is reached *
+4811,5965,CHGET - Wait for a character from the keyboard
+5083,6205,CHSNS - Check keyboard queue for pending characters
+5183,6313,PWROFF2 - Power off the computer/ resume same state on power on
+5201,6331,PWROFF - Power off the computer/ cause init on power on
+5354,6490,GSXPOP - Clean stack & reset power off timer
+5357,6493,POPALL - Pop all regs (AF BC DE HL)/ Jump to this addr ONLY!
+5362,6498,CRTDSP - Dispatch table for crt i/o
+5372,6516,RAMDSP - Dispatch table for ram file i/o
+5382,6526,RAMOPN - Open a ram file
+5517,6661,RAMCLS - Close a ram file
+5548,6692,RAMWRT - Write to a ram file
+5572,6716,RAMINP - Read from a ram file
+5659,6803,RAMBCK - Back up to previous character for a ram file
+5759,6903,CASDSP - Dispatch table for cassette i/o
+5769,6913,CASOPN - CAS file open routine *
+5805,6949,CASCLS - CAS file close routine *
+5831,6975,CASWRT - CAS file output routine *
+5842,6986,CASINP - CAS file input routine *
+5972,7116,LPTDSP - Dispatch table for lprinter i/o
+5978,7123,LPTWRT - Send a character to the printer *
+5986,7130,COMDSP - Dispatch table for com port i/o
+5997,7140,COMOPN - COM open file routine
+6046,7169,COMCLS - COM close file routine
+6056,7197,COMWRT - Send a character to COM port
+6064,7208,COMINP - Get a character from COM port
+6090,7239,COMBCK - Back up to previous character from com file
+6118,7246,SETSER - Set RS232 parms from string pointed to in HL
+6263,7404,WNDDSP - Dispatch table for bar code reader i/o
+6415,7551,READTM - Read system clock time and store it in HL buffer *
+6447,7583,READDT - Read system date and store it in HL buffer *
+7136,7931,DSPCHR - Displays B number of characters from the HL buffer *
+7994,8479,FILES - Basic's FILES statement routine *
+8002,8487,FILLST - Display files listing to the screen
+8126,8615,KILASC2 - Delete a .DO file *
+8127,8616,KILASC - Delete a .DO file
+8153,8642,KILCOM - Delete a .CO file
+8215,8704,KILBAS - Delete a .BA file
+8274,8763,NAMEB - Rename a file
+8321,8810,CHKREG - Check if current BASIC program is registered
+8329,8818,SRCCOM - Search for a .CO file
+8358,8850,SRCBAS - Search directory for a ".BA" file
+8367,8859,SRCNAM - Searches for a filename/ returns its address
+8420,8915,SCNEMP - Scan for an empty directory entry
+8518,9018,LNKFIL - Fix up directory pointers
+8660,9168,MAKBAS - Make hole of two bytes at ASCTAB assigned to NULDIR
+8698,9206,COUNTB - Count number of chars in HL buffer *
+8719,9227,TXTOPN - Open a text file/ Name in FILNAM *
+8889,9837,SAVBYT - Save contents of HL buffer to tape/ return to READY *
+9235,10193,LODBYT - Load record from cassette into HL buffer *
+9538,10493,MOVE1 - Move B number of bytes from from HL to DE  *
+10042,11003,STR$ Function *
+10161,11122,PRBUF - Print HL buffer until null or double-quote *
+10511,11472,MOVE2 - Move L number of bytes from BC to DE *
+11113,13553,DSUB - Double precision subtract (FAC1=FAC1-FAC2)
+11128,13560,DADD - Double precision addition (FAC1=FAC1+FAC2)
+11519,13881,DMUL - Double precision multiply (FAC1=FAC1*FAC2)
+11719,13969,DDIV - Double precision divide (FAC1=FAC1/FAC2)
+14400,14118,FIN - Convert ASCII string in HL buffer to a number
+14804,14488,PRASC - Print 16-bit number in HL to screen
+14825,14504,FOUT - Convert the binary number in FAC1 to ASCII
+16175,16380,CLEAR0 - Reset BASIC's operating environment
+16625,16705,ISLET - Determine if character at HL is a letter
+16626,16706,ISLET2 - Check to see if the character in A is a letter *
+16930,16977,CRLF - Send CR/LF to screen or printer
+16933,16980,SENDLF - Send LF to screen or printer *
+16937,16984,BEEP - Generate a BEEP
+16941,16988,CLRHOM - Moves cursor to home position - doesn't clear screen
+16945,16992,CLS - Clears screen and homes cursor
+16949,16996,PROT8 - Protect line 8 (ESC T)
+16954,17001,UNPROT8 - Unprotect line 8 (ESC U)
+16959,17006,NOSCRL - Stop automatic scrolling - ESC V
+16964,17011,SCRL - Resume automatic scrolling - ESC W
+16969,17016,CSRON - Turn cursor on - ESC P
+16974,17021,CSROFF - Turn cursor off - ESC Q
+16979,17026,DELIN - Delete line cursor is on - ESC M
+16984,17031,INSRT - Insert a line at current line - ESC L
+16989,17036,DELEOL - Erase from cursor to end of line - ESC K
+16994,17041,ESCX - Send ESC X *
+17001,17058,REVERS - Start Inverse character mode - ESC p
+17006,17063,NORMAL - Cancel Inverse charcter mode - ESC q
+17008,17065,ESCSEQ - Send escape sequence from A *
+17020,17077,POSCSR - Position cursor - H=row/ L=col *
+17030,17087,POSIT - Position cursor - H=X/ L=Y
+17034,17091,ERAFNK - Erase function key line
+17061,17121,SETDFN - Set and display function key line *
+17064,17124,DSPFNK - Display function key line
+17171,17251,CHPUT - Send a character to screen 
+17982,18340,PINPUT - Input line from keyboard into BUF/ show ? prompt *
+17988,18346,INLIN - Input line from keyboard into BUF
+18320,18863,PTRGET - Get the pointer to a variable
+19268,19706,RST20V - RST 20H vector/ send char to scrn or printer *
+19285,19723,LPTCHR - Print char in A to printer/ expand tabs *
+19346,19771,INILCD - Reinitialize screen back to LCD *
+19371,19796,LCDSCR - LCD character output routine (from A) *
+19384,19809,SNDCR - Send CRLF if needed to end current line *
+19585,20013,GETFLP - Get file pointer w/o setting up ptrfil or drvptr
+19588,20016,GETFNI - Get information for the file number in the A register *
+19647,20075,SETFIL - Set up fcb file pointers
+19659,20087,OPNST - Open Statement *
+19730,20158,NULOPN - Open a .DO file
+19801,20229,CLSLCL - LCD/CRT/LPT file close routine *
+19768,20196,CLSFIL - Close a .DO file
+20002,20415,CLSALL - Close all files
+20052,20463,FILOU1 - Write a character to a .DO file
+20090,20501,INDSKC - Get a character from a .DO file
+20106,20517,INDSKE - Clean stack after an input
+20234,20640,NULMEM - Zero memory at HL for B bytes *
+20235,20641,FILMEM - Fill memory at HL for B bytes with byte in A *
+20515,20921,NOSKCR - Create data string from input w/o linefeeds
+20270,20676,INITP# - Called by PRINT statement to initialize PRINT #
+20721,21133,DEVNMT - Start of device name table *
+20754,21162,ENDNMT - End of device name table *
+20806,21212,TELCOM - Jumps to TELCOM program
+20935,21331,PRNSTT - Print current stat/ return to TELCOM ready *
+21589,21384,TERM - Jumps into Telcom's TERM mode (M100/ 8201 ONLY!)
+21795,21593,PREV - Previous screen routine (M100/ 8201 ONLY!)
+21917,21701,UP - TELCOM's upload function * (M100/ 8201 ONLY!)
+22142,21840,DOWN - TELCOM's download function * (M100/ 8201 ONLY!)
+22417,22079,PRBUF2 - Print buffer at HL till a null or '"'/ start at BOL *
+22423,22085,MENU - Main menu routine
+23058,23939,PRNTIM - Clear screen and print current date & time *
+23061,23942,PRNTM2 - Same as PRNTIM but cursor is only homed (no CLS) *
+23064,23948,DATE - Same as PRNTIM but prints and current cursor location
+23128,23970,PRBUF3 - Print buffer at HL until a null *
+23138,23980,MVDEHL - Move A number of bytes from DE to HL *
+23149,24013,COMPDE - Compare DE to HL buf for C bytes or null in DE buf *
+23164,24028,SETFN - Set new function key table *
+23198,24059,DSPFN - Display function keys if fn-key flag (CNSDFG) enabled *
+23267,24155,GETST - Get start address of file *
+23615,24392,FNDBUF - Find text in HL buf within DE *
+23668,24438,CKCRLF - Check next byte(s) in DE buf for CRLF *
+23908,24480,GETUPR - Wait for char from keyboard and convert it to uppercase *
+23914,16988,HOME - Moves cursor to home position - doesn't clear screen
+23920,24486,DSPTIM - Displays date/time on top line of screen until keypress *
+24046,24516,TEXT - Jumps to Text program
+26051,26536,MVHLDE - Move bytes from HL to DE until null *
+27489,27646,INSTXT - Insert a character into a text file *
+27501,27658,MAKHOL - Make a hole of BC bytes at HL
+27551,27708,DELCHT - Delete BC number if characters in a text file
+27611,27768,LDIRSB - Move the from HL to DE (incrementing) for BC bytes
+27622,27779,LDDRSB - Move from HL to DE (decrementing) for BC bytes
+27795,27895,TMPSAV - Temporarily saves the function keys *
+27804,27904,RESTOR - Restores the function keys *
+27862,27962,REINIT - Re-initialize system/ User files are not lost
+29156,29267,ADDKEY - Adds a character to the keyboard buffer *
+29250,29305,GETCH - Get a char from keyboard - don't wait
+29381,29453,MUSIC - Generate sound/ DE is pitch/ B is duration
+29772,29904,PLOT - Set a dot on the lcd/ D is x/ E is y
+29773,29905,UNPLOT - Reset an lcd dot/ D is x/ E is y
+30306,30443,BEEP2 - Equivalent to BEEP *
+30326,30463,POP - Toggles the speaker *
+32231,32131,COLDST - Cold start routine -- resets memory/ be careful!
+32454,32358,SETHOK - Set up the hook table to their defaults
+32422,32318,LOGO - Prints TRS-80 logo & bytes free *
+32428,32328,BYTFRE - Displays bytes free at current cursor location
+32523,32538,MAXF - MAXFILES= *
+32555,32540,DEFILE - Change maxfiles value
+62964,62340,HIMEM - Highest memory available to BASIC (clear value)
+62969,62345,INTRPT - Rst 5.5 hook normally barcode reader
+62972,62348,R65HOK - Rst 6.5 hook normally UART (COM)
+62975,62351,R75HOK - Rst 7.5 hook normally from timer
+63012,62393,BRUN - This executes second ROM
+63013,62394,BRUN2 - This executes second ROM
+63018,62399,ROMFLG - Option ROM flag
+63033,62437,CSRY - Current cursor Y position
+63034,62438,CSRX - Current cursor X positon
+63035,62439,LINCNT - Console height
+63036,62440,LINWDT - Console width
+63038,62442,LOKFLG - Flag 00 = screen scrolls
+63040,62444,LCDCSY - Cursor row (1-8)
+63041,62445,LCDCSX - Cursor column (1-40)
+63046,62450,ESCCNT - ESC mode flag (0 normal/ non-zero-Escape sequence)
+63048,62452,REVFLG - Reverse video flag (FF=reverse/ 00=normal)
+63054,62458,PRVCOO - X coordinate of last graphic point plotted
+63055,62459,PRVCO2 - Y coordinate of last graphic point plotted *
+63056,62460,FNKMOD - Function key mode/ BIT 7=in TEXT; BIT 6=in TELCOM
+63064,62467,FULDUP - Full/half duplex switch (FF=full duplex/ 00=half duplex)
+63066,62469,LFFLG - Auto linefeed on RS232 output switch (non zero-send line feeds with each carriage return)
+63067,62470,SERMOD - Serial initialization string
+63072,62476,TMPHOK - Temporary hook
+63073,62477,TMPAD1 - Temporary hook address
+63075,62479,TMPAD2 - Temporary hook address 2
+63077,62481,TMPAD3 - Temporary hook address 3
+63090,62547,ERRFLG - Error code of last error
+63092,62549,LPTPOS - Line printer head position (based from zero)
+63093,62550,PRTFLG - Flag FF=send output to lpt
+63098,62555,CURLIN - Current Basic executing line number
+63100,62557,TXTTAB - Pointer to start of Basic programs
+63109,62562,KBUF - Start of keyboard crunch buffer for line input routine
+63368,63140,TTYPOS - Current TTY (horizontal cursor) position (0-39)
+63369,63141,FNKSTR - Function key definition area
+63498,63462,BASFNK - BASIC's function keys
+63779,63538,TIMSC1 - TIMBUF: Seconds (ones)
+63780,63539,TIMSC2 - TIMBUF+1: Seconds (tens)
+63781,63540,TIMMN1 - TIMBUF+2: Minutes (ones)
+63782,63541,TIMMN2 - TIMBUF+3: Minutes (tens)
+63783,63542,TIMHR1 - TIMBUF+4: Hours (ones)
+63784,63543,TIMHR2 - TIMBUF+5: Hours (tens)
+63785,63544,TIMDT1 - TIMBUF+6: Day (ones)
+63786,63545,TIMDT2 - TIMBUF+7: Day (tens)
+63787,63546,TIMDAY - TIMBUF+8: Day of week code (0=Sun / 1=Mon / etc..) **Not implemented?**
+63788,63547,TIMMON - TIMBUF+9: Current month
+63789,63548,TIMYR1 - TIMBUF+10: Year (ones)
+63790,63549,TIMYR2 - TIMBUF+11: Year (tens)
+63791,63550,TIMCNT - Counter (150 to 1)
+63792,63551,TIMCN2 - Counter (12 to 1)
+63793,63552,TIMINT - Power-down countdown value
+63898,63600,NULDIR - Address of non-saved BASIC program
+63909,63611,SCRDIR - Start of paste buffer
+64186,63916,LSTLIN - Address of last BASIC line listed (decrunched)
+64190,63918,STAKSV - Save area for stack pointer during power off state
+64192,63920,BOTTOM - Lowest RAM address in system (8000H for 32K system)
+64201,63932,OFSSAV - Offset save for hook dispatch
+64208,63938,BINLEN - Length of last program loaded or saved on tape
+64218,63948,H.CLEAR - CLEAR hook (retadr)
+64220,63950,H.MAXRAM - MAXRAM hook (retadr)
+64222,63952,H.CHGET1 - CHGET hook (retadr)
+64224,63954,H.CHSNS - CHSNS hook (retadr)
+64226,63956,H.CHPUT - LCD hook (retadr)
+64240,63972,H.SAVE - SAVE hook (retadr)
+64244,63976,H.MERGE - LOAD/MERGE hook (retadr)
+64246,63978,H.NULOPN - OPEN hook (retadr)
+64252,63984,H.BINSAV - SAVE(NM ERROR) hook (retadr)
+64254,63986,H.BINLOD - LOAD(NM ERROR) hook (retadr)
+64256,63988,H.EOF - EOF hook (retadr)
+64272,64038,H.UPLD - TELCOM(TERM-UP) hook (retadr)
+64274,64040,H.TEXT - TEXT hook (retadr)
+64276,64042,H.WIDTHS - WIDTH hook (fcerr)
+64280,64044,H.SCREEN - SCREEN hook (fcerr)
+64282,64046,H.TVOPN - CRT open hook	(fcerr)
+64286,64050,H.TVOUT - CRT put hook (fcerr)
+64288,64056,H.WAOPN - WAND open hook (fcerr)
+64290,64058,H.WACLS - WAND close hook (fcerr)
+64292,64060,H.WAINP - WAND get hook	(fcerr)
+64294,64062,H.WABCK - WAND other hook (fcerr)
+64296,64064,H.LOF - LOF hook (fcerr)
+64298,64066,H.LOC - LOC hook (fcerr)
+64300,64068,H.LFILES - LFILES hook (fcerr)
+64302,64070,H.DSKI$ - DSKI$ hook (fcerr)
+64304,64072,H.DSKO$ - DSK0$ hook (fcerr)
+64306,64074,H.KILL - KILL hook (fcerr)
+64308,64076,H.NAME - NAME hook (fcerr)
+64310,64078,H.MSAVE - SAVEM hook (fcerr)
+64312,64080,H.MLOAD - LOADM/RUNM hook (fcerr)
+64354,64136,TXTEND - Pointer to end of .DO storage
+64357,64139,VALTYP - Type of last variable used 
+64358,64140,DORES - Flag to tokenize reserved words in strings
+64361,64191,FRETOP - Pointer to next free location in string buffer
+64398,64193,TEMP3 - Multipurpose string register
+64404,64199,DATLIN - Line number of active DATA statement
+64411,64206,SAVTXT - Save for TXTPNT (current basic line/ used by RESUME)
+64413,64208,SAVSTK - Save for stack pointer (used by RESUME)
+64415,64210,ERRLIN - Line number of last Basic error
+64417,64212,DOT - Most recent entered/ listed/ or edited line
+64419,64214,ERRTXT - Points to line where error occurred
+64421,64216,ONELIN - Address of "ON ERROR GOTO" line
+64423,64218,ONEFLG - Error status flag (0=no error/ nz=in error routine)
+64424,64219,TEMP2 - Formula evaluator temporary storage
+64426,64221,OLDLIN - Line number where Break occurred
+64428,64223,OLDTXT - Next line to execute
+64430,64225,ASCTAB - Pointer to start of ASCII files
+64432,64227,BINTAB - Pointer to start of binary files
+64434,64229,VARTAB - Pointer to start of simple variable space
+64436,64231,ARYTAB - Pointer to start of array table
+64438,64233,STREND - End of storage/ first free byte
+64440,64235,DATPTR - Pointer to current data item (message line)
+64442,64237,DEFTBL - Variable type table 
+64536,64292,DFACLO - Floating Point Accumulator (FAC1)
+64617,64302,ARGLO - Second FAC (FAC2)
+64642,64354,MAXFIL - Current maximum file number (read only)
+64643,64355,FILTAB - Pointer to basic file table
+64659,64376,FILNAM - 9 byte area for setting file names for search or open
+64668,64385,FILNM2 - Second file name/ same format as above.  Used by NAMEB
+64704,64448,LINE0 - Screen buffer 0 (Previous page for Telcom)
+65023,64767,LINE0E - End of Screen buffer 0
+65024,64768,LINE1 - Screen buffer 1 (LCD memory)
+65343,65087,LINE1E - End of Screen Buffer 1
+65344,65088,XONOFF - Flag (00) means XOF has not been received
+65345,65089,INHDSP - Flag (FF) XOF received - so freeze display
+65346,65090,INHBIT - Flag (0) XON/XOF disabled
+65350,65220,COMBUF - Data buffer for COM:
+65414,65093,CMPNT - Number of bytes waiting in serial buffer
+65415,65094,RDADDR - Read pointer for COMBUF
+65416,65095,WTADDR - Write pointer for COMBUF
+65417,65096,CMERR - Number of characters in COMBUF when there was an error
+65418,65097,CMFLG - Flag (0)=XOF has been sent
+65419,65098,BAUDRT - Baud rate table entry address
+65423,65101,KYSCNX - Flag to determine if key scan should be done
+65425,65103,KYDATA - Keyboard matrix read
+65433,65120,KYMODE - Keyboard mode storage (brk//caps/num/cod/gph/ctl/sft)
+65443,65121,KYHOW - Mode storage of last keypress for repeat
+65444,65122,KYREPT - Wait count for repeat
+65450,65128,KYBCNT - Number of characters in keyboard queue (KYRDBF)
+65451,65129,KYRDBF - Keyboard buffer
+65515,65193,BRKCHR - 0 until break is pressed.  03=Break
+65516,65201,WORK1 - 6 byte buffer holding pattern under the cursor
+65523,65208,CSRCNT - Time until next cursor blink
+65524,65209,LCTEY - LCD row 1-8 of character position to be printed
+65525,65210,LCTEX - LCD column 1-40 of character position to be printed
