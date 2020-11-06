@@ -15,8 +15,8 @@ General:
 - Lines are up to 255 chars long.
 - (M100) The screen is not editable; use `EDIT [nnn[-mmm]]` to bring up a
   full-screen editor (the TEXT program) on the entire program or a line or
-  line range. Adding additional lines will add new lines to the program.
-  De/re-tokenization make take some time.
+  line range. Lines may be added and removed. Re-tokenization make take
+  some time.
 - (PC82) Screen is editable. `SHIFT-F4 List.↑↑` will list current line and
   move cursor back up to it. (But `EDIT` still available.)
 
@@ -38,6 +38,8 @@ function call).
   workspace does not change.
 - `LOAD "fname.xx"` when _xx_ is not a `.BA` file will wipe the current
   workspace, replacing it with the ASCII load.
+- `NEW` will switch back to the unnamed workspace and clear it, leaving the
+  previous workspace as it was (unless it was already the unnamed workspace).
 
 File management commands:
 - `MERGE "[dev:]fname"` merges another file into the current workspace.
@@ -52,14 +54,22 @@ Devices (used where optional `[dev:]`; default often `RAM:`):
   is given `.BA` or `.DO` (when `,A` given) is appended.
 - `CAS:`: Cassette tape (CMT). Filename has no extension. No filename for
   load uses next found file. Same as `CLOAD`, `CLOAD?`, `CSAVE`.
-- `COM:` _fname_ is a configuration as used by TELCOM; if not given the
-  current parameters are used.
-  - (M100) speed/wordlen/parity/stopbits/xonflow;
-  - (PC82) speed/parity/wordlen/stopbits/xonflow/sisoflow. Cannot be used
-    while CMT in use.
+- `COM:` _fname_ is a configuration as used by TELCOM. Always saves as
+  ASCII with CR+LF terminators.
+  - (M100) _fname_ required. speed/wordlen/parity/stopbits/xonflow;
+  - (PC82) Optional. speed/parity/wordlen/stopbits/xonflow/sisoflow. Cannot
+    be used while CMT in use.
 - `MDM`: (M100) As per `COM:`, but _fname_ has no speed char at start.
 - `LCD:`: Output only to screen.
 - `LPT:`: Output only to printer. Like `LLIST`.
+
+To load a program from the serial port, use (M100) `LOAD "COM:98n1d"` (19.2
+kbps) or (PC82) `LOAD "COM:"`. Send the file (only ASCII format can be
+used) followed by a `^Z`, which can be typed manually in the terminal
+program. This will clear any previously existing code. Errors (usually
+`?DS` "direct statement" or `?UL` "undefined line" usally indicate
+overflow. For 19.2 kbps, 50 ms line delay and 3 ms char delay seems to
+work.
 
 
 Data Types
