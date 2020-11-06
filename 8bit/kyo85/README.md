@@ -67,7 +67,7 @@ about eight days.
 - `SHIFT-BKSP` gives `DEL` char.
 - `GRPH` and `カナ` shifts can both be used with `SHIFT` (kana shifts
   typically give small version of vowel).
-- `STOP`
+- `STOP`: May need `SHIFT-STOP` to interrupt e.g. CMT I/O.
 - `F1`-`F5`, `SHIFT-F1`-`SHIFT-F5`. Typically `SHIFT-F8 Menu`; sometimes
   `SHIFT-F1 Keys` to toggle label line. (In BASIC, `SCREEN 0,n` where _n_
   is 0=labels off, 1=labels on)
