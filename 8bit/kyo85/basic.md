@@ -20,26 +20,46 @@ General:
 - (PC82) Screen is editable. `SHIFT-F4 List.↑↑` will list current line and
   move cursor back up to it. (But `EDIT` still available.)
 
-File management:
-- BASIC has a "current workspace" which is either a `fname.BA` file or the
-  unnamed workspace. Changes to the workspace immediately change the file.
-  From the unnamed workspace you may `SAVE "fname"` to create a new named
-  workspace; from a named workspace it will produce an `?FC Error` (illegal
-  function call).
+### File Management
+
+BASIC has a "current workspace" which is either a `fname.BA` file or the
+unnamed workspace. Changes to the workspace immediately change the file.
+From the unnamed workspace you may `SAVE "fname"` to create a new named
+workspace; from a named workspace it will produce an `?FC Error` (illegal
+function call).
+
 - `LOAD "fname"` will change the workspace to the given file.
 - Selecting a program file from the menu and hitting Enter will set the
   workspace to that file and `RUN`, going to interpreter after break/exit.
 - Selecting `BASIC` uses the unnamed workspace; this is preserved across
   runs of other selected programs.
-- `SAVE "fname",A` will save a copy of the current program in ASCII format
-  to `fname.DO`; the current workspace does not change.
+- `SAVE "[dev:]fname",A` (or with `.DO` extension given) will save a copy
+  of the current program in ASCII format to `fname.DO`; the current
+  workspace does not change.
 - `LOAD "fname.xx"` when _xx_ is not a `.BA` file will wipe the current
   workspace, replacing it with the ASCII load.
-- `MERGE` merges another file into the current workspace.
+
+File management commands:
+- `MERGE "[dev:]fname"` merges another file into the current workspace.
 - Use `KILL "fname.ex"` to remove a RAM file. (`?FC Error` if it's current
   workspace.)
-- `FILES` lists RAM files.
+- `FILES` lists RAM files. (PC82: The current workspace file is marked with
+  `*`.)
 - `NAME` renames a RAM file.
+
+Devices (used where optional `[dev:]`; default often `RAM:`):
+- `RAM:`: Internal memory (PC82: current bank). For `SAVE`, if no extension
+  is given `.BA` or `.DO` (when `,A` given) is appended.
+- `CAS:`: Cassette tape (CMT). Filename has no extension. No filename for
+  load uses next found file. Same as `CLOAD`, `CLOAD?`, `CSAVE`.
+- `COM:` _fname_ is a configuration as used by TELCOM; if not given the
+  current parameters are used.
+  - (M100) speed/wordlen/parity/stopbits/xonflow;
+  - (PC82) speed/parity/wordlen/stopbits/xonflow/sisoflow. Cannot be used
+    while CMT in use.
+- `MDM`: (M100) As per `COM:`, but _fname_ has no speed char at start.
+- `LCD:`: Output only to screen.
+- `LPT:`: Output only to printer. Like `LLIST`.
 
 
 Data Types
@@ -72,12 +92,6 @@ via truncation, double to single via rounding. `VAL(s)` and `STR$(n)` do
 numeric/string conversions.
 
 
-Special Variables
------------------
-
-- `MAXRAM`: highest memory addr available to BASIC?
-
-
 Interrupts
 ----------
 
@@ -91,6 +105,13 @@ Certain conditions can generate a `GOSUB`:
 
 Use `COM/MDM/KEY/TIME$` followed by `ON` to re-enable, `STOP` to mask
 (remembering `ON ...` settings), and `OFF` to clear `ON ...` settings.
+
+
+Special Variables
+-----------------
+
+- `MAXRAM`: highest memory addr available to BASIC?
+- `INKEY$`: Next char from keyboard buffer, or empty string if none avail.
 
 
 General Statements and Functions
@@ -110,6 +131,13 @@ Display-related Statements/Functions
 - (M100,PC82) `SCREEN 0,n`: Disable/enable function key label line: _n_ is
   0=off, 1=on.
 
+Graphics (_x_ = 0-239, _y_ = 0-63):
+- `PSET (x,y)`, `PRESET (x,y)`.
+- `LINE [(x1,y1)]-(x2,y2)[,switch[,BF]]` (M100): Starts at last ending
+  position (default 0,0) if _x1,y1_ not given. _switch_ sets points if odd
+  (defeault) or clears points if even. `B` draws box with given corners;
+  `F` fills the box. (PC82: not present unless `LINE.CO` is loaded.)
+
 
 Machine Language Interface
 --------------------------
@@ -117,8 +145,50 @@ Machine Language Interface
 - `CALL addr[,a[,hl]]`: Calls _addr_ with A register and HL register.
 
 
+Converting Programs Between Models
+----------------------------------
+
+### M100 → PC82
+
+High-level:
+- `PRINT @nn` → `LOCATE x,y:PRINT`; _x_ = `nn MOD 40`; _y_ = `nn \ 40`.
+- `MID$` LHS assignment not supported. Build new string instead.
+- `ON KEY GOSUB`/`KEY ON|OFF|STOP` not available. You can sort-of
+  substitute by polling with `INKEY$`.
+- `LINE`: not present unless `LINE.CO` loaded.
+- Use of `CHR$(131-255)` requires `CHR100.CO` or `LAPTOP.CO`.
+
+Low-level:
+- Assembly obviously needs to be converted to use correct ROM addrs, etc.
+- `POKE`/`PEEK` need conversion (maybe `INP`/`OUT`, too).
+- `CALL` not present; use `EXEC` after poking A and HL to certain memory
+  locations.
+- `VARPTR` not implemented; use routine below.
+
+PC82 `VARPTR` substitute:
+
+    40000 H=0:L=0:TY=0
+    40010 POKE64448,205:POKE64449,175:POKE64450,73:POKE64451,235
+    40020 POKE64452,58:POKE64453,139:POKE64454,250:POKE64456,201
+    40030 IFVY$=""THENPRINT"VY$ not defined!":STOP
+    40040 FORH=64457TO64463:POKEH,ASC(MID$(VY$,H,1)+CHR$(0)):NEXT:POKE64464,0
+    40050 POKE63912,201:POKE63913,251:EXEC64448
+    40060 L=PEEK(63912!):H=PEEK(63913!):TY=PEEK(63911!)
+    40070 RETURN
+    40080 ' VARPTR by Gary Weber
+    40090 ' Entry: VY$ must contain the name of variable of interest
+    40100 ' Exit: H & L contain variable's address, TY contains type
+    40110 ' Example:
+    40120 '   100 A$="This is a sample string."
+    40130 '   110 VY$="A$":GOSUB 40000
+    40140 '   120 PRINT "VARPTR of ";VY$;" is ";L+(H*256)
+
+Sources: The [web8201 page][w8 basconv].
+
+
 
 <!-------------------------------------------------------------------->
 [basref-j]: https://archive.org/stream/n-82-basic-manual#page/n7/mode/1up
 [basref-e]: https://archive.org/stream/nec-pc8201-n82-basic-reference#page/n3/mode/1up
 [m100 user bas]: https://archive.org/stream/trs-80-m-100-user-guide#page/99/mode/1up
+[w8 basconv]: https://www.web8201.net/default.asp?content=m100nec.asp
