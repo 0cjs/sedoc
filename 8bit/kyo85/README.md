@@ -30,10 +30,11 @@ Usage Notes
 
 ### Power
 
-(M100) Turning on the power switch does a warm start, preserving previous
-state. RESET button on back returns to main menu. Changing memory config
-(ROM or RAM) requires a cold start, done by colding either `Ctrl`+`Pause`
-or RESET while turning on the computer.
+Turning on the power switch does a warm start, preserving previous state.
+RESET button on back returns to main menu. Changing memory config (ROM or
+RAM) requires a cold start, done by: (M100) colding either `Ctrl`+`Pause`
+or RESET while turning on the computer; (PC82) holding `Shift` and `Ctrl`
+while pushing the RESET button.
 
 (M100) The default power-off timeout is after 10 minutes of no keypresses.
 In BASIC, `POWER n` (_n_ = 10 - 255) sets the timeout to _n*6_ seconds and
