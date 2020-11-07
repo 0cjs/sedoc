@@ -69,7 +69,8 @@ used) followed by a `^Z`, which can be typed manually in the terminal
 program. This will clear any previously existing code. Errors (usually
 `?DS` "direct statement" or `?UL` "undefined line" usally indicate
 overflow. For 19.2 kbps, 75 ms line delay and 3 ms char delay seems to
-work.
+work. (That's for BASIC only; it's still too fast for TELCOM downloads,
+probably due to display and screen scrolling during download.)
 
 
 Data Types
