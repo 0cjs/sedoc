@@ -68,7 +68,7 @@ kbps) or (PC82) `LOAD "COM:"`. Send the file (only ASCII format can be
 used) followed by a `^Z`, which can be typed manually in the terminal
 program. This will clear any previously existing code. Errors (usually
 `?DS` "direct statement" or `?UL` "undefined line" usally indicate
-overflow. For 19.2 kbps, 50 ms line delay and 3 ms char delay seems to
+overflow. For 19.2 kbps, 75 ms line delay and 3 ms char delay seems to
 work.
 
 
