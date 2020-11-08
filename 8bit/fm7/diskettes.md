@@ -68,6 +68,15 @@ at a time, displaying sets of 8 track numbers as it goes.
 
 v3.3 85.10.06. Uses `MCOPYV`.
 
+#### `FCOPY` (BASIC)
+
+File copy program. Does not accept `KYBD:` for source file.
+
+v3.3 85.09.20. Uses `FCOPYEB`. Top address is $6E00; two entry points at
+$6E06 and $6E08. No obvious params passed; perhaps the machine code
+searches out the `SDF$`/`DFD$` source/dest file descriptor vars? Maybe
+sets `ERR` to an integer code, too. (See lines 300-450.)
+
 #### Misc
 
 - `README`: (BASIC, 85.10.05). Intro loads pics from disk (`PIC.D1`,
