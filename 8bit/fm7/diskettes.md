@@ -79,6 +79,9 @@ sets `ERR` to an integer code, too. (See lines 300-450.)
 
 #### Misc
 
+- `SYSUTY`: "System constant table utility." ???
+- `SETTIME`: Sets real-time clock. (Changing `DATE$`/`TIME$` does not
+  affect RTC.)
 - `README`: (BASIC, 85.10.05). Intro loads pics from disk (`PIC.D1`,
   `PIC.D2`), plays music. Then loops forever showing some errata to the
   manual. Among these:
