@@ -32,6 +32,12 @@ Stuff I've encountered while reading Japanese manuals.
     通常        つうじょう      normal, ordinary
     端子        たんし          terminal (for a signal connection)
     解析        かいせき        analysis, analytical study; parsing/parse
+    直接モード  ちょくせつ      direct mode (in BASIC interpreter)
+    種類        しゅるい        type (e.g., file type)
+    形式        けいしき        format (of a file)
+    編成        へんせい        organization (of a file)
+    関数        かんすう        function
+
 
 Stuff from dictionaries:
 
