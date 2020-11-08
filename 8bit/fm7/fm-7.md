@@ -23,6 +23,8 @@ Documentation
   here refer to this.
 - [ＦＭ－７ハードウェア回路図][fm7w-hw] has schematics, expansion slot
   connector pinouts.
+- [FM-7 F-BASIC 解析マニュアル][shuwa83]. Shuwa System Trading Co., Ltd.,
+  1983-12. Includes Z80/serial/etc. card schematics.
 - [Larry Green's FM-7 page][lgreen] is a useful English resource. It
   includes pinouts for the connectors and (limited) DIP switch
   descriptions.
@@ -270,3 +272,4 @@ upper right; below is looking outward from the system unit.
 [fm7w-hw]: http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
 [fm7w-mmap]: http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm
 [lgreen]: http://www.nausicaa.net/~lgreenf/fm7page.htm
+[shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up

@@ -1,8 +1,13 @@
 FM-7/77 Floppy Disk Information
 ===============================
 
-_SS:n-m_ references refer to section-page numbers in the [富士通 FM-7
-ユーザーズマニュアル システム仕様][fm7sysspec].
+References:
+- [富士通 FM-7 ユーザーズマニュアル システム仕様][fm7sysspec]. _SS:n-m_
+  references refer to section-page numbers in this.
+- [FM-7 F-BASIC 解析マニュアル][shuwa83]. Shuwa System Trading Co., Ltd.,
+  1983-12. Has deep technical detail about BASIC and disk support, though
+  only for systems through FM-7. Also includes Z80/serial/etc. card
+  schematics.
 
 The external disk unit (MB27601, MB27607, MB27605, Epson TF-10)
 contains the controller; the card in the computer doesn't seem to do
@@ -188,7 +193,7 @@ access via the registers above, and even formatting I think.
 [flexonsbd]: https://flexonsbd.blogspot.com/2020/01/fm-7fdc.html
 [fm7basic]: https://archive.org/details/FM7FBASICBASRF
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
-
+[shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up
 
 <!-- Drives, Connectors and Cabling -->
 [yd-600]: http://www.bitsavers.org/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf

@@ -31,6 +31,7 @@ Stuff I've encountered while reading Japanese manuals.
     禁止        きんし          inhibited
     通常        つうじょう      normal, ordinary
     端子        たんし          terminal (for a signal connection)
+    解析        かいせき        analysis, analytical study; parsing/parse
 
 Stuff from dictionaries:
 
