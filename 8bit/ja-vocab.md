@@ -37,7 +37,7 @@ Stuff I've encountered while reading Japanese manuals.
     形式        けいしき        format (of a file)
     編成        へんせい        organization (of a file)
     関数        かんすう        function
-
+    行番号      ぎょうばんごう  line number (現在… = current lno)
 
 Stuff from dictionaries:
 

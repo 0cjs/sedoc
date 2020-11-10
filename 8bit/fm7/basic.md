@@ -30,6 +30,14 @@ Selected system commands:
 
 Selected BASIC commands:
 - `DEF FN`
+- `ERROR n` (3-69): Generate error _n_ (1-255). Caught by `ON ERROR GOTO`,
+  otherwise aborts execution and prints message (`Unprintable error` for
+  unknown codes).
+- `ON ERROR GOTO n` (3-70): Start executing at line number _n_ when any
+  error occurs. `ERR` variable will contain the error code.
+  - `RESUME` will re-execute the statement (not line) that caused the error.
+  - `RESUME NEXT` will continue at statement (not line) after the error.
+  - `RESUME n` will continue at line _n_.
 
 Selected display-related commands:
 - `WIDTH n,m` (3-104): Set screen width to _n_ (40 or 80) and number
