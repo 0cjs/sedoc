@@ -25,6 +25,9 @@ Documentation
   connector pinouts.
 - [FM-7 F-BASIC 解析マニュアル][shuwa83]. Shuwa System Trading Co., Ltd.,
   1983-12. Includes Z80/serial/etc. card schematics.
+- [番外編７：FM-8/7/77/77AVシリーズの微妙な非互換性][haserin]. Massive tech
+  info, including peripheral information and pinouts for all FM-7/77
+  models.
 - [Larry Green's FM-7 page][lgreen] is a useful English resource. It
   includes pinouts for the connectors and (limited) DIP switch
   descriptions.
@@ -271,5 +274,6 @@ upper right; below is looking outward from the system unit.
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
 [fm7w-hw]: http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
 [fm7w-mmap]: http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm
+[haserin]: http://rpcg1.home.mindspring.com/difference.html
 [lgreen]: http://www.nausicaa.net/~lgreenf/fm7page.htm
 [shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up
