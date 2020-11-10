@@ -66,6 +66,10 @@ formatted. Prompts for source and destination drives (`0`-`3`, defaults `0`
 and `1`), then prints `READY` requiring a `Y`/`y` response. Copies 8-tracks
 at a time, displaying sets of 8 track numbers as it goes.
 
+This appears to do a sector-for-sector copy; I've confirmed with my
+`dskcomp` program that compares each sector read from drive 0 to the same
+sector read from drive 1.
+
 v3.3 85.10.06. Uses `MCOPYV`.
 
 #### `FCOPY` (BASIC)
