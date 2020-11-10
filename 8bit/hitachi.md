@@ -255,6 +255,12 @@ ROM routines:
 
 XXX more to fill in.
 
+Software
+--------
+
+- Basic Master Level-3 MB-6890 [Assembler Manual V.1.1][asm]. Hitachi,
+  1983. (Sales distributor: Delta Software Co., Melbourne.)
+
 
 
 <!-------------------------------------------------------------------->
@@ -266,3 +272,5 @@ XXX more to fill in.
 [emu-6800ide]: http://www.hvrsoftware.com/6800emu.htm
 [emu-bm2]: http://ver0.sakura.ne.jp/pc/index.html#bm2
 [emu-mk5]: http://s-sasaji.ddo.jp/bml3mk5/
+
+[asm]: https://archive.org/stream/Hitachi_Basic_Master_Level_3_MB-6890_Assembler_Manual_1983#page/n3/mode/1up
