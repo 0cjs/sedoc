@@ -38,6 +38,7 @@ Stuff I've encountered while reading Japanese manuals.
     編成        へんせい        organization (of a file)
     関数        かんすう        function
     行番号      ぎょうばんごう  line number (現在… = current lno)
+    音量        おんりょう      audio volume
 
 Stuff from dictionaries:
 
