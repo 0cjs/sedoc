@@ -33,11 +33,12 @@ processing for up to 42 μs.
       4     2        4:C̅L̅K̅   2:GND
          3              3:`A̅T̅N̅`
 
-[DIN-6 connector][din]. Pins numbered clockwise from 1 o'clock
-(looking into the male plug), then pin 6 in middle. Devices must
-provide their own power. All signals are true-low, open-collector
-w/pullups in the C64 as below. (Schematic on p.13/PDF 17 of the
-[service manual][c64service].)
+[DIN-6 connector][din]. Pins numbered clockwise from 1 o'clock (looking
+into the female jack on the computer), then pin 6 in middle. Devices must
+provide their own power. All signals are true-low, open-collector w/pullups
+in the C64 as below. (Schematic on p.13/PDF 17 of the [service
+manual][c64service]. Also see [UWaterloo serialbus page][uwser] with
+diagrams and schematic.
 
 1. `S̅R̅Q̅I̅N̅`: "Service request"; unused on C64, C128 uses for fast xfer clock.  
    3.3 KΩ  pullup. Also on cassette port. To F̅L̅A̅G̅ (CASS RD) on CIA1.
@@ -193,3 +194,4 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 [din]: ../../hw/din-connector.md
 [mjk]: https://ist.uwaterloo.ca/~schepers/MJK/serialbus.html
 [petieee]: https://archive.org/details/PET_and_the_IEEE488_Bus_1980_McGraw-Hill
+[uwser]: https://ist.uwaterloo.ca/~schepers/MJK/serialbus.html
