@@ -36,8 +36,8 @@ on device:
            2               3                2                2
 
 References:
-- [Hosiden DIN Connectors][hosiden] (PDF): Catalog with pin numbering and
-  references to standards.
+- [Hosiden DIN Connectors][hosiden-wb] ([original][hosiden]) (PDF): Catalog
+  with pin numbering and references to standards.
 - Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
   wiki answer: common pinouts covering CMT, CVBS and DRGB video.
 
