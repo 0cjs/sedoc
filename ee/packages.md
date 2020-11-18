@@ -28,7 +28,7 @@ IC Packages
 
 ### 0.05"/1.27mm lead spacing
 
-- [SOCI]: JEDEC  Small Outline Package. MS-012 Wb=5.3, MS-013 Wb=7.5.
+- [SOIC]: JEDEC  Small Outline Package. MS-012 Wb=5.3, MS-013 Wb=7.5.
   Also Wb=6.52, Wb=6.57 versions from TI.
 - [SOP]: EIAJ Small Outline Integrated Circuit. Wb=3.9. EIAJ (Japan).
   EIAJ TYPE II is wider, Wb=7.5.
