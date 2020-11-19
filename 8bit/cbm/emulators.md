@@ -42,6 +42,55 @@ mapping.
 
 For F2/F4/F6/F8 use those keys; you may need to use SHIFT as well.
 
+### Startup
+
+- `-console`: Suppresses video display window. (Used for for music
+  playback, emulator test programs.)
+
+#### Files Interfaces
+
+A `.prg` file contains a (little-endian) load address in the first two
+bytes followed by data, usually a BASIC program or assembler code. With
+`LOAD "…",8,n`, _n_=0 will load at the default BASIC start address ($801)
+and _n_=1 will use the file's load address.
+
+Tape and disk images may be explicitly attached at startup with `-1
+foo.t64`  and `-[8|9|10|11] foo.d64`.
+
+An image or `.prg` file given on the command line without an option (`x64
+foo.prg`) is treated as `-autostart foo.prg`. This loads data or attaches
+an image and injects appropriate `LOAD` and `RUN` commands (as if `-keybuf`
+had been used) to start it. The exact behaviour can be tweaked with the
+[Autostart command-line options (§6.3.2)][vm-autostart]; preceeding an
+option with `+` instead of `-` will usually invert its sense.
+
+The way the data are brought into memory depends on the autostart mode,
+which will be the last-used mode for that file type unless overridden with
+`-autostartprgmode N`:
+- 0: VirtualFS: ??? (fails with `.prg`, same as 2 for `.d64`)
+- 1: Inject: Read `.prg` file data directly into memory.
+- 2: Disk image: Create a disk image (in-memory?) containing the `.prg`
+  file and `LOAD "*",8,1` (at file-specified address).
+
+Options:
+- `-autoload <file>`: Suppress `RUN` command.
+- `-autostartwithcolon`: Append `:` to `RUN` command; `+` to invert.
+  Not clear how this is helpful since a CR still seems to be appended
+  before a `-keybuf` string is injected.
+- `-autostart <file>`: Same as just _file_.
+- `-basicload`: Suppress secondary LOAD param `,1` (i.e., `LOAD "*",8:`) to
+  load at standard BASIC text start address $801 as with `,0`. Invert with
+  `+` to force `,1` to load at file-specified address.
+- `-autostartprgdiskimage <file.d64>`: Applicable to `.prg` only. Create an
+  on-disk copy of the generated disk image. Not removed after VICE exits.
+  Forces mode 2 (disk image).
+- `-autostart-warp`: Enable wrap mode during autostart (for faster loads);
+  invert with `+` to disable.
+- `-autostart-delay FRAMES`
+
+You may also inject your own keyboard commands at startup with `-keybuf
+STR`. Add further delay with `-keybuf-delay N` if necessary.
+
 
 MAME / MESS
 -----------
@@ -150,5 +199,6 @@ See also the [Disk Drive Commands][doscmd] used from BASIC.
 [doscmd]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
 [vice]: http://vice-emu.sourceforge.net/index.html
 [viceman]: http://vice-emu.sourceforge.net/vice_toc.html
+[vm-autostart]: https://vice-emu.sourceforge.io/vice_6.html#SEC46
 [vm-d64]: http://vice-emu.sourceforge.net/vice_16.html#SEC308
 [vm-imgfmt]: http://vice-emu.sourceforge.net/vice_16.html#SEC294
