@@ -34,6 +34,7 @@ Timeline
     1975-06   Gates/Allen ship BASIC 2.0 to MITS
     1975-07 * Altair 8800 BASIC announced
     1975-09   _BYTE_ magazine first issue
+    1975-11   _BYTE_ CMT symposium (Kansas City, Nov 7/8)
     1975-11 * SWTPC 6800 shipped (on cover of Oct. BYTE)
     1975-12 * IMSAI 8080 ships
 
