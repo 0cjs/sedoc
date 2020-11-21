@@ -32,6 +32,13 @@ Breadboards vs. Dual-Row Pin Headers
 [msg2860602]: https://www.eevblog.com/forum/projects/breadboards-vs-dual-row-pin-headers-(dupont-berg)/msg2860602/
 
 
+Wire Wrap Materials
+-------------------
+
+- Mouser has sockets, e.g. Mouser part number 575-12343316.
+- See also "Wire Wrap Sockets" discussion at [THS Google Group][THSgg].
+
+
 Wire Wrap without Wire-wrap Sockets
 -----------------------------------
 
@@ -188,6 +195,7 @@ Fujitsu FM-7 I/O card protoboard is approx 25×43 ?×? cm.:
 
 
 <!-------------------------------------------------------------------->
+[THSgg]: https://groups.google.com/group/tokyohackerspace>
 [p74792]: http://forum.6502.org/viewtopic.php?f=4&t=1457#p74792
 [wmco]: http://wilsonminesco.com/6502primer/WireWrap.html
 [yt IXvEDM-m9CE]: https://www.youtube.com/watch?v=IXvEDM-m9CE
