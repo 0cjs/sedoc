@@ -139,7 +139,7 @@ including waveform and timing diagrams and schematics.
 - Horizontal sync: 15.75 KHz (16.128 MHz/1024)
 - Vertical sync: 60.1145 Hz (15.75 KHz/262)
 
-#### Color CRT: 8-pin DIN 270° (horseshoe, not "U")
+#### Color CRT: 8-pin DIN 270°
 
 All levels below are TTL except for +12 V and ground. All are buffered
 through a 7407 (open collector) with a 330 Ω which looks like it might
@@ -150,16 +150,16 @@ be a pull-up (but not sure).
     3   2 MHz video clock (for light pen interface)
     4   horizontal sync signal (TTL or video level?)
     5   vertical sync signal (TTL or video level?)
-    6   red
-    7   green
-    8   blue
+    6   red (TTL)
+    7   green (TTL)
+    8   blue (TTL)
 
 
 #### Monochrome CRT: 5-pin DIN 180°
 
     1   2 MHz video clock (for light pen interface)
     2   GND
-    3   composite video signal
+    3   MVBS (b/w video)
     4   horizontal sync signal (TTL)
     5   vertical sync signal (TTL)
 

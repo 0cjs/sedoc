@@ -19,14 +19,19 @@ with a luminance. CVBS standard levels (from [[wp cvbslev]]):
 
 <img src='img/video-cvbs-levels.png'>
 
-Systems are, roughly:
+Systems for color or monochrome video with various degrees of multiplexing
+(not specifying any particular sync rates or interlace) are, roughly:
+
 - RGBHV: Three luminance signals and separate H and V sync signals
-- RGBS: Composite sync signal
-- RGB: Sync on green
+- RGBS: Composite (H+V) sync signal
+- RGB: Sync on green (or sync unspecified)
+- DRGB: 8-color digital RGB, usually TTL, and usually separate H and V sync.
+- DRGBI: 16-color digital RGB with fourth "intensity" value.
 - Component video: Y+sync Cb Cr
 - S-video: Y+sync, chroma
-- CVBS (baseband composite video): Y+sync+color, using one of several
-  systems (NTSC, PAL, etc.) to encode the color information.
+- CVBS (color video baseband signal): Y+sync+color, using one of several
+  broadast systems (NTSC, PAL, etc.) to encode the color information.
+- MVBS (monochrome video baseband signal): Y+sync
 
 #### Vertical Sync
 
