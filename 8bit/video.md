@@ -226,7 +226,9 @@ Apple IIc:
 References
 ----------
 
-Data Sheets and Application Notes:
+Datasheets and Application Notes:
+- Maxim APP 734 [Video Basics][man734]. Fundementals of analog video.
+  Good glossary but little detail.
 - TI [LM1881] Video Sync Separator. Classic chip to extract csync, vsync
   odd/even and burst/back porch from a composite video signal. Includes
   info on filtering color information from composite video.
@@ -275,6 +277,7 @@ Other sources
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
+[man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
