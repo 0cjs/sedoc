@@ -6,7 +6,7 @@ For connector information, see [conn/video](conn/video.md).
 Video output is generally vertical sync for ~50-60 Hz frames or fields (two
 interlaced fields per frame), horizontal synchronization signals for 260 or
 more lines per frame/field, and image information encoded as a single (Y)
-or three (RGB) luminance signals and, for non-RGB colour systems,
+or three (RGB) luminance signals and, for non-RGB color systems,
 additional encoded color information as either one or more separate signals
 (chroma for S-video; Cb and Cr for component video) or combined with the
 luma signal (CVBS/composite color video).
@@ -205,7 +205,7 @@ Apple IIc:
 - Vertical (in CVBS): 262 lines; `32/_ 4/_ 34/_ 192/_`
   - hsync on falling edge during vblank; not XOR
 - CVBS:
-  - Colour burst during vsync
+  - Color burst during vsync
 
 
 #### References
@@ -224,7 +224,7 @@ References
 Data Sheets and Application Notes:
 - TI [LM1881] Video Sync Separator. Classic chip to extract csync, vsync
   odd/even and burst/back porch from a composite video signal. Includes
-  info on filtering colour information from composite video.
+  info on filtering color information from composite video.
 - TI [LMH1981] Multi-Format Video Sync Separator. Includes waveforms for
   various SD and HD video and sync signals.
 - Analog Devices [ADV7170] Digital PAL/NTSC Video Encoder. Provides lots of

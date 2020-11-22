@@ -67,7 +67,7 @@ black). In pin order (grounds marked with `=`):
         1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
         _  W  =  =  _  R  =  =  _  Y  W  W  =  =  R  W  =  =  G  B  _
 
-The cables I have are colour coded as follows, with "end 1" and "end 2"
+The cables I have are color coded as follows, with "end 1" and "end 2"
 picked arbitrarily. ("End 1" was used in the first breakout board attempt.)
 The wires are aluminum and cannot be soldered; they must be crimped.
 
@@ -212,7 +212,7 @@ For DIN-8 breakouts, see [din](din.md).
 This is the breakout header assignment for a cable from a computer (or
 other video source). All headers on the cable are female.
 
-`wclr` is the wire insulation colour. The pin numbers on the computer
+`wclr` is the wire insulation color. The pin numbers on the computer
 connector are given for PC-8801 (`88`) and JP-21 (`21`). Pin `=` refers to
 a short on the connectors; pin `g` refers to ground shorted amongst some
 combination of the following computer pins (not all may be connected):

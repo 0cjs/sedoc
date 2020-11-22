@@ -54,7 +54,7 @@ Timeline
     1976-12   TRS-80 Mod1 design starts
 
     1977-01   PET 2001 shown at Winter CES
-    1977-06 * Apple II ships, $1300+monitor (first w/built-in colour graphics)
+    1977-06 * Apple II ships, $1300+monitor (first w/built-in color graphics)
     1977-08   TRS-80 Mod1 press conference
     1977-09 * TRS-80 Mod1 ships, $600 (4K), +12K $289
     1977-10 * PET 2001 ships, $600 (4K) $800 (8K)

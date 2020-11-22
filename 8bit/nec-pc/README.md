@@ -21,7 +21,7 @@ Specs:
 - Memory: 16/32 KB, VRAM separate
 - Video: μPD2301, b/w composite, RGBI. Programmable CRTC; 4K VRAM (mkII: 32K).
 - Text: 40×20/8, 80×25/8; graphics can be intermixed.
-- Graphics: 160x100/8, 4×2 pixels per character cell; one colour per cell.
+- Graphics: 160x100/8, 4×2 pixels per character cell; one color per cell.
   (mkII: add 320x200/4.)
 - BASIC: N-BASIC, variant of MS Disk Basic 4.51
 - TOD clock (access w/`TIME$` in BASIC)

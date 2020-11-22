@@ -6,7 +6,7 @@ not directly addressable by the CPU. This is 16 KB in MSX1 machines and 128
 KB (or sometimes 64 KB) in MSX2 machines. VRAM holds the current character
 set definition (_pattern generation table_), character cells indexing into
 the character set to determine which characters are displayed on the screen
-(_pattern name table_), sprite and colour information, and so on.
+(_pattern name table_), sprite and color information, and so on.
 
 ### Screens
 

@@ -74,7 +74,7 @@ Semi-Graphics
 
 Bit 7 set in the character attribute indicates the character code and
 attribute should be interpreted as a block of 2×2 pixels at that character
-position, each with its own colour 0-7, giving 64×48 eight-color graphics.
+position, each with its own color 0-7, giving 64×48 eight-color graphics.
 
 The BASIC `PLOT` command can handle plotting these for you.
 
@@ -90,7 +90,7 @@ Each has a three-bit color value.
 Border
 -----
 
-Writing $CA00 will set the frame colour; all but the lowest three bits are
+Writing $CA00 will set the frame color; all but the lowest three bits are
 ignored. Reads are invalid.
 
 

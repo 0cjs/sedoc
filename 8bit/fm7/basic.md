@@ -42,8 +42,8 @@ Selected BASIC commands:
 Selected display-related commands:
 - `WIDTH n,m` (3-104): Set screen width to _n_ (40 or 80) and number
   of lines to _m_ (20 or 25).
-- `COLOR n,m`: Set forground colour to _n_, inverting fg/bg for 8-15.
-  Background colour will become _m_ after next `CLS`.
+- `COLOR n,m`: Set forground color to _n_, inverting fg/bg for 8-15.
+  Background color will become _m_ after next `CLS`.
 - `SYMBOL (x,y),"c",hscale,vscale[,palette[,rot[,func]]]`. Write
   symbol _"c"_ (1-char string) at _(x,y)_ (0-640, 0-200), with
   horizontal and vertical scale (based on 80-col size).
