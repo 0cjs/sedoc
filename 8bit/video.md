@@ -27,8 +27,8 @@ Systems for color or monochrome video with various degrees of multiplexing
 - RGB: Sync on green (or sync unspecified)
 - DRGB: 8-color digital RGB, usually TTL, and usually separate H and V sync.
 - DRGBI: 16-color digital RGB with fourth "intensity" value.
-- Component video: Y+sync Cb Cr
-- S-video: Y+sync, chroma
+- Component video: Y+sync Pr Pb (Y Cr Cb is the digital format)
+- Y/C: Y+sync, chroma. Also "S-video," which has multiple meanings.
 - CVBS (color video baseband signal): Y+sync+color, using one of several
   broadast systems (NTSC, PAL, etc.) to encode the color information.
 - MVBS (monochrome video baseband signal): Y+sync
