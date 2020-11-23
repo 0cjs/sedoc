@@ -26,3 +26,20 @@ be at the opposite end from that marked when female inserts are used.
 When using alternate grounding (i.e., every signal line is pared with an
 adjacent ground line), pins 1, 3, 5, ... are ground. (This follows the
 standard used for floppy drive cables.)
+
+
+Standards and Suggestions
+-------------------------
+
+### Motorola PIA (6820, 6821, 6522, 6526, etc.)
+
+Darrel Rictor, creator of several SBCs and active on forum.6502.org, has a
+[pinout for the parallel ports of a 6522][rictor via] and several
+periperhals. It uses two 2×7 headers separated by 0.5" so that a single
+2×18 header can be used to connect both at once.
+
+    GND PA1 PA3 PA5 PA7 CA2 +5V  .   .   .   .  GND PB1 PB3 PB5 PB7 CB2 +5V
+    GND PA0 PA2 PA4 PA6 CA1 +5V  .   .   .   .  GND PB0 PB2 PB4 PB6 CB1 +5V
+
+
+[rictor via]: https://sbc.rictor.org/via.html
