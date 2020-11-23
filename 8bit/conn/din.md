@@ -129,9 +129,32 @@ into the male connector on the PC and the female connector on the IIc:
                         ← 1 DTR -\
                         → 3 DSR -/
 
+#### DIN-4
+
+- National/Panasonic JR-100 power, from bad pic in my collection.
+
+       color    JR100
+    1          +7.8 VDC
+    2          -8 VDC
+    3           GND
+    4          +17 VDC
+
+#### DIN-6
+
+- `CBM`: CBM serial bus (female) from [cbm/serial-bus](cbm/serial-bus.md).
+- `S1` from [Old Hard CMT][oh cmt], possibly Hitachi Basic Master S1
+
+       color    CBM      S1
+    1   blk     S̅R̅Q̅I̅N̅    IN
+    2   red     GND      REMOTE
+    3   orn     A̅T̅N̅      OUT
+    4   yel     C̅L̅K̅      GND
+    5   grn     D̅A̅T̅A̅     REMOTE
+    6   blu     R̅E̅S̅E̅T̅    NC
+
 #### DIN-7
 
-         ApIIc     520ST
+         AIIc      520ST
     1   +15 VDC   +5  VDC
     2    CGND      NC
     3    SGND      GND
@@ -140,8 +163,8 @@ into the male connector on the PC and the female connector on the IIc:
     6    NC       +5  VDC
     7    NC        GND
 
-- Apple IIc power jack (male) from [apple2/iic](apple2/iic.md).
-- Atari 520ST power jack (male) from [[sgntomcat]].
+- `AIIc`: Apple IIc power jack (male) from [apple2/iic](apple2/iic.md).
+- `502ST`: Atari 520ST power jack (male) from [[sgntomcat]].
 
 
 #### CMT (Cassette Tape) 8-pin DIN
@@ -237,6 +260,7 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 [hosiden-wb]: https://web.archive.org/web/20180516230412/http://www.hosiden.com:80/product/pdf/e_din.pdf
 [hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
+[oh cmt]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/cmt.htm
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
 [pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
