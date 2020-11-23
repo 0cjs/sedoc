@@ -77,6 +77,7 @@ Timeline
     1981-11 * Panasonic/National JR-100 released (¥54,800)
     1981-12 * NEC PC-8801 ships (released 1981-11?)
     1981-12 * BBC Micro released
+    1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
     1982-   * Commodore MAX Machine released
     1982-08 * Commodore 64 Released
