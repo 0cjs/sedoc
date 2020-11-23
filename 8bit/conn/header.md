@@ -41,5 +41,12 @@ periperhals. It uses two 2×7 headers separated by 0.5" so that a single
     GND PA1 PA3 PA5 PA7 CA2 +5V  .   .   .   .  GND PB1 PB3 PB5 PB7 CB2 +5V
     GND PA0 PA2 PA4 PA6 CA1 +5V  .   .   .   .  GND PB0 PB2 PB4 PB6 CB1 +5V
 
+The [Ancientcomputing RC2014 6522 board][ancomp 6522] is the reverse of
+this, counting up port bits in pin numbering direction:
+
+    +5V CA1 PA6 PA4 PA2 PA0 GND
+    +5V CA2 PA7 PA5 PA3 PA1 GND
+
 
 [rictor via]: https://sbc.rictor.org/via.html
+[ancomp 6522]: https://github.com/ancientcomputing/rc2014/tree/master/eagle/6522_board
