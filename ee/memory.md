@@ -1,6 +1,11 @@
 ROM and RAM Pinouts, Data
 =========================
 
+Terminology:
+- PROM: (Field-)programmable once only.
+- UV EPROM, EE EPROM: Erasable only as a whole (electrically or via UV).
+- EEPROM: Always byte-erasable.
+
 References:
 - JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
   EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
@@ -10,7 +15,7 @@ References:
   standards and pinouts for various kinds of memory chips.
 
 Notes:
-- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS/EEPROMS.
+- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS.
 - 28xxx (5V programmable) notably non-JEDEC marked with `●`.
 
 Chart:
