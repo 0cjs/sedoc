@@ -91,6 +91,11 @@ MB-6890 Basic Master Level 3 (and probably later models):
 - CASSETTE (DIN-6): Supports 2 units?
 - Internal expansion slots w/panels on back (6?).
 
+### CMT DIN-6
+
+1,4=relay, 2=GND, 3=out/rec, 5=in/play, as tested on MB-6885.
+See [conn/DIN](../conn/DIN.md#DIN-6) for breakout.
+
 
 
 <!-------------------------------------------------------------------->

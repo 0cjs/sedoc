@@ -142,15 +142,19 @@ into the male connector on the PC and the female connector on the IIc:
 #### DIN-6
 
 - `CBM`: CBM serial bus (female) from [cbm/serial-bus](cbm/serial-bus.md).
-- `S1` from [Old Hard CMT][oh cmt], possibly Hitachi Basic Master S1
+- `日立BM`: Hitachi Basic Master Jr. (MB-6885), experimentally determined.
 
-       color    CBM      S1
-    1   blk     S̅R̅Q̅I̅N̅    IN
-    2   red     GND      REMOTE
-    3   orn     A̅T̅N̅      OUT
-    4   yel     C̅L̅K̅      GND
-    5   grn     D̅A̅T̅A̅     REMOTE
-    6   blu     R̅E̅S̅E̅T̅    NC
+       color    CBM     日立BM
+    1   blk     S̅R̅Q̅I̅N̅   relay
+    2   red     GND     GND
+    3   orn     A̅T̅N̅     OUT/rec
+    4   yel     C̅L̅K̅     relay
+    5   grn     D̅A̅T̅A̅    IN/play
+    6   blu     R̅E̅S̅E̅T̅   n/c
+
+The `S1` pinout from [Old Hard CMT][oh cmt] may be the Hitachi Basic Master
+S1; if it uses the same pinout he's just counting the pins backwards,
+having misinterpreted his diagram as looking into female rather than male.
 
 #### DIN-7
 
