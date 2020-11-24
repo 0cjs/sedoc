@@ -14,6 +14,9 @@ computer quick reference guide][Bench-1 QRG].
 Reset Circuits
 --------------
 
+The [MOS reset circuit for the 6502][moshw 3.1] uses a pair of NAND gates
+(written as ORs with inverted inputs) to debounce the switch.
+
 The [Searle reset design][searle-6809] uses a 2k2 pullup with an NO
 switch to ground, no debounce or power good.
 
@@ -60,6 +63,29 @@ Also see:
 - Dr Jefyll, [RDY vs. Clock Stretching][stretch].
 
 
+Single-Step
+-----------
+
+#### 6502
+
+The MOS _MCS6500 Microcomputer Family Hardware Manual_ [§3.1 Static
+Testing][moshw 3.1] contains a (relatively complex) single-step (both cycle
+and instruction) circuit and a "data trap" to capture address and/or data
+bus contents. It also details how to run reset/irq/nmi with a signal
+generator to externally induce an (obviously limited) loop.
+
+The [Woz design][ss woz] (from the Apple 1 manual) uses a single 7474 (two
+flip-flops) to toggle the RDY line, optionally using SYNC and another
+switch to toggle between instruction and cycle stepping.
+
+The [Baltissen Debugger][balt], designed for the C64 among others, latches
+the display (via '573 latches) on the high half of φ2 (very useful if your
+system does video on the low half) and as well as single-step includes the
+ability to step to a given address set by DIP switches (via '688
+comparators).
+
+<a href="https://web.archive.org/web/20070813011640if_/http://www.baltissen.org/images/debugger.gif"><img src="https://web.archive.org/web/20070813011640if_/http://www.baltissen.org/images/debugger.gif" height=100/></a>
+
 
 SBC Designs
 -----------
@@ -75,6 +101,13 @@ Minimal chip count design for 6502/[6809][searle-6809]/Z-80.
 [Maxim DS1813]: https://datasheets.maximintegrated.com/en/ds/DS1813.pdf
 [eese 486167]: https://electronics.stackexchange.com/a/486167/15390
 [mcp130]: https://www.microchip.com/wwwproducts/en/MCP130
-[searle-6809]: http://searle.x10host.com/6809/Simple6809.html
 [stretch]: http://forum.6502.org/viewtopic.php?f=4&t=5504#p66907
 [wmc-reset]: http://wilsonminesco.com/6502primer/RSTreqs.html
+
+<!-- Single-Step -->
+[balt]: https://web.archive.org/web/20130818095847/http://www.baltissen.org:80/htm/debugger.htm
+[moshw 3.1]: https://archive.org/stream/MCS6500_Family_Hardware_Manual#page/n138/mode/1up
+[ss woz]: https://www.reddit.com/r/beneater/comments/foezld/wozs_circuit_to_singlestep_nmos_6502/
+
+<!-- SBC Designs -->
+[searle-6809]: http://searle.x10host.com/6809/Simple6809.html
