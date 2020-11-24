@@ -19,6 +19,10 @@ IC Packages
     TSOP Type II          0.8         10.16   40-54
     TSOP Type II          0.65        10.16   66
 
+    HSOP 20ld             1.27        11.00   20     gull wing, heatsink
+    HSOP 30ld             0.80        11.00   30     gull wing, heatsink
+    HSOP 44ld             0.65        11.00   44     gull wing, heatsink
+
 ### 0.1"/2.54mm lead spacing:
 
 - [SIPP]: Single In-line Package. Mainly RAM and resistor blocks.
@@ -58,12 +62,14 @@ Sources
   - [DIP Specifications][ti dip]. Useful to sort by pin count.
   - [SO (Small Outline) Specifications][ti so]. Useful to sort by pin
     count.
+- Freescale Semiconductor, [AN2388] Heatsink Small Outline Package (HSOP).
 - Vishay, [SOIC Packages (Narrow and Wide Body)][vishay]
 - Wikipedia
   - [Dual in-line package][wp dip].
   - [Small outline integrated circuit][wp soic].
     Was quite wrong about "SOP," but I fixed it.
   - [Thin Small Outline Package][wp tsop].
+
 
 
 
@@ -75,6 +81,7 @@ Sources
 [MS-012]: https://www.jedec.org/system/files/docs/MS-012G-01.pdf
 [MS-013]: https://www.jedec.org/system/files/docs/MS-013F.pdf
 
+[AN2388]: https://www.farnell.com/datasheets/1853267.pdf
 [ti dip]: http://www.ti.com/packaging/docs/searchtipackages.tsp?packageName=DIP
 [ti pkginfo]: www.ti.com/analogpackaging
 [ti so]: http://www.ti.com/packaging/docs/searchtipackages.tsp?packageName=SO
@@ -83,4 +90,3 @@ Sources
 [wp dip]: https://en.wikipedia.org/wiki/Dual_in-line_package
 [wp soic]: https://en.wikipedia.org/wiki/Small_outline_integrated_circuit
 [wp tsop]: https://en.wikipedia.org/wiki/Thin_Small_Outline_Package
-
