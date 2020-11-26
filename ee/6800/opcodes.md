@@ -23,33 +23,45 @@ This is a quick reference for hand-assembly.
     TAB   TBA   TAP   TPA   TXS   TSX      PSH A  PSH B  PUL A  PUL B
      16₂   17₂   06₂   07₂   35₄   30₄       36₄    37₄    32₄    33₄
 
-            #nn     zp     addr     n,X
+            #nn     zp     addr     n,X     A←A•B
+    SUB A   80₂     90₃     B0₄     A0₅     SBA 10₂
+    CMP A   81₂     91₃     B1₄     A1₅     CBA 11₂
+    SBC A   82₂     92₃     B2₄     A2₅
+    AND A   84₂     94₃     B4₄     A4₅
+    BIT A   85₂     95₃     B5₄     A5₅
     LDA A   86₂     96₂     B6₄     A6₅
     STA A           97₄     B7₅     A7₆
+    EOR A   88₂     98₃     B8₄     A8₅
+    ADC A   89₂     99₃     B9₄     A9₅     DAA 19₂
+    ORA A   8A₂     9A₃     BA₄     AA₅
+    ADD A   8B₂     9B₃     BB₄     AB₅     ABA 1B₂
+
+            #nn     zp     addr     n,X
+    SUB B   C0₂     D0₃     F0₄     E0₅
+    CMP B   C1₂     D1₃     F1₄     E1₅
+    SBC B   C2₂     D2₃     F2₄     E2₅
+    AND B   C4₂     D4₃     F4₄     E4₅
+    BIT B   C5₂     D5₃     F5₄     E5₅
     LDA B   C6₂     D6₂     F6₄     E6₅
     STA B           D7₄     F7₅     E7₆
-    LDX     CE₃     DE₄     FE₅     EE₆
-    STX             DF₅     FF₆     EF₇
+    EOR B   C8₂     D8₃     F8₄     E8₅
+    ADC B   C9₂     D9₃     F9₄     E9₅
+    ORA B   CA₂     DA₃     FA₄     EA₅
+    ADD B   CB₂     DB₃     FB₄     EB₅
+
+            #nn     zp     addr     n,X
+    CPX     8C₃     9C₄     BC₅     AC₆
     LDS     8E₃     9E₄     BE₅     AE₆
     STS             9F₅     BF₆     AF₇
+    LDX     CE₃     DE₄     FE₅     EE₆
+    STX             DF₅     FF₆     EF₇
 
-             A       B     addr     n,X    X     S
+             A       B     addr     n,X      X       S
     CLR     4F₂     5F₂     7F₆     6F₇
     COM     43₂     53₂     73₆     63₇
     NEG     40₂     50₂     70₆     60₇
-    INC     4C₂     5C₂     7C₆     6C₇   08₄   31₄
-    DEC     4A₂     5A₂     7A₆     6A₇   09₄   34₄
-
-            #nn     zp     addr     n,X
-    CMP A   81₂     91₃     B1₄     A1₅             CBA
-    CMP B   C1₂     D1₃     F1₄     E1₅              11₂
-    CPX     8C₃     9C₄     BC₅     AC₆
-
-
-
-    ABA     SBA     DAA
-     1B₂     10₂     19₂
-
+    INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄
+    DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄
 
 ### Notes
 
