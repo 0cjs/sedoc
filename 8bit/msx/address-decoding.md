@@ -10,11 +10,12 @@ Though the hardware is described below, the MSX standard strongly suggests
 using BIOS routines to change page and slot mappings, do cross-slot calls,
 etc.
 
-The MSX address space is divided into four 16 KB "pages."  PPI (i8255)
-port A (PA0-PA7) at IO port $A8 determines which device select line from
-`S̅L̅T̅S̅L̅0` through `S̅L̅T̅S̅L̅3` will be asserted when that page is accessed;
-write 0-3 in the page's corresponding bits to set this.
-(Schematic at [td1 p.30].)
+### Address Space Pages
+
+The MSX address space is divided into four 16 KB "pages". Each page has a
+separate setting (two bits of PPI (i8255) port A (PA0-PA7) usually at IO
+port $A8) that determines the primary slot that should respond to accesses
+to locations in this page.
 
       Page  Addr.range  $A8  Typical use
        3    C000-FFFF   7,6  RAM
@@ -22,15 +23,24 @@ write 0-3 in the page's corresponding bits to set this.
        1    4000-7FFF   3,2  BIOS/BASIC ROM; expansion ROM
        0    0000-3FFF   1,0  BIOS/BASIC ROM
 
+### Primary Slots
+
 Devices responding to address space read/write requests are in one of four
 _primary_ slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
-`S̅L̅T̅S̅L̅3`. These are routed to onboard devices or `S̅L̅T̅S̅L̅` (slot select, pin
-4) on the corresponding cartridge connector.
+`S̅L̅T̅S̅L̅3`. These are routed to onboard devices or the `S̅L̅T̅S̅L̅` line (slot
+select, pin 4) on the corresponding cartridge connector based on the bit
+pair for that page (set to 0-3) in PPI port_A described above.
 
       Slot 0    System slot (onboard ROM, RAM)  required
       Slot 1    Cartridge slot 1                required
       Slot 2    Cartridge slot 2                optional
       Slot 3    Expansion bus connector         optional
+
+The schematic from [td1 p.30] makes the decoding clear:
+
+<img src="img/msx-slot-schematic.jpg" height=250>
+
+### Expansion Slots
 
 Each primary slot may optionally support up to four "expansion" slots
 associated with the primary slot, assigned _secondary slot numbers_ 0
