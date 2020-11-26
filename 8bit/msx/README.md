@@ -68,7 +68,7 @@ Standard Specifications
 -----------------------
 
 References:
-- \[td1] [_MSX Technical Data Book_][th1], Sony, 1984.
+- \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
   MSX1 hardwre and software.
 
 MSX systems include [td1 p.8]:
@@ -238,7 +238,7 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 <!-------------------------------------------------------------------->
 [mowiki]: https://msx.org/wiki
-[th1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 [wpen]: https://en.wikipedia.org/wiki/MSX
 [wpja]: https://ja.wikipedia.org/wiki/Msx
 

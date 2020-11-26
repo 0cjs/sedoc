@@ -2,7 +2,7 @@ MSX Address Decoding
 ====================
 
 References:
-- \[td1] [_MSX Technical Data Book_][th1], Sony, 1984.
+- \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
   MSX1 hardwre and software.
 - [RAM and Memory Mappers][mw ramm], msx.org wiki.
 
@@ -123,4 +123,4 @@ not let cartridge slots respond to certain I/O port requests.
 
 <!-------------------------------------------------------------------->
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
-[th1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
