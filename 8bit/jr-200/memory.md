@@ -54,7 +54,9 @@ For details of the VRAM mapping, see [video](video.md).
 
     $  FF   ┐
        │    Looks unused, from glancing at a dump in the monitor.
-    $  E0   ┘
+    $  E1   ┘
+    $  E0   Seems never used, but BASIC ($B07A) writes $80 to this.
+            (Does not appear to be LSB of $DF.)
     $  DF   ┐
        │    Possibly used by tape routines.
     $  D0   ┘
