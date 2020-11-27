@@ -60,8 +60,8 @@ This is a quick reference for hand-assembly.
     CLR     4F₂     5F₂     7F₆     6F₇
     COM     43₂     53₂     73₆     63₇
     NEG     40₂     50₂     70₆     60₇
-    INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄
-    DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄
+    INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄     (INX,INS)
+    DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄     (DEX,DES)
 
 ### Notes
 
