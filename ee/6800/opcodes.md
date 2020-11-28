@@ -23,6 +23,14 @@ This is a quick reference for hand-assembly.
     TAB   TBA   TAP   TPA   TXS   TSX      PSH A  PSH B  PUL A  PUL B
      16₂   17₂   06₂   07₂   35₄   30₄       36₄    37₄    32₄    33₄
 
+             A       B     addr     n,X      X       S
+    TST     4D₂     5D₂     7D₆     6D₇
+    CLR     4F₂     5F₂     7F₆     6F₇
+    COM     43₂     53₂     73₆     63₇
+    NEG     40₂     50₂     70₆     60₇
+    INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄     (INX,INS)
+    DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄     (DEX,DES)
+
             #nn     zp     addr     n,X     A←A•B
     SUB A   80₂     90₃     B0₄     A0₅     SBA 10₂
     CMP A   81₂     91₃     B1₄     A1₅     CBA 11₂
@@ -55,14 +63,6 @@ This is a quick reference for hand-assembly.
     STS             9F₅     BF₆     AF₇
     LDX     CE₃     DE₄     FE₅     EE₆
     STX             DF₅     FF₆     EF₇
-
-             A       B     addr     n,X      X       S
-    TST     4D₂     5D₂     7D₆     6D₇
-    CLR     4F₂     5F₂     7F₆     6F₇
-    COM     43₂     53₂     73₆     63₇
-    NEG     40₂     50₂     70₆     60₇
-    INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄     (INX,INS)
-    DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄     (DEX,DES)
 
 ### Notes
 
