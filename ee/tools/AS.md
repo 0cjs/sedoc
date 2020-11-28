@@ -370,6 +370,18 @@ of _EXPR_ against each _VAL_, assembling only the first matching case.
 - `prtinit SI`, `prtexit SO`: Emit _SI_ and _SO_ before and after
   listing. Used for, e.g., setting compressed mode on printers.
 
+### Assembly-time Input/Output (§3.9.4-5)
+
+- `mesage STR`: Prints _STR_.
+- `warning STR`: Prints _STR_, assembly continues, code file generated.
+- `error STR`: Prints _STR_, current pass continues to look for further
+  errors, no code file generated.
+- `fatal STR`: Prints _STR_, assembly aborts, code file may be incomplete.
+
+`read STR,SYM` will print _STR_ to the console, read an expression from the
+user and set _SYM_ to that value (doing appropriate conversion), as with
+`set`.
+
 
 
 <!-------------------------------------------------------------------->
