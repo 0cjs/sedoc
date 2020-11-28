@@ -57,6 +57,7 @@ This is a quick reference for hand-assembly.
     STX             DF₅     FF₆     EF₇
 
              A       B     addr     n,X      X       S
+    TST     4D₂     5D₂     7D₆     6D₇
     CLR     4F₂     5F₂     7F₆     6F₇
     COM     43₂     53₂     73₆     63₇
     NEG     40₂     50₂     70₆     60₇
