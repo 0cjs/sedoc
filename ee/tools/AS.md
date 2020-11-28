@@ -229,7 +229,60 @@ hierarchical listing of section names.
 Source Format and Syntax (§2.5)
 -------------------------------
 
+One instruction/pseudo-op/macro call per line.
+
     [label[:]] op[.attr] [param[,param …]   [;comment]
+
+### Literals (§2.10.1-4)
+
+Integer constants use `radix` (§3.7.7, always taking a decimal argument)
+when unadorned, or the following modifiers, depending on architecture.
+`relaxed on` (§3.9.6) will enable all modifers below.
+- Motorola: prefix `$` hex, `@` octal, `%` binary.
+- Intel: suffix `H` hex, `Q` or `O` octal, `B` binary.
+- C: prefix `0x` hex, `0` octal, `0b` binary.
+- Relaxed: `x'…'` or `h'…'` hex, `o'…'` octal, `b'…'` binary.
+
+Floating point constants use the following format. At last one digit (even
+just `0`) after the decimal point or an exponent are required; `2.` is an
+integer constant but `2.0` is floating point.
+
+    [-]<integer digits>[.post decimal positions][E[-]exponent]
+
+String constants may not contain null (`\0`) characters. They are enclosed
+in `"` or `'` and use (case-insensitive) C escapes.
+
+    \a  BEL     \n  LF      \' \h  single quote     \###    decimal value
+    \b  BS      \r  CR      \" \i  double quote     \x##    hex value
+    \e  ESC     \t  TAB     \\     backslash        \0###   octal value
+
+    \{…}    expression interpolation into the string (using `outradix`)
+
+`move.l #'\'abc',d0` will not work; the comma will be interpreted as part
+of the character constant. Use `\i` instead of `\'`.
+
+### Expressions/Formulas (§2.10.5-7)
+
+Numeric expressions are evaluated using the highest available precision
+(32/64-bit int, 64/80-bit floating point, 255 char strings) with overflow
+tests only on the final result.
+
+Operators ([§2.10.6]), from higest to lowest precedence. Parens for grouping.
+Shifts are logical (filling with `0`), not arithmetic. Lines starting with
+`>` list different precedence in descending order; lines starting with `=`
+have same precedence for all operators.
+
+    >    ~ NOT      << lshift   >> rshift   >< bit mirror
+    >    & bit-AND   | bit-OR    ! bit-XOR
+
+         ^ exponen
+    =    * mult      / quotient  # remainder(mod)
+    =    + addition  - subtrac
+    >   ~~ NOT      && AND      || OR       !! XOR
+
+    =   <>    >=    <=     >     <        = == (same)
+
+Functions ([§2.10.7]).
 
 
 Assembler Directives
@@ -243,7 +296,8 @@ Assembler Directives
 - `save`, `restore` (§3.2.15): XXX Mainly for include files.
 - `assume`
 - `z80syntax`
-- `radix N`: Default radix for integer constants, _N_ = `2`…`36`.
+- `radix N`: Default radix for integer constants, _N_ = `2`…`36` (always
+  read as decimal).
 - `outradix N`: Output radix for `"…\{…}…"` interpolation of integers.
 
 ### Definitions (§3.1)
@@ -277,6 +331,28 @@ Common to all processors:
 - `dfs`, `rmb`: Reserve number of bytes given as parameter. ("Reserve
   Memory Bytes")
 
+### Conditional Assembly (§3.6)
+
+_EXPR_ below evaluates to false for any 0 result or true for any non-0
+result. See §2.10 for expression formulas.
+
+`if EXPR` / `elseif [EXPR]` / `else` / `endif` assembles the block if
+_EXPR_ is true. Zero or more `elseif`s may be used between `if` and
+`endif`. An `elseif` with no _EXPR_ is the same as `else`. In nested
+constructions `elseif` always refers to the innermost unclosed `if`.
+
+Additional special `if` constructs are:
+- `ifdef SYM` / `ifndef SYM`: Symbol _SYM_ is/is not defined.
+- `ifused SYM` / `ifnused SYM`: Symbol _SYM_ has been referenced before
+  this point in the assembly.
+- `ifexist FILE` / `ifnexist FILE`: File _FILE_ does/doesn't exist. Same
+  syntax and search paths as `include` (§3.9.2).
+- `ifb ARGLIST` / `ifnb ARGLIST`: True/false if all arguments in the list
+  are empty strings.
+
+`switch EXPR` / `case VAL` / `elsecase` / `endcase` compares the value
+of _EXPR_ against each _VAL_, assembling only the first matching case.
+
 ### Listing Control (§3.7)
 
 - `title TITLE`
@@ -302,3 +378,5 @@ Common to all processors:
 [as-dl]: http://john.ccac.rwth-aachen.de:8000/as/download.html
 [as-doc]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html
 [as]: http://john.ccac.rwth-aachen.de:8000/as/
+[§2.10.6]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html#sect_2_10_6_
+[§2.10.7]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html#sect_2_10_7_
