@@ -75,10 +75,10 @@ bus contents. It also details how to run reset/irq/nmi with a signal
 generator to externally induce an (obviously limited) loop.
 
 The [Woz design][ss woz] (from the Apple 1 manual) uses a single 7474 (two
-[may stop on the second cycle of each instruction][f65 79993] (due to φ1
-clock phase) and there are other [issues with CMOS systems][f65 79991].
 flip-flops) to toggle the RDY line, optionally using SYNC and another
 switch to toggle between instruction and cycle stepping. It appears that it
+[may stop on the second cycle of each instruction][f65 79993] (due to φ1
+clock phase) and there are other [issues with CMOS systems][f65 79991].
 
 The [Baltissen Debugger][balt], designed for the C64 among others, latches
 the display (via '573 latches) on the high half of φ2 (very useful if your
