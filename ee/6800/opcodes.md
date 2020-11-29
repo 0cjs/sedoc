@@ -13,9 +13,9 @@ This is a quick reference for hand-assembly.
     BEQ   BNE      BMI   BPL     BCS   BCC     BVS   BVC
      27₄   26₄      2B₄   2A₄     25₄   24₄     29₄   28₄
 
-    unsigned         two's complement
-    BLS   BHI      BLT   BLE   BGE   BGT
-     23₄   22₄      2D₄   2F₄   2C₄   2E₄
+    /  after  \     unsigned       two's complement
+    | CMP CBA |    BLS   BHI     BLT   BLE   BGE   BGT
+    \ SUB SBA /     23₄   22₄     2D₄   2F₄   2C₄   2E₄
 
     CLC   SEC   CLV   SEV   CLI   SEI
      0C₂   0D₂   0A₂   0B₂   0E₂   0F₂
