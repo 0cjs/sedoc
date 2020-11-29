@@ -31,6 +31,12 @@ This is a quick reference for hand-assembly.
     INC     4C₂     5C₂     7C₆     6C₇     08₄     31₄     (INX,INS)
     DEC     4A₂     5A₂     7A₆     6A₇     09₄     34₄     (DEX,DES)
 
+    ASL     48₂     58₂     78₆     68₇
+    ASR     47₂     57₂     77₆     67₇
+    LSR     44₂     54₂     74₆     64₇
+    ROL     49₂     59₂     79₆     69₇
+    ROR     46₂     56₂     76₆     66₇
+
             #nn     zp     addr     n,X     A←A•B
     SUB A   80₂     90₃     B0₄     A0₅     SBA 10₂
     CMP A   81₂     91₃     B1₄     A1₅     CBA 11₂
