@@ -35,6 +35,13 @@ interrupt handling, the `RTI` instruction, etc.
     $FFFC $FFFD     RESET
     $FFFE $FFFF     IRQ, BRK
 
+#### Reset/Startup
+
+On reset interrupts are disabled and the PC loaded from the reset vector;
+all other registers and status are undefined. Therefore the start up
+sequence must set the stack pointer, clear decimal mode and (when ready)
+clear the IRQ mask flag.
+
 
 Program Status Register (P, Flags)
 ----------------------------------
