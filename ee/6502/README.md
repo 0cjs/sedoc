@@ -42,6 +42,8 @@ all other registers and status are undefined. Therefore the start up
 sequence must set the stack pointer, clear decimal mode and (when ready)
 clear the IRQ mask flag.
 
+CMOS parts may clear decimal mode on reset as they do on IRQ.
+
 
 Program Status Register (P, Flags)
 ----------------------------------
