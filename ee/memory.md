@@ -125,6 +125,18 @@ Hitachi [HM62256A] series 32K×8 high-speed CMOS
   - /WE=L /OE=H: D in, write cycle (diag. 1, /OE clock, /CS before /WE)
   - /WE=L /OE=L: D in, write cycle (diag. 2, /OE low fixed)
 
+SRAM can be battery-backed when the system power is off; see [this EDN
+article](sch/simpleCMOS_RAMbackup.jpg) (from [this message][f65 32004]) for
+CMOS switch and single-transistor designs.
+
+### FRAM
+
+Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
+- Critical point: "Asserting /CE low causes the address to be latched
+  internally. Address changes that occur after /CE goes low will be ignored
+  until the next falling edge occurs." Thus for 6502 `C̅E̅` should be
+  qualified with φ2. See [forum.6502.org thread][f65 6380] for more.
+
 
 
 <!-------------------------------------------------------------------->
@@ -137,6 +149,10 @@ Hitachi [HM62256A] series 32K×8 high-speed CMOS
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
 [AT28C64]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
 [CAT28F512]: https://datasheet.octopart.com/CAT28F512PI-90-Catalyst-Semiconductor-datasheet-1983.pdf
+[FM1808]: https://docs.isy.liu.se/pub/VanHeden/DataSheets/fm1808.pdf
 [HM62256A]: https://datasheet.octopart.com/HM62256ALP-10-Hitachi-datasheet-115281844.pdf
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
+
+[f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
+[f65 6380]: http://forum.6502.org/viewtopic.php?f=4&t=6380
