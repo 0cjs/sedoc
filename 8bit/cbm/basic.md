@@ -26,6 +26,10 @@ Commands:
   blinking light) if the file already exists. Use `SAVE
   "@0:filename",8` to overwrite.
 
+Functions:
+- `AND`, `OR` operate on and return 16-bit signed ints. `XOR` is not
+  provided (except on PLUS/4); substitute `(A OR B)-(A AND B)`.
+
 
 Copying ROM to RAM
 ------------------
