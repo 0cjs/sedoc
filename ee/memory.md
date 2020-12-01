@@ -18,6 +18,8 @@ Notes:
 - Plain suffixes are for 23xxx PROMs and 27xxx EPROMS.
 - 28xxx (5V programmable) notably non-JEDEC marked with `●`.
 - 62xxx are SRAM
+- See also the [maskrom-pinouts](sch/maskrom-pinouts.png) diagram.
+
 
 Chart:
 
