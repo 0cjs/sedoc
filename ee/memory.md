@@ -128,7 +128,9 @@ Hitachi [HM62256A] series 32K×8 high-speed CMOS
 
 SRAM can be battery-backed when the system power is off; see [this EDN
 article](sch/simpleCMOS_RAMbackup.jpg) (from [this message][f65 32004]) for
-CMOS switch and single-transistor designs.
+CMOS switch and single-transistor designs. [Robert Sprowson's EPROM
+Emulator][ee sprow] design also has much useful information.
+
 
 ### FRAM
 
@@ -155,5 +157,6 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
 
+[ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
 [f65 6380]: http://forum.6502.org/viewtopic.php?f=4&t=6380
