@@ -18,6 +18,10 @@ Families
   lots of information on glue logic families and how to choose them.
 - TI document on CMOS/HC/HCT/TTL and noise level ranges in TTL:
   [SN54/74HCT CMOS Logic Family Applications and Restrictions][ti-hct].
+- LS reduced power consumption by reducing output drive and increasing
+  input impedence; replacing original with LS can thus cause problems in
+  heavily loaded signals such as clocks. Replacing original with HCT,
+  which has more output drive (especially upward) may work.
 - LS loads signal lines a lot more than HC; outputs can't pull high
   enough into some CMOS loads for them to consistently recognize HIGH
 - HC is fast enough for 4 MHz; AC required for faster.
