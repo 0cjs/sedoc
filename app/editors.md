@@ -185,7 +185,7 @@ usually text-based.
 
 [vis]: https://github.com/martanne/vis
 
-[kak gh] https://github.com/mawww/kakoune
+[kak gh]: https://github.com/mawww/kakoune
 [kak home]: http://kakoune.org/
 [nishantjr]: https://github.com/nishantjr/dot-files/blob/master/dot/config/kak/kakrc
 
