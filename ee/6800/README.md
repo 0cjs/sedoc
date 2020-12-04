@@ -10,9 +10,12 @@ This covers the Motorola 6800 series processors ([timeline]):
 - [README](README.md), [asm](asm.md), [opcodes](opcodes.md),
   [progcard](progcard)
 
-- __6802__, __6808__ (1977-03): Internal clock. '02 has 128 bytes of RAM.
-- __6801__, __6803__ (1978-08): 16-bit D register, multiply and other
-  instructions. (Used by GMC.) See [[arch]] for details.
+- __6802__, __6808__ (1977-03): Internal clock. '02 has 128 bytes of RAM
+  and can preserve 32 bytes of it with standby power.
+- __6801__, __6803__ (1978-08): (Used by GMC.) [asm](asm.md) for details.
+  - Architecture: D register; PHX, multiply and other
+  - Hardware: 128 B RAM, 16-bit timer, UART, up to 13 PIA lines.
+  - 6801 has up to 31 PIA lines, 2 KB mask ROM.
 
 This does not cover:
 - __6805__ (1979): 8-bit X register and other incompatible changes.
