@@ -25,6 +25,11 @@ Families
 - LS loads signal lines a lot more than HC; outputs can't pull high
   enough into some CMOS loads for them to consistently recognize HIGH
 - HC is fast enough for 4 MHz; AC required for faster.
+- 74LVC1G and 74AHCT1G families (TI "litle logic," mostly single gates in
+  4-8 pin "flyspeck" packages) simplify routing and have a maximum
+  propagation time of ≤ 3 ns, combining these can be faster than more
+  integrated ICs. (Esp. useful for building gates with wide inputs, e.g.,
+  13-input NAND.) Discussion: [[any 1767]]. Docs: [[TI SCYA0409A]].
 
 ### HC over LS in Modern Systems
 
@@ -138,16 +143,16 @@ TTL input may load the output so much that the CMOS no longer sees a
 high input.
 
 
-Sources
--------
-
-### Sources
+References
+----------
 
 Family-related (5 V level):
 * Fairchild, [AN-319][fc-an-319] comparing LS-TTL, ALS-TTL, HC-CMOS, S-TTL.
 * Radical Brad's [VIC-20 JetPack][rbv20] gives levels and the chips he
   uses for interfacing.
 * [BJ Furman ME 106 Intro to Mechatronics][ME106]. CMOS vs. TTL.
+* [[TI SCYA0409A]] Texas Instruments, "How To Select Little Logic"
+  (SCYA0409A) 2010.
 
 Level-related:
 * 3.3V CMOS levels from `74LVT04` Hex Inverter.
@@ -185,7 +190,9 @@ Level- and current-related:
 <!-------------------------------------------------------------------->
 [3vTnT]: https://www.newark.com/pdfs/techarticles/microchip/3_3vto5vAnalogTipsnTricksBrchr.pdf
 [ME106]: https://web.archive.org/web/20150412022002/engr.sjsu.edu/~bjfurman/courses/ME106/ME106pdf/TTL-CMOS_logic-levels.pdf
+[TI SCYA0409A]: http://anycpu.org/forum/download/file.php?id=225&sid=4af8a5ae7968b237983d98bb8ce21cb8
 [aac-lsvl]: https://www.allaboutcircuits.com/textbook/digital/chpt-3/logic-signal-voltage-levels/
+[any 1767]: http://anycpu.org/forum/viewtopic.php?p=1767#p1767
 [f6-195-19810]: http://forum.6502.org/viewtopic.php?f=4&t=195&start=15#p19810
 [f6-p1288]: http://forum.6502.org/viewtopic.php?p=1288#p1288
 [f6-p904]: http://forum.6502.org/viewtopic.php?p=904#p904
