@@ -12,12 +12,18 @@ See end of this document for 6801/03 architecture differences.
 Single 16-bit 64K address space for memory and I/O. Shorter _direct
 addressing_ available for addresses $00-$FF.
 
-### Registers and Flags
+### Registers
 
 - `A`, `B` (8): Accumulators. Also `ACCA`/`ACCB`/`ACCX` (either).
 - `X` (16): 16-bit Index register, also `IX`
 - `SP` (16): Stack pointer (grows down) to next "empty" location
 - `PC` (16): Program counter
+
+6801/3:
+- `D` (16): A 16-bit view of `A` and `B`. (MSB register not specified?)
+
+### Flags
+
 - Condition codes or processor status byte: `11HINZVC`
 
       1  Always 1 on read; ignored by by TAP, RTI, etc.
@@ -28,8 +34,6 @@ addressing_ available for addresses $00-$FF.
       V   Overflow
       C   Carry-borrow (carry for add; borrow for subtract).
 
-The 6800/6802 have no `D` view of `A` and `B` together, but later
-processors do.
 
 ### Stack and Subroutines
 
@@ -107,12 +111,11 @@ _accumulator addressing_ may be done either way in Motorola assemblers,
 ### 6801/6803 New/Changed Instructions/Mnemonics
 
 Some instruction timings have changed.
-
-Cycle counts given under `~`, Flags affected have `*` under `NZVC`.
+Cycle counts given under `~`, affected flags have `*` under `NZVC`.
 
     mnem  op        ~  NZVC  descr
     ─────────────────────────────────────────────────────────────────────
-    BRN   21 aa aa  3  ----  branch never
+    BRN   21 oo     3  ----  branch never
     JSR   9D dd     5  ----  direct page addressing mode
     ─────────────────────────────────────────────────────────────────────
     PSHX  3C        4  ----  [SP--] ← X
@@ -144,6 +147,7 @@ Cycle counts given under `~`, Flags affected have `*` under `NZVC`.
     LSL   =ASL               logical shift left
 
 References:
+- Complete [6801/03 instruction table][6801inst].
 - Table 1 of the 6801/6803 data sheet. Table 10 is also an excellent list
   of all opcodes, timings and affected flags.
 
@@ -170,34 +174,6 @@ Relative addresses (for `BRA` etc.) are -128 through +127 from the
 location of the following instruction, i.e., `BRA` to a relative
 address of zero executes the next instruction.
 
-
-6801/03 Extensions over 6800/02
------------------------------------
-
-Some instruction timings are different and there is a 
-"D" register that's a concatenation of A, B, and the following
-instructions are added/changed:
-
-    D register:
-      LDD, STD
-      ADDD          D ← D + mem, no carry
-      SUBD          D ← D - mem
-      ASLD/LSLD     LSB ← 0, Carry ← MSB
-      LSRD          MSB ← 0, Carry ← LSB
-      LSL           Same as ASL (memory or either accumulator)
-    X register:
-      ABX           B ← X + B
-      PSHX, PULX
-    Branches:
-      BHS           Branch higher or same, = BCC
-      BLO           Branch lower, = BCS
-      BRN           Branch never
-      JSR           Additional direct (1-byte operand) addressing mode.
-    Miscellaneous:
-      MUL           D ← A * B (unsigned)
-      CPX           Compare X now works with any conditional branch instr.
-
-Complete [6801/03 instruction table][6801inst].
 
 
 <!-------------------------------------------------------------------->
