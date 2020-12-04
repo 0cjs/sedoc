@@ -34,6 +34,10 @@ addressing_ available for addresses $00-$FF.
       V   Overflow
       C   Carry-borrow (carry for add; borrow for subtract).
 
+Flags are affected much more extensively than on the 6502. E.g.:
+- Stores (including X and S) affect `Z`,`N`, clear `V`.
+- `V` affected by CPX (MSB overflow).
+- `V` affected by rotates and shifts (N xor C).
 
 ### Stack and Subroutines
 
