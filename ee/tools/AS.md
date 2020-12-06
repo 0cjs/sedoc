@@ -22,6 +22,11 @@ in [0cjs/8bitdev] for a version and a build script. Consider doing a
 §I gives notes on the source and hints on porting; this may also
 contain information needed for a Unix install.
 
+A couple of useful generic include files are shipped with AS:
+- `bitfuncs.inc`: bitfield operations such as `hi()`, `lo()`, `mask()`,
+  `getbit()`, etc.
+- `ctype.inc`: Similar to the C version: `isdigit()`, `isupper()` etc.
+
 
 Invocation
 ----------
@@ -271,7 +276,7 @@ Shifts are logical (filling with `0`), not arithmetic. Lines starting with
 `>` list different precedence in descending order; lines starting with `=`
 have same precedence for all operators.
 
-    >    ~ NOT      << lshift   >> rshift   >< bit mirror
+    >    ~ bit-NOT  << lshift   >> rshift   >< bit mirror
     >    & bit-AND   | bit-OR    ! bit-XOR
 
          ^ exponen
@@ -282,6 +287,8 @@ have same precedence for all operators.
     =   <>    >=    <=     >     <        = == (same)
 
 Functions ([§2.10.7]).
+
+There is also an (almost undocumented) `defined(SYM)` function.
 
 
 Assembler Directives
