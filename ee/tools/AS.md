@@ -136,8 +136,9 @@ The `MOMSEGMENT` symbol contains the current segment. The `symtype()`
 function returns the current segment of a symbol; `symtype(aLabel)`
 returns `1` if `aLabel` is in the code segment.
 
-Symbols
--------
+
+Symbols (§2.7)
+--------------
 
 Symbols (§2.7) are up to 255 chars from [`A-Za-z0-9_.`]; the first char
 must not be a digit. They are case-insensitive unless `-U` is supplied on
@@ -145,11 +146,9 @@ the command line; pre-defined symbols are upper-case. Each symbol is part
 of a segment, default `CODE`. (See above.) Each symbol also has a type
 of `String`, `Int` or `Float`.
 
-Constants/vars (§3.1.1) are defined with: `set` or `:=`, which allows
-later redefinition, and `equ` or `=`, which is constant. When not
-prefixed by a label the first argument is the label. An additional
-argument may be given to restrict the definition to a given address
-space.
+Constants and variables (§3.1.1) are defined with a label starting in
+column 1 and/or `equ`, `=`, `set`, `enum` and other pseudo-ops. See
+[Definitions](#definitions-31) below for details.
 
 Symbol values may be subtituted using braces. This can be used to produce
 new symbol names; be careful not to produce invalid ones.
@@ -159,8 +158,8 @@ new symbol names; be careful not to produce invalid ones.
                 jnz     skip{temp}
     skip{temp}: nop
 
-Pre-defined symbols are listed in §E and in the listing and `.map` file,
-with the exception of the following:
+Predefined symbols are listed in [Appendix E][§E] of the manual. They are
+also displayed in the listing and `.map` file, with the following exceptions:
 
     *, $, PC            Current program counter
     MOMSEGMENT          Current segment
@@ -302,15 +301,57 @@ Assembler Directives
 
 ### Definitions (§3.1)
 
-- `equ`, `set`: Typeless constant; not allocated to a segment. `equ`
-  is single-assigment; `set`s are reassignable variables. (May be
-  allocated to a segment by providing segment name as additional
-  argument.)
-- `enum`: Sequential `equ` assigment of `0…` to arguments; use `=` to
-  override value. Continue immeidately previous enum with `nextenum`
-- `label`: XXX
+All [symbols](#symbols-27) are assigned to a [segment](#segments-3213) or,
+with default use of `equ` etc., are "typeless" and assigned to
+pseudo-segment 0/`NOTHING`.
+
+Any text starting in column 1 is a label. A label alone on a line or
+followed by code (i.e., not a pseudo-op) defines a symbol in `CODE` segment
+with a value of the current assembly location (`*`, `$` or `PC`). All other
+definitions are assigned to a segment based on the pseudo-op.
+
+Definition pseudo-ops may named using a label or may instead take the
+symbol name as the first argument. The following are equivalent:
+
+    foo equ $100
+        equ foo,$100
+
+Definitions made with `set` are _variables_, and may be redefined with
+later `set`s. All other definitions are single-assignment _constants_ and
+will generate an error if redefined. The one exception to this is `popv`,
+which will silently change the value of previously defined constants.
+
+- `equ`: Define a constant. Placed in pseudo-segment 0/`NOTHING` by
+  default; an additional parameter may be given to allocate it to another
+  segment.
+- `set`: Define a variable. As `equ` but allows later redefinition.
+- `port`: Define a constant in the `IO` segment.
+- `label`: Define a constant in the `CODE` segment. (Required to define
+  non-local labels in macros, e.g. `foo label $`.)
+- `enum`: Sequential constant definition of `0…` to symbol name arguments.
+  Use `=` to override value. Continue immediately previous enum with
+  `nextenum`
 - `charset`, `codepage`: XXX
-- `pushv`, `popv`: XXX
+
+`pushv` and `popv` (§3.1.15) both take arguments `[stackname],sym[,sym …]`.
+At the end of each pass a warning is generated for any stacks that still
+have values in them and all stacks are then emptied.
+- _stackname_ may be empty to use the unnamed (default) stack. There is one
+  global namespace for stack names.
+- _sym_ must be the name of an already-defined symbol in all cases.
+- `pushv` saves the current value of each symbol _sym_ on the given stack.
+- `popv` restores values to (possibly different) symbols, and will allow
+  reassignment of `equ` definitions. Remember to reverse the _sym_ order
+  used with `pushv`.
+
+`pushv` can be used to generate a fairly clear error message and abort the
+assembly if a symbol required to be externally defined (by the including
+file or a command-line option) is not present:
+
+    ;   Abort assembly with a clear message if an essential definition is missing.
+        set ______,
+        pushv ,pmon_ramlo,rdlinebuf,rdlinebuf_end,pmon_org
+        popv  ,______,______,______,______
 
 ### Data Definitions (§3.3)
 
@@ -392,3 +433,4 @@ user and set _SYM_ to that value (doing appropriate conversion), as with
 [as]: http://john.ccac.rwth-aachen.de:8000/as/
 [§2.10.6]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html#sect_2_10_6_
 [§2.10.7]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html#sect_2_10_7_
+[§E]: http://john.ccac.rwth-aachen.de:8000/as/as_EN.html#sect_E_
