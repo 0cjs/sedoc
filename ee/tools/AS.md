@@ -166,7 +166,9 @@ new symbol names; be careful not to produce invalid ones.
 Predefined symbols are listed in [Appendix E][§E] of the manual. They are
 also displayed in the listing and `.map` file, with the following exceptions:
 
-    *, $, PC            Current program counter
+    PC                  Current assembly address (Thomson)
+    *                    " (Motorola, Rockwell, Microchip, Hitachi)
+    $                    " (Intel, Zilog, TI, Toshiba, NEC, Siemens, AMD)
     MOMSEGMENT          Current segment
     MOMSECTION          Name of current section or empty string
     MOMPASS             Current assembly pass
@@ -334,7 +336,7 @@ which will silently change the value of previously defined constants.
 - `set`: Define a variable. As `equ` but allows later redefinition.
 - `port`: Define a constant in the `IO` segment.
 - `label`: Define a constant in the `CODE` segment. (Required to define
-  non-local labels in macros, e.g. `foo label $`.)
+  non-local labels in macros, e.g. `foo label *`.)
 - `enum`: Sequential constant definition of `0…` to symbol name arguments.
   Use `=` to override value. Continue immediately previous enum with
   `nextenum`
