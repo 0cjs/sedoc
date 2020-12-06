@@ -50,6 +50,7 @@ Save/load:
 Programming:
 - `RUN n`: (Re-)run program, optionally at a given line number. Given a
   filename will also load/run from tape.
+- `CLEAR [himem]`: Set maximum address used by BASIC to be _himem_-1?
 - `USR(addr)`: Run ML program, e.g., `mload:a=usr($1000)`.
 - `VARPTR(v)`: Gives address of variable _v_. (Do not use quotes.)
 - `MON`: Enter machine-language monitor. See [rom](rom.md).
