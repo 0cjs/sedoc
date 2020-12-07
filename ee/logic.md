@@ -101,9 +101,9 @@ and links][f6-195-19810].
 Logic Levels
 ------------
 
-These vary with individual parts; always verify with data sheet.
-CMOS may generally be run up to 15 V with approx.
-0.3\*Vcc = LOW max and min HIGH = 0.7\*Vcc.
+These vary with individual parts; always verify with data sheet. CMOS
+may generally be run up to 15 V with approx. 0.3\*Vcc = LOW max and
+min HIGH = 0.7\*Vcc.
 
 |    OUTPUT | min low | LOW max | min HIGH | high max |
 |----------:|--------:|:--------|---------:|:---------|
@@ -123,6 +123,11 @@ For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 * `74HC245`: CMOS → CMOS
 * `74VC245`: 3.3V CMOS → 5V TTL
 * `74HCT245`: 5V TTL → 5V CMOS
+
+3.3V CMOS outputs actually meet the TTL spec, so you can also feed these
+directly into 5V HCT, ACT or AHCT parts.
+
+There's some discussion in [this thread][f6-6386] on level conversion.
 
 ### Current
 
@@ -194,6 +199,7 @@ Level- and current-related:
 [aac-lsvl]: https://www.allaboutcircuits.com/textbook/digital/chpt-3/logic-signal-voltage-levels/
 [any 1767]: http://anycpu.org/forum/viewtopic.php?p=1767#p1767
 [f6-195-19810]: http://forum.6502.org/viewtopic.php?f=4&t=195&start=15#p19810
+[f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
 [f6-p1288]: http://forum.6502.org/viewtopic.php?p=1288#p1288
 [f6-p904]: http://forum.6502.org/viewtopic.php?p=904#p904
 [f6-t3620-2]: http://forum.6502.org/viewtopic.php?f=12&t=3620&start=15
