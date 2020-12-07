@@ -50,11 +50,14 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 - __National CF-2000__:     16k/16k 2C.
 - __Sony HB-55__:           16k/16k 1C+E. Cheap keyboard.
 - __Sony HB-55P__:          16k/16k 2C. European version.
-- __Casio PV-16__:          16k/16k 1C+E. Ext. PSU 10V 800 mA.
+- __Casio PV-16__:          16k/16k 1C+E. Ext. PSU 10 V 800 mA.
                             Small chiclet keyboard.
+- __Casio MX-10/MX-101__:   16k/16k. PSU 7 V 800 mA.
+- __Casio PV-7__:            8k/16k 1C+E. No CMT. PSU; 10 V 800 mA center-neg.
+                            Joypad keys plus 2nd set of cursor keys.
 
-The __Casio PV-7__ and __Casio MX-10__ have no CMT interface; they need
-the FA-32 adapter to add it.
+The __Casio PV-7__ and __Casio MX-10/MX-101__ have no CMT interface; they
+need the FA-32 expansion unit (which also adds a 100 V PSU)  to add it.
 
 #### Power Supplies
 
