@@ -136,6 +136,14 @@ Emulator][ee sprow] design also has much useful information.
 
 ### FRAM
 
+Reading as well as writing wears out cells; keep an eye on endurance and
+consider moving tight frequent loops (e.g., wait for character input) to
+traditional RAM. (On 6502, below stack can work well.)
+-         2003-03 rev 2.3: 10^10 read/writes (Windfall [[f65 6380]])
+- FM1608  2007-05 rev 3.2: 10^12 read/writes (datasheet)
+- FM1808  2007-08 rev 3.3: 10^12 read/writes (datasheet)
+- FM18L08 2007-07 rev 3.4: unlimited read/write cycles
+
 Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 - Critical point: "Asserting /CE low causes the address to be latched
   internally. Address changes that occur after /CE goes low will be ignored
