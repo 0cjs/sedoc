@@ -212,6 +212,12 @@ Apple IIc:
 - CVBS:
   - Color burst during vsync
 
+PET (built-in monitor; luma switches on/off around 2.5 V):
+- Explanation, schematics and some timings from [Andre][pet andre].
+- [PET CRTC] spreadsheet.
+- Further info and mods in [this thread][pet f6 623]. Includes support for
+  double horizontal scan rate (40 kHz instead of 20 kHz lines @60 Hz) for
+  higher resolution.
 
 #### References
 
@@ -278,6 +284,9 @@ Other sources
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
 [man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
+[pet andre]: http://6502.org/users/andre/petindex/crtc.html
+[pet f6 623]: http://forum.6502.org/viewtopic.php?f=1&t=6231
+[pet_crtc]: http://inchocks.co.uk/commodore/PET/PET_CRTC.xls
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
