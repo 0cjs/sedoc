@@ -31,6 +31,42 @@ standard used for floppy drive cables.)
 Standards and Suggestions
 -------------------------
 
+### DC Power Supply
+
+8-pin 2×4 "dupont" header for multi-voltage DC to small systems. With the
+KEY blocked on the PSU side and the middle GND pin always present on the
+equipment side, the connector cannot be inserted the wrong way around so
+long as all the pins are aligned. (This could be improved with a better
+connector; dupont is a bit of a hack for this.)
+
+    female PSU side     male equipment side
+    GND GND +12 -12      -12 +12 GND GND        GND pins required
+    +5V +5V KEY -5V      -5V KEY +5V +5V        KEY slot must have no pin
+
+    GND black   +12V yellow   -12V blue         Colors are ATX standard.
+    +5V red                    -5V white
+
+Using [calculator.net][calcnet vd]), expected voltage drops for a 1.5 m PSU
+cable are:
+
+    GND, +5V   2× 18 AWG (0.82 mm²)   3.0 A   1.9%    4.91 V
+                                      5.0 A   3.2%    4.84 V
+        ±12V   1× 20 AWG (0.50 mm²)   1.0 A   0.9%  ٍ±11.9  V
+         -5V   1× 20 AWG (0.50 mm²)   0.5 A   1.0%    4.95 V
+
+(Testing so far over 2×18AWG has seen drops: 5.00→4.87 V @3.0 A;
+5.00→4.82 V @4.0A; 4.99→4.76 0.00→0.10 V @5.0 A.)
+
+The equipment side will typically be a short cable with the male power
+connector on one end and a system-specific connector on the other (barrel
+of either polarity, DIN, etc.) or a pigtail connected directly to the
+motherboard.
+
+Heat shrink is placed on a) individual spade lugs, b) along wire bundle,
+and c) on dupont header. Chokes should be added to reduce noise.
+
+[calcnet vd]: https://www.calculator.net/voltage-drop-calculator.html
+
 ### Motorola PIA (6820, 6821, 6522, 6526, etc.)
 
 Darrel Rictor, creator of several SBCs and active on forum.6502.org, has a
