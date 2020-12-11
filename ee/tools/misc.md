@@ -62,6 +62,26 @@ again. Thresholds are:
 - Power draw (max limit > 185 W).
 
 
+Buck Converter in Plastic Case
+------------------------------
+
+[AliExpress page][bcpc] ($4.04)
+
+- Input: 5-23 V, <20 V recommended.
+- Output: 0-16.5 V; dropout 1 V
+- Current: 0-3 A, ≤2 A recommended. <10 mA not displayed.
+- Specs:
+  - Efficiency: 95%
+  - Regulation: ≤0.8% (voltage and load)
+  - Size: 62 × 44 × 18 mm, 45 g
+
+Calibration: with input power off, hold down left button and turn on input
+power. Display will start flashing and 5 V will be output; use buttons to
+set display voltage to match output voltage on multimeter.
+
+Reads about 0.1 V low at 12 V output from 16 V input.
+
+
 Sepic Power Supply XY-SEP4
 --------------------------
 
@@ -107,5 +127,6 @@ output. Long-press `SET` to exit.
 
 
 <!-------------------------------------------------------------------->
-[ali-ccload]: https://www.aliexpress.com/item/32821877897.html
 [XY-SEP4]: https://www.aliexpress.com/item/1005001316643778.html
+[ali-ccload]: https://www.aliexpress.com/item/32821877897.html
+[bcpc]: https://www.aliexpress.com/item/32802079884.html
