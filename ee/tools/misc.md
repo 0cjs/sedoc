@@ -1,7 +1,10 @@
 Misc. EE Tools
 ==============
 
-### [Adjustible Constant Current Electronic Load][ali-ccload].
+Adjustible Constant Current Electronic Load
+-------------------------------------------
+
+[AliExpress page][ali-ccload].
 
 Max load is 150 W.
 
@@ -59,5 +62,50 @@ again. Thresholds are:
 - Power draw (max limit > 185 W).
 
 
+Sepic Power Supply XY-SEP4
+--------------------------
+
+[AliExpress page][XY-SEP4] (¥931).
+
+- Input: 5-30 VDC
+  - Min. 8 V for full output; 5 V gives about 15 W
+  - LVP settable (default 4.7 V); disconnects output
+- Output: 0.5-30 VDC, 0.0-4.0 A, 35 W or 50 W w/air cooling
+- Accuracy: ±1%+1word @10 mV; ±1.5%+3words @1 mA
+- Efficiency: ~88%
+- Protection: input reverse, temp 100°C, user-settable
+  - Protection display codes are `OEP` for internal protection and the
+    shutoff menu items below.
+
+Upper pot on side is voltage setting; lower pot is current limit setting.
+Short output to set current limit.
+
+Display interface (`V` appears as `U`):
+
+    Key   Short Press               Long Press
+     ▲    disp. V in/out            Calibration interface
+     ▼    disp. A/W/Ah/Wh/time      Ah/Wh/time reset (individual per item)
+    SET   (none)                    Shutoff menu
+    PWR   output on/off (& timer?)  Set boot state (output on/off)
+
+The shutoff menu is for settings that shut down output. As well as arrows,
+`PWR` will change the range (9/99/etc.) or on/off for some settings. `SET`
+moves to the next item; long press it to exit.
+- `LVP` (4.70 V): minimum input voltage
+- `OVP` (31 V): maximum output voltage
+- `OCP` (4.1 A): maximum output current
+- `OPP` (35 W): maximum output power
+- `OAH` (-- Ah): maximum capacity
+- `OPH` (-- Wh): maximum energy
+- `OHP` (-- h): maximum time
+- `DAT` (0): ???
+
+The calibration interface appears to let you set what's displayed for the
+current settings, e.g., change the value sensed for the current voltage
+output. Long-press `SET` to exit.
+
+
+
 <!-------------------------------------------------------------------->
 [ali-ccload]: https://www.aliexpress.com/item/32821877897.html
+[XY-SEP4]: https://www.aliexpress.com/item/1005001316643778.html
