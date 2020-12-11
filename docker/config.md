@@ -74,7 +74,7 @@ Loopback in Production][atomic-loopback]. The 'File Systems' section
 of the RHEL release notes for [7.1] and [7.3] offer further
 information.
 
-[7.1]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.1_release_notes/chap-red_hat_enterprise_linux-7.1_release_notes-file_systems)
+[7.1]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.1_release_notes/chap-red_hat_enterprise_linux-7.1_release_notes-file_systems
 [7.3]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.3_release_notes/technology_previews_file_systems
 
 #### CoreOS / Container Linux
