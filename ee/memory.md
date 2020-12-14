@@ -14,12 +14,13 @@ References:
 - A [search for "memory dip" on the JDEC site][JDEC-memory-dip] gives
   standards and pinouts for various kinds of memory chips.
 
-Notes:
-- Plain suffixes are for 23xxx PROMs and 27xxx EPROMS.
-- 28xxx (5V programmable) notably non-JEDEC marked with `●`.
-- 61xx and 62xxx are SRAM
+JEDEC RAM and ROM pinouts are very similar but not quite identical. The
+chart below marks with `●` the RAM pins standardised differently from the
+ROM pins.
+- Plain suffixes are for 23nnn PROMs and 27nnn EPROMS.
+- 61nn and 62nnn are JEDEC SRAM standard.
+- 28nnn are 5V-programmable EEPROM using JEDEC RAM pinouts.
 - See also the [maskrom-pinouts](sch/maskrom-pinouts.png) diagram.
-
 
 Chart:
 
