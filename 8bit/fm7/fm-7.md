@@ -276,8 +276,8 @@ upper right; below is looking outward from the system unit.
 <!-------------------------------------------------------------------->
 [fm7assem]: https://archive.org/details/FM7MC6809ASM
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
-[fm7w-hw]: http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
-[fm7w-mmap]: http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm
+[fm7w-hw]: https://web.archive.org/web/20160719040422/http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
+[fm7w-mmap]: https://web.archive.org/web/20160705051334/http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm
 [haserin]: http://rpcg1.home.mindspring.com/difference.html
 [io198304]: https://archive.org/stream/Io19834#page/n282/mode/1up
 [lgreen]: http://www.nausicaa.net/~lgreenf/fm7page.htm
