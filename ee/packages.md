@@ -1,5 +1,26 @@
+Device Packages
+===============
+
+Transistor Outline
+------------------
+
+JEDEC standardized:
+- __[TO-18]:__ Largish metal case; 2-3 leads; tab is 45° from pin 1.
+  E.g. original 2N2222 transistor.
+- __[TO-92]:__ Common transistor package; cylindrical with flat side which
+  is front. Leads 1-3 (read left to right when looking at front) at .05"
+  (1.27mm) pitch. Typ. E-B-C for American devices, E-C-B for Japanese.
+  E.g., 2N3904 NPN, PN2222A (plastic version of TO-18 2N2222).
+- __[TO-220]:__ 3 through-hole leads with .1" pitch (2/4/5/7 lead variants
+  avail.) and a heatsink "tab" with hole. E.g., 7805 linear voltage regulator.
+- __[TO-252] / DPAK:__ Smaller variant of TO-263/D2PAK. 3-pins @2.3 mm
+  pitch or 5 pins @1.1 mm pitch.
+- __[TO-263] / D2PAK / DDPAK:__ Surface-mount version of TO-220 but with
+  neither extended metal tab (covers back of device only) nor mounting hole.
+
+
 IC Packages
-===========
+-----------
 
                     Pin Pitch    Body Width
     Abbr.           in     mm    in  Wb  mm   Leads  Standards
@@ -87,6 +108,13 @@ Sources
 
 
 <!-------------------------------------------------------------------->
+
+<!-- transistor -->
+[TO-18]: https://en.wikipedia.org/wiki/TO-18
+[TO-92]: https://en.wikipedia.org/wiki/TO-92
+[TO-220]: https://en.wikipedia.org/wiki/TO-220
+[TO-252]: https://en.wikipedia.org/wiki/TO-252
+[TO-263]: https://en.wikipedia.org/wiki/TO-263
 
 <!-- generic terms -->
 [DIP]: https://en.wikipedia.org/wiki/Dual_in-line_package
