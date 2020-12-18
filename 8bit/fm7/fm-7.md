@@ -21,6 +21,10 @@ Documentation
   information for hardware, timing diagrams, memory maps, I/O ports,
   video/keyboard controller communication, etc. _SS:n-m_ page refrences
   here refer to this.
+- [FM-7 全回路図][io198304], _I/O_ magazine, 1983-04, pp.281-300.
+  These appear to be a higher-res scan of a redrawn/typeset version of the
+  hand-drawn schematics below, and so are more readable, but they do not
+  include page cross-referenes for signal lines.
 - [ＦＭ－７ハードウェア回路図][fm7w-hw] has schematics, expansion slot
   connector pinouts.
 - [FM-7 F-BASIC 解析マニュアル][shuwa83]. Shuwa System Trading Co., Ltd.,
@@ -275,5 +279,6 @@ upper right; below is looking outward from the system unit.
 [fm7w-hw]: http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
 [fm7w-mmap]: http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm
 [haserin]: http://rpcg1.home.mindspring.com/difference.html
+[io198304]: https://archive.org/stream/Io19834#page/n282/mode/1up
 [lgreen]: http://www.nausicaa.net/~lgreenf/fm7page.htm
 [shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up
