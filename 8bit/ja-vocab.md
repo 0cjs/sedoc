@@ -7,6 +7,7 @@ up/down, enclosure, solid) then by stroke count in each character.
 
      4  －化        －か            suffix for a changing action
         切換        きりかえ        exchange, conversion, switchover
+        仕様        しよう          technical specification
      6  汎用        はんよう        generic (e.g., PC-8801 汎用I/Oポート)
         初期化      しょきか        initialization
      7  形式        けいしき        format (of a file)
