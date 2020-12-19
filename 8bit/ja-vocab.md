@@ -24,6 +24,7 @@ up/down, enclosure, solid) then by stroke count in each character.
         色相制御信号                RGBI intensity bit
         行番号      ぎょうばんごう  line number (現在… = current lno)
      8  表示        ひょうじ        display, indication
+        固定        こてい          fixed, hardcoded
         制御        せいぎょ        control, management
      9  発生        はっせい        generate
         直列        ちょくれつ      serial (data), series (electronics)
