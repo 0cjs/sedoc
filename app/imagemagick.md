@@ -1,8 +1,8 @@
 ImageMagick
 ===========
 
-`display` and `convert` are the primary programs for displaying and
-transforming images.
+`display` and `convert`/`mogrify` are the primary programs for displaying
+and transforming images.
 
 `import` captures from the screen:
 
