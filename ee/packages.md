@@ -105,6 +105,10 @@ Sources
     Was quite wrong about "SOP," but I fixed it.
   - [Thin Small Outline Package][TSOP].
 
+Identification/Logos:
+- [Elnec IC Logos](https://www.elnec.com/en/support/ic-logos/)
+- [Fandom How-to Wiki](https://how-to.fandom.com/wiki/How_to_identify_integrated_circuit_(chip)_manufacturers_by_their_logos). Includes list of reference sites.
+
 
 
 <!-------------------------------------------------------------------->
