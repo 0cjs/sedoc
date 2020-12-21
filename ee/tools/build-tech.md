@@ -6,11 +6,15 @@ Signal and Power Routing, Bypass Caps
 
 On an IC, all pins that source current must draw the current from the Vcc
 pin; all pins that sink current must sink it to the GND pin. The route
-between these two should be as short as possible. The ideal is ground and
-power planes underneath the signal traces; current through the plane will
-follow the route of the signal trace parallel to it. (Breaks in the ground
-plan will force the current around; see this [return current
-image](../sch/return-current.jpg) from [this video][feranec].
+between these two should be as short as possible.
+
+For AC signals, return current through a ground plane will tend to follow
+the route of the signal trace parallel to it on the other side of the
+board. This effect is not huge at low frequences, such as 400 Hz, but by 1
+MHz it's very tight, as shown in [this video][feranec] and the following
+image. Thus, the ideal is ground and power planes underneath the signal
+traces. Breaks in the ground plan will force the current around the break,
+as seen in this [return current image](../sch/return-current.jpg).
 
 Short of a proper ground plane, a quadrille mesh will also work well.
 Contrawise, Vcc down one side and ground on the other makes for very long
@@ -30,7 +34,8 @@ Bypass caps:
 
 References:
 - forum.6502.org, [Techniques for reliable high-speed digital circuits][f65
-  2029]
+  2029]. In the thread, [this post][f65 80566] has simulation images of
+  ground return paths at 1 Mhz.
 
 
 Soldering
@@ -237,6 +242,7 @@ Mechanical Connections
 <!-------------------------------------------------------------------->
 [cabs]: https://en.wikipedia.org/wiki/Cyanoacrylate#Filler
 [f65 2029]: http://forum.6502.org/viewtopic.php?f=4&t=2029
+[f65 80566]: http://forum.6502.org/viewtopic.php?f=4&t=2029&p=80566#p80566
 [feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
 [gogo]: https://sparks.gogo.co.nz/crimping/
 [millman]: http://tech.mattmillman.com/info/crimpconnectors/
