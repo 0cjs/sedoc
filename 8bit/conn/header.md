@@ -46,7 +46,7 @@ connector; dupont is a bit of a hack for this.)
     GND black   +12V yellow   -12V blue         Colors are ATX standard.
     +5V red                    -5V white
 
-Using [calculator.net][calcnet vd]), expected voltage drops for a 1.5 m PSU
+Using [calculator.net][calcnet vd], expected voltage drops for a 1.5 m PSU
 cable are:
 
     GND, +5V   2× 18 AWG (0.82 mm²)   3.0 A   1.9%    4.91 V
