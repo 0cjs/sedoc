@@ -2,6 +2,7 @@ Single-board Computer (SBC) Notes
 =================================
 
 Also see:
+- [Build Techniques](ee/tools/build-tech.md) (routing, bypass caps)
 - [Switch Input Debouncing](debounce.md)
 - [Address Decoding Notes](addr-decoding.md).
 - [Capacitors](capacitor.md) (for bypass caps)
@@ -41,6 +42,8 @@ output is pulled down. AliExpress: <¥100 in TO92; ~¥25 in SMD.
 
 Clock Circuits
 --------------
+
+More than any other, this signal is the most important to keep clean.
 
 - Consider a 74HCT4060. The data sheet also offers some useful info on
   values for RC and oscillator/RC component combinations.

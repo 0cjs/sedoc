@@ -5,10 +5,8 @@ General Notes
 -------------
 
 * See [memory](memory.md) for memory device pinouts.
-* 0.1 μF between power and ground!
-  - Every eight chips, 4.7 μF on array's power rails (PCB trace inductances).
-  - When using multiple solderless breadboards, jumper between GND (and
-    maybe Vcc) buses at multiple points along the length.
+* See [Build Techniques](tools/build-tech.md) and [Capacitor
+  Notes](capacitor.md) for routing and bypass cap information.
 * Generally, assert `C̅S̅` ("wake", activate address decoder) before
   `O̅E̅`/`W̅E̅` for better performance.
 * Non-65xx chips may require `R̅E̅`, `W̅E̅` to be asserted only after `C̅S̅`.

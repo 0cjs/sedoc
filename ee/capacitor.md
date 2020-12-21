@@ -4,6 +4,9 @@ Capacitor Notes
 Bypass Caps
 -----------
 
+Also see [Build Techniques](tools/build-tech.md) for routing and cap
+placement information.
+
 [Wikipedia][wp-decoup-cap] mentions ~100 nF ceramic per IC with
 up to a few hundred μF electrolytic/tantalum per board section.
 Cypress note [Using Decoupling Capacitors][cypress-decoup] goes
