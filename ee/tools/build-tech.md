@@ -8,9 +8,13 @@ On an IC, all pins that source current must draw the current from the Vcc
 pin; all pins that sink current must sink it to the GND pin. The route
 between these two should be as short as possible. The ideal is ground and
 power planes underneath the signal traces; current through the plane will
-follow the route of the signal trace parallel to it. Short of that, a
-quadrille mesh will also work well. Vcc down one side and ground on the
-other makes for very long return paths!
+follow the route of the signal trace parallel to it. (Breaks in the ground
+plan will force the current around; see this [return current
+image](../sch/return-current.jpg) from [this video][feranec].
+
+Short of a proper ground plane, a quadrille mesh will also work well.
+Contrawise, Vcc down one side and ground on the other makes for very long
+return paths!
 
 The "short return path" principle applied:
 - On cables with multiple power and ground, do not cluster either at the
@@ -233,5 +237,6 @@ Mechanical Connections
 <!-------------------------------------------------------------------->
 [cabs]: https://en.wikipedia.org/wiki/Cyanoacrylate#Filler
 [f65 2029]: http://forum.6502.org/viewtopic.php?f=4&t=2029
+[feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
 [gogo]: https://sparks.gogo.co.nz/crimping/
 [millman]: http://tech.mattmillman.com/info/crimpconnectors/
