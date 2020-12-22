@@ -46,6 +46,7 @@ references include:
   Manual][sa400sm] and [OEM Manual][sa400oem]
 - Jim Sather, _Understanding the Apple II_ [Chapter 9: The Disk
   Controller][sather9]
+- André Fachat, [_Notes on Floppy Disks_][andre19], 2019-01-02.
 
 For standard drives there are only two types of diskette magnetic
 media: what is now called "double density" (DD, 2DD and many other
@@ -182,6 +183,7 @@ Does not read 40-track diskettes. Gives:
 [pc8k]: 8bit/pc-8001/floppyif.md#protocol
 
 <!-- Diskette and Drive Types -->
+[andre19]: https://extrapages.de/archives/20190102-Floppy-notes.html
 [hj-8HD]: http://www.retrotechnology.com/herbs_stuff/8inchHD.html
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
 [hj-replace]: http://www.retrotechnology.com/herbs_stuff/drive.html#threefive
