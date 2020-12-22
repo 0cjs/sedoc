@@ -45,11 +45,14 @@ DIP Switches
 Numbered 1-4 from left to right; up=ON, down=OFF.
 
     (1) ROM mode/DISK mode* (FBASIC mode)
-    1=ON, 2=ON, 3=OFF
+    1=ON, 2=ON
     *when external floppy disk is available
 
     (2)DOS Mode
-    1=ON, 2=OFF, 3=OFF
+    1=ON, 2=OFF
+
+    Unknown function (unconnected?):
+    3=OFF
 
     CLOCK Freq.
           MAIN CPU   SUB CPU
