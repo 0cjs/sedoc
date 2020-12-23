@@ -275,6 +275,22 @@ upper right; below is looking outward from the system unit.
     49  E           50  GND
 
 
+Option Boards
+-------------
+
+#### RS-232 Serial
+
+The serial board is used in FM-7 through FM77AV; it's built in to the
+FM77AVEX20 and later models (and also the FM-8). See [README: RS-232 Serial
+Port](README.md#rs-232-serial).
+
+#### FM Sound / Joysticks
+
+An FM sound card containing a Yamaha YM2203C sound synthesis chip and two
+DE-9 joystick ports. Information, pictures, schematic and PCB design are
+[at ysflight.com][ys fmjoy].
+
+
 
 <!-------------------------------------------------------------------->
 [fm7assem]: https://archive.org/details/FM7MC6809ASM
@@ -285,3 +301,4 @@ upper right; below is looking outward from the system unit.
 [io198304]: https://archive.org/stream/Io19834#page/n282/mode/1up
 [lgreen]: http://www.nausicaa.net/~lgreenf/fm7page.htm
 [shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up
+[ys fmjoy]: http://ysflight.in.coocan.jp/FM/fm7_ym2203/e.html

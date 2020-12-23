@@ -17,8 +17,8 @@ cover or mating port. Those parts might be wrong.
 - 40-pin (FM-7 Z80 board): FCN-365P040-AU/H
 
 
-Serial Port
------------
+RS-232 Serial
+-------------
 
 Ysflight.com has a [blog post][ys serial] with a serial card KiCAD
 schematic and board layout and discussion of his work on it. It also
