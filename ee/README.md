@@ -3,6 +3,14 @@ Electronic Engineering Info
 
 Also see [to-do list](todo.md)
 
+E Series
+--------
+
+    40% E3   10              22              47
+    20% E6   10      15      22      33      47      68
+    10% E12  10  12  15  18  22  27  33  39  47  56  68  82
+     5% E24    11  13  16  20  24  30  36  43  51  62  75  91
+
 
 Markup
 ------
