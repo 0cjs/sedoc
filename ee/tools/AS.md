@@ -145,11 +145,15 @@ returns `1` if `aLabel` is in the code segment.
 Symbols (§2.7)
 --------------
 
-Symbols (§2.7) are up to 255 chars from [`A-Za-z0-9_.`]; the first char
-must not be a digit. They are case-insensitive unless `-U` is supplied on
-the command line; pre-defined symbols are upper-case. Each symbol is part
-of a segment, default `CODE`. (See above.) Each symbol also has a type
-of `String`, `Int` or `Float`.
+Standard symbols (§2.7) are up to 255 chars from [`A-Za-z0-9_.`]; the
+first char must not be a digit. They are case-insensitive unless `-U` is
+supplied on the command line; pre-defined symbols are upper-case. Each
+symbol is part of a segment, default `CODE`. (See above.) Each symbol also
+has a type of `String`, `Int` or `Float`.
+
+"Temporary" symbols (local to the range between the nearest two standard
+symbols) are `+`, `-`, `/` (nameless) and `$$` followed by \[`A-Za-z0-9_.`]
+(named). See [below](#temporary-symbols) for more details.
 
 Constants and variables (§3.1.1) are defined with a label starting in
 column 1 and/or `equ`, `=`, `set`, `enum` and other pseudo-ops. See
