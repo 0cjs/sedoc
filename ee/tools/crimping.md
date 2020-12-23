@@ -8,25 +8,52 @@ References:
 - Gogo:Tronics,
   [Crimping Electronics Connectors (Dupont, PH, XH, VH, KF2510)][gogo].
 - EEVblog, [Affordable crimp tools for small connectors (Dupont, etc.)][eev]
+  Includes links to other threads at end of first post.
 
 Terminology:
 - A _wire_ consists of a _conductor_ wrapped in _insulation_.
 - _Connectors_ may be male or female, and have two sets of metal tabs, the
   _insulation tabs_ at the end and the _conductor tabs_ in the middle.
   (Tabs may also be called _barrels_.)
-- The connectors are inserted into a _shroud_, which for dupont-style
-  accepts both male and female connectors.
+- Crimping is done using one of the _crimp nests_ in the _crimp die_ of the
+  tool. The base of the connector rests on an _anvil_ protruding up into
+  the _punch_ that closes and curls the tabs. Expensive tools will have a
+  _locator_ and _wire stop_ that ensure that the connector and wire are
+  positioned properly. (See [this doc][63828-2000] p.4 fig. 7 for an
+  example and p.2 for more terms.)
+- The crimped connectors are inserted into a _shroud_, which for
+  dupont-style accepts both male and female connectors.
+
+
+
+Tools
+-----
+
+For "dupont" pins you need a longer jaw with "wrap" rather than "curl"
+(F-type? M-shaped) for the insulation tabs (see "Dupont" section below).
+Only such blocks are described here as appropriate for dupont, though
+manufacters may state otherwise.
+
+I use a Preciva [PR-3254][] ($40 kit.) with three blocks.  Appears no
+longer to be available on amazon.co.jp.
+1. (outside) XH and C3-R 2.54 mm, JST
+2. (middle) Molex IDE power, ATX power, VH3.96
+3. (handle) dupont 2.54 male/female
+
+The [TZ-4228B][] (sometimes known as the SN-4228B, $20 単品, $30 kit)
+appears to have a proper dupont jaw like the PR-3254, and has a fourth,
+smaller jaw as well.
+
+The IWISS [SN-025][] ($30) has round "wrap" insulation punches on all
+three crimp nests in the die, and they make it clear that it's designed
+for dupont-style connectors.
 
 
 "Dupont" and Similar Connectors
 -------------------------------
 
 Use a proper crimping tool. For dupont it should crimp the wire tabs
-with "curl-in" but the insulation tabs with "wrap-around." I use a
-Preciva PR-3254 with three blocks:
-1. (outside) XH and C3-R 2.54 mm, JST
-2. (middle) Molex IDE power, ATX power, VH3.96
-3. (handle) dupont 2.54 male/female
+with "curl-in" but the insulation tabs with "wrap-around." See above.
 
 When crimping, press the jaws together _very_ hard; it's easy to use too
 little force and get a loose connection, even if all else is done
@@ -106,3 +133,8 @@ substitutions where there aren't enough wire colors.
 [eev]: https://www.eevblog.com/forum/reviews/affordable-crimp-tools-for-small-connectors-(dupont-etc-)/?all
 [gogo]: https://sparks.gogo.co.nz/crimping/
 [millman]: http://tech.mattmillman.com/info/crimpconnectors/
+
+[63828-2000]: https://www.molex.com/pdm_docs/ats/ATS-638282000.pdf
+[PR-3254]: https://www.amazon.com/dp/B07R1H3Z8X/
+[SN-025]: https://www.aliexpress.com/item/1005001580094815.html
+[TZ-4228B]: https://www.aliexpress.com/item/4000497324950.html
