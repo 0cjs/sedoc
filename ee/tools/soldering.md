@@ -1,0 +1,72 @@
+Soldering
+=========
+
+- On protoboard especially, but also with edge connectors, use tape to mask
+  off traces/holes that should remain solder-free. (Clean with IPA after.)
+- [JRE] suggests 0.5 mm solder. I've been using 0.8 ok, but I'd
+  definitely not want to go larger.
+- Thoroughly tin tip, leaving lots of solder on it, before first use
+  and before putting iron back in stand. Wipe when removing from
+  stand. [jre-sol05]
+- For conical tip, use edge in preferent to point (where room) for
+  better heat transfer.
+- Primary heat transfer is _through solder_. Use blob of fresh solder
+  on tip to help heat transfer, but not to solder the work. Solder
+  bonding the work should be melted on the work itself, not on the iron.
+- Generally no need to remove solder from holes when re-soldering;
+  just cut off device and remove pins. [jre-sol09]
+
+Desoldering ([jre-sol10]):
+- For removing solder alone (no part), clean tip and touch to solder;
+  after it melts some will come away with the iron when you lift it off.
+- Add solder first to help with heat transfer and remove oxidization.
+- Raise rather than slide iron when done to help avoid lifiting pads.
+  (Also never slide wick across a pad.)
+- Clean solder sucker tip after every suck.
+- Notch the tip (just one side) of a solder sucker to let it get
+  closer to a PCB hole while still leaving space for the soldering
+  iron to get in.
+- For SMD discrete parts add solder to get big blobs on both ends so
+  you can then touch/melt both at once with the iron. Put solder on
+  iron tip for heat xfer before removing part.
+
+Heat shrink can also be shrunk by rubbing the shank of the soldering
+iron against it (not too slowly).
+
+
+Soldering Iron
+--------------
+
+[Goot PX-201], 70 W temperature controlled. Tip base is ∅7mm × 37.
+
+                     R      Style
+    ●PX-2RT-SB      0.3     conical
+    ●PX-2RT-B       0.5     conical             standard tip/w PX-201
+    ●PX-2RT-BC      1.0     45° conic section
+     PX-2RT-2C
+     PX-2RT-3C
+     PX-2RT-4C
+     PX-2RT-5C
+     PX-2RT-1.6D
+    ●PX-2RT-2.4D    2.4     chisel
+     PX-2RT-3.2D
+     PX-2RT-4D
+     PX-2RT-5D
+     PX-2RT-5K
+
+The above came off a shop inventory listing; there are more on the
+[Goot site][goot px-201].
+
+Other suggestions I've seen:
+- Hakko FX-888D is very standard.
+- [KSGER T12]: Hakko-compatible tips.
+- Anesty ZD-915 vacuum desoldering unit; cheap and works well.
+
+<!-------------------------------------------------------------------->
+[jre]: https://josepheoff.github.io/posts/howtosolder-toc
+[jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
+[jre-sol09]: https://josepheoff.github.io/posts/howtosolder-9throughhole-remove
+[jre-sol10]: https://josepheoff.github.io/posts/howtosolder-10soldersucker
+
+[goot px-201]: http://www.goot.jp/en/handakote/px-201/
+[KSGER T12]: https://www.amazon.com/dp/B07PMZGPQQ
