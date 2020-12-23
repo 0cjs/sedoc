@@ -2,10 +2,12 @@ Crimping Tools and Techniques
 =============================
 
 References:
-- Matt Millman, [Common Wire-to-board, Wire-to-wire Connectors, and Crimp
-  Tools][millman]. Fantastic guide with many, many details.
-- Gogo:Tronics, [Crimping Electronics Connectors (Dupont, PH, XH, VH,
-  KF2510)][gogo].
+- Matt Millman,
+  [Common Wire-to-board, Wire-to-wire Connectors, and Crimp Tools][millman].
+  Fantastic guide with many, many details.
+- Gogo:Tronics,
+  [Crimping Electronics Connectors (Dupont, PH, XH, VH, KF2510)][gogo].
+- EEVblog, [Affordable crimp tools for small connectors (Dupont, etc.)][eev]
 
 Terminology:
 - A _wire_ consists of a _conductor_ wrapped in _insulation_.
@@ -101,5 +103,6 @@ substitutions where there aren't enough wire colors.
 
 
 <!-------------------------------------------------------------------->
+[eev]: https://www.eevblog.com/forum/reviews/affordable-crimp-tools-for-small-connectors-(dupont-etc-)/?all
 [gogo]: https://sparks.gogo.co.nz/crimping/
 [millman]: http://tech.mattmillman.com/info/crimpconnectors/
