@@ -31,11 +31,33 @@ Calling `log(lvl, msg, ...)` on a `Logger` does the following.
    1. Checks the Logger's `disable` property. If True, the record is ignored.
    2. Calls [`filter(record)`] to check with each filter on this Logger. If any
       filter returns False, the record is ignored.
-   3. Passes the record to all of this Logger's [handlers].
+   3. Passes the record to all of this Logger's [handlers]. (Individual
+      handlers may also have their own minimum logging levels.)
    4. If [`propagate`] is True, passes the record to the handlers of each
       parent logger up the tree until it finds one with `propagate` False or
       reaches the root. (Note that this does not check threshold levels or
       filters of parent Loggers.)
+
+### Handlers and Formatters
+
+If the root logger has no [handler][handlers], calling any `logging.log`
+method will execute [`logging.basicConfig()`] to set up a [`StreamHandler`]
+to stderr that uses the default formatter. To set up a custom one:
+1. Choose a handler from [`logging.handlers`] and instantiate it.
+2. Optionally, instantiate a [`Formatter`] and pass it to
+   [`handler.setFormatter()`][setFormatter]
+3. Call [`addHandler(handler)`][addHandler] on your Logger.
+
+Suggested formatters:
+
+    Format(fmt='{levelname}:{name}:{message}', datefmt=None, style='{')
+
+Note that the _style_ argument above applies only to the _fmt_ argument,
+not to calls to `log(msg, arg1, ...)`. The latter always uses `%`
+formatting for compatibility: because libraries you use may be using that
+form, `%` formatting for `log()` should not be removed. For more details on
+this, see [Using particular formatting styles throughout your
+application][pctfmt].
 
 
 Simple Start
@@ -114,26 +136,31 @@ Functions:
 <!-------------------------------------------------------------------->
 [`Filter`]: https://docs.python.org/3/library/logging.html#filter-objects
 [`Formatter`]: https://docs.python.org/3/library/logging.html#formatter-objects
+[`Formatter`]: https://docs.python.org/3/library/logging.html#logging.Formatter
 [`Handler`]: https://docs.python.org/3/library/logging.html#handler-objects
 [`LogRecord` attributes]: https://docs.python.org/3/library/logging.html#logrecord-attributes
 [`LogRecord`]: https://docs.python.org/3/library/logging.html#logrecord-objects
-[`LogRecord`]: https://docs.python.org/3/library/logging.html#logrecord-objects
 [`Logger`]: https://docs.python.org/3/library/logging.html#logger-objects
-[`filter(record)`]: https://docs.python.org/3.5/library/logging.html#logging.Logger.filter
+[`StreamHandler`]: https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler
+[`filter(record)`]: https://docs.python.org/3/library/logging.html#logging.Logger.filter
 [`handle(record)`]: https://docs.python.org/3/library/logging.html#logging.Logger.handle
 [`logging.basicConfig()`]: https://docs.python.org/3/library/logging.html?highlight=basicconfig#logging.basicConfig
 [`logging.config`]: https://docs.python.org/3/library/logging.config.html
 [`logging.handlers`]: https://docs.python.org/3/library/logging.handlers.html
+[`logging.handlers`]: https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler
 [`logging`]: https://docs.python.org/3/library/logging.html
 [`makeRecord(...)`]: https://docs.python.org/3/library/logging.html#logging.Logger.makeRecord
-[`propagate`]: https://docs.python.org/3.5/library/logging.html#logging.Logger.propagate
+[`propagate`]: https://docs.python.org/3/library/logging.html#logging.Logger.propagate
 [`str.format()`]: https://docs.python.org/3/library/stdtypes.html#str.format
 [`string.Template`]: https://docs.python.org/3/library/string.html#string.Template
 [`time.strftime()`]: https://docs.python.org/3/library/time.html#time.strftime
+[addHandler]: https://docs.python.org/3/library/logging.html#logging.Logger.addHandler
 [addLevelName]: https://docs.python.org/3/library/logging.html#logging.addLevelName
 [disable]:  https://docs.python.org/3/library/logging.html#logging.disable
 [getChild]: https://docs.python.org/3/library/logging.html#logging.Logger.getChild
 [getLevelName]: https://docs.python.org/3/library/logging.html#logging.getLevelName
 [handlers]: https://docs.python.org/3/library/logging.html#handler-objects
 [isEnabledFor]: https://docs.python.org/3/library/logging.html#logging.Logger.isEnabledFor
+[pctfmt]: https://docs.python.org/3/howto/logging-cookbook.html#using-particular-formatting-styles-throughout-your-application
 [printf]: https://docs.python.org/3/library/stdtypes.html#old-string-formatting
+[setFormatter]: https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler
