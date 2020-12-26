@@ -19,9 +19,15 @@ image. Thus, the ideal is ground and power planes underneath the signal
 traces. Breaks in the ground plan will force the current around the break,
 as seen in this [return current image](../sch/return-current.jpg).
 
-Short of a proper ground plane, a quadrille mesh will also work well.
-Contrawise, Vcc down one side and ground on the other makes for very long
-return paths!
+Short of a proper ground plane, a quadrille mesh will also work well. Bill
+Herd mentions [here][herd10] that he "always ran a ground ring around one
+side and a power ring around another, then run feeders across the board to
+connect from side to side, every chip can see the power supply or ground in
+two directions." He also mentions that one should avoid having any stubs on
+power or ground traces (because reflections).
+
+Vcc down one side and ground on the other (inter-digitated) is terrible; it
+makes for very long return paths.
 
 The "short return path" principle applied:
 - On cables with multiple power and ground, do not cluster either at the
@@ -89,3 +95,4 @@ Mechanical Connections
 [f65 2029]: http://forum.6502.org/viewtopic.php?f=4&t=2029
 [f65 80566]: http://forum.6502.org/viewtopic.php?f=4&t=2029&p=80566#p80566
 [feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
+[herd10]: http://www.6502.org/users/andre/icaphw/design.html
