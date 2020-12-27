@@ -19,7 +19,24 @@ Versions available from Debian repos:
 - Debian unstable `sid`: 5.1.5
 
 
+Templates
+---------
+
+[`sethhillbrand/kicad_templates`][hill] includes templates to start
+projects with correct design rules for various fabs, including JLCPCB etc.
+
+
+File Formats and Internals
+--------------------------
+
+All file types/extensions are listed on the [File Formats] page.
+
+
 
 <!-------------------------------------------------------------------->
 [KiCad]: https://www.kicad-pcb.org/
 [inst-debian]: https://www.kicad-pcb.org/
+
+[hill]: https://github.com/sethhillbrand/kicad_templates
+
+[File Formats]: https://kicad.org/help/file-formats/
