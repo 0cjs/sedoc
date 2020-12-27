@@ -7,6 +7,14 @@ See also [Crimping](crimping.md) and [Soldering](soldering.md)
 Signal and Power Routing, Bypass Caps
 --------------------------------------
 
+For routing issues, the clock frequencies themselves are not of interest:
+the frequency implied by the rise time is. A clock signal with a 1 ns rise
+time has the same routing/coupling/RF issues whether it's running at 10 MHz
+or 100 kHz.
+
+When talking about frequencies, the clock frequency itself is generally not
+of interest: the rise time
+
 On an IC, all pins that source current must draw the current from the Vcc
 pin; all pins that sink current must sink it to the GND pin. The route
 between these two should be as short as possible.

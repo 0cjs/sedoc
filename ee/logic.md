@@ -93,9 +93,10 @@ HC parts are generally about as fast or slightly faster than LS parts
 
 HC is fast enough for a 4 MHz system; faster than that use AC.
 
-The high slew rates of faster parts (AS, AC, ABT) can cause problems
-in circuits not constructed for high speed. [Garth Wilson's expanation
-and links][f6-195-19810].
+The high slew rates of faster parts (AS, AC, ABT) can cause problems in
+circuits not constructed for high speed. [Garth Wilson's expanation and
+links][f6-195-19810]. Also see the signal routing section in [Build
+Techniques][tools/build-tech.md].
 
 
 Logic Levels
