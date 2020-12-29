@@ -91,6 +91,67 @@ Other:
   and then move the mouse to the end point.
 
 
+Symbol and Footprint Libraries
+------------------------------
+
+Remember to check [File Formats] for some information on any of the files
+mentioned below. The key files and formats are:
+- `.lib`: file of schematic symbols
+- `.dcm`: file of descriptions, aliases and keywords for schematic symbols
+- `.pretty/`: footprint library (always a directory)
+- `.kicad_mod`: one footprint entry in a footprint library directory
+
+### Global and Project Library Lists
+
+`sym-lib-table` and `fp-lib-table` are s-expr files containing a lists of
+libraries. The global list is in `~/.config/kicad/`; project lists are in
+the project directory. Variable `${KIPRJMOD}` in paths expands to the
+project directory.
+
+The global library lists, if they don't already exist, are created and
+populated by by `eeschema` and `pcbnew` at startup. If these do not contain
+common libraries a "rescue" will occur, copying symbols out of the project
+cache into the project library(s). (See below.) __Warning:__ in 5.0
+`eecschema` has been observed to incorrectly initialize a missing global
+library list, setting it only to the current project's library even when
+the standard global libraries are requested. I ended up fixing this by
+wiping all my global config files, creating a new project, and then
+starting `kicad` followed by `eecschema`.
+
+### Symbol Cache and Rescue
+
+`φ-cache.lib` in the project directory contains copies of all symbols used
+in schematic `φ.sch`. This should be committed as it allows systems with
+missing global libraries to recover. When opened in this situation, KiCAD's
+rescue procedure will:
+1. Create `φ-rescue.lib` in the project dir and add it to the project
+   `sym-lib-table`.
+2. Move missing symbols from `φ-cache.lib` to `φ-rescue.lib`.
+3. Update symbol references in `φ.sch` to point to `φ-rescue.lib`.
+
+`φ-cache.lib` should be committed along with the other project files
+to enable recovery. (This is especially important once a project is
+archived.) The `φ-rescue.lib` should not normally be committed but
+instead the problem (with the user's system or the project) resolved as
+below.
+
+When a rescue occurs, the correct solution is to:
+1. Quit, revert any changes, and ensure that the global libraries are set
+   up correctly per above. (Manually check the global `sym-lib-table` after
+   recreating it to ensure it was recreated correctly.)
+2. Restart `kicad` on the project and open each schematic and drawing.
+   Where a rescue still occurs, move the rescued symbols to a project-local
+   library, remove the now-empty `*-rescue.lib` files and remove their
+   entries from the project `sym-lib-table`.
+
+### Library File Formats
+
+`.lib` schematic library files are in a line-based `COMMAND args` format,
+with some commands starting and ending subsections. The `DRAW` section
+contains lists of `S` (line segment), `X` (labeled point) etc. sections;
+the order of these lists within `DRAW` is not significant.
+
+
 
 <!-------------------------------------------------------------------->
 [KiCad]: https://www.kicad-pcb.org/
