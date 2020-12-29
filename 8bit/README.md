@@ -72,6 +72,7 @@ Timeline
     1980      Acorn Atom
 
     1981-   * VIC-20 released
+    1981-     Sharp MZ-80B ships
     1981-05 * Fujitsu FM-8 released
     1981-08 * IBM PC released ($1565)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
