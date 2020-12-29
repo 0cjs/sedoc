@@ -39,7 +39,8 @@ Usage Hints
 
 Selection:
 - Shift-select to add to selection.
-- Click element to select.
+- Click element to select. (For components a line or blank space inside the
+  component.)
 - Drag left to right: only components entirely inside the selection box.
 - Drag right to left: all components intersecting the selection box.
 
