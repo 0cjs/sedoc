@@ -25,16 +25,20 @@ References:
 - JST, [SM Connector][jst se] datasheet.
 
 
-XH for Power
-------------
+Power Connectors
+----------------
 
-Examples of 2-pin power: hot 1, ground 2
-<https://learn.sparkfun.com/tutorials/connector-basics/all#power-connectors>
-<https://www.pakronics.com.au/products/jst-2-pin-power-connector-ss321050009>
+Power seems to be informally standardized as:
 
-But PC fans are the other way around?
+    Pin 1  Red  +5V
+    Pin 2  Blk  GND
+    Pin 3  Yel  +12V
 
-3 pin usu. 1:red, 2:black 3:yellow?
+Examples:
+- [Sparkfun] connectors page (XH)
+- [Packronics] pre-crimped power connectors (XH)
+- [Woodland] lights/3D printer (XH)
+- [Hilitand] pre-crimped power connectors (SM)
 
 
 
@@ -42,3 +46,8 @@ But PC fans are the other way around?
 [wp jst]: https://en.wikipedia.org/wiki/JST_connector
 [jst xh]: https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
 [jst sm]: http://www.jst-mfg.com/product/pdf/eng/eSM.pdf
+
+[hilitand]: https://www.amazon.com/dp/B07DL4FNTF
+[packronics]: https://www.pakronics.com.au/products/jst-2-pin-power-connector-ss321050009
+[sparkfun]: https://learn.sparkfun.com/tutorials/connector-basics/all#power-connectors
+[woodland]: https://www.amazon.com/dp/B07YKHV46N
