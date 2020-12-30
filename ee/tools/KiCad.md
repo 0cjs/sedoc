@@ -64,11 +64,40 @@ Measurement and Grids:
     or `Enter` to set. `Esc` to exit set mode. (This will also snap to
     existing grid points, useful for grid-origin relative moves.)
 
+_References_ throughout refer to a specific part on the schematic and PCB.
+These must end in a number for the schematic checker to work. References
+should _never_ differ between the two; to change them change the reference
+in the schematic and then "Update PCB from schematic" to change it in the
+PCB file. (See below regarding references on silkscreen.)
+
+_Labels_ in Eeschema (the schematic editor) attach to lines to add them to
+a net. _Symbols_ have pin numbers, which connect to footprint pin numbers,
+pin names, used only for schematic design. _Footprints_ from the footprint
+library are assigned to symbols just before starting the board layout.
+
+In Pcbnew (the PCB layout editor) each footprint is created by making a
+copy in the PCB file of the library footprint. Each individual part
+footprint may then be edited further (particularly to add text for the
+silkscreen or narrow/remove courtyards). Updates to library footprints may
+be wholly or partially applied to footprints in the PCB file, optionally
+overriding/dropping changes to the PCB file footprint.
+
+Do not change PCB refs to change the silkscreen! Instead, make the
+reference silk non-visible and add your preferred label as an additional
+text object on the silk layer in that part's footprint in the PCB file.
+
 ### Schematic Editor
 
     ESC W       Mode: select, wire
     K           End line/wire/bus
-    E V U F     Edit item, value, reference footprint.
+    E V U F     Edit item, value, reference, footprint
+    M           Move item
+    Ctrl-D      Duplicate item (w/Shift to increment)
+
+For DRC, each symbol must have a _reference_, such as `R1` or `U1` ending
+in a number. For sub-components associated with main component, I use a
+"sub-number" after a period, e.g., `WW_U1.1` for a wire-wrap header
+associated with `U1`.
 
 ### PCB Layout
 
@@ -104,15 +133,28 @@ segment to a grid point. The "Auto track width" button, when enabled,
 extends tracks using the existing width instead of the currently selected
 track width.
 
-To make traces route cleanly, it's best to have all pins centred on the
-same 2.54 mm (100 mil) or 1.27 mm (50 mil) grid, and then use the next size
-down (1.27 mm or 0.635 mm/25 mil) grid when running traces. (10 mil
-traces run nicely between through-hole pins.) The "Auto track width" button
-can also be useful. Note that pcbnew will refuse to route traces in guard
-zones or off the board or in clearance zones (set with "Setup / Design
-Rules."
+__Trace Routing__
 
-Trace routing:
+For clean trace routing, pins should be on a consistent grid. Set up as
+follows:
+1. Place the grid origin at a round number point, such as 200,150 mm. Put
+   your edge connector with pin 1 on this point. Then draw your board
+   outline with appropriate (usually non-grid) offsets from this to get the
+   edge connector in the right physical position on the board.
+2. Set grid origin to pin 1 again, grid size to 2.54 mm, and place ICs and
+   other major parts Drop down to a 1.27 mm grid only where necessary for
+   compact placement. Place as many discrete parts (caps, resistors, etc.)
+   as possible on this grid, too.
+3. On 1.27 mm (50 mil) or 0.635 mm (25 mil) grids, route any 0.508 mm (20
+   mil) power traces first, then 0.254 mm (10 mil) traces. The "Auto track
+   width" button can also be useful during initial trace working. Small
+   discrete components may be moved as necessary at this point.
+
+0.254 mm (10 mil) traces run nicely between through-hole pins. Note that
+pcbnew will refuse to route traces in guard zones or off the board or in
+clearance zones (set with "Setup / Design Rules."
+
+Trace routing commands:
 - `X` starts a trace segement; `MB1` ends current segment and starts a new
   one; `Esc` ends trace laying.. Start a new segment close to your
   destination but a bit before any final bends. This will prevent the
@@ -125,6 +167,11 @@ Trace routing:
   segment connecting the pin and the end of the existing segment, which
   will start out wrongly routed, and then use drag on that new segment to
   fix the routing, which will also move the end of the other segment.
+- DRC (in ≥5.1) will confirm that traces have clearance (using the net's
+  clearance value) from the _center_ of the `Edge.Cuts` line . Drawing
+  traces however will disallow crossing the _edge_ of the line, so this
+  line should be kept at the default narrow .0381 value, adding only 1/2
+  that to the extra padding when you draw along the edge of the board.
 
 Other:
 - There is a measure tool (Shift-Ctrl-M), but it's usually easier to move
