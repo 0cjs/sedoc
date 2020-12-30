@@ -40,29 +40,38 @@ There are [three grades of dependencies][ause 1216894]:
 Backports
 ---------
 
-Debian supplies a ["backports" repository][backports] with packages
-from the next release ported back to the previous release. For Debian
-9 (stretch) this is `stretch-backports`. The definitions are normally
-already installed in `/etc/apt/sources.list`, and are also shown
-below.
+Debian supplies ["backports" repositories][backports] with packages at the
+same version as later Debian releases. `*-backports` contains packages from
+the next release, and `*-backports-sloppy` contains packages from the
+following release. currently available are:
 
-All backports are deactivated by default via using
-`ButAutomaticUpgrades: yes` (which pins them to 100) in the Release
-files. The `-t` option to apt commands tweaks the policy engine to
-prefer the backports packages.
+    Source Distro   Backports           Backports²
+    ────────────────────────────────────────────────────────────
+    buster          stretch-backports
+    bullseye        buster-backports    stretch-backports-sloppy
+
+
+For Debian 9 (Stretch) these are `stretch-backports`
+(for versions at Buster level) and `stretch-backports-sloppy` (for versions
+at Bullseye level).
+
+The definitions are normally already installed in `/etc/apt/sources.list`,
+and are also shown below.
+
+All backports are deactivated by default via using `ButAutomaticUpgrades:
+yes` (which pins them to 100) in the Release files. The `-t` option to apt
+commands tweaks the policy engine to prefer the backports packages.
 
     #   Upgrade just kernel
     apt-get -t stretch-backports upgrade linux-headers-amd64 linux-image-amd64
     #   Upgrade everything with new versions in backports
     apt -t stretch-backports full-upgrade
 
+But though [Jensd's I/O buffer][jensd] suggests upgrading everything, the
+[backports] page suggests upgrading only the individual packages you need.
 
-But though [Jensd's I/O buffer][jensd] suggests upgrading everything,
-the [backports] page suggests upgrading only the individual packages
-you need.
-
-For kernels, maybe it's also reasonable to install just the exact
-kernel versions:
+For kernels, maybe it's also reasonable to install just the exact kernel
+versions:
 
     apt-get install linux-image-4.19.0-0.bpo.4-amd64
 
