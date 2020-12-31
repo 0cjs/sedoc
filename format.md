@@ -8,6 +8,19 @@ Extract URLs from other URLs with
     sed -e 's,.*https%3A,https:,; s,%2F,/,g; s,%3F,?,g; s,%3D,=,g'
 
 
+Markdown
+--------
+
+Though not exactly the original Markdown, commonmark.org provides a
+[spec][cm spec] and an [online renderer][cm render]. Less-commonly used
+markups are:
+
+- `![alt text](url)`: in-line images.
+
+[cm spec]: https://spec.commonmark.org/current/
+[cm render]: https://commonmark.org/help/
+
+
 Disqus
 ------
 
