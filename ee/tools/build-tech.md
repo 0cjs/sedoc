@@ -19,10 +19,18 @@ On an IC, all pins that source current must draw the current from the Vcc
 pin; all pins that sink current must sink it to the GND pin. The route
 between these two should be as short as possible.
 
-For AC signals, return current through a ground plane will tend to follow
-the route of the signal trace parallel to it on the other side of the
-board. This effect is not huge at low frequences, such as 400 Hz, but by 1
-MHz it's very tight, as shown in [this video][feranec] and the following
+Return current for a signal always takes the path of lowest impedence. For
+DC, this is the path of lowest resistance (usually the most direct path
+back) and the return current is _conduction current_. But for AC signals
+return current is _displacement current_ transferred through the field
+between the signal and the return path (like a capacitor) and the
+lowest-impedence path will tend to follow the signal line, because the
+smaller the loop area, the lower the inductance (Z = R + iωL). (A good
+explanation of this is around 40 minutes into Eric Bogatin's presentation
+[The Value of the White Space] [vws].)
+
+This effect starts at around 1 kHz and by 1 MHz it's very tight, as shown
+in the video above around 00:48 and [this video][feranec] and the following
 image. Thus, the ideal is ground and power planes underneath the signal
 traces. Breaks in the ground plan will force the current around the break,
 as seen in this [return current image](../sch/return-current.jpg).
@@ -104,3 +112,4 @@ Mechanical Connections
 [f65 80566]: http://forum.6502.org/viewtopic.php?f=4&t=2029&p=80566#p80566
 [feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
 [herd10]: http://www.6502.org/users/andre/icaphw/design.html
+[vws]: https://www.altium.com/live-conference/altiumlive-2018-annual-pcb-design-summit/sessions/value-white-space
