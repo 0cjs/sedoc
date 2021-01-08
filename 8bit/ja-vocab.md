@@ -24,7 +24,8 @@ up/down, enclosure, solid) then by stroke count in each character.
     15  編成        へんせい        organization (of a file)
         領域        りょういき      area, range, region (of memory)
 
-     6  色相        しきそう        huge, color phase
+     6  共有        きょうゆう      shared
+        色相        しきそう        huge, color phase
         色相制御信号                RGBI intensity bit
         行番号      ぎょうばんごう  line number (現在… = current lno)
      8  表示        ひょうじ        display, indication
