@@ -42,6 +42,19 @@ Mechanical Connections
   reaction is exothermic and produces noxious vapors.
 
 
+Copper Resistance
+-----------------
+
+The _sheet resistance_ is the resistance of any square (as wide as it is
+long) of a given material. [[rot13]] For 1 oz. copper (typical of FR4
+PCBs) this is 0.5 mΩ. Therefore you can calculate the resistance of a trace
+as 0.5 mΩ times the number of squares of trace-width size down the length
+of the trace. [[rot14]] See also [[edn-cs]]
+
+
 
 <!-------------------------------------------------------------------->
+[rot13]: https://www.edn.com/sheet-resistance-of-copper-foil-rule-of-thumb-13/
+[rot14]: https://www.edn.com/resistance-of-a-copper-trace-rule-of-thumb-14/
+[edn-cs]: https://www.edn.com/counting-squares-a-method-to-quickly-estimate-pwb-trace-resistance/
 [cabs]: https://en.wikipedia.org/wiki/Cyanoacrylate#Filler
