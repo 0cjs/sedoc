@@ -9,13 +9,53 @@ See also:
   ground return paths at 1 Mhz.
 
 
+Speed and Bandwidth
+-------------------
+
+For signal integrity, the clock frequency is not as of much interest as the
+frequency implied by the rise time of the signals. A clock signal with a 1
+ns rise time has the same routing/coupling/RF issues whether it's running
+at 10 MHz or 100 kHz.
+
+_BW = 0.35/RT_ gives the bandwidth of a signal from its rise time. [[rot1]]
+(For _RT_ in ns, _BT_ is in GHz.) E.g., 0.35 / 5.4 ns RT = 65 MHz BW.
+
+
+Rise and fall times (in ns) for families (from [Temps de Montée / Descente
+des familles logiques][rft]):
+
+
+         Family   Rise  Fall    Source
+
+      4000 CMOS   50    50      Motorola CMOS databook
+            TTL    5.5   3.3    TI TTL databook
+             LS    5.4   6.7    TI TTL databook
+         HC/HCT    3.8   3.8    TI HC/HCT databook
+            ALS    3     2      TI ALS/AS databook
+              S    2.1   8      TI TTL databook
+           FAST    1.6   1      TI F Logic databook
+            BCT    1.6   2.7    TI BICMOS Bus I/F databook
+             AS    1.7   1      NS ALS/AS databook
+         AC/ACT    1     1      Motorola FACT databook
+            ABT    1     1      TI ABT databook
+
+The speed of a signal in FR4 is about 15 cm/ns. From this the length of an
+edge can be calculated: a DDR3 edge of 300 ps will be spread across ~4.5
+cm. Discontinuitites less than one-third this length will be transparent to
+the signal. [[rot29]]
+
+
 Signal Return Paths
 -------------------
 
-For routing issues, the clock frequencies themselves are not of interest:
-the frequency implied by the rise time is. A clock signal with a 1 ns rise
-time has the same routing/coupling/RF issues whether it's running at 10 MHz
-or 100 kHz.
+> Forget the word _ground_. More problems are created than solved by using
+> this term. Every signal has a return path. Think _return path_ and you
+> will train your intuition to look for and treat the return path as
+> carefully as you treat the signal path.
+>
+>   --Eric Bogatin, _Signal and Power Integrity—Simplified_
+>     (Top Ten Signal Integrity Principles, number 3.)
+
 
 On an IC, all pins that source current must draw the current from the Vcc
 pin; all pins that sink current must sink it to the GND pin. The route
@@ -36,6 +76,30 @@ in the video above around 00:48 and [this video][feranec] and the following
 image. Thus, the ideal is ground and power planes underneath the signal
 traces. Breaks in the ground plan will force the current around the break,
 as seen in this [return current image](../sch/return-current.jpg).
+
+Note that shared return paths (two return paths using the same narrow
+conductor at some point) will also cause interference with each other. This
+is usually seen as "ground bounce," where the ground side of the path shows
+a voltage change (as compared to the source ground on the board) during a
+signal transition. This is often seen in a shared ground lead in a package
+with multiple signal outputs.
+
+### Designing Return Paths
+
+- Continuous return planes under the signal lines are idea; a ground plane
+  is one implementation of this.
+- When a gap across the return path is necessary:
+  - Route signal around the gap; a longer signal line with uniform return
+    path will work better than a split return path.
+  - Cross the gap but add adjacent return "straps" on either side. (I.e.,
+    bring the ground up to the signal layer on either side of the signal
+    path during the crossing; example on [p.24 here][vws-slides].)
+- For surface-mount packages, via to ground plane should be as close as
+  possible to ground pin, and trace to it short and wide.
+- In connectors: a return adjacent to every signal pin (yes, this means
+  more pins on connectors), and minimize sharing of returns.
+
+### Short Return Paths When Not Continuous
 
 Short of a proper ground plane, a quadrille mesh will also work well. Bill
 Herd mentions [here][herd10] that he "always ran a ground ring around one
@@ -71,9 +135,13 @@ side of the board (and actually all other layers) for routing traces.
 
 
 <!-------------------------------------------------------------------->
+[rot1]: https://www.edn.com/rule-of-thumb-1-bandwidth-of-a-signal-from-its-rise-time/
+[rot29]: https://www.edn.com/what-is-the-spatial-extent-of-an-edge-rule-of-thumb-29/
 [f65 2029]: http://forum.6502.org/viewtopic.php?f=4&t=2029
 [f65 80566]: http://forum.6502.org/viewtopic.php?f=4&t=2029&p=80566#p80566
 [feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
-[herd10]: http://www.6502.org/users/andre/icaphw/design.html
-[vws]: https://www.altium.com/live-conference/altiumlive-2018-annual-pcb-design-summit/sessions/value-white-space
 [gw-ilead]: http://forum.6502.org/viewtopic.php?f=12&t=5923&start=45#p73277
+[herd10]: http://www.6502.org/users/andre/icaphw/design.html
+[rft]: http://ve2zaz.net/referenc/LogicT.htm
+[vws-slides]: https://www.altium.com/live-conference/sites/default/files/pdf/The%20Value%20of%20the%20White%20Space%20-%20Eric%20Bogatin.pdf#page=24
+[vws]: https://www.altium.com/live-conference/altiumlive-2018-annual-pcb-design-summit/sessions/value-white-space
