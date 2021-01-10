@@ -7,7 +7,13 @@ Bypass Caps
 Also see [Build Techniques](tools/build-tech.md) for routing and cap
 placement information.
 
-[Wikipedia][wp-decoup-cap] mentions ~100 nF ceramic per IC with
+[[MS-520]] seems to indicate that 0.1 μF is usually enough for local
+bypass; they should be "of the high K ceramic type with low ESR," such as
+5Zu dielectric. In the EMI section it says they should be located as close
+to the package ground pin as possible. (Not Vcc pin?) They suggest 50 μF -
+100 μF electrolytic for bulk bypass at the PSU.
+
+[Wikipedia][wp-decoup-cap] mentions ~0.1 μF ceramic per IC with
 up to a few hundred μF electrolytic/tantalum per board section.
 Cypress note [Using Decoupling Capacitors][cypress-decoup] goes
 into much more detail.
@@ -98,6 +104,7 @@ Sources and References
   multiple caps (different impedances). No real discussion of values;
   example set given is 1 μF, 0.1 μF, 10 nF. Also shows a test case
   where multiple values are worse than a single 10 μF value.
+- [[MS-520]] Fairchild Semiconductor, "Design Considerations", pp.11-12, 14.
 
 
 
