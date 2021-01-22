@@ -6,6 +6,7 @@ Contents:
 - [Disqus](#disqus)
 - [StackExchange](#stackexchange)
 - [Telegram](#telegram)
+- [Discord](#discord)
 - [YouTube](#youtube)
 - [MediaWiki/Wikipedia Wikitext](#mediawikiwikipedia-wikitext)
 - [WordPress](#wordpress)
@@ -166,6 +167,35 @@ Textual markup:
 [tg-clients]: https://telegra.ph/markdown-07-07
 [tg-desktop]: https://www.techmesto.com/telegram-desktop-now-supports-text-formatting-using-keyboard-shortcuts/
 [tg-vary]: https://www.reddit.com/r/Telegram/comments/5eh3uk/how_do_i_format_text_without_using_bots/daceczy/
+
+
+Discord
+-------
+
+[Similar to Markdown][discord] but, like Slack, no hyperlinks. (URLs are
+made clickable.) Escape opening formatting symbols with `\`.
+
+- Italic: `_foo_`, `*foo*`
+- Bold: `**foo**`
+- Underline: `__foo__`
+- Italic, bold and underline may combine with any of the above.
+  - Italic+bold: `___foo___`, `**_foo_**`
+  - Italic+bold+underline: `*__**Example 4**__*`
+- Code: backticks
+- Strikethrough: `~~foo~~`
+- Spoiler: `||foo||`
+
+Block formats:
+- Quote text: `>` (single line), `>>>` (all following lines until paragraph
+  break)
+- Code block: triple-backtick
+
+Syntax highlighting uses Highlight.js, which can be used to color code
+blocks. (Colors will not appear on mobile.) See [[alrigh]] for tricks for
+this.
+
+[alrigh]: https://alrigh.com/discord-markdown-formatting/
+[discord]: https://discordia.me/en/markdown
 
 
 YouTube
