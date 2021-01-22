@@ -1,6 +1,15 @@
 Text Format Codes
 =================
 
+Contents:
+- [Markdown](#markdown)
+- [Disqus](#disqus)
+- [StackExchange](#stackexchange)
+- [Telegram](#telegram)
+- [YouTube](#youtube)
+- [MediaWiki/Wikipedia Wikitext](#mediawikiwikipedia-wikitext)
+- [WordPress](#wordpress)
+
 #### Embedded URL Reformatting
 
 Extract URLs from other URLs with
