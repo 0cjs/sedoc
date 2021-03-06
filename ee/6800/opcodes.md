@@ -63,7 +63,7 @@ This is a quick reference for hand-assembly.
     ORA B   CA₂     DA₃     FA₄     EA₅
     ADD B   CB₂     DB₃     FB₄     EB₅
 
-            #nn     zp     addr     n,X
+            #nnnn   zp     addr     n,X
     CPX     8C₃     9C₄     BC₅     AC₆
     LDS     8E₃     9E₄     BE₅     AE₆
     STS             9F₅     BF₆     AF₇
