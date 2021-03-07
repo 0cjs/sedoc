@@ -33,6 +33,13 @@ Desoldering ([jre-sol10]):
 Heat shrink can also be shrunk by rubbing the shank of the soldering
 iron against it (not too slowly).
 
+Aluminum cannot be soldered without [very special techniques][Al]: Al
+immediately reacts with atmospheric oxygen to form a very tough, strongly
+bound oxide layer a few atoms thick. (Anodising forms a similar, thicker
+layer.) Even within a joint, oxide can also form over time via oxygen
+diffusing through the metal around the joint, so what looks like a good
+joint initially may entirely detach after a few weeks.
+
 
 Soldering Iron
 --------------
@@ -63,6 +70,7 @@ Other suggestions I've seen:
 - Anesty ZD-915 vacuum desoldering unit; cheap and works well.
 
 <!-------------------------------------------------------------------->
+[Al]: https://users.monash.edu.au/~ralphk/solder-aluminium.html
 [jre]: https://josepheoff.github.io/posts/howtosolder-toc
 [jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
 [jre-sol09]: https://josepheoff.github.io/posts/howtosolder-9throughhole-remove
