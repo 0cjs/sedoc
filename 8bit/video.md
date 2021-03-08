@@ -15,9 +15,11 @@ Separate sync signals are typically TTL; RGB signals may or may not be TTL
 as well in digital RGB systems (8 colors, or 16 with an additional
 intensity signal). Standard luminance signals are generally about a volt
 into 75Ω; sync signals usually are reduced to similar levels when combined
-with a luminance. CVBS standard levels (from [[wp cvbslev]]):
+with a luminance. CVBS standard levels (from [[wp cvbslev]]) and NTSC
+timings (from [Beale Corner][bc trv900] via [Modular Circuits][mc zx81]):
 
-<img src='img/video-cvbs-levels.png'>
+<img src='img/video-cvbs-levels.png' /> <!-- 561 × 284 -->
+<img src='img/RS170A.jpg' width=700 /> <!-- 856 × 526-->
 
 Systems for color or monochrome video with various degrees of multiplexing
 (not specifying any particular sync rates or interlace) are, roughly:
@@ -279,11 +281,13 @@ Other sources
 [SMPTE 259M]: https://en.wikipedia.org/wiki/SMPTE_259M
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
+[bc trv900]: http://bealecorner.com/trv900/tech/
 [hdr 240]: https://www.hdretrovision.com/240p
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
 [man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
+[mc zx81]: https://www.modularcircuits.com/blog/projects/the-dinosaur-computer/
 [pet andre]: http://6502.org/users/andre/petindex/crtc.html
 [pet f6 623]: http://forum.6502.org/viewtopic.php?f=1&t=6231
 [pet_crtc]: http://inchocks.co.uk/commodore/PET/PET_CRTC.xls
