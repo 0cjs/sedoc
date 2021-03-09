@@ -37,6 +37,7 @@ Wire Wrap Materials
 
 - Mouser has sockets, e.g. Mouser part number 575-12343316.
 - See also "Wire Wrap Sockets" discussion at [THS Google Group][THSgg].
+- Standard post size is 0.025" square and 0.625" (just under 16 mm) long
 
 
 Wire Wrap without Wire-wrap Sockets
