@@ -95,6 +95,20 @@ those docs for details.
 Sources: [[a2ref 65]], [[a2ref 132]], [[a2c 50]], monitor code.
 
 
+System Startup/Reset
+--------------------
+
+The [_Apple II Reference Manual_][a2ref] (1979) discusses this at:
+- pp. 35-38, [The Reset Cycle][a2ref 35]
+- Autostart ROM Listing:
+  - p.143, $FA62 `RESET` (calls routines below)
+  - p.145, $FB2F `INIT` (exits with tail call to $FC22 `VTAB`)
+  - p.143, $FA81 `NEWMON`
+  - p.144, $FAA6 `PWRUP` (called if $3FE `PWREDUP` byte check fails)
+- Monitor ROM Listing:
+  - p.169, $FF59 `RESET`
+
+
 References
 ----------
 
@@ -110,5 +124,6 @@ References:
 
 [a2c 50]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual#page/n77/mode/1up
 [a2ref 132]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n142/mode/1up
+[a2ref 35]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n45/mode/1up
 [a2ref 61]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n71/mode/1up
 [a2ref 65]: https://archive.org/details/Apple_II_Reference_Manual_1979_Apple/page/n75/mode/1up
