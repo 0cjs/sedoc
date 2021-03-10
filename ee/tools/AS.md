@@ -125,6 +125,10 @@ These take `@FILE` and env var params (`$P2BIN` etc.) just like `asl`.
 Segments (§3.2.13)
 ------------------
 
+Segments define address spaces for those processors that have different
+address spaces for different types of data. For example, the 8051 has code,
+XDATA, internal RAM, etc. address spaces.
+
       0 -  NOTHING      Pseudo-segment (predefined symbols, etc.)
       1 C  CODE
       2    DATA
