@@ -52,6 +52,7 @@ Timeline
     1976-08   NEC TK-80 (kit)
     1976-09   PET 2001 design starts (turned down prototype Apple II)
     1976-12   TRS-80 Mod1 design starts
+    1976-12 * Electric Pencil (Altair then multi-platform word processor)
 
     1977-01   PET 2001 shown at Winter CES
     1977-06 * Apple II ships, $1300+monitor (first w/built-in color graphics)
@@ -63,6 +64,8 @@ Timeline
     1978-06 * Apple Disk II released ($600)
     1978-12 * Sharp MZ-80K ships
 
+    1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
+    1979-06 * Micropro releases WordStar
     1979-09 * NEC PC-8001 (Z80) ships
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
@@ -88,6 +91,10 @@ Timeline
 
     1983-08 * Acorn Electron released
 
+Magazine publishing dates:
+- 1976 _I/O_
+- 1977-01 ~ 1984-01 [_Kilobaud_][m kb] (from 1979-01, _Microcomputing_)
+- 1977 _ASCII_
 
 Online references (some of dubious accuracy) include:
 - Ken Polsson's [timelines][pol] are exhaustive and heavily referenced.
@@ -99,6 +106,9 @@ Online references (some of dubious accuracy) include:
 - [uber-leet Computer Releases 1939-1995][uber]: No months, but lists
   a _lot_ of systems.
 - IPSJ Computer Museum [Personal Computers in Japan][ipsj] timeline.
+- 佐々木潤, [80年代マイコン大百科][suzuki2013], timeline starting p.8.
+  (Viewable in preview.)
+
 
 
 
@@ -116,6 +126,8 @@ Online references (some of dubious accuracy) include:
 [we-trs80i]: https://page.auctions.yahoo.co.jp/jp/auction/g373420258
 [wj-mz80k]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K
 
+[m kb]: https://archive.org/details/kilobaudmagazine?&sort=date
+
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
 [oc-1975]: https://old-computers.com/museum/year.asp?y=1975
 [pol-mp]: http://kpolsson.com/micropro/
@@ -123,4 +135,5 @@ Online references (some of dubious accuracy) include:
 [pol-pcmini]: http://kpolsson.com/comphist/mini.htm
 [pol-soft]: http://kpolsson.com/software/
 [pol]: http://kpolsson.com/
+[suzuki2013]: https://www.amazon.co.jp/dp/4881818325/
 [uber]: http://uber-leet.com/index.php?page=allsystems
