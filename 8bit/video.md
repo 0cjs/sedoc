@@ -221,6 +221,15 @@ PET (built-in monitor; luma switches on/off around 2.5 V):
   double horizontal scan rate (40 kHz instead of 20 kHz lines @60 Hz) for
   higher resolution.
 
+Macintosh "built-in" 512×342 b/w video (128K, 512K, Plus, SE, SE/30):
+- Pixel clock: 15.6672 Mhz (~ 0.064 μs/pixel)
+- Horizontal: 22.25 kHz 44.93 μs; `192/12.25 (front/sync/back) 512/32.68`
+- Vertical: 60.15 Hz 16.6258 ms; `28/1258.17 (all vert blank) 342/15367.65`
+- All 74xx logic.
+- [_Macintosh Hardware Guide_][machwg] pp. 399-403 and [Mac 128K/512K
+  Computer Technical Information][mac128tech] pp. 6-8 for timings, buffers
+  and vblank handling.
+
 #### References
 
 - [[tim opt]] Classic Console Upscaler Wiki, ["Optimal timings"][tim opt].
@@ -268,9 +277,12 @@ Other sources
 <!-------------------------------------------------------------------->
 
 <!-- Common resolutions and timings -->
+[mac128tech]: https://archive.org/details/Mac_Hardware_Info_Mac_128K/page/n4/mode/1up
+[machwg]: https://archive.org/details/Guide_to_the_Macintosh_Family_Hardware_Second_Edition/page/n437/mode/1up
 [tim NES]: http://wiki.nesdev.com/w/index.php/NTSC_video
 [tim opt]: http://junkerhq.net/xrgb/index.php?title=Optimal_timings
 [tim pc98]: https://radioc.web.fc2.com/column/pc98bas/pc98dispout2_en.htm
+
 
 <!-- References -->
 [240p ts]: http://junkerhq.net/xrgb/index.php?title=240p_test_suite
