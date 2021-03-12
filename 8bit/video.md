@@ -148,6 +148,13 @@ sometimes 330R) in series, creating a voltage divider of 0.13 (0.18) with
 the 75Ω input impedence.
 
 
+Circuits
+--------
+
+- [SPI EEPROM generating sync][f6 76975]. Ingenious Dr. Jefyll design; 2×
+  serial EEPROM and one 74HC164.
+
+
 Common Resolutions and Timings
 ------------------------------
 
@@ -275,6 +282,9 @@ Other sources
 
 
 <!-------------------------------------------------------------------->
+
+<!-- Circuits -->
+[f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
 
 <!-- Common resolutions and timings -->
 [mac128tech]: https://archive.org/details/Mac_Hardware_Info_Mac_128K/page/n4/mode/1up
