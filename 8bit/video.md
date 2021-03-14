@@ -35,6 +35,11 @@ Systems for color or monochrome video with various degrees of multiplexing
   broadast systems (NTSC, PAL, etc.) to encode the color information.
 - MVBS (monochrome video baseband signal): Y+sync
 
+"Digital" monitors often cannot accept an analogue luminance signal, but
+on monochrome monitors (and maybe even colour?) you can get gray scale
+by instead using PWM to reduce the "on time" of a pixel, thus making it
+less bright. See e.g. [New Tricks for an old PET][f6 82495].
+
 #### Vertical Sync
 
 When identifying a video format, both [ITU BT.601] and [SMPTE 259M] append
@@ -282,6 +287,8 @@ Other sources
 
 
 <!-------------------------------------------------------------------->
+
+[f6 82495]: http://forum.6502.org/viewtopic.php?f=4&t=6238#p82495
 
 <!-- Circuits -->
 [f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
