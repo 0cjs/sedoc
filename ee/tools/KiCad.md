@@ -140,7 +140,8 @@ follows:
 1. Place the grid origin at a round number point, such as 200,150 mm. Put
    your edge connector with pin 1 on this point. Then draw your board
    outline with appropriate (usually non-grid) offsets from this to get the
-   edge connector in the right physical position on the board.
+   edge connector in the right physical position on the board. Then add
+   mounting holes relative to the board edge.
 2. Set grid origin to pin 1 again, grid size to 2.54 mm, and place ICs and
    other major parts Drop down to a 1.27 mm grid only where necessary for
    compact placement. Place as many discrete parts (caps, resistors, etc.)
@@ -173,11 +174,18 @@ Trace routing commands:
   line should be kept at the default narrow .0381 value, adding only 1/2
   that to the extra padding when you draw along the edge of the board.
 
-Other:
-- There is a measure tool (Shift-Ctrl-M), but it's usually easier to move
-  your mouse to the start point, hit space to reset the dx/dy display at
-  the lower right, and then move the mouse to the end point. Remember that
-  this measures only aligned (grid or object) points.
+__Other Notes__
+
+There is a measure tool (Shift-Ctrl-M), but it's usually easier to move
+your mouse to the start point, hit space to reset the dx/dy display at the
+lower right, and then move the mouse to the end point. Remember that this
+measures only aligned (grid or object) points.
+
+Layout of non-schematic items.
+- Hints at EE SE [How approach breadboard layout using KiCad?][se 198934]
+  and [Design a veroboard/stripboard layout from an Eagle schematic][se
+  5524].
+- Use "Place / Footprint" to place .1" pin headers for prototype areas?
 
 #### PCB Layers
 
@@ -274,3 +282,6 @@ the order of these lists within `DRAW` is not significant.
 [hill]: https://github.com/sethhillbrand/kicad_templates
 
 [File Formats]: https://kicad.org/help/file-formats/
+
+[se 198934]: https://electronics.stackexchange.com/q/198934/15390
+[se 5524]: https://electronics.stackexchange.com/a/256368/15390
