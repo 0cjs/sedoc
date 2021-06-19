@@ -141,8 +141,9 @@ into the male connector on the PC and the female connector on the IIc:
 
 #### DIN-6
 
-- `CBM`: CBM serial bus (female) from [cbm/serial-bus](cbm/serial-bus.md).
-- `日立BM`: Hitachi Basic Master Jr. (MB-6885), experimentally determined.
+`CBM`: CBM serial bus (female) from [cbm/serial-bus](cbm/serial-bus.md).
+
+`日立BM`: Hitachi Basic Master Jr. (MB-6885), experimentally determined.
 
        color    CBM     日立BM
     1   blk     S̅R̅Q̅I̅N̅   relay
