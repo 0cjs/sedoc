@@ -87,9 +87,14 @@ Timeline
     1982-08 * Commodore 64 Released
     1982-10   PC-9801 released (¥298,000)
     1982-11 * Fujitsu FM-7 released (¥126,000)
+    1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
     1983-08 * Acorn Electron released
+    1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
+    1983-11   NEC PC-8801mkII
+
+    1985-01   NEC PC-8801mkIISR
 
 Magazine publishing dates:
 - 1976 _I/O_
