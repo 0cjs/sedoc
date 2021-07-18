@@ -1,6 +1,8 @@
 D-sub (D-subminiature) Connectors
 =================================
 
+See also: [Joystick Connectors](joystick.md).
+
 Cannon's original designations used `P` (plug) and `S` (socket) suffixes
 for male and female respectively; I use `M` and `F`.
 
