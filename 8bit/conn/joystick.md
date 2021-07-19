@@ -21,10 +21,14 @@ MSX, but check strobe behaviour.
 
 ### MSX
 
-- Joystick direction switches and buttons short to pin 8 ("COMmon").
-- When paddle poll is requested (BIOS `PDL` function), a TTL high pulse is
-  triggered on pin 8 ("STRobe out"); each paddle should return a TTL high
-  pulse on pins 1, 2, 3, 4, 6, 7 of 10-3000 μs indicating the level of the
+- Joystick direction switches and buttons short to pin 8 ("COMmon"). This
+  is actually a PIO output pin (IOB5) that is set low when reading the
+  joystick switches; pins 1-4,6-7 are PIO inputs (IOA0-5) with external 10k
+  pullups that are overridden when shorted to IOB5.
+- Paddles should hold pins 1-4,6-7 (up to 6 paddles) low. When paddle poll
+  is requested (BIOS `PDL` function), a TTL high pulse is triggered on pin
+  8 ("STRobe out"); on this rising edge each paddle should return a TTL
+  high pulse of 10-3000 μs on its pin indicating the position of the
   paddle. This can be done with a 74LS123 by putting a .04 μF cap across
   `Cext` and `Rext` and a 150 kΩ pot between Vcc and `Rext`.
 - See §1.4.6 (p. 27) and §1.4.7 (p. 28) of the Sony MSX Technical Handbook.
