@@ -19,6 +19,26 @@ MSX, but check strobe behaviour.
      8   GND      COM/STR     GND   GND     8
      9   padl A   GND       Start   Start   9
 
+### Atari
+
+__Paddle controllers__ are a pair of pots on a single cable. The buttons for
+controls 1 and 2 (A and B) short pins 3 and 4 (normally left and right
+joystick switches) respectively to pin 8. The pots are 1 MΩ with one end
+on pin 7 (+5V) and the wiper on pin 9 / 5. Thus, __Atari paddle controllers
+may short pins 7--9, 7--5, or 7--9--5__. The 7--9--5 combination (both
+paddles at far left) may damage MSX machines.
+
+__Driving controllers__ are a single infinite-turn knob that with each
+quarter turn generates a 2-bit gray code sequence (00, 01, 11, 10) on pins
+1 and 2. The "accelerator" button shorts pin 6 to pin 8.
+
+__"Keyboard" controllers__ have 12 button telephone-style keypad (`1`-`9`, `*`,
+`0`, `#`) Pins 1-4 are connected to the switch rows, pins 5, 9, 6 to the
+columns, and pin 7 (+5V) to the first two columns via individual 4k7
+resistors (pull-ups?).
+
+References: [herc-atari]
+
 ### MSX
 
 - Joystick direction switches and buttons short to pin 8 ("COMmon"). This
@@ -44,6 +64,7 @@ MSX, but check strobe behaviour.
 
 
 <!-------------------------------------------------------------------->
+[herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
 [letoine]: https://github.com/letoine/MegadriveControllerToUSB
