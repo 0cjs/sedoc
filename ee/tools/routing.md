@@ -84,6 +84,9 @@ a voltage change (as compared to the source ground on the board) during a
 signal transition. This is often seen in a shared ground lead in a package
 with multiple signal outputs.
 
+The return path may also be (at least partially) via another (usually
+adjacent) signal path, which causes signals to interfere with each other.
+
 ### Designing Return Paths
 
 - Continuous return planes under the signal lines are idea; a ground plane
@@ -94,6 +97,8 @@ with multiple signal outputs.
   - Cross the gap but add adjacent return "straps" on either side. (I.e.,
     bring the ground up to the signal layer on either side of the signal
     path during the crossing; example on [p.24 here][vws-slides].)
+  - Even add a full return ground trace (obviously attached at both ends)
+    parallel to the entire signal trace (like a ribbon cable).
 - For surface-mount packages, via to ground plane should be as close as
   possible to ground pin, and trace to it short and wide.
 - In connectors: a return adjacent to every signal pin (yes, this means
