@@ -12,6 +12,14 @@ Git for Windows
 
 #### Installation Summary
 
+The install options used in previous installations can be found in one of
+the following files:
+
+    C:\Program Files\Git\etc\install-options.txt
+    C:\Program Files (x86)\Git\etc\install-options.txt
+    %USERPROFILE%\AppData\Local\Programs\Git\etc\install-options.txt
+    /etc/install-options.txt
+
 If you are going to use [Visual Studio Code][vsc], or have another
 favourite editor, install it before installing Git.
 
