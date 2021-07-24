@@ -3,11 +3,12 @@ Git for Windows
 
 [Git for Windows][gfw] (also available [from git-scm.com][gfw gsc]) is a
 [MinGW](../win/unixy.md) build of Git and various other tools. It includes:
-* Git, of course
+* Git, Git LFS, tig (ncurses Git repo browser/interface)
 * OpenSSH (dunno if it's [Win32-OpenSSH] or not)
 * [ssh-pageant], to let OpenSSH use PuTTY's [Pageant](term-ssh.md)
 * [mintty] and Bash (used by 'Git Bash Here' menu item in Explorer)
-* zlib, curl, tcl/tk, perl, MSYS21
+* GPG / GNU Privacy Guard (PGP), curl, perl, tcl/tk, MSYS21
+* OpenSSL, zlib
 * Root certs
 
 #### Installation Summary
