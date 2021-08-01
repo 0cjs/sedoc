@@ -5,7 +5,7 @@ Debian Releases and Upgrading
 
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
-| 2021-?? | 11    | Bullseye |          |           |
+| 2021-08 | 11    | Bullseye |          |           | release on 2021-08-14
 | 2020-04 | 20.04 | Focal    | 2030-04  |           |
 | 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
@@ -126,7 +126,8 @@ Also see the stable to testing upgrade instructions at
         dpkg -C
         apt-mark showhold
 
-4. Update [source lists][debsources]:
+4. Update [source lists][debsources]. (If you don't use `etckeeper`, you may
+   wish to use ` sed -i.old` to keep backup copies of the source lists.)
 
         cd /etc
         sed -i -e 's/jessie/stretch/g' apt/sources.list apt/sources.list.d/*
@@ -136,8 +137,11 @@ Also see the stable to testing upgrade instructions at
     You also may need to check `/etc/apt/apt.conf.d/00default-release` to
     ensure the installation is not fixed to a specific release.
 
-    (If you don't use `etckeeper`, you may wish to use ` sed -i.old`
-    to keep backup copies of the source lists.)
+    The Bullseye (Debian 11) security repo name [has changed][deb-bullseye-faq]:
+
+        deb http://deb.debian.org/debian bullseye main
+        deb http://security.debian.org/debian-security bullseye-security main
+        deb http://deb.debian.org/debian bullseye-updates main
 
 5. Upgrade:
 
@@ -179,6 +183,7 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [`alioth.debian.org`]: https://wiki.debian.org/Alioth/FAQ
 [bug 844611]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844611
 [calamares]: https://calamares.io/about/
+[deb-bullseye-faq]: https://wiki.debian.org/DebianBullseye#FAQ
 [deb10]: https://www.debian.org/News/2019/20190706
 [debrel]: https://wiki.debian.org/DebianReleases
 [debsources]: https://wiki.debian.org/SourcesList
@@ -188,3 +193,4 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [dinst]: https://www.debian.org/distrib/netinst
 [so 314792]: https://unix.stackexchange.com/questions/314792/
 [usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
+
