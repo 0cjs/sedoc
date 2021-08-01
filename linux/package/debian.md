@@ -1,6 +1,11 @@
 Debian Package Information
 ==========================
 
+See also:
+- `versions-debian` file, [Upgrading Debian](
+  ../versions-debian.md#upgrading-debian) section
+- Debian Wiki [SourcesList](https://wiki.debian.org/SourcesList)
+
 ### Quick Info
 
 To make available the standard extra stuff, add `contrib` and

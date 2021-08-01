@@ -25,6 +25,18 @@ major) kernel/X11 versions at point releases; see [LTSEnablementStack].
 Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
 
+There is a set of "current" names for Debian releases that roll forward to
+different releases when a new release is made. These may be used instead of
+actual release names in [source lists][debsources] to automatically roll
+systems forward as these change. See also [Debian Package Information](
+package/debian.md) for information on backports and the like.
+- [_stable_][debstable]: the current Debian release
+- _oldstable_: the previous stable release
+- [_testing_][debtest]: current development state of the next stable
+  release. See the link for instructions to upgrade from _stable_.
+- _unstable_: New packages start here and are moved to _testing_ if no
+  issues are seen after ten days.
+
 #### Release Notes
 
 * [Debian 10][deb10]:
@@ -93,6 +105,9 @@ in Debian 9.[so 314792][bug 844611].
 Upgrading Debian
 ----------------
 
+Also see the stable to testing upgrade instructions at
+[DebianTesting][debtest].
+
 1. Ensure `/etc/` is clean and all committed:
 
         cd /etc
@@ -111,12 +126,15 @@ Upgrading Debian
         dpkg -C
         apt-mark showhold
 
-4. Update source lists:
+4. Update [source lists][debsources]:
 
         cd /etc
         sed -i -e 's/jessie/stretch/g' apt/sources.list apt/sources.list.d/*
         git diff --word-diff    # Confirm nothing weird happened
         etckeeper commit -m 'apt/sources.list: Update from jessie to stretch'
+
+    You also may need to check `/etc/apt/apt.conf.d/00default-release` to
+    ensure the installation is not fixed to a specific release.
 
     (If you don't use `etckeeper`, you may wish to use ` sed -i.old`
     to keep backup copies of the source lists.)
@@ -163,6 +181,9 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [calamares]: https://calamares.io/about/
 [deb10]: https://www.debian.org/News/2019/20190706
 [debrel]: https://wiki.debian.org/DebianReleases
+[debsources]: https://wiki.debian.org/SourcesList
+[debstable]: https://wiki.debian.org/DebianStable
+[debtest]: https://wiki.debian.org/DebianTesting
 [dig-4.3]: https://www.debian.org/releases/stable/amd64/ch04s03.en.html
 [dinst]: https://www.debian.org/distrib/netinst
 [so 314792]: https://unix.stackexchange.com/questions/314792/
