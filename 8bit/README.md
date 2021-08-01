@@ -30,6 +30,7 @@ Timeline
 
     1975-01 * Altair 8800 ships; on cover of Popular Electronics
     1975-02   Gates/Allen finish first BASIC, license it to MITS
+    1975-05   General Instrument CP1600 (16-bit, CP1610 used in Intellivision)
     1975-05   _BYTE_ magazine work started
     1975-06   Gates/Allen ship BASIC 2.0 to MITS
     1975-07 * Altair 8800 BASIC announced
