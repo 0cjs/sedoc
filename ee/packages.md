@@ -47,10 +47,10 @@ IC Packages
 ### Lead Styles
 
 - _Through Hole_: [DIP], ZIP.
-- [_Chip carrier_][wp cc] packages (e.g., PLCC) usually have connectios on
-  all four sides and either J-leads curling inward (which can be soldered
-  to the surface of a PCB) or are _leadless_ with metal pads (requiring a
-  socket).
+- [_Chip carrier_][wp cc] packages (e.g., PLCC—Plastic Leaded Chip Carrier)
+  usually have connections on all four sides and either J-leads curling
+  inward (which can be soldered to the surface of a PCB) or are _leadless_
+  with metal pads (requiring a socket).
 - [_(Quad) flat pack_][wp fp] (QFP) have gull wing (or "S") leads on all
   four side and are soldered to the surface of a PCB. Pin spacings are
   typically 50, 30 and 20 [mil][] (1.27, 0.51 and 0.30 mm)
