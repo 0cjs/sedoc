@@ -17,18 +17,20 @@ Soldering
   just cut off device and remove pins. [jre-sol09]
 
 Desoldering ([jre-sol10]):
-- For removing solder alone (no part), clean tip and touch to solder;
-  after it melts some will come away with the iron when you lift it off.
-- Add solder first to help with heat transfer and remove oxidization.
-- Raise rather than slide iron when done to help avoid lifiting pads.
-  (Also never slide wick across a pad.)
-- Clean solder sucker tip after every suck.
-- Notch the tip (just one side) of a solder sucker to let it get
-  closer to a PCB hole while still leaving space for the soldering
-  iron to get in.
-- For SMD discrete parts add solder to get big blobs on both ends so
-  you can then touch/melt both at once with the iron. Put solder on
-  iron tip for heat xfer before removing part.
+- Iron:
+  - For removing solder alone (no part), clean tip and touch to solder;
+    after it melts some will come away with the iron when you lift it off.
+  - Add solder first to help with heat transfer and remove oxidization.
+  - For SMD discrete parts add solder to get big blobs on both ends so you
+    can then touch/melt both at once with the iron. Put solder on iron tip
+    for heat xfer before removing part.
+  - Raise rather than slide iron when done to help avoid lifiting pads.
+    (Also never slide wick across a pad.)
+- Solder sucker:
+  - Clean solder sucker tip after every suck.
+  - Notch the tip (just one side) of a solder sucker to let it get closer
+    to a PCB hole while still leaving space for the soldering iron to get
+    in.
 
 Heat shrink can also be shrunk by rubbing the shank of the soldering
 iron against it (not too slowly).
