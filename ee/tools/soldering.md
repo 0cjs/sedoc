@@ -26,7 +26,9 @@ Desoldering ([jre-sol10]):
     for heat xfer before removing part.
   - Raise rather than slide iron when done to help avoid lifiting pads.
     (Also never slide wick across a pad.)
-- Solder sucker:
+- Desoldering braid:
+  - Put a little flux on the braid to help with desoldering (bigclive.com).
+- Solder sucker (not as good as braid):
   - Clean solder sucker tip after every suck.
   - Notch the tip (just one side) of a solder sucker to let it get closer
     to a PCB hole while still leaving space for the soldering iron to get
