@@ -49,15 +49,22 @@ T-shaped.
 IEC Connectors
 --------------
 
+#### C1 Outlet (feamale / C2 Inlet (male)
+
+2 pins, not polarized, rectangular shape (no indents).
+Do not confuse with C7/C8. Used for shavers.
+
 #### C5 Outlet (female) / C6 Inlet (male)
 
-[Wikipedia][wp c5/c6]. 3 pins, polarized, 2.5 A, 70°C. "Cloverleaf" or
-"micky mouse" shape. Small devices, North American laptop PSUs, my SFF PCs.
+3 pins, polarized, "Cloverleaf" or "micky mouse" shape.
+Small devices, North American laptop PSUs, my SFF PCs.
+2.5 A, 70°C. [Wikipedia][wp c5/c6].
 
 #### C7 Plug (female) / C8 Inlet (male)
 
-[Wikipedia][wp c7/c8]. 2 pins, not polarized, 2.5 A, 70°C. "Infinity"
-shape. Many laptop PSUs, including my Thinkpads.
+2 pins, not polarized, "Infinity" shape.
+Many laptop PSUs, including my Thinkpads.
+2.5 A, 70°C. [Wikipedia][wp c7/c8].
 
 #### C13 Plug (female) / C14 Inlet (male)
 
