@@ -17,6 +17,16 @@ This covers the Motorola 6800 series processors ([timeline]):
   - Hardware: 128 B RAM, 16-bit timer, UART, up to 13 PIA lines.
   - 6801 has up to 31 PIA lines, 2 KB mask ROM.
 
+Hitachi equivalents:
+- __HD6801__: NMOS TTL; compat MC6801. S has 2K (?) ROM; V0,V5 have 4K.
+  V0 1 MHz; V5 1.25 Mhz.
+- __HD6301__: CMOS TTL (except some pins); up.compat HD6801.
+  - Series uses nothing/A/B/C in middle for 1.0/1.5/2.0/3.0 Mhz.
+  - Suffix after V1/X0/Y0/etc: P=DIP, F=QFP, CP=different QFP
+  - Suffix V1: DIP-40; 128b RAM, 4k ROM
+  - Suffix X0: DIP-64; 192b RAM, 4k ROM
+  - Suffix Y0: DIP-64; 256b RAM, 16k ROM
+
 This does not cover:
 - __6805__ (1979): 8-bit X register and other incompatible changes.
   M14065: CMOS version. 68HC05: low power version. 6804: reduced cost
