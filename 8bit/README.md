@@ -71,12 +71,14 @@ Timeline
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
 
+    1980-01   Sinclair ZX80
     1980-05 * Hitachi Basic Master Level 3 (6809) ships.
     1980-06 * VIC-1001 released (Japan)
     1980      Acorn Atom
 
     1981-   * VIC-20 released
     1981-     Sharp MZ-80B ships
+    1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
     1981-08 * IBM PC released ($1565)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
@@ -85,6 +87,7 @@ Timeline
     1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
     1982-   * Commodore MAX Machine released
+    1982-04   Sinclair Spectrum
     1982-08 * Commodore 64 Released
     1982-10   PC-9801 released (¥298,000)
     1982-11 * Fujitsu FM-7 released (¥126,000)
@@ -94,6 +97,9 @@ Timeline
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
+    1983      Radio Shack TRS-80 MC-10
+
+    1984      Commodore 16
 
     1985-01   NEC PC-8801mkIISR
 
