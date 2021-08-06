@@ -24,7 +24,10 @@ Changes from IIe:
 
 Models:
 - A2S4000: Original model, 128K as 16×64 kbit, Apple/generic keyswitches.
-- A2S4100: Memory expansion connector, 128K as 4×256 kbit, Alps keyswitches.
+- A2S4100: Memory expansion connector, 128K as 4×256 kbit, ROM 3, Alps
+  keyswitches.
+- A2S4500: IIc+. 3.5" internal drive, 4 MHz accelerator, ROM 5, new
+  keyboard layout.
 
 
 Misc Notes
@@ -268,23 +271,28 @@ no ports (emulating slots) need it.
 #### IIc Models and ROMs
 
 There are several versions of the IIc. ROM versions are identified by
-`PEEK(-1089)` (64447, $FBBF); hex values are given below.
+`PEEK(-1089)` (64447, $FBBF); hex values are given below, along with ROM
+size, MON chip labelling and dates shipped. Sources: [c.s.a2]
 
-- Original (__$FF__): 16K. The only version that can boot external drive
-  with `PR#7`.
+- Original (__$FF__): 16K 342-0272 1984-04〜1985-11. The only version that
+  can boot external drive with `PR#7`.
 - Serial port timing fix: Replaces 74LS161 with an oscillator to bring
   serial port timing within spec (it was 3% low).
-- UniDisk 3.5 (0, __$00__): 32K. Protocol Converter (earlier version of
-  Smartport) routines to support UniDisk 3.5 external drive.
-  Mini-Assembler and step/trace monitor commands. Built-in diagnostics
-  (Ctrl-OpenApple-Reset). Improved interrupt handlers. New external
-  drive startup procedures.
-- Memory expansion (3, __$03__): 32K. Uses four 64K×4bit RAM instead of
-  sixteen 64K×1bit RAM chips and adds motherboard connectors for a RAM
-  expansion card (expands up to 1 MB). Updates ROM to SmartPort. Moves
-  mouse to port 7; memory expansion uses port 4.
-- Memory expansion (4, __$04__): Version 3 with bugfixes.
-- Apple IIc+ (5): next generation of IIc machines.
+- UniDisk 3.5 (0, __$00__): 32K 342-0033-A 1985-11〜1986-09. Protocol
+  Converter (earlier version of Smartport) routines to support UniDisk 3.5
+  external drive. Mini-Assembler and step/trace monitor commands. Built-in
+  diagnostics (Ctrl-OpenApple-Reset). Improved interrupt handlers. New
+  external drive startup procedures.
+- 342-0033-B marking: unknown difference from -A. Perhaps Imagewriter II
+  support?
+- Memory expansion (3, __$03__): 32K 342-0445-A 1986-09〜1988-01. Uses four
+  64K×4bit RAM instead of sixteen 64K×1bit RAM chips and adds motherboard
+  connectors for a RAM expansion card (expands up to 1 MB). Updates ROM to
+  SmartPort. Moves mouse to port 7; memory expansion uses port 4.
+- Memory expansion (4, __$04__): 342-0445-B 1988-01〜1988-08. Version 3
+  with bugfixes.
+- Apple IIc+ (5, __$05__): 342-0625-A 1988-09〜1990-11. Next generation of
+  IIc machines.
 
 Ch. 11 §"MMU" (p.242) and §"ROM addressing" (pp. 249-250) describe the
 decoding. The MMU (UE16) generates `ROMEN1*` (pin 19, also `H`?) and
@@ -371,6 +379,7 @@ This was model A2S4500. Differences include:
 [a2za-a2crom]: http://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Computers/Apple%20II/Apple%20IIc/ROM%20Images/
 [adtpro-din5]: https://adtpro.com/connectionsserial.html#DIN5
 [bmow-2crom]: https://www.bigmessowires.com/2015/05/29/apple-iic-rom-upgrade/
+[c.s.a2]: https://comp.sys.apple2.narkive.com/T5lckfnp/apple-iic-models-and-rom-numbers
 [evb-teardown]: https://www.youtube.com/watch?v=JsUM-ZcBFE0
 [hwdin]: ../../hw/din-connector.md
 [ifixit]: https://www.ifixit.com/Guide/Disassembling+Apple+IIc+Cover/6772
