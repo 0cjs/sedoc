@@ -54,6 +54,10 @@ IC Packages
 - [_(Quad) flat pack_][wp fp] (QFP) have gull wing (or "S") leads on all
   four side and are soldered to the surface of a PCB. Pin spacings are
   typically 50, 30 and 20 [mil][] (1.27, 0.51 and 0.30 mm)
+- [_Dual/quad-flat no-leads_][wp fn] (DFN, QFN, MLF, SON — micro leadfame
+  and small-outline no leads, many other name variants) have contacts on
+  the bottom around the perimiter and a central pad for heat transfer to
+  the PCB. Similar to leadless QFP?
 
 ### 0.1"/2.54mm lead spacing:
 
@@ -147,4 +151,6 @@ Identification/Logos:
 [vishay]: https://www.vishay.com/docs/72130/tape_soic.pdf
 
 [wp cc]: https://en.wikipedia.org/wiki/Chip_carrier
+[wp fn]: https://en.wikipedia.org/wiki/Flat_no-leads_package
 [wp fp]: https://en.wikipedia.org/wiki/Quad_flat_package
+
