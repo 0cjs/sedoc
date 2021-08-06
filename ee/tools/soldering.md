@@ -44,6 +44,10 @@ layer.) Even within a joint, oxide can also form over time via oxygen
 diffusing through the metal around the joint, so what looks like a good
 joint initially may entirely detach after a few weeks.
 
+Stainless steel also tends to reject solder (using standard flux), and so
+stainless steel dentist's picks can be helpful for cleaning out
+through-holes in boards when desoldering.
+
 
 Soldering Iron
 --------------
