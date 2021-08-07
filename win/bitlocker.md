@@ -58,13 +58,14 @@ not be very secure).
 
 ### Recovery Keys
 
-Changes to your system, particularly to drive from which you boot, may
-disable a PIN or passphrase and require the use of a recovery key. For
-example, on a TPM-enabled system with BitLocker activated, replacing
-the Windows boot sector with Grub (to dual-boot Windows/Linux) will
-invalidate your PIN. (My guess is that the TPM won't check a PIN
-unless it can confirm that the boot sector and/or other early boot
-material on the drive has not been changed.)
+Changes to your system, particularly to the drive from which you boot, may
+disable a PIN or passphrase and require the use of a recovery key. (You can
+boot a drive with a trashed bootloader using a [Linux emergency
+boot][l-boot].) For example, on a TPM-enabled system with BitLocker
+activated, replacing the Windows boot sector with Grub (to dual-boot
+Windows/Linux) will invalidate your PIN. (My guess is that the TPM won't
+check a PIN unless it can confirm that the boot sector and/or other early
+boot material on the drive has not been changed.)
 
 The recovery key is now just a 40-digit number in ASCII format; the
 binary file version is no longer written or used. Windows writes the
@@ -85,5 +86,7 @@ References
 
 
 
+<!-------------------------------------------------------------------->
 [bl-pin]: https://serverfault.com/a/55495/7408
 [bl-no-tpm]: https://answers.microsoft.com/en-us/windows/forum/windows_10/bitlocker-in-windows-10-without-tpm/f79add65-17c2-4a5d-92d6-e4d2a387119f
+[l-boot]: ../linux/boot.md
