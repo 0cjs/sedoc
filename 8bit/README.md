@@ -81,6 +81,7 @@ Timeline
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
     1981-08 * IBM PC released ($1565)
+    1981-11 * PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
     1981-12 * NEC PC-8801 ships (released 1981-11?)
     1981-12 * BBC Micro released
@@ -94,6 +95,7 @@ Timeline
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
+    1983-07 * PC-6001mkII released (¥84,800)
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
