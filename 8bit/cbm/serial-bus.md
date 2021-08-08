@@ -1,8 +1,11 @@
-Commodore Serial (IEC) Bus
-==========================
+Commodore Serial Bus
+====================
 
-Used on VIC-20, C64, etc. Reduced-cost version of IEEE-488 interface
-used on PETs.
+Reduced-cost version of IEEE-488 interface used on PETs. A.K.A:
+IEC-625, "IEC serial bus," and GPIB (General Purpose Interface Bus).
+
+Used on VIC-20, C64, TED machines, C128.
+(But Plus/4 used 1551 drive on parallel interface in cartridge port.)
 
 Docs:
 - [_Commodore 64 Programmer's Reference Guide_][c64progref], p. 362 et seq.
