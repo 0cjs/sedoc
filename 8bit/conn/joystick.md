@@ -7,17 +7,17 @@ Directions and buttons are N.O., shorting to ground when activated.
 From experimentation it seems it may be possible to use Atari joysticks on
 MSX, but check strobe behaviour.
 
-    Pin  Atari    MSX       ────Sega────   Pin
-    ──────────────────────────────────────────
-     1   up       up           Up           1
-     2   down     down       Down           2
-     3   left     left       Left           3
-     4   right    right     Right           4
-     5   padl B   +5V Vcc     +5V   +5V     5
-     6   button   btn 1     Btn A   Btn B   6
-     7   +5V      btn 2       GND ● +5V     7
-     8   GND      COM/STR     GND   GND     8
-     9   padl A   GND       Start   Start   9
+    Pin  Atari    MSX       ────Sega────     Amiga  Pin
+    ───────────────────────────────────────────────────
+     1   up       up           Up            up      1
+     2   down     down       Down            down    2
+     3   left     left       Left            left    3
+     4   right    right     Right            right   4
+     5   padl B   +5V Vcc     +5V   +5V      B3(M)   5
+     6   button   btn 1     Btn A   Btn B    B1(L)   6
+     7   +5V      btn 2       GND ● +5V      +5V     7
+     8   GND      COM/STR     GND   GND      GND     8
+     9   padl A   GND       Start   Start    B2(R)   9
 
 ### Atari
 
@@ -61,6 +61,16 @@ References: [herc-atari]
   selections? Low for 1.8 ms resets the clock to start of sequence? See
   [nfg], [letoine].
 
+### Amiga
+
+[Controllers][amiga]:
+- Digital joystick: same as Atari except button 2 added.
+- Paddles: same as Atari except button 3 on pin 1 (up) added.
+- Mouse/trackball: pins 1-4 are V, H, VQ and HQ pulses. B1/2/3 are L/R/M.
+- Lightpen: B1 = beamtrigger; B2 = B2; B3 = penpress.
+
++5V is 50 mA max.
+
 
 
 <!-------------------------------------------------------------------->
@@ -68,3 +78,4 @@ References: [herc-atari]
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
 [letoine]: https://github.com/letoine/MegadriveControllerToUSB
+[amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
