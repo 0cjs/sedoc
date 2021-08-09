@@ -186,7 +186,10 @@ Triggering and trigger status display (at upper left):
 - _Normal_ retriggers every time it sees the trigger condition, stopping
   when it doesn't see it. (`WAIT` and `T'D`)
 - _Auto_ forces a trigger if it doesn't see a trigger condition. (`AUTO`
-  and `T'D`) XXX How long does it scan before forcing?
+  and `T'D`). Handy to get a trace on screen for adjustment when you've not
+  yet worked out the trigger. (Before trigger either the previously
+  captured waveform or nothing is displayed.) XXX How long does it scan
+  before forcing?
 - _Force_ button forces a single capture (except when stopped) continuing
   in that mode after.
 
@@ -197,7 +200,10 @@ setting (`Display » Persis.Time`). To get just the current waveform, use
 
 Most trigger types have a `Setting » Holdoff` setting (min 16 ns), the
 amount of time after a trigger during which subsequent trigger events are
-ignored.
+ignored. On analogue scopes this is used when your waveform period is
+longer than your horizontal time base so you can see just the start of the
+waveform; with digital using zoom might be a better way of handling this if
+you stil have enough resolution with the wider capture time.
 
 Trigger coupling (Menu/Setting/Coupling), valid only with edge triggers,
 can be set to DC/AC/LFR/HFR independently of the input coupling:
