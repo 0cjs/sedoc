@@ -20,37 +20,46 @@ architectures), Cloud (AWS, Azure), and Desktop (Windows, Mac.)
 The [storage driver] you use can be particularly important; as well
 as the Docker documentation [atomic-loopback] is good.
 
-#### Debian
+#### Debian (as of 2021-08)
 
-[Debian] has no EE; CE is supported on `x86_64` and `armhf` of Debian
-8-10. Debian 7 supports only `x86_64` and requires a kernel update
-from 3.2→3.10. Install can be via manual convenience scripts, .deb
-package, or from the Docker repository (this for Debian 8+ `x86_64`):
+Debian has no EE; CE is supported on `x86_64` and `armhf` of Debian 8-10.
+Debian 7 supports only `x86_64` and requires a kernel update from 3.2→3.10.
+Install can be via manual convenience scripts, .deb package, or [from the
+Docker repository][docker debinst] (this for Debian 8+ `x86_64`):
 
-    apt-get remove docker docker-engine docker.io   # Remove old versions
+    sudo apt-get remove docker docker-engine docker.io   # Remove old versions
 
+    sudo apt-get update
     sudo apt-get install apt-transport-https ca-certificates \
-        curl gnupg2 software-properties-common
+        curl gnupg lsb-release software-properties-common
 
-    #   Add Docker GPG key. Verify the fingerprint is:
-    #   9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+    #   Debian ≥11, because apt-key is deprecated
+    #   They say /usr/share/keyrings/ but that seems to be wrong.
+    curl -fsSL https://download.docker.com/linux/$(
+      . /etc/os-release; echo "$ID")/gpg \
+      | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    #   XXX not sure how to verify fingerprint; see below.
+
+    #   In case above doesn't work in Debian 8-9 (apt-key is deprecated in 11):
     curl -fsSL https://download.docker.com/linux/$(
         . /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+    #   Verify fingerprint: 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
     apt-key fingerprint 0EBFCD88
 
-    #   This will install in `/etc/apt/sources.list`; you may want to move
-    #   the new lines to `/etc/apt/source.list.d/docker.list`.
-    add-apt-repository "deb [arch=amd64] \
-        https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
-        $(lsb_release -cs) stable"
+    #   Add the sources.list entry. Old systems may need to remove signed-by.
+    echo "deb \
+      "[arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+      https://download.docker.com/linux/debian \
+      $(lsb_release -cs) stable" \
+      | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     apt-get update
     apt-cache madison docker-ce     # If you want to find a specific version
     apt-get install docker-ce=VERSION
 
-    docker run hello-world      # Verify it's working
+    sudo docker run hello-world      # Verify it's working
 
-#### Ubuntu
+#### Ubuntu (as of 2018-10)
 
 [Ubuntu CE] supports 17.10 (edge only), 17.04, 16.04, 14.04 on
 `x86_64`, `armhf`, `s390x` and `ppc64le`. ([Ubuntu EE] is also
@@ -131,7 +140,7 @@ Managment Systems
 [HTTP API]: https://docs.docker.com/registry/spec/api/
 [atomic-loopback]: https://www.projectatomic.io/blog/2015/06/notes-on-fedora-centos-and-docker-storage-drivers/
 [command line]: https://docs.docker.com/edge/engine/reference/commandline/docker/
-[debian]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
+[docker debinst]: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
 [docker build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker-ls]: https://github.com/mayflower/docker-ls
 [engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
