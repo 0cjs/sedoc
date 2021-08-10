@@ -52,6 +52,7 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 - __National CF-2000__:     16k/16k 2C.
 - __Sony HB-55__:           16k/16k 1C+E. Cheap keyboard.
 - __Sony HB-55P__:          16k/16k 2C. European version.
+- __[Canon V-8]__:    85-08 16k/16k 1C. Compact, no printer, ext PSU 9V.
 - __Casio PV-16__:          16k/16k 1C+E. Ext. PSU 10 V 800 mA.
                             Small chiclet keyboard.
 - __Casio MX-10/MX-101__:   16k/16k. PSU 7 V 800 mA.
@@ -247,6 +248,7 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [wpen]: https://en.wikipedia.org/wiki/MSX
 [wpja]: https://ja.wikipedia.org/wiki/Msx
 
+[Canon V-8]: ./models/Canon_V-8.md
 [FS-AA51]: https://www.msx.org/wiki/Panasonic_FS-AA51
 [AC-HB3]: https://www.msx.org/wiki/Sony_AC-HB3
 
