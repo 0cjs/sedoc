@@ -28,26 +28,24 @@ MSX BASIC Reference
 - `SAVE "<dev>[<filename>]"`
 - `BLOAD`, `BSAVE`: See [Technical/Internals](./bastech.md).
 
-### Functions
-
-- `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
-  beginning with the _I_th character. `1` is the first character of _X$_.
-
-### Misc
+### Variable Definition and Special Variables
 
 - `DEFINT`, `DEFSNG`, `DEFDBL`, `DEFSTR`: Declares all variables starting
   with a letter from the range (required parameter, e.g., `I-N`) to be
   integer, floating point single or double precision, or string. Variables
   with explicit type declarations (`%`, `!`, `#` for integer, single,
   double precision) are excluded from this.
-
-### Special Variables
-
 - `TIME` (unsigned integer): Incremented by 1 every VDP interrupt (60 Hz on
   NTSC systems). Not incremented when interrupts disabled, e.g. when doing
   cassette I/O.
 - `SPRITE$(<pat no>)` (string), `VDP(<n>)` (unsigned byte), `BASE(<n>)`
   (integer). Graphics-related.
+
+### Functions
+
+- `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
+  beginning with the _I_th character. `1` is the first character of _X$_.
+
 
 
 References
