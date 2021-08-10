@@ -25,6 +25,12 @@ of a replacement. (Help wanted on this!)
 Telegram
 --------
 
+Settings » Advanced contains useful stuff:
+- Manage local storage: reduce max disk usage from 3 GB
+- Export Telegram data: account info, contacts, messages, media.
+  (Notifies all devices; approve on mobile or wait 24h.)
+- System Integration: if icons, window frames are incorrect.
+
 [Telgram markdown formatting][t md] varies by client. For Android,
 Web and Win/Unix desktop:
 
