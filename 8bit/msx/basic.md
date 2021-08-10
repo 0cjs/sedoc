@@ -46,6 +46,20 @@ MSX BASIC Reference
 - `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
   beginning with the _I_th character. `1` is the first character of _X$_.
 
+### Screen and Graphics
+
+- `CLS`: Clear screen. Valid in all screen modes.
+- `COLOR [foreground][,background][,border]`. Set color of all character
+  cells on the screen. All parameters optional, one must be given. The `F6`
+  default programming sets the default startup colours: 15,4,7 for JP,
+  15,4,4 for all others.
+
+Color codes:
+
+    0 transparent    4 blue dark     8    red medium   12   green dark
+    1 black          5 blue light    9    red light    13 magenta
+    2 green medium   6  red dark    10 yellow dark     14    gray
+    3 green light    7 cyan         11 yellow medium   15   white
 
 
 References
