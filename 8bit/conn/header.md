@@ -1,7 +1,7 @@
 .1" Pin Headers
 ===============
 
-<!-- Digraphs: ▼=Dt ▄=LB -->
+<!-- Digraphs: ▼=Dt ▄=LB ▂=U+2582 lower one quarter block -->
 
 Pin headers are used both for ribbon cable with BT224 IDC connectors (as
 used for PC internal drives) and individually crimped; my numbering tries
@@ -14,7 +14,7 @@ pin 2 immediately below it. The male connector on a device is thus reversed.
 
             Looking Into
       Female Cable   Male Device
-        ▼  ▄              ▄  ▼
+        ▼  ▂              ▂  ▼
         1 3 5 7        7 5 3 1      alternative numbering A1, A2, ...
         2 4 6 8        8 6 4 2      alternative numbering B1, B2....
 
