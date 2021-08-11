@@ -47,7 +47,8 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 - __Sanyo MPC-2 (Wavy2)__:  64k/16k 2C.
 - __National CF-3000__:     64k/16k 2C. Box+keyboard. JP21 RGB.
                             Separate superimpose unit. No space for floppy drv.
-- __Nationanl CF-2700__:    32k/16k 2C.
+- __Hitachi MB-H1__:  83-12 32k/16k 2C. Extra F/W. Big ext. PSU.
+- __National CF-2700__:     32k/16k 2C.
 - __National CF-2000__:     16k/16k 2C.
 - __Sony HB-55__:           16k/16k 1C+E. Cheap keyboard.
 - __Sony HB-55P__:          16k/16k 2C. European version.
