@@ -83,29 +83,35 @@ Rockwell/etc. 6502C (a higher speed part). This part had:
 #### 6510
 
 The [6510] includes a PIA and has a substantially different pinout. It came
-in several variations; below is the most common. We give the 6510 pin, the
-6502 pin that originally had that signal (if it was moved), the 6510
-function, and the function that from the 6502 that was replaced.
+in several variations; below is the most common. We give the 6502 pin that
+contains the function, the 6510 pin to which that function was moved, the
+name of the function, and the name of function that was previously on that
+pin on the 6502.
 
-    Pin MvFr  6510          Replaces    Notes
-     1   39   Φ0 (CLKIN)    Vss, /VP
-     2    2   /HALT         READY       Same signal; changed name/active level
-     3    4   /IRQ          Φ1 out
-     4    6   /NMI          /IRQ
-     5    -   AEC           NC          Address bus enable; otherwise tri-state
-     6    8   Vcc           NMI
-     7    9   A0            SYNC
-     ~~~ 8…20 are A1…A13 ~~~
-     21  21   GND           GND
-     22  24   A14
-     23  25   A15
-     24   -   P5                        PIA I/O 5
-     ...
-     29   -   P0                        PIA I/O 0
-     30  26   D7
-     ...
-     37  33   D0
-     38  34   R/W̅
+
+    6502  6510 6510         Replaces    Notes
+     Pin   Pin Function     6502 Pin
+    ───────────────────────────────────────────────────────────────────────────
+     39     1  Φ0 (CLKIN)   Vss, /VP
+      2     2  /HALT        READY       Same signal; changed name/active level
+      4     3  /IRQ         Φ1 out
+      6     4  /NMI         /IRQ
+      -     5  AEC          NC          Address bus enable; otherwise tri-state
+      8     6  Vcc          NMI
+      9     7  A0           SYNC
+     10     8  A1
+           ...
+     23    20  A13
+     21    21  GND          GND
+     24    22  A14
+     25    23  A15
+      -    24  P5                       PIA I/O 5
+           ...
+      -    29  P0                       PIA I/O 0
+     26    30  D7
+           ...
+     33    37  D0
+     34    38  R/W̅
 
 
 
