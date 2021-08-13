@@ -82,11 +82,10 @@ Rockwell/etc. 6502C (a higher speed part). This part had:
 
 #### 6510
 
-The [6510] includes a PIA and has a substantially different pinout. It
-came in several variations; below is the most common. We give the 6510
-pin, the 6502 pin that originally had that signal (if it was moved),
-the 6510 function, and the function that from the 6502 that was
-replaced.
+The [6510] includes a PIA and has a substantially different pinout. It came
+in several variations; below is the most common. We give the 6510 pin, the
+6502 pin that originally had that signal (if it was moved), the 6510
+function, and the function that from the 6502 that was replaced.
 
     Pin MvFr  6510          Replaces    Notes
      1   39   Φ0 (CLKIN)    Vss, /VP
