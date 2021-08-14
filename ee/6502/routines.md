@@ -304,7 +304,22 @@ cycles for zero-page operand, otherwise 17).
 
 ### Fast nybble swap
 
-By David Galloway. See [wm-SWM].
+By David Galloway. See [wm-SWM]. The [explanation by gfoot][6f p85436]:
+
+> The idea is to rotate four times but without including the carry flag in
+> the operation, unlike the 6502's normal rotate instruction. The first
+> line shifts one place with the high bit going into the carry flag. To
+> complete the first shift we just want to get that value out of the carry
+> flag into the low bit. ADC #0 would do that, and you could repeat those
+> two instructions four times to get the desired result. It only works with
+> left shifts because ADC can only move the carry flag into the bottom bit.
+
+> The clever shortcut in that code though is that instead of adding zero to
+> extract the carry flag into the bottom bit, it adds $80 which also
+> inverts the top bit, causing a new carry if it was set originally. This
+> effectively moves that top bit into the carry flag, which allows a
+> follow-up ROL to rotate that value out of the carry flag into the bottom
+> bit more efficiently.
 
             ASL A
             ADC #$80
@@ -443,6 +458,7 @@ External Sources
 [6f p73317]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=15#p73317
 [6f p73765]: http://forum.6502.org/viewtopic.php?f=4&t=6021#p73765
 [6f p77097]: http://forum.6502.org/viewtopic.php?f=2&t=6177#p77097
+[6f p85436]: http://forum.6502.org/viewtopic.php?f=2&t=6697&view=unread#p85436
 [6f t6069]: http://forum.6502.org/viewtopic.php?f=2&t=6069
 [6f-bclark]: http://forum.6502.org/viewtopic.php?p=62581#p62581
 [6f-p67837]: http://forum.6502.org/viewtopic.php?f=3&t=5517&hilit=robotron&start=60#p67837
