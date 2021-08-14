@@ -36,9 +36,29 @@ Systems for color or monochrome video with various degrees of multiplexing
 - MVBS (monochrome video baseband signal): Y+sync
 
 "Digital" monitors often cannot accept an analogue luminance signal, but
-on monochrome monitors (and maybe even colour?) you can get gray scale
+on monochrome monitors (and maybe even color?) you can get gray scale
 by instead using PWM to reduce the "on time" of a pixel, thus making it
 less bright. See e.g. [New Tricks for an old PET][f6 82495].
+
+#### NTSC Color Encoding
+
+C is a 315/88 MHz (3.579545 MHz ±10 Hz) signal added to Y (2nd order
+amplitude modulation). The color burst is a burst of this at 0° in the back
+porch to give the 0° phase reference. [phirenz]
+- Luminance: average value of Y, but see below.
+- Saturation: amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
+  See below about separating this from luminance. This may show as "chroma
+  dots" on old B/W sets that don't do this separation. (Newer B/W sets are
+  supposed to filter when a color burst is present.)
+- Hue: phase of 3.58 MHz waveform: 0°=blue, 100°=red, 178°=yellow.
+
+Older TVs used a notch filter (2.8 - 4.1 MHz) to extract C, leaving Y as
+0 - 2.8 Mhz and 4.1 - ~5.5 Mhz. Thus alternating vertical bars at a width
+that would produce a frequency in the notch range will be interpreted as
+color if a color burst is present in the back porch. The notch range is
+approximately 188 TV lines per sweep. Modern TVs use comb filters that do a
+much better job. [an9644] has some excellent image examples and details on
+filtering.
 
 #### Vertical Sync
 
@@ -288,7 +308,9 @@ Other sources
 
 <!-------------------------------------------------------------------->
 
+[an9644]: https://www.renesas.com/jp/en/document/apn/an9644-composite-video-separation-techniques
 [f6 82495]: http://forum.6502.org/viewtopic.php?f=4&t=6238#p82495
+[phirenz]: https://www.youtube.com/watch?v=3JFt6t6ijLs&lc=UgxaSs9KAeuIR-tCWJ54AaABAg
 
 <!-- Circuits -->
 [f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
