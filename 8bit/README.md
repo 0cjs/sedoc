@@ -66,8 +66,10 @@ Timeline
     1978-12 * Sharp MZ-80K ships
 
     1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
+    1979-05   NEC PC-8001 (Z80) announced
     1979-06 * Micropro releases WordStar
     1979-09 * NEC PC-8001 (Z80) ships
+    1979-10   Sharp MZ-80K introduced in UK (20K £380, 48K £475)
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
 
@@ -90,7 +92,7 @@ Timeline
     1982-   * Commodore MAX Machine released
     1982-04   Sinclair Spectrum
     1982-08 * Commodore 64 Released
-    1982-10   PC-9801 released (¥298,000)
+    1982-10   PC-9801 anounced (¥298,000)
     1982-11 * Fujitsu FM-7 released (¥126,000)
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
@@ -120,11 +122,17 @@ Online references (some of dubious accuracy) include:
   Similar pages exist for other years.
 - [uber-leet Computer Releases 1939-1995][uber]: No months, but lists
   a _lot_ of systems.
+- JPIDEC English-language publications sometimes contain interesting
+  historical information; many are found in the [JIPDEC Archives "J"
+  section][JIPDEC ar J].
+  - ["Personal Computers in Japan - An Unabridged Account -"][jcq75],
+    _Japan Computer Quarterly_ No.75 (1988).
+  - ["The PC Phenomenon -End of an Epoch?-"][jcq57], _Jipdec Report_ No.57
+    (1984).
+  - ["Microcomputer Industry"][jcq46], _Jipdec Report_ No.465 (1981)
 - IPSJ Computer Museum [Personal Computers in Japan][ipsj] timeline.
 - 佐々木潤, [80年代マイコン大百科][suzuki2013], timeline starting p.8.
   (Viewable in preview.)
-
-
 
 
 <!-------------------------------------------------------------------->
@@ -143,7 +151,11 @@ Online references (some of dubious accuracy) include:
 
 [m kb]: https://archive.org/details/kilobaudmagazine?&sort=date
 
+[JIPDEC ar J]: https://www.jipdec.or.jp/library/archives_keyword_J.html
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
+[jcq46]: https://www.jipdec.or.jp/archives/publications/J0001270
+[jcq57]: https://www.jipdec.or.jp/archives/publications/J0001259
+[jcq75]: https://www.jipdec.or.jp/archives/publications/J0003088
 [oc-1975]: https://old-computers.com/museum/year.asp?y=1975
 [pol-mp]: http://kpolsson.com/micropro/
 [pol-pc]: http://kpolsson.com/comphist/
