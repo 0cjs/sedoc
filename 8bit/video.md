@@ -67,11 +67,11 @@ C is a 5×7×9/(8×11) Mhz = 315/88 Mhz ~= 3.579545 MHz ±10 Hz signal added to
 Y (2nd order amplitude modulation). The color burst is a burst of this at
 0° in the back porch to give the 0° phase reference. [phirenz]
 - Luminance: average value of Y, but see below.
-- Saturation: amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
+- Saturation (I): amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
   See below about separating this from luminance. This may show as "chroma
   dots" on old B/W sets that don't do this separation. (Newer B/W sets are
   supposed to filter when a color burst is present.)
-- Hue: phase of 3.58 MHz waveform: 0°=blue, 100°=red, 178°=yellow.
+- Hue (Q): phase of 3.58 MHz waveform: 0°=blue, 100°=red, 178°=yellow.
 
 Older TVs used a notch filter (2.8 - 4.1 MHz) to extract C, leaving Y as
 0 - 2.8 Mhz and 4.1 - ~5.5 Mhz. Thus alternating vertical bars at a width
