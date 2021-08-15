@@ -64,55 +64,6 @@ access to any address in the $C000 page will toggle the output
 flip-flop.
 
 
-ROM Software
-------------
-
-Original monitor ROM was 2× [Intel 3601] 256b×4.
-
-### ROM Routines
-
-    $E000   Woz BASIC entry point (`E000R` to run)
-    $E2B3   Woz BASIC warm entry point (preserves existing program)
-    $FF1F   GETLINE: Monitor entry point (CALL -225 from BASIC)
-    $FFEF   ECHO: Print char in A to terminal
-    $FFDC   PRBYTE: Print value in A as two hex digits
-    $FFE5   PRHEX: Print lower nybble of A as a single hex digit
-
-### Woz Monitor
-
-- SB-Projects, [The Woz Monitor][sbp-wozmon].
-- Jeff Tranter, [Woz Monitor Source Code][jt-wozmon]
-
-Multiple commands may be given in sequence (numbers must be separated
-with spaces); the current location _curloc_ will be used when not
-being set.
-
-- _nnnn_: Examine byte value at _nnnn_ and set _curloc_ = _nnnn_+1.
-- _.nnnn_: Examine byte values in range _curloc_ through _nnnn_ (eight
-  bytes per line); set _curloc_ = _nnnn_+1. Often preceeded by address
-  to set/examine _curloc_ above, e.g., _mmmm.nnnn_.
-- _nnnn: aa bb ..._: Deposit starting at _nnnn_ bytes _aa_, _bb_,
-  etc., set _curloc_ = last loc. deposited + 1, and print previous
-  value at _nnnn_.
-- _R_: "Run," `JMP` (not `JSR`) to _curloc_. Return to monitor with
-  `JMP $FF1F`.
-
-### Woz BASIC
-
-- SB-Projects, ["The Apple 1 Basic"][sbp-basic]
-
-### Apple Cassette Interface (ACI)
-
-The [ACI] contained 256 bytes of PROM with code designed to run from
-$C100 (but mirrored into the I/O area at $C000). There's a bug in the
-address parsing; always use 4-digit addresses before the `R` and `W`
-commands.
-
-### Other Tools
-
-- [Krusader](krusader.md), a symbolic assembly development environment.
-
-
 MC6820 Keyboard and Video I/O
 -----------------------------
 
@@ -171,6 +122,54 @@ It backspaces and erases the previous character when either `_` or
 backspace is typed, prints a space for nonprinting chars, and prints
 lower-case.
 
+
+ROM Software
+------------
+
+Original monitor ROM was 2× [Intel 3601] 256b×4.
+
+### ROM Routines
+
+    $E000   Woz BASIC entry point (`E000R` to run)
+    $E2B3   Woz BASIC warm entry point (preserves existing program)
+    $FF1F   GETLINE: Monitor entry point (CALL -225 from BASIC)
+    $FFEF   ECHO: Print char in A to terminal
+    $FFDC   PRBYTE: Print value in A as two hex digits
+    $FFE5   PRHEX: Print lower nybble of A as a single hex digit
+
+### Woz Monitor
+
+- SB-Projects, [The Woz Monitor][sbp-wozmon].
+- Jeff Tranter, [Woz Monitor Source Code][jt-wozmon]
+
+Multiple commands may be given in sequence (numbers must be separated
+with spaces); the current location _curloc_ will be used when not
+being set.
+
+- _nnnn_: Examine byte value at _nnnn_ and set _curloc_ = _nnnn_+1.
+- _.nnnn_: Examine byte values in range _curloc_ through _nnnn_ (eight
+  bytes per line); set _curloc_ = _nnnn_+1. Often preceeded by address
+  to set/examine _curloc_ above, e.g., _mmmm.nnnn_.
+- _nnnn: aa bb ..._: Deposit starting at _nnnn_ bytes _aa_, _bb_,
+  etc., set _curloc_ = last loc. deposited + 1, and print previous
+  value at _nnnn_.
+- _R_: "Run," `JMP` (not `JSR`) to _curloc_. Return to monitor with
+  `JMP $FF1F`.
+
+### Woz BASIC
+
+- SB-Projects, ["The Apple 1 Basic"][sbp-basic]
+
+### Apple Cassette Interface (ACI)
+
+The [ACI] contained 256 bytes of PROM with code designed to run from
+$C100 (but mirrored into the I/O area at $C000). There's a bug in the
+address parsing; always use 4-digit addresses before the `R` and `W`
+commands.
+
+### Other Tools
+
+- [Krusader](krusader.md), a symbolic assembly development environment.
 
 
 
