@@ -19,6 +19,20 @@ addressing modes. Cost wasn't an issue for him, since he could get a
 6800, PIA and UART for $40 through HP. [a1cb-1211]
 
 
+Schematics
+----------
+
+The schematics in the original [_Apple-1 Operation Manual_][a1man] have
+several errors, as well as just being generally difficult to read. [This
+applefritter thread][a1sch] contains redrawn versions of the originals,
+links to corrected versions, and further discussion of errors in even
+those.
+
+[willegal] has a list of mistakes in the schematics and some discussion of
+design problems. retro.hansotten.nl has [corrected schematics
+(PDF)][hansotten].
+
+
 Memory Map
 ----------
 
@@ -179,11 +193,14 @@ commands.
 [a1cb-1211]: https://apple1computer.blogspot.com/2012/11/early-apple-1-pcb.html
 [a1cb-1309]: https://apple1computer.blogspot.com/2013/09/6800-info-from-woz-per-lionel.html
 [a1man]: https://www.applefritter.com/files/a1man.pdf
+[a1sch]: https://www.applefritter.com/content/hi-res-jpgs-re-designed-apple-1-schematics
 [aci]: https://www.sbprojects.net/projects/apple1/aci.php
+[hansotten]: http://retro.hansotten.nl/uploads/apple1/a1%20circuit.pdf
 [intel 3601]: https://drive.google.com/file/d/0B9rh9tVI0J5mNDc4NDI4NTEtZmU0MC00MTM5LTg3NTMtODk5NDFiODViZDdj/view
 [jt-wozmon]: https://github.com/jefftranter/6502/tree/master/asm/wozmon
 [sbp-basic]: https://www.sbprojects.net/projects/apple1/a1basic.php
 [sbp-wozmon]: https://www.sbprojects.net/projects/apple1/wozmon.php
+[willegal]: http://www.willegal.net/appleii/apple1-hardware.htm
 [yt-6800]: https://www.youtube.com/watch?v=ag6pWUhps7U
 
 [a1js]: https://www.scullinsteel.com/apple1/
