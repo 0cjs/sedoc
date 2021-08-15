@@ -40,11 +40,32 @@ on monochrome monitors (and maybe even color?) you can get gray scale
 by instead using PWM to reduce the "on time" of a pixel, thus making it
 less bright. See e.g. [New Tricks for an old PET][f6 82495].
 
+#### CVBS Standards
+
+Notes:
+- The 1953 NTSC color encoding (as opposed to 1941 NTSC image encoding) and
+  PAL are colour encoding standards that are not technically tied to
+  luminance image broadcast standards (typically 625 and 525 lines).
+- Technically "CCIR System" standards are for broadcast, and include RF
+  frequency assignments as well as video encoding.
+
+Standards:
+- CCIR System A: (376i50) 405-line 25 FPS interlaced 10.125 kHz. Britian
+  (1937-1969 on BBC1; BBC2 was System B from start in 1964), Ireland
+- CCIR System M (1941 NTSC): 525-line 30 FPS interlaced 15.750 kHz B/W. U.S.
+- CCIR System J: System M w/different RF channel assignments (?). Japan.
+- PAL-M: System M with PAL color. Brazil.
+- NTSC-M (1953 NTSC): (480i60) 525-line 30/1.001 ≈ 29.970 FPS interlaced
+  15.734 kHz color. Backward-compatible w/System M.
+- CCIR System B: (576i50) 625-line 25 FPS interlaced 15.625 kHz B/W,
+  European (and later British). Used with both PAL (4.43361875 Mhz) and
+  SECAM color.
+
 #### NTSC Color Encoding
 
-C is a 315/88 MHz (3.579545 MHz ±10 Hz) signal added to Y (2nd order
-amplitude modulation). The color burst is a burst of this at 0° in the back
-porch to give the 0° phase reference. [phirenz]
+C is a 5×7×9/(8×11) Mhz = 315/88 Mhz ~= 3.579545 MHz ±10 Hz signal added to
+Y (2nd order amplitude modulation). The color burst is a burst of this at
+0° in the back porch to give the 0° phase reference. [phirenz]
 - Luminance: average value of Y, but see below.
 - Saturation: amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
   See below about separating this from luminance. This may show as "chroma
