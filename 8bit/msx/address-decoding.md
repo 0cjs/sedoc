@@ -31,6 +31,9 @@ _primary_ slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
 select, pin 4) on the corresponding cartridge connector based on the bit
 pair for that page (set to 0-3) in PPI port_A described above.
 
+    | $C000 | $8000 | $4000 | $0000 | Pages 3-0
+    |  7 6  |  5 4  |  3 2  |  1 0  | $A8 port bits containing slot number (0-3)
+
       Slot 0    System slot (onboard ROM, RAM)  required
       Slot 1    Cartridge slot 1                required
       Slot 2    Cartridge slot 2                optional
