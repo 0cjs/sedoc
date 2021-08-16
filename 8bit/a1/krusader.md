@@ -127,3 +127,4 @@ See the User Manual.
 
 <!-------------------------------------------------------------------->
 [KRUSADER]: http://school.anhb.uwa.edu.au/personalpages/kwessen/apple1/Krusader.htm
+[KRUSADER]: https://github.com/st3fan/krusader
