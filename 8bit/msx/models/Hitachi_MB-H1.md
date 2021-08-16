@@ -59,9 +59,9 @@ Commands/help screen:
     * F: Fill               P:start,end,value
     ↓ G: Go                 displays addr for modification then jumps to it
       H: Help               prints this screen
-      I: Input I/O port
+    * I: Input I/O port     P:port
     ↓ M: Memory             modify memory; space=deposit/continue, CR=exit
-      O: Output I/O port
+    * O: Output I/O port    P:port,value
     o R: Register           P:CR to display all regs.
                             P:reg name or abbreviation to set.
       S: Step               at PC, print opcode+args, PC, regs after step
@@ -82,6 +82,8 @@ Commands/help screen:
 #### System Configuration in Monitor
 
 Some of these are guesses.
+
+      port  A8=0C   pages from slots 0,3,0,0
 
       $8000-$FFFF   RAM
       $6000-$7FFF   unmapped
