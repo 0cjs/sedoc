@@ -24,7 +24,7 @@ ROM pins.
 - 28nnn are 5V-programmable EEPROM using JEDEC RAM pinouts.
 - See also the [maskrom-pinouts](sch/maskrom-pinouts.png) diagram.
 
-Chart:
+#### 28-pin Device Pin Diagram
 
          ¶  Pin addt'ly uses high-V for prog/erase/ID area or similar
        RBN  RDY/B̅U̅S̅Y̅ or NC
@@ -69,7 +69,7 @@ Chart:
           64  16   16  32A   64   64  128  256  256  256  512
           23  61                 28C            28C   62
 
-JEDEC Common Pin Diagram:
+#### JEDEC Common Pin Diagram:
 
 
                         ┌─────────∪─────────┐
