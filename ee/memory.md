@@ -90,6 +90,8 @@ ROM pins.
                    D2 ━━│15 13 11   14 16 18│━━ D4
                   GND ━━│16 14 12   13 15 17│━━ D3
                         └───────────────────┘
+                   JEDEC Common Pin Diagram by cjs
+        https://github.com/0cjs/sedoc/blob/master/ee/memory.md
 
 Chip Data
 ---------
