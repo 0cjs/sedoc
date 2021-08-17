@@ -35,7 +35,9 @@ with an "no effect" `:` command:
 
 ### Assigning Default Values
 
-To assign a default value to a variable if it's empty or unset:
+The following will assign a default value to a variable if it's empty or
+unset, and will not trigger an `ubound variable` error when using the `-u`
+option.
 
     : ${SOMEVAR:=default value}
 
