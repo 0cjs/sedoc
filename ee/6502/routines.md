@@ -235,16 +235,16 @@ From Peter Ferrie commenting on [cowlark]:
             DEC addr+1
     .skip   DEC addr
 
-### Arithmetic shift right
+### Arithmetic Shift Right (ASR)
 
 From Nesdev Wiki [Synthetic Instructions][nw-syn]:
 
             CMP #$80        ; copy sign bit of A into carry
-            ROR A
+            ROR A           ; shift register
 
             LDA addr        ; copy memory into A
             ASL A           ; copy sign bit of A into carry (shorter than CMP)
-            ROR addr
+            ROR addr        ; shift memory location
 
 ### Sign Extension
 
