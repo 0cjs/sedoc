@@ -132,6 +132,9 @@ correct with `-verifyroms`.
 Disk, Tape and Cartridge Images
 --------------------------------
 
+- The [D64 image format documentation][d64] also explains the original
+  media.
+
 ### VICE
 
 Images can be attached from the command line with, e.g., `x64 -8
@@ -208,6 +211,7 @@ delete/rename file, format disk, and allocate/deallocate sector.
 [MESS]: https://en.wikipedia.org/wiki/Multi_Emulator_Super_System
 [`gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
 [c1541]: http://vice-emu.sourceforge.net/vice_13.html
+[d64]: http://unusedino.de/ec64/technical/formats/d64.html
 [diskimage.c]: https://paradroid.automac.se/diskimage/
 [doscmd]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
 [vice]: http://vice-emu.sourceforge.net/index.html
