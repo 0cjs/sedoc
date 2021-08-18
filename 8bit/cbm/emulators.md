@@ -139,7 +139,7 @@ disk1.img -9 disk2.img` or from the status line menu in the emulator.
 When attached the image is cached in memory, so you must detach it
 before reading or writing it with an external program such as `c1541`.
 
-### c1541
+#### c1541
 
 [c1541] is a stand-alone program distributed with VICE that
 manipulates Commodore disk and tape (`.t64`) images in the same way as
@@ -190,12 +190,25 @@ Other commonly used commands are:
 
 See also the [Disk Drive Commands][doscmd] used from BASIC.
 
+### diskamge.c
+
+[diskimage.c] is an ANSI C library for manipulating Commodore disk images.
+The last release was 0.95 on 2006-04-25, and it seems unmaintained since
+2009-01-11.
+
+It supports `.D64` (single-sided 1541, ignores error info), `.D71`
+(double-sided 1571) and `.D81` (.35" 1581, root directory only).
+
+The operations are open/read/write/close file (`$` reads directory),
+delete/rename file, format disk, and allocate/deallocate sector.
+
 
 
 <!-------------------------------------------------------------------->
 [MESS]: https://en.wikipedia.org/wiki/Multi_Emulator_Super_System
 [`gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
 [c1541]: http://vice-emu.sourceforge.net/vice_13.html
+[diskimage.c]: https://paradroid.automac.se/diskimage/
 [doscmd]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
 [vice]: http://vice-emu.sourceforge.net/index.html
 [viceman]: http://vice-emu.sourceforge.net/vice_toc.html
