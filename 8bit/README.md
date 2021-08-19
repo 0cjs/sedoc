@@ -13,10 +13,9 @@ The ["1977 trinity"][trinity] was the [Apple II][we-ap2], [TRS-80
 Model I][we-trs80i], and [Commodore PET 2001][we-pet2001], the first
 "appliance" computers.
 
-The Japanese parallel, 1-2 years later, was the
-[8ビット御三家][gosanke8], the original models of which were the
-[Hitachi Basic Master MB-6880][wj-bm], [Sharp MZ-80K][wj-mz80k] [NEC
-PC-8001][wj-pc8001].
+The Japanese parallel, 1-2 years later, was the [8ビット御三家][gosanke8],
+the original models of which were the [Hitachi Basic Master
+MB-6880][wj-bm], [Sharp MZ-80K][wj-mz80k] and [NEC PC-8001][wj-pc8001].
 
 In 1988 NEC had the largest market share (51%), followed by Fujitsu
 (14%), Toshiba (10%), and Epson (10%). From 1992 NEC's share started
@@ -61,8 +60,8 @@ Timeline
     1977-09 * TRS-80 Mod1 ships, $600 (4K), +12K $289
     1977-10 * PET 2001 ships, $600 (4K) $800 (8K)
 
-    1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
     1978-06 * Apple Disk II released ($600)
+    1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 * Sharp MZ-80K ships
 
     1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
@@ -74,7 +73,8 @@ Timeline
     1979      Microtan 65
 
     1980-01   Sinclair ZX80
-    1980-05 * Hitachi Basic Master Level 3 (6809) ships.
+    1980-05 * Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
+              (¥298,000 initially, ¥198,000 after Fujitsu FM-8 release.)
     1980-06 * VIC-1001 released (Japan)
     1980      Acorn Atom
 
@@ -83,26 +83,29 @@ Timeline
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
     1981-08 * IBM PC released ($1565)
-    1981-11 * PC-6001 released (¥89,800)
+    1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
     1981-12 * NEC PC-8801 ships (released 1981-11?)
     1981-12 * BBC Micro released
     1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
     1982-   * Commodore MAX Machine released
+    1982-04 * Hitachi MB-6891 Basic Master Level 3 MarkII (¥198,000)
     1982-04   Sinclair Spectrum
     1982-08 * Commodore 64 Released
-    1982-10   PC-9801 anounced (¥298,000)
+    1982-10   NEC PC-9801 anounced (¥298,000)
     1982-11 * Fujitsu FM-7 released (¥126,000)
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
-    1983-07 * PC-6001mkII released (¥84,800)
+    1982-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
+    1983-07 * NEC PC-6001mkII released (¥84,800)
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
     1983      Radio Shack TRS-80 MC-10
 
+    1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
     1985-01   NEC PC-8801mkIISR
