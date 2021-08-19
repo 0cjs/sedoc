@@ -98,13 +98,14 @@ Timeline
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
-    1982-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
+    1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
     1983-07 * NEC PC-6001mkII released (¥84,800)
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
     1983      Radio Shack TRS-80 MC-10
 
+    1984-04   WDC W65C816S (65816) finished; samples Q3/Q4, production 1985
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
