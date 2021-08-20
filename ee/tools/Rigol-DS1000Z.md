@@ -1,6 +1,16 @@
 Rigol DS1000Z Series (1054Z) Oscilloscope Notes
 ===============================================
 
+### Generic Oscilloscope Hints
+
+- Determine probe effect on waveform by measuring it with one probe
+  and storing that, then measuring with two probes at the same point
+  and comparing with stored waveform.
+
+
+General
+-------
+
 References:
 - [User Guide, DS1000Z Series Digital Oscilloscope][manual] (PDF)
 - Videos in the [Basics of Oscilloscopes][rv bas] series.
