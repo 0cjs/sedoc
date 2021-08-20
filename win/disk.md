@@ -7,7 +7,10 @@ Shrinking a Partition
 
 This is done with "Disk Manager" under the Windows right-click menu. Third
 party tools can do a better job, but might not be able to deal with
-Bitlocker-protected partitions.
+Bitlocker-protected partitions. Sometimes the first try will work for a
+while and then give "Not enough disk space to shrink this partition"; a
+second try may work with either the full or a smaller (sometimes much
+smaller) shrink size; multiple rounds of this may be required.
 
 The following setup will help disable things that generate unmovable files;
 this should be reversed after shrinking. Most of the options below can be
