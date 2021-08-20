@@ -12,14 +12,22 @@ See also:
 Speed and Bandwidth
 -------------------
 
+The overshoot and ringing at the end of an edge is usually due to
+transmission line reflections (because source/line and line/target
+impedence is not matched) and will generally increase with edge speed. It
+can help do do impedence matching on the board for important traces.
+
 For signal integrity, the clock frequency is not as of much interest as the
 frequency implied by the rise time of the signals. A clock signal with a 1
 ns rise time has the same routing/coupling/RF issues whether it's running
 at 10 MHz or 100 kHz.
 
-_BW = 0.35/RT_ gives the bandwidth of a signal from its rise time. [[rot1]]
-(For _RT_ in ns, _BT_ is in GHz.) E.g., 0.35 / 5.4 ns RT = 65 MHz BW.
-
+Useful equations:
+- _BW = 0.35/RT_ gives the bandwidth of a signal from its rise time. [[rot1]]
+  (For _RT_ in ns, _BT_ is in GHz.) E.g., 0.35 / 5.4 ns RT = 65 MHz BW.
+- _F = 0.5 / Tr_ gives the -40 dbV frequency for signals with a rise time
+  of _Tr_. Tr=20 ns → F=25 MHz; Tr=1 ns → F=500 Mhz (i.e., even a 10 Hz
+  clock with 1 ns rise time needs 500 MHz board design). [[ganssle]]
 
 Rise and fall times (in ns) for families (from [Temps de Montée / Descente
 des familles logiques][rft]):
@@ -140,13 +148,14 @@ side of the board (and actually all other layers) for routing traces.
 
 
 <!-------------------------------------------------------------------->
-[rot1]: https://www.edn.com/rule-of-thumb-1-bandwidth-of-a-signal-from-its-rise-time/
-[rot29]: https://www.edn.com/what-is-the-spatial-extent-of-an-edge-rule-of-thumb-29/
 [f65 2029]: http://forum.6502.org/viewtopic.php?f=4&t=2029
 [f65 80566]: http://forum.6502.org/viewtopic.php?f=4&t=2029&p=80566#p80566
 [feranec]: https://youtu.be/4nEd1jTTIUQ?t=631
+[ganssle]: https://youtu.be/MJpDFnRQw8s?t=259
 [gw-ilead]: http://forum.6502.org/viewtopic.php?f=12&t=5923&start=45#p73277
 [herd10]: http://www.6502.org/users/andre/icaphw/design.html
 [rft]: http://ve2zaz.net/referenc/LogicT.htm
+[rot1]: https://www.edn.com/rule-of-thumb-1-bandwidth-of-a-signal-from-its-rise-time/
+[rot29]: https://www.edn.com/what-is-the-spatial-extent-of-an-edge-rule-of-thumb-29/
 [vws-slides]: https://www.altium.com/live-conference/sites/default/files/pdf/The%20Value%20of%20the%20White%20Space%20-%20Eric%20Bogatin.pdf#page=24
 [vws]: https://www.altium.com/live-conference/altiumlive-2018-annual-pcb-design-summit/sessions/value-white-space
