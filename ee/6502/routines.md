@@ -197,16 +197,17 @@ resolution of 9 cycles. From [Bruce Clark][6f-bclark] via [wmtips].
 ### Short Delays
 
 `NOP` (2 cycles) helps created even-cycle-count delays. `JMP *+3` takes 3
-cycles. `BVC *+2` and `BVS *+2` both take exactly 5 cycles.
+cycles. `BVC *+2`, `BVS *+2` takes exactly 5 cycles.
 
-For "run-time programmable," Jump to any byte from `delayJumpVectorInit` to
-the code following it to get a delay of the given number of cycles. [[White
+For "run-time programmable" (but destroys flags), jump to any byte from
+`delayJumpVectorInit` to the code following it to get a delay of the given
+number of cycles. (Extend it with further `CMP #C9` as necessary.) [[White
 Flame][6f p77097]]
 
-    delayJumpVectorInit:
-            CMP #$C9    ; 7, 6 cycles
-            CMP #$C9    ; 5, 4 cycles
-            BIT $EA     ; 3, 2 cycles
+    delayJumpVectorInit:                ; (2nd inst)
+            CMP #$C9    ; 7, 6 cycles     (CMP #$C9)
+            CMP #$C9    ; 5, 4 cycles     (CMP $24)
+            BIT $EA     ; 3, 2 cycles     (NOP)
 
 
 Arithmetic, Boolean Algebra, Bit/Word Handling
