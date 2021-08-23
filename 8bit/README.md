@@ -106,10 +106,14 @@ Timeline
     1983      Radio Shack TRS-80 MC-10
 
     1984-04   WDC W65C816S (65816) finished; samples Q3/Q4, production 1985
+    1984-02   Fujitsu FM-11BS (2HD)
+    1984-11   NEC PC-9801M (first PC98 2HD but could not read 2DD)
+    1984-12   Fujitsu FM-16β (2HD, CP/M-86)
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
     1985-01   NEC PC-8801mkIISR
+    1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
 
 Magazine publishing dates:
 - 1976 _I/O_
