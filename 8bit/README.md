@@ -82,7 +82,7 @@ Timeline
     1981-     Sharp MZ-80B ships
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
-    1981-08 * IBM PC released ($1565)
+    1981-08 * IBM PC 5150 released ($1565)
     1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
     1981-12 * NEC PC-8801 ships (released 1981-11?)
@@ -94,11 +94,13 @@ Timeline
     1982-04   Sinclair Spectrum
     1982-08 * Commodore 64 Released
     1982-10   NEC PC-9801 anounced (¥298,000)
+    1982-11   Fujitsu FM-11ST FM-11AD (6809), FM-11EX (6809, 8088, CP/M-86)
     1982-11 * Fujitsu FM-7 released (¥126,000)
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
     1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
+    1983-03   IBM PC/XT 5160
     1983-07 * NEC PC-6001mkII released (¥84,800)
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
@@ -106,9 +108,10 @@ Timeline
     1983      Radio Shack TRS-80 MC-10
 
     1984-04   WDC W65C816S (65816) finished; samples Q3/Q4, production 1985
-    1984-02   Fujitsu FM-11BS (2HD)
+    1984-02   Fujitsu FM-11BS (8088, 2HD), FM-11AD2 (6809, OS-9 Level 2)
+    1984-08   IBM PC/AT 5170 (5.25" 2HD, $6000)
     1984-11   NEC PC-9801M (first PC98 2HD but could not read 2DD)
-    1984-12   Fujitsu FM-16β (2HD, CP/M-86)
+    1984-12   Fujitsu FM-16β (80186, 2HD, CP/M-86)
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
