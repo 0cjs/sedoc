@@ -51,3 +51,4 @@ Notes:
 - Indirect jump does not use an extra cycle on NMOS because (due to
   the bug) it loads MSB of address from _same page_.
 - `zp,X` column for `LDX/STX` indexes with Y register
+- Branch offsets are counted from the address of the next instruction
