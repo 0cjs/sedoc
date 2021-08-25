@@ -215,6 +215,11 @@ longer than your horizontal time base so you can see just the start of the
 waveform; with digital using zoom might be a better way of handling this if
 you stil have enough resolution with the wider capture time.
 
+Analogue channel triggers also have a `NoiseReject` setting that "reject[s]
+high frequency noise int he signal." There's no indication of what "high
+frequency" is, but various triggers on CVBS signals often seem to work
+better with this off.
+
 Trigger coupling (Menu/Setting/Coupling), valid only with edge triggers,
 can be set to DC/AC/LFR/HFR independently of the input coupling:
 - `DC`
