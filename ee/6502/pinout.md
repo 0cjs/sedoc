@@ -1,7 +1,9 @@
 6602 Pinouts
 ============
 
-Minimum NMOS/early CMOS hookup.
+__WARNING:__ Also check timing notes in README.
+
+### Minimum NMOS/early CMOS hookup.
 
       GND    Power   Clock   PullDown   PullUp
     ------------------------------------------------------------

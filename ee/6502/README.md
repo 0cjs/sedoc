@@ -100,14 +100,26 @@ Additionally, `RTI` and `PLP` always set all flags.
   instructions. It sometimes forgets that ROR affects flags.
 
 
-Execution Cycles
-----------------
+Execution Cycles and Timing
+---------------------------
 
 The following sources give cycle-by-cycle breakdowns of the execution
 of individual 6502 opcodes and their operands.
 - [hm1976] Appendix A, "Summary of Single Cycle Execution." There is
   also considerable other timing information here, including expected
   oscilloscope waveforms.
+
+The timing of the 6502 can be a bit tricky.
+- Generally, the address bus and control signals are driven to new values
+  sometime during Φ2 low (just after the falling edge, in my testing) and
+  so the following rising edge of Φ2 should be used to qualify use of those
+  signals.
+- The data bus is driven for writes just after the rising edge of Φ2. This
+  is not an issue for RAM, where a wrong early value will quickly be
+  overridden by the later correct value, but can cause issues with I/O.
+  Transparent latches should not be used for I/O: do like the 65xx I/O ICs
+  that read the value at the falling edge of Φ2 (edge-triggered registers).
+  See `tDCW` setup time and `tHW` hold time in the data sheets.
 
 
 Tips and Tricks
