@@ -82,6 +82,7 @@ Timeline
     1981-     Sharp MZ-80B ships
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
+    1981-05   NEC N5200 (8086 like PC-98; µPD7220 graphics)
     1981-08 * IBM PC 5150 released ($1565)
     1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
