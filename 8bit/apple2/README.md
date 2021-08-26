@@ -95,6 +95,10 @@ Screen scan, from [this vapor lock description][vapor]:
   into the frame buffer and reading the select soft switch for the
   current mode (e.g., $C051 for text mode) which will usually return
   the data most recently read by the last video read φ1 cycle.
+- [mmphosis] has sample code to do this.
+- The [Apple II Mouse Card][mouse] used a similar technique except that it
+  had a flip-flop that would capture `D0` during Φ1; the test would read
+  that to figure out a value for the 6522 timer.
 
 
 Other I/O
@@ -154,6 +158,8 @@ available on the peripheral slots.
 [bados]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
+[mmphosis]: http://web.archive.org/web/20151021120320/http://hoop-la.ca/apple2/2015/vbl/
+[mouse]: https://www.folklore.org/StoryView.py?project=Macintosh&story=Apple_II_Mouse_Card.txt
 [p67532]: http://forum.6502.org/viewtopic.php?f=3&t=5517&sid=f6734cd034b51b20dcd393f67a3c48fe&start=30#p67532
 [rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
