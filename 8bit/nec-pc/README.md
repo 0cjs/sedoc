@@ -26,6 +26,16 @@ Specs:
 - BASIC: N-BASIC, variant of MS Disk Basic 4.51
 - TOD clock (access w/`TIME$` in BASIC)
 
+Peripherals (Ⅱ marks mkII items):
+- __PC-8001mkII-01:__ Kanji board for mkII dedicated connector (not exp. slot)
+- __PC-8031/-1W:__ 2× 5.25" 1D FDD w/controller
+- __PC-8032/-1W:__ 2× 5.25" 1D FDD w/o controller (expansion unit)
+- __PC-80S31:__ Ⅱ2× 5.25" 2D FDD with controller
+- __PC-80S32:__ Ⅱ2× 5.25" 2D FDD w/o controller (expansion unit)
+- __PC-8033:__ "FDD I/F" (parallel for 80S31, I guess?)
+- __PC-8062:__ RS-232C I/F
+- __PC-8801-11:__ ⅡFM sound; SR compatibility for 8001mkII, 8801, 8801mkII.
+
 Documentation:
 - [Byte Magazine review][byte], Jan. 1981. w/block diagram, chip names.
 - [パソコンPCシリーズ 8001 6001 ハンドブック][asahi], covers BASIC, machine
