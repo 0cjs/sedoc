@@ -1,5 +1,5 @@
-Connector Information
-=====================
+Connector and Connectivity Information
+======================================
 
 This covers standardized or at least somewhat cross-platform plugs, jacks,
 sockets and other interfaces, mostly related to 8-bit microcomputers but
