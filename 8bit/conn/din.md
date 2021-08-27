@@ -99,35 +99,7 @@ Notes:
 
 #### Apple IIc Serial DIN-5 (cjs v1)
 
-Using Ethernet cable. `Dsub` are my [DB-25/DE-9 colors](./dsub.md); `Eth`
-is Ethernet cable colors. Orange and green stripe are tied together for
-ground.
-
-     Dsub  Eth    pin dir  sig  description
-     orn   blue    1  out  DTR  Data Terminal Ready (orange on DB-25/DE-9)
-     blk   stripe  2   -   GND
-     yel   brown   3  in   DSR  Data Set Ready; input to DCD on ACIA (yel on DB-25/9)
-     red   orange  4  out  TD   Transmit Data (red on DB-25/DE-9)
-     grn   green   5  in   RD   Receive Data
-
-For [ADTPro], use a cable with hardware handshaking disabled by tying
-together DTR and DSR (1 and 3, DIN numbering) on the Apple side, and
-RTS and CTS (7 and 8) on the PC side. Here's the DE-9 pinout, looking
-into the male connector on the PC and the female connector on the IIc:
-
-    1 2 3 4 5       PC    Apple IIc        ∪
-     6 7 8 9                          3         1
-             /-- DCD 1 ←                5     4
-             |    RD 2 ←  4 TD             2
-             |    TD 3  → 5 RD
-             +-- DTR 4  →
-             |   GND 5    2 GND
-             \-- DSR 6 ←
-             /-- RTS 7  →
-             \-- CTS 8 ←
-                 RI  9 ←
-                        ← 1 DTR -\
-                        → 3 DSR -/
+See [serial](./serial.md).
 
 #### DIN-4
 
@@ -260,7 +232,6 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 
 <!-------------------------------------------------------------------->
 [DIN]: https://en.wikipedia.org/wiki/DIN_connector
-[adtpro]: http://adtpro.com/connectionsserial.html#DIN5
 [c64w av]: https://www.c64-wiki.com/wiki/A/V_Jack
 [hosiden-wb]: https://web.archive.org/web/20180516230412/http://www.hosiden.com:80/product/pdf/e_din.pdf
 [hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf

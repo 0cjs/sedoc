@@ -1,7 +1,10 @@
 D-sub (D-subminiature) Connectors
 =================================
 
-See also: [Joystick Connectors](joystick.md).
+These are used for:
+- [Joystick Connectors](joystick.md).
+- [Serial Interfaces](serial.md)
+- [Video Connectors](video.md)
 
 Cannon's original designations used `P` (plug) and `S` (socket) suffixes
 for male and female respectively; I use `M` and `F`.
@@ -34,28 +37,5 @@ References:
 - Wikipedia, [D-subminiature][wp dsub]
 
 
-RS-232 Serial Ports
--------------------
-
-Pinouts [from Wikipedia][wp-serpin]. Signal names are from DTE point of
-view, so `dir` is DTE→DCE or DTE←DCE.
-
-    DE-9  DB-25  dir   color    Signal (DTE)
-    ──────────────────────────────────────────────────────────────
-      1     8     ←   yel+blk   DCD data carrier detect
-      2     3     ←     grn     RX  recieve data
-      3     2     →     red     TX  transmit data
-      4    20     →     orn     DTR data terminal ready
-      5     7     ↔     blk     GND
-      6     6     ←     yel     DSR data set ready
-      7     4     →     wht     RTS request to send
-      8     5     ←     blu     CTS clear to send
-      9    22     ←   wht+blk   RI  ring indicator
-            1     ↔             PG  protective ground
-
-
-
 <!-------------------------------------------------------------------->
 [wp dsub]: https://en.wikipedia.org/wiki/D-subminiature
-[wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
-

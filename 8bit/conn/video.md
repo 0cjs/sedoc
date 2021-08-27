@@ -2,8 +2,8 @@ Video Connectors
 ================
 
 Early Japanese video connectors (composite and DRGB) are often
-[DIN](./din.md); see that file for additional information, pin numbering
-and breakouts.
+[DIN](din.md) and later ones [DE-9, DA-15 or DE-15](dsub.md); see those
+file for additional information, pin numbering and breakouts.
 
 Sources for DIN, D-sub, etc. pinouts:
 - [OLD Hard Connector Information デジタル８ピン][ohd8]
