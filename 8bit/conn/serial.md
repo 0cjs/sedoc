@@ -5,6 +5,12 @@ This covers RS-232-style asynchronous serial interfaces. See also:
 - [D-sub (D-subminiature) Connectors](dsub.md) for pin numbering etc.
 - "DIN-6" in [DIN](din.md) for Commodore (IEC) serial bus.
 
+kayasan86's [ＲＳ２３２Ｃプロジェクト][kayasan86] contains a _lot_ of
+useful information, including things like the "S parameter" on PC-8801
+RS-232C configuration (in-band signal for kana on 7-bit links). Also
+includes notes on accessing and saving to serial in BASIC on many Japanese
+computers.
+
 
 DE-9 and DE-25 RS-232 Serial Ports
 ----------------------------------
@@ -64,3 +70,4 @@ into the male connector on the PC and the female jack on the IIc:
 <!-------------------------------------------------------------------->
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
 [wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
+[kayasan86]: http://kasayan86.web.fc2.com/old/rs232c1.html
