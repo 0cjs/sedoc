@@ -9,11 +9,13 @@ Linux client uses `$HOME` to find its directories, including:
 The actual sync client is a proprietary daemon installed in the above
 directories it can be installed in two ways:
 
-1. Follow the instructions at the Dropbox [`install-linux`
-   page][install-linux]. This will extract the client to
-   `$HOME/.dropbox-dist/`; running `~/.dropbox-dist/dropboxd` will start
-   the authentication process if necessary. If `$DISPLAY` is unset, this
-   will print the URL to copy to a browser rather than starting a browser.
+1. Per the Dropbox [`install-linux` page ][install-linux] instructions,
+   download and extract the headless-capable client via `cd ~ && wget -O -
+   "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -`. It will
+   be extracted to `$HOME/.dropbox-dist/`; running
+   `~/.dropbox-dist/dropboxd` will start the authentication process if
+   necessary. If `$DISPLAY` is unset, this will print the URL to copy to a
+   browser rather than starting a browser.
 
 2. Install the Debian `nautilus-dropbox` package and run `/usr/bin/dropbox
    start -i`. This requires a graphical system; it will download and
