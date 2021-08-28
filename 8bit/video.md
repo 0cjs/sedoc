@@ -325,6 +325,11 @@ Other sources
   information.
 - \[240p ts] Classic Console Upsaker wiki, [240p test suite][240p ts].
 
+Sample circuits:
+- \[c64-80] [The Commodore 64 80-Column Terminal][c64-80], Field, Richards
+  and Beenfeldt, _BYTE_ March 1985, p.183. Quite generic Motorola 6845
+  80-column CVBS display system; bus interface to the C64 cartridge port.
+
 
 
 <!-------------------------------------------------------------------->
@@ -354,6 +359,7 @@ Other sources
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
 [bc trv900]: http://bealecorner.com/trv900/tech/
+[c64-80]: https://archive.org/details/byte-magazine-1985-03-rescan/page/n188/mode/1up
 [hdr 240]: https://www.hdretrovision.com/240p
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
