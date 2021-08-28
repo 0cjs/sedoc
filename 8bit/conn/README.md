@@ -12,6 +12,7 @@ Subject Index:
 
 Connector Index:
 - [0.1" Pin Headers][header]
+- [JST Connectors][jst]: XH wire-to-board, SM wire-to-wire
 - DA-15: [Video]
 - DB-25: [Serial]
 - D?-19: Apple II diskette connector, IIc onward.
@@ -32,6 +33,7 @@ A massive source for all sorts of Japanese computer connectors is
 [din]: ./din.md
 [header]: ./header.md
 [joystick]: ./joystick.md
+[jst]: ./jst.md
 [serial]: ./serial.md
 [video]: ./video.md
 

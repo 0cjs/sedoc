@@ -1,15 +1,25 @@
 JST Connectors
 ==============
 
-All XH connectors are one row, and all below are 250 V 3 A per pin.
-I use the following.
+All JST connectors are keyed.
 
-    Pitch: pin pitch in mm      Wire: wire size range in AWG
+Summary (pin pitch in mm, wire size range in AWG):
 
     Series  Pitch  Wire   Lock  Type
     ───────────────────────────────────────────────────────────────────
       XH    2.50   30-22   no   Wire-to-board; inline female, PCB male
       SM    2.50   28-22  yes   Wire-to-wire; inline male and female
+
+
+JST XH
+------
+
+2.50 mm wire-to-board connectors:
+- Female wire connectors; male shrouded PCB connectors.
+- All connectors are single-row.
+- 250 V 3 A per pin
+- Many sources give 2.54 pin spacing, which is indeed pretty close (6-pin
+  connectors fit fine in 2.54 mm spaced breadboards)
 
 ### XH Pin Numbering
 
@@ -23,6 +33,12 @@ References:
 - Wikipedia, [JST connector][wp jst]
 - JST, [XH Connector][jst xh] datasheet.
 - JST, [SM Connector][jst se] datasheet.
+
+
+JST SM
+------
+
+2.50 mm wire-to-wire connectors.
 
 
 Power Connectors
