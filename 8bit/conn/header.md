@@ -10,7 +10,7 @@ invariably female, so boards generally use male connectors.
 
 The guide protrusion in the middle of the connector faces up; looking into
 the female IDC connector on a ribbon cable pin 1 will be at top left, with
-pin 2 immediately below it. The male connector on a device is thus reversed.
+pin 2 immediately below it. The male connector on a device is mirrored.
 
             Looking Into
       Female Cable   Male Device
@@ -18,7 +18,17 @@ pin 2 immediately below it. The male connector on a device is thus reversed.
         1 3 5 7        7 5 3 1      alternative numbering A1, A2, ...
         2 4 6 8        8 6 4 2      alternative numbering B1, B2....
 
-Dupont crimp kit shrouds have markings for male connectors; pin 1 will
+![](img/shrouded-13x2-male.jpg)
+![](img/mirror-cable.jpg)
+
+(Credits:
+Shrouded 13×2 connector by PANAMATIC from [wikimedia.org][13×2].
+Mirror cable by [Dr. Jefyll][mirror-cable].)
+
+#### Dupont Crimp Kits
+
+Dupont crimp kit shrouds are "generic" and used for both male and female
+pin inserts. The pin 1 marking on them is for male connectors; pin 1 will
 be at the opposite end from that marked when female inserts are used.
 
 #### Grounds
@@ -84,5 +94,8 @@ this, counting up port bits in pin numbering direction:
     +5V CA2 PA7 PA5 PA3 PA1 GND
 
 
-[rictor via]: https://sbc.rictor.org/via.html
+<!-------------------------------------------------------------------->
+[13×2]: https://commons.wikimedia.org/wiki/File:Stiftwanne2x13v2.jpg
 [ancomp 6522]: https://github.com/ancientcomputing/rc2014/tree/master/eagle/6522_board
+[mirror-cable]: http://forum.6502.org/viewtopic.php?f=10&t=6607#p83913
+[rictor via]: https://sbc.rictor.org/via.html
