@@ -43,6 +43,10 @@ Standards and Suggestions
 
 ### DC Power Supply
 
+XXX This all needs to be switched from .1" pin headers to JST SM
+(wire-to-wire) 7-pin connectors  which are properly keyed. Use SM to JST XH
+pigtails for cases where PCB-mount connectors are needed.
+
 8-pin 2×4 "dupont" header for multi-voltage DC to small systems. With the
 KEY blocked on the PSU side and the middle GND pin always present on the
 equipment side, the connector cannot be inserted the wrong way around so
