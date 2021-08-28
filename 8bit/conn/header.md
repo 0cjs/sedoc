@@ -1,5 +1,5 @@
-.1" Pin Headers
-===============
+0.1" Pin Headers
+================
 
 <!-- Digraphs: ▼=Dt ▄=LB ▂=U+2582 lower one quarter block -->
 
