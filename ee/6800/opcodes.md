@@ -9,15 +9,14 @@ This is a quick reference for hand-assembly.
     JMP   JMPx  BRA      JSR   JSRx  BSR   RTS      SWI    WAI   RTI     NOP
      7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂   3E₉   3B₁₀    01₂
 
-      Zero         Negative        Carry       oVerflow
-    BEQ   BNE      BMI   BPL     BCS   BCC     BVS   BVC
-     27₄   26₄      2B₄   2A₄     25₄   24₄     29₄   28₄
-                                A<mem  A≥mem
+      Zero         Negative      oVerflow
+    BEQ   BNE      BMI   BPL     BVS   BVC
+     27₄   26₄      2B₄   2A₄     29₄   28₄
 
-    /  after  \     unsigned       two's complement
-    | CMP CBA |    BLS   BHI     BLT   BLE   BGE   BGT
-    \ SUB SBA /     23₄   22₄     2D₄   2F₄   2C₄   2E₄
-             lower/same  higher
+    /  after  \           unsigned                two's complement
+    | CMP CBA |     BCS   BLS   BCC   BHI       BLT   BLE   BGE   BGT
+    \ SUB SBA /      25₄   23₄   24₄   22₄       2D₄   2F₄   2C₄   2E₄
+                    A<m   A≤m   A≥m   A>m
 
     CLC   SEC   CLV   SEV   CLI   SEI
      0C₂   0D₂   0A₂   0B₂   0E₂   0F₂
