@@ -11,7 +11,8 @@ Subject Index:
 - Video: [Video], [DIN].
 
 Connector Index:
-- DA-15: [video]
+- [0.1" Pin Headers][header]
+- DA-15: [Video]
 - DB-25: [Serial]
 - D?-19: Apple II diskette connector, IIc onward.
 - DE-9: [DIN], [Joystick], [Serial].
@@ -29,6 +30,7 @@ A massive source for all sorts of Japanese computer connectors is
 
 <!-------------------------------------------------------------------->
 [din]: ./din.md
+[header]: ./header.md
 [joystick]: ./joystick.md
 [serial]: ./serial.md
 [video]: ./video.md
