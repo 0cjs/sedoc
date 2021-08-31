@@ -4,6 +4,17 @@ Google Chrome
 Markdown parsers generally won't turn `chrome://` URLs into links, so
 they are quoted as code here and must be manually copied/pasted.
 
+Configuration
+-------------
+
+The display of the Reading list in the bookmarks bar can be turned on and
+off from the bookmarks bar context menu, but that still leaves the star in
+the URL bar dropping down a menu to select bookmark or reading list. To get
+rid of that, kill the feature entirely by going to `chrome://flags/#read-later`
+(or search for "Reading") and changing the "Reading List" flag to
+"Disabled."
+
+
 Command-line Options
 --------------------
 
