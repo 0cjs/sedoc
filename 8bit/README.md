@@ -116,7 +116,7 @@ Timeline
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
-    1985-01   NEC PC-8801mkIISR
+    1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
 
 Magazine publishing dates:
