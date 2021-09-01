@@ -2,12 +2,18 @@ Apple IIc Hardware
 ==================
 
 All page numbers below not otherwise indicated refer to the _Apple IIc
-Technical Reference Manual_. See that for full details, including
+Technical Reference Manual_ (1986). See that for full details, including
 hardware design, ROM listings, and schematics.
 
 References:
-- [_The Apple IIc Technical Reference Manual_][techref]
-  - Schematics on pp. 292-296 (newer model)
+- [_The Apple IIc Reference Manual, Volume 1_][tr84v1],
+  [_The Apple IIc Reference Manual, Volume 2_][tr84v2],
+  Apple Computer Co., 1984.
+  Earlier edition technical reference manuals from Apple; still very good.
+  Schematics in v1. ROM listings and interrupt programming in v2.
+- [_The Apple IIc Technical Reference Manual_][tr86],
+  Addison-Wesley, 1986. Updated for the newer models, but some information
+  removed and poor quality scan. Schematics on pp. 292-296 (newer model).
 - [Schematic Diagram of the Apple IIc][schematics] (A2S4000 model).
 - [_SAMS COMPUTERFACTS™: Apple® IIc A2S4000, Monitor A2M4090_][sams].
   Includes alternative schematics.
@@ -355,7 +361,7 @@ it must be written twice.
 
 #### Further references:
 
-- [techref] Appendix F (pp.348-365) gives more detailed information on
+- [tr86] Appendix F (pp.348-365) gives more detailed information on
   differences between all models.
 - [Apple IIc ROM Versions][romver]
 - BMOW's [Apple IIc ROM Upgrade][bmow-2crom] has additional
@@ -386,7 +392,9 @@ This was model A2S4500. Differences include:
 [keycaps]: https://www.apple2online.com/web_documents/Apple%20IIc%20Keycaps.pdf
 [mspec]: http://apple2.org.za/gswv/a2zine/faqs/Csa2KBPADJS.html#024
 [rcse 14999]: https://retrocomputing.stackexchange.com/a/14999/7208
+[tr84v1]: https://archive.org/details/AppleIIcReferenceManualVolume1Of2/mode/1up
+[tr84v2]: https://archive.org/details/AppleIIcReferenceManualVolume2Of2/mode/1up
 [romver]: http://apple2online.com/web_documents/apple_iic_rom_versions.pdf
 [sams]: https://archive.org/stream/Sams_Computer_Facts_Apple_IIc#mode/1up
 [schematics]: https://archive.org/details/Schematic_Diagram_of_the_Apple_IIc
-[techref]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
+[tr86]: https://archive.org/details/Apple_IIc_Technical_Reference_Manual
