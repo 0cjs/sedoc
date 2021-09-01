@@ -74,6 +74,8 @@ use four or five female connectors:
     1           1               (optional)
 
 Notes:
+- [Old Hard DIN-8][oh d8] gives many JP pinouts;
+  DIN-5 B/W output has 2=GND 3=CVBS on all models
 - C8 colors on any breakouts; C5 colours may be used on some DIN-5 breakouts
 - DIN-5 breakout can be used for CMT if remote relay not required.
 - Pin 1 varies widely between machines; take care for +12V!
@@ -237,6 +239,8 @@ Common DE-15 (VGA) to 3×RCA + mini-DIN-4 cables converters have pins 2,
 [hosiden]: https://www.hosiden.com/product/pdf/e_din.pdf
 [mini-DIN]: https://en.wikipedia.org/wiki/Mini-DIN_connector
 [oh cmt]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/cmt.htm
+[oh d8]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
+[oh top]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
 [pru-htc]: https://pinoutguide.com/HeadsetsHeadphones/htc_hd2_headphone_pinout.shtml
 [pru-iphone]: https://pinouts.ru/HeadsetsHeadphones/iphone_headphone_pinout.shtml
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
