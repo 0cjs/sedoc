@@ -308,6 +308,9 @@ Assembler Directives
 
 - `cpu`
 - `org`, `rorg`, `phase`
+- `end`: Terminates reading of code. Arbitrary text may be placed after
+  after this line and it will be ignored. Optional argument sets the entry
+  point record in the output file. (This is the only way to set it.)
 - `segment` (§3.2.13)
 - `save`, `restore` (§3.2.15): XXX Mainly for include files.
 - `assume`
