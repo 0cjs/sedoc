@@ -46,6 +46,7 @@ Timeline
     1976-04 * Altair 680 ships (delayed from late 1975)
     1976-05   Digital Research copyrights CP/M
     1976-06 * Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
+    1976-05   Intel 8086 project started
     1976-06 * Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
     1976-06   SWTPC AC-30 cassette interface
     1976-06   MS BASIC-80 ported to 6502 (summer)
@@ -61,6 +62,7 @@ Timeline
     1977-10 * PET 2001 ships, $600 (4K) $800 (8K)
 
     1978-06 * Apple Disk II released ($600)
+    1978-06   Intel 8086 introduced
     1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 * Sharp MZ-80K ships
 
@@ -68,6 +70,7 @@ Timeline
     1979-05   NEC PC-8001 (Z80) announced
     1979-06 * Micropro releases WordStar
     1979-09 * NEC PC-8001 (Z80) ships
+    1979-09   Motorola 68000 introduced (samp 1980-02, prod 1980-11)
     1979-10   Sharp MZ-80K introduced in UK (20K £380, 48K £475)
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
