@@ -82,6 +82,19 @@ the wall end may not be polarized or the cable may be wired wrong.
        male        female
 
 
+Voltage Regulators
+------------------
+
+Generally voltage regulators (linear and switching) will be damaged if
+biased in reverse (output voltage significantly higher than input voltage,
+or sometimes even not enough lower). As noted at [[f6 p86851]], the Recom
+R-78xx-1.0 datasheet offers two solutions, one keeping in ≥ out - 0.7 V via
+a diode from output to input and the other keeping in ≥ out but with 0.3 V
+output drop via a zener diode on the output:
+
+<img src='sch/recom-protection.jpg' width='80%'>
+
+
 
 <!-------------------------------------------------------------------->
 
@@ -96,3 +109,5 @@ the wall end may not be polarized or the cable may be wired wrong.
 [wp c13/c14]: https://en.wikipedia.org/wiki/IEC_60320#C13/C14_coupler
 [wp c5/c6]: https://en.wikipedia.org/wiki/IEC_60320#C5/C6_coupler
 [wp c7/c8]: https://en.wikipedia.org/wiki/IEC_60320#C7/C8_coupler
+
+[f6 p86851]: http://forum.6502.org/viewtopic.php?f=12&t=6760#p86851
