@@ -60,8 +60,10 @@ to `P`. However, many sources call these the "flags."
     1  Z    zero        most instrs with a result
     0  C    carry       SEC/CLC; ADC, SBC, CMP, ASL/LSR/ROL/ROR
 
-`V` is an XOR between `C` and the carry from bit 6 to 7. (This is true
-in decimal mode, too; so it's never a decimal overflow.)
+- Bit 4 (`B`) has interesting bugs, particularly with NMI masking `BRK`.
+  Details at [[v6502w B bit]].
+- `V` is an XOR between `C` and the carry from bit 6 to 7. (This is true in
+  decimal mode, too; so it's never a decimal overflow.)
 
 The following instructions affect specific flags ([pm1976] pp.24).
 Additionally, `RTI` and `PLP` always set all flags.
@@ -213,6 +215,7 @@ Code
 [pm1976]: https://archive.org/details/6500-50a_mcs6500pgmmanjan76
 [sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
 [sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
+[v6502w B bit]: https://web.archive.org/web/20201112015502/http://visual6502.org/wiki/index.php?title=6502_BRK_and_B_bit
 [wmcdiff]: http://wilsonminesco.com/NMOS-CMOSdif/
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
