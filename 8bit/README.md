@@ -103,6 +103,7 @@ Timeline
     1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
     1983-03   IBM PC/XT 5160
     1983-07 * NEC PC-6001mkII released (¥84,800)
+    1983-07 * Nintendo Famicom (¥14,800)
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
@@ -118,6 +119,7 @@ Timeline
 
     1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
+    1985-10 * Nintendo NES ($179)
 
 Magazine publishing dates:
 - 1976 _I/O_
