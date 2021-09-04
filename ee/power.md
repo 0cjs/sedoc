@@ -94,6 +94,12 @@ output drop via a zener diode on the output:
 
 <img src='sch/recom-protection.jpg' width='80%'>
 
+Another option, if using an external PSU that produces the required
+regulated voltage, is to connect it to both the output _and input_ of the
+regulator, as described in [[eese 552710]]. This should still be confirmed
+with the data sheet, however; it is usually safe for linear regulators, but
+not for buck-boost regulators that may also pull down the output.
+
 
 
 <!-------------------------------------------------------------------->
@@ -111,3 +117,4 @@ output drop via a zener diode on the output:
 [wp c7/c8]: https://en.wikipedia.org/wiki/IEC_60320#C7/C8_coupler
 
 [f6 p86851]: http://forum.6502.org/viewtopic.php?f=12&t=6760#p86851
+[eese 552710]: https://electronics.stackexchange.com/a/552710/15390
