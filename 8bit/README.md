@@ -119,7 +119,7 @@ Timeline
 
     1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
-    1985-10 * Nintendo NES ($179)
+    1985-10 * Nintendo NES ($179 inc. R.O.B. and Zapper)
 
 Magazine publishing dates:
 - 1976 _I/O_
