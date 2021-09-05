@@ -6,9 +6,9 @@ This is a quick reference for hand-assembly.
     JSR  RTS  JMP (JMP)      BRK  RTI       NOP
     20₆  60₆  4C₃  6C₅       00₇  40₆       EA₂
 
-    BEQ  BNE  BMI  BPL  BCS  BCC  BVS  BVC
-    F0₂₊ D0₂₊ 30₂₊ 10₂₊ B0₂₊ 90₂₊ 70₂₊ 50₂₊
-
+    BEQ  BNE  BMI  BPL  BCS  BCC  BVS  BVC       BRA  65C02
+    F0₂₊ D0₂₊ 30₂₊ 10₂₊ B0₂₊ 90₂₊ 70₂₊ 50₂₊      NOP-2 6502
+                                                 80₂
     CLC  SEC  CLV  CLI  SEI  CLD  SED
     18₂  38₂  B8₂  58₂  78₂  D8₂  F8₂
 
@@ -52,3 +52,5 @@ Notes:
   the bug) it loads MSB of address from _same page_.
 - `zp,X` column for `LDX/STX` indexes with Y register
 - Branch offsets are counted from the address of the next instruction
+- `80 nn` is BRA on 65C02, undocumented 2-byte `NOP` on NMOS 6502.
+  Useful for testing which CPU you're on (but may break simulators).
