@@ -218,23 +218,91 @@ The memory management unit and PAL map:
 The 128 KB 1700 and 256 KB 1750 RAM expansion modules are not mapped
 by this; they use a separate REC (RAM Expansion Controller).
 
-In all mappings the following are constant:
+In all 6502 mappings the following are constant.
 
     $FF00   5b  MMU registers
-    $0000   1k  RAM (except $00, $01)
-    $0000   1b  8502 DR (data register)
+    $0001   1b  8502 DR (data register)
     $0000   1b  8502 DDR (data direction register); 1=output
 
-MMU Configuration Register:
+The memory mappings for the Z80 are the same except:
+- Reads from $0000-$0FFF are remapped to ROM at $D000-$DFFF. (??? Even when
+  I/O mapped? Always use `LD BC,$Dnnn; OUT (C),A` for I/O?)
+- ??? What's up with I/O space? Not separate? Always uses $D000-$DFFF I/O
+  even when it's not mapped into the memory address space?
 
-      7     No effect (would be for RAM blocks 3/4)
-      6     RAM Block
-    5-4     16k@$C000: 00=kernal/charom  01=int funcrom
-                       10=ext funcrom    11=RAM
-    3k2     16k@$8000: 00=BASIC/MLMON    01=int funcrom
-                       10=ext funcrom    11=RAM
-      1     16k@$4000:  0=BASIC (low)     1=RAM
-      0      4k@$D000:  0=I/O block       1=RAM/ROM (bits 4-5)
+### Memory Management Unit (MMU)
+
+Registers:
+
+    $FF04   load preconfig D by writing any value
+    $FF03   load preconfig C
+    $FF02   load preconfig B
+    $FF01   load preconfig C
+    $FF00   configuration register
+
+    $D50B   version register (7..4:memsize in 64K blocks, 3..0:version)
+    $D50A   page 1 pointer HI
+    $D509   page 1 pointer LO
+    $D508   page 0 pointer HI
+    $D507   page 0 pointer LO
+    $D506   RAM configuration register
+    $D505   mode configuration register
+    $D504   preconfig D (write value to store)
+    $D503   preconfig C
+    $D502   preconfig B
+    $D501   preconfig A
+    $D500   configuration register
+
+The MMU Configuration Register at $D500 is mirrored at $FF00 so it's
+accessible when $D000-$DFFF is not mapped to the I/O ports. On system reset
+the value is set to $00.
+
+       7  No effect (would be for RAM blocks 3/4)
+       6  RAM Block   0=64K bank 0      1=64K bank 1    (*see RAM conf reg)
+     5-4  $C000 16k: 00=kernal/charom  01=int funcrom
+                     10=ext funcrom    11=RAM
+     3k2  $8000 16k: 00=BASIC/MLMON    01=int funcrom
+                     10=ext funcrom    11=RAM
+       1  $4000 16k:  0=BASIC (low)     1=RAM
+       0  $D000  4k:  0=I/O block       1=RAM/ROM (bits 4-5)
+
+The RAM configuration register ($D506) specifies common (shared) RAM
+mappings (bank 0 used to all banks regardless of current bank setting) and
+which bank is used by the VIC. This register is set to $00 on reset.
+
+     7-6  VIC RAM           00=bank 0   01=bank 1
+     4-5  -
+       3  Common RAM high   0=off     1=on                enables $C/E/F000-top
+       2  Common RAM low    0=off     1=on                enables 0-$3FF/FFF
+     0-1  Common RAM amt    00=" 1K"  0-$03FF  $F000-top
+                            01=" 4K"  0-$0FFF  $F000-top
+                            10=" 8K"  0-$03FF  $E000-top
+                            11="16K"  0-$0FFF  $C000-top
+
+The page pointers allow moving pages 0 and 1 to any other pages in memory.
+Mapped RAM at the destination is "swapped" back to pages 0/1; ROM and I/O
+are not back-translated. Write to the "high byte" register first; it will
+not take effect until the corresponding "low byte" register is written. The
+relocation does not affect addresses $00 and $01 (the PIA registers).
+
+    High byte ($D508, $D50A)       bit 0: RAM bank (unless in common RAM)
+                                bits 3,1: ignored
+    Low byte  ($D507, $D509)    bits 7-0: page (address MSB, bits 8-15)
+
+The mode configuration register or MCR ($D505) specifies processor (8502,
+Z80A) and OS mode (C128 C64). The `/EXROM` and `/GAME` registers read the
+value set by the cartridge in the expansion port; both lines have pullups.
+In C128 mode they can be used as I/O lines.
+
+       7  40/80 key     0=key down    1=key up
+       6  OS mode       0=C128 mode   1=C64 mode (MMU inaccessible)
+       5  /EXROM sense
+       4  /GAME sense
+       3  FSDIR         0=fast in     1=fast out      (*fast serial direction)
+     2-1  -
+       0  /Select CPU   0=Z80A        1=8502 (6502)
+
+### Built-in PIA
 
 8502 PIO Register ($00 data, $01 direction):
 
@@ -246,6 +314,10 @@ MMU Configuration Register:
       2     VIC C̅H̅A̅R̅E̅N̅: 0=RAM 1=ROM, but screen editor copies shadow at $D9
       1     cRAM block seen by VIC (0=text, 1=graphics)
       0     cRAM block seen by processor
+
+### Cartridge Auto-start Headers
+
+See C128 PRM p.472.
 
 
 VIC-20
