@@ -117,7 +117,8 @@ symbols. The following address list may help when reading it. Entries
 without a leading 0 may be mid-routine, not entry points.
 
     0000    RST 0: system reset start
-    0008    RST 8: entry point when Z80 re-enabled after 6502 run
+    0008    RST 8: usual entry point when Z80 re-enabled after 6502 run
+                   Also boot entry point; see below.
     0008    RST 10h
     0008    RST 18h
     0008    RST 20h
@@ -130,14 +131,10 @@ without a leading 0 may be mid-routine, not entry points.
     0059    ...continue RST 0 boot
     0100    table of jump addrs for RST 28h
     018C    ...continue RST 8
-     1F0    print "BOOTING CP/M PLUS" message
-    020F    call $02D2 to get boot sector
-    02D2    read track 1 sector 0
-     2E0    call $044F to read track/sec
-     2E3    call $046B to test boot sector
     036D    load data from $3400 + offset
     044F    read track $FD04 (1-based?) sector $FD03 to mem ($FD18)
     046B    test block loaded at $FE00 for `CBM` magic at start
+            failure: NX; success: Z and last byte of sector in A
     0526    print 0-term text following call
     052C    print 0-term text at (DE)
     0534    print 0-term text at (HL)
@@ -157,6 +154,7 @@ Code copied up to RAM. 6502 except where marked.
     0E53 3131  read track/sector
     0E71 314F  wait until SDR (serial data reg) is done, then get data byte
                «further IEC bus routines»
+    0E85 3163  IRQ/NMI/Reset handler
     0EE5 FFD0  switch to Z80, on return to 6502 JMP $3000
     0EF5 FFE0  (Z80 code) switch to 6502, on return to Z80 RST $08;
                RST → RTS mod by $1B1
@@ -179,11 +177,62 @@ using the `OUT (C),r` instruction.
     FFE3: 32 00 FF  LD ($FF00),A    ; MMU config register
     FFE6: 01 05 D5  LD BC,$D505     ; mode config register
     FFE9: 3E B1     LD A,$B1        ; mode: 8502 (6502) enabled
-    FFEB: ED 79     OUT (C),A       ; ??? where does high addr byte come from?
+    FFEB: ED 79     OUT (C),A
     FFED: 00        NOP             ; sit here while 6502 runs
     FFEE: CF        RST $08         ; continue with Z80 code
-                                    ;   (or may be modified to a RET)
+                                    ;   Z80 ROM may modify to RET
+                                    ;   6502 boot block may modify to JP $0008
 
+#### CP/M Boot Process
+
+After reset and then finding no C64 cartridge inserted, the Z80 ROM reset
+code loads track 1 sector 0 (the first track and sector) and checks it for
+a `CBM` signature at the start. If it's there, it loads that as the boot
+block and executes its (6502) code. The CP/M boot block simply switches
+back to the Z80 and jumps to location $0008. [[bootblock]].
+
+The ROM CP/M boot code at $0008 does the following:
+- 000B: Set MMU config to all-RAM, IO off
+- 018C: Continue here
+- 018F: Zero all RAM $3000-$FEFF
+- 019B: Copy $0D22-$EE4 to $3000 (6502 code for disk I/O)
+- 01A6: Copy $0EE5-$0F04 to $FFD0 (6502, Z80 code for CPU switch)
+- 01B1: Set $FFEE (return from 6502 mode) to RET (replacing RST 8)
+        When switching to 6502 mode from now on, we will CALL $FFE0
+        so it will return to the caller when done.
+- 01B6: Call 6502 $3000
+        - 3000: ??? Not clear what this does.
+        - 30D7: If it reaches this (I think yes), uses logical file #15
+        - 30F1: SETNAM $31B8 len 4 "U0L",$00
+- 01B9: Load MMU regs $D500-$D50A w:
+        -    config: 0D = block 0, $C000 ROM, $8000 RAM, $4000 ROM, I/O off
+        - preconf A: 3F = block 0, $C000 RAM, $8000 RAM, $4000 RAM, I/O off
+        - preconf B: 7F = block 1, $C000 RAM, $8000 RAM, $4000 RAM, I/O on
+        - preconf C: 3E = block 0, $C000 RAM, $8000 RAM, $4000 RAM, I/O off
+        - preconf D: 7E = block 1, $C000 RAM, $8000 RAM, $4000 RAM, I/O on
+        - mode: B0 = C128 mode, fast in, Z80A CPU
+        - ram config: 0B = bank 0, common RAM high=on low=off, boundry $C000
+        - page 0 pointer: 00 00 = bank 0, $00nn
+        - page 1 pointer: 01 00 = bank 0, $01nn
+- 01C9: Zero-fill $1000-$2FFF
+- 01D5: VDC and VIC setup
+- 01F0: Clear screen and print "BOOTING CP/M PLUS" message
+- 020F: Call $02D2 to read/check boot sector (again?!)
+        On failure, call $04FF
+- 02D2: read track 1 sector 0
+- 02E0: call $044F to read track/sec
+- 02E3: call $046B to test boot sector
+- ------
+- 04B8: print "HIT RETURN TO RETRY" etc., wait for KB input
+        on CR goto $049B (immediate RST $08), on DEL RST $00
+- 04FF: At line 19 col 5 print "NO"
+- 0507: At line ? col ? print "CPM+.SYS FILE", goto $04B8
+
+RAM addresses used by ROM:
+- FD03: track to read
+- FD04: sector to read
+- FD18: target address for disk read data
+- FE00: disk sector data read buffer
 
 
 <!-------------------------------------------------------------------->
@@ -214,4 +263,5 @@ using the `OUT (C),r` instruction.
 [Ab 157]: https://archive.org/stream/Commodore_128_Book_8_CPM_Users_Guide#mode/1up/page/n168
 [Ab C]:   https://archive.org/stream/Commodore_128_Book_8_CPM_Users_Guide#mode/1up/
 
+[bootblock]: https://gitlab.com/retroabandon/cbm/-/tree/master/ctools-bootblock
 [c128mem]: ./address-decoding.md#commodore-128
