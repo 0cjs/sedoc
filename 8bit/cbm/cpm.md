@@ -1,5 +1,66 @@
-CP/M on C128
-============
+CP/M on Commodore
+=================
+
+Commodore 64
+------------
+
+### References
+
+- Zimmers.net CP/M disk images: [`/pub/cbm/demodisks/c64/cpm/`][zim]
+- [[ctools]] reads/writes C64/C128 CP/M disk images to `.D64`, `.D71` etc.
+- [CP/M 2.2 disc formats][format22] has generic format information.
+- [[seasip]] has extensive deep technical info on CP/M 2.2 and 3.0,
+  including [BIOS calls by version][seasip bios].
+- The [z80.eu C64 page][z80.eu] has a limited amount of good technical
+  information and further references, and the source for the C64 6502 boot
+  loader, Z80 boot loader, BIOS and .
+- [devili.iki.fi C64 CP/M][devili] page: source code and links.
+- [[baltissen]]: hardware information about the card.
+- [Getting Programs For The C64 CP/M Cartridge][biosrhythm] has six `.D64`
+  images with various programs and games.
+
+### Enabling/Disabling the Z80
+
+The card responds to all addresses in $DE00-$DEFF.
+- Writing LSbit=0 eanbles the card, which asserts `/DMA` to pause the 6510
+  and enables its address/data bus buffers.
+- Writing LBbit=1 disables the card by asserting the `BUSRQ` input of the
+  Z80. This is acknowledged by BUSAK, which signal is used to disable the
+  address and data bus buffers.
+- The VIC-II, when it needs the bus, also sends `BA` that asserts `BUSRQ`.
+- Reference: [[baltissen]]
+
+### Memory Map
+
+Apparently the map is "rotated down" by 4 KB so that the ZP is at $F000,
+memory mapped I/O moves from $D000 to $C000 and so on. [[cbmserver]] This
+would let the 6510 set up the Z80's reset code at $1000 before turning the
+Z80 on.
+
+### Disk Format
+
+Good references for the low-level disk format are given in the __Commodore
+GCR__ section of the C128 CP/M disk formats list below. Remember that the
+Commodore DOS directory (track 18) and BAM are generally present.
+
+For generic information on CP/M disk formats see [[format22]], and system
+generation and bootstrap process see [Section 6: CP/M Alteration][z80.eu
+cpmalt] in the _CP/M Operating System Manual_.
+
+The C64 has two reserved tracks for the OS:
+- Boot sector: Not used on C64 CP/M disks.
+- CCP: 16 sectors after the boot sector.
+- BDOS: 28 sectors after the CCP.
+- BIOS: 6 sectors after the BDOS.
+
+The bootstrap seqeuence seems to start with a 6502 boot loader loaded as a
+`.PRG` file, which then loads a Z80 boot loader and starts the Z80 CPU.
+From that point, presumably the Z80 boot loader loads the BIOS and BDOS.
+Source for these loaders is on [[z80.eu]] and [[devili]].
+
+
+Commodore 128
+-------------
 
 Here we constently substitute 6502 (the processor architecture) where other
 documents may say 8502.
@@ -82,6 +143,8 @@ colours, etc., details at [[PRG 498]].
 
 ### Disk Support
 
+For generic CP/M 3.1 format information see [[format31]].
+
 Drive `E:` is a "virtual drive" (RAM disk?)
 
 Tracks and sectors here always start at 0.
@@ -91,6 +154,7 @@ Many formats supported [[PRG 491]]:
   - FCB: 32 tracks (offset +2) of 17 sectors (outer track sectors 17-20 unused)
   - BIOS adds 1 to tracks ≥ 18 to skip the CBM format directory track
   - Tracks 0, 1 sectors 0-16 reserved for boot blocks
+  - See [[D64.TXT]] for sector offsets within a `.D64` image file.
 - 1s/2s __C128 CP/M Plus__ (uses full disk capacity) [[PRG 494]]
   - Virtual: 1 side, 638 tracks (offset 0) of 1 sector
   - See [[PRG 491]] for virtual→physical mapping, [[PRG 494]] for sector skew.
@@ -253,6 +317,24 @@ RAM addresses used by ROM:
 
 
 <!-------------------------------------------------------------------->
+
+<!-- C64 -->
+
+[baltissen]: http://www.baltissen.org/newhtm/c64_cpm.htm
+[biosrhythm]: http://biosrhythm.com/?p=1220
+[cbmserver]: https://www.commodoreserver.com/BlogEntryView.asp?EID=FE373254289C48869A4B59222EFE5C21
+[ctools]: https://github.com/mist64/ctools
+[devili]: http://www.devili.iki.fi/Computers/Commodore/C64/CPM/
+[format22]: https://www.seasip.info/Cpm/format22.html
+[seasip bios]: https://www.seasip.info/Cpm/bios.html
+[seasip]: https://www.seasip.info/Cpm/index.html#archive
+[z80.eu cpmalt]: http://www.z80.eu/c64/CPM-Alteration.htm
+[z80.eu]: http://www.z80.eu/c64.html
+[zim]: http://www.zimmers.net/anonftp/pub/cbm/demodisks/c64/cpm/index.html
+
+
+<!-- C128 -->
+
 [PRG 404]: https://archive.org/stream/C128_Programmers_Reference_Guide_1986_Bamtam_Books#mode/1up/page/n413
 [PRG 458]: https://archive.org/stream/C128_Programmers_Reference_Guide_1986_Bamtam_Books#mode/1up/page/n467
 [PRG 477]: https://archive.org/stream/C128_Programmers_Reference_Guide_1986_Bamtam_Books#mode/1up/page/n486
@@ -280,5 +362,7 @@ RAM addresses used by ROM:
 [Ab 157]: https://archive.org/stream/Commodore_128_Book_8_CPM_Users_Guide#mode/1up/page/n168
 [Ab C]:   https://archive.org/stream/Commodore_128_Book_8_CPM_Users_Guide#mode/1up/
 
+[D64.TXT]: http://ist.uwaterloo.ca/~schepers/formats/D64.TXT
 [bootblock]: https://gitlab.com/retroabandon/cbm/-/tree/master/ctools-bootblock
 [c128mem]: ./address-decoding.md#commodore-128
+[format31]: https://www.seasip.info/Cpm/format31.html
