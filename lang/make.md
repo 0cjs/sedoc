@@ -23,6 +23,15 @@ and is done by the shell in commands. Variables store the wildcard
 which expands when it's used in an expansion location. Elsewhere use
 the `wildcard` function (later in §4).
 
+### Shell
+
+The `SHELL` variable specifies the shell for the recipe lines, defaulting
+to `/bin/sh`. On Unix it's never read from the environment (that's the
+user's choice, not the makefile's), but the user's `SHELL` is exported to
+the shell that make starts.
+
+`.SHELLFLAGS` defaults to `-c` or `-ec` in POSIX mode.
+
 
 Variables
 ---------
