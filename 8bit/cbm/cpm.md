@@ -127,14 +127,18 @@ without a leading 0 may be mid-routine, not entry points.
     0038    RST 38h: continues at $FDFD
     003B    ...continue RST 0 boot
     0054    restart in C64 mode
+    00B4    call $036D to load block, then stuff about load addr?
     00EE    text "CPM+    SYS",00
     0059    ...continue RST 0 boot
     0100    table of jump addrs for RST 28h
     018C    ...continue RST 8
+    02FA    some sort of data copy
     036D    load data from $3400 + offset
     044F    read track $FD04 (1-based?) sector $FD03 to mem ($FD18)
     046B    test block loaded at $FE00 for `CBM` magic at start
             failure: NX; success: Z and last byte of sector in A
+    04FF    At line 19 col 5 print "NO"
+    0507    At line ? col ? print "CPM+.SYS FILE", goto $04B8
     0526    print 0-term text following call
     052C    print 0-term text at (DE)
     0534    print 0-term text at (HL)
@@ -219,18 +223,31 @@ The ROM CP/M boot code at $0008 does the following:
 - 01F0: Clear screen and print "BOOTING CP/M PLUS" message
 - 020F: Call $02D2 to read/check boot sector (again?!)
         On failure, call $04FF
+- 0215: Use table at 0FB2 for ??? (sector skew?)
+
+- ------
 - 02D2: read track 1 sector 0
 - 02E0: call $044F to read track/sec
 - 02E3: call $046B to test boot sector
+- 02E7: INC A from $FF → $00 (if disk with CP/M installed)
+- 02E8: prepare to load 32 sectors to $3800
+- 02ED: if A is not $00 (i.e., $FF before INC), return
+- 02EF: prepare to load 64 sectors to $3C00
+- 02F2: store load addr in $3C07, block count in $3C06
+- 02F8: clear A and flags (important, says Abacus comment) and return
 - ------
 - 04B8: print "HIT RETURN TO RETRY" etc., wait for KB input
         on CR goto $049B (immediate RST $08), on DEL RST $00
-- 04FF: At line 19 col 5 print "NO"
-- 0507: At line ? col ? print "CPM+.SYS FILE", goto $04B8
 
 RAM addresses used by ROM:
+- 3800: load address for 32 sectors for non-$FF diskette
+- 3C00: load address for 64 sectors for $FF diskette
+- 3C06: sector count for 2nd stage bootstrap
+- 3C07: load address for 2nd stage bootstrap
+- 3C33: ??? (word, copied to FD09 by $0260)
 - FD03: track to read
 - FD04: sector to read
+- FD09: ??? (word)
 - FD18: target address for disk read data
 - FE00: disk sector data read buffer
 
