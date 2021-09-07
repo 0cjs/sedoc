@@ -12,7 +12,7 @@ etc.
 
 ### Address Space Pages
 
-The MSX address space is divided into four 16 KB "pages". Each page has a
+The MSX address space is divided into four 16 KB _pages._ Each page has a
 separate setting (two bits of PPI (i8255) port A (PA0-PA7) usually at IO
 port $A8) that determines the primary slot that should respond to accesses
 to locations in this page.
@@ -72,10 +72,9 @@ cartridge ROM signature, and maps in the first one it finds.
 I/O Address Map
 ---------------
 
-[td1 p.40]. But all I/O is supposed to be done via BIOS calls, except VDP.
-($0006 and $0007 contain VDP read/write register IO addrs.) FDC should have
-a disable mechanism so multiple FDCs can be present. Some MSX machines will
-not let cartridge slots respond to certain I/O port requests.
+[td1 p.40]. All I/O is supposed to be done via BIOS calls, except VDP. (See
+notes below table.) Some MSX machines will not let cartridge slots respond
+to certain I/O port requests.
 
     FC-FF   MSX2 MegaMapper (write-only registers)
               FF page 3 memory segment select (default 00)
@@ -94,7 +93,7 @@ not let cartridge slots respond to certain I/O port requests.
     F0-F6
     E0-F0
     D8-DF   Kanji ROM
-    D0-D7   Floppy Disk Controller
+    D0-D7   (FDC) Floppy Disk Controller
     C0-CF   (MSX-AUDIO $C0-$C3)
     B8-BF   Light pen interface (Sanyo)
     B5-B7
@@ -132,8 +131,18 @@ not let cartridge slots respond to certain I/O port requests.
 
     00-3F   Unspecified
 
+Notes and references for I/O systems above:
+- $FC-$FF Memory Mappers: MSX Wiki [Memory Mapper][mw mapper], [MSX-DOS2
+  mapper support routines][dos2mem]
+- $D0-$D7 FDC: Floppy disk controllers should have a disable mechanism so
+  multiple FDCs can be present.
+- $98-$9F VDP: ROM bytes at $0006 and $0007 contain correct VDP read/write
+  register I/O addresses for the current machine.
+
 
 
 <!-------------------------------------------------------------------->
+[dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
+[mw mapper]: https://www.msx.org/wiki/Memory_Mapper
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
