@@ -6,11 +6,14 @@ MSX2. Version 2 is built in to some MSX2 systems. Starting with a
 DOS-1-formatted diskette in the drive or or pressing the `1` key during
 boot will boot Version 1 instead.
 
-An MSX1 machine booted with an FDC cartridge but no diskette will
-prompt for the date and then enter BASIC with less memory free and
-an additional banner line `Disk BASIC version 1.0`.
+An MSX1 machine booted with an FDC cartridge but no diskette or a diskette
+without a boot block will prompt for the date and then enter BASIC with
+less memory free and an additional banner line `Disk BASIC version 1.0`.
 
 Notes:
+- Hold down `Ctrl` during startup to reserve memory for only one drive
+  instead of two. (Trying to use drive `B:` will then give `Bad drive
+  name`.)
 - Using drive `B:` on single-drive systems will prompt for diskette swap.
 - Filenames are 8.3, upper-case and kana only.
 - Extensions have no special meaning and need not be used for BASIC
@@ -23,8 +26,8 @@ Notes:
 Disk BASIC version 1
 --------------------
 
-Disk BASIC requires an extra 5385 bytes of memory (Canon V1 12431 → 7046
-bytes free).
+Disk BASIC requires an extra 5385 (3827 if `Ctrl` held down during boot)
+bytes of memory (Canon V1 12431 → 7046/8604 bytes free).
 
 As with standard BASIC, _fspec_ is `"[device:]filename"`, where _device_ is
 `CAS:`, etc.; Disk BASIC addes drives `A:` through `H:`. _filename_ is
