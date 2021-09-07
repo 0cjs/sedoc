@@ -16,8 +16,12 @@ MSX BASIC Reference
 
 ### Loading/Saving
 
+The default device is `CAS:` (CMT) in standard BASIC; Disk BASIC changes
+the default to `A:` (or current drive?).
+
+- `RUN "<dev>[<filename>]"` will load and run a file.
 - `LOAD "<dev>[<filename>]"`. Non-empty string argument required. Default
-  device is cassette (`CAS:`?).
+  device is cassette (`CAS:`?). Add `,R` to run after loading.
 - `CLOAD ["<filename>"]`: Load from cassette. Filename optional, baud rate
   determined automatically. After reading the header, `Found:filename` will
   be displayed.
