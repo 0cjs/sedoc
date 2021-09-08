@@ -30,7 +30,8 @@ Disk BASIC version 1
 --------------------
 
 Disk BASIC requires an extra 5385 (3827 if `Ctrl` held down during boot)
-bytes of memory (Canon V1 12431 → 7046/8604 bytes free).
+bytes of memory. (16K: 12431 → 7046/8604 bytes free. 64K: 28815 →
+23430/24988 bytes free.)
 
 As with standard BASIC, _fspec_ is `"[device:]filename"`, where _device_ is
 `CAS:`, etc.; Disk BASIC addes drives `A:` through `H:`. _filename_ is
