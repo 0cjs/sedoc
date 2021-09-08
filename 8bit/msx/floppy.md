@@ -65,7 +65,10 @@ For more, see the MSX Wiki [Disk BASIC] page.
 MSX-DOS
 -------
 
-Feels MS-DOSy but runs most CP/M programs too.
+Feels MS-DOSy but runs most CP/M programs too. There is an [image at
+archive.org][ar MSXDOS]. [MSX-DOS Tools][ar mdtimg] ([manual][ar mdtdoc])
+may also be useful; it includes a screen editor and the M80 macro assembler.
+
 
 ### Boot
 
@@ -131,3 +134,7 @@ References
 [TH2 1.3.invoking]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter3.md#procedure-for-invoking-msx-dos
 [alwinh]: https://web.archive.org/web/20050414002839/http://www.alwinh.dds.nl/msx/docs/vg8245.arj
 [bas]: ./basic.md
+
+[ar MSXDOS]: https://archive.org/details/MSXDOS
+[ar mdtdoc]: https://archive.org/details/MSXDOSTOOLS
+[ar mdtimg]: https://archive.org/details/MSXDOSTOOLS_201606
