@@ -14,12 +14,15 @@ References:
 - A [search for "memory dip" on the JDEC site][JDEC-memory-dip] gives
   standards and pinouts for various kinds of memory chips.
 - MESS [Dump 2364 Mask ROMs][mess2364] gives 2364/2764 pinouts and adapter.
+- 64Copy [ROM & EPROM Pinouts][64copy]: nice inidvidual pinout diagrams of
+  2316/32/64, 2716/32/64/128/256/512/010
 
 
 JEDEC RAM and ROM pinouts are very similar but not quite identical. The
 chart below marks with `●` the RAM pins standardised differently from the
 ROM pins.
 - Plain suffixes are for 23nnn PROMs and 27nnn EPROMS.
+  - 23nn replaces `Vpp` with CS (2316 has act.hi `CE` on 18)
 - 61nn and 62nnn are JEDEC SRAM standard.
 - 28nnn are 5V-programmable EEPROM using JEDEC RAM pinouts.
 - See also the [maskrom-pinouts](sch/maskrom-pinouts.png) diagram.
@@ -29,6 +32,8 @@ ROM pins.
          ¶  Pin addt'ly uses high-V for prog/erase/ID area or similar
        RBN  RDY/B̅U̅S̅Y̅ or NC
 
+          8k  2k─────   4k   8k─────  16k  32k──────────  64k
+    ───────────────────────────────────────────────────────────────
           23  61            28C                 28C   62
           64  16   16  32A   64   64  128  256  256  256  512
     ┌──∪                                                      ┌───∪
@@ -68,6 +73,8 @@ ROM pins.
     ───┘                                                      ───┘
           64  16   16  32A   64   64  128  256  256  256  512
           23  61                 28C            28C   62
+    ───────────────────────────────────────────────────────────────
+          8k  2k─────   4k   8k─────  16k  32k──────────  64k
 
 #### JEDEC Common Pin Diagram:
 
@@ -80,10 +87,10 @@ ROM pins.
                    A7 ━━│5  3  1    24 26 28│──────── (Vcc, A13)
                    A6 ━━│6  4  2    23 25 27│━━ A8
                    A5 ━━│7  5  3    22 24 26│━━ A9
-                   A4 ━━│8  6  4    21 23 25│──────── (W̅E̅,  A11, Vpp, A12)
+                   A4 ━━│8  6  4    21 23 25│──────── (C̅S̅, W̅E̅,  A11, Vpp, A12)
                    A3 ━━│9  7  5    20 22 24│━━ O̅E̅¶ ─ (C̅S̅)
                    A2 ━━│10 8  6    19 21 23│━━ A10
-                   A1 ━━│11 9  7    18 20 22│━━ C̅E̅ ── (A11)
+                   A1 ━━│11 9  7    18 20 22│━━ C̅E̅ ── (CE, A11)
                    A0 ━━│12 10 8    17 19 21│━━ D7
                    D0 ━━│13 11 9    16 18 20│━━ D6
                    D1 ━━│14 12 10   15 17 19│━━ D5
@@ -182,6 +189,7 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 
 
 <!-------------------------------------------------------------------->
+[64copy]: https://ist.uwaterloo.ca/~schepers/roms.html
 [JDEC-3.7.5]: https://www.jedec.org/system/files/docs/3_07_05R12.pdf
 [JDEC-memory-dip]: https://www.jedec.org/document_search/field_committees/25?search_api_views_fulltext=memory+dip
 [byte-8610-106]: https://archive.org/details/byte-magazine-1986-10/page/n117/mode/1up
