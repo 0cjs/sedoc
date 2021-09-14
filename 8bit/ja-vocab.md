@@ -8,6 +8,7 @@ up/down, enclosure, solid) then by stroke count in each character.
      4  －化        －か            suffix for a changing action
         切換        きりかえ        exchange, conversion, switchover
         仕様        しよう          technical specification
+     5  互換機      ごかんき        compatible machine (e.g. AT互換機)
      6  汎用        はんよう        generic (e.g., PC-8801 汎用I/Oポート)
         初期化      しょきか        initialization
      7  形式        けいしき        format (of a file)
@@ -21,6 +22,7 @@ up/down, enclosure, solid) then by stroke count in each character.
         解除        かいじょ        cancellation
         継続        けいぞく        continuation (e.g., of a read)
     14  種類        しゅるい        type (e.g., file type)
+        認識        にんしき        recognition (e.g. of a disk)
     15  編成        へんせい        organization (of a file)
         領域        りょういき      area, range, region (of memory)
 
