@@ -143,6 +143,8 @@ Also see the stable to testing upgrade instructions at
         deb http://security.debian.org/debian-security bullseye-security main
         deb http://deb.debian.org/debian bullseye-updates main
 
+    (Probably append `contrib non-free` to the above.)
+
 5. Upgrade:
 
         apt-get update          # Update package index
