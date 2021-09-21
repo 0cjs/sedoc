@@ -11,12 +11,14 @@ additional encoded color information as either one or more separate signals
 (chroma for S-video; Cb and Cr for component video) or combined with the
 luma signal (CVBS/composite color video).
 
-Separate sync signals are typically TTL; RGB signals may or may not be TTL
-as well in digital RGB systems (8 colors, or 16 with an additional
-intensity signal). Standard luminance signals are generally about a volt
-into 75Ω; sync signals usually are reduced to similar levels when combined
-with a luminance. CVBS standard levels (from [[wp cvbslev]]) and NTSC
-timings (from [Beale Corner][bc trv900] via [Modular Circuits][mc zx81]):
+Separate sync signals are typically TTL; Luminance (B/W or RGB) signals are
+TTL in digital/DRGB systems (8 colors, or 16 with an additional intensity
+signal) or about a volt into 75Ω in analogue systems. The original
+[RS-170][epanorama] standard specified levels into 75Ω of 1.4 V P-P: -0.400
+V sync, 0 V blank (reference), +0.075 V black, and +1.000 V white +1.000.
+But more frequently in modern systems it's scaled to 1.0 V P-P. CVBS
+standard levels (from [[wp cvbslev]]) and NTSC timings (from [Beale
+Corner][bc trv900] via [Modular Circuits][mc zx81]):
 
 <img src='img/video-cvbs-levels.png' /> <!-- 561 × 284 -->
 <img src='img/RS170A.jpg' width=700 /> <!-- 856 × 526-->
@@ -48,15 +50,21 @@ Notes:
   luminance image broadcast standards (typically 625 and 525 lines).
 - Technically "CCIR System" standards are for broadcast, and include RF
   frequency assignments as well as video encoding.
+- See [[epanorama]] for some further details on video signal standards not
+  modulated on RF for broadcast.
 
 Standards:
 - CCIR System A: (376i50) 405-line 25 FPS interlaced 10.125 kHz. Britian
   (1937-1969 on BBC1; BBC2 was System B from start in 1964), Ireland
-- CCIR System M (1941 NTSC): 525-line 30 FPS interlaced 15.750 kHz B/W. U.S.
+- CCIR System M: RS-170 or NTSC with North American RF assignments.
 - CCIR System J: System M w/different RF channel assignments (?). Japan.
+- CCIR monochrome video format:
 - PAL-M: System M with PAL color. Brazil.
-- NTSC-M (1953 NTSC): (480i60) 525-line 30/1.001 ≈ 29.970 FPS interlaced
-  15.734 kHz color. Backward-compatible w/System M.
+- RS-170 (1941 NTSC; "EIA"): 525-line 30 FPS interlaced 15.750 kHz B/W.
+  Image 512 lines (?) with 485 displayable.
+- RS-170A / NTSC-M (1953 NTSC): (480i60) 525-line
+  30/1.001 ≈ 29.970 FPS interlaced. 15.734 kHz color.
+  Backward-compatible w/RC-170.
 - CCIR System B: (576i50) 625-line 25 FPS interlaced 15.625 kHz B/W,
   European (and later British). Used with both PAL (4.43361875 Mhz) and
   SECAM color.
@@ -360,6 +368,7 @@ Sample circuits:
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
 [bc trv900]: http://bealecorner.com/trv900/tech/
 [c64-80]: https://archive.org/details/byte-magazine-1985-03-rescan/page/n188/mode/1up
+[epanorama]: https://www.epanorama.net/documents/video/rs170.html
 [hdr 240]: https://www.hdretrovision.com/240p
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
@@ -372,3 +381,5 @@ Sample circuits:
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
+
+
