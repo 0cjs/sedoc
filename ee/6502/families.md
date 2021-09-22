@@ -22,6 +22,12 @@ References:
 - Wilson Mines Co., [Differences between NMOS 6502 and CMOS 65c02][wm-diff]
 - Chromatix, [Re: R65C02P4 fake chips][6f p74156].
 
+### 6502 Cores
+
+- __Ricoh RP2A03__ (NTSC), __RP2A07__ (PAL): Nintendo Famicon/NES CPU.
+  Different [pinout][console5]. No decimal mode. Programmable sound
+  generator ("APU"), game controller polling, rudamentary DMA
+
 
 Variant List
 ------------
@@ -131,6 +137,7 @@ New instructions (WDC):
 [65C02]: https://en.wikipedia.org/wiki/WDC_65C02
 [6f p74156]: http://forum.6502.org/viewtopic.php?f=4&t=5929&start=45#p74156
 [al33]: https://archive.org/details/softalkv3n10jun1983/page/199/mode/1up
+[console5]: https://console5.com/wiki/RP2A03
 [r65c02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
 [variant-chart]: http://forum.6502.org/viewtopic.php?f=4&t=6027&view=unread#p73881
 [wm-diff]: http://wilsonminesco.com/NMOS-CMOSdif/
