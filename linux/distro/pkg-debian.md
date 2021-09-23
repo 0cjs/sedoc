@@ -219,6 +219,15 @@ technique from SO](https://askubuntu.com/a/67028):
     dpkg -c pkgnameetc.deb      # show contents (file list)
     dpkg -x pkgnameetc.deb dir  # extract contents to `dir`
 
+### Source Packages
+
+One source package may generate several different binary packages; see the
+`Source:` field in the output of `apt-cache show` to find the name of the
+source package. Use `apt-get source SRCPKG` to download the source package
+to a subdirectory of the CWD; this is done as a regular user, not root.
+This may give you the VCS and URL for the source repo as well (typically
+Git, `https://salsa.debian.org/debian/SRCPKG.git`).
+
 
 Package Verification
 --------------------
