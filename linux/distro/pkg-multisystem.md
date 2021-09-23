@@ -5,6 +5,8 @@ These are distribution-agnostic package management and software
 deployment systems that work across multiple Linux platforms. They
 often also sandbox their applications.
 
+[Nix Package Manager](./pkg-nix.md) has its own file.
+
 
 AppImage
 ========
