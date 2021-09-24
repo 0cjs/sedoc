@@ -113,10 +113,12 @@ Timeline
     1983-11   NEC PC-8801mkII
     1983      Radio Shack TRS-80 MC-10
 
+    1984-01   Apple Macintosh (128K, $2495)
     1984-04   WDC W65C816S (65816) finished; samples Q3/Q4, production 1985
     1984-04   Apple IIc ($1295)
     1984-02   Fujitsu FM-11BS (8088, 2HD), FM-11AD2 (6809, OS-9 Level 2)
     1984-08   IBM PC/AT 5170 (5.25" 2HD, $6000)
+    1984-10   Apple Macintosh 512K ($2795)
     1984-11   NEC PC-9801M (first PC98 2HD but could not read 2DD)
     1984-12   Fujitsu FM-16β (80186, 2HD, CP/M-86)
     1984    * Hitachi S1 (Basic Master series, final machine)
