@@ -104,6 +104,7 @@ Timeline
     1982-Q4   Panasonic/National JR-200 released (¥79,800)
 
     1983-01   Apple IIe ($1395; $1995 w/Disk II, 80-col, Monitor III)
+    1983-01   Apple Lisa ($9995)
     1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
     1983-03   IBM PC/XT 5160
     1983-07 * NEC PC-6001mkII released (¥84,800)
