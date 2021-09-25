@@ -215,7 +215,14 @@ Arithmetic, Boolean Algebra, Bit/Word Handling
 
 ### Increment/Decrement
 
-From [6w-incdec]. Constant-time increment/decrement (both 6 cycles):
+[[6w-incdec]] contains a wide variety of increments/decrements (byte, word,
+word with test for zero, +/-255 (DEC LSB and INC MSB or vice versa),
+constant time, stop at $00/$FF). Peter Ferrie commenting on [[cowlark]] has
+further discussion of designing around convenient increment/decrement
+routines. [[8b decw]] compares size/time for double-decrement using SUB and
+DEC+DEC (former is much better), and that's also discussed at [[6f t????]].
+
+Constant-time increment/decrement, both 6 cycles ([[6w-incdec]]):
 
         CPX #$FF                CPX #$01
         INX                     DEX
@@ -468,6 +475,7 @@ External Sources
 [6w-flags]: http://6502org.wikidot.com/software-output-flags
 [6w-incdec]: http://6502org.wikidot.com/software-incdec
 [6w-outdec]: http://6502org.wikidot.com/software-output-decimal
+[8b decw]: https://github.com/0cjs/8bitdev/blob/ce7d4eadf6738f7d3b806d2b2486309c493742be/src/m65/misc.a65#L7-L36
 [cowlark]: http://cowlark.com/2018-02-27-6502-arithmetic/
 [harper]: https://retrocomputing.stackexchange.com/a/12974/7208
 [kf19alli]: https://www.youtube.com/watch?v=xS58zd3wsuA
