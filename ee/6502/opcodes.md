@@ -20,7 +20,7 @@ This is a quick reference for hand-assembly.
     E8₂  CA₂  C8₂  88₂        DEC  C6₅  CE₆  D6₆    DE₆
 
             #nn     zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
-    LDA     A9₂     A5₂     AD₃     B5₄     BD₄₊    B9₄₊    A1₆     B1₅₊
+    LDA     A9₂     A5₃     AD₄     B5₄     BD₄₊    B9₄₊    A1₆     B1₅₊
     STA             85₃     8D₄     95₄     9D₅     99₅     81₆     91₆
     LDX     A2₂     A6₃     AE₄     B6₄y            BE₄₊
     STX             86₃     8E₄     96₄y
