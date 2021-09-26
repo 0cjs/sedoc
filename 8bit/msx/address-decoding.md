@@ -72,7 +72,7 @@ cartridge ROM signature, and maps in the first one it finds.
 I/O Address Map
 ---------------
 
-[td1 p.40]. All I/O is supposed to be done via BIOS calls, except VDP. (See
+[[td1 p.40]]. All I/O is supposed to be done via BIOS calls, except VDP. (See
 notes below table.) Some MSX machines will not let cartridge slots respond
 to certain I/O port requests.
 
@@ -98,7 +98,7 @@ to certain I/O port requests.
     B8-BF   Light pen interface (Sanyo)
     B5-B7
     B4      Calendar clock
-    B0-B3   External memory (Sony)
+    B0-B3   External memory (Sony HBI-55, Yamaha UDC-01)
 
     A8-AF   PPI (8255): A8
               A8:  w  port A: address slot select (CS0L, CS0H, CS1L, ...)
@@ -136,6 +136,11 @@ Notes and references for I/O systems above:
   mapper support routines][dos2mem]
 - $D0-$D7 FDC: Floppy disk controllers should have a disable mechanism so
   multiple FDCs can be present.
+- $B0-$B3: Sony [HBI-55] or Yamaha [UDC-01] cartridge with 4K of
+  battery-backed static RAM accessed through an 8255 PPI on I/O ports
+  $B0-$B3. From the [schematic][HBI-55 SM] this appears to support up to
+  16K of external memory. PA0-PA7=A0-A7, PB0-PB5=A8-A13, PB6=CS?/CS?,
+  PB7=/WR, PC0-7=D0-7.
 - $98-$9F VDP: ROM bytes at $0006 and $0007 contain correct VDP read/write
   register I/O addresses for the current machine.
 
@@ -146,3 +151,8 @@ Notes and references for I/O systems above:
 [mw mapper]: https://www.msx.org/wiki/Memory_Mapper
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[td1 p.40]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n42/mode/1up
+
+[HBI-55]: https://www.msx.org/wiki/Sony_HBI-55
+[UDC-01]: https://www.msx.org/wiki/Yamaha_UDC-01
+[HBI-55 SM]: https://archive.org/details/sony55hbmsm/page/n2/mode/1up

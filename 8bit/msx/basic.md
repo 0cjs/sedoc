@@ -17,7 +17,10 @@ MSX BASIC Reference
 ### Loading/Saving
 
 The default device is `CAS:` (CMT) in standard BASIC; Disk BASIC changes
-the default to `A:` (or current drive?).
+the default to `A:` (or current drive?). Other devices available include
+`COM:` (serial port) and `CAT:` (Sony/Yamaha non-volatile memory cartridge,
+called "expansion memory" in the [I/O Address Map](
+./address-decoding.md#i/o-address-map); possibly works on Sony BIOS only).
 
 - `RUN "<dev>[<filename>]"` will load and run a file.
 - `LOAD "<dev>[<filename>]"`. Non-empty string argument required. Default
