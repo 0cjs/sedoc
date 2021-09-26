@@ -7,20 +7,36 @@ MSX BASIC Reference
   be of arbitrary length so long as they do not include keywords (which
   will be tokenized).
 - In BASIC hexadecimal numbers may be specified with `&Hnnnn` syntax.
-- Default mode is screen 1 (32×24 characters); use `SCREEN 0` for 40×24 and
-  then `WIDTH 80` (MSX2) for 80×24. (`SET SCREEN` will save these settings
-  and restore them on startup.)
-- The `MEM:` device cannot be used until you `CALL MEMINI (size)` (default
+- Default mode for JP models is screen 1 (32×24 characters); use `SCREEN 0`
+  for 40×24 and then `WIDTH 80` (MSX2) for 80×24. (`SET SCREEN` will save
+  these settings and restore them on startup.)
+
+### Devices
+
+    Device  Description                 Provided by
+    ──────────────────────────────────────────────────────────────────
+    CAS:    Cassette tape               MSX1 standard BIOS
+    CRT:    CRT screen                  MSX1 standard BIOS
+    GRP:    Graphic screen              MSX1 standard BIOS
+    LPT:    Printer                     MSX1 standard BIOS
+    COM:    Serial port                 RS-232 cart; some MIDI carts?
+    CAT:†   Nonvolatile memory cart¹    Sony BIOS only?
+    A:-H:   Floppy disk drive           FDC cart ROM
+    MEM:†   RAMdisk                     MSX2 BIOS; disk BIOS only?
+
+†Notes:
+- `CAT:` The nonvolatile memory cartridge is the "external memory" on I/O
+  ports $B0-$B3 described in the [I/O Address Map](
+  ./address-decoding.md#i/o-address-map). The Sony HBI-55 and Yamaha UDC-01
+  carts implementing this are also described there.
+- `MEM:`: The device cannot be used until you `CALL MEMINI (size)` (default
   size is 32000 bytes). List files on it with `CALL MFILES`, and erase with
   `CALL MKILL ("myfile.bas")`.
 
 ### Loading/Saving
 
 The default device is `CAS:` (CMT) in standard BASIC; Disk BASIC changes
-the default to `A:` (or current drive?). Other devices available include
-`COM:` (serial port) and `CAT:` (Sony/Yamaha non-volatile memory cartridge,
-called "expansion memory" in the [I/O Address Map](
-./address-decoding.md#i/o-address-map); possibly works on Sony BIOS only).
+the default to `A:` (or current drive?).
 
 - `RUN "<dev>[<filename>]"` will load and run a file.
 - `LOAD "<dev>[<filename>]"`. Non-empty string argument required. Default
