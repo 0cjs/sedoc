@@ -169,7 +169,6 @@ article](sch/simpleCMOS_RAMbackup.jpg) (from [this message][f65 32004]) for
 CMOS switch and single-transistor designs. [Robert Sprowson's EPROM
 Emulator][ee sprow] design also has much useful information.
 
-
 ### FRAM
 
 Reading as well as writing wears out cells; keep an eye on endurance and
@@ -185,6 +184,13 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
   internally. Address changes that occur after /CE goes low will be ignored
   until the next falling edge occurs." Thus for 6502 `C̅E̅` should be
   qualified with φ2. See [forum.6502.org thread][f65 6380] for more.
+
+### DRAM
+
+References:
+- pcbjunkie.net [RAM Info and Cross Reference Page][pcbj-ram]
+  (Includes many static RAM pinouts as well. Another page has
+  a few [PROM/EPROM pinouts][pcbj-rom].)
 
 
 
@@ -209,3 +215,6 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 [ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
 [f65 6380]: http://forum.6502.org/viewtopic.php?f=4&t=6380
+
+[pcbj-ram]: http://pcbjunkie.net/index.php/resources/ram-info-and-cross-reference-page/
+[pcbj-rom]: http://pcbjunkie.net/index.php/resources/prom-eprom-info-page/
