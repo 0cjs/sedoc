@@ -104,8 +104,9 @@ csync1]]
 Odd-line (1,3,…) fields are indicated by starting vsync with hsync;
 even-line (2,4,…) fields by starting and ending vsync half-way between two
 hsync pulses (after hsync 266 and hsync 269 of the frame), thus giving
-262.5 lines per field in NTSC video. See the [LMH1981] datasheet and [[hdr
-csync1]] for sample waveforms.
+262.5 lines per field in NTSC video. See the [LMH1981] datasheet and
+[[hdr csync1]] for sample waveforms, and [[pcbj-gen]] for sync generation
+notes.
 
 The standard sytems also actually originate a composite sync that uses
 equalization pulses around and during vsync; see "Composite Sync" below for
@@ -332,6 +333,8 @@ Other sources
   Q&A][scanlines]. Extensive 240p discussion and pics; equipment
   information.
 - \[240p ts] Classic Console Upsaker wiki, [240p test suite][240p ts].
+- \[pcbj-gen] pcbjunkie.net, ["Generating Video with a
+  Microcontroller"][pcbj-gen].
 
 Sample circuits:
 - \[c64-80] [The Commodore 64 80-Column Terminal][c64-80], Field, Richards
@@ -375,6 +378,7 @@ Sample circuits:
 [hdr jit]: https://www.hdretrovision.com/jitter
 [man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
 [mc zx81]: https://www.modularcircuits.com/blog/projects/the-dinosaur-computer/
+[pcbj-gen]: http://pcbjunkie.net/index.php/guides/generating-video-with-a-microcontroller/
 [pet andre]: http://6502.org/users/andre/petindex/crtc.html
 [pet f6 623]: http://forum.6502.org/viewtopic.php?f=1&t=6231
 [pet_crtc]: http://inchocks.co.uk/commodore/PET/PET_CRTC.xls
