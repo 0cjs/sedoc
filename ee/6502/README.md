@@ -102,6 +102,36 @@ Additionally, `RTI` and `PLP` always set all flags.
   instructions. It sometimes forgets that ROR affects flags.
 
 
+Addressing Modes
+----------------
+
+    B C  Form       Name                Description
+    ──────────────────────────────────────────────────────────────────────────
+    0 2             Implied             2nd cycle fetches/ignores next instr
+    0     A         Accumulator
+    1 2   #nn       Immediate
+    1 2+  nn        Relative            1b signed offset from next instr
+
+    2 4   nnnn      Absolute            address $0000-$FFFF (LSB,MSB)
+    1 3   nn        Zero Page           address $00-$FF
+    2 4+  nnnn,XY   Absolute Indexed    address nnnn+X or Y
+    1 4   nn,XY     Zero Page Indexed   address nn+X or Y (same speed as,
+                                          1b shorter than Absolute Indexed)
+
+    2 5  (nn)       Absolute Indirect   (JMP only on NMOS)
+    1 6  (nn,X)     Indexed Indirect    [nn+X]  (ZP-only)
+    1 5+ (nn),Y     Indirect Indexed    [nn]+Y  (ZP-only)
+
+Notes:
+- `B` is operand length (after opcode): 0, 1 or 2 bytes.
+- `C` is cycle count (NMOS only); `+` indicates an extra cycle if the
+  branch is taken or if a carry is generated during addtion (page
+  crossing).
+- `Form` says `XY` when either X or Y can be used equivalantly.
+- `Name` is the more-or-less official name from the _MCS6500 Family
+  Programming Manual_, pp.57-.
+
+
 Execution Cycles and Timing
 ---------------------------
 
