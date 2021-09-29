@@ -115,8 +115,8 @@ Addressing Modes
     2 4   nnnn      Absolute            address $0000-$FFFF (LSB,MSB)
     1 3   nn        Zero Page           address $00-$FF
     2 4+  nnnn,XY   Absolute Indexed    address nnnn+X or Y
-    1 4   nn,XY     Zero Page Indexed   address nn+X or Y (same speed as,
-                                          1b shorter than Absolute Indexed)
+    1 4   nn,XY     Zero Page Indexed   address nn+X or Y; wraps to $00
+                                        (same speed as than Absolute Indexed)
 
     2 5  (nn)       Absolute Indirect   (JMP only on NMOS)
     1 6  (nn,X)     Indexed Indirect    [nn+X]  (ZP-only)
