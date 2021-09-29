@@ -120,7 +120,7 @@ Attributes:
 * `name`: Final path component
 * `suffix`: Final suffix, e.g., `foo.tar.gz` ⇒ `.gz`
 * `suffixes`: Suffixes, e.g., `foo.tar.gz` ⇒ [`.tar`, `.gz`]
-* `stem`: name without final suffix
+* `stem`: filename without path or final suffix
 
 Methods:
 * `as_posix()`: String representation with `/` separating components
