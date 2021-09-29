@@ -7,6 +7,13 @@ Python Sequences Types and Interfaces
 Common Sequence Operations
 --------------------------
 
+These divide into three parts. The built-in operations on multiple
+sequences can take only sequences of the same base type, e.g., `list` and
+`list`, but not `tuple` and `list`.
+- Built-in operators: single-type, immutable
+- Built-in operators: single-type, mutation
+- `itertools`: generic and multi-type operations
+
 #### Immutable Sequences
 
 See [Language Summary](language.md) for caveats on immutable
@@ -75,6 +82,36 @@ The default values in a slice `xs[::]` are `0:-1:1`. Thus, you can use
     del xs[:]           # Clear (empty) list
     xs[:] = [1,2,3]     # Replace contents of list
     ys = xs[:]          # Shallow copy (`ys is xs` ⇒ False)
+
+#### Itertools
+
+[`itertools`] offers additional operations that can work on multiple
+sequences of different types. These are inspired by APL, Haskell and SML.
+
+Infinite:
+- `count(start, [step])`
+- `cycle(xs)`: repeat each element of _p_: `'AB'` → `'ABABAB...'`
+- `repeat(x, [n])`: Repeat _el_ forever or _n_ times
+
+Terminating on shortest input:
+- `accumulate(xs, [f])`
+- `chain(xs, ...)`
+- `chain.from_iterable(xs, ...)`
+- `compress`
+- `dropwhile`
+- `filterfalse`
+- `groupby`
+- `islice`
+- `starmap`
+- `takewhile`
+- `tee`
+- `zip_longest`
+
+Combinatoric:
+- `product`
+- `permutations`
+- `combinations`
+- `combinations_with_replacement`
 
 
 Sequence Types
@@ -184,6 +221,7 @@ Additional attributes: `start`, `stop`, `step`.
 [`collections.namedtuple`]: https://docs.python.org/3/library/collections.html#collections.namedtuple
 [`functools.cmp_to_key()`]: https://docs.python.org/3/library/functools.html#functools.cmp_to_key
 [`hash()`]: https://docs.python.org/3/library/functions.html#hash
+[`itertools`]: https://docs.python.org/3/library/itertools.html
 [`list`]: https://docs.python.org/3/library/stdtypes.html#lists
 [`range`]: https://docs.python.org/3/library/stdtypes.html#ranges
 [`sorted()`]: https://docs.python.org/3/library/functions.html#sorted
