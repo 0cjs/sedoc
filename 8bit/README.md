@@ -79,9 +79,10 @@ Timeline
     1980-05 * Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
               (¥298,000 initially, ¥198,000 after Fujitsu FM-8 release.)
     1980-06 * VIC-1001 released (Japan)
+    1980-12   TRS-80 Color Computer (6809, 6847, 4K $399, +16K $119)
     1980      Acorn Atom
 
-    1981-   * VIC-20 released
+    1981-   * VIC-20 released ($299)
     1981-     Sharp MZ-80B ships
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
