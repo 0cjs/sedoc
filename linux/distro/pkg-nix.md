@@ -55,6 +55,8 @@ the store that provides a standard Unix $PREFIX hierarchy (`bin/`,
 
 `--dry-run` and `-v` (verbose) options available on pretty much everything.
 
+    sudo nix-daemon --daemon &  # start daemon in docker container
+    nix ping-store      # (no args) check if daemon is running and accessible
     nix-env -qa         # Query packages; -a = all (uninstalled too; slow)
 
     #   Nixpkgs "standard library"
