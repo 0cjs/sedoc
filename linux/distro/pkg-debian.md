@@ -42,6 +42,14 @@ There are [three grades of dependencies][ause 1216894]:
   Installed only with `--install-suggests`.
 
 
+Package Notes
+-------------
+
+- `manpages-dev` contains system call/libc/etc. manpages
+- `iputils-*` are Linux-specific more-featureful tools; `inetutils-*` are
+  the Gnu tools, including some not in `iputils-*`.
+
+
 Backports
 ---------
 
