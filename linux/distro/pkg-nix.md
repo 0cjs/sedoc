@@ -68,10 +68,10 @@ Profiles are implemented as a naming and symlinking convention. Profile
 `PNAME` is a symlink to a generation `PNAME-1-link`, which in turn is a
 symlink to an environment `/nix/store/...-user-environment/` which contains
 the hierarchy. The _active profile_ is the one currently being operated on
-(the current profile below or specified with `-p PNAME`).
+(the current profile below or specified with `-p PATH`).
 
 `~/.nix-profile` is a symlink indicating the _current profile_, which is
-used when `-p PNAME` is not specified. The user typically will add
+used when `-p PATH` is not specified. The user typically will add
 `~/.nix-profile/bin/` to his $PATH.
 
 With no current profile, profile modification commands will create a new
@@ -80,9 +80,20 @@ profile to that. That directory is owned by the user but is not special
 otherwise; creating and using other profiles in that directory requires
 specifying the full path. (User channel information is also stored there.)
 
+### Common Options
+
+Most everything takes `--dry-run` to print what would have been done
+instead of doing it. It may also print which paths are being built from
+source and which are being  substituted (downloading a binary instead of
+building.)
+
+`-v`/`--verbose` and `--quiet` increase and decrease the verbosity level
+with each use. The default level is 0 "Errors only"; subsequent ones are 1
+"Informational," 2 "Talkative," 3 "Chatty," 4 "Debug," 5 "Vomit."
+
 ### Useful Commands
 
-`--dry-run` and `-v` (verbose) options available on pretty much everything.
+    nix-env [--dry-run] [-v] [--quiet] ...      # common options
 
     sudo nix-daemon --daemon &  # start daemon in docker container
     nix ping-store      # (no args) check if daemon is running and accessible
@@ -99,20 +110,37 @@ specifying the full path. (User channel information is also stored there.)
 
 ### nix-env
 
-Takes one operation: `-q` query, `-i` install, `-u` upgrade, etc. Bare
-arguments are "selectors" that are regexps; bare names appear to match
-everything up to but not including the last hyphen and what trails it,
-which seems to be considered the "version" of the package.
+    nix-env [--dry-run] [-v] [--quiet] [-p PATH] ...
+    nix-env -q [-s] [SEL]               # query
+    nix-env [-i|-u|-e] SEL              # install/update/erase
 
-Operations on a profile (default or given with `-p`)
-* `-q` query (selector optional)
+Takes one operation: `-q` query, `-i` install, etc. Bare arguments `SEL`
+are "selectors" that are regexps. The portion of a package name after the
+final hyphen is considered the version, and bare names match the latest
+version of a package.
+
+Common arguments:
+* `--dry-run`: print what would be done;
+  show what will be built and what will be substituted.
+* `-v`, `-q`: change verbose level up/down
+* `-p PATH`, `--profile PATH`: Set the _active profile_.
+  The default is the _current profile_, `~/.nix-profile`.
+* `-f PATH`, `--file PATH`: Sets the _active nix expression_ (dir with
+  `default.nix` in it) used to obtain derivations. (default `~/.nix-defexpr`)
+  May start with `http://` or `https://` to download tarball with single
+  top-level dir containing `default.nix`.
+
+Operations on a profile:
+* __Query:__ `-q`, `--query`
   * : `-s` for status (`IPS`=installed in current user env, present on
     system, "substitute" available i.e. pre-built binary can be fetched)
-* `-i` install (selector required): creates new user environment with this
-  package added (even if same version already present).
-* `-u` (selector optional): Replace current versions of listed packages
-  (all in env if no selector) with newer versions, if available.
-* `-e` / `--uninstall` (selector required): remove a package
+* __Install:__ `-i`, `--install` (selector required): creates new user
+  environment with this package added (even if same version already
+  present—installing again my change filename conflict resolution?).
+* __Upgrade__ `-u`, `--upgrade` (selector optional): Replace current
+  versions of listed packages (all in env if no selector) with newer
+  versions, if available.
+* __Erase__: `-e` / `--uninstall` (selector required): remove a package
 
 Profile management commands:
 * `-S PATH`/`--switch-profile PATH`: Change the `~/.nix-profile` symlink to
