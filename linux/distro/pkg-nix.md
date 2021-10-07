@@ -80,6 +80,51 @@ profile to that. That directory is owned by the user but is not special
 otherwise; creating and using other profiles in that directory requires
 specifying the full path. (User channel information is also stored there.)
 
+
+Commands
+--------
+
+### Environment Variables
+
+The `nix.sh`
+(single-user installation) and `nix-daemon.sh` (multi-user installation)
+are the nix-supplied sh/bash profiles for `/etc/profile.d/`.
+
+Enviroment variables are listed in [Chapter 21: Common Environment
+Variables][nix env] and a section of the `nix-env(1)` manual page. Neither
+of these are complete; ▲ below marks ones for which no documentation has
+been found. ¶ marks ones set by `{nix,nix-daemon}.sh`. (`nix.sh` refers to
+both unless otherwise indicated. The `nix.sh` script appears to be newer
+and better written than `nix-daemon.sh`.)
+
+- ¶`PATH`: Prefixed with `$HOME/.nix-profile/bin` by `nix.sh`.
+- ¶`MANPATH`: Prefixed with `$HOME/.nix-profile/share/man` by `nix.sh` (but
+  not by `nix-daemon.sh`).
+- ¶`NIX_SSL_CERT_FILE`
+- ▲¶`NIX_PROFILES`: Set by `nix.sh` to a space-separated list of specific
+  profiles: `/nix/var/nix/profiles/default $HOME/.nix-profile`. Testing
+  shows that these do not seem to be used by `nix-env`.
+- ¶`NIX_PATH`: See below.
+
+__NIX_PATH__
+
+`profile.d/nix.sh` does:
+
+    # Append ~/.nix-defexpr/channels to $NIX_PATH so that <nixpkgs>
+    # paths work when the user has fetched the Nixpkgs channel.
+    export NIX_PATH=${NIX_PATH:+$NIX_PATH:}$HOME/.nix-defexpr/channels
+
+`profile.d/nix-daemon.sh` instead does (linebreaks for readability):
+
+    NIX_PATH="\
+      nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs\
+             :/nix/var/nix/profiles/per-user/root/channels"
+
+Not clear why the `nix-daemon` version is different. Perhaps it's because
+it wants to use "system" channels by default in the multi-user
+configuration, or perhaps it's just an older script that hasn't been
+updated.
+
 ### Common Options
 
 Most everything takes `--dry-run` to print what would have been done
@@ -174,8 +219,9 @@ Misc
 [Nixpkgs]: https://nixos.org/manual/nixpkgs/stable/
 
 [arch]: https://wiki.archlinux.org/title/Nix
+[nix env]: https://nixos.org/manual/nix/stable/#sec-common-env
 [nix expr]: https://nixos.org/manual/nix/stable/#ch-expression-language
-[nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
+[nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
 
 [docker]: https://nix.dev/tutorials/building-and-running-docker-images
