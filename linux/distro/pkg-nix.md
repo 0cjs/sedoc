@@ -102,10 +102,40 @@ used when `-p PATH` is not specified. The user typically will add
 With no current profile, profile modification commands will create a new
 profile `/nix/var/nix/profiles/per-user/USER/profile` and set the current
 profile to that. That directory is owned by the user and is special in that
-profiles there are used as roots for the garbage collector. (User channel
-information is also stored there.) However, it's not a default prefix for
-`nix-env`; the full path to profiles in that directory must still be given
-to `-p`.
+profiles there are used as roots for the garbage collector. (It's also
+possible to create roots outside of this dir; `nix-build` does this with
+its `result/` output.)  However, it's not a default prefix for `nix-env`;
+the full path to profiles in that directory must still be given to `-p`.
+
+Links to channel environments are also stored under the profile directory;
+see below for more details.
+
+### Channels
+
+    nix-channel --list
+    nix-channel --update [NAME ...]
+    nix-channel --rollback          # "reverts last --update," but probably
+                                    #    actually 2nd highest seq. no. XXX
+    nix-channel --add URL NAME      # doesn't d/l exprs; use --update after
+    nix-channel --remove NAME
+
+A set of subscribed channels is stored as an environment under the usual
+`/nix/store/HASH-user-environment/` naming scheme. (This _HASH_ is, as
+usual, the content hash and not the same as any hashes in symlinks within
+the environment package.) This will have a `manifest.nix` symlink to a
+`/nix/store/HASH-env-manifest.nix` file containing information about the
+channels and a symlink for each user-assigned channel name.
+
+After assocating a channel name to a tarball with `nix-channel --add`,
+`--update` creates a new local package with a subdirectory, both  named for
+that channel: `/nix/store/HASH-CHAN/CHAN/`; this subdirectory is the target
+of the link in the environment above. The contents of the tarball, after
+dropping the tarball's top-level directory, are unpacked under that so that
+`/*/default.nix` file from the tarball will be in
+`/nix/store/HASH-CHAN/CHAN/default.nix`.
+
+See [Luc Perkins' blog post][lucperkins] for a tutorial on creating a
+channel and making its tarball automatically available via GitHub archives.
 
 
 Commands
@@ -189,7 +219,7 @@ directory will be evaluated like:
     #   Nixpkgs "standard library"
     nix-channel --add https://nixos.org/channels/nixpkgs-unstable
     nix-channel --update
-    nix-channel --list
+
     nix-env -qas        # status of packages
 
     nix-store --gc --print-roots
@@ -243,15 +273,17 @@ Profile management commands:
   effective.
 
 
-Channels
---------
-
-
 Misc
 ----
 
-- Nixpkgs offers a `dockerTools` package to help automate [building Docker
-  images][docker].
+All packages below are available in Nixpkgs unless noted otherwise.
+
+- `dockerTools` helps automate [building Docker images][docker].
+- [Niv] does Nix package dependency management for development
+  repos that use tools from Nixpkgs, like a Nix version of
+  `requirements.txt` or NPM.
+- [Home Manager][home-manager] provides a system for managing a user
+  environment with Nix and Nixpkgs.
 
 
 
@@ -266,4 +298,8 @@ Misc
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
 [nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
 
+[lucperkins]: https://lucperkins.dev/blog/nix-channel/
+
 [docker]: https://nix.dev/tutorials/building-and-running-docker-images
+[home-manager]: https://github.com/nix-community/home-manager
+[niv]: https://github.com/nmattia/niv
