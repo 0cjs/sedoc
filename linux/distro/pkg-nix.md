@@ -70,13 +70,14 @@ Environments:
 
 ### Environments and Profiles
 
-An _environment_ is a directory in the store that provides a standard Unix
-$PREFIX hierarchy (`bin/`, `share/`, etc.) giving a synthesized view of a
-subset of packages in the whole store. This view includes filename
-priority, usually determined by the order in which packages were installed,
-so an environment with A then B installed is different from an environment
-with B then A installed. Environments will be re-used if a sequence of
-install commands produces the same environment as one that already exists.
+An _environment_ is a locally-generated package (a directory under
+`/nix/store/`) that provides a standard Unix $PREFIX hierarchy (`bin/`,
+`share/`, etc.) giving a synthesized view of a subset of packages in the
+whole store. This view includes filename priority, usually determined by
+the order in which packages were installed, so an environment with A then B
+installed is different from an environment with B then A installed.
+Environments will be re-used if a sequence of install commands produces the
+same environment as one that already exists.
 
 A _profile_ is a name for a set of environments called _generations_ of
 that profile, one of which is the _current generation_. The generations
@@ -100,9 +101,11 @@ used when `-p PATH` is not specified. The user typically will add
 
 With no current profile, profile modification commands will create a new
 profile `/nix/var/nix/profiles/per-user/USER/profile` and set the current
-profile to that. That directory is owned by the user but is not special
-otherwise; creating and using other profiles in that directory requires
-specifying the full path. (User channel information is also stored there.)
+profile to that. That directory is owned by the user and is special in that
+profiles there are used as roots for the garbage collector. (User channel
+information is also stored there.) However, it's not a default prefix for
+`nix-env`; the full path to profiles in that directory must still be given
+to `-p`.
 
 
 Commands
