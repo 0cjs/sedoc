@@ -113,9 +113,8 @@ Commands
 
 ### Environment Variables
 
-The `nix.sh`
-(single-user installation) and `nix-daemon.sh` (multi-user installation)
-are the nix-supplied sh/bash profiles for `/etc/profile.d/`.
+The `nix.sh` (single-user installation) and `nix-daemon.sh` (multi-user
+installation) are the nix-supplied sh/bash profiles for `/etc/profile.d/`.
 
 Enviroment variables are listed in [Chapter 21: Common Environment
 Variables][nix env] and a section of the `nix-env(1)` manual page. Neither
@@ -162,6 +161,22 @@ building.)
 `-v`/`--verbose` and `--quiet` increase and decrease the verbosity level
 with each use. The default level is 0 "Errors only"; subsequent ones are 1
 "Informational," 2 "Talkative," 3 "Chatty," 4 "Debug," 5 "Vomit."
+
+The _default expression_ used by `nix-env` can be specified with `-f` or
+`--file`, which takes a path to a file, directory or HTTP/HTTPS URL; the
+default is `~/.nix-defexpr`. If a file, it's loaded; if a directory, the
+`default.nix` in it is loaded; if a directory without a `default.nix`, the
+files and subdirs under it are loaded as above. All expressions are
+combined into a single set; any expressions that are sets are used as is,
+but functions are evaluated with the empty set as a parameter.
+
+Essentially this is like importing; two files `foo.nix` and `bar.nix` in a
+directory will be evaluated like:
+
+    {
+        foo = import ~/.nix-defexpr/foo.nix;
+        bar = import ~/.nix-defexpr/bar.nix;
+    }
 
 ### Useful Commands
 
