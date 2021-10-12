@@ -18,6 +18,12 @@ Installation
   https://nixos.org/nix/install) --daemon`, or [build from source][nix
   instsrc]
 
+Individual scripts may use nix via [`nix-shell` hashbang][nix #!] to
+build an environment for the script:
+
+    #!/usr/bin/env nix-shell
+    #!nix-shell -i real-interpreter -p packages
+
 
 Overview
 --------
@@ -133,11 +139,11 @@ used when `-p PATH` is not specified. The user typically will add
 
 With no current profile, profile modification commands will create a new
 profile `/nix/var/nix/profiles/per-user/USER/profile` and set the current
-profile to that. That directory is owned by the user and is special in that
-profiles there are used as roots for the garbage collector. (It's also
-possible to create roots outside of this dir; `nix-build` does this with
-its `result/` output.)  However, it's not a default prefix for `nix-env`;
-the full path to profiles in that directory must still be given to `-p`.
+profile to that. That directory is owned by _USER_ and is special in that
+profiles there are used as roots for the garbage collector. (See below for
+more on GC roots.) However, that path is not a default prefix for
+`nix-env`; the full path to profiles in that directory must still be given
+to `-p`.
 
 Links to channel environments are also stored under the profile directory;
 see below for more details.
@@ -168,6 +174,34 @@ dropping the tarball's top-level directory, are unpacked under that so that
 
 See [Luc Perkins' blog post][lucperkins] for a tutorial on creating a
 channel and making its tarball automatically available via GitHub archives.
+
+### Garbage Collection and GC Roots
+
+Roots for GC are under `/nix/var/nix/gcroots/`, the profiles directories
+(which includes channel subscriptions), and perhaps others. GC operations:
+
+    nix-store --gc --print-roots        # show dirs scanned for GC roots
+    nix-store --gc --print-live         # show what would be kept
+    nix-store --gc --print-dead         # show what would be deleted
+    nix-store --gc --print-delete       # default; perform GC
+    nix-store --delete PATH             # deletes only if not live
+
+`--max-freed BYTES` will delete until only _BYTES_ have been freed (usual
+`KMGT` suffixes). `--print-dead` and `--delete` print total bytes freed. GC
+is also influenced by the `keep-outputs` and `keep-derivations` variables
+in the Nix configuration file.
+
+Common GC-related options for operations of various Nix commands:
+
+    nix-store --add-root /nix/var/nix/gcroots/PATH COMMAND ...
+    nix-store --indirect --add-root PATH           COMMAND ...
+    nix-instantiate --add-root ... --indirect ...  # Same opts as nix-store
+    nix-build -O PATH ...
+
+The `--indirect` option creates a symlink in `/nix/var/nix/gcroots/auto/`
+to _PATH_ (usually outside the store), as does the `-O` option. Renaming
+that path will make the symlink to it dangling and thus remove it from the
+list of GC roots.
 
 
 Commands
@@ -260,19 +294,21 @@ directory will be evaluated like:
 ### nix-env
 
     nix-env [--dry-run] [-v] [--quiet] [-p PATH] ...
+    nix-env --switch-profile PATH       # change ~/.nix-profile link,
     nix-env -q [-s] [SEL]               # query
     nix-env [-i|-u|-e] SEL              # install/update/erase
 
-Takes one operation: `-q` query, `-i` install, etc. Bare arguments `SEL`
-are "selectors" that are regexps. The portion of a package name after the
-final hyphen is considered the version, and bare names match the latest
-version of a package.
+- _PATH_ for profiles is a full path, or relative to CWD, to the profile's
+  main symlink. It is created if it doesn't exist.
+- _SEL_ is a "selector" regexp, except that the portion of a package name
+  after the final hyphen is considered the version, and bare names match
+  the latest version of a package.
 
 Common arguments:
 * `--dry-run`: print what would be done;
   show what will be built and what will be substituted.
 * `-v`, `-q`: change verbose level up/down
-* `-p PATH`, `--profile PATH`: Set the _active profile_.
+* `-p PATH`, `--profile PATH`: Set the _active profile_ for a nix-env run.
   The default is the _current profile_, `~/.nix-profile`.
 * `-f PATH`, `--file PATH`: Sets the _active nix expression_ (dir with
   `default.nix` in it) used to obtain derivations. (default `~/.nix-defexpr`)
@@ -335,12 +371,15 @@ All packages below are available in Nixpkgs unless noted otherwise.
 [Nix]: https://nixos.org/manual/nix/stable/
 [Nixpkgs]: https://nixos.org/manual/nixpkgs/stable/
 
-[arch]: https://wiki.archlinux.org/title/Nix
-[derivation]: https://nixos.org/guides/nix-pills/our-first-derivation.html
+<!-- Manual deep links -->
+[nix #!]: https://nixos.org/manual/nix/stable/#use-as-a-interpreter
 [nix env]: https://nixos.org/manual/nix/stable/#sec-common-env
 [nix expr]: https://nixos.org/manual/nix/stable/#ch-expression-language
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
 [nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
+
+[arch]: https://wiki.archlinux.org/title/Nix
+[derivation]: https://nixos.org/guides/nix-pills/our-first-derivation.html
 
 [lucperkins]: https://lucperkins.dev/blog/nix-channel/
 
