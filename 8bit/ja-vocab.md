@@ -14,7 +14,8 @@ up/down, enclosure, solid) then by stroke count in each character.
      7  形式        けいしき        format (of a file)
      8  拡張        かくちょう      expansion, extension; maybe "ESC"
      9  信号        しんごう        signal
-    10  倍密度      ばいみつど      double density
+    10  消去        しょうきょ      clear (memory, storage)
+        倍密度      ばいみつど      double density
         倍密度倍    ばいみつどばい  double-density double ???
     11  割込        わりこみ        interrupt
         接地        せっち          electrical ground (アース)
