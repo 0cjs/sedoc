@@ -61,6 +61,10 @@ Docker repository][docker debinst] (this for Debian 8+ `x86_64`):
 
     sudo docker run hello-world      # Verify it's working
 
+See [Compose](compose.md) if you need Docker Compose; you cannot use the
+Debian-provided `docker-compose` package with the Docker-provided
+`docker-ce` package.
+
 #### Ubuntu (as of 2018-10)
 
 [Ubuntu CE] supports 17.10 (edge only), 17.04, 16.04, 14.04 on
