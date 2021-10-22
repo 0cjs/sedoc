@@ -27,7 +27,16 @@ Geek][htg 267893])
 That said, though the setting appears for me on Windows 10, it doesn't seem
 to be taking effect.
 
+### RTC (Hardware) Clock in UTC
+
+For more recent versions of Windows 10, run [`rtc-utc.reg`](rtc-utc.reg) or
+use `regedit` to manually set the `DWORD` key. The time zone and DST
+settings will no longer affect the hardware clock. Earlier versions of
+Windows 10 and 64-bit Windows 7 have a bug that needs a `QWORD` instead; in
+modern builds only `DWORD` works. [[Arch Wiki][rtc-utc]]
+
 
 
 <!-------------------------------------------------------------------->
 [htg 267893]: https://www.howtogeek.com/267893/how-to-change-the-windows-10-lock-screen-timeout/
+[rtc-utc]: https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows
