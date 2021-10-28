@@ -8,7 +8,8 @@ CP/M.
 - __PC-8001A__ (1981-08): US release. Katakana replaced with Greek.
 - __PC-8001B__ (?): European release (240V). [Pictures][retropc.net/404].
 - __PC-8001mkII__ (1983-03): Improved graphics, many expansion modules
-  (including FDC) built-in, two expansion slots.
+  (including FDC) built-in, two expansion slots. Perhaps closer to an
+  8801mkII than the original 8001.
 - __PC-8001mkIISR__ (1985-01) Improved graphics again.
 
 This was followed by the PC-8801 series, which started with a separate
@@ -25,6 +26,14 @@ Specs:
   (mkII: add 320x200/4.)
 - BASIC: N-BASIC, variant of MS Disk Basic 4.51
 - TOD clock (access w/`TIME$` in BASIC)
+- Back panel:
+  - PC-8001: power cord, POWER, RESET, TAPE (DIN-9), B/W (DIN-5), COLOR
+    (DIN-8), PRINTER (keyed edge connector), EXT BUS (keyed edge connector)
+  - PC-8001mkII: XXX check, but included expansion slot, PORT (DE-9M)
+  - PC-8001mkIISR:
+    - Upper row: expansion slot, power switch, power cord.
+    - Lower row: printer (micro-ribbon), ???, expansion? (micro-ribbon),
+      switches, knob, RCA, DIN, DIN, DIN, DIN, RESET (button).
 
 Peripherals (Ⅱ marks mkII items):
 - __PC-8001mkII-01:__ Kanji board for mkII dedicated connector (not exp. slot)
@@ -45,6 +54,8 @@ Documentation:
   FPGA clone of the 6001. It has articles with extensive information on
   many aspects of PC-6000/PC-8000 hardware and software.
 - [electric.com][er] has many posts on various PC-8001 topics.
+- [PC-8001でマシン語 : VRAMアドレス取得のテストコード][expgig]
+
 
 
 Connector Pinouts
@@ -214,6 +225,7 @@ Also see Table 2 (p.80) in [Byte] for summary and [asahi] for more details.
 [byte]: https://tech-insider.org/personal-computers/research/acrobat/8101.pdf
 [enri]: http://www43.tok2.com/home/cmpslv/Pc80/EnrPc.htm
 [er]: https://electrelic.com/
+[expgig]: https://expertgig.jp/2021/02/22/pc-8001でマシン語-vramアドレス取得のテストコード/
 [retropc.net/404]: http://www.retropc.net/mm/archives/404
 [sbeach.seesaa.net]: http://sbeach.seesaa.net/
 
