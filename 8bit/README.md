@@ -117,9 +117,10 @@ Timeline
     1983      Radio Shack TRS-80 MC-10
 
     1984-01   Apple Macintosh (128K, $2495)
+    1984-02   Fujitsu FM-11BS (8088, 2HD), FM-11AD2 (6809, OS-9 Level 2)
     1984-04   WDC W65C816S (65816) finished; samples Q3/Q4, production 1985
     1984-04   Apple IIc ($1295)
-    1984-02   Fujitsu FM-11BS (8088, 2HD), FM-11AD2 (6809, OS-9 Level 2)
+    1984-05   Fujitsu FM77
     1984-08   IBM PC/AT 5170 (5.25" 2HD, $6000)
     1984-10   Apple Macintosh 512K ($2795)
     1984-11   NEC PC-9801M (first PC98 2HD but could not read 2DD)
@@ -129,9 +130,12 @@ Timeline
 
     1983-03   NEC PC-8001mkIISR
     1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
+    1985-02   Fujitsu FM77L4 (400-line graphics)
     1985-03   Apple Enhanced IIe (65C02, ROM, char ROM)
+    1985-04   Fujitsu FM77L2 (FM sound card)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
     1985-10 * Nintendo NES ($179 inc. R.O.B. and Zapper)
+    1985-10   Fujitsu FM77AV
 
 Magazine publishing dates:
 - 1976 _I/O_
