@@ -128,9 +128,9 @@ Timeline
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
-    1983-03   NEC PC-8001mkIISR
     1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
     1985-02   Fujitsu FM77L4 (400-line graphics)
+    1985-03   NEC PC-8001mkIISR
     1985-03   Apple Enhanced IIe (65C02, ROM, char ROM)
     1985-04   Fujitsu FM77L2 (FM sound card)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
