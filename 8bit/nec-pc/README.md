@@ -9,6 +9,22 @@ NEC PC-nnn Series
 - 1983: mkII released for all 8-bit series
 - 1985: 8-bit  mkII SRs released: end of PC-80 and focus on games for PC-88.
 
+### Contents
+
+PC-8x01:
+- [NEC PC-8001](8001.md)
+- [NEC PC-8801](8801.md)
+- [N80 and N88 BASIC](basic.md)
+- [PC-8001 Programs](programs.md)
+- [PC-8001 Floppy Disk Format](floppy.md)
+- [PC-6001/8001 Disk Interfaces](floppyif.md)
+
+Other systems:
+- [NEC PC-6001](6001.md)
+- [`sd6031/`](sd6031/): Firmware for SD6031, an emulator for the external
+  PC-6031 floppy disk drive unit.
+- [NEC PC-9801](9801.md)
+
 
 Machine-language Monitor
 ------------------------
