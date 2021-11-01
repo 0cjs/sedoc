@@ -26,6 +26,31 @@ Other systems:
 - [NEC PC-9801](9801.md)
 
 
+TransDisk (xdisk)
+-----------------
+
+The TransDisk 2 program (called `xdisk2` in filenames) is used to transfer
+PC-8801 floppy images via serial from a Windows PC to a PC-8801, which
+writes them.
+
+There's a Unix version, [TransDisk 3][xdisk3]; the repo includes the source
+code for the client and a reference to the xdisk2 sources.
+
+### SR Patch
+
+A client program patch is required for some of the early 4 MHz models (SR,
+TR and earlier, but perhaps not MR), as described at [[5inch]], which also
+includes good general instructions for doing the transfers. If it fails to
+sync, press `STOP` and patch as follows. You may still need to retry sync
+several times after this.
+
+    POKE & HC068,0
+    POKE & HC069,0
+    POKE & HC06A,0
+    POKE & HC06F, 7
+    A = USR(0)          :REM start program again
+
+
 Machine-language Monitor
 ------------------------
 
@@ -40,3 +65,10 @@ Enter from Basic with `MON` command. Prompt is `*`. `ESC` pauses output.
 - `LV`: Load tape block and verify it's correctly loaded.
 - `TM`: Test memory and return to Basic.
 - Ctrl-B: Return to Basic.
+
+
+
+<!-------------------------------------------------------------------->
+[5inch]: http://5inch.floppy.jp/pc88serialconnect.txt
+[5inch-cache]: https://webcache.googleusercontent.com/search?q=cache:http%3A%2F%2F5inch.floppy.jp%2Fpc88serialconnect.txt
+[xdisk3]: https://github.com/bferguson3/xdisk3
