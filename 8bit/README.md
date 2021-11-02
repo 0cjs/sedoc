@@ -71,6 +71,7 @@ Timeline
     1979-06 * Micropro releases WordStar
     1979-09 * NEC PC-8001 (Z80) ships
     1979-09   Motorola 68000 introduced (samp 1980-02, prod 1980-11)
+    1979-10   TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
     1979-10   Sharp MZ-80K introduced in UK (20K £380, 48K £475)
     1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
@@ -87,6 +88,7 @@ Timeline
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
     1981-05   NEC N5200 (8086 like PC-98; µPD7220 graphics)
+    1981-06   TI-99/4A (TMS9900 3 MHz, 16 KB, TMS9918A, $525, 2.8M shipped)
     1981-08 * IBM PC 5150 released ($1565)
     1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
