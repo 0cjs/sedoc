@@ -65,6 +65,7 @@ Timeline
     1978-06   Intel 8086 introduced
     1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 * Sharp MZ-80K ships
+    1978    * Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
 
     1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
     1979-05   NEC PC-8001 (Z80) announced
@@ -87,16 +88,18 @@ Timeline
     1981-     Sharp MZ-80B ships
     1981-03   Sinclair ZX81
     1981-05 * Fujitsu FM-8 released
-    1981-05   NEC N5200 (8086 like PC-98; µPD7220 graphics)
     1981-06   TI-99/4A (TMS9900 3 MHz, 16 KB, TMS9918A, $525, 2.8M shipped)
+    1981-07   NEC N5200 announced (8086 like PC-98; µPD7220 graphics)
     1981-08 * IBM PC 5150 released ($1565)
     1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
     1981-12 * NEC PC-8801 ships (released 1981-11?)
+    1981-12 * NEC N5200 ships
     1981-12 * BBC Micro released
     1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
     1982-   * Commodore MAX Machine released
+    1982-02 * TRS-80 Model 16 (68000, $4999)
     1982-04 * Hitachi MB-6891 Basic Master Level 3 MarkII (¥198,000)
     1982-04   Sinclair Spectrum
     1982-08 * Commodore 64 Released
