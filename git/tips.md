@@ -31,6 +31,11 @@ Fixing/Changing Commits and Branches
 
       git commit --amend --reset-author
 
+* To change the author of each of several commits without changing the
+  dates, `git rebase --interactive` and after each commit,
+
+      git commit --amend --author cjs -C @
+
 * To remove a file accidentally added to a commit ([so-15321456]):
 
       git reset --soft @^
