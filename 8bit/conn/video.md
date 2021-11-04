@@ -36,28 +36,28 @@ pin 2 which is connected to the monitor's receive pin 1.)
 - Some of the following has been checked on my [FM77AV][fm77]; that pages
   notes what has and hasn't.
 
-                        ______________________________
-                        \ 20 18 16 14 12 10 8 6 4 2  |
-    chassis ground "21" →\ 19 17 15 13 11  9 7 5 3 1 |
+                          ______________________________
+                          \ 20 18 16 14 12 10 8 6 4 2  |
+      chassis ground "21" →\ 19 17 15 13 11  9 7 5 3 1 |
 
-    Clr Pins       Dir  Description
+      Clr Pins       Dir  Description
 
-         1,5       in   audio left,right
-    WR   2,6       OUT  audio left,right
-         3         in   audio GND
-         4         OUT  audio GND
-         7         in   composite GND
-         8         OUT  composite GND
-         9         in   composite video
-    Y   10         OUT  composite video (sync only on FM77)
-    W   11         ???  AV control signal
-    W   12          ↔   Ym (RGB mask): low <0.4V, high >1V, 75Ω
-                        (switches RGB to half brightness for video overlay)
-        14          ↔   Ym,YS GND
-    W   16          ↔   Ys (RGB switch). RGB direction? FM77 +3.4 V out.
-        13,17,18    ↔   R,G,B ground
-    RGB 15,19,20    ↔   R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
-        21          ↔   shield
+           1,5       in   audio left,right
+      WR   2,6       OUT  audio left,right
+           3         in   audio GND
+           4         OUT  audio GND
+           7         in   composite GND
+           8         OUT  composite GND
+           9         in   composite video
+      Y   10         OUT  composite video (sync only on FM77)
+      W   11         ???  AV control signal
+      W   12          ↔   Ym (RGB mask): low <0.4V, high >1V, 75Ω
+                          (switches RGB to half brightness for video overlay)
+          14          ↔   Ym,YS GND
+      W   16          ↔   Ys (RGB switch). RGB direction? FM77 +3.4 V out.
+          13,17,18    ↔   R,G,B ground
+      RGB 15,19,20    ↔   R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
+          21          ↔   shield
 
 ####  Breakout Board
 
