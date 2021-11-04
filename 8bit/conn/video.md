@@ -22,8 +22,8 @@ TODO
 JP-21 / "RGBマルチ" (RGB-21, SCART)
 -----------------------------------
 
-[JP-21] is a [SCART]-like connector with a slightly different pinout; it's
-used by the [FM77AV][fm77].
+[JP-21] is a [SCART] connector with a slightly different pinout.
+It's used by the [FM77AV][fm77] series.
 
 SCART and JP-21 do not use straight-through cables; for signals marked
 "input" or "output," these are always the signals on the device connector
@@ -31,9 +31,8 @@ and the cable is expected to swap them. (I.e., the computer sends audio on
 pin 2 which is connected to the monitor's receive pin 1.)
 
 - Signals below are referenced from the computer to the display, i.e.,
-  "output" is a signal recieved by the display. This is the opposite
-  covention of ja Wikipedia's [RGB21ピン].
-- Some of the following has been checked on my [FM77AV][fm77]; that pages
+  "output" is a signal sent by the computer and recieved by the display.
+- Some of the following has been checked on my [FM77AV][fm77]; that file
   notes what has and hasn't.
 
                           ______________________________
