@@ -153,8 +153,10 @@ Online references (some of dubious accuracy) include:
   Particularly useful are his chronologies for [Personal Computers][pol-pc]
   ([brief version][pol-pcmini]), [Microprocessors][pol-mp] and
   [Software][pol-soft].
+- William M. Raike, ["A History of Japan's Microcomputers"][byte8509]
+  _BYTE_ 1985-09 pp. 395-399.
 - old-computers.com [Systems Released in 1975][oc-1975]. No months.
-  Similar pages exist for other years.
+  Similar pages exist for other years. Not a particularly reliable source.
 - [uber-leet Computer Releases 1939-1995][uber]: No months, but lists
   a _lot_ of systems.
 - JPIDEC English-language publications sometimes contain interesting
@@ -187,6 +189,7 @@ Online references (some of dubious accuracy) include:
 [m kb]: https://archive.org/details/kilobaudmagazine?&sort=date
 
 [JIPDEC ar J]: https://www.jipdec.or.jp/library/archives_keyword_J.html
+[byte8509]: https://archive.org/details/BYTE_Vol_10-09_1985-09_10th_Anniversary_Issue/page/n398/mode/1up?view=theater
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
 [jcq46]: https://www.jipdec.or.jp/archives/publications/J0001270
 [jcq57]: https://www.jipdec.or.jp/archives/publications/J0001259
