@@ -69,13 +69,23 @@ the default to `A:` (or current drive?).
 - `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
   beginning with the _I_th character. `1` is the first character of _X$_.
 
-### Screen and Graphics
+### Screen, Graphics, Sound
 
 - `CLS`: Clear screen. Valid in all screen modes.
 - `COLOR [foreground][,background][,border]`. Set color of all character
   cells on the screen. All parameters optional, one must be given. The `F6`
   default programming sets the default startup colours: 15,4,7 for JP,
   15,4,4 for all others.
+- `BEEP`: Generate a short tone from the PSG. Same as `PRINT CHR$(7)`.
+  (MSX2: `SET BEEP t,v` changes timbre (1-4) and volume (1-4).)
+- `PLAY #dev,"mml_ch1","mml_ch2",...`: Play music. _dev_=0 for PSG (can be
+  omitted) 1=midi, 2/3=MSX-AUDIO or MSX-MUSIC (after `CALL AUDIO` or `CALL
+  MUSIC`. MML: `A-Ghop` note, _h_=`+#-`, _o_=ocatave 1-8, _p_=periods to
+  increase length by 1/2. `Ll` length _l_ (1-64 of a note). `Oo` octave
+  _o_. `Rlp` rest length _l_, periods _p_ extend by 1/2. `Tt` tempo _t_
+  32-255. Much more.
+- `PLAY(c)` returns -1 (true) if muisc is playing on channel _c_ (0=all).
+- `SOUND reg,val`: Write _val_ to PSG register _reg_ (0-13).
 
 Color codes:
 
