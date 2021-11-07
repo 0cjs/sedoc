@@ -22,6 +22,7 @@ up/down, enclosure, solid) then by stroke count in each character.
     13  端子        たんし          terminal (for a signal connection)
         解析        かいせき        analysis, analytical study; parsing/parse
         解除        かいじょ        cancellation
+        解説        かいせつ        explanation (hardware manuals)
         継続        けいぞく        continuation (e.g., of a read)
     14  種類        しゅるい        type (e.g., file type)
         認識        にんしき        recognition (e.g. of a disk)
