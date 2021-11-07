@@ -51,7 +51,8 @@ references include:
 For standard drives there are only two types of diskette magnetic
 media: what is now called "double density" (DD, 2DD and many other
 acronyms) and "high density" (HD). These differ in coercivity and
-thickness of the magnetic media.
+thickness of the magnetic media. DD / HD 5.25" is 300 / 600 Oersted
+and 3.5" is 660 / 720 Oe. [[Retrocomputing SE][rcse 9303]]
 
 Single vs. double density refers only to the encoding format: FM for
 SD and MFM for DD. (M2FM was an early DD scheme replaced by MFM.)
@@ -188,6 +189,7 @@ Does not read 40-track diskettes. Gives:
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
 [hj-replace]: http://www.retrotechnology.com/herbs_stuff/drive.html#threefive
 [hjt]: http://www.retrotechnology.com/herbs_stuff/drive.html
+[rcse 9303]: https://retrocomputing.stackexchange.com/a/9303/7208
 [sa400oem]: https://archive.org/stream/bitsavers_shugartSA478_3019449#mode/1up
 [sa400sm]: https://archive.org/stream/bitsavers_shugartSA4eManualApr1979_2873568#mode/1up
 [sa800oem]: https://deramp.com/downloads/floppy_drives/shugart/SA800%20OEM%20Manual.pdf
