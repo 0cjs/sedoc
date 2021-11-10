@@ -52,6 +52,7 @@ StackExchange
 -------------
 
 From the [help page][se-help].
+Also see [`app/web`](app/web.md) for other SE notes.
 
 Differences from Markdown:
 - Must have a blank line between a paragraph and following list.
@@ -62,7 +63,8 @@ Differences from Markdown:
   attribute order etc. must be correct to keep tag from being
   stripped.
 
-Extras:
+Extras (HTML-line ones do not work in comments):
+- `<s>...</s>` Strikeout (line through text).
 - `<kbd>...</kbd>` Displays text as "key" box.
 - `[tag:NAME]` for a boxed link to tag _NAME_.
 - `>!` starting a line gives "spoiler" blockquote.
