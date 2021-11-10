@@ -1,9 +1,90 @@
 Headphones, Earphones, Bluetooth Audio Devices
 ----------------------------------------------
 
+Bluetooth profiles:
+- __A2DP__ Advanced Audio Distribution Profile
+  (multimedia audio streaming, unidirectional)
+- __AVRCP__ Audio/Video Remote Control Profile (usu. w/A2DP)
+- __HFP__ Hands-free Profile (telephone calls on automobile systems)
+- __HID__ Human Interface Device Profile (game controllers, etc.; low latency)
+- __HSP__ Headset Profile:
+  (telephone calls; controls for ring, answer, hang-up, volume)
 
-Trekz Titanium Bluetooth Headphones
------------------------------------
+
+Aftershokz OpenMove
+-------------------
+
+Bone conduction Bluetooth headphones.
+
+Bug notes:
+- Echo to remote end via mic feedback may be fixed by power-cycling headphones.
+
+Outside of left transducer has __MF Multifunction__ button.
+Base of right arm has (front to back) LED, covered USB-C charge
+port, __`V+ Volume Up/Power__ button, __V- Volume Down__ button.
+
+LED:
+- Solid Red: charging
+- Solid Blue: charging complete
+- Flashing Red/Blue: pairing mode
+- Flashing Blue: incoming call
+- Flashes red every 2 minutes: low battery
+  (Battery is about 6 hours play, up to 10 days standby.)
+
+Pairing mode:
+- From power off, hold __V+__ >5s.
+  Will say, "welcome," then "pairing." Red/blue flash on LED.
+- Change announcer language: double-click __MF__.
+  (English → Japanese → Korean → Mandarin.)
+- Reset all: Hold all three butons, __MF, V+, V-__, for 3-5 seconds until
+  hear two beeps or feel vibrations.
+- Also see <https://bit.ly/aftershokzpairing>
+
+Multipoint pairing:
+- Needed for two _simultaneous_ connections only? Last two (or more)
+  devices paired in the regular way seem to be rememembered and connect
+  fine when using just one.
+- I think it does HSP profile to one device and A2DP to the other; couldn't
+  play 2× A2DP at same time.
+- To multipoint pair: in pairing mode, __MF,V+__ >3s, says "multipoint
+  enabled." Pair, power off. Re-enter (regular) pairing mode, pair again,
+  power off. Power up, says "device connected," "device 2 connected."
+- Reset multipoint from power off with __V+, V-__ >3s.
+
+Button functions (`,`=and, `/`=or):
+
+    Mode      Button      Function              Prompt
+    ───────────────────────────────────────────────────────────────────────────
+    off       V+    >2s   power on              "welcome"
+    on        V+    >2s   power off             "power off"
+
+    idle      V+ / V-     battery status       "high"/"medium"/"low"/"charge me"
+    idle      MF          play                  1 beep
+    idle      MF ×2       redial last call      1 beep
+    idle      MF >2s      phone assistant†      device beep
+
+    playing   MF          pause (idle)          1 beep
+    playing   MF ×2       next song†            1 beep
+    playing   MF ×3       previous song†        1 beep
+    playing   V+ / V-     volume up, down       1 beep
+    playing   V+,V- >3s   EQ adjust             "standard"/"vocal"/"earplug"
+
+    call      V+,V- >2s   mute                  "mute on"/"off"
+    ringing   MF          answer call           2 beeps
+    ringing   MF >2s      answer call waiting   1 beep
+                          (hangup current call)
+    ringing   MF >2s      reject call           2 beeps
+
+† Notes:
+- Next/prev song mapped to skip backward/forward in my BeyondPod config.
+- "Activate assistant" seems unneeded on Android phones, which always
+  respond to "Hey, Google."
+
+
+Aftershokz Trekz Titanium
+-------------------------
+
+Bone conduction Bluetooth headphones.
 
 This is a brief summary of the [manual].
 
