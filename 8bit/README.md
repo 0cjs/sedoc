@@ -111,6 +111,7 @@ Timeline
 
     1983-01   Apple IIe ($1395; $1995 w/Disk II, 80-col, Monitor III)
     1983-01   Apple Lisa ($9995)
+    1983-03 * NEC PC-8201 (¥138,000)
     1983-03   NEC PC-8001mkII
     1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
     1983-03   IBM PC/XT 5160
@@ -119,6 +120,7 @@ Timeline
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-11   NEC PC-8801mkII
+    1983      Radio Shack TRS-80 Model 100
     1983      Radio Shack TRS-80 MC-10
 
     1984-01   Apple Macintosh (128K, $2495)
