@@ -1,0 +1,108 @@
+D88 (D68/D77/D98) File Structure 
+JPN Translations (http://jpntrans.nobody.jp)
+
+--------------------------------------------------
+People Involved
+--------------------------------------------------
+Translation, editing, etc.: Tokugawa Corporate Forum's Ashura
+Hosting: noname345
+
+--------------------------------------------------
+Start of Document
+--------------------------------------------------
+-         All values are stored in little-endian format. 
+
+
+Image File Structure: 
+===================== 
+
+          Disk 1 Header 
+          Disk 1 Data 
+            Track 0 
+              Sector 1 Header 
+              Sector 1 Data 
+              ... 
+            Track 1 
+              Sector 1 Header 
+              ... 
+            ... 
+          Disk 2 Header 
+          Disk 2 Data 
+          Disk 3 Header 
+          ... 
+
+
+Disk Header: 
+============ 
+Size:     688 or 672 bytes.    
+
+Offset    Size             Meaning 
+------------------------------------------------------------------------------------ 
+00h       16(CHAR)         Disk name / comment. 
+10h       1                00h (ASCII comment terminator). 
+11h       9                Reserved (00h). 
+1Ah       1                Write protect flag. 00h = normal. 10h = write protected. *1 
+1Bh       1                Media flag. 00h = 2D, 10h = 2DD, 20h = 2HD. *2 
+1Ch       4(DWORD)         Disk size (includes header size). 
+20h       4(DWORD) * 164   Track table. Offset of each track from disk start. *3 
+                           0 if track is unformatted or not used. *4 
+
+*1        Any non-zero value should be treated as write protected. 
+*2        The tool "1DDITT" also defines the flags 30h for 1D and 40h for 1DD disks. 
+*3        Older tools only allowed up to 160 entries. -> header size is 672 bytes. 
+*4        At least one of the many D88 tools is known to set all unused entries at 
+          the end of the table to the end of the disk. 
+
+-         To get the maximum number of tracks check the first non-zero value in the table. 
+          It must be either 688 or 672. 
+-         If the disk is unformatted only the first value in the table is set (688 or 672) 
+          and the disk ends after the table. 
+
+
+Disk Data Area: 
+=============== 
+Offset:   2A0h or 2B0h. 
+Size:     variable. 
+
+Track: 
+------ 
+-         Each track starts at the offset (relative to start of disk) found in the 
+          track table. 
+-         Tracks don't have any header data. 
+
+Sector: 
+------- 
+Size:     10h (header) + variable data size 
+
+Offset    Size          Meaning 
+------------------------------------------------------------------------------------------ 
+00h       1             C (cylinder) 
+01h       1             H (head). 
+02h       1             R (record/sector ID). 
+03h       1             N (sector size). Bytes in sector = 128 << N. 
+04h       2(WORD)       Number of sectors in track. *1 
+06h       1             Density flag. 00h = double density. 40h = single density. 
+07h       1             Deleted data (DDAM) flag. 0 = normal, 10h = deleted. 
+08h       1             FDC status code. 00h = normal, B0h = Data CRC error, etc. 
+09h       5             Reserved (00h). *2 
+0Eh       2(WORD)       Actual data size following the sector header in bytes. 
+---                     End of sector header. 
+10h       (variable)    Sector data. 
+
+*1        If this is not the same for all sectors within a certain track the disk is damaged. 
+*2        Neko Project II stores values used for 1.44MB floppy disk emulation here. 
+
+-         Actual data length might not match N field value. 
+-         Sectors appear in the order in which they were read. 
+-         Sector headers without data are possible. 
+-         Sector header fields should be checked carefully since damaged image files are 
+          all too common. 
+--------------------------------------------------
+End of Document
+--------------------------------------------------
+
+--------------------------------------------------
+Thanks
+--------------------------------------------------
+Nightcrawler - Whose interest made this document into reality.
+Aoto(?) - For his original info about the D88.
