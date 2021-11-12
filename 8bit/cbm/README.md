@@ -45,7 +45,12 @@ Non-PET models:
 - 1982-08 __[Commodore 64][c64]__: 64K
   - Text: text 40x25×16 (8x8 cells = 320×200), programmable charset
   - Bitmap: 160×200×4, 320×200×2, sprites
-- 1984? __[Commodore Plus/4][plus4]__: 64K
+- 1984 __[Commodore 16][c16]:__ 16k, breadbin case
+- 1984 __[Commodore 116][c16]:__ EU only, chicklet keyboard
+- 1984 __[Commodore Plus/4][plus4]__: 64K
+- 1985 __Commodore 128__
+- 1985 __Commodore 128D:__ EU only. Plastic case, no vents on front.
+- 1986 __Commodore 128DCR:__ Metal case, vents on lower front.
 
 
 Commodore 64
@@ -229,6 +234,21 @@ Plus/4
     CC      GND
 
 
+Commodore 128
+-------------
+
+- Flat 128:
+  - 8563 VDC, 16K VRAM. 6581 SID.
+- 128D:
+  - EU only. Plastic case, no vents on front. Side carrying handle with
+    keyboards slot. 40mm PSU fan; noisy.
+  - Same mobo as Flat 128, with some extra headers/switch populated.
+- 128DCR:
+  - US/EU. Metal case, vents on lower front. 60mm PSU fan mounting w/o fan.
+  - CMT port is on side is recessed; can't fit SDIEC.
+  - 8568 VDC w/64K VRAM. 8580 SID. 1986 ROMs.
+
+
 Transferring Data to CBM Machines
 ----------------------------------
 
@@ -240,6 +260,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 <!-------------------------------------------------------------------->
 [MAX Machine]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine
 [VIC-20]: https://www.c64-wiki.com/wiki/VIC-20
+[c16]: https://en.wikipedia.org/wiki/Commodore_16
 [c64]: https://www.c64-wiki.com/wiki/C64
 [pet-history]: https://www.commodore.ca/commodore-products/commodore-pet-the-worlds-first-personal-computer/
 [pi-ver]: http://www.6502.org/users/andre/petindex/versions.html
