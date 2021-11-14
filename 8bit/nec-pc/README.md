@@ -57,8 +57,10 @@ Machine-language Monitor
 ------------------------
 
 Enter from Basic with `MON` command. Prompt is `*`. `ESC` pauses output.
+(Set `WIDTH 40` or `WIDTH 80` before entry.)
 
 - `Dx,y`: Display bytes at addrs _x_ (def. 0) to _y_ (def. x+$10).
+  Displays 8/16 bytes per line in 40/80 column mode.
 - `Sx`: Display byte at _x_ and prompt for new value;
   continue with next addr until no value entered.
 - `G x`: Goto addr _x_.
