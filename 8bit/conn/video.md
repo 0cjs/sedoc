@@ -143,21 +143,23 @@ numbering is (ref. [minicon1300] and printing on Jr.200 video cable):
               +-----------+     +-----------+
 
 The pinout of the S1308 connector seems to be fairly standardized to one
-of two standards:
+of two standards (MSX is given per standard numbering above):
 
-        Pin  Non-MSX    MSX (above numbering)
-        ───────────────────────────────────────
-         1   varies     blue
-         2   red        green
-         3   green      red
-         4   blue       vsync
-         5   GND        hsync
-         6   GND        c.cont (intensity bit)
-         7   hsync      GND
-         8   vsync      n/c or 14.318 MHz video clock
+        Pin  JP 8-bit   MSX                               Color†
+        ────────────────────────────────────────────────────────────
+         1   varies     blue                               cop
+         2   red        green                              vio
+         3   green      red                                orn
+         4   blue       vsync                              blu
+         5   GND        hsync                              cop
+         6   GND        c.cont (intensity bit)             cop
+         7   hsync      GND                                grn
+         8   vsync      n/c, 14.318 MHz video clock        yel
+
+        † From NEC PC-8001 cable. Copper shield split to 1,5,6
 
 For non-MSX systems, pin 1 may be:
-- GND: D8A, D8A (MB-S1)
+- GND: NEC. D8A, D8A (MB-S1)
 - C.CONT (intensity): D8A2 (PC-6001mkII/SR/6601/SR 15-color)
 - +12 V: D8B (FM-77)
 - N/C: FM-7
