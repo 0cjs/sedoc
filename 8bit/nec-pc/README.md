@@ -61,14 +61,23 @@ Enter from Basic with `MON` command. Prompt is `*`. `ESC` pauses output.
 
 - `Dx,y`: Display bytes at addrs _x_ (def. 0) to _y_ (def. x+$10).
   Displays 8/16 bytes per line in 40/80 column mode.
-- `Sx`: Display byte at _x_ and prompt for new value;
-  continue with next addr until no value entered.
+- `Sx`: Display byte at _x_ and prompt for new value: must be two digits,
+  or `Space` to skip. Continues with subsequent locations until `Enter`.
+  Aborts with `?` message on invalid value.
 - `G x`: Goto addr _x_.
 - `W x, y`: Write tape block from _x_ to _y_.
 - `L`: Load tape block.
 - `LV`: Load tape block and verify it's correctly loaded.
 - `TM`: Test memory and return to Basic.
 - Ctrl-B: Return to Basic.
+
+Terminal Mode
+-------------
+
+The `TERM` command will enter terminal mode using the RS-232C port (or
+print `Illegal function call` if RS-232C is not present). On the original
+PC-8001 there is an internal female jumper block CN-8 ([[hb68]] p.91) to
+wire; other models have externally-accessible switches.
 
 
 
