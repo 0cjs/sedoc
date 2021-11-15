@@ -4,12 +4,22 @@ Headphones, Earphones, Bluetooth Audio Devices
 Bluetooth profiles:
 - __A2DP__ Advanced Audio Distribution Profile
   (multimedia audio streaming, unidirectional)
-- __AVRCP__ Audio/Video Remote Control Profile (usu. w/A2DP)
 - __HFP__ Hands-free Profile (telephone calls on automobile systems)
 - __HID__ Human Interface Device Profile (game controllers, etc.; low latency)
 - __HSP__ Headset Profile:
   (telephone calls; controls for ring, answer, hang-up, volume)
 
+Bluetooth remote control:
+- __AVCTP__ Audio/Video Control Transport Protocol:
+  - Stereo headset buttons to control a music player (AV/C commands over L2CAP)
+  - bluez-utils' [`mpris-proxy`][mpris] needed to pass on controls?
+- __AVRCP__ Audio/Video Remote Control Profile (usu. w/A2DP)
+  (`mpris-proxy` not required)
+
+[MPRIS] supports play-pause, next, previous, but not volume/mute. (Use
+`pactl` for the latter.)
+
+[mpris]: https://wiki.archlinux.org/title/MPRIS
 
 Aftershokz OpenMove
 -------------------
