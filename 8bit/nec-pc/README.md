@@ -36,7 +36,11 @@ PC-8801 floppy images via serial from a Windows PC to a PC-8801, which
 writes them.
 
 There's a Unix version, [TransDisk 3][xdisk3]; the repo includes the source
-code for the client and a reference to the xdisk2 sources.
+code for the client and a reference to the xdisk2 sources. Build with `cd
+pc/; make` (no special libs required) and run `./xdisk3` to see usage
+notes. Running `xdisk3 b -p/dev/ttyUSB0` (exactly that spacing) will prompt
+with the `LOAD "COM:N81X"` command to start on your PC-88 before downloading
+the boot program.
 
 ### SR Patch
 
