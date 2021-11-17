@@ -147,7 +147,7 @@ of two standards (MSX is given per standard numbering above):
 
         Pin  JP 8-bit   MSX                               Color†
         ────────────────────────────────────────────────────────────
-         1   varies     blue                               cop
+         1   varies†    blue                               cop
          2   red        green                              vio
          3   green      red                                orn
          4   blue       vsync                              blu
@@ -157,6 +157,7 @@ of two standards (MSX is given per standard numbering above):
          8   vsync      n/c, 14.318 MHz video clock        yel
 
         † From NEC PC-8001 cable. Copper shield split to 1,5,6
+          JR-200 cable also has ground on 1,5,6.
 
 For non-MSX systems, pin 1 may be:
 - GND: NEC. D8A, D8A (MB-S1)
