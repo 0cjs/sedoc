@@ -97,6 +97,19 @@ Color codes (for `COLOR`, `LINE`, `PSET`). Monochrome mode default is
       6      黄  yellow     reverse blink
       7      白  white      reverse secret
 
+#### Serial Port I/O
+
+Per [[kuniser]] but untested: 
+
+- `PRINT%1,…`: Print to serial port 1 (also `%2` for 2nd port).
+- `INPUT%1,…`
+- `INIT%1,mode,cmd`: Init with mode and command bytes. E.g. `&h4E,&h37` for
+  9600 (7E1 or N81?).
+- `PORT n`: "get number of buffer inputs"
+- `INPUT$(len,%port)` "get specified long characters"
+
+
+
 #### Machine-language Interface
 
 - `DEFUSRn=m`:
@@ -113,3 +126,4 @@ Reserved word map: [[hb68]] pp.96-97.
 [byte]: https://tech-insider.org/personal-computers/research/acrobat/8101.pdf
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
+[kuniser]: https://kuninet.org/2020/01/25/pc-8001-%e5%a4%96%e4%bb%98%e3%81%91232c%e3%83%9c%e3%83%bc%e3%83%89/
