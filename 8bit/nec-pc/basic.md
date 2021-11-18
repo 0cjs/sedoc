@@ -5,8 +5,15 @@ Also see [`programs`](programs.md).
 
 Basic versions/startup messages:
 
-    NEC PC-8001 BASIC Ver 1.1
-    Copyright 1979 (c) by Microsoft
+    Version Banner                      MS (C)  Machine
+    ───────────────────────────────────────────────────────────────────────
+    NEC PC-8001 BASIC Ver 1.1           1979    PC-8001 (early '80s)
+    NEC N-88 BASIC Version 2.0          1981    PC-8801mkII SR
+    NEC N-88 BASIC Version 2.2          1981    PC-8001mkII MR
+    NEC N-88 BASIC Version 2.3          1981    PC-8001mkII MA
+
+    MS copyright banners appear as:  Copyright (C) 198n by Microsoft
+    excepting original PC-8001:      Copyright 1979 (C) by Microsoft
 
 (PC-8001 v1.1 is a varaiant of Microsfot Disk BASIC 4.51, but disk I/O
 is not in ROM version I think.)
