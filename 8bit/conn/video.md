@@ -276,6 +276,37 @@ cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
 0.1" Pin Headers, Dupont Shrouds, BT224 IDC connectors, Breakouts
 -----------------------------------------------------------------
 
+For DIN-8 breakouts, see [DIN].
+
+### JST-SM (2.5mm wire-wire) Connectors
+
+(PROPOSAL) This is my own proposed wiring standard for interconnecting
+various analog RGB video ouputs to monitors and other inputs. Cables are:
+- SM-10 RGBHV csync. SM-3 stereo audio.
+- Output (computer) → JST-SM female
+- JST-SM male (shrouded pins) → input (monitor)
+
+                              PC-88
+      JST-SM  Functions       DA-15     JP-21
+      ────────────────────────────────────────────
+         1-6  GND, Red         1,2      13,15
+         3,4  GND, green       3,4      17,19
+         5,6  GND, blue        5,6      18,20
+         7,8  GND, csync       8,9       8,10
+        9,10  hsync, vsync    14,15      ---
+      ────────────────────────────────────────────
+           1  Aud L            10         2
+           2  GND              12         4
+           3  Aud R            11         6
+
+Experience shows that it's not practical to crimp JST-SM to ribbon cable
+(it's too fiddly, especially because the rotation on the crimps needs to be
+correct), so it's not clear yet how it would be used with DA-15. 60 cm
+hand-twisted individual strands? It should be ok for JP-21 and SCART
+pigtails, though.
+
+### Dupont Breakout Headers
+
 Note that all dupont 2×n shrounds are marked for male; pin 1 will be at the
 other end from the marking when using female inserts. All outputs should be
 female to help prevent shorts; inputs are thus male. See [header](header.md)
@@ -284,10 +315,6 @@ for more numbering and organization details.
                   ▼  ▄             ▄  ▼
      looking      1 3 5 7       7 5 3 1    looking   (pin 1 mark at opposite
      into FEMALE  2 4 6 8       8 6 4 2  into MALE    end on dupont shrouds)
-
-For DIN-8 breakouts, see [DIN].
-
-#### Breakout Headers
 
 This is the breakout header assignment for a cable from a computer (or
 other video source). All headers on the cable are female.
