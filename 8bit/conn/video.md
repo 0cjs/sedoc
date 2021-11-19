@@ -252,25 +252,27 @@ Sources:
 DE-15 (VGA)
 -----------
 
-DDC2 pinout here just for quick reference; see [pinouts.ru VGA
-pinout][pru-vga] for more details. Facing the male DE-15 plug on the
-cable, pins are numbered in three rows left to right 1-5, 6-10, 11-15.
+Facing the male DE-15 plug on the cable, pins are numbered in three rows
+left to right 1-5, 6-10, 11-15. DDC2 pinout ([pinouts.ru VGA
+pinout][pru-vga] for details) and breakout connector wire colours:
 
-     1  red (75 ohm, 0.7 V p-p)
-     2  green
-     3  blue
-     4  reserved (DDC1: ID2)
-     5  ground
-     6  red ground
-     7  green ground
-     8  blue ground
-     9  key (no pin); optionally 5 V output from graphics card
-    10  sync ground
-    11  ID0 monitor ID bit 0 (optional)
-    12  SDA I2C serial data (DDC1: ID1)
-    13  hsync or csync
-    14  vsync; also used as a data clock
-    15  SCL: I2C data clock (DDC1: ID3)
+    Pin Function                            Color (// = black stripe)
+    ─────────────────────────────────────────────────────────────────
+     1  red (75 ohm, 0.7 V p-p)                 red
+     2  green                                   green
+     3  blue                                    blue
+     4  reserved (DDC1: ID2)                            yellow
+     5  ground                                  black
+     6  red ground                              //red
+     7  green ground                            //green
+     8  blue ground                             //blue
+     9  key (no pin); opt 5 V from PC                   grey
+    10  sync ground                             black
+    11  ID0 monitor ID bit 0 (optional)                 orange
+    12  SDA I2C serial data (DDC1: ID1)                 //orange
+    13  hsync or csync                          white
+    14  vsync; also used as a data clock        //white
+    15  SCL: I2C data clock (DDC1: ID3)                 //yellow
 
 
 0.1" Pin Headers, Dupont Shrouds, BT224 IDC connectors, Breakouts
