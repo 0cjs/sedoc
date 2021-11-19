@@ -223,6 +223,14 @@ into _sb+dd+eb_ for start border, (user) display data and end border.
     hfreq  kHz      dots/μs      front       sync      back
     vfreq   Hz      lines/ms     front       sync      back
     ───────────────────────────────────────────────────────────────────
+    14.3183     640×200     PC88 15.7 kHz [measured]
+    15.9           /62.80
+    61.4           /16.28
+
+    14.3183     640×400     PC88 24.8 kHz [measured]
+    25.0           /40.00
+    56.3           /17.76
+
     14.31818    640×200     PC98 "15 kHz" [tim pc98]
     15.98       896/62.58    64/4.47    64/4.47  128/8.94
     61.23       261/16.33    15/0.94     8/0.50   38/2.38
