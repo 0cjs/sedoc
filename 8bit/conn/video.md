@@ -2,20 +2,20 @@ Video Connectors
 ================
 
 Early Japanese video connectors (composite and DRGB) are often
-[DIN](din.md) and later ones [DE-9, DA-15 or DE-15](dsub.md); see those
+[DIN] and later ones [DE-9, DA-15 or DE-15](dsub.md); see those
 file for additional information, pin numbering and breakouts.
 
-Sources for DIN, D-sub, etc. pinouts:
-- [OLD Hard Connector Information デジタル８ピン][ohd8]
-- Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
-  wiki answer: common pinouts covering CMT, composite/DRGB video.
+Contents:
+- JP-21 / "RGBマルチ" (RGB-21, SCART)
+- DIN (CVBS, RGB)
+- S1308 (8-color Digital RGB)
+- DA-15 (Analog RGB)
+- 0.1" Pin Headers, Dupont Shrouds, BT224 IDC connectors, Breakouts
 
-TODO
-----
+### To-do
 
-- DIN: Composite and DRGB DIN, currently under [DIN](din.md).
+- DIN: Composite and DRGB DIN, currently under [DIN].
 - DIN: Analogue RGB DIN started below
-- 15-pin analogue: PC-8801 post-mkII/FR systems?
 - 25-pin analogue: [FM77AV40SX][fm77].
 
 
@@ -103,11 +103,16 @@ The wires are aluminum and cannot be soldered; they must be crimped.
   be of help decoding the interface.
 
 
-DIN
----
+DIN (CVBS, RGB)
+---------------
 
 Most systems are listed in their individual documentation.
 Some are also still listed in [conn/din.md](din.md).
+
+Sources:
+- [OLD Hard Connector Information デジタル８ピン][oh-d8]
+- Retrocomputing [Common Japanese 8-bit DIN pinouts][rc 12255] community
+  wiki answer: common pinouts covering CMT, composite/DRGB video.
 
 ### PC Engine RGB Mod
 
@@ -126,10 +131,8 @@ at the monitor.
       8     blue                20
 
 
-Other Connectors
-----------------
-
-### S1308
+S1308 (8-color Digital RGB)
+---------------------------
 
 Japanese 8-bit computers often use DIN-8 for digital RGB and RGBI;
 these often use an S1308 (female) 8-pin rectangular connector on the
@@ -168,11 +171,86 @@ For non-MSX systems, pin 1 may be:
 - Video clock (14.318 MHz): some MSX (others N/C)
 
 Pin assignment sources:
-- [OLD Hard Connector Information デジタル８ピン][ohd8]
+- [OLD Hard Connector Information デジタル８ピン][oh-d8]
 - [Larry Green's FM-7 page][lgreenf]
 - [MSX Wiki][msxw-drgb]. Uses reversed pin numbering scheme.
 
-### VGA Pinout
+
+DA-15 (Analog RGB)
+------------------
+
+This connector is used on:
+- NEC PC-8801: V2 graphics only, R series onward
+- NEC PC-9801
+- Sharp X68000, X1 Turbo Z, MZ-2500
+- FM Towns
+
+Female jack on computer; male plug on cables. Numbering per [[dsub]]:
+
+        DA-15F (computer)              DA-15M (cable)
+      8  7  6  5  4  3  2  1       1  2  3  4  5  6  7  8
+       15 14 13 12 11 10 9           9 10 11 12 13 14 15
+
+Pins on computer side are all outputs. `†` indicates important notes.
+
+    Pin  Common         Sharp     PC88      PC98      Towns
+    ────────────────────────────────────────────────────────────
+      1  Red
+      2  GND R
+      3  Green
+      4  GND G
+      5  Blue
+      6  GND B
+      7                 Ys        YS†       Ys        csync
+      8  GND
+      9                 NC        csync     Ys        Ys
+     10                 Aud L     Aud L     Mode      Mode
+     11                 Aud R     Aud R     AV Ctrl   AV Ctrl
+     12  GND
+     13                 NC        AVC†      dotclk    dotclk
+     14  H̅S̅Y̅N̅C̅ TTL-
+     15  V̅S̅Y̅N̅C̅ TTL-
+
+Notes:
+- General:
+  - `YS`/`Ys` appears to be a "video output is active" signal; some
+    monitors do not display unless high. Also might be used to supply power
+    to some RGB→CVBS→RF conversion boxes along the lines of Hitachi MP-9780
+    "VHF Color Converter."
+  - (12) Designated analog ground on PC88, Sharp, sync ground on Towns.
+  - (13) dotclk: Dot clock; no specific frequencies given.
+  - (14,15): VSYNC, HSYNC are negative-going TTL signals
+- PC88:
+  - (2,4,6,8,12): Common GND: all tested continuous.
+  - (7†): "カラーテレビ用信号の切換制御信号　75オーム" in NEC user manual.
+    PC-8801mkII SR (with good CVBS on CVBS on "B/W" DIN-5) gives steady
+    +4V. (FR also steady high, not sure if +4V.)
+  - (13†): "AVコントロール: カラーテレビ用ビデオ入力端子の制御信号　TTL" in
+    NEC user manual. Measured +5V output.
+
+The DA-15 breakout is currently as follows.
+
+    Red/Grn/Blu/3×Blk   RGB signals and their grounds
+    Yellow/Black        YS, YS ground
+    Orange/Black        csync, ground
+    White/Red/2×Blk     left/right audio, grounds
+    White/Grey/2×Blk    hsync/vsync, grounds
+
+Possibly this should be rewired to move yellow to csync and add pin 13.
+
+Sources:
+-  PC-8801mkIIFR user manual, p.7
+- [[gamesx-rgb-15]],
+- [[oh-a15]]
+- [[VA018718]], p.7:
+
+[gamesx-rgb-15]: https://gamesx.com/wiki/doku.php?id=av:japanese_rgb-15
+[VA018718]: http://hp.vector.co.jp/authors/VA018718/towns/connect/pinasgn.htm
+[oh-a15]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/a15.htm
+
+
+DE-15 (VGA)
+-----------
 
 DDC2 pinout here just for quick reference; see [pinouts.ru VGA
 pinout][pru-vga] for more details. Facing the male DE-15 plug on the
@@ -207,7 +285,7 @@ for more numbering and organization details.
      looking      1 3 5 7       7 5 3 1    looking   (pin 1 mark at opposite
      into FEMALE  2 4 6 8       8 6 4 2  into MALE    end on dupont shrouds)
 
-For DIN-8 breakouts, see [din](din.md).
+For DIN-8 breakouts, see [DIN].
 
 #### Breakout Headers
 
@@ -258,19 +336,18 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 
 
 <!-------------------------------------------------------------------->
+[din]: ./din.md
 [fm77]: ../fm7/fm77.md
-
-[ohd8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
-[rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
-
-[lgreenf]: http://www.nausicaa.net/~lgreenf/fm7page.htm
-[minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
-[msxw-drgb]: https://www.msx.org/wiki/Digital_RGB_connector
-[pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
 
 [RGB21ピン]: https://ja.wikipedia.org/wiki/RGB21ピン
 [SCART]: https://en.wikipedia.org/wiki/SCART
 [fmavtw]: http://dempa.jp/rgb/drug/fmavtw01.html
 [jp-21]: https://en.wikipedia.org/wiki/SCART#JP-21
+[lgreenf]: http://www.nausicaa.net/~lgreenf/fm7page.htm
+[minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
+[msxw-drgb]: https://www.msx.org/wiki/Digital_RGB_connector
 [oh-a21]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/a21.htm
+[oh-d8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
+[pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
+[rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 [towns]: http://www.hardwarebook.info/FM_Towns_Video
