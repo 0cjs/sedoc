@@ -3,17 +3,20 @@ N80 and N88 BASIC
 
 Also see [`programs`](programs.md).
 
-Basic versions/startup messages:
+Basic versions/startup messages.
+(Modes below are switched with mode switch on front of machine.)
 
     Version Banner                      MS (C)  Machine
     ───────────────────────────────────────────────────────────────────────
     NEC PC-8001 BASIC Ver 1.1           1979    PC-8001 (early '80s)
-    NEC N-88 BASIC Version 2.0          1981    PC-8801mkII SR
+    NEC PC-8001 BASIC Ver 1.5           1979    PC-8801mkII SR (N mode)
+    NEC N-88 BASIC Version 1.4          1981    PC-8801mkII SR (V1 mode)
+    NEC N-88 BASIC Version 2.0          1981    PC-8801mkII SR (V2 mode)
     NEC N-88 BASIC Version 2.2          1981    PC-8001mkII MR
     NEC N-88 BASIC Version 2.3          1981    PC-8001mkII MA
 
-    MS copyright banners appear as:  Copyright (C) 198n by Microsoft
-    excepting original PC-8001:      Copyright 1979 (C) by Microsoft
+    N-88 copyright banner:      Copyright (C) 198n by Microsoft
+    PC-8001 copyright banner:   Copyright 1979 (C) by Microsoft
 
 (PC-8001 v1.1 is a varaiant of Microsfot Disk BASIC 4.51, but disk I/O
 is not in ROM version I think.)
@@ -74,10 +77,12 @@ backspace.)
   - _len_: this many lines in the scroll area (lines below do not scroll)
   - _fkey_: 0=last line usable; 1=last line shows fkeys.
   - _cbw_: 0=b/w mode, 1=color mode (greyscale on mono output)
-- `CLS`: Doesn't exist; use `PRINT CHR$(12);`.
-- `COLOR fg,bg,gr`: _fg_ color of following output. _bg_ background colour
-  to fill on next screen clear. _gr_ 0=character mode, 1=graphic mode. (All
-  args optional but at least 1 must be given.)
+- `CLS`: N88. N80 use `PRINT CHR$(12);`.
+- `COLOR fg,bg,gr`: all args optional but at least 1 must be present.
+  - _fg_ color of following output.
+  - _bg_ background attribute to fill on next screen clear (does not change
+    background color in color mode).
+  - _gr_ 0=character mode, 1=graphic mode.
 - `LOCATE x,y,csr`: Optional _csr_ 0=cursor off 1=cursor on.
 - `GET @(x₀,y₀)-(x₁,y₁), arr`: Store chars from screen into array _arr_.
 - `PUT @(x₀,y₀)-(x₁,y₁), arr`: Put chars from array _arr_ onto screen.
