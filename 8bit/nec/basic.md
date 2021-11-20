@@ -18,6 +18,11 @@ Basic versions/startup messages.
     N-88 copyright banner:      Copyright (C) 198n by Microsoft
     PC-8001 copyright banner:   Copyright 1979 (C) by Microsoft
 
+DOS banners prefixed before NEC banner:
+
+    S-DOS80 Version 2.0  for N/N80-BASIC
+    Copyright 1985 (C) by S.Kobayashi
+
 (PC-8001 v1.1 is a varaiant of Microsfot Disk BASIC 4.51, but disk I/O
 is not in ROM version I think.)
 
