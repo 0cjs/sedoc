@@ -2,6 +2,7 @@ Text Format Codes
 =================
 
 Contents:
+- [Unicode](#unicode)
 - [Markdown](#markdown)
 - [Disqus](#disqus)
 - [StackExchange](#stackexchange)
@@ -16,6 +17,34 @@ Contents:
 Extract URLs from other URLs with
 
     sed -e 's,.*https%3A,https:,; s,%2F,/,g; s,%3F,?,g; s,%3D,=,g'
+
+
+Unicode
+-------
+
+Considerable "text-only" markup can be done with Unicode characters alone,
+including things like overlines with combining characters. See:
+- ["Markup" in `ee/README`][ee] for electronics-related stuff.
+- unicode-table.com [Superscript and Subscript Letters][ss] (Unicode is
+  incomplete on these however)
+- [Mathematical Alphanumeric Symbols][ma]
+- [Symbols & Characters For Your Steam Username][steam] is pretty heavily
+  emoji/emoticon-oriented, but also has sections collecting together
+  arrows, geometic characters, alternate numberforms and letterforms
+  ([blackboard bold][bb] (𝔸), [Mathematical Script][ma] (𝒜), etc.) and
+  [font generators][gen] to do things like this:
+
+      ▒█▀▀█ ░▀░ █▀▀▀ 　 ▀▀█▀▀ █▀▀ █░█ ▀▀█▀▀ 
+      ▒█▀▀▄ ▀█▀ █░▀█ 　 ░▒█░░ █▀▀ ▄▀▄ ░░█░░ 
+      ▒█▄▄█ ▀▀▀ ▀▀▀▀ 　 ░▒█░░ ▀▀▀ ▀░▀ ░░▀░░
+      🆂🆃🅰🅽🅳🅾🆄🆃
+
+[bb]: https://en.wikipedia.org/wiki/Blackboard_bold#Usage
+[ee]: ./ee/README.md#markup
+[gen]: https://fsymbols.com/generators/
+[ma]: https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols
+[ss]: https://unicode-table.com/en/sets/superscript-and-subscript-letters/
+[steam]: https://steamcommunity.com/sharedfiles/filedetails/?id=788781155
 
 
 Markdown
