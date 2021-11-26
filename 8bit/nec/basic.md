@@ -1,30 +1,9 @@
 N80 and N88 BASIC
 =================
 
-Also see [`programs`](programs.md).
-
-Basic versions/startup messages.
-(Modes below are switched with mode switch on front of machine.)
-
-    Version Banner                      MS (C)  Machine
-    ───────────────────────────────────────────────────────────────────────
-    NEC PC-8001 BASIC Ver 1.1           1979    PC-8001 (early '80s)
-    NEC PC-8001 BASIC Ver 1.5           1979    PC-8801mkII SR (N mode)
-    NEC N-88 BASIC Version 1.4          1981    PC-8801mkII SR (V1 mode)
-    NEC N-88 BASIC Version 2.0          1981    PC-8801mkII SR (V2 mode)
-    NEC N-88 BASIC Version 2.2          1981    PC-8001mkII MR
-    NEC N-88 BASIC Version 2.3          1981    PC-8001mkII MA
-
-    N-88 copyright banner:      Copyright (C) 198n by Microsoft
-    PC-8001 copyright banner:   Copyright 1979 (C) by Microsoft
-
-DOS banners prefixed before NEC banner:
-
-    S-DOS80 Version 2.0  for N/N80-BASIC
-    Copyright 1985 (C) by S.Kobayashi
-
-(PC-8001 v1.1 is a varaiant of Microsfot Disk BASIC 4.51, but disk I/O
-is not in ROM version I think.)
+See also:
+- [`rom`](rom.md) for ROM and BASIC versions and startup messages.
+- [`programs`](programs.md) for sample programs
 
 References:
 - \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68]. Covers PC-8001
