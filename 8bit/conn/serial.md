@@ -5,6 +5,13 @@ This covers RS-232-style asynchronous serial interfaces. See also:
 - [D-sub (D-subminiature) Connectors](dsub.md) for pin numbering etc.
 - "DIN-6" in [DIN](din.md) for Commodore (IEC) serial bus.
 
+RS-232
+------
+
+[interfacebus.com's EIA-232 Bus page][ifb] is a _very_ complete reference.
+This also incudes many pinout standards, including DB-25, DE-9 and 8P8C
+below.
+
 kayasan86's [ＲＳ２３２Ｃプロジェクト][kayasan86] contains a _lot_ of
 useful information, including things like the "S parameter" on PC-8801
 RS-232C configuration (in-band signal for kana on 7-bit links). Also
@@ -12,12 +19,16 @@ includes notes on accessing and saving to serial in BASIC on many Japanese
 computers.
 
 
-DE-9 and DE-25 RS-232 Serial Ports
-----------------------------------
+
+Standardised Pinouts
+--------------------
+
+### DB-25, DE-9
 
 Pinouts [from Wikipedia][wp-serpin]. Signal names are from DTE point of
-view, so `dir` is DTE→DCE or DTE←DCE.
+view (TX is transmit _from_ DTE _to_ DCE), so `dir` is DTE→DCE or DTE←DCE.
 
+               DTE/DCE
     DE-9  DB-25  dir   color    Signal (DTE)
     ──────────────────────────────────────────────────────────────
       1     8     ←   yel+blk   DCD data carrier detect
@@ -31,9 +42,46 @@ view, so `dir` is DTE→DCE or DTE←DCE.
       9    22     ←   wht+blk   RI  ring indicator
             1     ↔             PG  protective ground
 
+My DE-9M/DE-9F crossover adapter does not connect pins 1 and 9.
 
-Apple IIc Serial DIN-5 (cjs v1)
--------------------------------
+### 8P8C ("RJ45")
+
+With the contacts facing you and cable exiting down out of the connector,
+the pins are numbered 1-8 left to right. Colours may be assigned via [T568A
+or T568B][t568] but must be the same at both ends of a straight-through
+cable. (A at one end and B at the other is a half-crossover cable;
+_Ethernet crossover cables should never be used._)
+
+There are two standards: Cisco/Yost and EIA-561. DB-25 pin numbers before
+signal name, DE-9 pin numbers after. Sources: [Wikimedia image][wmcons],
+[Cisco EIA/TIA-561][cisco561]. Signal names are always DTE viewpoint.
+
+               connector         Color     │     │  EIA-561  │  Cisco
+               facing up      T568A  T568B │ Pin │    DTE    │   DCE
+              ────────────┐  ──────────────┼─────┼───────────┼─────────
+             ╱ - - - -─── │1   /grn  /orn  │  1  │  6 DSR 6† │  CTS 8
+    ─────────  -------─── │2    grn   orn  │  2  │  8 DCD 1  │  DSR 6
+      cable    - - - -─── │3   /orn  /grn  │  3  │ 20 DTR 4  │   RX 2
+      exit     -------─── │4       blu     │  4  │  7 GND 5  │  GND 5
+      from     - - - -─── │5      /blu     │  5  │  3  RX 2  │  GND 5
+    connector  -------─── │6    orn   grn  │  6  │  2  TX 3  │   TX 3
+    ─────────  - - - -─── │7      /brn     │  7  │  5 CTS 8  │  DTR 4
+             ╲ -------─── │8       brn     │  8  │  4 RTS 7  │  RTS 7
+              ────────────┘
+
+† Officially EA-561 pin 1 is `22 RI 9`, but RI is not in crossover adapters
+and DSR seems more useful anyway so I connect that instead. Cisco also does
+this.
+
+The Cisco pinout matches [this USB serial cable][ugrcis]. The Cisco cable
+can be "flipped" to create a serial crossover cable, but this is __NOT__
+the same crossover as an Ethernet crossover cable (T568A to T568B above).
+
+
+Vendor-specific Pinouts and Connectors
+--------------------------------------
+
+### Apple IIc Serial DIN-5 (cjs v1)
 
 Using Ethernet cable. `Dsub` are my DB-25/DE-9 colors above; `Eth` is
 Ethernet cable colors. Orange and green stripe are tied together for
@@ -69,5 +117,11 @@ into the male connector on the PC and the female jack on the IIc:
 
 <!-------------------------------------------------------------------->
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
-[wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
+[cisco561]: https://www.cisco.com/c/en/us/td/docs/routers/ir510-ir530/hig/ir5X0_wpan_HIG.html#pgfId-343777
+[ifb]: http://www.interfacebus.com/Design_Connector_RS232.html
 [kayasan86]: http://kasayan86.web.fc2.com/old/rs232c1.html
+[t568]: https://en.wikipedia.org/wiki/Ethernet_crossover_cable#Pinouts
+[ugrcis]: https://www.amazon.co.jp/dp/B072K572P6/
+[wmcons]: https://commons.wikimedia.org/wiki/File:DE-9_to_8P8C_console_cable_pinouts.svg
+[wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
+
