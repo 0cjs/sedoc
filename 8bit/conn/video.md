@@ -27,8 +27,11 @@ It's used by the [FM77AV][fm77] series.
 
 SCART and JP-21 do not use straight-through cables; for signals marked
 "input" or "output," these are always the signals on the device connector
-and the cable is expected to swap them. (I.e., the computer sends audio on
-pin 2 which is connected to the monitor's receive pin 1.)
+and the cable is expected to swap them: i.e., the computer sends audio on
+pin 2 which is connected to the monitor's receive pin 1. The swapped pins
+on SCART are 1/2 (audioR), 3/6 (audioL), 17/18, 19/20 (CVBS/Y). For
+non-swapped signals (S-video and RGB), the signal source "up/primary/1"
+socket connects to the receiver's "down/secondary/2" socket.
 
 - Signals below are referenced from the computer to the display, i.e.,
   "output" is a signal sent by the computer and recieved by the display.
