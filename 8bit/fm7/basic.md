@@ -21,6 +21,8 @@ for BASIC.
   float, `$` string) are separate variables.
 - Arrays are 0-based; `DIM X(3)` has indices `0`, `1`, `2`.
 
+### Commands/Statements/Functions
+
 Selected system commands:
 - `MON` (3-35): Enter a simple monitor; see [ml](ml.md).
 - `HARDC` (3-36): Print a hardcopy of the screen.
@@ -47,6 +49,14 @@ Selected display-related commands:
 - `SYMBOL (x,y),"c",hscale,vscale[,palette[,rot[,func]]]`. Write
   symbol _"c"_ (1-char string) at _(x,y)_ (0-640, 0-200), with
   horizontal and vertical scale (based on 80-col size).
+  - _palette_ color number, defaults to `COLOR` foreground color
+  - _rot_ `0`=no rotation, `1`=90° CCW, `2`=180°, `3`=270° CCW
+  - _func_ `PSET`, `PRESET`, `AND`, `OR`, `XOR`, `NOT`
+- `PRINT @ [(x,y),] code`
+  - Optional _(x,y),_ is a graphics position (x=0-629, y=0-199); default
+    automatically moves foward 16 pixels per char. (20 looks better.)
+  - Add further kanji codes prefixed by `,` or `;`
+  - Codes listed in [Appendix 3][a3]; &h2122-4F53 w/many blanks
 - `CONSOLE` (3-105): Set scroll areas and other screen attributes.
 - `SCREEN` (3-111): Select VRAM usage.
 - `PSET`: Set/clear a point on the screen.
@@ -83,6 +93,8 @@ Devices (optionally precede filename arguments):
     0: 1: 2: 3:     floppy drives
     CAS0:           cassette tape (CMT)
     KYBD:           keyboard
+    SCRN:           screen
+    LPT0:           printer
 
 Files have 8-character case-sensitive names and the following additional
 attributes. BASIC programs are always type, with `B` format unless saved
@@ -135,3 +147,4 @@ Operations on open files (_n_ = file number):
 <!-------------------------------------------------------------------->
 [fm7bintro]: https://archive.org/stream/F-BASICGettingStarted#page/n9/mode/1up
 [fm7bref]: https://archive.org/stream/FM7FBASICBASRF#page/n7/mode/1up
+[a3]: https://archive.org/details/FM7FBASICBASRF/page/n270/mode/1up?view=theater
