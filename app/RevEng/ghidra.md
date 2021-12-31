@@ -15,6 +15,10 @@ Contents:
 - Usage
 - Extending
 
+Menus are indicated with a `»` prefix, e.g., "»Edit"; "»RMB" is the context
+menu. Additional ` » ` markers separate submenus and options within
+dialogs.
+
 
 Installation and Startup
 ------------------------
@@ -35,7 +39,7 @@ Debian suggestion, after downloading from the [GitHub releases page][rel]:
     exit
 
     #   As a regular user (PNAME.gpr file optional; must be full path):
-    /opt/ghidra*/ghidraRun /…/PNAME.gpr
+    /opt/ghidra*/ghidraRun /???/PNAME.gpr
 
 The distribution contains [Processor Language manual index][idx] files,
 `Ghidra/Processors/*/data/manuals/*.idx`. The initial `@filename.pdf
@@ -49,7 +53,7 @@ in that same directory.
 Documentation
 -------------
 
-- __Help » Contents__ brings up a new window with the manual. (This happens
+- __Help ?? Contents__ brings up a new window with the manual. (This happens
   automatically the first time you run Ghidra.)
 - `F1` on any menu item will bring up the documentation for that item in
   the above window.
@@ -65,7 +69,7 @@ Ghidra server. The project name `PNAME` is used for the `PNAME.gpr` project
 file and `PNAME.rep/` "repository" directory under the project directory,
 which must exist but itself may have any name.
 
-Any data to be worked on must be _imported_ (File » Import) into the
+Any data to be worked on must be _imported_ (File ?? Import) into the
 project, creating _programs_ that will be manipulated by _tools,_ which are
 configurations of plugins. A _workspace_ is a configuration of running
 tools that are visible on the desktop. (Other non-visible tools may also
@@ -115,15 +119,104 @@ Project files include:
 Usage
 -----
 
-
 - Key bindings for top-level- (except "Window") or context-menu items may
-  be changed by hovering over the item and pressing `F4` or Edit » Tool
-  Options... » Key Bindings.)
+  be changed by hovering over the item and pressing `F4` or »Edit » Tool
+  Options… » Key Bindings.)
 
 Tables:
 - Add/remove columns with right-click context menu.
 - After clicking on a column to sort, sub-sort with Ctrl-click on
   additional columns.
+
+History:
+- Generally kept for all changes (comments, labels, etc.)
+- Search label history with »Search » Label History….
+- Search comment history from »RMB » Comments » ….
+
+### Comments
+
+Comments can be added to any instrution or data item with `;` (»RMB »
+Comments » …).
+
+The comment type determines how it's displayed:
+- End-of-line (EOL): at right of instruction
+- Pre: above instruction
+- Post: below instruction
+- Plate: Block header above instruction, surrounded by `*`
+- Repeatable: at right of instruction if no EOL comment, and also displayed
+  at the "from" address of a reference (if no EOL or repeatable comment
+  there).
+
+Addresses and labels in comments are automatically made clickable to
+navigate to that target. If there are multiple matches a dialog is
+displayed.
+
+### Labels
+
+Updated or added (depending on context) with `l` (»RMB » Edit Label… or
+»RMB » Add Label…). A location may have multiple labels; the _primary_
+label is displayed by default for branch targets etc. unless overridden for
+that target with »RMB » Set Associated Label….
+
+Default generated name patterns (listed below) are reserved and may not be
+manually assigned. Also avoid namespace separator `::`. Labels may contain
+almost any printable character besides space and are limited to 2000 chars.
+Function names may be duplicated within the same namespace to support
+overloading; there's no check for distinct prototypes. Namespaces may be
+specified with the label name using double-colons, e.g.
+`Global::foo::bar::myLabel`, or the namespace dropdown below the label name
+may be used. (See below for more on namespaces.)
+
+The automatically generated default label prefixes are as follows. These
+are typically followed by underscore separated address space and numeric
+address, e.g., `LAB_ram_006a`.
+
+    EXT_    external entry point
+    FUN_    there is a function at this address
+    SUB_    code here has at least one "call" to it
+    LAB_    there is code at this address
+    DAT_    there is a data item at this address
+    OFF_    "offcut" address inside an instruction or data item
+    UNK_    none of the above are recognised
+
+Default labels may not be removed unless a user-assigned label is
+available; removing a user-assigned label that is a branch target will
+re-generate a default label.
+
+Label properties:
+- Entry point. (Actually associated with the address, so applies to all
+  labels at that address.) An "external" entry point that can be used to
+  initiate execution from outside the program. Most programs have a single
+  "main" entry point having the label `Entry`. Shared libraries usually
+  have an entry point for each function.
+- Primary: default displayed for targets (see above). If set, replaces any
+  previous primary.
+- Pinned: Label does not move if the memory block is moved or image base is
+  changed.
+
+Namespace types are _Global, External, Function, Class, Generic._ A Z80
+import offers `Global` and `RST0` in the namespace dropdowns; the latter is
+an auto-generated function label so presumably that's a function namespace.
+
+### Control Flow Analysis
+
+Analysis is based around _function objects_ keyed by a _function symbol_
+created by desgnating a label to be _entry point_ (see above). The function
+object is the core of the decompilation, which is generated from a control
+flow analysis (of the P-code) from the entry point that follows all
+branches (both sides for conditionals), as well as storing function
+parameters, local variables, etc. Addresses within the middle of the
+function are linked back to this function object.
+
+Individual branches may be marked with a _flow override_ that changes how
+the branch is interpreted (this relates to the P-Code :
+- BRANCH override: a branch within the function, rather than a call out to
+  another function.
+- CALL override: target is considered not part of the function.
+- CALL_RETURN override: treated as a CALL followed by a RETURN, i.e. a tail
+  call optimization.
+- RETURN override: indirect BRANCH or CALL is treated as a RETURN
+  instruction.
 
 
 Extending
