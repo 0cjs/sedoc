@@ -34,8 +34,8 @@ Debian suggestion, after downloading from the [GitHub releases page][rel]:
     unzip ~/Downloads/ghidra\*.zip
     exit
 
-    #   As a regular user (optionally add full path to PNAME.gpr file):
-    /opt/ghidra*/ghidraRun
+    #   As a regular user (PNAME.gpr file optional; must be full path):
+    /opt/ghidra*/ghidraRun /…/PNAME.gpr
 
 The distribution contains [Processor Language manual index][idx] files,
 `Ghidra/Processors/*/data/manuals/*.idx`. The initial `@filename.pdf
@@ -65,10 +65,11 @@ Ghidra server. The project name `PNAME` is used for the `PNAME.gpr` project
 file and `PNAME.rep/` "repository" directory under the project directory,
 which must exist but itself may have any name.
 
-Any data to be worked on must be _imported_ into the project, creating
-_programs_ that will be manipulated by _tools,_ which are configurations of
-plugins. A _workspace_ is a configuration of running tools that are visible
-on the desktop. (Other non-visible tools may also still be running.)
+Any data to be worked on must be _imported_ (File » Import) into the
+project, creating _programs_ that will be manipulated by _tools,_ which are
+configurations of plugins. A _workspace_ is a configuration of running
+tools that are visible on the desktop. (Other non-visible tools may also
+still be running.)
 
 ### Project Repsitory
 
@@ -97,7 +98,8 @@ The `.gitignore` for a project should be:
 
     PDIR/PNAME.lock
     PDIR/PNAME.lock~
-    PDIR/PNAME.rep/*/~index.bak
+    PDIR/PNAME.rep/*/~*.bak
+    PDIR/PNAME.rep/**/tmp*.ps
 
 Project files include:
 
