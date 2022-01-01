@@ -147,12 +147,15 @@ This is supposed to be compatible with different releases of Ghidra.
 XXX Consider storing projects only in archived form, for compatibility
 across all Ghidra versions.
 
-The `.gitignore` for a project should be:
+The `.gitignore` for a project should be as follows. This assumes that PDIR
+contains only a ghidra project(s); if it contains other things as well the
+first `*` should probably be replaced with _PNAME._
 
-    PDIR/PNAME.lock
-    PDIR/PNAME.lock~
-    PDIR/PNAME.rep/*/~*.bak
-    PDIR/PNAME.rep/**/tmp*.ps
+    #   Ghidra project files
+    /PDIR/*.lock
+    /PDIR/*.lock~
+    /PDIR/*.rep/*/~*.bak
+    /PDIR/*.rep/**/tmp*.ps
 
 Project files include:
 
