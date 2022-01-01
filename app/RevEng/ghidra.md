@@ -13,6 +13,9 @@ Contents:
 - Documentation
 - Projects
 - Usage
+  - Comments
+  - Labels
+  - Control Flow Analysis
 - Extending
 
 Menus are indicated with a `»` prefix, e.g., "»Edit"; "»RMB" is the context
