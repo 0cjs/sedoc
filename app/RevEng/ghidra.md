@@ -78,11 +78,11 @@ configurations of plugins. A _workspace_ is a configuration of running
 tools that are visible on the desktop. (Other non-visible tools may also
 still be running.)
 
-### Project Repsitory
+### Project Repository
 
 - Provides versioning of project files, but only those explicitly added to
   version control. (File not added are considered "private.")
-- Server not needed; works with plain file verison as well. (But only
+- Server not needed; works with plain file version as well. (But only
   server can merge.)
 - Files to be changed must be checked out out and in. Exclusive check-out
   (preventing other users from checking out) is required for changing a
@@ -138,7 +138,7 @@ History:
 
 ### Comments
 
-Comments can be added to any instrution or data item with `;` (»RMB »
+Comments can be added to any instruction or data item with `;` (»RMB »
 Comments » …).
 
 The comment type determines how it's displayed:
@@ -204,7 +204,7 @@ an auto-generated function label so presumably that's a function namespace.
 ### Control Flow Analysis
 
 Analysis is based around _function objects_ keyed by a _function symbol_
-created by desgnating a label to be _entry point_ (see above). The function
+created by designating a label to be _entry point_ (see above). The function
 object is the core of the decompilation, which is generated from a control
 flow analysis (of the P-code) from the entry point that follows all
 branches (both sides for conditionals), as well as storing function
