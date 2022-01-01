@@ -18,9 +18,55 @@ Contents:
   - Control Flow Analysis
 - Extending
 
-Menus are indicated with a `»` prefix, e.g., "»Edit"; "»RMB" is the context
-menu. Additional ` » ` markers separate submenus and options within
-dialogs.
+Menus in the GUI are indicated with a `»` prefix, e.g., "»Edit"; "»RMB" is
+the context menu. Additional ` » ` markers separate submenus and options
+within dialogs.
+
+### Review
+
+Ghidra suffers from the typical problem of GUI tools: it's good at what it
+does, but when you hit that limit you're stuck because it doesn't integrate
+with anything else; all work must be done within the tool and the work is
+saved in proprietary database files. (These are megabytes in size for
+kilobytes of binary, though they compress around ×100. See )
+
+Ghidra is a good tool for browsing code and annotating code, to a point,
+but falls short of a full RE system in that it won't take you all the way
+to creating the clearest code that explains the program. To do that you'd
+need to export the disassembly in ASCII format and then do a _lot_ of work
+to get that into its best source form, possibly more than with "dumber"
+disassemblers.
+
+Some examples of the issues:
+- There's no way to document changes in Git (except in the comments);
+  commits are always just large binary blobs. Ghidra does keeps its own
+  internal history of some changes, such as label renames, though these
+  can't be annotated. And the authors did seem eventually to see the need
+  for revision control, so they sensibly decided to build their own new and
+  inferior revision control system, incompatible with anything else, into
+  Ghidra itself.
+- Effectively unused labels may appear because Ghidra sees, e.g., `LD
+  HL,addr` ... `INC HL`; it creates the unnecessary and undeleteable able
+  label for _addr+1_ and ignores the rest of the table. (Creating an array
+  doesn't fix this if you need to annotate the individual element values.)
+- You can define assembler equates so that, e.g., `0xf0` becomes
+  `modkey_mask` in an instruction argument, but the only way to view them
+  is in a special window. They don't get exported in the ASCII assembler
+  output: the only way to know what the value of that equate is there is to
+  look at the accompanying hex values in the data column to the left, if
+  you've included that in the output.
+- Annotations are generally to assembly addresses that are assigned to a
+  function. This can't be changed for uses of that address by another
+  function, e.g., if the address is also the end address of a table
+  belonging to the previous function where you want to load a counter using
+  `LD C,tabend-tabbase`.
+- The assembly output tends to be littered with C-related notes (such as
+  function prototypes); Ghidra seems more focused on reverse-engineering to
+  C code than working with native assembly programs.
+
+In the [retroabandon/pc8001-re][80re] repo on branch `dev/cjs/21m18/ghidra`
+you can see some sample work an 8-bit ROM. See the README there for more
+details.
 
 
 Installation and Startup
@@ -230,13 +276,14 @@ Extending
 
 
 <!-------------------------------------------------------------------->
+[80re]: https://gitlab.com/retroabandon/pc8001-re
+
 [cmdline]: https://htmlpreview.github.io/?https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/RuntimeScripts/Common/support/analyzeHeadlessREADME.html
 [gh]: https://github.com/NationalSecurityAgency/ghidra
 [idx]: https://github.com/NationalSecurityAgency/ghidra/blob/master/GhidraDocs/languages/manual_index.txt
 [install]: https://htmlpreview.github.io/?https://github.com/NationalSecurityAgency/ghidra/blob/stable/GhidraDocs/InstallationGuide.html
 [rel]: https://github.com/NationalSecurityAgency/ghidra/releases
 [wp]: https://en.wikipedia.org/wiki/Ghidra
-
 
 [cheat]: https://htmlpreview.github.io/?https://github.com/NationalSecurityAgency/ghidra/blob/stable/GhidraDocs/CheatSheet.html
 [lang]: https://htmlpreview.github.io/?https://github.com/NationalSecurityAgency/ghidra/blob/stable/GhidraDocs/languages/index.html
