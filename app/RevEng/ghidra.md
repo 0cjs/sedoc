@@ -156,12 +156,15 @@ first `*` should probably be replaced with _PNAME._
     /PDIR/*.lock~
     /PDIR/*.rep/*/~*.bak
     /PDIR/*.rep/**/tmp*.ps
+    /PDIR/*.rep/projectState
 
-Project files include:
+The `projectState` file contains information about what windows are open
+and their layout.
+
+Project files to commit include:
 
     PNAME.gpr                "Project file"; give full path as command line arg
     PNAME.rep/
-      projectState
       project.prp
       idata/~index.dat
       user/~index.dat
