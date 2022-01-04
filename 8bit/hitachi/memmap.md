@@ -4,27 +4,40 @@ Basic Master Jr. Memory Map, ROM, etc.
 ### Memory Map (p.124)
 
     $0000-$00FF  Zero page; system stuff?
-    $0100-$03FF  Screen RAM
-    $0400-$3FFF  BASIC workspace
-    $0900-$20FF  VRAM page 1
-    $2100-$38FF  VRAM page 2
+    $0100-$03FF  Screen RAM (text mode)
+    $0900-$20FF  VRAM page 1 (graphics mode)
+    $2100-$38FF  VRAM page 2 (graphics mode)
     $4000-$AFFF  Empty or RAM expansion
     $B000-$DFFF  BASIC ROM
     $E000-$E7FF  プリンター ROM (MT-2 OS for 1200 baud cassette?)
-    $E800-$EDFF  I/O (external)
-    $EE00-$EFFF  I/O (internal devices)
+    $E800-$EDFF  外部 I/O (expansion devices)
+    $EE00-$EFFF  システム I/O (internal devices)
     $F000-$FFFF  Monitor ROM
     $FFF8-$FFFF  IRQ/SWI/NMI/reset
 
-BASIC Memory:
-- Work area $400-$9FFF.
-- Program text starts at $0A00, grows up.
-- Variable space starts at $3FFF, grows down.
-- `SIZE` to show program top/variable bottom/remaining space between.
-- Each lines is two bytes lineno, one byte size-2, size bytes text/tokens.
+The address ranges with available RAM depend on the amount of memory in the
+system, whether it's in text or graphics mode, and which ROMs are
+enable/disabled. The first three modes below give the BASIC work area (text
+and variables; see below) presumably $400-$9FF is also used by the
+interpreter for housekeeping, stack etc.
+
+    Mode                  16K RAM                 64K RAM
+    ────────────────────────────────────────────────────────────────
+    Text                $0A00 $3FFF  13,824     $0A00 $AFFF  42,496
+    1-page Graphics     $2200 $3FFF   7,680     $2200 $AFFF  36,352
+    2-page Graphics     $3A00 $3FFF   1,536     $3A00 $AFFF  30,208
+    BASIC ROM disabled                          $0400 $DFFF  56,320
+    Printer ROM diabled                         $0400 $EDFF  59,904
+    Monitor ROM disabled                        $0000 $EDFF  and
+                                                $F000 $FFFF  65,024
 
 Monitor memory (p.159): $00-$0C, $28-$4A contain monitor and system
 vectors etc.
+
+BASIC program text starts at base of work area and grows up. Variable space
+starts at top of work area and, grows down. `SIZE` will show program top,
+variables bottom, and the remaining space between. Each BASIC line is two
+bytes lineno, one byte size-2, size bytes text/tokens.
 
 ### I/O
 
