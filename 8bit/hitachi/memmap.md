@@ -10,7 +10,7 @@ Basic Master Jr. Memory Map, ROM, etc.
     $2100-$38FF  VRAM page 2
     $4000-$AFFF  Empty or RAM expansion
     $B000-$DFFF  BASIC ROM
-    $E000-$E7FF  ﾌﾟﾘﾝﾀｰ ROM (MT-2 OS for 1200 baud cassette?)
+    $E000-$E7FF  プリンター ROM (MT-2 OS for 1200 baud cassette?)
     $E800-$EDFF  I/O (external)
     $EE00-$EFFF  I/O (internal devices)
     $F000-$FFFF  Monitor ROM
