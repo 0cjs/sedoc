@@ -81,10 +81,12 @@ Dial deafult values per mode:
     menu   ↑↓/val  ←→           (up/down or value, up/enter into)
     [▶]      zoom  prv/nxt
 
-### Touch Screen
+### Shooting and Touch Screen
 
-- Twiddle exposure dial or similar to display all screen edge icons.
-- Touch mode on left side low-mid scrolls through Off/Focus/Shutter.
+- `INFO` scrolls through screen/EVF display modes:
+  exposure histogram/tilt bars/side icons only/clean display.
+- `OK` brings up Super Control Panel.
+- Touch mode on left side scrolls through Off/Focus/Shutter.
 
 ### Menus and Modes
 
