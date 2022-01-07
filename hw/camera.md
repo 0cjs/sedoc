@@ -26,7 +26,7 @@ conversion at all, though it does tell you how much storage you will save.)
 Olympus OM-D E-M5 Mark II (M5Ⅱ)
 -------------------------------
 
-Page numbers are from M5Ⅱ,M10Ⅱ manuals.
+Page numbers are from M5Ⅱ,M10Ⅱ manuals. SCP = Super Control Panel.
 
 Button assignments:
 
@@ -41,7 +41,7 @@ Button assignments:
     ←↓↑→    [⋯]             [⋯]
     ƒ       [⋯]HP           Preview DOF     -               -
 
-    |○|  = View Selection: Live View/Super Control Panel or EVF/Monitor
+    |○|  = View Selection: Live View/SCP or EVF/Monitor
            (Dedicated button on E-M10Ⅱ)
     [⋯]  = AF position; [⋯]HP = switches selected/automatic AF position
     (m#) = "mode #".
@@ -83,15 +83,21 @@ Dial deafult values per mode:
 
 ### Shooting and Touch Screen
 
-- `INFO` scrolls through screen/EVF display modes:
-  exposure histogram/tilt bars/side icons only/clean display.
-- `OK` brings up Super Control Panel.
+- `INFO` scrolls through screen/EVF display modes: exposure histogram/
+  tilt bars/side icons only/clean display. Hold for clean HDMI output.
+- `OK` brings up Super Control Panel (SCP).
 - Touch mode on left side scrolls through Off/Focus/Shutter.
+
+Shutter modes: select from SCP; there is no button mapping. Single, ♢Anti-shock
+(electronic front curtain), ♡Silent (both curtains electronic), Sequential (low
+and high speed), Self Timer (cancel w/`↓`), High-res. Time lapse in `»Shooting1
+» (item 7) » Time Lapse`. Anti-shock/silent delays set in `»Shooting2 » (item
+5)` (off=don't display item in shutter mode list).
 
 ### Menus and Modes
 
-Major menu sections (icons at left) are »Shooting1, »Shooting2,
-»Playback, »Custom, »Setup.
+Major menu sections (icons at left) are:
+`»Shooting1`, `»Shooting2`, `»Playback`, `»Custom`, `»Setup`.
 
 The standard modes on the mode dial (top, left) are __P A S M movie ▊▚ SCN
 ART iAUTO.__ (▊▚=combine several images; SCN=scene). Any mode can be
@@ -149,10 +155,10 @@ __Autofocus:__
 __EVF eye sensor__ triggers when screen folded in (facing out or in) and
 anything (e.g., finger) is near eyepiece. Hold `|○|` to enable/disable sensor.
 - Enabled: EVF on only when sensor is triggered. Tap `|○|` to switch between
-  monitor Live View and Super Control Panel when EVF sensor not triggered.
+  monitor Live View and SCP when EVF sensor not triggered.
 - Disabled: EVF always on when screen folded in facing in, otherwise tap `|○|`
-  to switch between screen and EVF. (`OK` gives Super Control Panel overlaying
-  live-view image.)
+  to switch between screen and EVF. (`OK` gives SCP overlaying live-view
+  image.)
 
 __S-OVF__ is an "optical" viewfinder mode (icon appears at top) that removes
 white balance, exposure compenstation, etc. adjustments from the viewfinder,
