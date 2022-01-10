@@ -128,8 +128,9 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
     ●    9      E̅X̅R̅O̅M̅; disables internal RAM at $8000-$9FFF
      →  10      I̅O̅2; low when accessing page $DFxx
      →  11      R̅O̅M̅L̅; low when RAM off, accessing 8K @ $8000
-     →  12      BA; VIC bus available (see below)
-    ●   13      D̅M̅A̅; assert to make CPU release bus after next read cycle
+     →  12    ¹ BA; VIC bus available
+    ●   13    ² D̅M̅A̅; immediately deasserts RDY and AEC on CPU†
+                https://retrocomputing.stackexchange.com/a/23662/7208
     ●→  14-21   Data bus lines 7 to 0
      →  22-A    GND
      →   B      R̅O̅M̅H̅; low when RAM off, accessing 8K @ $A000 / 8K @ $E000
@@ -139,11 +140,15 @@ The [cartridge/expansion port][64w-cport] pins are, left to right,
      →   F-Y    Address bus lines 15 to 0
      →   Z      GND
 
-[64w-cport] used to say that pin 12 BA is an input signal, but this appears
-to be incorrect. According to the schematic the CPU's `RDY` line
-(indicating that it can continue running) is high only when both `BA`
-asserted and `D̅M̅A̅` are 1. The `BA` line appears to be an output from the
-VIC II sent to the `RDY` gate, PLA and cartridge port.
+¹ [64w-cport] used to say that pin 12 BA is an input signal, but this
+appears to be incorrect. According to the schematic the CPU's `RDY` line
+(indicating that it can continue running) is high only when both `BA` is
+asserted and `D̅M̅A̅` is not asserted (i.e., both are high). The `BA` line
+appears to be an output from the VIC II sent to the `RDY` gate, PLA and
+cartridge port.
+
+² Note that correct timing when using D̅M̅A̅ [is critical][rc 23662] or you
+may corrupt a CPU write.
 
 [rc 10850] and its answers make some good points:
 - Except when asserting `G̅A̅M̅E̅` and not asserting `E̅X̅R̅O̅M̅`, without
@@ -273,6 +278,7 @@ stuff on to a C64, some of them much faster than the disk drive.
 [cw-av]: https://www.c64-wiki.com/wiki/A/V_Jack
 [din]: ../../../hw/din-connector.md
 [rc 10850]: https://retrocomputing.stackexchange.com/q/10850/7208
+[rc 23662]: https://retrocomputing.stackexchange.com/a/23662/7208
 [reutech]: https://codebase64.org/doku.php?id=base:thirdparty#reu
 
 [max]: https://www.floodgap.com/retrobits/ckb/secret/ultimax.html
