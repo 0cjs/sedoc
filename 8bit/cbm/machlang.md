@@ -45,8 +45,9 @@ ROM Routines
 ------------
 
 The check for `CTRL` being held down to slow output is done in `CHROUT`
-($FFD2) and so works for ML programs that use this routine. It pauses for
-about 1/2 second after every newline.
+($FFD2, actually the $E716 subroutine that it calls for screen output) and
+so works for ML programs that use this routine. It pauses for about 1/2
+second after every newline.
 
 - [Dreams AAY C64 helpfiles (HTML)][aay]
 - pagetable.com [Ultimate Commodore 64 BASIC & KERNAL ROM Disassembly][ultdis]
