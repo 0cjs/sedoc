@@ -44,6 +44,10 @@ In the code you can see following this the configuration for the CIAs
 ROM Routines
 ------------
 
+The check for `CTRL` being held down to slow output is done in `CHROUT`
+($FFD2) and so works for ML programs that use this routine. It pauses for
+about 1/2 second after every newline.
+
 - [Dreams AAY C64 helpfiles (HTML)][aay]
 - pagetable.com [Ultimate Commodore 64 BASIC & KERNAL ROM Disassembly][ultdis]
 - [C64 KERNAL ROM Listing][krnromma]

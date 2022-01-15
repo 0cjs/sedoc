@@ -242,6 +242,10 @@ Plus/4
 Commodore 128
 -------------
 
+Uses an 8502 CPU, which is almost exactly the 6510 used in the C64 in a new
+process except that ϕ2 out is replaced by one more bit (`PA6`) of PIO that
+is left unconnected in the C128.
+
 - Flat 128:
   - 8563 VDC, 16K VRAM. 6581 SID.
 - 128D:
