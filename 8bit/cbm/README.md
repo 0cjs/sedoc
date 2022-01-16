@@ -61,6 +61,19 @@ General documentation:
 - [Commodore C64/C64C Service Manual][c64service], March 1992 PN-314001-03
 - [Zimmers CBM Archive][zimmers] (software, mags, books, etc.)
 
+### Motherboard Revisions
+
+Page numbers from the [service manual][c64service] PDF above (printed page
+numbers are different and vary in offset). One page is clock, CPU, CIAs,
+and most connectors. The other page is RAM, ROM, PLA, VIC-II, RF and
+cartridge/expansion port.
+
+- __#326106__ p.26,28. Clock from a pair of 74LS629N with MC4044 doing PLL.
+- __#251138__ p.33,35.
+- __#251469__ p.40,42.
+- __#252278__ p.47,49. Flat case; cost reduced.
+- __#252312__ p.52. Single-page schematic.
+
 ### 6510
 
 The [6510 data sheet][6510] shows three versions; 6510, 6510-1 and
