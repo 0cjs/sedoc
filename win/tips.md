@@ -1,6 +1,13 @@
 Windows 10 Tips and Tricks
 ==========================
 
+### Keyboard Shortcuts
+
+- `Win Ctrl Shift B`: Restart graphics drivers.
+- `Ctrl Shift Esc`: Task Manager
+- `Ctrl Alt Del`: Windows Security (cannot be intercepted by programs).
+  Secure Attention when that feature is enabled.
+
 ### Lock Icon
 
 Create a shortcut to `rundll32.exe user32.dll,LockWorkStation`.
