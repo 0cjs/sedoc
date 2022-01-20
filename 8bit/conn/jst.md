@@ -3,12 +3,15 @@ JST Connectors
 
 All JST connectors are keyed.
 
-Summary (pin pitch in mm, wire size range in AWG):
+Summary (pin pitch in mm, wire size range in AWG). All are 1-row, shrouded.
 
     Series  Pitch  Wire   Lock  Type
     ───────────────────────────────────────────────────────────────────
       XH    2.50   30-22   no   Wire-to-board; inline female, PCB male
-      SM    2.50   28-22  yes   Wire-to-wire; inline male and female
+      SM    2.50   28-22  yes   Wire-to-wire;  inline male and female
+      PH    2.0    32-24¹  no   Wire-to-board, inline female, PCB male
+
+    ¹ 30-24, 28-24, 32-28 depending on connector
 
 
 JST XH
