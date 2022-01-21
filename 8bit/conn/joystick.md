@@ -60,6 +60,10 @@ when the button is released.
 - This design is probably the same as the PC-6001, with the MSX designers
   choosing controller backward compatibility with that rather than Atari.
 
+__MSX-Compatible Systems:__
+- National/Panasonic JR-200: 1-4,6,7:input 5:+5V 8:output 9:GND. ([_JR-200U
+  Service Manual_ p.62 PDF 61][jr200].)
+
 ### Sega
 
 - †Sega: `Select` line (pin 7, `●`) starts at GND. On older controllers,
@@ -81,8 +85,9 @@ when the button is released.
 
 
 <!-------------------------------------------------------------------->
-[herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
-[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
-[nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
-[letoine]: https://github.com/letoine/MegadriveControllerToUSB
 [amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
+[herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
+[jr200] https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
+[letoine]: https://github.com/letoine/MegadriveControllerToUSB
+[nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
+[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
