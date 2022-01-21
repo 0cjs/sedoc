@@ -37,7 +37,7 @@ __"Keyboard" controllers__ have 12 button telephone-style keypad (`1`-`9`, `*`,
 columns, and pin 7 (+5V) to the first two columns via individual 4k7
 resistors (pull-ups?).
 
-References: [herc-atari]
+References: [[herc-atari]]
 
 ### MSX
 
@@ -66,7 +66,7 @@ when the button is released.
   switching to +5V enables additional buttons (using an 74HC157?).
 - On later controllers, `Select` is a "clock" that toggles through multiple
   selections? Low for 1.8 ms resets the clock to start of sequence? See
-  [nfg], [letoine].
+  [[nfg]], [[letoine]].
 
 ### Amiga
 
