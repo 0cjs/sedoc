@@ -15,6 +15,8 @@ Error`.
 User program code starts at $0600; all memory below that is reserved
 for BASIC.
 
+- Press `ESC` to pause listing after current line; again to print just next
+  line; any other key to resume.
 - Use `&Hnn` for hex numbers; `&Onn` `&nn` for octal.
 - Variables are single precision float (`!`) by default `x` and `x!` are
   the same variable. Other suffixes (`%` integer, `#` double-precision
@@ -88,13 +90,15 @@ Machine-language-related commands:
 I/O and Disk
 ------------
 
-Devices (optionally precede filename arguments):
+Devices (optionally precede filename arguments; case sensitive):
 
     0: 1: 2: 3:     floppy drives
+    BUB0: BUB1:     bubble memory cartridge
     CAS0:           cassette tape (CMT)
     KYBD:           keyboard
     SCRN:           screen
     LPT0:           printer
+    COM0:           RS-232 port (1-4 also possible)
 
 Files have 8-character case-sensitive names and the following additional
 attributes. BASIC programs are always type, with `B` format unless saved
@@ -107,8 +111,12 @@ with `,A` option to get `A` format.
                     clusters used
 
 - `FILES ["dev:"][,L]` (3-23): Print file listing to screen (`,L`=printer)
-  in four columns, giving name/type/format/organization/clusters used
-  (disk) or name/type/format (`CAS0:`).
+  in four columns, giving name and other fields below (no organization/size
+  for `CASn:`)
+  - type: `0`=BASIC, `1`=data, `2`=machine-language
+  - format: `A`=ASCII, `B`=binary
+  - organization: `S`=sequential `R`=random
+  - blocks/clusters: floppy=2K bubble=?
 - `NAME "old" AS "new"`: Rename a file.
 - `KILL "fname"`: Delete a file. Y/N prompt in direct mode.
 - `DSKINI n` (3-29): Erases all files on a diskette in drive _n_. Y/N
@@ -138,7 +146,8 @@ Disk buffer setup:
   representation.
 
 Operations on open files (_n_ = file number):
-- `OPEN "mode",#n,"fname"`: _mode_ = `R`, `W`, ???
+- `OPEN "mode",#n,"fname"`: _mode_ = `I`:input, `O`=output, `A`=append
+  `R`=random.
 - `LOF(n)`: length of diskfile. Might be just buffer length. May require
   reading first?
 
