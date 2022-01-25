@@ -64,8 +64,9 @@ Timeline
     1978-06 * Apple Disk II released ($600)
     1978-06   Intel 8086 introduced
     1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
-    1978-12 * Sharp MZ-80K ships
+    1978-12 * Sharp MZ-80K semi-kit ships
     1978    * Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
+    1978    * Sharp MZ-40K kit ships (around same time as MZ-80K?) (¥24,800)
 
     1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
     1979-05   NEC PC-8001 (Z80) announced
