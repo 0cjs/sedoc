@@ -1,6 +1,8 @@
 Haskell Modules, Imports and Exports
 ====================================
 
+See also [`main.md`](./main.md).
+
 References:
 - [Modules][h2010-modules]
 - [Import][hw-import] on the Haskell Wiki.
