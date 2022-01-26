@@ -1,7 +1,8 @@
 Haskell Modules, Imports and Exports
 ====================================
 
-See also [`main.md`](./main.md).
+For the module and definition used as the executable entry point,
+see [`main.md`](./main.md).
 
 References:
 - [Modules][h2010-modules]
@@ -30,12 +31,16 @@ Special modules (all of this may be tweaked):
 Module Declaration
 ------------------
 
+Standard layout rules apply unless the first lexeme is `{`.
+
     module Mod.Name (exports) where
     import ...      -- body is import declarations
     ...             -- followed by top-level declarations
 
-The first line can be left out; it will be assumed to be `module Main
-(main) where`. Standard layout rules apply unless the first lexeme is `{`.
+Optional components are:
+- The entire `module … where` statement, in which case
+  `module Main (main) where` is assumed.
+- `(exports)`, in which case all top-level defnitions are exported.
 
 
 Import Declarations
