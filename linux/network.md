@@ -190,7 +190,7 @@ netconf: Debian Legacy Network Config
 Debian systems' legacy configuration package is __netconf__, with
 `ifupdown` using configuration in `/etc/network/interfaces` (and files
 in `interfaces.d/`). This is still set up by the installer as of of
-Debian 10.
+Debian 10, and Debian 11 `pppoeconf` also uses it.
 
 ### /etc/network/interfaces
 
