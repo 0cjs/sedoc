@@ -8,6 +8,9 @@
 * [EC2 - Elastic Compute Cloud virtual server instances](ec2.md)
 * [Lambda - Serverless Compute](lambda.md)
 
+The on-line user guide pages are generated from markdown files in GitHub
+project [`awsdocs/amazon-ec2-user-guide`][gh awsdoc]; they accept issues
+and pull requests.
 
 Misc Notes:
 - [Availability zones][reg-az] are arbitrarily mapped for each account.
@@ -39,6 +42,7 @@ Per [Regions and Zones][reg-az]:
 
 <!-------------------------------------------------------------------->
 [AWS]: https://en.wikipedia.org/wiki/Amazon_Web_Services
-[reg-az]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
-[key pairs]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
 [EC2 console]: https://console.aws.amazon.com/ec2/
+[gh awsdoc]: https://github.com/awsdocs/amazon-ec2-user-guide
+[key pairs]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+[reg-az]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
