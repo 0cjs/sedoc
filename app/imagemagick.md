@@ -6,8 +6,10 @@ and transforming images.
 
 `import` captures from the screen:
 
-    import a-window.png                 # pointer selects window to capture
-    import -windows root screen.png     # full screen
+    import my-image.png     # Click and release to capture window contents.
+                            # Click and drag to capture the area of a screen.
+
+    import -window root screen.png  # Full screen capture
 
 display Keyboard Shortcuts
 --------------------------
