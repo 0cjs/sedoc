@@ -4,7 +4,8 @@ CBM User Ports
 Most CBM machines (with the exception of the Max Machine) have a 24-pin
 card-edge "user port" that brings out one of the 6522 VIA or 6526 CIA 8-bit
 GPIO ports and various other signals. This is often used to add an RS-232
-serial interface, see below.
+serial interface, see below. The Plus/4 is an exception; it has a simple
+8-bit register and a 6551 ACIA on the user port. [[p4sc3]]
 
 The user port lines are numbered 1-12 on the top edge and A-N (excluding G
 and I) on the bottom edge. `←` is always input, `→` always output.
@@ -14,10 +15,10 @@ and I) on the bottom edge. `←` is always input, `→` always output.
        1    GND             GND             GND             GND
        2    TV Video →      +5V             +5V (100 mA)    +5V
        3    SRQ (IEEE)      RESET           RESET           /B.RESET
-       4    EOI (IEEE)      JOY0            CNT1            P₂
-       5    Diag Sense      JOY1            SP1             P₃
-       6    READ 1          JOY2            CNT2            P₄
-       7    READ 2          PEN             SP2             P₅
+       4    EOI (IEEE)      JOY0            CNT1            P2
+       5    Diag Sense      JOY1            SP1             P3
+       6    READ 1          JOY2            CNT2            P4
+       7    READ 2          PEN             SP2             P5
        8    WRITE           SENSE           PC2             Receive Clock
        9    Vert            Serial ATN      Serial ATN      Serial ATN
       10    Horiz           9VAC + phase    9VAC + phase    9VAC + phase
@@ -25,16 +26,16 @@ and I) on the bottom edge. `←` is always input, `→` always output.
       12    GND             GND             GND             GND
       ──────────────────────────────────────────────────────────────────
        A    GND             GND             GND             GND
-       B    CA1             CB1             FLAG2           P₀
-       C    PB0             PB0             PB0
-       D    PB1             PB1             PB1
-       E    PB2             PB2             PB2
-       F    PB3             PB3             PB3
-       H    PB4             PB4             PB4
-       J    PB5             PB5             PB5
-       K    PB6             PB6             PB6
-       L    PB7             PB7             PB7
-       M    CB2             CB2             PA2
+       B    CA1             CB1             FLAG2           P0
+       C    PB0             PB0             PB0             RXD
+       D    PB1             PB1             PB1             RTS
+       E    PB2             PB2             PB2             DTR
+       F    PB3             PB3             PB3             P7
+       H    PB4             PB4             PB4             DCD
+       J    PB5             PB5             PB5             P6
+       K    PB6             PB6             PB6             P1
+       L    PB7             PB7             PB7             DSR
+       M    CB2             CB2             PA2             TXD
        N    GND             GND             GND             GND
       ──────────────────────────────────────────────────────────────────
 
@@ -126,6 +127,8 @@ References
   level converter to make the C64 into a terminal. Software (for an EPROM
   on the video board) was downloadable from BYTEnet but is presumably no
   longer available.
+- \[p4sc3] [Plus/4 schematic, page 3][p4sc3]. Details user port
+  connections.
 - \[p4um] [_Commodore Plus/4 User's Manual_][p4um]. Commodore, 1984.
 - \[p4pr] Cyndie Merten, Sarah Meyer, [_Programmer's Reference Guide for
   the Commodore Plus/4_][p4pr]. Scott Foresman and Company, 1986. Mentions
@@ -139,8 +142,6 @@ References
   - The userport serial pinouts (pins A-M only) are from [[p4um]] p.212.
   - The circuit diagram for the level converter is from [[Byte8503]] p.190.
 
-
-
 <!-------------------------------------------------------------------->
 [Byte8305]: https://archive.org/details/byte-magazine-1983-05/page/n332/mode/1up?view=theater
 [Byte8503]: https://archive.org/details/byte-magazine-1985-03/page/n174/mode/1up?view=theater
@@ -149,4 +150,5 @@ References
 [VIA]: http://archive.6502.org/datasheets/mos_6522_preliminary_nov_1977.pdf
 [cca-port]: https://www.commodore.ca/manuals/pdfs/commodore_pet_vic-20_c64_port_pinouts.pdf
 [p4pr]: https://archive.org/details/Programmers_Reference_Guide_for_the_Commodore_Plus_4_1986_Scott_Foresman_Co/page/n391/mode/1up?view=theater
+[p4sc3]: http://www.zimmers.net/anonftp/pub/cbm/schematics/computers/plus4/plus4-310164-3of4.gif
 [p4um]: https://plus4world.powweb.com/publications/Commodore_Plus4_Users_Manual
