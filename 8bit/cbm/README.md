@@ -7,6 +7,7 @@ Documentation here:
 - [C64 Address Decoding (Memory Maps)](address-decoding.md)
 - [Machine Language](machlang.md)
 - [Commodore Serial (IEC) Bus](serial-bus.md)
+- [User Ports](user-port.md)
 - [Peripherals](peripherals.md)
 - [BASIC](basic.md)
 - [DOS Wedge](doswedge.md)
