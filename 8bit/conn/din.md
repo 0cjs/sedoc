@@ -177,7 +177,11 @@ for values.
 cables. Obviously these vary.
 
 On the [Apple iPhone-style pinout][pru-iphone], the headset button
-also shorts mic. to ground. CMT resistor 1.6 KΩ.
+also shorts mic. to ground. CMT resistor 1.6 kΩ.
+
+2.2 kΩ tested to work on ThinkPad T510 built-in headset socket. pavucontrol
+displays "unplugged" when JR-200 directly connected; "plugged in" when
+unconnected or series resitor in place.
 
 [HTC pinout][pru-htc] (including many Android models, such as Nexus
 One) is the same, but Apple mics often don't work. Standard mic/gnd
