@@ -58,7 +58,8 @@ just after the last address displayed.
 - `Gaaaa`: Call _aaaa_ (address required); RTS returns to monitor.
 
 There are no CMT load and save commands in the monitor; use `MLOAD
-"name"[,start]` and `MSAVE "name",start,end` from BASIC.
+"name"[,start]` and `MSAVE "name",start,end` from BASIC. Remember to
+prefix hex addresses with `$`.
 
 To exit back to BASIC you may execute either of the following. Neither will
 clear the screen, and both leave the system in "monitor" input state (white
