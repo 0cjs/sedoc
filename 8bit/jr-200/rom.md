@@ -42,27 +42,34 @@ comments, data/code separation, or labels for vectors.
 The system ROM has simple machine-language monitor built-in (at least
 on my white/black/black version); it comes up with a `> ` prompt by
 using the `MON` command from BASIC or when the machine is started
-without a BASIC ROM installed. Some experimentation discovered the
-following (case-sensitive) commands. When an address `aaaa` (upper or
-lower case) is not given, the default is just after the last address
-displayed.
+without a BASIC ROM installed.
+
+`moncmdsptr` at $0110 points to the commands table; each entry is the
+(case-sensitive) command character followed by the address of its routine,
+terminated by a command character of $00. At reset this is set to
+`moncmds_table` $FFE6 offering the following three commands. [[rebios]]
+When an address `aaaa` (upper or lower case) is not given, the default is
+just after the last address displayed.
 
 - `Daaaa`: Dump $80 bytes of memory starting at location _aaaa_.
 - `Maaaa`: Modify memory a byte at a time; old value displayed first.
   Enter new value, RETURN to leave the same, or `.` to terminate entry.
 - `Gaaaa`: Call _aaaa_ (address required); RTS returns to monitor.
 
-A simple little program to test the monitor is:
-
-    7000 86 EE      LDAA #$EE
-    7002 B7 70 10   STAA $7010
-    7005 39         RTS
+There are no CMT load and save commands in the monitor; use `MLOAD
+"name"[,start]` and `MSAVE "name",start,end` from BASIC.
 
 `GA000` will display the start-up messages and give the BASIC prompt,
 without clearing the screen, though this doesn't seem to leave BASIC
 entirely initialized properly (e.g., control-letters no longer enter
 BASIC keywords but instead produce symbols; sending a screen code may
 fix this).
+
+A simple little program to test the monitor is:
+
+    7000 86 EE      LDAA #$EE
+    7002 B7 70 10   STAA $7010
+    7005 39         RTS
 
 
 ROM Routines
@@ -146,4 +153,5 @@ assigned by me in [the disassembly][disasm].
 [disasm]: https://gitlab.com/retroabandon/panasonic-jr/-/blob/master/Bn-BIOS/B1.dis
 [r-dis-bas]: http://www.kameli.net/~marq/jr200/basic.lst
 [r-dis-sys]: http://www.kameli.net/~marq/jr200/sysrom.lst
+[rebios]: https://gitlab.com/retroabandon/panasonic-jr/-/blob/master/Bn-BIOS/B1.dis
 [vjr]: http://www17.plala.or.jp/find_jr200/vjr200_en.html
