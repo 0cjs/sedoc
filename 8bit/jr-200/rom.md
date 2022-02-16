@@ -42,7 +42,8 @@ comments, data/code separation, or labels for vectors.
 The system ROM has simple machine-language monitor built-in (at least
 on my white/black/black version); it comes up with a `> ` prompt by
 using the `MON` command from BASIC or when the machine is started
-without a BASIC ROM installed.
+without a BASIC ROM installed. Entering the monitor clears the screen
+and sets the text colours to white on black.
 
 `moncmdsptr` at $0110 points to the commands table; each entry is the
 (case-sensitive) command character followed by the address of its routine,
@@ -59,15 +60,20 @@ just after the last address displayed.
 There are no CMT load and save commands in the monitor; use `MLOAD
 "name"[,start]` and `MSAVE "name",start,end` from BASIC.
 
-`GA000` will display the start-up messages and give the BASIC prompt,
-without clearing the screen, though this doesn't seem to leave BASIC
-entirely initialized properly (e.g., control-letters no longer enter
-BASIC keywords but instead produce symbols; sending a screen code may
-fix this).
+To exit back to BASIC you may execute either of the following. Neither will
+clear the screen, and both leave the system in "monitor" input state (white
+characters on black background; Ctrl-letter enters symbols rather than
+BASIC keywords). Sending a screen code might fix this.
+- `Gbffd` (`BASIC_warmstart`). Gives the BASIC `Ready` prompt, preserving
+  the program in memory.
+- `Ga000` (`BASIC_COLDSTART`). This displays the start-up messages, clears
+  any program in memory and gives the BASIC `Ready` prompt. Though this
+  doesn't seem to leave BASIC entirely initialized properly (e.g.,
+  control-letters no 
 
 A simple little program to test the monitor is:
 
-    7000 86 EE      LDAA #$EE
+    7000 86 11      LDAA #$11
     7002 B7 70 10   STAA $7010
     7005 39         RTS
 
