@@ -192,6 +192,21 @@ References:
   (Includes many static RAM pinouts as well. Another page has
   a few [PROM/EPROM pinouts][pcbj-rom].)
 
+Standard pinouts:
+
+                     4116   4164  │  4164  4116
+              ┌──∪                │               ∪──┐
+    Vss  GND  │1     -5V      NC  │  ─── GND ───   16│
+    Vcc  +5V  │2     ───  D  ───  │  ─── C̅A̅S̅ ───   15│
+    Vbb  -5V  │3     ───  W̅  ───  │  ───  Q  ───   14│
+    Vdd +12V  │4     ─── R̅A̅S̅ ───  │  ───  A₆ ───   13│
+              │5     ───  A₀ ───  │  ───  A₃ ───   12│
+              │6     ───  A₁ ───  │  ───  A₄ ───   11│
+              │7     ───  A₂ ───  │  ───  A₅ ───   10│
+              │8     12V     +5V  │   A₇     +5V    9│
+              └───                │               ───┘
+                     4116   4164  │  4164  4116
+
 
 
 <!-------------------------------------------------------------------->
