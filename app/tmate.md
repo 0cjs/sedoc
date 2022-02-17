@@ -1,6 +1,14 @@
 tmate
 =====
 
+Todo:
+- tmate:
+  - PREFIX+`[` enters copy mode (PgUp should as well)
+  - document settings stuff in sedoc
+  - update ~/.tmux.conf for esc timeout
+  - ctrl-P thing
+- calc → c
+
 Configuration
 -------------
 
