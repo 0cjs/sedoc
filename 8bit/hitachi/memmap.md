@@ -1,7 +1,9 @@
 Basic Master Jr. Memory Map, ROM, etc.
 --------------------------------------
 
-### Memory Map (p.124)
+Page numbers refer to the [MB-6885 ﾍﾞｰｼｯｸﾏｽﾀｰJr.][ar-bmj] system manual.
+
+### General Memory Map (p.124)
 
     $0000-$00FF  Zero page; system stuff?
     $0100-$03FF  Screen RAM (text mode)
@@ -31,13 +33,47 @@ interpreter for housekeeping, stack etc.
     Monitor ROM disabled                        $0000 $EDFF  and
                                                 $F000 $FFFF  65,024
 
-Monitor memory (p.159): $00-$0C, $28-$4A contain monitor and system
-vectors etc.
+Memory Map Details
+------------------
 
-BASIC program text starts at base of work area and grows up. Variable space
-starts at top of work area and, grows down. `SIZE` will show program top,
-variables bottom, and the remaining space between. Each BASIC line is two
-bytes lineno, one byte size-2, size bytes text/tokens.
+### BIOS (Monitor) Low Memory (p.159):
+
+$00-$71 is the "Monitor work area."
+
+    $00  USRNMI    vector                           $F0C6 (RTI instr.)
+    $02  USRIRQ    vector                           $F06E (see below)
+    $04  BREAKV    vector for NMI from BREAK key    B:$BB7E M:$F0D0
+    $06  TIMERV                                     $F06E
+    $08  RAMEND    highest RAM address              $3FFF on 16K system
+    $0A  TIME 1,2  16-bit seconds since start
+    $0C  TIME 3    0-50; inc. every 1/60 sec
+
+    $28  ASCIN                                      JMP $FA55  ($F012)
+    $2B  ASCOUT                                     JMP $F7AB  ($F015)
+    $2E  BYTIN                                      JMP $F71F  ($F018)
+    $31  BYTOUT                                     JMP $F619  ($F01B)
+
+    $3B  RECTOP,LDTOP,MSTTOP    start of memory block; parameter for
+                                CMT write/read and memory move routines
+    $3D  RECEND,LDMAX,MSTEND    end of memory block (last byte + 1)
+    $3F  CPYTOP
+    $41  CPYEND
+    $43  FNAME                  filename parameter for CMT write/read routines
+
+Notes:
+- $F06E is the exit code in the IRQ routine.
+- For JMP addrs, parenthesised number is address in BIOS routine jump table
+  starting at $F000.
+
+### BASIC
+
+BASIC uses $72-$FF and $400-$9FF as work area.
+
+BASIC program text starts at $0A00 and grows up. Variable space starts
+at top of user program area and, grows down. `SIZE` will show the free
+addresses after program end and before variables start, as well as the size
+of the free space from the former through the latter. Each BASIC line is
+two bytes lineno, one byte size-2, size bytes text/tokens.
 
 ### I/O
 
@@ -80,20 +116,34 @@ ROM routines:
     $FFFC   NMI         $F07A
     $FFFE   reset       $F15F
 
-### ROM Routines (p.160)
+
+ROM Routines
+------------
+
+### Monitor (BIOS) Subroutines (p.160)
+
 
 - `$0028` ASCIN: calls CHRGET
 - `$002B` ASCOUT: calls CHROUT
 - `$002E` BYTIN
 - `$0031` BYTOUT
 
+
 - `$B000`: BASIC warm start; keeps program text but kills var space
   (but not DIMs; these are now broken!).
 - `$C000`: BASIC cold start
 
+- `$F000`: Monitor cold entry (clears screen; prints banner)
 - `$F003 ADDIXB`: (IX) ← (IX) + (ACCB)
-- `$F009 MOVBLK`: copy memory: $3B (MSTTOP) start addr, $3D (MSTEND)
-  end addr, $3F (CPYTOP) destination.
-- `$F00F KBIN`: Carry set if no key down, otherwise carry clear and
-  char of key (modified by shift codes) in ACCA.
-- `$F012 CHRGET`:
+- `$F009 MOVBLK`: copy memory: $3B (MSTTOP) start addr, $3D (MSTEND) end
+  addr, $3F (CPYTOP) destination.
+- `$F00F KBIN`: Carry set if no key down, otherwise carry clear and char of
+  key (modified by shift codes) in ACCA.
+- `$F012 CHRGET`: ♠A♡BX clear screen (?), print char in A and flash it,
+  wait for character to be typed, then return it.
+- `$F015 CHROUT`: ♡ABX print character in A to display
+
+
+
+<!-------------------------------------------------------------------->
+[ar-bmj]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/
