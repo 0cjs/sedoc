@@ -64,6 +64,45 @@ Usage Notes
 
 See [`basic`](./basic.md) and [`monitor`](./monitor.md) for further details.
 
+### CMT Load and Filenames
+
+The impedance of the tape output seems to vary in ways that confuse TRRS
+mic inputs if no series resistance is used: the input will signal that a
+mic is connected for some blocks and not for others, causing recording
+programs to record silence (or input from another mic). Try a 2K resistor
+in series or see the notes on smartphone connections in
+[conn/din](../conn/din.md).
+
+The input level when recording should be quite high; it's ok (usually
+required) to clip the tops of the square waveform.
+
+CMT filenames are six characters (letters, numbers, punctuation, kana)
+followed by `.B` for binary programs or `.S` for BASIC programs. The user
+should not specify the `.B`/`.S`; this will be added by the monitor/BASIC
+load/save commands. Filenames shorter than six characters are padded with
+spaces. Six spaces is also a filename, not a wildcard, and will be loaded
+or skipped as specified with the name to the command. (`LOAD` followed by
+return in BASIC or `L` followed by space or return in the monitor specifies
+the six-space filename.)
+
+When loading or verifying, a filename printed alone on a line (with no
+trailing numbers) indicates a block read and ignored because it's not
+from the file specified. Blocks that are not ignored are followed by a
+number or hyphen and number.
+
+BASIC files are saved only in ASCII format. The BASIC `LOAD`, `SAVE` and
+`VERIFY` commands do not use quotes around the filename; quotes will
+instead be treated as characters that are part of the filename. Zero, one
+or more spaces may be inserted between the command and filename; they will
+be ignored. `ERROR 3` is given if the filename is more than 6 characters.
+
+The BASIC `LOAD` command will load both `.S` and `.B` files. The monitor
+`L` command will print `ERROR` if you try to load a `.S` file. (And also
+if the level is too low.)
+
+When loading `.B` files, if a block errors out on load you can rewind and
+play blocks back in again to try to reload them.
+
 
 Software
 --------
