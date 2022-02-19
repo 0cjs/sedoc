@@ -163,7 +163,7 @@ __Smartphone Connections__
 Apple standard headphone connectors and most (?) Android use the
 following TRRS, but some other phones swap ground and mic. In all cases,
 shorting mic and ground makes the device output only. The mic
-connection otherwise must see enough impedence to be detected; a
+connection otherwise must see enough impedance to be detected; a
 resistor in series with the CMT output can help with this. See below
 for values.
 
@@ -173,8 +173,8 @@ for values.
     ring 2  ground  copper  copper
     sleeve  mic     red     black
 
-¹The Galaxy colours are also the ones in my white TRRS extension
-cables. Obviously these vary.
+- ¹ The Galaxy colours are also the ones in my white TRRS extension cables.
+  Obviously these vary.
 
 On the [Apple iPhone-style pinout][pru-iphone], the headset button
 also shorts mic. to ground. CMT resistor 1.6 kΩ.
@@ -182,6 +182,19 @@ also shorts mic. to ground. CMT resistor 1.6 kΩ.
 2.2 kΩ tested to work on ThinkPad T510 built-in headset socket. pavucontrol
 displays "unplugged" when JR-200 directly connected; "plugged in" when
 unconnected or series resitor in place.
+
+queuebert's Mercari DIN-8 to smartphone cable (works with FM-8):
+
+    TRRS     DIN-8   Notes
+    ───────────────────────
+    tip     5 PLAY
+    ring 1  3 GND   right channel shorted to ground
+    ring 2  3 GND   relies on computer having GND on pin 3
+    sleeve  4 REC   2k2 inline; 12k to ground
+
+On the [Apple iPhone-style pinout][pru-iphone], the headset button also
+shorts mic. to ground. Series 1k6 resistor between computer and sleeve
+suggested.
 
 [HTC pinout][pru-htc] (including many Android models, such as Nexus
 One) is the same, but Apple mics often don't work. Standard mic/gnd
