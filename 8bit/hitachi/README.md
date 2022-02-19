@@ -57,6 +57,7 @@ Usage Notes
 - `BREAK` interrupts a running BASIC program, otherwise does nothing.
   `カナ記号+BREAK` resets the machine.
 - Modifier (シフト) keys. Also hold to slow printouts, from least to most.
+  (Multiple modifiers held at the same time slows even more.)
   - `英数`: Tap to enter mode for left keytop letter.
   - `英記号`: Hold for top keytop symbol.
   - `カナ`: Tap to enter mode for bottom keytop kana.
