@@ -69,16 +69,11 @@ levels of keyboard handling for text consoles and X11.
 #### Text Consoles
 
 On a text console the keycode, in combination with modifier keys, is mapped
-to an _action_ via a `keymaps(5)` keyboard layout table. (Each key may have
-up to 256 actions bound.) A keyboard layout table may also have compose
-definitions to generate characters from a two-key sequence.
-
-Nine modifiers are supported, labelled (completely arbitrarily) as follows.
-
-     1 Shift     16 ShiftL  256 CapsShift
-     2 AltGr     32 ShiftR
-     4 Control   64 CtrlL
-     8 Alt      128 CtrlR
+to an _action_ via a `keymaps(5)` keyboard layout table. A keyboard layout
+table may also have compose definitions to generate characters from a
+two-key sequence and string definitions to generate multiple characters
+from a single keypress. (This is usually used for ANSI function key
+bindings.) A single mapping table is used for all virtual consoles.
 
 Actions are assigned a number and symbolic name; these can be found in the
 `dumpkeys -l` output. Actions include:
@@ -90,9 +85,25 @@ Actions are assigned a number and symbolic name; these can be found in the
   happens on collision with action name), but `F` followed by a decimal
   number will never be used by the kernel.
   - XXX This may be wrong; `F1` etc. also appear to be action names...
-- Switching to a different keymap. XXX can't see what does this.
+- Switching to a different keymap, done by modifier keys.
 - Switching to a different virtual console via `Console_1` through
   `Console_63`, `Incr_Console` `Decr_Console` and `Last_Console`.
+- Do nothing. Possibly called `VoidSymbol`.
+
+_Modifier actions_ switch between the 256 _keymaps_ (sometimes called
+_columns_), giving up to 256 different actions for each key. The regular
+modifiers below switch keymaps when pressed (the current keymap number is
+the sum of the modifier values) and switch back when released; there are
+also versions ending in `_Lock` which do nothing when released and switch
+back when pressed a second time. Note that for release to work the modifier
+action must be bound also into the _new_ kemyap to which the modifier
+switched. The modifier actions are as follows (these are case-insensitive
+in `loadkeys`):
+
+     1 Shift     16 ShiftL  256 CapsShift
+     2 AltGr     32 ShiftR
+     4 Control   64 CtrlL
+     8 Alt      128 CtrlR
 
 The following programs show status. These must be run as root if the user
 is not currently on a console.
@@ -109,15 +120,32 @@ is not currently on a console.
 
 `loadkeys(1)` loads or modifies a keymap.  It detects whether the console
 is in Unicode or ASCII mode and converts appropriately. The manual page
-contains only some information on the format; the various `dumpkeys(1)`
-commands above give further information and examples. Roughly:
-- `keycode N = ACT …` sets keycode _n_ to perform action _act_; additional
-  actions are for the keycode with modifiers. Add the modifier numbers
-  above to get the index of the action in the list.
-- `MOD … keycode N = ACT` specifies the modifiers in a list before the
-  keycode, e.g., `shift control keycode 3 = nul` to make Ctrl-2 produce an
-  ASCII NUL.
+contains only some information on the format; further information is in
+`keymaps(5)` and the various `dumpkeys(1)` commands above also give further
+information and examples. Roughly:
+- `MOD … keycode N = ACT` specifies the action for a single column
+  determined by the modifiers in a list before the keycode, e.g., `shift
+  control keycode 3 = nul` to make Ctrl-2 produce an ASCII NUL. Specify
+  `plain` to use this format to define only the column 0 entry of a key,
+  leaving all other definitions alone.
+- `keycode N = ACT` with only one action sets the same action for all 256
+  columns, except for ASCII letters `[A-Za-z]` where it sets uppper case,
+  control keys, etc.
+- `keycode N = ACT …` with more than one action sets keycode _n_ to perform
+  action _act_; additional actions are for the keycode with modifiers. Add
+  the modifier numbers above to get the index of the action in the list.
+  Any trailing entries of the 256 that are left off are set to `VoidSymbol`
+- `keymaps 0-2,4-5,8,12` or similar specifies that following `keycode N`
+  lines will specify only the indicated columns.
 - `string SNAME = "STR"` to assign string _str_ to action _sname._
+
+`ACT` above is normally a symbolic name. Numbers may also be given in
+decimal, octal (`0###`), hex (`0x##`) or "Unicode" (`U+####`) format; the
+assignments to actions may vary by kernel version.
+
+The actions such as `Meta_asciitilde` actions all seem simply to prefix the
+given character with an Esc, giving `^[~` for the above (and `^[^[` for
+Meta_Escape).
 
 `loadkeys -d` is supposed to restore the kernal's default keymap, but
 always gives `loadkeys: Unable to find file: defkeymap.map`. On Debian,
