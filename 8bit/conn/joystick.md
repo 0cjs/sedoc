@@ -87,7 +87,7 @@ __MSX-Compatible Systems:__
 <!-------------------------------------------------------------------->
 [amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
 [herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
-[jr200] https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
+[jr200]: https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
 [letoine]: https://github.com/letoine/MegadriveControllerToUSB
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
