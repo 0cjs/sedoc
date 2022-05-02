@@ -54,6 +54,10 @@ acronyms) and "high density" (HD). These differ in coercivity and
 thickness of the magnetic media. DD / HD 5.25" is 300 / 600 Oersted
 and 3.5" is 660 / 720 Oe. [[Retrocomputing SE][rcse 9303]]
 
+However, 8" floppy sleeves have the index hole in a [slightly
+different location][8ss-vs-ds] on single-sided and double-sided disks,
+and so SS disks cannot be used in DS drives and vice versa.
+
 Single vs. double density refers only to the encoding format: FM for
 SD and MFM for DD. (M2FM was an early DD scheme replaced by MFM.)
 These all use what's now called "double density" media.
@@ -184,6 +188,7 @@ Does not read 40-track diskettes. Gives:
 [pc8k]: 8bit/pc-8001/floppyif.md#protocol
 
 <!-- Diskette and Drive Types -->
+[8ss-vs-ds]: http://boginjr.com/it/hw/8inch-drives/
 [andre19]: https://extrapages.de/archives/20190102-Floppy-notes.html
 [hj-8HD]: http://www.retrotechnology.com/herbs_stuff/8inchHD.html
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
