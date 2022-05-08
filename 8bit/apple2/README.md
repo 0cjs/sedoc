@@ -3,6 +3,7 @@ Apple II
 
 References:
 - \[a2ref] [_Apple II Reference Manual_][a2ref], 1979 edition.
+- \[a2cref] [_Apple IIc Technical Reference Manual_][a2cref]
 - \[relay] [Jon Relay's Apple II Info Archives][relay]. Memory areas,
   zero page addresses, etc.
 - \[sather] Jim Sather, [_Understanding the Apple II_][sather], 1983.
@@ -75,17 +76,94 @@ SWEET16 uses `$00`-`$1F`.
 Video
 -----
 
-As described on [pp. 14-16][a2ref 14] of the _Apple II Reference Manual_,
-the Apple II character ROM has 64 characters, the ASCII upper case sticks
-(`@A…Z[\]^_`) and punctuation/number sticks (` !"#$%&'()*+,-./0…9:;<=>?`).
-The may be displayed as normal, inverse or flashing characters:
+### Character Set
 
-    $00-$3F  inverse
-    $40-$7f  flashing
-    $80-$9F  normal alphabet (`@A…`)
-    $A0-$BF  normal punctuation/numbers (` !…0…`)
-    $C0-$DF  normal alphabet
-    $E0-$FF  normal punctuation/numbers
+As described on [pp. 14-16][a2ref 14] of the _Apple II Reference Manual_,
+the Apple II character ROM has 64 characters: the two ASCII upper-case
+sticks followed by the punctuation and the numbers stick. In the text
+buffer the lower 6 bits determine the character code and the upper two
+select flashing, inverse, normal and normal text.
+
+                       │     All      │    II    │ Primary  │ Alternate│
+    Stick ($x0 - $xF)  │ Inv   Normal │ Flsh Nor │ Flsh Nor │ Inv  Nor │
+    ───────────────────┼──────────────┼──────────┼──────────┼──────────┼
+    @ABCDEFGHIJKLMNO   │ $0x  $8x $Cx │ $4x      │ $4x      │          │
+    PQRSTUVWXYZ[\]^_   │ $1x  $9x $Dx │ $5x      │ $5x      │          │
+     !"#$%&'()*+,-./   │ $2x    $Ax   │ $6x  $Ex │ $6x      │          │
+    0123456789:;<=>?   │ $3x    $Bx   │ $7x  $Fx │ $7x      │          │
+    ───────────────────┼──────────────┼──────────┼──────────┼──────────┼
+      [mouse text]     │              │          │          │      $4x │
+      [mouse text]     │              │          │          │      $5x │
+    `abcdefghijklmno   │              │          │      $Ex │ $6x  $Ex │
+    pqrstuvwxyz{|}~░   │              │          │      $Fx │ $7x  $Fx │
+
+
+The Enhanced IIe and IIc differ ([a2cref] p.360) in having two character
+sets, the _primary character set_ with inverse, flashing upper- and
+lower-case blocks, and the _alternate character set_ with inverse
+upper-case, inverse lower-case, normal upper-case and normal lower-case
+blocks.
+
+Flashing display must not be used with enhanced video firmware active, but
+only in 40-column mode with enhanced video firmware turned off.
+
+### Mouse Text
+
+[MouseText][] ([a2cref] p.90) is designed for use with GUI programs. The
+enhanced video firmware allows printing of these via setting inverse and
+mouse text mode and printing the $40-$5F ASCII sticks. From [a2cref] p.91:
+
+![Figure 5-1 MouseText characters](fig5-1_mouse-text-chars.png)
+
+[Unicode mappings][mtuni]:
+
+      closed apple          $40   ⌥   U+2325   OPTION KEY (functional replacement)
+      open apple            $41   ⌘   U+2318   PLACE OF INTEREST SIGN (functional replacement)
+      mouse pointer         $42   🮰   U+1FBB0  ARROWHEAD-SHAPED POINTER
+      hourglass             $43   ⌛  U+231B   HOURGLASS
+      check                 $44   ✓   U+2713   CHECK MARK
+      inverse check         $45   🮱   U+1FBB1  INVERSE CHECK MARK
+      inverse enter         $46   🮴   U+1FBB4  INVERSE DOWNWARDS ARROW WITH TIP LEFTWARDS
+      title bar             $47   🮁   U+1FB81  HORIZONTAL ONE EIGHTH BLOCK-1358
+      left arrow            $48   ←   U+2190   LEFTWARDS ARROW
+      ellipsis              $49   …   U+2026   HORIZONTAL ELLIPSIS
+      down arrow            $4A   ↓   U+2193   DOWNWARDS ARROW
+      up arrow              $4B   ↑   U+2191   UPWARDS ARROW
+      top side line         $4C   ▔   U+2594   UPPER ONE EIGHTH BLOCK
+      enter                 $4D   ↲   U+21B2   DOWNWARDS ARROW WITH TIP LEFTWARDS
+      block                 $4E   ▉   U+2589   LEFT SEVEN EIGHTHS BLOCK
+      left scroll           $4F   🮵   U+1FBB5  LEFTWARDS ARROW AND UPPER AND LOWER ONE EIGHTH BLOCK
+      right scroll          $50   🮶   U+1FBB6  RIGHTWARDS ARROW AND UPPER AND LOWER ONE EIGHTH BLOCK
+      down scroll           $51   🮷   U+1FBB7  DOWNWARDS ARROW AND RIGHT ONE EIGHTH BLOCK
+      up scroll             $52   🮸   U+1FBB8  UPWARDS ARROW AND RIGHT ONE EIGHTH BLOCK
+      middle line           $53   ─   U+2500   BOX DRAWINGS LIGHT HORIZONTAL
+      L corner              $54   🭼   U+1FB7C  LEFT AND LOWER ONE EIGHTH BLOCK
+      right arrow           $55   →   U+2192   RIGHTWARDS ARROW
+      shade block           $56   ▒   U+2592   MEDIUM SHADE
+      inverse shade block   $57   🮐   U+1FB90  INVERSE MEDIUM SHADE
+      left half folder      $58   🮹   U+1FBB9  LEFT HALF FOLDER
+      right half folder     $59   🮺   U+1FBBA  RIGHT HALF FOLDER
+      right side line       $5A   ▕   U+2595   RIGHT ONE EIGHTH BLOCK
+      diamond               $5B   ◆   U+25C6   BLACK DIAMOND
+      two lines             $5C   🮀   U+1FB80  UPPER AND LOWER ONE EIGHTH BLOCK
+      intersect             $5D   🮻   U+1FBBB  VOIDED GREEK CROSS
+      close box             $5E   🮼   U+1FBBC  RIGHT OPEN SQUARED DOT
+      left side line        $5F   ▏   U+258F   LEFT ONE EIGHTH BLOCK
+
+The first two characters are propietary and have several options for
+Unicode equvalents:
+
+    $40 Closed    ⌥  U+2325       OPTION KEY (functional replacement)
+        Apple       U+F813       (Linux private use area)
+                    U+F8FF       (Apple private use area)
+                  🍎 U+1F34E      RED APPLE (graphical repalcement)
+
+    $41 Open      ⌘  U+2318       PLACE OF INTEREST SIGN (func. repl.)
+        Apple       U+F812       (Linux private use area)
+                   U+F8FF+F87F  (Apple private use area)
+                  🍏 U+1F34F      GREEN APPLE (graphical repalcement)
+
+### Video Scan
 
 Screen scan, from [this vapor lock description][vapor]:
 - 65 cycles for for each of the 192 scan lines: 40 cycles of drawing
@@ -106,8 +184,8 @@ Other I/O
 
 #### Paddles/Joystick (Mouse/Hand Controller)
 
-Apple II uses a DIP-16 socket ([techref] p.23, p.100), Apple IIc and
-others a DE-9 female jack ([IIc techref] pp.199, 284, 287 ). Paddle
+Apple II uses a DIP-16 socket ([a2ref] p.23, p.100), Apple IIc and
+others a DE-9 female jack ([a2cref] pp.199, 284, 287 ). Paddle
 resistors should be 150 KΩ pots connected to +5V. Paddles are numbered
 from 0 to 3.
 
@@ -152,14 +230,15 @@ available on the peripheral slots.
 
 
 <!-------------------------------------------------------------------->
-[IIc techref]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual
 [a2cref]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual
 [a2ref]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n3/mode/1up
 [bados]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
 [mmphosis]: http://web.archive.org/web/20151021120320/http://hoop-la.ca/apple2/2015/vbl/
+[mouse text]: https://mirrors.apple2.org.za/apple.cabi.net/FAQs.and.INFO/A2.TECH.NOTES.ETC/A2.CLASSIC.TNTS/mouse006.html
 [mouse]: https://www.folklore.org/StoryView.py?project=Macintosh&story=Apple_II_Mouse_Card.txt
+[mtuni]: https://www.kreativekorp.com/charset/map/mousetext/
 [p67532]: http://forum.6502.org/viewtopic.php?f=3&t=5517&sid=f6734cd034b51b20dcd393f67a3c48fe&start=30#p67532
 [rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [relay-io]: https://www.kreativekorp.com/miscpages/a2info/iomemory.shtml
