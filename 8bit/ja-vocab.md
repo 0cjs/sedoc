@@ -40,6 +40,7 @@ up/down, enclosure, solid) then by stroke count in each character.
         直列        ちょくれつ      serial (data), series (electronics)
         直列伝送    ちょくれつでんそう serial transmission
         直接モード  ちょくせつ      direct mode (in BASIC interpreter)
+        省略値      しょうりゃくち  default value
         音量        おんりょう      audio volume
     10  書き込む    かきこむ        fill in, post, store
     13  禁止        きんし          inhibited
