@@ -7,20 +7,49 @@ References:
 - [富士通 FMシリーズ ユーザーズマニュアル F-BASIC入門][fm7bintro]
   Ch.6.2 p.159 is machine language info; ch.6.3 p.162 is monitor.
 
-The FM-7 started with V3.0; 1.0 and 2.0 were FM-8 only. ROM BASIC does
-not include disk I/O; `LOADM "0:FOO"` will give `Device Unavailable`
-and `FILES "0:"`, `Illegal Function Call`. `DSKINI 1` returns `Syntax
-Error`.
+### History and Versions
 
-User program code starts at $0600; all memory below that is reserved
-for BASIC.
+BASIC runs in "ROM mode" or "DISK mode". ROM mode does not include disk
+I/O; `LOADM "0:FOO"` will give `Device Unavailable` and `FILES "0:"`,
+`Illegal Function Call`. `DSKINI 1` returns `Syntax Error`. Versions are:
+
+    V1.0/ROM    FM-8    built-in ROM
+    V1.0/DISK   FM-8    built-in ROM + system disk
+    V2.0/5      FM-8    minifloppy disk
+    V2.0/8      FM-8    "standard" floppy disk
+    V3.0/ROM    FM-7    built-in ROM
+    V3.0/DISK   FM-7    built-in ROM + system disk
+
+- V2.0 adds
+  - `CHAIN`, `COMMON`, `ERASE`
+  - printer I/O support and `LLIST`, `LPRINT`, `LPOS`
+  - `PRINT USING`
+  - error behaviour of `TERM` is changed
+  - user program auto-start
+- V3.0 removes:
+  - bubble memory I/O, `BUBINI`, `BUBR`, `BUBW`
+  - and analogue I/O port support, `ANPORT`
+
+### Memory
+
+User program code starts at $0600; all memory below that is reserved for
+BASIC housekeeping.
+
+The default string heap is 300 bytes; use `CLEAR` to change this.
+
+### General Notes
 
 - Press `ESC` to pause listing after current line; again to print just next
   line; any other key to resume.
+- Line numbers 0-63999. `.` is "current" line number, set by error etc.
+- Comments may start anywhere with `'` (no preceeding `:` required)
 - Use `&Hnn` for hex numbers; `&Onn` `&nn` for octal.
-- Variables are single precision float (`!`) by default `x` and `x!` are
-  the same variable. Other suffixes (`%` integer, `#` double-precision
-  float, `$` string) are separate variables.
+- Variables are 4-byte single precision float (`!`, `n.nE+n`) by default;
+  `x` and `x!` are the same variable. Other suffixes are separate variables:
+  `#` `n.nD+n` 8-byte double-precision float, `%` integer, `$` string.
+  `DEFINT`, `DEFSNG`, `DEFDBL` `DEFSTR` available.
+- Variable names are case-insensitive, significant to 16 chars plus suffix,
+  and cannot start with a reserved word.
 - Arrays are 0-based; `DIM X(3)` has indices `0`, `1`, `2`.
 
 ### Commands/Statements/Functions
@@ -63,6 +92,13 @@ Selected display-related commands:
 - `SCREEN` (3-111): Select VRAM usage.
 - `PSET`: Set/clear a point on the screen.
 
+Numeric functions:
+- `¥` (2-13) floating point division, truncated result
+- `MOD` (2-13) integer division remainder; inputs truncated first
+- `NOT,AND,OR,XOR,IMP,EQV` all operate as expected on 16-bit ints
+  - `IMP` is material implication; `1 IMP 0 = 0`, all else is 1
+  - `EQV` is the inversion of `XOR`
+
 String and data commands and functions:
 - `VAL(a$)` (3-191): Parse _a$_ as a number. `&H` prefix parses as hex.
 - `STR$(n)` (3-186): Return _n_ as its (decimal) string representation.
@@ -90,25 +126,98 @@ Machine-language-related commands:
 I/O and Disk
 ------------
 
-Devices (optionally precede filename arguments; case sensitive):
+Devices (2-18) optionally precede filename arguments; case sensitive:
 
-    0: 1: 2: 3:     floppy drives
-    BUB0: BUB1:     bubble memory cartridge
-    CAS0:           cassette tape (CMT)
     KYBD:           keyboard
     SCRN:           screen
     LPT0:           printer
-    COM0:           RS-232 port (1-4 also possible)
+    COM0:           RS-232 port (1-4 also possible w/expansion unit)
+    CAS0:           cassette tape (CMT) (ROM mode default)
+    0: 1: 2: 3:     floppy drives (disk mode default is 0:)
+    BUB0: BUB1:     bubble memory cartridge
 
-Files have 8-character case-sensitive names and the following additional
-attributes. BASIC programs are always type, with `B` format unless saved
+These are specified in double quotes as device followed by "descriptor",
+usually an 8-character case-sensitive filename except as specified below.
+Leaving out the device assumes the default device for ROM or disk mode.
+Additional attributes after the quoted device/filename are separated by
+with a comma. BASIC programs are always type, with `B` format unless saved
 with `,A` option to get `A` format.
-
 
     種類  しゅるい  type            0=BASIC  1=data  2=MLprog
     形式  けいしき  format          A=ASCII  B=BINARY
     編成  へんせい  organization    S=sequential  R=random-access
                     clusters used
+
+`COMn:` and `TEMR` descriptors are 1-6 character character option strings
+in parens, e.g. `COM0:(S8N2)` giving clock divisor (`S`=slow=1/64), bits,
+parity, stop bits, duplex (default full) and auto-LF (default on).
+
+Display descriptors are size (default 40×20), scroll start line (0), scroll
+line (20), PFkey line (off), color (white). See `WIDTH` and `CONSOLE`
+statements.
+
+### File Formats
+
+CMT and disk formats described in §2.10, starting page 2-21.
+
+File type codes:
+
+    00  BASIC program (binary or ASCII format)
+    01  data (as read/written with BASIC OPEN etc. commands)
+    02  machine-language program (maybe with addresss/length header?)
+
+File attribute codes (taken from disk directory description):
+
+    00  binary
+    FF  ASCII
+
+#### CMT ("Data Recorder")
+
+CMT is alternating gaps and blocks, with blocks consisting of sequences
+of bytes each framed by a `0` start bit and `11` stop bits.
+
+    01
+    3C
+    nn   block type: 00=header 01=data block FF=end block
+    nn   block length ($00-$FF)
+    ...  data: 0-255 bytes
+    nn   checksum
+
+Header block data:
+
+     1-8    filename, padded with spaces
+     9      file format: 00=BASIC program, 01=data, 02=machine language
+    10      ascii/binary attribute: 00=binary, FF=ASCII
+    11-16   reserved?
+
+End blocks have no data.
+
+#### Bubble Cassette
+
+Each 32 KB cartridge is 1024 blocks (0-1023) of 32 bytes each. Blocks can
+be directly addressed by F-BASIC, which also supports a file system
+initialized with `BUBINI` where block 0 is a volume label:
+
+     0-7    volume name, e.g. "VOL00000"
+     8-9    volume size (1024)
+    10-11   first empty block (written at file close; initially 0001)
+    12-31   00
+
+and files use the following header:
+
+     0-7    filename
+     8      file type: 00=BASIC program, 01=data, 02=machine language
+     9      attribute: 'A'=ASCII, 'B'=binary
+    10-11   size: 2-1023 pages, includes page for file label
+    12      byte count in last page (1-32)
+    13-31   (empty? data?)
+
+#### Floppy Disk
+
+320 KB, 2 sides, 40 cylinders/tracks, 16 sectors/track, 32
+sectors/cylinder. See [`floppy`](./floppy.md) for details.
+
+### Commands, Statements, Functions
 
 - `FILES ["dev:"][,L]` (3-23): Print file listing to screen (`,L`=printer)
   in four columns, giving name and other fields below (no organization/size

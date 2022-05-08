@@ -145,36 +145,58 @@ Memory I/O Addresses
 Disk Format
 -----------
 
-P. 2-23 through 2-30 of [富士通 FM-7 F-BASIC 文法書][fm7basic] gives
-low-level information on the disk format. Disks are 40 cylinder
-(tracks 0-39, sides 0-1) with 16 × 256-byte sectors per track,
-numbered 1-16 on side
-0 and 17-32 on side 1.
+[富士通 FM-7 F-BASIC 文法書][fm7basic] §2.10.3 pp. 2-23 through 2-30 gives
+low-level information on the disk format.
 
-    Track Sectors   Descr.
-      0     1,2     IPL code
-      0      3      Disk ID
-      0     4-16    Reserved
-      0    17-32    Disk code
-      1      1      FAT
-      1     2-3     Reserved
-      1     4-32    Directory
-     2-39           User data
+8" 1 MB (2-27) and 5.25" 360K are both 256 bytes per cluster:
 
-Track 0 sector 28 contains information ID information (§2-30).
-Byte offsets:
+    5.25"   8"      Description
+    ─────────────────────────────────────────────────────────
+    0-1     0-1     side number
+    0-39    0-76    cylinder and track number
+    1-16    1-26    sector number on track
+    1-32    1-52    sector number on cylinder (but often called "track")
 
-    0-2     `SYS` for a system disk; `S  ` for user disk.
-     3      Autostart functionality used by 8" drives
-     4      Autostart: file buffers ("How many Disk Files (0-15)")
-     5      Autostart functionaly used by 5" disk drives
-    6-255   All $00
+5.25" format/layout described here; see book for slightly different 8" layout.
 
+    Trk Sectors Description
+    ────────────────────────────────────────────────────────────────
+     0   1-2    IPL
+     0   3      Disk ID (identifies it as F-BASIC disk)
+     0   4-16   reserved
+     0  17-32   "disk code" loaded at $7000-$7FFF at IPL, if used
+     1   1      FAT
+     1   2-3    reserved
+     1   4-32   directory
+     2   1-8    cluster 0
+      ...
+    39  25-32   cluster 151
 
-F-BASIC uses 8 sector clusters. More info available on FAT, disk
-catalogue, etc.
+The FAT is an array of one byte per cluster, values:
 
-Disk code is loaded from $7000-$7FFF, if used.
+    00-97   cluster in use and full; value is number of next cluster
+    C0-C7   final cluster of file; subtract $BF for count of sectors in use
+    FD      no sectors used in cluster
+    FE      system cluster
+    FF      cluster should never be used (?)
+
+The directory is an array of 32-byte entries:
+
+     0-7    file name
+     8-10   reserved
+    11      file type: 00=BASIC program, 01=(BASIC) data, 02=machine language
+    12      ASCII flag: FF=ASCII, 00=binary
+    13      random access flag
+    14      file data starting cluster
+    15-31   reserved
+
+On 8" floppies only, track 0 sector 28 contains ID information (2-30):
+
+     0-2    `SYS` for a system disk; `S  ` for user disk.
+      3     Autostart functionality used by 8" drives
+      4     Autostart: file buffers ("How many Disk Files (0-15)")
+      5     Autostart functionaly used by 5" disk drives
+     6-255  All $00
 
 
 Sample Code
