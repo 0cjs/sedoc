@@ -9,13 +9,20 @@ References:
   only for systems through FM-7. Also includes Z80/serial/etc. card
   schematics.
 
-The external disk unit (MB27601, MB27607, MB27605, Epson TF-10)
-contains the controller; the card in the computer doesn't seem to do
-much but provide a bit of logic for the parallel interface between the
-card and disk unit.
+The external disk unit contains the controller as well as the drives; the
+card in the computer ([MB22603] box for FM-8, MB22407 card for FM-7) seems
+just to do a bit of decoding and bus buffering. External disk units:
+- MB27601
+- MB27605
+- MB27607
+- MB27611 (MB27612 is expansion box?)
+- MB27631(H)
+- MB27631: 2× 3.5" drives (uses same MB22407 interface card)
+- Epson TF-10 (its own I/F card, but looks similar to MB22407)
 
-(Note the Epson TF-10 came in both FM-7 and PC-8001 versions; the
-latter has "PC専用機" written under the connector on the drive.)
+(Note the Epson TF-10 came in both FM-7 and PC-8001 versions; the latter
+has "PC専用機" written under the connector on the drive. And I think the
+PC-8001 version is actually the TF-20?)
 
 The external disk unit itself has a large 40-pin chip of some sort
 (Intel? microcontroller?) and a Fujitsu [MB8877][] (MB8876A in the
@@ -218,8 +225,9 @@ access via the registers above, and even formatting I think.
 [shuwa83]: https://archive.org/stream/fbasicii#page/n4/mode/1up
 
 <!-- Drives, Connectors and Cabling -->
-[yd-600]: http://www.bitsavers.org/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
+[mb22603]: http://haserin09.la.coocan.jp/mb22603.html
 [yd-600-tf]: http://www.textfiles.com/bitsavers/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
+[yd-600]: http://www.bitsavers.org/pdf/yeData/FDK-523002_YD-600_Specifications_Jan85.pdf
 [yd-625]: http://ja1wby.art.coocan.jp/hamg/7-fm7-fdd/2-yd-625.html
 
 <!-- Sample Code -->

@@ -1,6 +1,12 @@
 FM-7 and FM77 Information
 =========================
 
+Documentation
+-------------
+
+- [Retro PC Gallery (by はせりん)][haserin] has lots of great
+  FM-8/FM-7/FM77 info: hardware, screenshots, software.
+
 
 Expansion Connectors
 --------------------
@@ -36,4 +42,5 @@ the data and status registers are $FD06 and $FD07.
 
 <!-------------------------------------------------------------------->
 [fcn360]: https://www.fujitsu.com/downloads/MICRO/fcl/connectors/fcn-360.pdf
+[haserin]: http://haserin09.la.coocan.jp/index.html
 [ys serial]: http://ysflight.in.coocan.jp/FM/fm7_rs232c/e.html
