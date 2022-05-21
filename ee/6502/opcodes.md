@@ -32,7 +32,7 @@ This is a quick reference for hand-assembly.
     SBC     E9₂     E5₃     ED₄     F5₄     FD₄₊    F9₄₊    E1₆     F1₅₊
     CMP     C9₂     C5₃     CD₄     D5₄     DD₄₊    D9₄₊    C1₆     D1₅₊
     CPX     E0₂     E4₃     EC₄
-    CPX     C0₂     C4₃     CC₄
+    CPY     C0₂     C4₃     CC₄
 
             #nn     zp     addr    zp,X   aaaa,X  aaaa,Y  (zp,X)  (zp),Y
     ORA     09₂     05₃     0D₄     15₄     1D₄₊    19₄₊    01₆     11₅₊
