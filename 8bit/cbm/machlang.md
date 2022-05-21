@@ -1,6 +1,8 @@
 Machine Language
 ================
 
+See also [TEDMON](./tedmon.md).
+
 
 Cartridge Program Setup
 -----------------------
