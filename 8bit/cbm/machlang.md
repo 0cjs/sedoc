@@ -31,8 +31,9 @@ entrypoint options to prepend the little-endian 2-byte start address:
     p2bin -e 0x801 -S L2 foo.p foo.prg
 
 A machine-langauge program can work with the `Shift-RUN/STOP` autoload
-(which uses `,8,0`) by prefixing it with a BASIC program that executes `SYS
-2064` (or whatever the start address is). [[rcse 17475]]
+(which uses `,8,0`) or [VICE autoload][vice] by prefixing it with a BASIC
+program that executes `SYS 2064` (or whatever the start address is).
+[[ophis]] [[rcse 17475]]
 
 
 Cartridge Program Setup
@@ -90,6 +91,8 @@ second after every newline.
 
 
 <!-------------------------------------------------------------------->
+[VICE autoload]: ./emulators.md#files-interfaces
+[ophis]: https://michaelcmartin.github.io/Ophis/book/x72.html
 [rcse 17475]: https://retrocomputing.stackexchange.com/q/17475/7208
 
 [MultiMax]: http://www.multimax.co/download/
