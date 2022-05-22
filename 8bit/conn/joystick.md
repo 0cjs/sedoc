@@ -21,6 +21,10 @@ MSX, but check strobe behaviour.
 
 ### Atari
 
+Some Commodore 64 games (such as [Robocop 2]) could make use of a second
+joystick button wired to pin 9. The Cheetah Annihilator was one example of
+such a joystick. [[rcse 2499]], [[lemon64]]
+
 __Paddle controllers__ are a pair of pots on a single cable. The buttons for
 controls 1 and 2 (A and B) short pins 3 and 4 (normally left and right
 joystick switches) respectively to pin 8. The pots are 1 MΩ with one end
@@ -85,9 +89,16 @@ __MSX-Compatible Systems:__
 
 
 <!-------------------------------------------------------------------->
-[amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
+[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
+
+[rcse 2499]: https://retrocomputing.stackexchange.com/a/2640/7208
+[lemon64]: https://www.lemon64.com/forum/viewtopic.php?t=48672
+[Robocop 2]: https://www.lemon64.com/forum/viewtopic.php?t=35034
 [herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
+
 [jr200]: https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
+
 [letoine]: https://github.com/letoine/MegadriveControllerToUSB
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
-[wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
+
+[amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
