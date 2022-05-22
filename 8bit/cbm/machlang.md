@@ -17,6 +17,14 @@ first floppy drive and _,n_ is an optional load style:
   load at the start of the BASIC program text area. ($801 on C64; varies on
   other models.)
 
+BASIC Program Text start addresses (`Ver`=version of BASIC):
+
+    Addr   Ver  Machine
+    ───────────────────────────────────────────────────────────────────────────
+    $0401  1.0  PET 2001
+    $0801  2.0  Commodore 64
+    $1001  3.5  TED (C16, C116, PLUS/4), graphics pages off
+
 The Macroassembler AS `p2bin` program can generate these files by using the
 entrypoint options to prepend the little-endian 2-byte start address:
 
