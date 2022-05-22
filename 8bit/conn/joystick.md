@@ -15,9 +15,11 @@ MSX, but check strobe behaviour.
      4   right    right     Right            right   4
      5   padl B   +5V Vcc     +5V   +5V      B3(M)   5
      6   button   btn 1     Btn A   Btn B    B1(L)   6
-     7   +5V      btn 2       GND ● +5V      +5V     7
+     7   +5V†     btn 2       GND ● +5V      +5V     7
      8   GND      COM/STR     GND   GND      GND     8
      9   padl A   GND       Start   Start    B2(R)   9
+
+     † Ground on Commodore TED (C16, C116, Plus/4) machines
 
 ### Atari
 
@@ -36,12 +38,26 @@ __Driving controllers__ are a single infinite-turn knob that with each
 quarter turn generates a 2-bit gray code sequence (00, 01, 11, 10) on pins
 1 and 2. The "accelerator" button shorts pin 6 to pin 8.
 
-__"Keyboard" controllers__ have 12 button telephone-style keypad (`1`-`9`, `*`,
-`0`, `#`) Pins 1-4 are connected to the switch rows, pins 5, 9, 6 to the
-columns, and pin 7 (+5V) to the first two columns via individual 4k7
-resistors (pull-ups?).
+__"Keyboard" controllers__ have a 12 button telephone-style keypad in four
+rows: `123`, `456`, `789`, `*0#`.
+- Pins 1-4 are connected to the switch rows
+- Pin 6 (button) is connected to column 3.
+- Pin 7 (+5V) pulls columns 1 and 2 high via 4k7 pull-ups in the
+  controller.
+- Pins 5 and 9 (padl B and A) are connected after the pull-ups above and
+  used to pull columns 1 and/or 2 low .
 
 References: [[herc-atari]]
+
+### Commodore
+
+The VIC-20 and Comodore 64 are the same as above.
+
+The TED machines (C16, C116 and Plus/4) use a MiniDIN-8 connector and:
+- have no pin 9
+- provide +5V on pin 5 with no current limiting resistor
+- tie pin 7 to ground instead of +5V;
+- use diode-isolated pull-ups instead of relying on the VIA/CIA's pull-ups.
 
 ### MSX
 
