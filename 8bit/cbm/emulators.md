@@ -51,10 +51,8 @@ For F2/F4/F6/F8 use those keys; you may need to use SHIFT as well.
 
 #### Files Interfaces
 
-A `.prg` file contains a (little-endian) load address in the first two
-bytes followed by data, usually a BASIC program or assembler code. With
-`LOAD "…",8,n`, _n_=0 will load at the default BASIC start address ($801)
-and _n_=1 will use the file's load address.
+See [`machlang`](machlang.md) for information on `.PRG` file format
+and loading.
 
 Tape and disk images may be explicitly attached at startup with `-1
 foo.t64`  and `-[8|9|10|11] foo.d64`.

@@ -4,6 +4,29 @@ Machine Language
 See also [TEDMON](./tedmon.md).
 
 
+Disk/Cassette Program Setup
+---------------------------
+
+A `.PRG` file contains a (little-endian) load address in the first two
+bytes followed by data, usually a BASIC program or assembler code. `LOAD
+"…",8,n` will load the file into memory; `,8` is the device number for the
+first floppy drive and _,n_ is an optional load style:
+- _n_=1 will load the data into memory at the load address given in the
+  file.
+- _n_=0 (the default) will ignore the load address in the file and instead
+  load at the start of the BASIC program text area. ($801 on C64; varies on
+  other models.)
+
+The Macroassembler AS `p2bin` program can generate these files by using the
+entrypoint options to prepend the little-endian 2-byte start address:
+
+    p2bin -e 0x801 -S L2 foo.p foo.prg
+
+A machine-langauge program can work with the `Shift-RUN/STOP` autoload
+(which uses `,8,0`) by prefixing it with a BASIC program that executes `SYS
+2064` (or whatever the start address is). [[rcse 17475]]
+
+
 Cartridge Program Setup
 -----------------------
 
@@ -59,8 +82,9 @@ second after every newline.
 
 
 <!-------------------------------------------------------------------->
-[MultiMax]: http://www.multimax.co/download/
+[rcse 17475]: https://retrocomputing.stackexchange.com/q/17475/7208
 
+[MultiMax]: http://www.multimax.co/download/
 [alphacart]: http://swut.net/files/Alphaworks_8k_Cartridge.pdf
 [lemon-64kcart]: https://www.lemon64.com/forum/viewtopic.php?t=67075
 
