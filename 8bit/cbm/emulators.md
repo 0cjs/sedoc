@@ -25,20 +25,22 @@ section below for more details.
 Both symbolic (PC `"` gives `"`) and positional (Shift-2 gives `"`)
 are supported, as well as user mappings.
 
-The docs are incomplete, but [`gtk3_sym.vkm`] has the full standard
-mapping.
+The docs are incomplete, but the default mapping files can be found on the
+local filesystem (under `/usr/share/vice/MACHINE/*.vkm` on Debian) or
+online: [`C64/gtk3_sym.vkm`].
 
-#### C64 Symbolic Mappings
-
-    Commodore   PC
-    ---------------------
-    CTRL        Tab
-    C=          Left-Ctrl
-    STOP/RUN    Esc
-    CLR/HOME    Home
-    RESTORE     PgUp
-    £           \
-    ←           _
+    Key         C64         PLUS4
+    ───────────────────────────────
+    CTRL        CtrlL       CtrlL
+    C=          Tab         Tab
+    RUN/STOP    Esc         End
+    HOME/CLR    Home        Home
+    RESTORE     PgUp        n/a
+    £           \           \
+    ←           _           `
+    π           ~¹          ~
+    ───────────────────────────────
+    ¹ inconsistent behaviour on x64: sometimes π, sometimes ←
 
 For F2/F4/F6/F8 use those keys; you may need to use SHIFT as well.
 
@@ -209,7 +211,7 @@ delete/rename file, format disk, and allocate/deallocate sector.
 
 <!-------------------------------------------------------------------->
 [MESS]: https://en.wikipedia.org/wiki/Multi_Emulator_Super_System
-[`gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
+[`C64/gtk3_sym.vkm`]: https://sourceforge.net/p/vice-emu/code/HEAD/tree/trunk/vice/data/C64/gtk3_sym.vkm
 [c1541]: http://vice-emu.sourceforge.net/vice_13.html
 [d64]: http://unusedino.de/ec64/technical/formats/d64.html
 [diskimage.c]: https://paradroid.automac.se/diskimage/
