@@ -103,6 +103,17 @@ __MSX-Compatible Systems:__
 +5V is 50 mA max.
 
 
+Converters
+----------
+
+Answers to RCSE [Joystick adapter from 9-pin to USB][rcse 16066] list
+several different converters to USB, including:
+- [Stelladaptor] schematics etc. are under a Creative Commons licence.
+- [2600-daptor.com][26dap]: various adapters for many Atari-style
+  controllers and various gamepads.
+- [Bliss Box] has a range of adapters with very wide support.
+
+
 
 <!-------------------------------------------------------------------->
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
@@ -118,3 +129,8 @@ __MSX-Compatible Systems:__
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
 
 [amiga]: https://allpinouts.org/pinouts/connectors/input_device/mouse-joystick-amiga-9-pin/
+
+[26dap]: http://2600-daptor.com/
+[Bliss Box]: https://bliss-box.net/
+[Stelladaptor]: http://www.grandideastudio.com/stelladaptor-2600/
+[rcse 16066]: https://retrocomputing.stackexchange.com/q/16066/7208
