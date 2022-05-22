@@ -4,7 +4,7 @@ Commodore Basic Notes
 References:
 - [Commodore 64 Programmer's Reference Guide][prg]
 
-Input:
+RUN/STOP:
 - `RUN/STOP` breaks; if that fails reset with BIOS `RUN/STOP`+`RESTORE`.
   - Deactivate w/`POKE 788,52`; reactivate w/`POKE 788,49`.
 - Shift+`RUN/STOP` executes `LOAD` command (cassette only).
@@ -25,6 +25,10 @@ Commands:
 - `SAVE "filename",8` will silently not save (except for green
   blinking light) if the file already exists. Use `SAVE
   "@0:filename",8` to overwrite.
+
+Statements:
+- `GET a$`: read a character, setting _a$_ to it or `""` if no
+  character is immediately available. Equivalant to `INKEY$()`.
 
 Functions:
 - `AND`, `OR` operate on and return 16-bit signed ints. `XOR` is not
