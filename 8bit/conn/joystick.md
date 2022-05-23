@@ -23,10 +23,6 @@ MSX, but check strobe behaviour.
 
 ### Atari
 
-Some Commodore 64 games (such as [Robocop 2]) could make use of a second
-joystick button wired to pin 9. The Cheetah Annihilator was one example of
-such a joystick. [[rcse 2499]], [[lemon64]]
-
 __Paddle controllers__ are a pair of pots on a single cable. The buttons for
 controls 1 and 2 (A and B) short pins 3 and 4 (normally left and right
 joystick switches) respectively to pin 8. The pots are 1 MΩ with one end
@@ -47,11 +43,21 @@ rows: `123`, `456`, `789`, `*0#`.
 - Pins 5 and 9 (padl B and A) are connected after the pull-ups above and
   used to pull columns 1 and/or 2 low .
 
-References: [[herc-atari]]
+The much later Atari 7800 (1986) had a two-button joystick with resistors
+and didodes that fed +5V to both paddle inputs. Pressing either button
+would ground pin 6, and each button separately would ground one of the
+paddle inputs. This made either button work on 2600 and 7800 single-button
+games, but properly programmed games could distinguish the two buttons.
+
+References: [[herc-atari]], [[rcse 24536]]
 
 ### Commodore
 
 The VIC-20 and Comodore 64 are the same as above.
+
+Some Commodore 64 games (such as [Robocop 2]) could make use of a second
+joystick button wired to pin 9. The Cheetah Annihilator was one example of
+such a joystick. [[rcse 2499]], [[lemon64]]
 
 The TED machines (C16, C116 and Plus/4) use a MiniDIN-8 connector and:
 - have no pin 9
@@ -117,11 +123,13 @@ several different converters to USB, including:
 
 <!-------------------------------------------------------------------->
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
+[rcse 24536]: https://retrocomputing.stackexchange.com/a/24536/7208
 
-[rcse 2499]: https://retrocomputing.stackexchange.com/a/2640/7208
-[lemon64]: https://www.lemon64.com/forum/viewtopic.php?t=48672
-[Robocop 2]: https://www.lemon64.com/forum/viewtopic.php?t=35034
 [herc-atari]: http://herculesworkshop.com/cgi-bin/p/awtp-custom.cgi?d=hercules-workshop&page=28360
+
+[Robocop 2]: https://www.lemon64.com/forum/viewtopic.php?t=35034
+[lemon64]: https://www.lemon64.com/forum/viewtopic.php?t=48672
+[rcse 2499]: https://retrocomputing.stackexchange.com/a/2640/7208
 
 [jr200]: https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
 
