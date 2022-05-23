@@ -67,7 +67,7 @@ also define two subsets: "three-line" (GND, TXD and RXD) and "X-line" (GND,
 swapped TXD/RXD and VIC DSR input from the device's DTR).
 
 The Plus/4 apparently has some slight differences in the serial interface
-that cause some hardware for VIC-20/C64 not to work. ([[p4pr]] p.380) The
+that cause some hardware for VIC-20/C64 not to work. ([[p4prg]] p.380) The
 Commodore VIC Modem does not work; the Commodore 1660 MODEM/300 is
 compatible with all.
 
@@ -130,8 +130,8 @@ References
 - \[p4sc3] [Plus/4 schematic, page 3][p4sc3]. Details user port
   connections.
 - \[p4um] [_Commodore Plus/4 User's Manual_][p4um]. Commodore, 1984.
-- \[p4pr] Cyndie Merten, Sarah Meyer, [_Programmer's Reference Guide for
-  the Commodore Plus/4_][p4pr]. Scott Foresman and Company, 1986. Mentions
+- \[p4prg] Cyndie Merten, Sarah Meyer, [_Programmer's Reference Guide for
+  the Commodore Plus/4_][p4prg]. Scott Foresman and Company, 1986. Mentions
   that some older VIC-20/C64 serial devices don't work on the Plus/4 due to
   port differences (p.380 P.392). Describes KERNAL interface to serial port
   for BASIC (p.381 P.393) and machine language (p.389 P.401).
@@ -149,6 +149,6 @@ References
 [DeadTED]: https://plus4world.powweb.com/images/hardware/commodore_plus4_rs232.pdf
 [VIA]: http://archive.6502.org/datasheets/mos_6522_preliminary_nov_1977.pdf
 [cca-port]: https://www.commodore.ca/manuals/pdfs/commodore_pet_vic-20_c64_port_pinouts.pdf
-[p4pr]: https://archive.org/details/Programmers_Reference_Guide_for_the_Commodore_Plus_4_1986_Scott_Foresman_Co/page/n391/mode/1up?view=theater
+[p4prg]: https://archive.org/details/Programmers_Reference_Guide_for_the_Commodore_Plus_4_1986_Scott_Foresman_Co/page/n391/mode/1up?view=theater
 [p4sc3]: http://www.zimmers.net/anonftp/pub/cbm/schematics/computers/plus4/plus4-310164-3of4.gif
 [p4um]: https://plus4world.powweb.com/publications/Commodore_Plus4_Users_Manual
