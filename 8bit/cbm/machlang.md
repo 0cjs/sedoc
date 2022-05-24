@@ -75,6 +75,19 @@ In the code you can see following this the configuration for the CIAs
 (one on MAX, two on C64) and the VIC-II, followed by a memory test.
 
 
+Zero Page Usage
+---------------
+
+The zero page usage seems to differ significantly between PET/C64 and TED,
+though there are definite shifts between PET and C64 as well.
+
+References:
+- comp.sys.cbm (1994-12-14) [PET RAM memory map][c.s.c-pet-zp] (2.0 and 4.0?)
+- c64-wiki.com: [Zeropage][c64w-zp]
+- unusedino.de: [Mapping the Commodore 64][mapping]
+- [Plus/4 PRG][p4prg]: Detailed Memory Map p.427 P.439
+
+
 ROM Routines
 ------------
 
@@ -98,6 +111,11 @@ second after every newline.
 [MultiMax]: http://www.multimax.co/download/
 [alphacart]: http://swut.net/files/Alphaworks_8k_Cartridge.pdf
 [lemon-64kcart]: https://www.lemon64.com/forum/viewtopic.php?t=67075
+
+[c.s.c-pet-zp]: http://dunfield.classiccmp.org/pet/petmem.txt
+[c64w-zp]: https://www.c64-wiki.com/wiki/Zeropage
+[mapping]: http://unusedino.de/ec64/technical/project64/mapping_c64.html
+[p4prg]: https://archive.org/details/Programmers_Reference_Guide_for_the_Commodore_Plus_4_1986_Scott_Foresman_Co/page/n391/mode/1up?view=theater
 
 [aay]: http://unusedino.de/ec64/technical/aay/c64/
 [basromma]: http://unusedino.de/ec64/technical/aay/c64/basromma.htm
