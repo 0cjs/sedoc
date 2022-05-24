@@ -3,6 +3,7 @@ Commodore Basic Notes
 
 References:
 - [Commodore 64 Programmer's Reference Guide][prg]
+- Wikipedia, Commdore BASIC [Versions and Features][wpver]
 
 RUN/STOP:
 - `RUN/STOP` breaks; if that fails reset with BIOS `RUN/STOP`+`RESTORE`.
@@ -136,3 +137,4 @@ something else is broken.)
 [pickett85]: https://www.atarimagazines.com/compute/issue67/292_1_Readers_Feedback_Borrowing_ML_From_BASIC.php/
 [prg]: https://archive.org/details/Commodore_64_Programmers_Reference_Guide_1983_Commodore
 [v20-prg]: https://archive.org/details/VIC-20_Programmers_Reference_Guide_1983_Commodore_fourth_printing
+[wpver]: https://en.wikipedia.org/wiki/Commodore_BASIC#Versions_and_features

@@ -82,10 +82,13 @@ The zero page usage seems to differ significantly between PET/C64 and TED,
 though there are definite shifts between PET and C64 as well.
 
 References:
+- Wikipedia, Commdore BASIC [Versions and Features][wpver] (for ROM vers)
 - comp.sys.cbm (1994-12-14) [PET RAM memory map][c.s.c-pet-zp] (2.0 and 4.0?)
 - c64-wiki.com: [Zeropage][c64w-zp]
 - unusedino.de: [Mapping the Commodore 64][mapping]
 - [Plus/4 PRG][p4prg]: Detailed Memory Map p.427 P.439
+- [Commodore 128 Programmer's Reference Guide][128prg], Bantam Books, 1986.
+  p.502 P.512 Ch.15 The Commdore 128 and Commodore 64 memory Maps
 
 
 ROM Routines
@@ -112,10 +115,12 @@ second after every newline.
 [alphacart]: http://swut.net/files/Alphaworks_8k_Cartridge.pdf
 [lemon-64kcart]: https://www.lemon64.com/forum/viewtopic.php?t=67075
 
+[128prg]: https://archive.org/details/C128_Programmers_Reference_Guide_1986_Bamtam_Books/page/502/mode/1up
 [c.s.c-pet-zp]: http://dunfield.classiccmp.org/pet/petmem.txt
 [c64w-zp]: https://www.c64-wiki.com/wiki/Zeropage
 [mapping]: http://unusedino.de/ec64/technical/project64/mapping_c64.html
 [p4prg]: https://archive.org/details/Programmers_Reference_Guide_for_the_Commodore_Plus_4_1986_Scott_Foresman_Co/page/n391/mode/1up?view=theater
+[wpver]: https://en.wikipedia.org/wiki/Commodore_BASIC#Versions_and_features
 
 [aay]: http://unusedino.de/ec64/technical/aay/c64/
 [basromma]: http://unusedino.de/ec64/technical/aay/c64/basromma.htm
