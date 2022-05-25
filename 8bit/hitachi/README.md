@@ -33,8 +33,8 @@ character-based "graphics" (except Jr. added 256×192):
 - Basic Master Level 3 __MB-6890__ (1980-05): 1 MHz.
   640×200 b/w, 320×200×8 (per-byte color bits, FB in main addr space).
   600 bps cassette; optional floppies.
-- Mark II __MB6891__ (1982-04):
-- Mark 5 __MB6892__ (1983-04): Programmable character generator.
+- Mark II __MB-6891__ (1982-04):
+- Mark 5 __MB-6892__ (1983-04): Programmable character generator.
 
 Non-composite video output may also be available.
 
