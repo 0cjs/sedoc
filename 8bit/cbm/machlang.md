@@ -81,6 +81,10 @@ Zero Page Usage
 The zero page usage seems to differ significantly between PET/C64 and TED,
 though there are definite shifts between PET and C64 as well.
 
+Free zero page area for applications:
+- $FB-$FE: C64, C128
+- $D8-$E8: Plus/4
+
 Possible locations for temporary storage:
 - $03-$06 is "Storage for RENUMBER" on the Plus/4. It stomps on the
   (generally unused) pointers to ROM FP routines on the C64. These are temp
@@ -89,6 +93,8 @@ Possible locations for temporary storage:
   2.0 (C64) and 3.5 (TED); it's shifted two bytes up ($63-$72) in BASIC 7.0
   (C128). The ML monitor on the 128 uses T0 ($60), T1 ($63) and T2 ($66);
   BASIC 3.5 may use the same or 2 locations down for its monitor.
+  - Using these on the Plus/4 seems to corrupt the BASIC program currently
+    in memory.
 
 References:
 - Wikipedia, Commdore BASIC [Versions and Features][wpver] (for ROM vers)
