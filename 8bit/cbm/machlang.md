@@ -99,6 +99,7 @@ Possible locations for temporary storage:
 References:
 - Wikipedia, Commdore BASIC [Versions and Features][wpver] (for ROM vers)
 - comp.sys.cbm (1994-12-14) [PET RAM memory map][c.s.c-pet-zp] (2.0 and 4.0?)
+- Jim Butterfield, [VIC 20 / Commodore 64 Memory Map][butt]
 - c64-wiki.com: [Zeropage][c64w-zp]
 - unusedino.de: [Mapping the Commodore 64][mapping]
 - [Plus/4 PRG][p4prg]: Detailed Memory Map p.425 P.439
@@ -131,6 +132,7 @@ second after every newline.
 [lemon-64kcart]: https://www.lemon64.com/forum/viewtopic.php?t=67075
 
 [128prg]: https://archive.org/details/C128_Programmers_Reference_Guide_1986_Bamtam_Books/page/502/mode/1up?view=theater
+[butt]: https://www.commodore.ca/wp-content/uploads/2018/11/commodore_vic-20_c64_memory_map.pdf
 [c.s.c-pet-zp]: http://dunfield.classiccmp.org/pet/petmem.txt
 [c64w-zp]: https://www.c64-wiki.com/wiki/Zeropage
 [mapping]: http://unusedino.de/ec64/technical/project64/mapping_c64.html
