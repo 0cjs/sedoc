@@ -131,6 +131,11 @@ This was confirmed by observing the behaviour of a real Apple 1 in
 [this Breker auction video][breker]. The [Apple 1js emulator][a1js]
 and [Pom1 1.0.0][pom1] are also consistent with this.
 
+__XXX__ [Apple 1js][a1js] is not consistent with this as of 2022-05: I just
+tested calling `ECHO` (which does not modify the output char) with $01-$1F
+and, excepting $0D, it prints the same punctuation and digit sticks as
+$21-$3F.
+
 The [nappel1] emulator is quite inaccurate (though convenient to use).
 It backspaces and erases the previous character when either `_` or
 backspace is typed, prints a space for nonprinting chars, and prints
