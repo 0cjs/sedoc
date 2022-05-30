@@ -81,7 +81,7 @@ Timeline
     1980-01   Sinclair ZX80
     1980-05 * Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
               (¥298,000 initially, ¥198,000 after Fujitsu FM-8 release.)
-    1980-06 * VIC-1001 released (Japan)
+    1980-06 * VIC-1001 released (¥69,800)
     1980-12   TRS-80 Color Computer (6809, 6847, 4K $399, +16K $119)
     1980      Acorn Atom
 
@@ -94,12 +94,12 @@ Timeline
     1981-08 * IBM PC 5150 released ($1565)
     1981-11 * NEC PC-6001 released (¥89,800)
     1981-11 * Panasonic/National JR-100 released (¥54,800)
-    1981-12 * NEC PC-8801 ships (released 1981-11?)
+    1981-12 * NEC PC-8801 ships (released 1981-11? ¥228,000)
     1981-12 * NEC N5200 ships
     1981-12 * BBC Micro released
     1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
-    1982-   * Commodore MAX Machine released
+    1982-   * Commodore MAX Machine released (¥34,800)
     1982-02 * TRS-80 Model 16 (68000, $4999)
     1982-04 * Hitachi MB-6891 Basic Master Level 3 MarkII (¥198,000)
     1982-04   Sinclair Spectrum
@@ -113,7 +113,7 @@ Timeline
     1983-01   Apple IIe ($1395; $1995 w/Disk II, 80-col, Monitor III)
     1983-01   Apple Lisa ($9995)
     1983-03 * NEC PC-8201 (¥138,000)
-    1983-03   NEC PC-8001mkII
+    1983-03   NEC PC-8001mkII (¥123,000)
     1983-03 * Hitachi MB-6892 Basic Master Level 3 Mark5 (¥118,000)
     1983-03   IBM PC/XT 5160
     1983-06   Spectravideo SV-328 (proto-MSX) released; MSX announced (-27)
@@ -122,7 +122,7 @@ Timeline
     1983-08 * Acorn Electron released
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-10   MSX release
-    1983-11   NEC PC-8801mkII
+    1983-11   NEC PC-8801mkII (¥168k/¥225k/¥275k 0/1/2 drives)
     1983      Radio Shack TRS-80 Model 100
     1983      Radio Shack TRS-80 MC-10
 
