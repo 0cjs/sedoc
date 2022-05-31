@@ -43,6 +43,7 @@ up/down, enclosure, solid) then by stroke count in each character.
         省略値      しょうりゃくち  default value
         音量        おんりょう      audio volume
     10  書き込む    かきこむ        fill in, post, store
+        記号        きごう          symbol, code, sign, notation
     13  禁止        きんし          inhibited
 
      3  内蔵        ないぞう        internal
