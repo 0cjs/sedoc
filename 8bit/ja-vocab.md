@@ -19,6 +19,8 @@ up/down, enclosure, solid) then by stroke count in each character.
         倍密度倍    ばいみつどばい  double-density double ???
     11  割込        わりこみ        interrupt
         接地        せっち          electrical ground (アース)
+    12  番地        ばんち          address
+        絶対番地    ぜったいばんち  absolute address
     13  端子        たんし          terminal (for a signal connection)
         解析        かいせき        analysis, analytical study; parsing/parse
         解除        かいじょ        cancellation
