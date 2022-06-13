@@ -72,7 +72,7 @@ mic inputs if no series resistance is used: the input will signal that a
 mic is connected for some blocks and not for others, causing recording
 programs to record silence (or input from another mic). Try a 2K resistor
 in series or see the notes on smartphone connections in
-[conn/din](../conn/din.md).
+[`conn/din`](../conn/din.md).
 
 The input level when recording should be quite high; it's ok (usually
 required) to clip the tops of the square waveform.
@@ -134,7 +134,7 @@ MB-6890 Basic Master Level 3 (and probably later models):
 ### CMT DIN-6
 
 1,4=relay, 2=GND, 3=out/rec, 5=in/play, as tested on MB-6885.
-See [conn/DIN](../conn/DIN.md#DIN-6) for breakout.
+See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 
 
 
