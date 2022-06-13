@@ -48,9 +48,9 @@ Sources and Sinks
 sink number, sink name and several other fields separated by multiple
 spaces. The sink name or number can be passed to:
 
-    paplay -d NAME
-    paplay --device NAME
-    mplayer -ao pulse::NUM
+    paplay -d SINKNAME
+    paplay --device SINKNAME
+    mplayer -ao pulse::SINKNUM
 
 The following options to paplay may also be useful:
 
@@ -59,9 +59,23 @@ The following options to paplay may also be useful:
     --fix-rate          # convert source rate to native rate for output device
     --fix-channels      # convert source channels to native output channels
 
+For recording, `parec` is not normally used because it records in raw
+format; instead use `parecord` to use a container. (SIGINT will end
+recording.)
+
+    parecord --file-format=wav --format=u8 --channels=1 -d SRCNAME FILE.wav
+
+The [formats][pafmt] include `s16le` (the default, which also seems to be
+correct for "Microsoft PCM" in WAV files) and `u8` (unsigned 8-bit, good
+for CMT images).
+
+The `pavucontrol` window can be used to view levels during recording and
+playback.
+
 
 <!-------------------------------------------------------------------->
 [au 581128]: https://askubuntu.com/q/581128/354600
 [aw-pa/e]: https://wiki.archlinux.org/title/PulseAudio/Examples
 [aw-pa]: https://wiki.archlinux.org/title/PulseAudio
 [flatvol]: https://linuxhint.com/per_application_sound_volume_ubuntu/
+[pafmt]: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/SupportedAudioFormats/
