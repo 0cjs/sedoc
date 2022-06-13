@@ -8,11 +8,12 @@ Contents:
 
 #### Overview
 
-Pulseaudio is the usual system; use `pavucontrol` to bring up the mixer,
+PulseAudio is the usual system; use `pavucontrol` to bring up the mixer,
 and `pactl` to make changes at the command-line. (Do not use `pacmd` to
-query the system; that's actually a debugging tool.)
+query the system; that's actually a debugging tool.) ArchWiki docs
+at [PulseAudio][aw-pa] and [PulseAudio/Examples][aw-pa/e].
 
-[Pulseaudio sits on top of][au 581128] systems like ALSA. ALSA interfaces
+[PulseAudio sits on top of][au 581128] systems like ALSA. ALSA interfaces
 directly with the hardware but only one application at a time can use it.
 Going through PulseAudio lets multiple applications record and play sound,
 via ALSA drivers to hardware, network driver to other PulseAudio servers
@@ -61,4 +62,6 @@ The following options to paplay may also be useful:
 
 <!-------------------------------------------------------------------->
 [au 581128]: https://askubuntu.com/q/581128/354600
+[aw-pa/e]: https://wiki.archlinux.org/title/PulseAudio/Examples
+[aw-pa]: https://wiki.archlinux.org/title/PulseAudio
 [flatvol]: https://linuxhint.com/per_application_sound_volume_ubuntu/
