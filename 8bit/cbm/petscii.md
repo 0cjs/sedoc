@@ -59,7 +59,7 @@ Keyboards
 
 <!-------------------------------------------------------------------->
 [PETSCII]: https://en.wikipedia.org/wiki/PETSCII
-[ascii]: ../../ascii.txt
+[ascii]: ../../ascii.md
 [avivosto]: https://www.aivosto.com/articles/petscii.pdf
 [c64.org]: http://sta.c64.org/cbm64pet.html
 [c64w-keyboard]: https://www.c64-wiki.com/wiki/Keyboard
