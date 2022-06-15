@@ -56,8 +56,18 @@ markups are:
 
 - `![alt text](url)`: in-line images.
 
-[cm spec]: https://spec.commonmark.org/current/
+#### Image Sizing
+
+Some markdown processors do have [extensions for image
+resizing][md-img-resize], but this doesn't work on most systems, [including
+GitHub][gh-img-resize-test]. Instead, generally you need to use an inline
+HTML `<img/>` tag. See the Stack Exchange "Image Sizing" section below for
+more details.
+
 [cm render]: https://commonmark.org/help/
+[cm spec]: https://spec.commonmark.org/current/
+[gh-img-resize-test]: https://gist.github.com/uupaa/f77d2bcf4dc7a294d109
+[md-img-resize]: https://stackoverflow.com/q/14675913/107294
 
 
 Disqus
