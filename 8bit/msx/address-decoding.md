@@ -23,7 +23,7 @@ to locations in this page.
        1    4000-7FFF   3,2  BIOS/BASIC ROM; expansion ROM
        0    0000-3FFF   1,0  BIOS/BASIC ROM
 
-### Primary Slots
+#### Primary Slots
 
 Devices responding to address space read/write requests are in one of four
 _primary_ slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
@@ -43,7 +43,7 @@ The schematic from [td1 p.30] makes the decoding clear:
 
 <img src="img/msx-slot-schematic.jpg" height=250>
 
-### Expansion Slots
+#### Expansion Slots
 
 Each primary slot may optionally support up to four "expansion" slots
 associated with the primary slot, assigned _secondary slot numbers_ 0
@@ -68,6 +68,38 @@ to detect RAM, mapping in the first RAM that it finds for each page. It
 then scans at $4000 and $8000 for pages starting $AB, which is the
 cartridge ROM signature, and maps in the first one it finds.
 
+### Memory Mappers
+
+There's another method of bank switching usually called a [Memory
+Mapper][mw mapper] (and sometimes "MegaMapper") that uses I/O ports $FC-$FF
+to map arbitrary 16K banks from a single expansion slot (perhaps the one
+currently selected as page 3?) containing up to 4 MB of RAM to each of the
+four pages.
+
+This must be properly initialised by the BIOS; on an MSX1 machine it will
+map bank 0 to all four pages, causing problems. See [Memory mappers on
+MSX1][mmap-msx1] for details on how to work around this.
+
+The specification (which I can't find) says that the registers are
+write-only, but some software relies on them being readable. [This internal
+2MB/4MB memory expander][koryakin] uses a 74'373 to enable reading back the
+outputs of the latches it uses to set the bank mapped to each page. A
+system having more than one mapper with readback can have conflicts.
+Without readback, writing a mapper port sets the same value for mappers,
+but of course only the selected primary/expansion slot's memory will be
+seen.
+
+MSX-DOS 2 can apparently use this mapper (as well as plain expansion slot
+memory?) and provides [an API][dos2mem] for for temporary (disappears with
+TPA when program exits) and permanent allocation of pages. MSX-DOS 2 seems
+to allow the program to change pages at will and MSX-DOS will preserve
+these over API calls. MSX-DOS 2 is not listed as a program that would
+require readback, so this presumably means that you must only switch banks
+using the facilities provided by the DOS API.
+
+XXX Reverse-engineer [this BASIC program](https://www.msx.org/wiki/Memory_Mapper#How_to_know_if_Main-RAM_is_in_a_memory_mapper)
+that determines the mapper config. (Requires MSX-DOS 2?)
+
 
 I/O Address Map
 ---------------
@@ -76,11 +108,11 @@ I/O Address Map
 notes below table.) Some MSX machines will not let cartridge slots respond
 to certain I/O port requests.
 
-    FC-FF   MSX2 MegaMapper (write-only registers)
-              FF page 3 memory segment select (default 00)
-              FE  "   2   "       "      "    (default 01)
-              FD  "   1   "       "      "    (default 02)
-              FC  "   0   "       "      "    (default 03)
+    FC-FF   MSX2 Memory Mapper (write-only registers†)
+              FF page 3 memory segment select (BIOS default 00)
+              FE  "   2   "       "      "    (BIOS default 01)
+              FD  "   1   "       "      "    (BIOS default 02)
+              FC  "   0   "       "      "    (BIOS default 03)
 
     F8-FF   MSX1: reserved
 
@@ -132,8 +164,7 @@ to certain I/O port requests.
     00-3F   Unspecified
 
 Notes and references for I/O systems above:
-- $FC-$FF Memory Mappers: MSX Wiki [Memory Mapper][mw mapper], [MSX-DOS2
-  mapper support routines][dos2mem]
+- $FC-$FF Memory Mappers: see "Memory Mappers" section above.
 - $D0-$D7 FDC: Floppy disk controllers should have a disable mechanism so
   multiple FDCs can be present.
 - $B0-$B3: Sony [HBI-55] or Yamaha [UDC-01] cartridge with 4K of
@@ -148,10 +179,12 @@ Notes and references for I/O systems above:
 
 <!-------------------------------------------------------------------->
 [dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
+[koryakin]: https://hansotten.file-hunter.com/do-it-yourself/memory-mappers-slots/2mb-4mb-internal-slot-expander/
+[mmap-msx1]: https://www.msx.org/wiki/Memory_Mapper#Memory_mappers_on_MSX1
 [mw mapper]: https://www.msx.org/wiki/Memory_Mapper
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
-[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 [td1 p.40]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n42/mode/1up
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 
 [HBI-55]: https://www.msx.org/wiki/Sony_HBI-55
 [UDC-01]: https://www.msx.org/wiki/Yamaha_UDC-01
