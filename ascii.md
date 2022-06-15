@@ -61,3 +61,27 @@ Also see:
     https://www.kreativekorp.com/charset/encoding/
     http://jkorpela.fi/chars/
     https://czyborra.com/charsets/iso8859.html
+
+
+Glyphs Representing Control Codes and Keys
+------------------------------------------
+
+Unicode has a set of [control pictures][ctrlpic] for C0 control codes and a
+few other generic codes, including generic NL, but not C1 control codes:
+
+            0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+    U+240x  ␀   ␁   ␂   ␃   ␄   ␅   ␆   ␇   ␈   ␉   ␊   ␋   ␌   ␍   ␎   ␏
+    U+241x  ␐   ␑   ␒   ␓   ␔   ␕   ␖   ␗   ␘   ␙   ␚   ␛   ␜   ␝   ␞   ␟
+    U+242x  ␠   ␡   ␢   ␣   ␤   ␥   ␦
+    U+243x
+
+[ISO/IEC 9995][iso9995] _Information technology — Keyboard layouts for text
+and office systems_ specifies a standard set of keytop symbols in [ISO/IEC
+9995-7][iso995-7].
+
+
+
+<!-------------------------------------------------------------------->
+[ctrlpic]: https://en.wikipedia.org/wiki/Unicode_control_characters#Control_pictures
+[iso995-7]: http://jdebp.uk./FGA/iso-9995-7-symbols.html
+[iso9995]: https://en.wikipedia.org/wiki/ISO/IEC_9995
