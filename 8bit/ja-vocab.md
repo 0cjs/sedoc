@@ -10,7 +10,8 @@ up/down, enclosure, solid) then by stroke count in each character.
         仕様        しよう          technical specification
      5  示す        しめす          to point (e.g., IXで示された番地)
         互換機      ごかんき        compatible machine (e.g. AT互換機)
-     6  汎用        はんよう        generic (e.g., PC-8801 汎用I/Oポート)
+     6  自己鏡      じこかがみ      self-test
+        汎用        はんよう        generic (e.g., PC-8801 汎用I/Oポート)
         初期化      しょきか        initialization
      7  形式        けいしき        format (of a file)
      8  表示        ひょうじ        display
