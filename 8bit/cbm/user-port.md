@@ -22,24 +22,30 @@ and I) on the bottom edge. `←` is always input, `→` always output.
        8    WRITE           SENSE           PC2             Receive Clock
        9    Vert            Serial ATN      Serial ATN      Serial ATN
       10    Horiz           9VAC + phase    9VAC + phase    9VAC + phase
-      11    GND             GND             9VAC - phase    9VAC - phase
+      11    GND†            GND             9VAC - phase    9VAC - phase
       12    GND             GND             GND             GND
       ──────────────────────────────────────────────────────────────────
        A    GND             GND             GND             GND
-       B    CA1             CB1             FLAG2           P0
-       C    PB0             PB0             PB0             RXD
-       D    PB1             PB1             PB1             RTS
-       E    PB2             PB2             PB2             DTR
-       F    PB3             PB3             PB3             P7
-       H    PB4             PB4             PB4             DCD
-       J    PB5             PB5             PB5             P6
-       K    PB6             PB6             PB6             P1
-       L    PB7             PB7             PB7             DSR
+       B    CA1 ←           CB1 ←           FLAG2           P0
+       C    PA0             PB0             PB0             RXD
+       D    PA1             PB1             PB1             RTS
+       E    PA2             PB2             PB2             DTR
+       F    PA3             PB3             PB3             P7
+       H    PA4             PB4             PB4             DCD
+       J    PA5             PB5             PB5             P6
+       K    PA6             PB6             PB6             P1
+       L    PA7             PB7             PB7             DSR
        M    CB2             CB2             PA2             TXD
        N    GND             GND             GND             GND
       ──────────────────────────────────────────────────────────────────
+      Chip  6522            6522            6526            6529
+      IC#   A5/UB15         UAB3            U2              U5
+
+      †CA2/Graphic on 8032
 
 PET/CBM:
+- Note that [[cca-port]] has an error in the PET user port pinout;
+  according to the schematics the user port is PA0-7, not PB0-7.
 - `Diag Sense`: Held low starts diagnostic routines at power-up
 - `READ1/2`: CMT read lines
 - `WRITE (Diag CMT)`: Diagnostic tape write verify
