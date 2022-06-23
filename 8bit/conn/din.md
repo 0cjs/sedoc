@@ -25,8 +25,7 @@ last. By [Hosiden-wb][] (p.3) designations:
 - Positional: DIN-3, -5a, -7, -8a (270°), -8b (268°)
 - "Around": DIN-4, -5b, -6
 
-Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack
-on device:
+Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack:
 
         DIN-3,5a        DIN-5b,6         DIN-7,8a         DIN-8b
            ∪               ∪                ∪                ∪
