@@ -146,7 +146,7 @@ having misinterpreted his diagram as looking into female rather than male.
 - `502ST`: Atari 520ST power jack (male) from [[sgntomcat]].
 
 
-#### CMT (Cassette Tape) 8-pin DIN
+#### DIN-8: CMT (Cassette Tape)
 
       2  GND        Computer usu. also 1, 3, 8; cable usu. unconnected.
       4  REC        CMT microphone; output from computer
