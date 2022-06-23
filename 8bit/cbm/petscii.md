@@ -14,25 +14,25 @@ References:
 - Based on ASCII 1963 (not [1967][ascii]),
   thus missing backtick (`$60`) and `{}|~` (`$7B-$7E`).
 - Two sets:
-  - Unshifted/graphics": upper case only
-  - Shifted/text: lower case in u/c area; upper case in l/c area
-  - PET: `POKE 59468,12` for graphics, `,14` for text.
+  - "Graphics"/unshifted: upper case only
+  - "Business"/"text"/shifted: lower case in u/c area; upper case in l/c area
+  - PET: `POKE 59468,12` for graphics, `,14` for business.
   - C64: Toggle w/Shift-`C=`, or:
     - Graphics: print `CHR$(14)` or `POKE 53272,23`
-    - Text: print `CHR$(142)` or `POKE 53272,21`
+    - Business: print `CHR$(142)` or `POKE 53272,21`
 - Output control chars include: `{HOME}`, `{CLR}`, `{RVS ON}`, etc.;
   appear as reversed chars on screen.
 - C64 set 1 input: `C=` gives graphic on left of key, shift gives
   graphic on right.
 
-Ranges (UG=unshifted/graphics; ST=shifted/text):
+Ranges (GR=graphics/unshifted; BT=business/text/shifted):
 - $00-$1F: (Non-standard) screen control/color codes.
 - $20-$3F: Standard punctuation, digits.
-- $40-$5F: UG: upper case; ST: lower case. `\`=`£`. `^`=`↑`, `_`=`←`
+- $40-$5F: GR: upper case; BT: lower case. `\`=`£`. `^`=`↑`, `_`=`←`
 - $60-$7F: (duplicates of $C0-DF)
 - $80-$9F: (Non-standard) screen control/color codes.
 - $A0-$BF: symbols
-- $C0-$DF: UG: symbols; ST: upper case.
+- $C0-$DF: GR: symbols; BT: upper case.
 - $E0-$FE: (duplicates $A0-$BF)
 - $FF: duplicate of $DE
 
