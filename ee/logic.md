@@ -142,11 +142,26 @@ quickly overcome the pull-up.
 Rockwell VIA I/O port gives 15-20 mA/pin shorted to ground, and pulls
 100 mA/pin shorted to +5 V; WDC part more balanced.
 
-XXX What's a good size for the pull-up?
-
 When sending one TTL output to mixed inputs (one TTL, one CMOS), the
 TTL input may load the output so much that the CMOS no longer sees a
 high input.
+
+#### Pull-up Values
+
+[According to Bil Herd][bh-pullup]:
+
+> NMOS, CMOS or GPIO?  For NMOS we used 4.7K as a middle of the road, for
+> CMOS and Hi-Z IO lines you can start with 10K and make it higher if
+> needed for extreme power consumption needs by reading the pin
+> specifications of all parts involved.
+
+> The actual value to use can be found by looking at the input
+> specification for the pins connected, basically you need enough current
+> to drive every CurrentInputHigh (Iih) which is typically in the uA's
+> range.  Multiply times the number of ports that need to be driven and get
+> a total current. Multiply the total current times the resistor value and
+> you get the voltage drop.  Make sure that with the voltage drop there is
+> still enough voltage to drive VoltageInputHigh (Vih).
 
 
 References
@@ -199,6 +214,7 @@ Level- and current-related:
 [TI SCYA0409A]: http://anycpu.org/forum/download/file.php?id=225&sid=4af8a5ae7968b237983d98bb8ce21cb8
 [aac-lsvl]: https://www.allaboutcircuits.com/textbook/digital/chpt-3/logic-signal-voltage-levels/
 [any 1767]: http://anycpu.org/forum/viewtopic.php?p=1767#p1767
+[bh-pullup]: https://discord.com/channels/797218899053510666/982339157529604136/989358038089601044
 [f6-195-19810]: http://forum.6502.org/viewtopic.php?f=4&t=195&start=15#p19810
 [f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
 [f6-p1288]: http://forum.6502.org/viewtopic.php?p=1288#p1288
@@ -212,7 +228,6 @@ Level- and current-related:
 [spark-levels]: https://learn.sparkfun.com/tutorials/logic-levels/all
 [ti-hct]: http://www.ti.com/lit/an/scla011/scla011.pdf
 [wp-ttl]: https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic
-
 
 [MOS 6502]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
 [RC65C02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
