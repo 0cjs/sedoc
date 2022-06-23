@@ -46,8 +46,8 @@ This is a quick reference for hand-assembly.
 
 Notes:
 - Subscripts are cycle counts.
-- `n+` subscript indicates an extra cycle for branch taken or page
-  boundary crossed (two extra cycles for both).
+- `n+` subscript: +1 cycle if branch taken to same page; +2 cycles if
+  branch taken to different page.
 - Indirect jump does not use an extra cycle on NMOS because (due to
   the bug) it loads MSB of address from _same page_.
 - `zp,X` column for `LDX/STX` indexes with Y register
