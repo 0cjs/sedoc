@@ -1,6 +1,19 @@
 PET
 ===
 
+Models:
+- (1977) __2001-4, 2001-8__ 4/8 KB SRAM; calculator keyboard, white 9"
+  display, 2×6520, 1×6522, BASIC 1.0, graphics/business charsets swapped in
+  ROM.
+- (1979) __2001-N8, 2001-N16, 2001-N32__ 8/16/32 KB DRAM (8K soon dropped),
+  business keyboard, green 9" display, no CMT, BRK enters monitor.
+- BASIC 2.0?
+- __3008, 3016, 3032__ European rename to avoid Phillips PET trademark
+  issue.
+- BASIC 4.0 in later 3000 models.
+- (1980) 4000 series.
+- __Commodore PET 600__ (Handic, nordic countries) relabeled 8296. 128K RAM.
+
 ROM Versions
 ------------
 
