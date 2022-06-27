@@ -155,6 +155,10 @@ Magazine publishing dates:
 
 Online references (some of dubious accuracy) include:
 - Wikipedia list of [Notable 8-bit CPUs][w-not-8bit]
+- [Motorola M6800 Microprocessory History[sw68hist], archived from Michael
+  Holley's now-defunct swtpc.com page. An excellent list of articles and
+  advertisements (including copies of many) documenting early microprocessor
+  development.
 - Ken Polsson's [timelines][pol] are exhaustive and heavily referenced.
   Particularly useful are his chronologies for [Personal Computers][pol-pc]
   ([brief version][pol-pcmini]), [Microprocessors][pol-mp] and
@@ -207,5 +211,6 @@ Online references (some of dubious accuracy) include:
 [pol-soft]: http://kpolsson.com/software/
 [pol]: http://kpolsson.com/
 [suzuki2013]: https://www.amazon.co.jp/dp/4881818325/
+[sw68hist]: https://web.archive.org/web/20180820122406/http://www.swtpc.com/mholley/Microprocessors/Microprocessor_History.htm
 [uber]: http://uber-leet.com/index.php?page=allsystems
 [w-not-8bit]: https://en.wikipedia.org/wiki/8-bit_computing#Notable_8-bit_CPUs
