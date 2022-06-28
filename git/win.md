@@ -63,6 +63,21 @@ To set the executable bit on a new file when committing on such a
 system, use `git add --chmod=+x`. (≤2.10 use `git update-index
 --chmod=+x` after staging the file.)
 
+For filesystems that do support filemode and have the executable bit set,
+but where git is still complaining that it's modified, use `git
+update-index --skip-worktree --chmod=+x`:
+
+    $ st
+    ## main...origin/main [behind 4]
+     M bin/f9post
+    $ dif
+    diff --git a/bin/f9post b/bin/f9post
+    old mode 100755
+    new mode 100644
+    $ git update-index --skip-worktree --chmod=+x bin/f9post
+    $ st
+    ## main...origin/main [behind 4]
+
 
 TLS (SSL) Libraries
 -------------------
