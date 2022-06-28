@@ -12,7 +12,9 @@ Models:
   issue.
 - BASIC 4.0 in later 3000 models.
 - (1980) 4000 series.
-- __Commodore PET 600__ (Handic, nordic countries) relabeled 8296. 128K RAM.
+- __Commodore PET 600__ (Handic, nordic countries) relabeled 8296.
+  Separable keyboard (like 8032-SK/8086-SK). 128K RAM.
+
 
 ROM Versions
 ------------
@@ -44,10 +46,10 @@ Memory map, from [SJ Gray's PET/CBM Editor ROM Project][editrom]:
 
     $f000    4k   KERNAL
     $e000    4k   Editor and I/O (see below)
-    $b000   12k   BASIC 4
-    $a000    4k   Option ROM #2
-    $9000    4k   Option ROM #1 (or external diag clip)
-    $8000    4k   Screen RAM + empty
+    $b000   12k   BASIC 4                               ┐ >64K RAM
+    $a000    4k   Option ROM #2                         ┘ banks 2/4
+    $9000    4k   Option ROM #1 (or external diag clip) ┐ >64K RAM
+    $8000    4k   Screen RAM + empty                    ┘ banks 1/3
     $0000   32k   RAM
 
 I/O map, from [`petmem.txt`][petmem]:
