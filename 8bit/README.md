@@ -27,6 +27,10 @@ Timeline
 
 `*` indicates a ship date (not nesc. in large quantities).
 
+    1974-03   Motorola 6800 announced
+    1974-04   Intel 8080 released
+    1974-12 * Motorola 6800 in full production
+
     1975-01 * Altair 8800 ships; on cover of Popular Electronics
     1975-02   Gates/Allen finish first BASIC, license it to MITS
     1975-05   General Instrument CP1600 (16-bit, CP1610 used in Intellivision)
@@ -34,6 +38,7 @@ Timeline
     1975-06   Gates/Allen ship BASIC 2.0 to MITS
     1975-07 * Altair 8800 BASIC announced
     1975-09   _BYTE_ magazine first issue
+    1975-09 * MOS 6501 ($20), 6502 ($25) introduced at Wescon
     1975-11   _BYTE_ CMT symposium (Kansas City, Nov 7/8)
     1975-11 * SWTPC 6800 shipped (on cover of Oct. BYTE)
     1975-12 * IMSAI 8080 ships
