@@ -25,70 +25,72 @@ decreasing, to 33% in 1996. [source](https://i.imgur.com/4fpXzKr.jpg)
 Timeline
 --------
 
-`*` indicates a ship date (not nesc. in large quantities).
+2nd column key is lower-case for annoucements, upper-case for shipping (not
+necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
+`s`=software `j`=magazine/journal. (`*`=shipping, for not-yet-categorised.)
 
-    1974-03   Motorola 6800 announced
-    1974-04   Intel 8080 released
-    1974-12 * Motorola 6800 in full production
+    1974-03 c Motorola 6800 announced
+    1974-04 c Intel 8080 released
+    1974-12 C Motorola 6800 in full production
 
-    1975-01 * Altair 8800 ships; on cover of Popular Electronics
-    1975-02   Gates/Allen finish first BASIC, license it to MITS
-    1975-05   General Instrument CP1600 (16-bit, CP1610 used in Intellivision)
-    1975-05   _BYTE_ magazine work started
-    1975-06   Gates/Allen ship BASIC 2.0 to MITS
-    1975-07 * Altair 8800 BASIC announced
-    1975-09   _BYTE_ magazine first issue
-    1975-09 * MOS 6501 ($20), 6502 ($25) introduced at Wescon
+    1975-01 H Altair 8800 ships; on cover of Popular Electronics
+    1975-02 s Gates/Allen finish first BASIC, license it to MITS
+    1975-05 c General Instrument CP1600 (16-bit, CP1610 used in Intellivision)
+    1975-05 j _BYTE_ magazine work started
+    1975-06 S Gates/Allen ship BASIC 2.0 to MITS
+    1975-07 S Altair 8800 BASIC announced
+    1975-09 J _BYTE_ magazine first issue
+    1975-09 C MOS 6501 ($20), 6502 ($25) introduced at Wescon
     1975-11   _BYTE_ CMT symposium (Kansas City, Nov 7/8)
-    1975-11 * SWTPC 6800 shipped (on cover of Oct. BYTE)
-    1975-12 * IMSAI 8080 ships
+    1975-11 H SWTPC 6800 shipped (on cover of Oct. BYTE)
+    1975-12 H IMSAI 8080 ships
 
-    1976-01 * Tiny BASIC 1.0 (8080, 3K) released in Dr. Dobbs issue #1
-    1976-01   Ric Weiland finishes 6800 BASIC for MS
-    1976-02 * Commercial Tiny BASIC for 6800
-    1976-02   Gates writes diskette code for BASIC
-    1976-03 * Z-80 ships
-    1976-04 * Altair 680 ships (delayed from late 1975)
-    1976-05   Digital Research copyrights CP/M
-    1976-06 * Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
-    1976-05   Intel 8086 project started
-    1976-06 * Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
-    1976-06   SWTPC AC-30 cassette interface
-    1976-06   MS BASIC-80 ported to 6502 (summer)
-    1976-08   NEC TK-80 (kit)
-    1976-09   PET 2001 design starts (turned down prototype Apple II)
-    1976-12   TRS-80 Mod1 design starts
-    1976-12 * Electric Pencil (Altair then multi-platform word processor)
+    1976-01 S Tiny BASIC 1.0 (8080, 3K) released in Dr. Dobbs issue #1
+    1976-01 s Ric Weiland finishes 6800 BASIC for MS
+    1976-02 S Commercial Tiny BASIC for 6800
+    1976-02 s Gates writes diskette code for BASIC
+    1976-03 C Z-80 ships
+    1976-04 H Altair 680 ships (delayed from late 1975)
+    1976-05 s Digital Research copyrights CP/M
+    1976-06 S Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
+    1976-05 c Intel 8086 project started
+    1976-06 H Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
+    1976-06 h SWTPC AC-30 cassette interface
+    1976-06 s MS BASIC-80 ported to 6502 (summer)
+    1976-08 h NEC TK-80 (kit)
+    1976-09 h PET 2001 design starts (turned down prototype Apple II)
+    1976-12 h TRS-80 Mod1 design starts
+    1976-12 S Electric Pencil (Altair then multi-platform word processor)
 
-    1977-01   PET 2001 shown at Winter CES
-    1977-06 * Apple II ships, $1300+monitor (first w/built-in color graphics)
-    1977-08   TRS-80 Mod1 press conference
-    1977-09 * TRS-80 Mod1 ships, $600 (4K), +12K $289
-    1977-10 * PET 2001 ships, $600 (4K) $800 (8K)
+    1977-01 h PET 2001 shown at Winter CES
+    1977-06 H Apple II ships, $1300+monitor (first w/built-in color graphics)
+    1977-08 h TRS-80 Mod1 press conference
+    1977-09 H TRS-80 Mod1 ships, $600 (4K), +12K $289
+    1977-10 H PET 2001 ships, $600 (4K) $800 (8K)
 
-    1978-06 * Apple Disk II released ($600)
-    1978-06   Intel 8086 introduced
-    1978-09 * Hitachi Basic Master MB-6880 (MC6800) ships
-    1978-12 * Sharp MZ-80K semi-kit ships
-    1978    * Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
-    1978    * Sharp MZ-40K kit ships (around same time as MZ-80K?) (¥24,800)
+    1978-06 H Apple Disk II released ($600)
+    1978-06 c Intel 8086 introduced
+    1978-09 H Hitachi Basic Master MB-6880 (MC6800) ships
+    1978-12 H Sharp MZ-80K semi-kit ships
+    1978    H Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
+    1978    H Sharp MZ-40K kit ships (around same time as MZ-80K?) (¥24,800)
 
-    1979-02 * Toshiba JW-10 word processor (¥6.3M = $45k)
-    1979-05   NEC PC-8001 (Z80) announced
-    1979-06 * Micropro releases WordStar
-    1979-09 * NEC PC-8001 (Z80) ships
-    1979-09   Motorola 68000 introduced (samp 1980-02, prod 1980-11)
-    1979-10   TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
-    1979-10   Sharp MZ-80K introduced in UK (20K £380, 48K £475)
-    1979-11 * Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
+    1979-02 S Toshiba JW-10 word processor (¥6.3M = $45k)
+    1979-05 h NEC PC-8001 (Z80) announced
+    1979-06 S Micropro releases WordStar
+    1979-09 H NEC PC-8001 (Z80) ships
+    1979-09 c Motorola 68000 introduced (samp 1980-02, prod 1980-11)
+    1979-10 h TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
+    1979-10 h Sharp MZ-80K introduced in UK (20K £380, 48K £475)
+    1979-11 H Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979      Microtan 65
 
-    1980-01   Sinclair ZX80
-    1980-05 * Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
+    1980-01 h Sinclair ZX80
+    1980-05 H Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
               (¥298,000 initially, ¥198,000 after Fujitsu FM-8 release.)
-    1980-06 * VIC-1001 released (¥69,800)
-    1980-12   TRS-80 Color Computer (6809, 6847, 4K $399, +16K $119)
-    1980      Acorn Atom
+    1980-06 H VIC-1001 released (¥69,800)
+    1980-12 h TRS-80 Color Computer (6809, 6847, 4K $399, +16K $119)
+    1980    h Acorn Atom
 
     1981-   * VIC-20 released ($299)
     1981-     Sharp MZ-80B ships
