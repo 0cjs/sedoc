@@ -12,6 +12,9 @@ Contents:
 - [MediaWiki/Wikipedia Wikitext](#mediawikiwikipedia-wikitext)
 - [WordPress](#wordpress)
 
+For some general information on reStructuredText (RST) markup see
+[lang/python/docstring](./lang/python/docstring.md).
+
 #### Embedded URL Reformatting
 
 Extract URLs from other URLs with
