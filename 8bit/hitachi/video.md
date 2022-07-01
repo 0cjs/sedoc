@@ -1,9 +1,27 @@
+Hitachi MB-68xx Video
+---------------------
+
+MB-6885 Basic Master Jr.
+------------------------
+
+B/W output only. MP-1710 Color Adapter (on expansion bus) adds a separate
+graphics system for 8-color graphics.
+
+The following character set screenshot was taken from the `bm2` emulator.
+(The program that produced it is on p.74 of the manual.)
+
+![charset](img/mb-6885-charset.png)
+
+Text screen memory at $100-$3FF.
 
 
-MP-9780 VHF Color Converter
----------------------------
+Generic Peripherals
+-------------------
 
-Converts B/W or color output from 
+### MP-9780 VHF Color Converter
+
+Converts B/W or color output from DRGB to composite and VHF television
+signals.
 
 - Input: DIN-8 270° input for B/W (composite?) video (MB-68xx) or DRGB (MB-69xx)
 - Outputs: video out (CVBS color); VHF out (ch2/ch3, internal jumper)
