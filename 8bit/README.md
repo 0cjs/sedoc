@@ -29,8 +29,10 @@ Timeline
 necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
 `s`=software `j`=magazine/journal. (`*`=shipping, for not-yet-categorised.)
 
+    1973-12 c 8080 40k units produced
+    1974-01 c 8080 ground flaw discovered; later fixed by 8080A
     1974-03 c Motorola 6800 announced
-    1974-04 c Intel 8080 released
+    1974-04 C Intel 8080A released
     1974-12 C Motorola 6800 in full production
 
     1975-01 H Altair 8800 ships; on cover of Popular Electronics
