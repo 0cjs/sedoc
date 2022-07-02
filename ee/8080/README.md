@@ -1,6 +1,19 @@
 Intel 8080 and Related CPUs
 ===========================
 
+Contents:
+- Introduction
+- 8080 Architecture
+- Support Chips
+
+
+Introduction
+------------
+
+The original 8080 (1973-12) was a flawed prototype (driving with TTL
+increased ground voltages), though with 40k units produced. The successor
+8080A (1974-04) is the standard CPU.
+
 There's good documentation many different kinds of old systems at
 [Daves Old Computers][dunfield]; the undocumented (and unlinked)
 [`/dunfield/r`] subdir contains programming information for various
@@ -10,7 +23,7 @@ architectures (and ZIPped docs on C64 cassette and video monitor).
 8080 Architecture
 -----------------
 
-where the Z80 differs in naming from the 8080/8085, the Z80 alternative
+Where the Z80 differs in naming from the 8080/8085, the Z80 alternative
 name is given in parens after the Intel name.
 
 An excellent instruction summary is [8080.txt](8080.txt),
@@ -78,6 +91,88 @@ one or more _M cycles_ each of 2-5 T cycles. Generally, the first M-cycle
 _states_.
 
 
+Support Chips
+-------------
+
+The following support chips were designed to be used with the 8080A. For
+more details see [P.60 Chapter 5][csum-5] of the _Intel MCS80 Computer
+Systems Users Manual._
+
+    CPU Group
+      8224 Clock Generator                              5-1
+      8228 System Controller                            5-7
+      8080A Central Processor
+      8080A-1 Central Processor (1.3μs)
+      8080A-2 Central Processor (1.5μs)
+      M8080A Central Processor (-55° to +125°C)
+
+    ROMs
+      8702A Erasable PROM (256 × 8)                     5-37
+      8708/8704 Erasable PROM (1K × 8)
+      8302 Mask ROM (256 × 8)
+      8308 Mask ROM (1K × 8)
+      8316A Mask ROM (2K × 8)
+
+    RAMs
+      8101-2 Static RAM (256 × 4)                       5-67
+      8111-2 Static RAM (256 × 4)
+      8102-2 Static RAM (1 × 1)
+      8102A-4 Static RAM (1K × 1)
+      8107B-4 Dynamic RAM (4K × 1)
+      5101 Static CMOS RAM (256 × 4)
+      8210 Dynamic RAM Driver
+      8222 Dynamic RAM Refresh Controller
+
+    I/O
+      8212 8-Bit I/O Port                               5-101
+      8255 Programmable Peripheral Interface (PPI)      5-113   P.181
+      8251 Programmable Communication Interface         5-135   P.203
+
+    Peripherals
+      8205 One of Eight Decoder                         5-147
+      8214 Priority Interrupt Control Unit              5-153
+      8216/8226 4-Bit Bi-Directional Bus Driver         5-163
+
+    Coming Soon
+      8253 Programmable Interval Timer                  5-169
+      8257 Programmable DMA Controller                  5-171
+      8259 Programmable Interrupt Controller            5-173
+
+#### 8224 Clock Generator
+
+External crystal resonator controls oscillator running at 9× system speed;
+from divide-by-9 counter is derived two 8080 clocks (ϕ1, ϕ2) and auxiliary
+signals.
+- ϕ1: of 9×: 1-2 high, 3-9 low.
+- ϕ2: of 9×: 1-2 low, 3-7 high, 8-9 low.
+- RC network on `R̅E̅S̅I̅N̅` has slow rise at power-up; fast-edge reset signal
+  is generated from this. Active-low switch can also be connected here.
+- Signal on `RDYIN` produces properly synchronized signal for CPU `READY`.
+
+#### 8228 System Controller
+
+- Data bus driver
+- Latched output of derived status signals `M̅E̅M̅ ̅R̅`, `M̅E̅M̅ ̅W̅`, `I̅/̅O̅ ̅R̅`,
+  `I̅/̅O̅ ̅W̅`, `I̅N̅T̅A̅`.
+- Can gate `RST7` on to data bus on interrupt, or generate `I̅N̅T̅A̅` pulses
+  for each of the three bytes of a `CALL` instruction.
+
+#### Other
+
+- __8212 8-Bit I/O Port:__ Unidirectional latch w/tri-state outputs.
+  - Input port generating interrupt from input strobe.
+  - Latching output port w/handshake line.
+  - Can be used to gate `RST` instruction on to bus during interrupt.
+- __8255 PPI:__ ([P.181 p.5-113 datasheet][csum-8255]) Ports A, B 8-bit
+  input or output. Port C split 2× 4 bits each input or output. (Or as they
+  put it, two groups of 12: group A ports A,C; group B ports B,C.)
+- __8251 UART:__ ([P.203 p.5-135 datasheet][csum-8251] )
+
+
+
 <!-------------------------------------------------------------------->
 [`/dunfield/r`]: http://www.classiccmp.org/dunfield/r/
 [dunfield]: http://www.classiccmp.org/dunfield/
+[csum-5]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n58/mode/1up?view=theater
+[csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
+[csum-8251]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n202/mode/1up?view=theater
