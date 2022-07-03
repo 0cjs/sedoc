@@ -8,7 +8,9 @@ B/W output only. MP-1710 Color Adapter (on expansion bus) adds a separate
 graphics system for 8-color graphics.
 
 The following character set screenshot was taken from the `bm2` emulator.
-(The program that produced it is on p.74 of the manual.)
+(The program that produced it is on p.74 of the manual.) A character set
+chart is also given in the [manual p.47 P.53]. The printable ASCII sticks
+differ from ASCII in substituting `\{|}~` → `¥←→↓↑`.
 
 ![charset](img/mb-6885-charset.png)
 
@@ -37,3 +39,7 @@ Input pin assignments:
     6   red     R       red
     7   green   G       green
     8   blue    B       blue
+
+
+<!-------------------------------------------------------------------->
+[manual p.47 P.53]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/page/n52/mode/1up?view=theater
