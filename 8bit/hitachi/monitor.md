@@ -11,6 +11,7 @@ Enter using `MON` or `MONITOR` at BASIC prompt.
 Many commands start their own input mode.
 
     E   Escape (jumps to BASIC; cold start with any current program deleted)
+        (On MB-6885, use `G B000` to preserve existing BASIC program.)
 
     R   Register display/change
     D   Display 128 bytes of memory
