@@ -8,7 +8,8 @@ Enter using `MON` or `MONITOR` at BASIC prompt.
   entered nothing.
 - DEL clears and restarts input for the current value.
 
-Many commands start their own input mode.
+Many commands start their own input mode. The commands are described in
+detail in [§4.2 p.125 P.131].
 
     E   Escape (jumps to BASIC; cold start with any current program deleted)
         (On MB-6885, use `G B000` to preserve existing BASIC program.)
@@ -33,3 +34,6 @@ characters (the remainder of the filename will be space-filled). Blocks
 from other files will be ignored (though the name will be printed for each
 block). See "CMT Load and Filenames" in [README](README.md) for more
 details.
+
+<!-------------------------------------------------------------------->
+[§4.2 p.125 P.131]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/page/n130/mode/1up?view=theater
