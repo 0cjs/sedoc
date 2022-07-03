@@ -40,15 +40,25 @@ Statements and Functions
 ------------------------
 
 Commands:
+- `PRINT` may be abbreviated as `PR` or `?`.
 - Use `,`, not `,` to separate args to `LIST`.
 - `SEQ n,k` to auto-generate line numbers at which to type.
 - `RESEQ n,k` to renumber existing lines. Destroys numbering.
 
-Etc.
+Misc:
 - `A$=INKEY$` returns `A$<CHR$(1)` on no input.
 - Supports `DEF FNF(P)=…`.
 - `MUSIC ﾄﾚﾐ` to play do-re-me. (p.81)
+
+Machine language:
+- Prefix numbers with `$` for hex.
+- `PEEK(n)`
 - `POKE addr,v0,v1,…`
+- `CALL n`: RTS returns. There seems to be no way of setting registers.
+
+Screen:
+- `CLR`: clear the screen.
+- `CURSOR=x,y`: set cursor position
 
 
 Input/Output
