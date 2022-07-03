@@ -40,6 +40,7 @@ SKIP 1: Left/Right
         認識        にんしき        recognition (e.g. of a disk)
     15  編成        へんせい        organization (of a file)
         領域        りょういき      area, range, region (of memory)
+    16  機械語      きかいご        machine language
 
 SKIP 2: Up/Down
 
