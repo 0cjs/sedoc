@@ -45,7 +45,7 @@ subscript prefix pin function.
 7406 Debouncer
 --------------
 
-![7406 two-gate debouncer](sch/7406-debouncer.jpg)
+![7406 two-gate debouncer](sch/7406-debounce.jpg)
 
 Note that you can get inverted output from the other gate.
 
