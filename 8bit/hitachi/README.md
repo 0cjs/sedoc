@@ -41,11 +41,24 @@ Non-composite video output may also be available.
 Cassette is 300/1200 baud Kansas City standard. 1200 baud and program
 auto-start added in ROM update for Jr.; see p.162.
 
-References:
+### Peripherals
+
+688x Peripherals:
+- MP-1041 printer
+- MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
+- MP-3520(?): "Interface Expansion"
+- MP-3530(?): Mini-floppy
+- MP-3540(?): Mini-floppy (expansion unit; no controller)
+- MP-9780: [VHF Color Converter](./video.md)
+- C14-1180: color display
+- K12-2060G: monochrome display
+
+### References
+
 - [MB-6885 ﾍﾞｰｼｯｸﾏｽﾀｰJr.][ar-bmj] system manual.
 - [Basic master Jr.][rash] specs and tech. info
 
-Emulators:
+## Emulators
 - [日立ベーシックマスターJr.エミュレータ bm2][emu-bm2]
 - [マーク５エミュレータ(MARK5 Emulator)][emu-mk5]
 - [6800IDE][emu-6800ide]: Windows-based 6800 IDE/emulator

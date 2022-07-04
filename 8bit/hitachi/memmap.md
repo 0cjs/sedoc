@@ -36,6 +36,8 @@ interpreter for housekeeping, stack etc.
 Memory Map Details
 ------------------
 
+[retroabandon/hitachi-mb688x][ra/mb688x] has schematics and ROM disassemblies.
+
 ### BIOS (Monitor) Low Memory (p.159):
 
 $00-$71 is the "Monitor work area."
@@ -147,3 +149,4 @@ ROM Routines
 
 <!-------------------------------------------------------------------->
 [ar-bmj]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/
+[ra/mb688x]: https://gitlab.com/retroabandon/hitachi-mb688x
