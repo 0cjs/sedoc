@@ -11,9 +11,12 @@ Viewers
 Editors
 -------
 
-- `pdfshuffler`: Simple GUI program to let you add (merge),
-  remove and re-arrange pages to create a new PDF document from
-  existing ones. Written in Python
+- [`pdfarranger`]: Simple python-gtk program to let you add (merge), remove
+  and re-arrange pages to create a new PDF document from existing ones.
+  - This is a fork of the older `pdfshuffler`; Debian still has both
+    package names but `pdfshuffler` is a backward-compat name for
+    `pdfarranger`.
+  - There is a Windows version as well.
 
 Also see [JakeLittle's post][jakelittle] discussing the Linux
 toolchain he uses for PDF editing (pdftk, qpdf, pdfbeads, pdftotext,
@@ -30,4 +33,5 @@ Web-based
 
 
 <!-------------------------------------------------------------------->
+[`pdfarranger`]: https://github.com/jeromerobert/pdfarranger
 [jakelittle]: http://forum.6502.org/viewtopic.php?f=4&t=5952#p73594
