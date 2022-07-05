@@ -6,12 +6,14 @@ Symlinks
 --------
 
 - No symlinks before Visa. Still not understood by many programs.
-- Separate types for file and directory targets.
-- Create w/ `mklink /d source target` (w/o `/d` for files).
-- `SeCreateSymbolicLinkPriv` required, only admins have it by default
-  (guarded by UAC). Can be assigend to other users/groups.
-- Directory junctions (`mklink /j source target`) are a popular
-  alternative.
+  - Separate types for file and directory targets.
+  - Create w/ `mklink /d linkname target` (w/o `/d` for files).
+  - `mklink` does not work in bash, only CMD.
+  - `SeCreateSymbolicLinkPriv` required, only admins have it by default
+    (guarded by UAC). Can be assigend to other users/groups.
+- More standard (for Windows) alternatives:
+  - `mklink /j linkname target` for a Directory Junction
+  - `mklink /h linkname target` for a hard link (files only)
 
 Add priv with `gpedit.msc`: Computer Configuration » Window Settings »
 Security Settings » Local Policies » User Rights Assignment, Create
