@@ -7,6 +7,9 @@ Enter using `MON` or `MONITOR` at BASIC prompt.
 - Space enters the current input, or keeps the default value if you've
   entered nothing.
 - DEL clears and restarts input for the current value.
+- During digit entry (for an address or value), an invalid digit will
+  print a `?` after the invalid character; at this point you can type
+  DEL to clear the entire value or Enter to abort the command.
 
 Many commands start their own input mode. The commands are described in
 detail in [§4.2 p.125 P.131].
@@ -27,6 +30,9 @@ detail in [§4.2 p.125 P.131].
     L   Load from tape (always loads at start addr specified in file)
     P   Punch to tape (saves start addr to end - 1)
     V   Verify tape (compares memory using start addr and len in file)
+
+    Undocumented commands:
+    J   Start tape and send sound to it
 
 Tape loads and verifies must specify the correct filename; terminate
 filename input with a space or return if the filename is less than 6
