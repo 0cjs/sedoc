@@ -136,6 +136,7 @@ ROM Routines
 - `$C000`: BASIC cold start
 
 - `$F000`: Monitor cold entry (clears screen; prints banner)
+- `$F1DA`: MB-6885 monitor warm entry w/stack reset (undocumented)
 - `$F003 ADDIXB`: (IX) ← (IX) + (ACCB)
 - `$F009 MOVBLK`: copy memory: $3B (MSTTOP) start addr, $3D (MSTEND) end
   addr, $3F (CPYTOP) destination.
