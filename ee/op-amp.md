@@ -1,17 +1,10 @@
 Operational Amplifiers
 ======================
 
-__Rule:__ No current flows in to our out of the inputs.
+__Rule:__ No current flows in to or out of the inputs.
 
-- As a comparator: output indicates V+ > V-: i.e., near Vcc if true,
-  near GND if false.
-
-        |\
-    ----|+\
-        |  \___
-        |  /
-    ----|-/
-        |/
+As a comparator:
+output indicates V+ > V-: i.e., near Vcc if true, near GND if false.
 
 ### Comparators vs. Op-Amps
 
