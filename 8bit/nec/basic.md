@@ -26,7 +26,10 @@ Usage
 - `MOTOR`: Toggle cassette motor relay. Add `1` to turn on, `0` to turn off.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.
-- `TERM`: Act as terminal via RS-232.
+- `TERM`: (mr 2-228) Act as terminal via RS-232 (first arg required).
+  - `"[COM:]pbsxz",mode,rbsize`: parity `E,O,N`; bits `7,8`;
+    stop-bits `1,2,3` = 1, 1.5, 2; xon,xsoff `X,N`; s-parameter `S,N`.
+  - S-parameter (`z` above) related to 7-bit char code translation.
 
 Untested/unresearched:
 - `CMD ...`: ???
