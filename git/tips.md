@@ -147,10 +147,12 @@ parameter, e.g.
 
 
 <!-------------------------------------------------------------------->
-[`git(1)`]: https://git-scm.com/docs/git
+[so-15321456]: https://stackoverflow.com/a/15321456/107294
+[so-10622293]: https://stackoverflow.com/a/10622293/107294
+
 [attributes]: https://www.git-scm.com/docs/gitattributes
+
+[`git(1)`]: https://git-scm.com/docs/git
 [corkscrew]: https://web.archive.org/web/20160706023057/http://agroman.net/corkscrew/
 [gh-ssh443]: https://help.github.com/articles/using-ssh-over-the-https-port/
-[so-10622293]: https://stackoverflow.com/a/10622293/107294
-[so-15321456]: https://stackoverflow.com/a/15321456/107294
 [so-3777141]: https://stackoverflow.com/a/3777141/107294
