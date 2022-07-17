@@ -1,5 +1,5 @@
-Parts Boxes and Other Storage Systems
-=====================================
+Sizes of Paper, Bags, Boxes, Storage, etc.
+==========================================
 
 Ring Star Parts Boxes
 ---------------------
