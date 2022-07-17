@@ -10,29 +10,28 @@ Key:
 
 |    PM |    ST | Cores|  TDP | LGA  | Date | CPU
 |------:|:-----:|:-----|-----:|------|------|---------------------------------
-| 22107 |  2473 |  10₂ | 140W | 2066 | 17.2 | Intel Core i9-7900X  3.3 GHz
-| 17783 |  2574 |   6₂ |  65W |  AM4 | 19.2 | AMD Ryzen 5 3600     3.6 GHz
-| 17176 |  2817 |   8  |  95W | 1151 | 18.4 | Intel Core i7-9700K  3.6 GHz
-| 15976 |  1994 |   8₂ | 140W | 2011 | 14.2 | Intel Core i7-5960X  3.00 GHz
-| 15272 |  2630 |   6₂ |  65W | 1151 | 17.4 | Intel Core i7-8700   3.20 GHz
-| 15157 |  2630 |   6₂ |  65W | 1151 | 17.4 | Intel Core i7-8700   3.2 GHz
-| 12178 |  2391 |   6  |  65W | 1151 | 19.1 | Intel Core i5-9400F  2.9 GHz
-| 12094 |  2423 |   6  |  65W | 1151 | 18.1 | Intel Core i5-8500   3.00 GHz
-| 11186 |  2531 |   4₂ |  88W | 1150 | 14.2 | Intel Core i7-4790K  4.00GHz
-|  9299 |  2069 |   4₂ |  77W | 1155 | 12.1 | Intel Core i7-3770   3.40 GHz
-|  8057 |  2102 |   4  |  65W | 1151 | 17.4 | Intel Core i3-8100   3.60 GHz
-|  7908 |  1822 |   4₂ |  80W | 1150 | 11.2 | Intel Xeon E3-1230   3.20 GHz
-|  7630 |  2192 |   4  |  84W | 1150 | 13.2 | Intel Core i5-4670K  3.40 GHz
-|  7425 |  2154 |   4  |  84W | 1150 | 13.2 | Intel Core i5-4670   3.40 GHz
-|  6513 |  1856 |   4  |  77W | 1155 | 12.2 | Intel Core i5-3450   3.1 GHz
-|  5698 |  1959 |   2₂ |  15W | -    | 17.2 | Intel Core i5-7260U  2.20GHz
-|  4882 |  1988 |   2₂ |  54W | 1151 | 17.1 | Intel Pentium G4560  3.50GHz
-|  4793 |  1963 |   2₂ |  54W | 1150 | 13.1 | Intel Core i3-4130   3.40 GHz
-|  4676 |  1739 |   2₂ |  15W | -    |      | Intel Core i5-7200U  2.50 GHz (T3.1 GHz; Kalby Lake 14 nm)
-|  4363 |  1593 |   2₂ |  15W | -    | 15.4 | Intel Core i5-6260U  1.80 GHz (T2.9 GHz)
-|  3610 |  1302 |   2₂ |  15W | -    | 15.4 | Intel Core i3-6100U  2.30 GHz (no turbo)
-|  2024 |   841 |   4  |   6W | -    |      | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
-|  1122 |   756 |   2  |   6W | -    |      | Intel Celeron N3350  1.10 GHz (T2.4 GHz; Apollo Lake)
+| 19358 |  2610 |  10₂ | 140W | 2066 | 17.2 | Intel Core i9-7900X  3.3 GHz
+| 17828 |  2571 |   6₂ |  65W |  AM4 | 19.2 | AMD Ryzen 5 3600     3.6 GHz
+| 14533 |  2897 |   8  |  95W | 1151 | 18.4 | Intel Core i7-9700K  3.6 GHz
+| 12675 |  1973 |   8₂ | 140W | 2011 | 14.2 | Intel Core i7-5960X  3.00 GHz
+| 13012 |  2657 |   6₂ |  65W | 1151 | 17.4 | Intel Core i7-8700   3.2 GHz
+|  9545 |  2469 |   6  |  65W | 1151 | 19.1 | Intel Core i5-9400F  2.9 GHz
+|  9578 |  2482 |   6  |  65W | 1151 | 18.1 | Intel Core i5-8500   3.00 GHz
+|  8057 |  2464 |   4₂ |  88W | 1150 | 14.2 | Intel Core i7-4790K  4.00GHz
+|  6400 |  2075 |   4₂ |  77W | 1155 | 12.1 | Intel Core i7-3770   3.40 GHz
+|  6173 |  2239 |   4  |  65W | 1151 | 17.4 | Intel Core i3-8100   3.60 GHz
+|  5020 |  1642 |   4₂ |  80W | 1150 | 11.2 | Intel Xeon E3-1230   3.20 GHz
+|  5034 |  2042 |   4  |  84W | 1150 | 13.2 | Intel Core i5-4670K  3.40 GHz
+|  5460 |  2145 |   4  |  84W | 1150 | 13.2 | Intel Core i5-4670   3.40 GHz
+|  4502 |  1856 |   4  |  77W | 1155 | 12.2 | Intel Core i5-3450   3.1 GHz
+|  3904 |  1991 |   2₂ |  15W | -    | 17.2 | Intel Core i5-7260U  2.20GHz
+|  3510 |  2102 |   2₂ |  54W | 1151 | 17.1 | Intel Pentium G4560  3.50GHz
+|  3292 |  1887 |   2₂ |  54W | 1150 | 13.1 | Intel Core i3-4130   3.40 GHz
+|  3391 |  1767 |   2₂ |  15W | -    |      | Intel Core i5-7200U  2.50 GHz (T3.1 GHz; Kalby Lake 14 nm)
+|  3207 |  1665 |   2₂ |  15W | -    | 15.4 | Intel Core i5-6260U  1.80 GHz (T2.9 GHz)
+|  2635 |  1344 |   2₂ |  15W | -    | 15.4 | Intel Core i3-6100U  2.30 GHz (no turbo)
+|  2150 |   859 |   4  |   6W | -    |      | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
+|  1116 |   803 |   2  |   6W | -    |      | Intel Celeron N3350  1.10 GHz (T2.4 GHz; Apollo Lake)
 
 
 Socket Types
