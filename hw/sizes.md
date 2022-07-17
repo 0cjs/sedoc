@@ -1,6 +1,34 @@
 Sizes of Paper, Bags, Boxes, Storage, etc.
 ==========================================
 
+ISO 216 Paper Sizes
+-------------------
+
+- These are also used for ziploc bags and other containers.
+- Aspect ratio √2 ≈ 1.414; each smaller size is 1/2 area rounded down.
+- B sizes are geometric mean between A sizes.
+
+         B                 A
+    ────────────┬───┬────────────
+    1030 × 1456 │ 0 │ 841 × 1189
+     728 × 1030 │ 1 │ 594 × 841
+     515 × 728  │ 2 │ 420 × 594
+     364 × 515  │ 3 │ 297 × 420
+     257 × 364  │ 4 │ 210 × 297
+     182 × 257  │ 5 │ 148 × 210
+     128 × 182  │ 6 │ 105 × 148
+      91 × 128  │ 7 │  74 × 105
+
+### Odd non-ISO Sizes
+
+    Photo 8R/6P     203 × 254       8"  × 10"
+    Photo S8R/6PW   203 × 305       8"  × 12"
+    Letter          216 × 279       8½" × 11"
+    Foolscap        216 × 343       8½" × 13½"
+    Legal           216 × 356       8½" × 14"
+    Arch A          229 × 305       9"  × 12"
+
+
 Ring Star Parts Boxes
 ---------------------
 
