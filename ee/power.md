@@ -100,6 +100,21 @@ regulator, as described in [[eese 552710]]. This should still be confirmed
 with the data sheet, however; it is usually safe for linear regulators, but
 not for buck-boost regulators that may also pull down the output.
 
+### Constant Current Supply
+
+The LM317 maintains a constant 1.25 V between the reference pin and the
+output pin; this can set the output to any arbitrary voltage by putting the
+reference in the middle of a voltage divider between output and ground.
+
+However, if you connect the output to the reference via a resistor R (with
+no connection to ground) you'll produce a constant current power supply
+supplying A = 1.25 V / R.
+
+<img src='sch/lm317-cc.jpg' width='300px' />
+
+This will work with higher voltage regulators such as the 7805, but they
+will have to drop more voltage across R and thus be more wasteful (and you
+the resistor will generate more heat).
 
 
 <!-------------------------------------------------------------------->
