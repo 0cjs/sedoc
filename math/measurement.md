@@ -6,7 +6,7 @@ How to Measure Anything
 
 * [How to Measure Anything: Finding the Value of Intangibles in Business
   3rd Edition][htma]
-  * [TAC presentation][htma-pres] summrizing bits of above
+  * [TAC presentation][htma-tac] summrizing bits of above
 * [How to Measure Anything in Cybersecurity Risk 1st Edition][htma-cs]
 
 #### 'Math-less' Statistics Table
