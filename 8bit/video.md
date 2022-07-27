@@ -42,11 +42,40 @@ on monochrome monitors (and maybe even color?) you can get gray scale
 by instead using PWM to reduce the "on time" of a pixel, thus making it
 less bright. See e.g. [New Tricks for an old PET][f6 82495].
 
+#### DRGBI and IBM 5153 "Brown"
+
+Converting DRGB to analogue RGB is almost invariably done in the simplest
+way: each color input produces a fixed "full" intensity color output set so
+that when RGB=111 the output is white.
+
+DRGBI is the same when I=1, but when I=0 the level of intensity reduction
+is an arbitrary design choice and, unlike I=1, it is also under manual
+control via the display's contrast setting. (For this reason, testing is
+often done with contrast turned up to maximum.)
+
+Particular implementations can get even more complex; the IBM 5153 (CGA)
+display detects RGBI=1100 (low-intensity yellow) and reduces the amplitude
+of the green signal a little bit extra (about 0.64 of red) to give a more
+brown color. It also increases the "off" level of all of RGB when I is set
+(RI=00,01,10,11 → 0.00,0.40,1.00,1.12 V) and, due to the implementation,
+more colors set with I gives a higher output for all set colors
+(RGBI=1001 → 1.12 V, RGBI=1101 → 1.24 V, RGBI=1111 → 1.30 V). Full details
+are given in [[Holden2016]], and there's further discussion at
+[[vcfed 1234458]].
+
+Note that the CVBS output of the CGA card is rather different and does not
+produce the same 16 colors as the IBM 5153. The [IBM 5154][] (EGA) monitor
+also accepted a CGA input signal but did the DRGBI → analogue RGB
+conversion quite differently and so also does not produce quite the same
+set of 16 colors. (It maps the 16 DRGBI colors to a subset of the 64 EGA
+RrGgBb colors, using "bright red + dark green" for brown, as documented in
+the table on p.4 of [the manual][mzd-ega]. ([source][mzd]))
+
 #### CVBS Standards
 
 Notes:
 - The 1953 NTSC color encoding (as opposed to 1941 NTSC image encoding) and
-  PAL are colour encoding standards that are not technically tied to
+  PAL are color encoding standards that are not technically tied to
   luminance image broadcast standards (typically 625 and 525 lines).
 - Technically "CCIR System" standards are for broadcast, and include RF
   frequency assignments as well as video encoding.
@@ -356,9 +385,14 @@ Sample circuits:
 
 <!-------------------------------------------------------------------->
 
+[Holden2016]: https://www.worldphaco.com/uploads/FITTING_AN_EGA_CARD_TO_AN_IBM_5155.pdf
+[IBM 5154]: https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/897/ENUS184-113/index.html
 [an9644]: https://www.renesas.com/jp/en/document/apn/an9644-composite-video-separation-techniques
 [f6 82495]: http://forum.6502.org/viewtopic.php?f=4&t=6238#p82495
+[mzd-ega]: http://minuszerodegrees.net/oa/OA%20-%20IBM%20Enhanced%20Color%20Display%20(5154).pdf
+[mzd]: http://minuszerodegrees.net/oa/oa.htm
 [phirenz]: https://www.youtube.com/watch?v=3JFt6t6ijLs&lc=UgxaSs9KAeuIR-tCWJ54AaABAg
+[vcfed 1234458]: https://forum.vcfed.org/index.php?threads/representing-ibm-5153-color-output-more-accurately.1234458/
 
 <!-- Circuits -->
 [pv]: https://bitbucket.org/jartza/pentaveega/
