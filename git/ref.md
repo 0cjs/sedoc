@@ -8,7 +8,7 @@ is in Unix path format (`refs/a/b/c`); a name with subnames
 
 "Standard" refs are `refs/{heads,remotes,tags}/...`.
 
-See also [Identifier Terminology](./git.md#identifier-terminology).
+See also [Identifier Terminology](README.md#identifier-terminology).
 
 Git maintains a "reflog" (browsed with `git log -g`) for `HEAD`
 (`.git/logs/HEAD`) and any ref that has a corresponding file under
