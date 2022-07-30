@@ -208,6 +208,9 @@ Circuits
 
 - [SPI EEPROM generating sync][f6 76975]. Ingenious Dr. Jefyll design; 2×
   serial EEPROM and one 74HC164.
+- [PentaVeega][pv] generates 8-color VGA from a 6-pin ATtiny5, using some
+  clever tricks with tri-state outputs and the monitor's 75Ω termination as
+  part of a voltage divider. Schematic in [`hardware/pentaveega_v1.pdf`][pvs].
 
 
 Common Resolutions and Timings
@@ -358,6 +361,8 @@ Sample circuits:
 [phirenz]: https://www.youtube.com/watch?v=3JFt6t6ijLs&lc=UgxaSs9KAeuIR-tCWJ54AaABAg
 
 <!-- Circuits -->
+[pv]: https://bitbucket.org/jartza/pentaveega/
+[pvs]: https://bitbucket.org/jartza/pentaveega/raw/2752ce4ea366d7cf59fe165aef9c6175a3016da9/hardware/pentaveega_v1.pdf
 [f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
 
 <!-- Common resolutions and timings -->
