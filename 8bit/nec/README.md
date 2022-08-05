@@ -9,6 +9,10 @@ NEC PC-nnn Series
 - 1983: mkII released for all 8-bit series
 - 1985: 8-bit  mkII SRs released: end of PC-80 and focus on games for PC-88.
 
+General references:
+- \[rcp] [Retro Computer People NEC refrences][rcp]. Includes PC-2000,
+  PC-6000/6600, PC-8000, PC-8200, PC-8800, PC-9800, PC-100 and others.
+
 ### Contents
 
 PC-8x01:
@@ -89,4 +93,6 @@ wire; other models have externally-accessible switches.
 [5inch-cache]: https://webcache.googleusercontent.com/search?q=cache:http%3A%2F%2F5inch.floppy.jp%2Fpc88serialconnect.txt
 [5inch]: http://5inch.floppy.jp/pc88serialconnect.txt
 [barbeque]: https://gist.github.com/barbeque/33ee77a440fb9796d309bdc980bb067a
+[rcp]: https://retrocomputerpeople.web.fc2.com/machines/nec/
 [xdisk3]: https://github.com/bferguson3/xdisk3
+
