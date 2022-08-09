@@ -1,13 +1,22 @@
 tmate
 =====
 
-Todo:
-- tmate:
-  - PREFIX+`[` enters copy mode (PgUp should as well)
-  - document settings stuff in sedoc
-  - update ~/.tmux.conf for esc timeout
-  - ctrl-P thing
-- calc → c
+### Todo
+
+- PREFIX+`[` enters copy mode (PgUp should as well)
+- document settings stuff in sedoc
+- update ~/.tmux.conf for esc timeout
+- ctrl-P thing
+
+### General Notes
+
+- Session window size (common to all users):
+  - Smallest width and (separately) height of all connected rw-ssh
+    sessions; any client connect or client resize will trigger a session
+    window resize.
+  - Ro-ssh and web sessions do not affect sizing; they just lose info or
+    allow scrolling on client.
+
 
 Configuration
 -------------
