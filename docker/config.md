@@ -39,7 +39,7 @@ Docker repository][docker debinst] (this for Debian 8+ `x86_64`):
       . /etc/os-release; echo "$ID")/gpg \
       | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
     #   apt-get will produce an error if the key is not world readable
-    chmod 644 /usr/share/keyrings/docker-archive-keyring.gpg
+    sudo chmod 644 /usr/share/keyrings/docker-archive-keyring.gpg
     #   XXX not sure how to verify fingerprint; see below.
 
     #   In case above doesn't work in Debian 8-9 (apt-key is deprecated in 11):
