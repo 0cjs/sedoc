@@ -105,6 +105,17 @@ are added in each layer.
 
 `docker system prune`
 
+### Networking MTU Issues
+
+Path MTU discovery by the Docker daemon seems buggy; If your local MTU is
+higher than the path MTU you may get mysterious error messages along the
+lines of:
+
+    docker: Error response from daemon: error parsing HTTP 408 response body:
+    invalid character '<' looking for beginning of value: "<html><body>...
+
+In this case try `sudo ip link set dev wlp3s0 mtu 1400` or similar.
+
 ### Setting Proxies for Docker
 
 ##### Daemon
