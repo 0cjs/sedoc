@@ -50,19 +50,22 @@ Version Reference
 
 ### CPython Releases
 
-Python 3 minor versions get bug support fixes for 18 months from
-release and security fixes for five years. See also the table of [all
-versions]. Point versions below may be; see [downloads] for lastest
-info.
+Python 3 minor versions get bug support fixes for 18 months from release
+and security fixes for five years. The "Version" column below is the latest
+point version as of the last update to this file; "RelDate" the date of the
+original n.n.0 release. See also the table of [all versions] and
+[downloads] for lastest info.
 
-| SupportEnd | Version| RelDate    | RelNotes |
-|------------|--------|------------|----------|
-| 2024-10    | 3.8    | 2019-10-20 | [rel3.8] |
-| 2023-06-27 | 3.7.3  | 2018-06-27 | [rel3.7] |
-| 2021-12-23 | 3.6.8  | 2016-12-23 | [rel3.6] |
-| 2020-09-13 | 3.5.7  | 2015-09-13 |          |
-| 2020-01-01 | 2.7.16 | 2010-07-03 |          |
-| 2019-03-16 | 3.4.10 | 2014-03-16 |          |
+| SupportEnd | Version | RelDate    | RelNotes  |
+|------------|---------|------------|-----------|
+| 2026-10    | 3.10.6  | 2021-10-04 | [rel3.10] |
+| 2025-10    | 3.9.13  | 2020-10-05 | [rel3.9]  |
+| 2024-10    | 3.8.13  | 2019-10-14 | [rel3.8]  |
+| 2023-06-27 | 3.7.13  | 2018-06-27 | [rel3.7]  |
+| 2021-12-23 | 3.6.15  | 2016-12-23 | [rel3.6]  |
+| 2020-09-13 | 3.5.10  | 2015-09-13 |           |
+| 2020-01-01 | 2.7.18  | 2010-07-03 |           |
+| 2019-03-16 | 3.4.10  | 2014-03-16 |           |
 
 ### OS- and Distribution-shipped Versions
 
@@ -194,6 +197,8 @@ build it:
 [cpython]: https://en.wikipedia.org/wiki/CPython
 [downloads]: https://www.python.org/downloads/
 [pythonz]: https://github.com/saghul/pythonz
+[rel3.10]: https://www.python.org/dev/peps/pep-0619
 [rel3.6]: https://www.python.org/dev/peps/pep-0494/
 [rel3.7]: https://www.python.org/dev/peps/pep-0537/
 [rel3.8]: https://www.python.org/dev/peps/pep-0569/
+[rel3.9]: https://www.python.org/dev/peps/pep-0596
