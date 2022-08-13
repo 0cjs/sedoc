@@ -97,7 +97,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1981-   * VIC-20 released ($299)
     1981-     Sharp MZ-80B ships
     1981-03   Sinclair ZX81
-    1981-05 * Fujitsu FM-8 released
+    1981-05 * Fujitsu FM-8 released (¥218,000)
     1981-06   TI-99/4A (TMS9900 3 MHz, 16 KB, TMS9918A, $525, 2.8M shipped)
     1981-07   NEC N5200 announced (8086 like PC-98; µPD7220 graphics)
     1981-08 * IBM PC 5150 released ($1565)
@@ -154,7 +154,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1985-04   Fujitsu FM77L2 (FM sound card)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
     1985-10 * Nintendo NES ($179 inc. R.O.B. and Zapper)
-    1985-10   Fujitsu FM77AV
+    1985-10   Fujitsu FM77AV (128K RAM, 96K VRAM, 4096 colours, ¥128,000)
     1985      MSX2 released
 
 Magazine publishing dates:
