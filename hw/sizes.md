@@ -8,6 +8,8 @@ ISO 216 Paper Sizes
 - Aspect ratio √2 ≈ 1.414; each smaller size is 1/2 area rounded down.
 - B sizes are geometric mean between A sizes.
 
+Table:
+
          B                 A
     ────────────┬───┬────────────
     1030 × 1456 │ 0 │ 841 × 1189
