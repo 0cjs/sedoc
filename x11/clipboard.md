@@ -11,6 +11,12 @@ paste), XA_SECONDARY and XA_CLIPBOARD (Ctrl-V paste).
 - `xclip` selection is chosen with `-selection primary` (default),
   `-selection secondary` or `-selection clipboard`. These can be
   abbreviated to `-se c` etc.
+- Vim uses registers `"*` for PRIMARY and `"+` for CLIPBOARD. Also see
+  `:help "+` and [SE answers here][vise-84]. This requires `+clipboard`
+  feature flag (test with `has('clipboard')`).
+
+There are apparently two different versions of `xsel` with different
+command-line arguments; thus `xclip` should be preferred.
 
 ### Data Formats and Target Atoms
 
@@ -56,3 +62,8 @@ into GUI programs:
 
     import  png:- | xclip -se c -t image/png  -i
     import jpeg:- | xclip -se c -t image/jpeg -i
+
+
+
+<!-------------------------------------------------------------------->
+[vise-84]: https://vi.stackexchange.com/q/84/15666
