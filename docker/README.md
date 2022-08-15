@@ -10,6 +10,7 @@ Detailed list of pages here:
 * [Install/Config](config.md): Docker Installation and Configuration
 * [Image Build](image.md): Docker Image Creation and Maintenance
 * [Registries](registries.md): Docker Registries, Private and Public Images
+* [Servers, Contexts and Orchestration](server.md)
 * [Security](security.md): Docker Security
 * [Miscellaneous Information](misc.md)
 * [Tips](tips.md): Docker Tips; handy commands and the like
