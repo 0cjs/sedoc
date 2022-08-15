@@ -66,9 +66,9 @@ a list of GitLab CI cache containers:
 ### Docker Inspect and Templates
 
 `docker inspect` prints Json information about any object (containers,
-images, volumes, etc.) The `-f` argument lets you specify a [Go
-template] to Docker inspect to query and extract specific parts of the
-output. E.g.,:
+images, volumes, etc.) The `-f` argument lets you specify a [Go template][]
+(also see [formatting]) to Docker inspect to query and extract specific
+parts of the output. E.g.,:
 
     $ docker inspect -f 'Tags: {{.RepoTags[0]}}' ubuntu
     Tags: [ubuntu:16.04 ubuntu:latest]
@@ -92,7 +92,7 @@ grouping:
 `table` directive to print headers.
 
 References:
-* Go library [Package template][go template]
+* Go library [Package template][go template]
 * [Docker Inspect Template Magic][ditm] blog entry
 
 ### Check Image Growth
@@ -210,7 +210,8 @@ See [Docker Security](security.md)
 [REST API]: https://docs.docker.com/engine/api/v1.24/
 [`ps`]: https://docs.docker.com/engine/reference/commandline/ps/#formatting
 [ditm]: https://container-solutions.com/docker-inspect-template-magic/
-[go template]: https://golang.org/pkg/text/template/
+[formatting]: https://docs.docker.com/config/formatting/
+[go template]: https://pkg.go.dev/text/template
 [juggery]: https://medium.com/lucjuggery/about-var-run-docker-sock-3bfd276e12fd
 [ps-filtering]: https://docs.docker.com/engine/reference/commandline/ps/#filtering
 [so 52081984]: https://stackoverflow.com/a/52081984/107294
