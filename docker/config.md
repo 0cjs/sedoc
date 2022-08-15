@@ -105,7 +105,8 @@ containers. See also:
 
 #### Windows
 
-Documentation: [Docker for Windows][dfw] (also called "Docker Desktop").
+Documentation: [Docker for Windows][dfw] (also called "Docker Desktop,"
+but Docker Desktop is also availble for Linux).
 
 The link to the [Docker for Windows Installer][dfwi] is not visible
 except when logged into [Docker Hub][hub], though it can be downloaded
@@ -123,6 +124,10 @@ message.
 [dfwi-sha]: https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe.sha256sum
 [Hyper-V]: https://en.wikipedia.org/wiki/Hyper-V
 [VirtualBox]: https://en.wikipedia.org/wiki/VirtualBox
+
+#### Windows on WLS2
+
+XXX alternative to Docker for Windows?
 
 
 Managment Systems
