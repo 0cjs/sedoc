@@ -61,6 +61,14 @@ socket connects to the receiver's "down/secondary/2" socket.
       RGB 15,19,20    ↔   R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
           21          ↔   shield
 
+#### Game Console SCART Cables
+
+SCART cables for game consoles often include a little bit of extra passive
+circuitry (resistors and caps) in order to save a bit on the cost of the
+part of the often-unused RGB output circuit on the PCB. [This eviltim
+page][eviltim] gives the circuitry for many consoles; note that some also
+differ between PAL and NTSC versions.
+
 ####  Breakout Board
 
 `Clr` above has pin header colors on the JP-21 breakout board (excepting
@@ -373,6 +381,7 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 
 [RGB21ピン]: https://ja.wikipedia.org/wiki/RGB21ピン
 [SCART]: https://en.wikipedia.org/wiki/SCART
+[eviltim]: http://members.optusnet.com.au/eviltim/gamescart/gamescart.htm
 [fmavtw]: http://dempa.jp/rgb/drug/fmavtw01.html
 [jp-21]: https://en.wikipedia.org/wiki/SCART#JP-21
 [lgreenf]: http://www.nausicaa.net/~lgreenf/fm7page.htm
@@ -383,3 +392,4 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 [pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 [towns]: http://www.hardwarebook.info/FM_Towns_Video
+
