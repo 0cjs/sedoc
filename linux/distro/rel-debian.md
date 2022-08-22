@@ -5,7 +5,9 @@ Debian Releases and Upgrading
 
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
-| 2021-08 | 11    | Bullseye |          |           | release on 2021-08-14
+| 2023-?? | 12    | Bookworm |          |           |
+| 2022-04 | 22.04 | Jammy    | 2027-04  | 5.15      |
+| 2021-08 | 11    | Bullseye |          | 5.10      | release on 2021-08-14
 | 2020-04 | 20.04 | Focal    | 2030-04  |           |
 | 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
