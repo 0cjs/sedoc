@@ -23,7 +23,7 @@ PC-8x01:
 - [PC-8001 Floppy Disk Format](floppy.md)
 - [PC-6001/8001 Disk Interfaces](floppyif.md)
 - [`D88STRUC.txt`](D88STRUC.txt): .D88/.D68/.D77/.D98 disk image file
-  structure. From [barbeque].
+  structure. Also see [`../floppy`](../floppy.md).
 
 Other systems:
 - [NEC PC-6001](6001.md)
@@ -92,7 +92,6 @@ wire; other models have externally-accessible switches.
 <!-------------------------------------------------------------------->
 [5inch-cache]: https://webcache.googleusercontent.com/search?q=cache:http%3A%2F%2F5inch.floppy.jp%2Fpc88serialconnect.txt
 [5inch]: http://5inch.floppy.jp/pc88serialconnect.txt
-[barbeque]: https://gist.github.com/barbeque/33ee77a440fb9796d309bdc980bb067a
 [rcp]: https://retrocomputerpeople.web.fc2.com/machines/nec/
 [xdisk3]: https://github.com/bferguson3/xdisk3
 

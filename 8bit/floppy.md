@@ -179,6 +179,39 @@ Flux Level Images
   sophisticated software (Windows only)?
 
 
+Sector Level Images
+-------------------
+
+### D88/68/77/98
+
+The "D88" format stores a sequence of raw images (sector data) with a
+32-byte header prepended in front of each giving the name, write protect
+flag, media type etc. The convention is to use an extension matching the
+higher-level format of the data in the images:
+
+    .d88    NEC PC-8001/PC-8801 (2D, 2DD, 2HD)
+    .d68    NEC PC-6001         (2D, others?)
+    .d98    NEC PC-9801         (2D, 2DD, 2HD)
+    .d77    Fujitsu FM-7/FM77   (2D, 2DD)
+
+The image formats supported are:
+
+    $00  2D  320K  2 sides × 40 tracks × 16 sectors × 256 bytes
+    $10  2DD 640K  2 sides × 80 tracks × 16 sectors × 256 bytes
+    $20  2HD ???K  2 sides ×  ? tracks ×  ? sectors ×   ? bytes
+    $30¹ 1D  160K  1 sides × 40 tracks × 16 sectors × 256 bytes
+    $40¹ 1DD 320K  1 sides × 80 tracks × 16 sectors × 256 bytes
+
+       ¹ 1DDITT tool only
+
+See [`nec/D88STRUC.txt`](nec/D88STRUC.txt) for more details.
+(There's also a copy in a [gist from barbeque][barbeque].)
+
+Programs:
+- [`d88split.pl`]: splits a file containing several images into files
+  containing one image each.
+
+
 
 <!-------------------------------------------------------------------->
 [MB8877]: https://www.tim-mann.org/max80/Appendix_D_Updated.pdf
@@ -213,3 +246,7 @@ Flux Level Images
 [scp]: https://www.cbmstuff.com/proddetail.php?prod=SCP
 [scpman]: https://www.cbmstuff.com/downloads/scp/scp_manual.pdf
 [stmfake]: https://github.com/keirf/Greaseweazle/wiki/STM32-Fakes
+
+<!-- sector level images -->
+[`d88split.pl`]: https://github.com/tomari/d88split/blob/master/d88split.pl
+[barbeque]: https://gist.github.com/barbeque/33ee77a440fb9796d309bdc980bb067a
