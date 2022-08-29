@@ -155,7 +155,11 @@ Disk Format
 [富士通 FM-7 F-BASIC 文法書][fm7basic] §2.10.3 pp. 2-23 through 2-30 gives
 low-level information on the disk format.
 
-8" 1 MB (2-27) and 5.25" 360K are both 256 bytes per cluster:
+All formats use 256 bytes/sector and 256 bytes/cluster.
+- 5.25" (2-24): 320K in 2 sides, 40 cylinders (80 tracks), 16 sectors.
+- 8"    (2-27): 1 MB in 2 sides, 77 cylinders (154 tracks), 26 sectors.
+
+Disk addressing values:
 
     5.25"   8"      Description
     ─────────────────────────────────────────────────────────
