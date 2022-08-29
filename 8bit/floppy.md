@@ -109,34 +109,6 @@ The power plug on the cable is an AMP 170204-2 or 171822-4. FDDs
 often (but not always) need only +5 V.
 
 
-Flux Level
-----------
-
-### Flux Image File Formats
-
-- `.SCP`: [SuperCard Pro][scp]. Supported by:
-  - SuperCard Pro software
-  - [Disk-Utilities][du] (multi-platform)
-  - [HxC software][hxcsoft] (ZIP).
-
-
-### Flux-level Hardware
-
-- [FluxEngine][fe] ([GitHub][fegh]), based on a Cypress PSoC5LP
-  CY8CKIT-059 development board ($10-$30). Floppy disk is connected
-  directly to header pins on the board; a USB interface streams flux
-  data to/from the computer. Provided software translates flux data
-  from/to disk image files.
-
-- [Greaseweazle], based on STM32F103 ($1-$5) on a "blue pill"
-  development board (F1 model) or custom board (F7 model).
-  Reads/writes only `.SCP` files; no other software provided.
-  Note that [STM fakes][stmfake] are not infrequent.
-
-- [SuperCard Pro][scp], [manual][scpman]. ($100+). Comes with fairly
-  sophisticated software (Windows only)?
-
-
 USB UFI - Universal Floppy Interface
 ------------------------------------
 
@@ -179,6 +151,34 @@ Does not read 40-track diskettes. Gives:
     [sdc] Read Capacity(10) failed: Result: hostbyte=DID_OK driverbyte=DRIVER_SENSE
 
 
+Flux Level Images
+-----------------
+
+### Flux Image File Formats
+
+- `.SCP`: [SuperCard Pro][scp]. Supported by:
+  - SuperCard Pro software
+  - [Disk-Utilities][du] (multi-platform)
+  - [HxC software][hxcsoft] (ZIP).
+
+
+### Flux Level Hardware
+
+- [FluxEngine][fe] ([GitHub][fegh]), based on a Cypress PSoC5LP
+  CY8CKIT-059 development board ($10-$30). Floppy disk is connected
+  directly to header pins on the board; a USB interface streams flux
+  data to/from the computer. Provided software translates flux data
+  from/to disk image files.
+
+- [Greaseweazle], based on STM32F103 ($1-$5) on a "blue pill"
+  development board (F1 model) or custom board (F7 model).
+  Reads/writes only `.SCP` files; no other software provided.
+  Note that [STM fakes][stmfake] are not infrequent.
+
+- [SuperCard Pro][scp], [manual][scpman]. ($100+). Comes with fairly
+  sophisticated software (Windows only)?
+
+
 
 <!-------------------------------------------------------------------->
 [MB8877]: https://www.tim-mann.org/max80/Appendix_D_Updated.pdf
@@ -201,17 +201,15 @@ Does not read 40-track diskettes. Gives:
 [sather9]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n230/mode/1up
 [wp-fmtlist]: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
 
+<!-- USB UFI -->
+[UFI spec]: https://usb.org/sites/default/files/usbmass-ufi10.pdf
+
 <!-- image file formats and software -->
 [du]: https://github.com/keirf/Disk-Utilities
-[hxcsoft]: https://hxc2001.com/download/floppy_drive_emulator/HxCFloppyEmulator_soft.zip
-
-<!-- flux-level readers/writers -->
 [fe]: http://cowlark.com/fluxengine/
 [fegh]: https://github.com/davidgiven/fluxengine
 [greaseweazle]: https://github.com/keirf/Greaseweazle
+[hxcsoft]: https://hxc2001.com/download/floppy_drive_emulator/HxCFloppyEmulator_soft.zip
 [scp]: https://www.cbmstuff.com/proddetail.php?prod=SCP
 [scpman]: https://www.cbmstuff.com/downloads/scp/scp_manual.pdf
 [stmfake]: https://github.com/keirf/Greaseweazle/wiki/STM32-Fakes
-
-<!-- UFI -->
-[UFI spec]: https://usb.org/sites/default/files/usbmass-ufi10.pdf
