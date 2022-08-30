@@ -132,6 +132,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-10   MSX release
     1983-11   NEC PC-8801mkII (¥168k/¥225k/¥275k 0/1/2 drives)
+    1983-12   NEC consolidation to PC-88 and PC-98 only (see nec/README)
     1983      Radio Shack TRS-80 Model 100
     1983      Radio Shack TRS-80 MC-10
 

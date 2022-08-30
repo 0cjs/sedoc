@@ -31,6 +31,16 @@ Other systems:
   PC-6031 floppy disk drive unit.
 - [NEC PC-9801](9801.md)
 
+The PC-8001 (and later PC-8801) were originally developed by the Electronic
+Device Group but manufactured by New Nippon Electric, later renamed NEC
+Home Electronics. In 1981 the lines expanded with Home Electronics
+developing the PC-6001 and Information Processing the PC-9801. They soon
+had they had four lines from three different groups (Electronic Device
+released the PC-100 16-bit line). In 1983-12 they consolidated down to
+PC-8801, given to Home Electronics, and PC-9801, which stayed with
+Information Processing. The PC-6001 and PC-100 were cancelled. (This all
+from various Wikipedia articles.)
+
 
 TransDisk (xdisk)
 -----------------
