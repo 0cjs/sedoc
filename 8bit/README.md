@@ -133,6 +133,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1983-10   MSX release
     1983-11   NEC PC-8801mkII (¥168k/¥225k/¥275k 0/1/2 drives)
     1983-12   NEC consolidation to PC-88 and PC-98 only (see nec/README)
+    1983-12   Fujitsu FM-X MB25150 (MSX)
     1983      Radio Shack TRS-80 Model 100
     1983      Radio Shack TRS-80 MC-10
 
