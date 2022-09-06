@@ -57,7 +57,7 @@ version of the output for that particular platform. See the `nix-store
 --realise` command for more details.
 
 Subsitutes may come from the following sources:
-- Binaries distributed with channels (XXX how do those work?).
+- Binaries distributed with [channels] (XXX how do those work?).
 - A ["binary cache"][bc] made available via `nix-serve` by any machine from
   its own Nix store (populated via local builds or `nix copy`).
 - A dedicated cache server such as [Cachix].
@@ -162,7 +162,7 @@ see below for more details.
     nix-channel --add URL NAME      # doesn't d/l exprs; use --update after
     nix-channel --remove NAME
 
-A set of subscribed channels is stored as an environment under the usual
+A set of subscribed [channels] is stored as an environment under the usual
 `/nix/store/HASH-user-environment/` naming scheme. (This _HASH_ is, as
 usual, the content hash and not the same as any hashes in symlinks within
 the environment package.) This will have a `manifest.nix` symlink to a
@@ -379,6 +379,7 @@ All packages below are available in Nixpkgs unless noted otherwise.
 <!-- Manual deep links -->
 [bc]: https://nixos.wiki/wiki/Binary_Cache
 [cachix]: https://docs.cachix.org/
+[channels]: https://nixos.wiki/wiki/Nix_channels
 [nix #!]: https://nixos.org/manual/nix/stable/#use-as-a-interpreter
 [nix env]: https://nixos.org/manual/nix/stable/#sec-common-env
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
