@@ -149,12 +149,14 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1984    * Hitachi S1 (Basic Master series, final machine)
     1984      Commodore 16
 
+    1985-01   Commodore 128 introduced at CES Las Vegas
     1985-01   NEC PC-8801mkIISR (¥168/213/258k 0/1/2 drives)
     1985-02   Fujitsu FM77L4 (400-line graphics)
     1985-03   NEC PC-8001mkIISR
     1985-03   Apple Enhanced IIe (65C02, ROM, char ROM)
     1985-04   Fujitsu FM77L2 (FM sound card)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
+    1985-07 * -25 Commodore 128 U.K. launch (exhibited 06-13)
     1985-10 * Nintendo NES ($179 inc. R.O.B. and Zapper)
     1985-10   Fujitsu FM77AV (128K RAM, 96K VRAM, 4096 colours, ¥128,000)
     1985      MSX2 released
@@ -166,6 +168,7 @@ Magazine publishing dates:
 
 Online references (some of dubious accuracy) include:
 - Wikipedia list of [Notable 8-bit CPUs][w-not-8bit]
+- _Popular Computing Weekly_ [Datelines][pcw-dl] 1982 to 1987-04 timeline.
 - [Motorola M6800 Microprocessory History[sw68hist], archived from Michael
   Holley's now-defunct swtpc.com page. An excellent list of articles and
   advertisements (including copies of many) documenting early microprocessor
@@ -194,9 +197,11 @@ Online references (some of dubious accuracy) include:
 
 
 <!-------------------------------------------------------------------->
+<!-- General references -->
 [kctape]: https://en.wikipedia.org/wiki/Kansas_City_standard#Computers_using_the_Kansas_City_standard
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 
+<!-- Early Computers -->
 [gosanke8]: https://ja.wikipedia.org/wiki/8ビット御三家
 [trinity]: https://retrocomputing.stackexchange.com/q/12343/7208
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
@@ -207,8 +212,10 @@ Online references (some of dubious accuracy) include:
 [we-trs80i]: https://page.auctions.yahoo.co.jp/jp/auction/g373420258
 [wj-mz80k]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K
 
+<!-- Magazine publishing dates -->
 [m kb]: https://archive.org/details/kilobaudmagazine?&sort=date
 
+<!-- Online References -->
 [JIPDEC ar J]: https://www.jipdec.or.jp/library/archives_keyword_J.html
 [byte8509]: https://archive.org/details/BYTE_Vol_10-09_1985-09_10th_Anniversary_Issue/page/n398/mode/1up?view=theater
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
@@ -216,6 +223,7 @@ Online references (some of dubious accuracy) include:
 [jcq57]: https://www.jipdec.or.jp/archives/publications/J0001259
 [jcq75]: https://www.jipdec.or.jp/archives/publications/J0003088
 [oc-1975]: https://old-computers.com/museum/year.asp?y=1975
+[pcw-dl]: https://archive.org/details/popular-computing-weekly-1987-05-01/page/n14/mode/1up?view=theater
 [pol-mp]: http://kpolsson.com/micropro/
 [pol-pc]: http://kpolsson.com/comphist/
 [pol-pcmini]: http://kpolsson.com/comphist/mini.htm
