@@ -65,6 +65,21 @@ The TED machines (C16, C116 and Plus/4) use a MiniDIN-8 connector and:
 - tie pin 7 to ground instead of +5V;
 - use diode-isolated pull-ups instead of relying on the VIA/CIA's pull-ups.
 
+### Taito
+
+Taito built their own custom paddle controller, called the [Vaus
+Paddle][taito] for Arkanoid and Arkanoid II; versions of it were packaged
+with the NES and MSX ports. The MSX version probably used the NES style
+"clocked input" comunications mechanism (which was very different from the
+standard MSX paddles) so that they could reduce manufacturing costs by
+having mostly common components for the two versions. (They may have
+differed only in the external connector.)
+
+The controller basically used a couple of 555 timers and a 4040 counter to
+generate a value for the paddle position that, along with the button
+status, is latched by a '166 parallel load shift register; the computer
+then clocks the values of this out in the usual NES way.
+
 ### MSX
 
 __WARNNG!__ When an MSX joystick is used on an Atari-compatible system
@@ -130,6 +145,8 @@ several different converters to USB, including:
 [Robocop 2]: https://www.lemon64.com/forum/viewtopic.php?t=35034
 [lemon64]: https://www.lemon64.com/forum/viewtopic.php?t=48672
 [rcse 2499]: https://retrocomputing.stackexchange.com/a/2640/7208
+
+[taito]: https://www.msx.org/wiki/Taito_Arkanoid_Vaus_Paddle
 
 [jr200]: https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
 
