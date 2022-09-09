@@ -15,4 +15,4 @@ with the following _TYPE_ arguments gave these results:
 This was fixed with
 
     xdg-mime default google-chrome.desktop \
-      x-scheme-handler/https x-scheme-handler/http
+      text/html x-scheme-handler/https x-scheme-handler/http
