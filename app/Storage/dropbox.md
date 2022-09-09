@@ -6,6 +6,21 @@ Linux client uses `$HOME` to find its directories, including:
 - `.dropbox-dist/`: sync client
 - `Dropbox/`: user files in Dropbox account
 
+### fs.inotify.max_user_watches
+
+Dropbox requires a very high number of user watches from inotify, and will
+warn about this. To configure this:
+
+    $ sudo -s
+    # cd /etc
+    # echo fs.inotify.max_user_watches=100000 >sysctl.d/50-dropbox.conf
+    # chmod go+r sysctl.d/50-dropbox.conf
+    # # etckeeper add and commit
+    # systemctl restart systemd-sysctl      # sysctl -p does not reload .d/*
+    # exit
+    $ dropbox stop
+    $ dropbox start
+
 ### Client Installation
 
 The actual sync client is a proprietary daemon installed in the above
@@ -34,21 +49,6 @@ In either case, remember to turn off stuff in selective sync to keep it from
 trying to bring over many hundreds of GB of stuff.
 
 `$HOME/Dropbox` may be a symlink, but I think I saw some issues with that.
-
-### fs.inotify.max_user_watches
-
-Dropbox requires a very high number of user watches from inotify, and will
-warn about this. To configure this:
-
-    $ sudo -s
-    # cd /etc
-    # echo fs.inotify.max_user_watches=100000 >sysctl.d/50-dropbox.conf
-    # chmod go+r sysctl.d/50-dropbox.conf
-    # # etckeeper add and commit
-    # systemctl restart systemd-sysctl      # sysctl -p does not reload .d/*
-    # exit
-    $ dropbox stop
-    $ dropbox start
 
 
 Alternate Accounts
