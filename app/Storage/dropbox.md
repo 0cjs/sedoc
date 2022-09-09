@@ -6,11 +6,13 @@ Linux client uses `$HOME` to find its directories, including:
 - `.dropbox-dist/`: sync client
 - `Dropbox/`: user files in Dropbox account
 
+### Client Installation
+
 The actual sync client is a proprietary daemon installed in the above
 directories it can be installed in two ways:
 
 1. Per the Dropbox [`install-linux` page ][install-linux] instructions,
-   download and extract the headless-capable client via `cd ~ && wget -O -
+   download and extract the headless-capable client via `cd ~ && curl -L
    "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -`. It will
    be extracted to `$HOME/.dropbox-dist/`; running
    `~/.dropbox-dist/dropboxd` will start the authentication process if
@@ -27,6 +29,9 @@ To authenticate after installation it will start an instance of Chrome (or
 another browser?) if available, or print the URL to be copied to another
 browser if headless. . Note that merely unsetting `$DISPLAY` on a system
 where a graphical browser is available will not print the URL.
+
+In either case, remember to turn off stuff in selective sync to keep it from
+trying to bring over many hundreds of GB of stuff.
 
 `$HOME/Dropbox` may be a symlink, but I think I saw some issues with that.
 
