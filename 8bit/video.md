@@ -186,9 +186,9 @@ vertical sync interval; the solution is to return to black level for a
 short period _before_ the falling edge of the hsync signal so that a
 falling edge is still present at the right point, called _serrated pulses_
 within the _broad pulses_ of the vsync. This is _not_ the same as doing an
-XOR of the signals; that would delay the falling edge of hsync by the hsync
-signal width; properly constructed csync retains exactly the hsync's
-falling edges. [[hdr csync1]]
+XOR of the signals [[hdr csync2]]; that would delay the falling edge of
+hsync by the hsync signal width; properly constructed csync retains exactly
+the hsync's falling edges. [[hdr csync1]]
 
 But because the signals are interlaced, it's even trickier because it
 introduces a falling edge half-way between the two horizontal sync signals.
