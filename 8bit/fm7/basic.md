@@ -90,7 +90,10 @@ Selected display-related commands:
   - Codes listed in [Appendix 3][a3]; &h2122-4F53 w/many blanks
 - `CONSOLE` (3-105): Set scroll areas and other screen attributes.
 - `SCREEN` (3-111): Select VRAM usage.
-- `PSET`: Set/clear a point on the screen.
+- `PSET(x,y[,p[,f]])`: Set/clear a point on the screen. _x,y_ ranges from
+  (0,0) to (639,199). _p_ is a "pallette code," which is just the color as
+  given to the  `COLOR` statement. (8-15 are the same colors as 0-7.)  _f_
+  is the function to apply to the new and existing point: `AND`, `OR`, `XOR`.
 
 Numeric functions:
 - `¥` (2-13) floating point division, truncated result
