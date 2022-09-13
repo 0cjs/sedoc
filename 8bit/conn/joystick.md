@@ -135,6 +135,13 @@ several different converters to USB, including:
 - [Bliss Box] has a range of adapters with very wide support.
 
 
+Controller Detection
+--------------------
+
+The MSX Wiki page [MSX-HID] gives an algorithm for detecting a large
+variety of different controllers.
+
+
 
 <!-------------------------------------------------------------------->
 [wp atjoy other]: https://en.wikipedia.org/wiki/Atari_joystick_port#Other_platforms
@@ -159,3 +166,6 @@ several different converters to USB, including:
 [Bliss Box]: https://bliss-box.net/
 [Stelladaptor]: http://www.grandideastudio.com/stelladaptor-2600/
 [rcse 16066]: https://retrocomputing.stackexchange.com/q/16066/7208
+
+<!-- Controller Detection -->
+[MSX-HID]: https://www.msx.org/wiki/MSX-HID
