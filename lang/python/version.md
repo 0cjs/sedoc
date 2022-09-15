@@ -74,8 +74,9 @@ stopped earlier. EOL dates in the past are in parens.
 
 | OS/Distro     | `python`  |`python3`  | Distro EOL | Distro Release
 |---------------|-----------|-----------|------------|----------------
-| CentOS 8      | varies[3] | ?         |
-| AWS Lambda    | 2.7.?     | 3.6.1     |            | 2018-05 (last check)
+| AWS Lambda    | -         | 3.{7,8,9} |            | 2022-09 (last check)
+| CentOS 8      | varies[3] | ?         |            │
+| AWS Lambda    | 2.7.?     | 3.6.1     |            | 2018-05 (historical)
 | Ubuntu 18.04  | 2.7.14+   | 3.6.4+    | 2028-04    | 2018-04
 | Debian 9      | 2.7.13    | 3.5.3     | 2022       | 2017-06
 | MacOS 10.14   | 2.7.16 [1]| -         | 2021-09    | 2018-09
