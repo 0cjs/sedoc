@@ -6,9 +6,9 @@ Debian Releases and Upgrading
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
 | 2023-?? | 12    | Bookworm |          |           |
-| 2022-04 | 22.04 | Jammy    | 2027-04  | 5.15      |
+| 2022-04 | 22.04 | Jammy    | 2027/32  | 5.15      |
 | 2021-08 | 11    | Bullseye |          | 5.10      | release on 2021-08-14
-| 2020-04 | 20.04 | Focal    | 2030-04  |           |
+| 2020-04 | 20.04 | Focal    | 2025/30  |           |
 | 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
 | 2017-06 | 9     | Stretch  | 2022-07  | 4.9, 4.19 |
@@ -21,8 +21,9 @@ Debian Releases and Upgrading
 | 2010-04 | 10.04 | Lucid    |          | 2.6       |
 | 2009-10 |  9.10 | Karmic   |          |           |
 
-Unbuntu LTS releases provide optional (but recommended) new (sometimes
-major) kernel/X11 versions at point releases; see [LTSEnablementStack].
+Unbuntu LTS releases EOL 20gg/ss are end dates for general and security
+support. LTS releases provide optional (but recommended) new kernel/X11
+versions at point (and sometimes major) releases; see [LTSEnablementStack].
 
 Debian figures above are end of [Debian LTS] support; regular support
 ends two years earlier.
