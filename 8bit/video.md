@@ -376,10 +376,13 @@ Other sources
 - \[pcbj-gen] pcbjunkie.net, ["Generating Video with a
   Microcontroller"][pcbj-gen].
 
-Sample circuits:
+Sample circuits and programming:
 - \[c64-80] [The Commodore 64 80-Column Terminal][c64-80], Field, Richards
   and Beenfeldt, _BYTE_ March 1985, p.183. Quite generic Motorola 6845
   80-column CVBS display system; bus interface to the C64 cartridge port.
+- \[pc6001vid4] [PC-6001 SCREEN MODE4 の色滲みを調べる][pc6001vid4].
+  Detailed explanation of NTSC color, the Motorola 6847, and how the
+  PC-6001 produces colour in a black-and-white mode using artifacts.
 
 
 
@@ -425,6 +428,7 @@ Sample circuits:
 [hdr jit]: https://www.hdretrovision.com/jitter
 [man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
 [mc zx81]: https://www.modularcircuits.com/blog/projects/the-dinosaur-computer/
+[pc6001vid4]: http://p6ers.net/mm/pc-6001/dev/screen4color/
 [pcbj-gen]: http://pcbjunkie.net/index.php/guides/generating-video-with-a-microcontroller/
 [pet andre]: http://6502.org/users/andre/petindex/crtc.html
 [pet f6 623]: http://forum.6502.org/viewtopic.php?f=1&t=6231
@@ -432,5 +436,3 @@ Sample circuits:
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
-
-
