@@ -383,6 +383,8 @@ Sample circuits and programming:
 - \[pc6001vid4] [PC-6001 SCREEN MODE4 の色滲みを調べる][pc6001vid4].
   Detailed explanation of NTSC color, the Motorola 6847, and how the
   PC-6001 produces colour in a black-and-white mode using artifacts.
+- \[cga1024] §["Artifact Colors"][cga1024] from _CGA in 1024 Colors - a New
+  Mode: the Illustrated Guide._ Includes a handy NTSC color wheel.
 
 
 
@@ -436,3 +438,4 @@ Sample circuits and programming:
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
+[cga1024]: https://int10h.org/blog/2015/04/cga-in-1024-colors-new-mode-illustrated/#a-id-artifact-colors-a-artifact-colors
