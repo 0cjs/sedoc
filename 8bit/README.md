@@ -155,11 +155,13 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1985-03   NEC PC-8001mkIISR
     1985-03   Apple Enhanced IIe (65C02, ROM, char ROM)
     1985-04   Fujitsu FM77L2 (FM sound card)
+    1985-04 H Atari 520ST (full avail. 1985-07) ($799 w/mono, $999 w/color)
     1985-06   NEC PC-9801VM (2HD, reads/writes 2DD, became basic spec)
+    1985-06 H MSX2 released
+    1985-07 H Amiga 1000 $1295 (monitor +$300)
     1985-07 * -25 Commodore 128 U.K. launch (exhibited 06-13)
     1985-10 * Nintendo NES ($179 inc. R.O.B. and Zapper)
     1985-10   Fujitsu FM77AV (128K RAM, 96K VRAM, 4096 colours, ¥128,000)
-    1985      MSX2 released
 
 Magazine publishing dates:
 - 1976 _I/O_
