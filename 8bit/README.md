@@ -71,7 +71,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1977-10 H PET 2001 ships, $600 (4K) $800 (8K)
 
     1978-06 H Apple Disk II released ($600)
-    1978-06 c Intel 8086 introduced
+    1978-06 C Intel 8086 ships
     1978-09 H Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 H Sharp MZ-80K semi-kit ships
     1978    H Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
@@ -85,6 +85,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1979-10 h TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
     1979-10 h Sharp MZ-80K introduced in UK (20K £380, 48K £475)
     1979-11 H Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
+    1979    C Zilog Z8000 introduced
     1979      Microtan 65
 
     1980-01 h Sinclair ZX80
