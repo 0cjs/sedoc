@@ -23,7 +23,7 @@ to locations in this page.
        1    4000-7FFF   3,2  BIOS/BASIC ROM; expansion ROM
        0    0000-3FFF   1,0  BIOS/BASIC ROM
 
-#### Primary Slots
+#### Primary Slots / 基本スロット
 
 Devices responding to address space read/write requests are in one of four
 _primary_ slots, 0-3, corresponding to select lines `S̅L̅T̅S̅L̅0` through
@@ -43,7 +43,7 @@ The schematic from [td1 p.30] makes the decoding clear:
 
 <img src="img/msx-slot-schematic.jpg" height=250>
 
-#### Expansion Slots
+#### Expansion Slots / 拡張スロット
 
 Each primary slot may optionally support up to four "expansion" slots
 associated with the primary slot, assigned _secondary slot numbers_ 0
@@ -68,17 +68,20 @@ to detect RAM, mapping in the first RAM that it finds for each page. It
 then scans at $4000 and $8000 for pages starting $AB, which is the
 cartridge ROM signature, and maps in the first one it finds.
 
-### Memory Mappers
+### Memory Mapper / メモリマッパ
 
-There's another method of bank switching usually called a [Memory
-Mapper][mw mapper] (and sometimes "MegaMapper") that uses I/O ports $FC-$FF
-to map arbitrary 16K "segments" from an expansion slot containing up to 4
-MB of RAM to each of the four pages.
+There's another method of bank switching called a [Memory Mapper][mw mapper]
+(and sometimes "MegaMapper") that uses I/O ports $FC-$FF to map arbitrary
+16K "segments" from an expansion slot containing up to 4 MB of RAM to each
+of the four pages ($FC for page 0, etc.). (For other kinds of paging
+devices, generally just the term "mapper" is used. Cartridge ROM mappers
+generally use the term "banks" instead of "segments.")
 
-This must be properly initialised by the BIOS; on an MSX1 machine most
-devices will start with segment 0 mapped to all four pages, causing
-problems. See [Memory mappers on MSX1][mmap-msx1] for details on how to
-work around this.
+Most Memory Mappers power up with all four pages mapped to segment 0; this
+will confuse most MSX1 BIOSes. MSX1 machines with a built-in Memory Mapper
+(such as the Yamaha [CX5MII]) will have a BIOS that properly initializes
+things. For other machines, see [Memory mappers on MSX1][mmap-msx1] for
+details on how to work around this.
 
 The specification (which I can't find) says that the registers are
 write-only, but some software relies on them being readable. [This internal
@@ -183,6 +186,7 @@ Notes and references for I/O systems above:
 
 
 <!-------------------------------------------------------------------->
+[CX5MII]: https://www.msx.org/wiki/Yamaha_CX5MII
 [dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
 [koryakin]: https://hansotten.file-hunter.com/do-it-yourself/memory-mappers-slots/2mb-4mb-internal-slot-expander/
 [ma iopo]: https://map.grauw.nl/resources/msx_io_ports.php
