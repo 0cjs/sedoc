@@ -12,6 +12,7 @@ Contents:
 - Usage of Docker Volumes
 - Docker ps and Filters
 - Docker Inspect and Templates
+- Force Intermediate Image Rebuilds
 - Check Image Growth
 - Cleaning Up Old Images, etc.
 - Networking MTU Issues
@@ -112,6 +113,24 @@ grouping:
 References:
 * Go library [Package template][go template]
 * [Docker Inspect Template Magic][ditm] blog entry
+
+### Force Intermediate Image Rebuilds
+
+Two methods:
+- Use a `COPY` command from a dummy/marker file whose contents you change
+  when you want to force a rebuild.
+- Use an `ARG` command with a different value for the ARG name (changed
+  with the `--build-arg` option). This will always re-use the cached image
+  for the `ARG` line itself, but will invalidate cached images for all
+  lines following the `ARG` line, even if the argument value isn't used in
+  them.
+
+In both cases, changing the value (in the file or of the argument) and then
+changing it back will find and re-use the previous version of the image in
+the cache if it has not yet been garbage-collected.
+
+See [Image Build § Build Cache](./image.md#build-cache) for more details on
+exactly what causes cache invalidation and rebuild.
 
 ### Check Image Growth
 
