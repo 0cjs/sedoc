@@ -110,7 +110,8 @@ I/O Address Map
 
 [[td1 p.40]]. All I/O is supposed to be done via BIOS calls, except VDP. (See
 notes below table.) Some MSX machines will not let cartridge slots respond
-to certain I/O port requests.
+to certain I/O port requests. Much more detailed information at MSX
+Assembly Page [MSX I/O ports overview][ma iopo].
 
     FC-FF   MSX2 Memory Mapper (write-only registers†)
               FF page 3 memory segment select (BIOS default 00)
@@ -184,6 +185,7 @@ Notes and references for I/O systems above:
 <!-------------------------------------------------------------------->
 [dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
 [koryakin]: https://hansotten.file-hunter.com/do-it-yourself/memory-mappers-slots/2mb-4mb-internal-slot-expander/
+[ma iopo]: https://map.grauw.nl/resources/msx_io_ports.php
 [ma mmr]: https://map.grauw.nl/resources/msx_io_ports.php#mmapper
 [mmap-msx1]: https://www.msx.org/wiki/Memory_Mapper#Memory_mappers_on_MSX1
 [mw mapper]: https://www.msx.org/wiki/Memory_Mapper
