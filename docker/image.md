@@ -87,8 +87,9 @@ The rules for determining whether the line is changed are as follows:
   image (even if just a comment or whitespace difference) is considered
   changed.
   - Other than for the commands discussed below, nothing else is checked.
-    In particular, output values of commands are not checked, so `RUN date
-    >build-date` will always use the cached image after the first build.
+    In particular, the output of commands is not considered so that `RUN
+    date >build-date` will always use the cached image after the first
+    build.
 
 * `ADD`, `COPY`: Checksums are generated for the applicable source files in
   the current context and compared against the checksums recorded in the
