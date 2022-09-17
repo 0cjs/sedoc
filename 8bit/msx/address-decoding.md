@@ -72,18 +72,18 @@ cartridge ROM signature, and maps in the first one it finds.
 
 There's another method of bank switching usually called a [Memory
 Mapper][mw mapper] (and sometimes "MegaMapper") that uses I/O ports $FC-$FF
-to map arbitrary 16K banks from a single expansion slot (perhaps the one
-currently selected as page 3?) containing up to 4 MB of RAM to each of the
-four pages.
+to map arbitrary 16K "segments" from an expansion slot containing up to 4
+MB of RAM to each of the four pages.
 
-This must be properly initialised by the BIOS; on an MSX1 machine it will
-map bank 0 to all four pages, causing problems. See [Memory mappers on
-MSX1][mmap-msx1] for details on how to work around this.
+This must be properly initialised by the BIOS; on an MSX1 machine most
+devices will start with segment 0 mapped to all four pages, causing
+problems. See [Memory mappers on MSX1][mmap-msx1] for details on how to
+work around this.
 
 The specification (which I can't find) says that the registers are
 write-only, but some software relies on them being readable. [This internal
 2MB/4MB memory expander][koryakin] uses a 74'373 to enable reading back the
-outputs of the latches it uses to set the bank mapped to each page. A
+outputs of the latches it uses to set the segment mapped to each page. A
 system having more than one mapper with readback can have conflicts.
 Without readback, writing a mapper port sets the same value for mappers,
 but of course only the selected primary/expansion slot's memory will be
@@ -94,8 +94,12 @@ memory?) and provides [an API][dos2mem] for for temporary (disappears with
 TPA when program exits) and permanent allocation of pages. MSX-DOS 2 seems
 to allow the program to change pages at will and MSX-DOS will preserve
 these over API calls. MSX-DOS 2 is not listed as a program that would
-require readback, so this presumably means that you must only switch banks
-using the facilities provided by the DOS API.
+require readback, so this presumably means that you must only switch
+segments using the facilities provided by the DOS API.
+
+References:
+- MSX Wiki: [Memory Mapper][mw mapper]
+- MSX Assembly Page: I/O ports overview [§ Memory Mapper registers][ma mmr]
 
 XXX Reverse-engineer [this BASIC program](https://www.msx.org/wiki/Memory_Mapper#How_to_know_if_Main-RAM_is_in_a_memory_mapper)
 that determines the mapper config. (Requires MSX-DOS 2?)
@@ -180,6 +184,7 @@ Notes and references for I/O systems above:
 <!-------------------------------------------------------------------->
 [dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
 [koryakin]: https://hansotten.file-hunter.com/do-it-yourself/memory-mappers-slots/2mb-4mb-internal-slot-expander/
+[ma mmr]: https://map.grauw.nl/resources/msx_io_ports.php#mmapper
 [mmap-msx1]: https://www.msx.org/wiki/Memory_Mapper#Memory_mappers_on_MSX1
 [mw mapper]: https://www.msx.org/wiki/Memory_Mapper
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
