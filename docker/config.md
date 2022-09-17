@@ -54,6 +54,8 @@ Docker repository][docker debinst] (this for Debian 8+ `x86_64`):
       https://download.docker.com/linux/debian \
       $(lsb_release -cs) stable" \
       | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    chmod go+r /etc/apt/sources.list.d/docker.list
+    #   etckeeper commit here
 
     apt-get update
     apt-cache madison docker-ce     # If you want to find a specific version
