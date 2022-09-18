@@ -100,15 +100,33 @@ Standards:
 
 #### NTSC Color Encoding
 
-C is a 5×7×9/(8×11) Mhz = 315/88 Mhz ~= 3.579545 MHz ±10 Hz signal added to
-Y (2nd order amplitude modulation). The color burst is a burst of this at
-0° in the back porch to give the 0° phase reference. [phirenz]
+[Color information is encoded][wp ce] in a signal called _chroma_ or _C._
+This can be thought of as using a carrier at 5×7×9/(8×11) Mhz = 315/88 Mhz
+~= 3.579545 MHz ±10 Hz with the color information expressed by modulations
+in phase (hue) and amplitude (saturation).
 - Luminance: average value of Y, but see below.
 - Saturation (I): amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
   See below about separating this from luminance. This may show as "chroma
   dots" on old B/W sets that don't do this separation. (Newer B/W sets are
   supposed to filter when a color burst is present.)
 - Hue (Q): phase of 3.58 MHz waveform: 0°=blue, 100°=red, 178°=yellow.
+  <img src='img/1k05_ntsc_color_wheel.png' /> <!-- 172 × 127 -->
+
+The [color burst][wp cb] is a short segment of the color carrier at 180°;
+this is a 40 IRE amplitude burst starting at .6 μs into the back porch and
+lasting 2.5 μs. This gives a phase reference for the color carrier and is
+sometimes also used as an amplitude reference for the video signal. [[phirenz]]
+
+The 52.626 μs luminance area (63.556 μs horizontal rate - 10.9 μs blanking)
+gives about 188 transitions per line in the C signal; leaving out the
+borders that gives a maximum color resolution of around 160 pixels. (CGA
+uses 160 color cycles per scanline.)
+
+In S-video this C signal is carried on a separate wire; with CVBS the C
+signal is added to Y (luminance) via 2nd order amplitude modulation, and
+effectively takes up a little over 1 MHz of the of the luminance bandwith
+starting around 3 MHz. The diagram at [[wp tmm]] shows this, but also shows
+an additional "chromas" section at 2-3 MHz; I don't know what this is.
 
 Older TVs used a notch filter (2.8 - 4.1 MHz) to extract C, leaving Y as
 0 - 2.8 Mhz and 4.1 - ~5.5 Mhz. Thus alternating vertical bars at a width
@@ -117,6 +135,14 @@ color if a color burst is present in the back porch. The notch range is
 approximately 188 TV lines per sweep. Modern TVs use comb filters that do a
 much better job. [an9644] has some excellent image examples and details on
 filtering.
+
+This means that alternating B/W pixels at resolutions starting around 120
+pixels per line (including overscan) will start to be interpreted as a C
+signal, causing color fringing. See "CGA in 1024 Colors" [§ Artifact
+colors][cga1024 ac] for a detailed demonstration. At higher resolutions
+alternating pixels can be used to deliberately generate these artifact
+colours, as in the following diagram from that article:
+<img src='img/1k07_cga_composite_solid_colors_1.png' /> <!-- 313 × 222 -->
 
 #### Vertical Sync
 
@@ -382,7 +408,7 @@ Sample circuits and programming:
   80-column CVBS display system; bus interface to the C64 cartridge port.
 - \[pc6001vid4] [PC-6001 SCREEN MODE4 の色滲みを調べる][pc6001vid4].
   Detailed explanation of NTSC color, the Motorola 6847, and how the
-  PC-6001 produces colour in a black-and-white mode using artifacts.
+  PC-6001 produces color in a black-and-white mode using artifacts.
 - \[cga1024] §["Artifact Colors"][cga1024] from _CGA in 1024 Colors - a New
   Mode: the Illustrated Guide._ Includes a handy NTSC color wheel.
 
@@ -398,6 +424,9 @@ Sample circuits and programming:
 [mzd]: http://minuszerodegrees.net/oa/oa.htm
 [phirenz]: https://www.youtube.com/watch?v=3JFt6t6ijLs&lc=UgxaSs9KAeuIR-tCWJ54AaABAg
 [vcfed 1234458]: https://forum.vcfed.org/index.php?threads/representing-ibm-5153-color-output-more-accurately.1234458/
+[wp cb]: https://en.wikipedia.org/wiki/Colorburst
+[wp ce]: https://en.wikipedia.org/wiki/NTSC#Color_encoding
+[wp tmm]: https://en.wikipedia.org/wiki/NTSC#Transmission_modulation_method
 
 <!-- Circuits -->
 [pv]: https://bitbucket.org/jartza/pentaveega/
@@ -423,6 +452,8 @@ Sample circuits and programming:
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
 [bc trv900]: http://bealecorner.com/trv900/tech/
 [c64-80]: https://archive.org/details/byte-magazine-1985-03-rescan/page/n188/mode/1up
+[cga1024]: https://int10h.org/blog/2015/04/cga-in-1024-colors-new-mode-illustrated/#a-id-artifact-colors-a-artifact-colors
+[cga1024 ac]: https://int10h.org/blog/2015/04/cga-in-1024-colors-new-mode-illustrated/#artifact_colors
 [epanorama]: https://www.epanorama.net/documents/video/rs170.html
 [hdr 240]: https://www.hdretrovision.com/240p
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
@@ -438,4 +469,3 @@ Sample circuits and programming:
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
-[cga1024]: https://int10h.org/blog/2015/04/cga-in-1024-colors-new-mode-illustrated/#a-id-artifact-colors-a-artifact-colors
