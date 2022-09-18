@@ -23,6 +23,9 @@ Corner][bc trv900] via [Modular Circuits][mc zx81]):
 <img src='img/video-cvbs-levels.png' /> <!-- 561 × 284 -->
 <img src='img/RS170A.jpg' width=700 /> <!-- 856 × 526-->
 
+Missing timings from the RS170A diagram above are: Scan line: 63.5 μs.
+Active video: 52.6 μs. Color burst: 8-10 cycles (2.2 - 2.8 μs).
+
 Systems for color or monochrome video with various degrees of multiplexing
 (not specifying any particular sync rates or interlace) are, roughly:
 
