@@ -157,12 +157,12 @@ Horizontal sync rates start around 15.7 kHz for ~200 displayed lines (see
 progressive note below), and are increased when displaying more lines in
 progressive signals. Common horizontal sync rates (kHz) are:
 
-     480i   15.750    NTSC B/W: 262.5 lines × 2 × 60 Hz fields
-     480i   15.734    NTSC color: as B/W at 59.940 Hz
-     576i   15.625    PAL: 312.5 lines × 2 × 50 Hz fields
-            21.8      EGA (350 line)
-           ~24        400-line modes
-            31.469    VGA
+     480i   15.750      NTSC B/W: 262.5 lines × 2 × 60 Hz fields
+     480i   15.734 2657 NTSC color: as B/W at 59.940 Hz
+     576i   15.625      PAL: 312.5 lines × 2 × 50 Hz fields
+            21.8        EGA (350 line)
+           ~24          400-line modes
+            31.469      VGA
 
 SD uses bi-level sync, with the leading edge of the horizontal sync pulse
 (-300 mV from black level) indicating the start of the line. The pulse is
