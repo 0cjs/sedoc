@@ -51,8 +51,8 @@ Programs that use PyInstaller include [docker-compose].
 Environment and Dependency Managers
 -----------------------------------
 
-* Pip w/manual `requirements.txt`: Dependency versions must be managed
-  manually. Locks or ranges, not both.
+* [Pip](./pip.md) w/manual `requirements.txt`: Dependency versions must be
+  managed manually. Locks or ranges, not both.
 * [pip-tools]
 * [Pipenv] Wrapper around `pip` and virtual environments. Uses
   `Pipfile` and `Pipfile.lock` for dependency specs. Recommended for
