@@ -24,6 +24,12 @@ Logging and Graph Exploration
 Fixing/Changing Commits and Branches
 ------------------------------------
 
+* `chmod -x` followed by `git add` will not change the executable bit in
+  the repo index so you can commit it. To do this you need to:
+
+      git update-index --chmod=-x PATH …
+
+
 * See [Rebasing in Git](rebase.md) for tips on handling merge conflicts.
 
 * To rewrite the author and timestamp of a commit (using the
