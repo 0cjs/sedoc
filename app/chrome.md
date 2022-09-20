@@ -4,6 +4,13 @@ Google Chrome
 Markdown parsers generally won't turn `chrome://` URLs into links, so
 they are quoted as code here and must be manually copied/pasted.
 
+Contents:
+- Configuration
+- Command-line Options
+- Internal URLs
+- Proxies
+
+
 Configuration
 -------------
 
@@ -50,6 +57,7 @@ Command-line options:
 
 
 
+<!-------------------------------------------------------------------->
 [Run Chromium With Flags]: https://www.chromium.org/developers/how-tos/run-chromium-with-flags
 [all switches]: https://peter.sh/experiments/chromium-command-line-switches/
 [proxdebug]: https://www.chromium.org/developers/design-documents/network-stack/debugging-net-proxy
