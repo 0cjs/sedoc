@@ -9,6 +9,7 @@ Contents:
 - Command-line Options
 - Internal URLs
 - Proxies
+- Cookies
 
 
 Configuration
@@ -56,8 +57,59 @@ Command-line options:
   Used _only_ if `--proxy-server` option used, even if `$HTTP_PROXY` set.
 
 
+Cookies
+-------
+
+### Site Allow and Block Lists
+
+The site-specific allow and block lists are at `chrome://settings/cookies`.
+
+I normally use "Block all cookies (not recommended)" in the global settings
+at the top of this page and rely on the allow list ("Sites that can always
+use cookies") to make trusted sites work. Temporarily switching to "Block
+third-party cookies" can help with sites that mysteriously stop working; if
+that fixes the problem, enabling third party cookies for just that site may
+fix it in "Block all" mode.
+
+When adding a new allow entry in this page the dialogue will contain an
+"Including third-party cookies on this site" checkbox; if you check this
+the entry will become a special entry:
+- Search will not find it in the allow list.
+- It appears at the _end_ of the allow list.
+- It can only be deleted, not edited.
+
+The third-party checkbox does not appear when editing; to change the
+third-party setting delete the entry and add a fresh one.
+
+As of Chrome 105 an "eye" icon is displayed in the URL bar on sites when
+cookies (for that site or third parties) are blocked by default. (And by
+block list entries?)
+- Clicking "eye" » "Site not working?" will bring up a dialogue with an
+  "Allow" button. __WARNING:__ using that button will add an entry to allow
+  all third-party cookies when accessing the site in the URL bar.
+- Clicking "Show cookies and other site data..." in the above dialogue will
+  bring up the "Cookies in use" dialogue with "Allowed" and "Blocked"
+  panes; here you can individually enable sites.
+- (Previously there was a "cookie" icon in the URL bar that did this also
+  for sites where you accept cookies; this earlier [disappeared for some
+  profiles][su 1689521] and as of Chrome 105 seems to be completely gone.)
+
+### Sites Requiring Third-party Cookies
+
+    trello.com
+
+### References
+
+- superuser.com: [How can I show all allowed and blocked cookies for a page
+  in Chrome?][su 1743322]
+- superuser.com: [Why is my Chrome URL bar cookie dialogue different
+  between two profiles?][su 1689521]
+
+
 
 <!-------------------------------------------------------------------->
 [Run Chromium With Flags]: https://www.chromium.org/developers/how-tos/run-chromium-with-flags
 [all switches]: https://peter.sh/experiments/chromium-command-line-switches/
 [proxdebug]: https://www.chromium.org/developers/design-documents/network-stack/debugging-net-proxy
+[su 1743322]: https://superuser.com/q/1743322/26274
+[su 1689521]: https://superuser.com/q/1689521/26274
