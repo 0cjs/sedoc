@@ -98,6 +98,17 @@ block list entries?)
 
     trello.com
 
+With some sites requiring third-party cookies you can enable them bit by bit:
+after reloading with `foo.com` enabled, the eye icon will appear and you can
+see more cookies that were blocked for this page load.
+
+With other sites, such as `trello.com`, you won't see an indication that
+further cookies were blocked but you still need to enable additional
+domains for it to work. I tried adding the butlerfortrello.com I saw in
+DevTools»Applicaton»Storage»Cookies with third-party cookies enabled, but
+not even that did it. Looking through the network logs didn't produce
+anything obvious, but it's a huge amount of unsearchable data.
+
 ### References
 
 - superuser.com: [How can I show all allowed and blocked cookies for a page
