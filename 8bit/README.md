@@ -29,11 +29,21 @@ Timeline
 necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
 `s`=software `j`=magazine/journal. (`*`=shipping, for not-yet-categorised.)
 
+    1972-04 h Intel 8008 introduced
+    1972-11 h MCM/70 breadboard prototypes displayed
+    1972-12 H Q1 sold (8008 CPU) https://www.thebyteattic.com/p/q1.html
+
+    1973-02 H R2E Micral N (8008; $1750)
+    1973-03 h 2nd Q1 sold
+    1973-09 h MCM/70 (w/case) displayed (8008, 2-8K RAM, 0-2 CMTs, APL in ROM)
     1973-12 c 8080 40k units produced
+
     1974-01 c 8080 ground flaw discovered; later fixed by 8080A
     1974-03 c Motorola 6800 announced
     1974-04 C Intel 8080A released
+    1974-q4 H MCM/70 ships; marketed as a "personal computer" ($5-10k)
     1974-12 C Motorola 6800 in full production
+    1974    H SCELBI 8H kit (8008 CPU, front panel; ~150 sold)
 
     1975-01 H Altair 8800 ships; on cover of Popular Electronics
     1975-02 s Gates/Allen finish first BASIC, license it to MITS
@@ -118,7 +128,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1982-11   Fujitsu FM-11ST FM-11AD (6809), FM-11EX (6809, 8088, CP/M-86)
     1982-11 * Fujitsu FM-7 released (¥126,000)
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
-    1982-Q4   Panasonic/National JR-200 released (¥79,800)
+    1982-q4   Panasonic/National JR-200 released (¥79,800)
 
     1983-01   Apple IIe ($1395; $1995 w/Disk II, 80-col, Monitor III)
     1983-01   Apple Lisa ($9995)
