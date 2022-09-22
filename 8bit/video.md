@@ -24,7 +24,10 @@ Corner][bc trv900] via [Modular Circuits][mc zx81]):
 <img src='img/RS170A.jpg' width=700 /> <!-- 856 × 526-->
 
 Missing timings from the RS170A diagram above are: Scan line: 63.5 μs.
-Active video: 52.6 μs. Color burst: 8-10 cycles (2.2 - 2.8 μs).
+Color burst: 8-10 cycles (2.2 - 2.8 μs). Active video: 52.6 μs.
+([[ee 387810]] suggests visible width of 45 μs centered in borders. The
+answers there have a lot of other good information on timings, especially
+for signals sampled by LCD displays.)
 
 Systems for color or monochrome video with various degrees of multiplexing
 (not specifying any particular sync rates or interlace) are, roughly:
@@ -422,6 +425,7 @@ Sample circuits and programming:
 [Holden2016]: https://www.worldphaco.com/uploads/FITTING_AN_EGA_CARD_TO_AN_IBM_5155.pdf
 [IBM 5154]: https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/897/ENUS184-113/index.html
 [an9644]: https://www.renesas.com/jp/en/document/apn/an9644-composite-video-separation-techniques
+[ee 387810]: https://electronics.stackexchange.com/a/387810/15390
 [f6 82495]: http://forum.6502.org/viewtopic.php?f=4&t=6238#p82495
 [mzd-ega]: http://minuszerodegrees.net/oa/OA%20-%20IBM%20Enhanced%20Color%20Display%20(5154).pdf
 [mzd]: http://minuszerodegrees.net/oa/oa.htm
