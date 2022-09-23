@@ -147,9 +147,10 @@ Expansion:
 
 Setting values:
 - `ARG name[=value]`: Set a build-time variable that is expanded with
-  `$name` references and can be overridden with
-  `--build-arg=name=value` options. `--build-arg` cannot set values
-  not declared with `ARG`.
+  `$name` references and can be overridden with `--build-arg=name=value`
+  options. `--build-arg` cannot set values not declared with `ARG`.
+  ARG variables are not exported to the container's environment;
+  you must use `ENV foo=$foo` to do this.
 - `ENV name=value ...`: Set variables to be expanded in `$name`
   references and set in the process environment for both `RUN`
   commands and the container itself when run (like `--env`).
