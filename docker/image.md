@@ -136,7 +136,8 @@ allowed.
 
 Expansion:
 - References `$name` or `${name}` are expanded to values set by `ARG`
-  and `ENV` (but not to values in the build process environment).
+  and `ENV`. Variables named by `ARG` are also set in the build process
+  environment, but _not_ in the `docker run` process environment.
 - Prevent expansion with a backslash: `\$foo`.
 - `${name:-value}` evaluates to `value` if `$name` is not set.
 - `${name:+value}` evaluates to `value` if `$name` is set, otherwise
