@@ -4,7 +4,7 @@ CBM Address Decoding (Memory Maps)
 Contents:
 - Commodore 64
 - MAX Machine
-- C128
+- Commodore 128
 - VIC-20
 
 
