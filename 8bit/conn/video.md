@@ -8,7 +8,7 @@ file for additional information, pin numbering and breakouts.
 Contents:
 - JP-21 / "RGBマルチ" (RGB-21, SCART)
 - DIN (CVBS, RGB)
-- S1308 (8-color Digital RGB)
+- Minicon 1308 (8/16-color Digital RGB)
 - DA-15 (Analog RGB)
 - 0.1" Pin Headers, Dupont Shrouds, BT224 IDC connectors, Breakouts
 
@@ -142,22 +142,24 @@ at the monitor.
       8     blue                20
 
 
-S1308 (8-color Digital RGB)
----------------------------
+Minicon 1308 (8/16-color Digital RGB)
+----------------------------------
 
-Japanese 8-bit computers often use DIN-8 for digital RGB and RGBI;
-these often use an S1308 (female) 8-pin rectangular connector on the
-monitor side (P1308 male on cable). One set of pins is separated from
-the others by a larger gap (exaggerated below). The standard pin
-numbering is (ref. [minicon1300] and printing on Jr.200 video cable):
+Most Japanese dedicated home computer color displays until 1985 had a
+Hirose Minicon S1308 (female) RGB or RGBI input connector on the monitor
+with a P1308 (male) to DIN-8 cable to connect to the computer.
+
+One set of pins is separated from the others by a larger gap (exaggerated
+below). The standard pin numbering is as follows. (From [minicon1300] and
+printing on Jr.200 video cable.)
 
               +-----------+     +-----------+
     male plug ! 1 7 6   5 !     ! 5   6 7 8 ! female jack
       (cable) ! 4 3 2   1 !     ! 1   2 3 4 ! (monitor)
               +-----------+     +-----------+
 
-The pinout of the S1308 connector seems to be fairly standardized to one
-of two standards (MSX is given per standard numbering above):
+The pinout of the Minicon 1308 connector seems to be fairly standardized to
+one of two configurations (MSX is given per standard numbering above):
 
         Pin  JP 8-bit   MSX                               Color†
         ────────────────────────────────────────────────────────────
