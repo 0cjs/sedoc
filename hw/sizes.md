@@ -37,21 +37,40 @@ Ring Star Parts Boxes
 * <http://www.ringstar.co.jp>
 * Wishlist on Amazon
 
-Super-pitch Dividers:
+Ring Star Boxes:
 
-    model       size            dividers
-    SP-1500S    201 149 28      12
-    SP-1500D    201 149 39      12
-    SP-1500F    201 149 39      -       no dividers
-    SP-1520D    201 149 39      6
-    SP-2300     233 127 34      9
-    SP-2300F    233 127 34      -       no dividers
-    SP-2800S    275 185 28      16
-    SP-2800D    275 185 39      16
-    SP-3000S    300 206 28      20      5 rows
-    SP-3000D    300 206 39      20      5 rows
-    SP-3200D    300 206 39      8       2 rows
-    SP-3000F    300 206 39      -       no dividers
+    Model       Ext. Size   Int.Size    Rw Dv    Notes
+     SP-2300    233 127 34  220 ×30 28  3   9
+     SP-2300F   233 127 34                  0
+
+     SP-1500S   201 149 28  190 ×29 24  4  12
+     SP-1500D   201 149 39  190 ×29 34  4  12
+    SPW-1500C               190 ×37 33  3
+    DMW-1500                190 ×37 33  3
+    SPW-1510C               190 120 33  1   4
+     SP-1520D   201 149 39                  6
+     SP-1500F   201 149 39                  0
+    DMW-1500F               190 120 33  0
+
+    SPW-2300    224 161 33      ×50     3  12    (spec is 3×50 rows; guess 161 dim)
+    DMW-2300    224 161 33  224 ×50 33  3  12
+    SPW-2310C   224 161 33              1   6
+    DMW-2310    224 161 33  224 161 33  1   6   XXX I think desc. on amz wrong
+     SP-2800S   275 185 28                 16
+     SP-2800D   275 185 39                 16
+     SP-3000S   300 206 28              5  20
+     SP-3000D   300 206 39              5  20
+     SP-3200D   300 206 39              2   8
+     SP-3000F   300 206 39                  -    no dividers
+
+    Int.size: ×=multiply by number of rows
+    Rw: Fixed rows (dividers run front-to back in rows)
+    Dv: total dividers included; all run front to back
+        (i.e., "1" row makes for rows in opposite of usual direction)
+    xxW = latches on both sides; hinges either way; lid removable
+    SP  = super-pitch (5.5 mm)
+    DM  = Dream Master (coarser pitch?)
+    Stacking: two 1500-series stack onto one 3000-series
 
 Standard boxes:
 
