@@ -169,6 +169,7 @@ Voltage depression/droop ([[seabird]] p.14):
   No benefit after 5× cycles; 2× usually fine after long-term storage.
 
 __Charging:__
+- [[lin02]] §29.5 P.883
 - Generally similar to NiCD:
   - -Δt: less promenent "peak" than NiCD (may be absent at ≤C/3)
   - Greater temp. rise.
