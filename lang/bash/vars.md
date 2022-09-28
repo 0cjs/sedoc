@@ -116,7 +116,7 @@ Below, _word_ is subject to tilde, parameter, command and arithemtic
 expansion. Prefix the operator with a colon (e.g., `${FOO:-avalue}`)
 to consider set but null (empty string) to be unset.
 
-- `${param-word}`: Use _word_ if _param_ unset.
+- `${param-word}`: Use _word_ if _param_ unset, otherwise _param_ value.
 - `${param=word}`: Assign _word_ to _param_ if _param_ unset.
 - `${param?word}`: Display _param_ and _word_ as error if _param_ unset.
   (Error message for empty _word_ is "parameter null or not set".)
