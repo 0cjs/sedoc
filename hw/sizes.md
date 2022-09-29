@@ -52,7 +52,7 @@ Ring Star Boxes:
      SP-1500F   201 149 39                  0
     DMW-1500F               190 120 33  0
 
-    SPW-2300    224 161 33      ×50     3  12    (spec is 3×50 rows; guess 161 dim)
+    SPW-2300C   224 161 33  224 ×50 33  3  12    (spec is 3×50 rows; guess 161 dim)
     DMW-2300    224 161 33  224 ×50 33  3  12
     SPW-2310C   224 161 33              1   6
     DMW-2310    224 161 33  224 161 33  1   6   XXX I think desc. on amz wrong
