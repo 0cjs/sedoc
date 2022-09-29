@@ -24,8 +24,15 @@ polarized and and for e.g. German Schuko socket the polarization depends on
 which way you plug it in.
 
 
-NEMA Connectors
----------------
+AC Power Connectors
+-------------------
+
+References:
+- plugsocketmuseum.nl, [Digital Museum of Plugs and Sockets][dmps].
+  Extensive examples of all types of connectors worldwide, histories,
+  and many links to sources.
+
+### NEMA Connectors
 
 Suffixes: outlets `R` (receptacle), inlets `P` (plug).
 
@@ -47,9 +54,7 @@ NEMA 1-20 (125 V 20 A max) has T-shaped neutral.
 NEMA 5-20 (125 V 20 A max) is the same except that the neutral slot is
 T-shaped.
 
-
-IEC Connectors
---------------
+### IEC Connectors
 
 #### C1 Outlet (feamale / C2 Inlet (male)
 
@@ -89,6 +94,8 @@ the wall end may not be polarized or the cable may be wired wrong.
 [eevb lvn]: https://www.eevblog.com/forum/beginners/iec-plugsocket-live-vs-neutral/
 [se ee 38666]: https://electronics.stackexchange.com/q/38666/15390
 [wp cee7]: https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets#CEE_7_standard
+
+[dmps]: https://www.plugsocketmuseum.nl
 
 [wp nema5]: https://en.wikipedia.org/wiki/NEMA_connector#NEMA_5
 [wp nema1]: https://en.wikipedia.org/wiki/NEMA_connector#NEMA_1
