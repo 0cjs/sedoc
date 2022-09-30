@@ -39,8 +39,8 @@ Applications built for Cygwin rely on `cygwin1.dll`; this is GPL and
 has all the usual issues that go along with that.
 
 
-MinGW
------
+MinGW and MSYS
+--------------
 
 [MinGW], Minimalist GNU for Windows, is an open-source development
 environment using GNU tools to create native Windows applications.
@@ -69,12 +69,46 @@ Also see [so-41318586] for more information on this.
 mingwPORTs are Bash scripts that help deal with patching Unix packages
 and building them with MinGW and MSYS.
 
-### MSYS2
+#### MSYS2
 
 MSYS2 is an independent rewrite of MSYS, aiming for better
 interoperability with Windows software.
 
 The MSYS2 POSIX compatability DLL is is `msys-2.0.dll`.
+
+### Path Conversion
+
+MSYS does automatic Unix to Windows path conversion when calling native
+executables, turning things like `/foo` into `C:\msys64\foo` or similar.
+MinGW [Posix path conversion][mingw pathconv] gives the details, but
+roughly:
+- Relative paths are not converted.
+- Absolute paths starting with a drive letter `/c/foo/bar` are converted
+  to `C:\foo\bar`.
+- Absolute paths without a drive letter are prefixed by the MSYS
+  installation directory: `/foo` → `C:\MSYS64\foo`.
+- Prefix an absolute path with two slashes to suppress conversion:
+  `//foo` → `//foo`.
+
+This can be suppressed by setting values in the program's environment. Set
+[`MSYS_NO_PATHCONV`] to suppress all conversion, or use
+`MSYS2_ENV_CONV_EXCL` and `MSYS2_ARG_CONV_EXCL` to [exclude specific
+environment variables and command line parameters][MSYS2_vars]:
+
+    $ # XXX not clear why Python 10 is printing forward slashes below.
+    $ export E=/foo
+
+    $ py -c 'import os, sys; print(os.getenv("E"), sys.argv[1])' /bar
+    C:/Program Files/Git/foo C:/Program Files/Git/bar
+
+    $ MSYS_NO_PATHCONV=1 py -c …
+    /foo /bar
+
+    $ MSYS2_ENV_CONV_EXCL='E' MSYS2_ARG_CONV_EXCL='*' py -c …
+    /foo /bar
+
+The [`cygpath`] command can do explicit conversions. Also see its use in
+the "Tips and Tricks" section below.
 
 
 Platform Checks
@@ -117,24 +151,27 @@ Tips and Tricks
 * Use `cygpath` to convert between MinGW Bash paths and Windows paths.
 * The MinGW programs can be run from CMD/PowerShell even if not in path
   by finding the full path to them: `cygpath -w /mingw64/bin`.
-* MSYS programs will do POSIX-to-Windows path conversion for command-line
-  parameters, e.g., `/c/foo/bar` to `C:\foo\bar`. To disable this for a
-  parameter (e.g., when it's being sent to another host) start the path
-  with a double slash: `//c/foo/bar` or set `MSYS_NO_PATHCONV=1`.
 
 
 
 <!-------------------------------------------------------------------->
+[msys2-diff]: https://github.com/msys2/msys2/wiki/How-does-MSYS2-differ-from-Cygwin
+[so-771756]: https://stackoverflow.com/q/771756/107294
+
 [Cyg-hi]: https://www.cygwin.com/cygwin-ug-net/highlights.html
 [Cyg-use]: https://www.cygwin.com/cygwin-ug-net/using.html#
 [Cygwin-wp]: https://en.wikipedia.org/wiki/Cygwin
 [Cygwin]: http://cygwin.com/
+
 [FHS]: http://www.pathname.com/fhs/
 [MSYS2]: https://github.com/msys2/msys2/wiki/
+[MSYS2_vars]: https://www.msys2.org/docs/filesystem-paths/
 [MSYS]: http://www.mingw.org/wiki/MSYS
 [MinGW]: https://en.wikipedia.org/wiki/MinGW
 [Qt]: https://en.wikipedia.org/wiki/Qt_(software)
-[msys2-diff]: https://github.com/msys2/msys2/wiki/How-does-MSYS2-differ-from-Cygwin
-[py-win-dl]: https://www.python.org/downloads/windows/
+[`MSYS_NO_PATHCONV`]: https://stackoverflow.com/a/48348531/107294
+[`cygpath`]: https://cygwin.com/cygwin-ug-net/cygpath.html
+[mingw pathconv]: https://web.archive.org/web/20201112005258/http://www.mingw.org/wiki/Posix_path_conversion
 [so-41318586]: https://stackoverflow.com/a/41318586/107294
-[so-771756]: https://stackoverflow.com/q/771756/107294
+
+[py-win-dl]: https://www.python.org/downloads/windows/
