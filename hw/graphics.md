@@ -36,26 +36,49 @@ PCEe x1 cards are rare, but there is a [PCIe x1 GT 710].
 [PCIe x1 GT 710]: http://kakaku.com/item/K0000872584
 
 
-Cable Notes
------------
+Cable and Adapter Notes
+-----------------------
 
-[HDMI] cables] can be tested at an Authorized Testing Center (ATC) for
-one of [three compliance levels][se-400122], measured in bandwidth per
-channel:
+### HDMI Cables
 
-     3.4 GHz * 3 ch (Cat.2, HDMI 1.4 max) High Speed HDMI cable
-     6.0 GHz * 3 ch (Cat.2, HDMI 2.0 max) Premium High Speed HDMI cable
-    12.0 GHz * 4 ch (Cat.3, HDMI 2.1 max) Ultra High Speed HDMI cable
-                                          (no cert. avail as of 2018-08)
+[HDMI] cables can be tested at an Authorized Testing Center (ATC) for one
+of [three compliance levels][se-400122], measured in bandwidth per channel.
+The level names at the right are the only valid designations; advertising
+an HDMI version number for a cable is [explicitly non-compliant][hdmi-usage].
 
-Advertising an HDMI version number for a cable is [explicitly
-non-compliant][hdmi-usage].
+          Pixel        B/W Cable
+    HDMI Clk.MHz  Chan GHz  Cat.  Level
+    ──────────────────────────────────────────────────────────────
+    1.4   148.5   3 ×  3.4   2    High Speed HDMI cable
+    2.0   296     3 ×  6.0   2    Premium High Speed HDMI cable
+    2.1   594     4 × 12.0   3    Ultra High Speed HDMI cable
+                                  (no cert. avail as of 2018-08)
 
-Much more useful information is available from the [Blue Jeans Cable] page.
-The [CabletimeTech] page also offers useful information.
+References:
+- [Blue Jeans Cable]. Much more useful information.
+- [CabletimeTech].
 
-[CabletimeTech]: https://www.cabletimetech.com/technology/hdmi-technology/
+### DisplayPort to HDMI Adapters
+
+Dual-mode (passive) adapters adapters rely on the video source to be able
+to generate HDMI on the DP output. There are two types of passive adapters
+([[elce2017]] p.18):
+- Type 1: 165 Mhz. Totally passive design? No adapter registers.
+- Type 2: 300 Mhz. Has adapter registers with the adapter revision.
+
+The Linux Intel GPU driver checks the adapter type and, unless a Type 2
+adapter is detected, disallows pixel frequencies >165 MHz. Windows and Mac
+don't care.
+
+References:
+- Verkuil, [HDMI 4k Video: Lessons Learned][elce2017].
+
+
+
+<!-------------------------------------------------------------------->
 [Blue Jeans Cable]: https://www.bluejeanscable.com/articles/bad-reasons-to-upgrade-hdmi-cable.htm
+[CabletimeTech]: https://www.cabletimetech.com/technology/hdmi-technology/
 [HDMI]: https://www.hdmi.org/
+[elce2017]: https://events.static.linuxfound.org/sites/events/files/slides/elce2017.pdf
 [hdmi-usage]: https://www.hdmi.org/pdf/atlug_faqs/2011_12_20_ATLUG_Q09_UPDATE.PDF
 [se-400122]: https://electronics.stackexchange.com/a/400122/15390
