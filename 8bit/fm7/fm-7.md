@@ -291,6 +291,19 @@ DE-9 joystick ports. Information, pictures, schematic and PCB design are
 [at ysflight.com][ys fmjoy].
 
 
+Parts Lists
+-----------
+
+#### FM-7 PSU Capacitors
+
+     330 μf  25 V               C07 C10 C03
+     470 μf  35 V               C05 C08
+     220 μf 200 V (supercap)    C50
+      10 μf  25 V               C57
+    1000 μf  25 V               C02  C01
+      (empty)                   C06
+
+
 
 <!-------------------------------------------------------------------->
 [fm7assem]: https://archive.org/details/FM7MC6809ASM
