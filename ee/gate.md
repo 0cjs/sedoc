@@ -23,6 +23,11 @@ The [binary truth table][binop].
     1 0 1 1               A+/B
     1 1 0 1               /A+B              A⇒B, implication
 
+The [NL7SZ57] is a "reconfigurable logic gate" with three inputs that, when
+connected to two outputs in various ways, can implement any one of several
+of the operations above.
+<img src='sch/NL7SZ57-fig.02-function-diagram.png'/>
+
 Adders
 ------
 
@@ -77,11 +82,13 @@ board (with a couple of 100 nF caps):
 
 
 <!-------------------------------------------------------------------->
+[binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
+[NL7SZ57]: https://www.onsemi.com/pdf/datasheet/nl7sz57-d.pdf
+
 [74181]: https://en.wikipedia.org/wiki/74181
-[PISC]: https://www.bradrodriguez.com/papers/piscedu2.htm
 [74x181]: http://www.ti.com/lit/gpn/sn54ls181
 [74x182]: https://web.archive.org/web/20160418004301/http://www.ti.com/lit/ds/symlink/sn74s182.pdf
-[binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
+[PISC]: https://www.bradrodriguez.com/papers/piscedu2.htm
 [roelh 4 bit TTL ALU]: https://hackaday.io/project/160506-4-bit-ttl-alu
 [roelh log 1]: https://hackaday.io/project/160506-4-bit-ttl-alu/log/151031-the-multiplexer-is-the-heart-of-the-alu
 [roelh log 2]: https://hackaday.io/project/160506-4-bit-ttl-alu/log/151032-the-fast-carry-circuit
