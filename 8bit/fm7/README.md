@@ -22,7 +22,7 @@ with cover or mating port. Those parts might be wrong.
 Sources:
 - (2022-10) [RS Components Japan][rs]: only panel-mount
   [FCN-364P056-AU][rs56] ¥1,683.
-- (2018?) Mouser, ¥750 qty. 1. Not in stock for a long time now.
+- (2018?) [Mouser], ¥750 qty. 1. Not in stock for a long time now.
 
 Since nobody can find 32-pin (or any PCB mount) any more, these pages show
 you how to cut down a 56-pin panel mount and solder it to a right-angle .1"
@@ -58,6 +58,7 @@ the data and status registers are $FD06 and $FD07.
 [kk 5773e8]: http://kk.txt-nifty.com/retro/2022/04/post-5773e8.html
 [kk 772fd4]: http://kk.txt-nifty.com/retro/2022/04/post-772fd4.html
 [kk 7d9331]: http://kk.txt-nifty.com/retro/2022/04/post-7d9331.html
+[mouser]: https://www.mouser.com/ProductDetail/Fujitsu/FCN-365P032-AU?qs=PmsrIvV%2FzvfKbGjWKUmkZQ%3D%3D
 [rs56]: https://jp.rs-online.com/web/p/pcb-headers/6020353
 [rs]: https://jp.rs-online.com
 
