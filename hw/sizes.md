@@ -43,11 +43,13 @@ Parts Boxes
     rs   SP-1500D   201 149 39  190 ×29 34   4 12
     rs  SPW-1500C               190 ×37 33   3
     rs  DMW-1500                190 ×37 33   3
+    en   KP-02K     207 145 40  196 ×38 35   3 12
     rs  SPW-1510C               190 120 33   1  4
     rs   SP-1520D   201 149 39                  6
     rs   SP-1500F   201 149 39                  0
     rs  DMW-1500F               190 120 33   0
 
+    en   KP-03      255 190 40  245 ×40 35   4 16
     rs  SPW-2300C   224 161 33  224 ×50 33   3 12   (spec is 3×50 rows; guess 161 dim)
     rs  DMW-2300    224 161 33  224 ×50 33   3 12
     rs  SPW-2310C   224 161 33               1  6
@@ -67,6 +69,9 @@ Parts Boxes
         (i.e., "1" row makes for rows in opposite of usual direction)
 
 Vendors (`Vnd`):
+- `en`: Engineer
+  - KP series pretty much as good as Ring Star; better handle
+    - `KP-nnK` versions are transparent instead of translucent; +50% dividers?
 - `rs`: Ring Star. <http://www.ringstar.co.jp> (wishlist on Amazon)
   - SP super-pitch 5.5mm; DM Dream Master coarser pitch?
   - `xxW` = latches on both sides; hinges either way; lid removable
