@@ -136,6 +136,12 @@ usually contains different versions of an image designed for a
 particular purpose (e.g., `alpine`). See the [Docker Hub] registry
 (and below) for an example.
 
+Some registries will allow only a subset of valid Docker repository names.
+For example, the Docker Hub registry repository names must have exactly two
+name components, the first of which must be your login name (or a namespace
+to which you've been given access) and the second a name component
+pre-registered with the [Create repository][dh cr] page.
+
 
 Further Reading
 -------------
@@ -153,7 +159,9 @@ Further Reading
 
 [`docker pull`]: https://docs.docker.com/engine/reference/commandline/pull/
 [`docker tag`]: https://docs.docker.com/engine/reference/commandline/tag/
+[dr share]: https://docs.docker.com/get-started/04_sharing_app/
 [so 67351972]: https://stackoverflow.com/a/67351972/107294
+[dh cr]: https://hub.docker.com/repository/create
 
 [Terra Nullius]: https://alexei-led.github.io/
 [image-ids]: https://windsock.io/explaining-docker-image-ids/
