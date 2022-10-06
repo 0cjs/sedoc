@@ -24,7 +24,7 @@ External Documentation:
 Terminology
 -----------
 
-#### Containers, Images, Filesystems
+### Containers, Images, Filesystems
 
 A Docker __container__ is one or more process with their own
 configuration for access to disk/network resources, UIDs/GIDs, etc. on
@@ -41,7 +41,8 @@ themselves). (Pre-1.10 the image IDs were were conflated with layer
 IDs.) The hash/digest of the configuration and layer IDs [determines
 the __image ID__][image-ids]. The image ID will not be the same
 between two independent builds due to timestamps included in the
-configuration information.
+configuration information. The caching system will re-use previously built
+images if present; see [`image.md`](image.md) for details.
 
 Filesystem storage for a container is in one of three forms. All but
 layers are configured with `docker run --mount`.
@@ -61,31 +62,71 @@ layers are configured with `docker run --mount`.
   that directory tree before being mounted over it (hiding it as usual
   for mounts).
 
-#### Image and Layer Management, Aliases, Repositories, Registries
+### Image and Layer Storage and Naming
 
-Each Docker instance (daemon) has a local set of images and their
-associated layers; these are either created locally using the [`docker
-build`] process or pulled (copied) from a registry. Newly built images
-will always have a new image ID (see above), but commands that can be
-determined to create a layer with identical content to an existing
-layer will re-use that existing layer.
+Each Docker instance (daemon) has an image store, a local set of images and
+their associated layers. These are either created locally using the
+[`docker build`] process or pulled (copied) from a _registry._ Newly built
+images will always have a new image ID (see above), but the caching system
+may re-use previously built or downloaded layers.
 
-As well as their image IDs, images may also be identified by an
-__alias__ formed from the __repository name__ and __tag__, e.g.
-`alpine:latest`. An alias within a store may point to different images
-over time.
-- The name portion of an alias is slash-separated components
-  consisting of lower-case letters, digits, and separators that may
-  not start the name. Separators are single `.`, one or two `_`, and
-  any number of `-`.
-- The name portion is optionally prefixed by a registry hostname that
-  cannot contain `_`. The hostname must either contain a `.` or be
-  followed by a `:` and port number. If no hostname is present,
-  `registry-1.docker.io` is used.
-- The tag portion of an alias is separated by a colon from the name,
-  no more than 128 characters, may not start with `.`/`-`, and is
-  otherwise letters, digits, and `_`/`.`/`-`. If not specified it
-  defaults to `:latest`.
+#### Aliases, Repositories and Tags
+
+As well as their image IDs, images may also be identified by an __alias__
+of no more than 128 characters. (An image _name_ is only part of the alias;
+see below.) An alias within a store may point to different images over
+time. __NOTE:__ The `docker tag` command is misnamed; sets the entire
+alias, not just the tag.
+
+The alias is in two parts, the _repository_ and _tag._ Both of these are
+arbitrary strings with no semantic significance to Docker (with one
+exception below):
+* The tag, while often used as a version number, is never compared with
+  other tags by Docker (i.e., it's entirely up to the user whether `latest`
+  really is the latest version of an image).
+* The "repository" does not refer to storage or location (unlike a Git
+  repository). The one exception is that the docker `push` and `pull`
+  subcommands will try to use the _hostname_ prefix as a hostname; invalid
+  hostnames will not affect any other commands.
+
+All aliases include a __tag,__ whether explicitly specified or not. If
+specified it is suffixed to the _repository_ with a colon (`:`) separator.
+If not specified the default tag `latest` is used (`alpine` and
+`alpine:latest` are the same alias). The tag is no more than 128 characters
+long, contains only characters from `[A-Za-z0-9_.-]` and may not start with
+`.` or `-`. (In particular note that `:` and `/` are not allowed in tags.)
+
+Some sub-commands that can specify multiple images (docker `ls`, `push`,
+`pull --all-tags`, etc.) may take just a _repository_ rather than an
+_alias;_ in that case the repository refers to all aliases with that
+repository component, regardless of tag.
+
+The __repository__ is one or more slash-separated _name components_ with an
+optional _registry hostname_ prefixing the name components.
+* A __name component__ is no more than 32 characters from `[a-z0-9]` and
+  separators that may not start or end the name. Separators are single `.`,
+  one or two `_`, and any number of `-`.
+* The __name__ is all (slash-separated) components excepting the optional
+  registry hostname. (Per [`docker tag` documentation][docker-tag].)
+* The name is optionally prefixed by a registry __hostname__ that cannot
+  contain `_`. The hostname must either contain a `.` or be followed by a
+  `:` and port number.
+* A _name_ with no hostname has an implicit prefix of `docker.io/library/`.
+  E.g., `debian:11` becomes `docker.io/library/debian:11`.
+  - This implicit prefix cannot be changed; allowing different ones would
+    be a [security issue][so 67351972].
+  - Some documentation specifies that the hostname `registry-1.docker.io`
+    is used; this also works, but only if the `/library/` fragment is still
+    included.
+* Docker documentation terminology is inconsistent, particuarly with the
+  term "name."
+  - In [`docker tag`] a repository is sometimes called a "name" and a tag
+    is sometimes called a "tag name."
+  - [`docker pull`] sometimes uses "name" to refer to a repository and
+    sometimes to an alias (e.g., `debian:jessie` and `debian:latest` being
+    "different names").
+
+#### Registries
 
 A __registry__ is an image store from which one can __pull__ images to
 or __push__ images from a local Docker instance. Registries use a
@@ -100,8 +141,8 @@ Further Reading
 -------------
 
 * [Explaining Docker Image IDs][image-ids].
-* [Terra Nullius]. Blog that covers
-  "everyday hacks for Docker," e.g. [multi-stage build][multistage].
+* [Terra Nullius]. Blog that covers "everyday hacks for Docker," e.g.
+  [multi-stage build][multistage].
 
 
 
@@ -109,6 +150,10 @@ Further Reading
 [`docker build`]: https://docs.docker.com/engine/reference/commandline/build/
 [engine CLI]: https://docs.docker.com/engine/reference/commandline/cli/
 [reference documentation]: https://docs.docker.com/reference/
+
+[`docker pull`]: https://docs.docker.com/engine/reference/commandline/pull/
+[`docker tag`]: https://docs.docker.com/engine/reference/commandline/tag/
+[so 67351972]: https://stackoverflow.com/a/67351972/107294
 
 [Terra Nullius]: https://alexei-led.github.io/
 [image-ids]: https://windsock.io/explaining-docker-image-ids/
