@@ -149,9 +149,10 @@ The console has case-sensitive tab-completion and a `help` command.
 
 ### External Control
 
-See [Controlling openMSX from External Applications][control].
+See [Controlling openMSX from External Applications][control] and the
+[openMSX Console Command Reference][cmdref].
 
-Sample session, with lines prefixed by `»` typed by the user:
+Sample session; `»` prefix indicates lines typed by the user:
 
     » $ openmsx -machine Sony_HB-F1XD -control stdio
       <openmsx-output>
