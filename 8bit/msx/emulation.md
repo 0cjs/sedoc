@@ -24,9 +24,12 @@ Common Hardware; ROM Sources
 ### Common Hardware
 
 The names given below for common hardware are the openMSX names (as passed
-to `-machine` and `-ext` parameters) except where specified otherwise.
+to `-machine` and `-ext` parameters) except where specified otherwise. Even
+for extensions, openMSX wants the ROM files in `share/systemroms/`, not
+`share/extensions/`. Options that use these extensions, such as `-diska`
+must come _after_ the `-ext` option on the command line.
 
-Suggested MSX2 machines:
+Common MSX2 machines (all have built-in 720K FDD):
 - [`Sony_HB-F1XD`][f1xd]
   - ROM: `hb-f1xd_*.rom`.
 - [`Panasonic_FS-A1F`][fs-a1f]
@@ -34,11 +37,18 @@ Suggested MSX2 machines:
   - Slow startup, and starts at a menu, but this might be fixed with a
     switch setting.
 
+Common MSX1 machines (nC = _n_ cartridge slots):
+- `Canon_V-8`:          JA 16K 2C.
+- `Sony_HB-55P`:        EU 16k 2C.
+- `National_CF-2700`:   JA 32k 2C.
+- `National CF-3000`:   JA 64k 2C.
+- `National CF-3300`:   JA 64k 2C. 360K (1DD) floppy drive.
+
 Accessories:
-- FM-PAC sound cartridge (`ext fmpac`)[ext]
-  - ROM: [`fmpac.rom`][fh erom]
-  - Note openMSX wants ROM in `.openMSX/share/systemroms/`, not
-    `share/extensions/` for some reason.
+- FM Sound cartridges:
+  - `fmpac` (Panasoft SW-M004 FM-PAC): [`fmpac.rom`][fh erom]
+- Floppy Disk Systems:
+  - `Sony_HBD-F1` DSDD 3.5" 720K: [`hbd-f1.rom`][fh erom]
 
 
 OpenMSX
