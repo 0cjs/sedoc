@@ -24,10 +24,10 @@ Common Hardware; ROM Sources
 ### Common Hardware
 
 The names given below for common hardware are the openMSX names (as passed
-to `-machine` and `-ext` parameters) except where specified otherwise. Even
-for extensions, openMSX wants the ROM files in `share/systemroms/`, not
-`share/extensions/`. Options that use these extensions, such as `-diska`
-must come _after_ the `-ext` option on the command line.
+to `-machine` and `-ext` parameters) except where specified otherwise.
+Machine and extension ROMs go in `.openMSX/share/systemroms/`. Options that
+use extensions, such as `-diska` on machines without a built-in drive, must
+come _after_ the `-ext` option on the command line.
 
 Common MSX2 machines (all have built-in 720K FDD):
 - [`Sony_HB-F1XD`][f1xd]
@@ -80,8 +80,20 @@ ROM image notes:
   This does not include BASIC (and often has other compatibility issues)
   and so can't be used to run this game.
 - See above for download locations for ROMs.
-- openMSX 15.0 and 16.0 don't seem to find extension ROMs in
-  `share/extensions/`; instead put them in `share/systemroms/`.
+- There are two directories for ROM images under `~/.openMSX/share/`. In
+  both of these filenames are unimportant; ROMs are identified by the SHA1
+  of their contents.
+  - `systemroms/` for built-in BASIC/BIOS/etc. ROM and devices such as
+    sound and floppy controller cards.
+  - `software/` is the pool for software cartridges. The appropriate ROM
+    will be automatically attached when loading a save state made when a
+    cart was inserted.
+
+Share directories (under `~/.openMSX/share/`):
+- `settings.xml`: Configuration file; current config saved at emulator exit.
+- `systemroms/`, `software/`: ROM files; see above.
+- `machines/`, `extensions/`: XML machine and extension definitions.
+- `scripts/`, `skins/`: ???
 
 ### Invocation
 
