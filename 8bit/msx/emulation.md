@@ -7,7 +7,7 @@ Contents:
   - Installation and Setup
   - Invocation
 - OpenMSX Usage
-  - Default Key Bindings / MSX Key Mappings
+  - Key Bindings / MSX Key Mappings
   - Selected Console Commands and Settings
   - External Control
 - Other Emulators
@@ -107,10 +107,12 @@ Selected options:
 OpenMSX Usage
 -------------
 
-### Default Key Bindings / MSX Key Mappings
+### Key Bindings / MSX Key Mappings
 
-The [default MSX key mappings][keymap] are as follows.
-Note that on MSX the STOP key pauses output; Ctrl-STOP does a break.
+- On MSX the STOP key pauses output; Ctrl-STOP does a break.
+- OSD menu also toggled by clicking the upper-left-hand window corner.
+
+The [default MSX key mappings][keymap] are:
 
     MSX key/Emulator func.  PC          Mac
     ──────────────────────────────────────────────────────────────────────────
