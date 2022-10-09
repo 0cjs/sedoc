@@ -138,6 +138,30 @@ The [default MSX key mappings][keymap] are:
     Paste to MSX            Ctrl+Win+V  Cmd+V
     ──────────────────────────────────────────────────────────────────────────
 
+Bindings are changed with the console [`bind`] and `unbind` commands. On
+exit, all current bindings are saved to `.openMSX/share/settings.xml`.
+
+- [`bind`] will show all bindings.
+- Modifier names are case-insensitive; combine with key names using `+`.
+  `Shift`, `Ctrl`, `Alt`, `Win` (Windows only), `Meta` (Windows key on Linux).
+- `bind KEYS,release …` binds a separate action on key release. If combined
+  with a modifier, the modifier must be down during release.
+- [`keymatrixdown`] and `keymatrixup` are used to generate keyboard input.
+  Params are _row_ and _mask_ ([key matrix layouts]), e.g., `7 0x10` for STOP.
+
+Suggested bindings:
+
+    bind Meta+A toggle mute
+    bind Meta+N toggle console
+    bind Meta+M main_menu_toggle
+    bind Meta+P toggle pause
+    bind Meta+O set fastforward on
+    bind Meta+O,release set fastforward off
+
+    #   STOP key; note that this doesn't doesn't pass modifiers e.g. Ctrl+STOP
+    bind Meta+K keymatrixdown 7 0x10
+    bind Meta+K,release keymatrixup 7 0x10
+
 ### Selected Console Commands and Settings
 
 The console has case-sensitive tab-completion and a `help` command.
@@ -190,11 +214,14 @@ Other Emulators
 [wp]: https://en.wikipedia.org/wiki/OpenMSX
 
 <!-- OpenMSX Manuals -->
+[`bind`]: https://openmsx.org/manual/commands.html#bind
+[`keymatrixdown`]: https://openmsx.org/manual/commands.html#keymatrix
 [cmdref]: https://openmsx.org/manual/commands.html
 [control]: https://openmsx.org/manual/openmsx-control.html
 [dm]: https://openmsx.org/manual/diskmanipulator.html
 [ext]: https://openmsx.org/manual/commands.html#ext
 [filepool]: https://openmsx.org/manual/commands.html#filepool
+[key matrix layouts]: https://map.grauw.nl/articles/keymatrix.php#layouts
 [keymap]: https://openmsx.org/manual/user.html#keyboard
 [man]: http://openmsx.org/manual/
 [omsx]: https://openmsx.org/
