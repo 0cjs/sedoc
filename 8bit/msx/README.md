@@ -38,30 +38,35 @@ Models
 
 Memory figures are RAM/VRAM. ≥64K VRAM indicates MSX2 or MSX2+. "2C" indicates
 two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
-(usu. for a unit with more slots); "+D" indicates a 3.5" floppy drive..
+(usu. for a unit with more slots); "+D" indicates a 3.5" floppy drive. SK
+indicates separate keyboard and desktop system unit.
 
-- __Sony HB-F1XD__:         64k/128k 2C+D RGB. Ext. PSU.
-- __Panasonic FS-A1__:      64k/128k 2C RGB. Ext. PSU.
-- __Toshiba HX-22__:        64k/16k 2C RGB (RP13A). RS-232. "Pasopia IQ"
-- __Canon V-20__:           64k/16k 2C.
-- __Sanyo MPC-2 (Wavy2)__:  64k/16k 2C.
-- __National CF-3000__:     64k/16k 2C. Box+keyboard. JP21 RGB.
-                            Separate superimpose unit. No space for floppy drv.
-- __Sanyo PHC-SPC:__  85-?? 64k/16k 2C. Relatively compact.
-- __Hitachi MB-H1__:  83-12 32k/16k 2C. Extra F/W. Big ext. PSU.
-- __National CF-2700__:     32k/16k 2C.
-- __National CF-2000__:     16k/16k 2C.
-- __Sony HB-55__:           16k/16k 1C+E. Cheap keyboard.
-- __Sony HB-55P__:          16k/16k 2C. European version.
-- __[Canon V-8]__:    85-08 16k/16k 1C. Compact, no printer, ext PSU 9V.
-- __Casio PV-16__:          16k/16k 1C+E. Ext. PSU 10 V 800 mA.
-                            Small chiclet keyboard.
-- __Casio MX-10/MX-101__:   16k/16k. PSU 7 V 800 mA.
-- __Casio PV-7__:            8k/16k 1C+E. No CMT. PSU; 10 V 800 mA center-neg.
-                            Joypad keys plus 2nd set of cursor keys.
+- __Sony HB-F1XD__               64k/128k 2C+D RGB. Ext. PSU.
+- __Panasonic FS-A1__            64k/128k 2C RGB. Ext. PSU.
+- __Toshiba HX-22__              64k/16k 2C RGB (RP13A). RS-232. "Pasopia IQ"
+- __Canon V-20__                 64k/16k 2C.
+- __Sanyo MPC-2 (Wavy2)__        64k/16k 2C.
+- __[National CF-3300]__  85-??  64k/16k 2C+D SK. 360K (1DD 80-track) drive.
+- __[National CF-3000]__  84-11  64k/16k 2C   SK. JP21 RGB. No space for drive.
+- __[National CF-2700]__  84-10  32k/16k 2C.
+- __Sanyo PHC-SPC__       85-??  64k/16k 2C. Relatively compact.
+- __Hitachi MB-H1__       83-12  32k/16k 2C. Extra F/W. Big ext. PSU.
+- __National CF-2000__           16k/16k 2C.
+- __Sony HB-55__                 16k/16k 1C+E. Cheap keyboard.
+- __Sony HB-55P__                16k/16k 2C. European version.
+- __[Canon V-8]__         85-08  16k/16k 1C. Compact, no printer, ext PSU 9V.
+- __Casio PV-16__                16k/16k 1C+E. Ext. PSU 10 V 800 mA.
+                                 Small chiclet keyboard.
+- __Casio MX-10/MX-101__         16k/16k. PSU 7 V 800 mA.
+- __Casio PV-7__                  8k/16k 1C+E. No CMT. PSU 10V 800mA center-neg.
+                                         Cursor keys separate from joypad.
 
-The __Casio PV-7__ and __Casio MX-10/MX-101__ have no CMT interface; they
-need the FA-32 expansion unit (which also adds a 100 V PSU)  to add it.
+Notes:
+- The __National CF-3000__ and __CF-3300__ have a connector for a
+  superimpose unit, the __CF-2601.__ The 3300 has a connector for a second
+  external floppy drive.
+- The __Casio PV-7__ and __Casio MX-10/MX-101__ have no CMT interface; they
+  need the FA-32 expansion unit (which also adds a 100 V PSU)  to add it.
 
 #### Power Supplies
 
@@ -249,9 +254,15 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [wpen]: https://en.wikipedia.org/wiki/MSX
 [wpja]: https://ja.wikipedia.org/wiki/Msx
 
+<!-- Machines -->
 [Canon V-8]: ./models/Canon_V-8.md
-[FS-AA51]: https://www.msx.org/wiki/Panasonic_FS-AA51
+[National CF-2700]: https://www.msx.org/wiki/National_CF-2700
+[National CF-3000]: https://www.msx.org/wiki/National_CF-3000
+[National CF-3300]: https://www.msx.org/wiki/National_CF-3300
+
+<!-- PSUs and accessories -->
 [AC-HB3]: https://www.msx.org/wiki/Sony_AC-HB3
+[FS-AA51]: https://www.msx.org/wiki/Panasonic_FS-AA51
 
 <!-- Audio/Music -->
 [Konami SCC]: https://www.msx.org/wiki/Konami_SCC
