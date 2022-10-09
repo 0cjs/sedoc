@@ -30,11 +30,11 @@ character-based "graphics" (except Jr. added 256×192):
 
 6809 Models (predates FM-8 by one year, FM-7 by 2.5 years):
 
-- Basic Master Level 3 __MB-6890__ (1980-05): 1 MHz.
+- Basic Master Level 3 __MB-6890__ (1980-05 ¥298k, post-FM-7 ¥198k):
   640×200 b/w, 320×200×8 (per-byte color bits, FB in main addr space).
   600 bps cassette; optional floppies.
-- Mark II __MB-6891__ (1982-04):
-- Mark 5 __MB-6892__ (1983-04): Programmable character generator.
+- Mark II __MB-6891__ (1982-04 ¥198k):
+- Mark 5 __MB-6892__ (1983-04 ¥118k): Programmable character generator.
 - Mark II-A __AB-6896__ (?): little known about this
 
 Non-composite video output may also be available.
@@ -42,11 +42,16 @@ Non-composite video output may also be available.
 Cassette is 300/1200 baud Kansas City standard. 1200 baud and program
 auto-start added in ROM update for Jr.; see p.162.
 
+The [MAME bml3 source][mame] has some technical information embedded in it,
+and mentions a service manual.
+
 ### Peripherals
 
 688x Peripherals:
 - MP-1041 printer
+- MP-1802/MP-3550 floppy controller/drive (5.25" DS/DD)
 - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
+- MP-1805 floppy controller: 3" or 5.25" SS/SD
 - MP-3520(?): "Interface Expansion"
 - MP-3530(?): Mini-floppy
 - MP-3540(?): Mini-floppy (expansion unit; no controller)
@@ -154,6 +159,7 @@ See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 
 <!-------------------------------------------------------------------->
 [ar-bmj]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/
+[mame]: https://github.com/mamedev/mame/blob/master/src/mame/hitachi/bml3.cpp
 [osanke]: https://ja.wikipedia.org/wiki/8ビット御三家
 [rash]: http://fuckin.rash.jp/wikihome/index.cgi/p6?page=Basic+Master+Jr.
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
