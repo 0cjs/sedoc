@@ -112,19 +112,29 @@ OpenMSX Usage
 The [default MSX key mappings][keymap] are as follows.
 Note that on MSX the STOP key pauses output; Ctrl-STOP does a break.
 
-    MSX key             PC          Mac
-    CTRL                L-Ctrl      L-Ctrl
-    dead (accent) key   R-Ctrl      R-Ctrl
-    GRAPH               L-Alt       L-Alt
-    CODE/KANA           R-Alt       R-Alt
-    取消 (cancel)       L-Win
-    実行 (execute)      R-Win
-    SELECT              F7          F7
-    STOP                F8          F8
-    INS                 Insert      Cmd-I
-
-In the BASIC screen editor, Ctrl-R will also execute the toggle insert mode
-function.
+    MSX key/Emulator func.  PC          Mac
+    ──────────────────────────────────────────────────────────────────────────
+    CTRL                    L-Ctrl      L-Ctrl
+    dead (accent) key       R-Ctrl      R-Ctrl
+    GRAPH                   L-Alt       L-Alt
+    CODE/KANA               R-Alt       R-Alt
+    取消 (cancel)           L-Win
+    実行 (execute)          R-Win
+    SELECT                  F7          F7
+    STOP                    F8          F8
+    INS                     Insert      Cmd+I       (BASIC: also Ctrl-R)
+    ──────────────────────────────────────────────────────────────────────────
+    Pause emulation         Pause       Cmd+P
+    Quit                    Alt-F4      Cmd+Q
+    Toggle console          F10         Cmd+L
+    Full screen mode        F11         Cmd+F       (PC: also Alt+Enter)
+    Audio mute toggle       F12         Cmd+U
+    Quick loadstate         Alt+F7      Cmd+R
+    Quick savestate         Alt+F8      Cmd+S
+    OSD Menu                ≡ (Menu)    Cmd+M       (≡ is next to R-Ctrl)
+    Copy screen text        Ctrl+Win+C  Cmd+C
+    Paste to MSX            Ctrl+Win+V  Cmd+V
+    ──────────────────────────────────────────────────────────────────────────
 
 ### Selected Console Commands and Settings
 
