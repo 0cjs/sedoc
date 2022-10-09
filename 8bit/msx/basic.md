@@ -1,6 +1,11 @@
 MSX BASIC Reference
 ===================
 
+Additional notes "(KH: …)" below refer to functions from [Kanji BASIC]
+and [Hangul BASIC] with extended functionality.
+
+### General
+
 - Only the first two characters are significant in variable names,
   excepting some system variables (e.g., `ERL` and `ERR`, which have their
   own tokens and are thus actually keywords), but in program text they may
@@ -68,6 +73,9 @@ the default to `A:` (or current drive?).
 
 - `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
   beginning with the _I_th character. `1` is the first character of _X$_.
+- `INSTR([start,] str$, sub$)`: Return the 1-based offset of _sub$_ in
+  _str$,_ returning 0 if _sub$_ is not found. Optional _start_ is the
+  1-based offset into _str$_ to start searching. (KH: `CALL KINSTR(…)`)
 
 ### Screen, Graphics, Sound
 
@@ -111,6 +119,8 @@ References
 
 
 <!-------------------------------------------------------------------->
+[Hangul BASIC]: https://www.msx.org/wiki/Hangul_BASIC
+[Kanji BASIC]: https://www.msx.org/wiki/Kanji_BASIC
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
