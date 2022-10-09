@@ -35,6 +35,7 @@ character-based "graphics" (except Jr. added 256×192):
   600 bps cassette; optional floppies.
 - Mark II __MB-6891__ (1982-04):
 - Mark 5 __MB-6892__ (1983-04): Programmable character generator.
+- Mark II-A __AB-6896__ (?): little known about this
 
 Non-composite video output may also be available.
 
