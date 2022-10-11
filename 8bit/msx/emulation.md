@@ -202,6 +202,17 @@ Sample session; `»` prefix indicates lines typed by the user:
       </openmsx-output>
       $
 
+The undocumented `tabcompletion` will return completion information for
+external consoles. Examples:
+
+    tabcompletion ""                    «returns all commands»
+    tabcompletion osd                   osd  osd_menu::
+                                        osd
+    tabcompletion "osd "                configure create destroy exists info
+                                        osd
+    # for command w/o subcommands:
+    tabcompletion "volume_control "     volume_control
+
 
 Other Emulators
 ---------------
