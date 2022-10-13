@@ -72,6 +72,15 @@ the default to `A:` (or current drive?).
 - `SPRITE$(<pat no>)` (string), `VDP(<n>)` (unsigned byte), `BASE(<n>)`
   (integer). Graphics-related.
 
+### Statements
+
+- `REM`, `'`. The `'` version does not usually need to be preceeded by a
+  colon if there are statements before it, though in some cases (after
+  `CALL`?) the lack of a colon will cause errors.
+- `ELSE`: Without a preceeding `IF` on the same line, ignores remainder
+  of line. Unlike REM, the remainder is still tokenised and, if used to
+  comment out a `GOTO`, `RENUM` will still renumber that `GOTO`.
+
 ### Functions
 
 - `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
