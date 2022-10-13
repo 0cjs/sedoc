@@ -1,6 +1,7 @@
 MSX BASIC Reference
 ===================
 
+See §References below for complete statement/function listings.
 Additional notes "(KH: …)" below refer to functions from [Kanji BASIC]
 and [Hangul BASIC] with extended functionality.
 
@@ -126,7 +127,11 @@ References
 ----------
 
 - MSX Wiki: [MSX-BASIC]
-- MSX Wiki: [Instructions by category][instr]
+- MSX Wiki: [MSX-BASIC in alphabetical order][instr]. Does not include
+  reserved words, localised-only instructions or those added with special
+  hardware. Does give the original generation (MSX1, MSX2, MSX2+) and that
+  of any updates.
+- MSX Wiki: [Instructions by category][instrcat]
 - MSX Wiki: [Extensions][extn]
 - _MSX2 Technical Handbook_ (en) [Ch.2 BASIC][the.2.0]. Starts with a
   complete list of BASIC keywords, functions and special variables, and
@@ -143,6 +148,7 @@ References
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
-[instr]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
+[instrcat]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
+[instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
 [the.2.0]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
 [thj.kouzou]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n68/mode/1up
