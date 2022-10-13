@@ -15,6 +15,8 @@ and [Hangul BASIC] with extended functionality.
 - Default mode for JP models is screen 1 (32×24 characters); use `SCREEN 0`
   for 40×24 and then `WIDTH 80` (MSX2) for 80×24. (`SET SCREEN` will save
   these settings and restore them on startup.)
+- Optional parameters (`[,…]`) may be omitted; the trailing comma must be
+  given if parameters after that are specified.
 
 ### Devices
 
@@ -101,6 +103,23 @@ Color codes:
     1 black          5 blue light    9    red light    13 magenta
     2 green medium   6  red dark    10 yellow dark     14    gray
     3 green light    7 cyan         11 yellow medium   15   white
+
+### Utility
+
+For `LIST`, `LLIST` and `DELETE` a `.` specifies the last line `LIST`ed.
+
+- `LIST lineno`, `LIST start-end`: List program. `LLIST` to list on printer.
+- `DELETE lineno`, `DELETE start-end`
+- `RENUM [new[,current[,incr]]]`: Renumber program lines, updating
+  references in `GOTO`, `GOSUB`, `RESTORE` etc. Optional parameters:
+  - _new_ (default 10) is the new starting line number (0-65529).
+  - _current_ (default 0) is the (old) line number at which to start
+    renumbering. _new_ must be at least this number.
+  - _incr_ is the increment for each new line.
+- `AUTO [start[,incr]]`. Prompt with next line number for next line of
+  BASIC program text. Ctrl-C to end input. Prompt is followed by ` ` if
+  line number is currently unused (Enter leaves line unused), or `*` if
+  line number already has text (Enter leaves line as-is).
 
 
 References
