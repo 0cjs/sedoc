@@ -102,6 +102,10 @@ Program lines are stored as follows:
     n bytes     tokenized program text; see below
     00          program line terminator
 
+To make hexdumps of BASIC programs easier to scan, `RENUM 238,,256` will
+make the line numbers dump as `ee 00`, `ee 01`, etc. ($EE is `は` in the
+Japanese charset and `∈` in the international charset.)
+
 Tokenization:
 
     $00             program line terminator, when not part of token data
