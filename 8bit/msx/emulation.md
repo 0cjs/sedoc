@@ -38,7 +38,8 @@ Common MSX2 machines (all have built-in 720K FDD):
     switch setting.
 
 Common MSX1 machines (nC = _n_ cartridge slots):
-- `Canon_V-8`:          JA 16K 2C.
+- `Canon_V-8`:          JA 16K 2C. No printer port.
+- `National_CF-1200`:   JA 16k 2C.
 - `Sony_HB-55P`:        EU 16k 2C.
 - `National_CF-2700`:   JA 32k 2C.
 - `National CF-3000`:   JA 64k 2C.
