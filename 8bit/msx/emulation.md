@@ -105,11 +105,14 @@ See User's Manual [2. Starting the Emulator][starting] for more details.
 
 Command-line options are console commands as well except where noted; just
 Tab completion in the console is usually the best way of finding out what
-valid arguments to these options are.
+valid arguments to these options are. (Only a few console commands are
+available as command-line options, however.)
 
 Selected options:
 - `-h`, `--help`
 - `-v`, `--version`: (Not available in console.)
+- `-script FILE`: Extra startup script containing console commands.
+  (Warnings will be printed for bad commands; execution will continue.)
 - `-machine M`: e.g. `-machine Sony_HB-F1XD`
 - [`-ext E`][ext]: e.g., `-ext fmpac`.
 - `-diska FD`: _FD_ is a file or directory. Directories with more than
@@ -179,10 +182,13 @@ Suggested bindings:
 
 The console has case-sensitive tab-completion and a `help` command.
 
+    # ...                       # comment
     machine MACHNAME            # Set emulation to a particular machine.
     toggle fullspeedwhenloading # For faster loads from disk
     reset                       # reset computer
     diska DIR                   # Set disk directory; may also be .dsk image
+    plug printerport logger     # Send printer output to file
+    set printerlogfilename FILE # Set filename for printer output
 
 ### External Control
 
