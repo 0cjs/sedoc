@@ -42,7 +42,7 @@ Addresses of system variables:
     FC48  -952  BOTTOM  $00 byte before start of BASIC text
     FC4A  -950  HIMEM   BASIC allocates only below this
 
-Memory map (default/common values in brackets):
+Memory map (default/common values in brackets). See also [`rom.md`](rom.md).
 
     $0000-7FFF  BIOS and BASIC interpreter (ROM)
     BOTTOM      [$8000 (higher on < 32K RAM systems)] $00 byte
