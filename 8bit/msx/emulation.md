@@ -108,15 +108,22 @@ Tab completion in the console is usually the best way of finding out what
 valid arguments to these options are. (Only a few console commands are
 available as command-line options, however.)
 
+Command line options are processed from left to right with later options
+overriding earlier ones if they are not compatible (e.g., two `-diska`
+options). After that files specified with `-script` are executed in order.
+
 Selected options:
 - `-h`, `--help`
 - `-v`, `--version`: (Not available in console.)
-- `-script FILE`: Extra startup script containing console commands.
-  (Warnings will be printed for bad commands; execution will continue.)
-- `-machine M`: e.g. `-machine Sony_HB-F1XD`
+- `-script FILE`: After all command-line arguments have been executed,
+  execute console commands from _FILE._ May be specified multiple times;
+  each file will be executed in order. Startup will abort with an error if
+  a file is missing, but bad commands in files will generate a warning and
+  execution will continue.
+- `-machine M`: e.g. `-machine Sony_HB-F1XD`.
 - [`-ext E`][ext]: e.g., `-ext fmpac`.
 - `-diska FD`: _FD_ is a file or directory. Directories with more than
-  720 KB of files (360 KB for single-sided drives) will print a warning for
+  720 KB of files (360 KB for single-sided drives) will print a warning for
   each file dropped due to hitting the size limit.
 
 
@@ -181,10 +188,13 @@ Suggested bindings:
 ### Selected Console Commands and Settings
 
 The console has case-sensitive tab-completion and a `help` command.
+The `toggle` command will flip the value of boolean `set` parameters
+(taking `true`/`on` or `false`/`off` values).
 
     # ...                       # comment
     machine MACHNAME            # Set emulation to a particular machine.
     toggle fullspeedwhenloading # For faster loads from disk
+    set pause_on_lost_focus on  # Pause emulation when not focused window
     reset                       # reset computer
     diska DIR                   # Set disk directory; may also be .dsk image
     plug printerport logger     # Send printer output to file
