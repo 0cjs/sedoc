@@ -11,8 +11,8 @@ File Formats
   the in-memory BASIC program text format (see below). The next line pointers
   are recalculated after load.
 - [`BSAVE`/`BLOAD` files][binfile] have an $FE type byte followed by three
-  little-endian words: start address, end address and entrypoint (execution
-  address).
+  little-endian words: start address, end address (inclusive) and
+  entrypoint (execution address).
 
 #### Common File Extensions
 
@@ -20,10 +20,13 @@ File Formats
 
 #### File-handling Commands
 
-- [`BSAVE "name",start,end,exec`][bsave]
+- [`BSAVE "name",start,end[,exec]`][bsave]
+  - _exec_ defaults to _start_
 - [`BLOAD "name",[RS],offset`][bload]. Optional params:
   - 2: `R` to run code after loading, `S` to load to VRAM.
-  - 3: Offset to add to start and execution address. (XXX confirm this.)
+  - 3: Offset to add to start and execution address (default 0).
+    16-bit int; may be negative ($8000-$FFFF range).
+  - Data beyond the end address will not be loaded.
 
 
 Memory Usage

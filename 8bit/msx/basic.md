@@ -5,6 +5,8 @@ See §References below for complete statement/function listings.
 Additional notes "(KH: …)" below refer to functions from [Kanji BASIC]
 and [Hangul BASIC] with extended functionality.
 
+² indicates MSX2-only feature.
+
 ### General
 
 - Only the first two characters are significant in variable names,
@@ -89,13 +91,25 @@ the default to `A:` (or current drive?).
   _str$,_ returning 0 if _sub$_ is not found. Optional _start_ is the
   1-based offset into _str$_ to start searching. (KH: `CALL KINSTR(…)`)
 
-### Screen, Graphics, Sound
+### Screen, Graphics
 
 - `CLS`: Clear screen. Valid in all screen modes.
 - `COLOR [foreground][,background][,border]`. Set color of all character
   cells on the screen. All parameters optional, one must be given. The `F6`
   default programming sets the default startup colours: 15,4,7 for JP,
   15,4,4 for all others.
+- `SET PAGE display,active`²: At least one parameter must be given.
+  - Only for display modes 5,6 (64K:0-1; 128K:0-3)
+    and 7,8,10,12 (64K:invalid; 128:0-1).
+    Odd page must be used for interlace mode.
+  - _display:_ page to display.
+  - _active:_ page to use for VRAM reads/writes (inc. line drawing).
+- `BASE`
+- `VPEEK(a)`, `VPOKE a,n`. In screen modes 5-8 the adress is the offset
+  from the starting address of the active page.
+
+### Sound
+
 - `BEEP`: Generate a short tone from the PSG. Same as `PRINT CHR$(7)`.
   (MSX2: `SET BEEP t,v` changes timbre (1-4) and volume (1-4).)
 - `PLAY #dev,"mml_ch1","mml_ch2",...`: Play music. _dev_=0 for PSG (can be
@@ -142,9 +156,9 @@ References
   of any updates.
 - MSX Wiki: [Instructions by category][instrcat]
 - MSX Wiki: [Extensions][extn]
-- _MSX2 Technical Handbook_ (en) [Ch.2 BASIC][the.2.0]. Starts with a
-  complete list of BASIC keywords, functions and special variables, and
-  continues with technical information on the internals of BASIC.
+- _MSX2 Technical Handbook_ (en) [Ch.2 BASIC][the.2.0] ([source][the.2.0src]).
+  Starts with a complete list of BASIC keywords, functions and special vars,
+  and continues with technical information on the internals of BASIC.
 - _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][thj.kouzou]. BASIC
   internals only.
 - [_A Guide to MSX-BASIC Version 2.0_][guide], Sony.
@@ -159,5 +173,6 @@ References
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [instrcat]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
 [instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
-[the.2.0]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
+[the.2.0]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html
+[the.2.0src]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
 [thj.kouzou]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n68/mode/1up
