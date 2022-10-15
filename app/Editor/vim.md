@@ -24,6 +24,19 @@ make sure you have `vim-nox` (for non-X11/GUI systems) or `vim-gtk`
 Vim Configuration and Plugin Files
 ----------------------------------
 
+All vim configuration code, whether at executed at startup, from
+autocommands or otherwise, is found via `runtimepath`.
+- This is searched in order and usually the first matching file found is
+  run. Thus, you generally want to use `set runtimepath^=…` (prefix item
+  _…_) to add dirs with files that override the standard configuration.
+- Even when only first-match is requested, any file of the same name
+  anywhere in `runtimepath` is also run if it is in a directory named
+  `after/`, though `:help after-directory` is not totally clear on how this
+  mechanism works. `set runtimepath+=…/after` seems to work for any _…._
+  The order is still that of the runtime path, so your "after" files may
+  run before unless you put then at the end.
+- See `:help runtimepath` and `:help runtime` for full details.
+
 #### Packages of Configuration/Plugins/etc.
 
 Pre-8.0, [Pathogen] was the most popular of many bundling systems. 8.0
