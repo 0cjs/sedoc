@@ -95,7 +95,7 @@ if the ROM is not fully decoded (i.e., mirrored), such as openMSX does with
   disables Ctrl-STOP (XXX confirm this). See [[cr text]] for a technique
   to shift RAM BASIC text past the header and create a ROM image file
   for this.
-- `$10`: 6 bytes reserved for future use.
+- `$0A`-`$0F`: 6 bytes reserved for future use.
 
 References:
 - [[td1]] p.162-164
