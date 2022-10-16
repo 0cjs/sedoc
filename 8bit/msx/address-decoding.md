@@ -8,7 +8,8 @@ References:
 
 Though the hardware is described below, the MSX standard strongly suggests
 using BIOS routines to change page and slot mappings, do cross-slot calls,
-etc.
+etc. See [MSX-ROM](rom.md) for details on the BIOS/BASIC memory map
+and memory handling routines.
 
 ### Address Space Pages
 
@@ -61,12 +62,8 @@ routines) to determine whether a primary slot has expansion slots.
 
 #### Initialization
 
-At startup the BIOS is presumably mapped into page 0 and 1. It scans
-through the primary slots and their expanded slots, if present, at at
-$8000, $C000 and, if the $C000 scan failed, $E000 (to support 8K systems)
-to detect RAM, mapping in the first RAM that it finds for each page. It
-then scans at $4000 and $8000 for pages starting $AB, which is the
-cartridge ROM signature, and maps in the first one it finds.
+On boot the Main-BIOS is presumably mapped into page 0 and 1.
+See [Memory Map](./rom.md#meory-map) in `rom.md`.
 
 ### Memory Mapper / メモリマッパ
 

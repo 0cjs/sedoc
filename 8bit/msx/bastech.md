@@ -47,13 +47,15 @@ Memory map (default/common values in brackets). See also [`rom.md`](rom.md).
     BOTTOM      [$8000 (higher on < 32K RAM systems)] $00 byte
     $0000-7FFF  BIOS and BASIC interpreter (ROM)
 
-Addresses of system variables:
+Addresses of system variables. See also more extensive list (not just for
+BASIC) at MSX Wiki, [System variables and work area][sysvars].
 
      hex   dec  name    descr
     FC4A  -950  HIMEM   BASIC allocates only below this
     FC48  -952  BOTTOM  $00 byte before start of BASIC text
     FBE5 -1051  NEWKEY  key matrix status new
     FBB1 -1103  BASROM  BASIC text location: 0=RAM, ¬0=ROM
+                        (Ctrl-STOP disabled for BASIC program in ROM.)
     F676 -2442  TXTTAB  BASIC program text start addr (usu. $8001)
     F674 -2444  STKTOP  base of stack (grows down from here)
     F672 -2446  MEMSIZ  high address of string data heap
@@ -224,6 +226,7 @@ References:
 [codes]: https://www.msx.org/wiki/MSX_Characters_and_Control_Codes
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [mem]: https://www.msx.org/wiki/The_Memory
+[sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
 [the.2.3]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
 [the.tok]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#table-220--list-of-intermediate-codes
 [thj.tok]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n74/mode/1up

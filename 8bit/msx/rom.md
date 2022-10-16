@@ -1,14 +1,96 @@
 MSX ROM
 =======
 
+Contents:
+- Memory Map
+- Startup
+- Interrupts
+
+References:
+- \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
+
 
 Memory Map
 ----------
 
+    F380-FFFF  3200b  BIOS work area
+    F1C9-F37F   439b  Disk communication area (fixed)
+    HIMEM             Disk work area
+                      BASIC work area (see bastech.md)
+    BOTTOM            [usu. $8000] $00 byte before start of BASIC text
+    01B6-7FFF         Main BIOS and BASIC (always slot 0 or 0-0)
+    0000        438b  Jumps to main BIOS routines
+
 #### System Variables and Work Area
 
-See MSX Wiki, [System variables and work area][vars]. A few of the
+See MSX Wiki, [System variables and work area][sysvars]. A few of the
 important ones for BASIC are also listed in [`bastech.md`](bastech.md).
+
+
+Startup
+-------
+
+On boot the BIOS and BASIC will initialise the system, find RAM to map to
+pages 3 and 4, and search for additional ROM ("Sub-ROM") for expansion
+devices. Each primary slot and its expanded slots (if present) are scanned
+in order, first for RAM and then for ROM. ([[td1]] p.162)
+1. Scan at $8000, $C000 and, if the $C000 scan failed, $E000 (to support 8K
+   systems) to detect RAM, mapping in the first RAM that it finds for each
+   page.
+2. Scan at page 1 ($4000) and 2 ($8000) for a cartridge ROM header ($A1A2,
+   ASCII `AB`; see below). If present and `INIT` is not $0000, the ROM is
+   mapped into its page and `INIT` is called. Note that ROM routines may be
+   called multiple times in different locations if the ROM is not fully
+   decoded (i.e., mirrored), such as openMSX does with 16K ROMs.
+
+If no program cartridge takes over from `INIT`, `H.STKE`  will be called
+and then Disk BASIC or BASIC will be started. If a cartridge BASIC program
+(`STATEMENT`) is present, it will be executed, otherwise the system will go
+to the BASIC prompt.
+
+To run cartridge code again after initialisation is complete (e.g., to have
+disk support), do one of:
+- Replace `H.STKE` with your code during `INIT`. `H.STKE` is at $FEDA and
+  has five bytes available; at startup it's initialied to 5× $C9 `RET`
+  instructions. (See [[td1]] p.166 for hook info.)
+- Use a cartridge BASIC program (`STATEMENT`) that calls machine language
+  following it: `10 DEFUSR=&h8024:?USR(0)`
+- See MSX Wiki [Create a ROM with disks support] for examples.
+
+### ROM Header
+
+A primary/expanded slot page containing ROM may contain a header the BIOS
+will use on startup to initialise the cartridge's functionality. The
+offsets from the start of the page and their values are below. All unused
+and reserved values must be set to $0000. Only `INIT` is called at startup.
+
+Note that ROM routines may be called multiple times in different locations
+if the ROM is not fully decoded (i.e., mirrored), such as openMSX does with
+16K ROMs.
+
+- `$00 ID`: ROM signature; $4142 (ASCII `AB`)
+- `$02 INIT`: Hardware/memory initialisation routine ($0000 = not present);
+  called by Main-BIOS on system startup after the RAM scan. C register
+  contains slot number in standard BIOS form `F000SSPP` (F=1 if secondary
+  slot `SS` is specified; `PP`=primary slot). See [[cr init]] for enabling
+  the other slot with 32K ROM carts. Application cartridges may take over
+  the system when this is called or `ret` to continue standard startup.
+- `$04 STATEMENT`: MSX-BASIC `CALL` invokes this to find functionality
+  added to BASIC. ($0000 = not present.) Routine must be in page 1. See
+  [[td1]] p.163 and [[cr statement]] for details.
+- `$06 DEVICE`: Routine to control a device built into the cartridge;
+  called by BASIC when it encounters an unknown device name in `OPEN`.
+  ($0000 = not present.) Routine must be in page 1. See [[cr device]] for
+  details.
+- `$08`: Program text (with leading $00) start address for tokenized BASIC
+  program executed at startup. ($0000 = not present.) If present, must be
+  in page 1 ($8000-$BFFF). System sets `BASROM` when running this and
+  disables Ctrl-STOP (XXX confirm this).
+- `$10`: 6 bytes reserved for future use.
+
+References:
+- [[td1]] p.162-164
+- MSX Wiki, [Develop a program in cartridge ROM][cr].
 
 
 Interrupts
@@ -24,5 +106,14 @@ this interrupt processing.
 
 
 <!-------------------------------------------------------------------->
-[codes]: https://www.msx.org/wiki/MSX_Characters_and_Control_Codes
-[vars]: https://www.msx.org/wiki/System_variables_and_work_area
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+
+<!-- Memory Map -->
+[sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
+
+<!-- Startup -->
+[cr]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM
+[cr device]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#DEVICE
+[cr disk]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#Create_a_ROM_with_disks_support
+[cr init]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#INIT
+[cr statement]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#STATEMENT
