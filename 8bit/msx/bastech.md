@@ -89,7 +89,25 @@ for BASIC. At boot it's $DE78 on a single-drive Sony HB-F1XD. It may be set
 to a new value with the second optional parameter to `CLEAR` which is
 typically used to reserve space for machine language routines.
 
-References:
+#### Resetting TXTTAB
+
+TXTTAB ($F676) can be changed to a new _addr_ greater than $8001 if you
+deposit $00 to _addr_ - 1. The next program loaded will be loaded at this
+higher address, leaving space below. [[cr text]] demonstrates using this to
+create a BASIC ROM cartridge:
+
+    POKE &hF676,&h13 : POKE &hF677,&h80 : POKE &h8012,0 : NEW
+
+`LOAD` or `RUN` seem to work as well as `NEW` to reset BASIC's other
+pointers. The existing program can also continue running without problems,
+even across multi-line `FOR`, `GOTO` and `GOSUB`, but on exit the program
+will be trashed: the new locations will be used for `LIST`, `RUN`, `GOTO`
+etc. (Presumably if you pick your values right you could reset TXTTAB to
+exactly the start of a line in the middle of the existing program, leaving
+the remainder in a working state.)
+
+#### References
+
 - MSX Wiki [The Memory][mem]
 - _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][thj kouzou]
 - _MSX2 Technical Handbook_ (en), [Ch.2 §3 Internal Structure of BASIC][the.2.3]
@@ -224,6 +242,7 @@ References:
 [charset]: ./charset.md
 [chibiaku]: https://www.chibiakumas.com/z80/msx.php
 [codes]: https://www.msx.org/wiki/MSX_Characters_and_Control_Codes
+[cr text]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#TEXT
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [mem]: https://www.msx.org/wiki/The_Memory
 [sysvars]: https://www.msx.org/wiki/System_variables_and_work_area

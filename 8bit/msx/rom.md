@@ -92,7 +92,9 @@ if the ROM is not fully decoded (i.e., mirrored), such as openMSX does with
 - `$08`: Program text (with leading $00) start address for tokenized BASIC
   program executed at startup. ($0000 = not present.) If present, must be
   in page 1 ($8000-$BFFF). System sets `BASROM` when running this and
-  disables Ctrl-STOP (XXX confirm this).
+  disables Ctrl-STOP (XXX confirm this). See [[cr text]] for a technique
+  to shift RAM BASIC text past the header and create a ROM image file
+  for this.
 - `$10`: 6 bytes reserved for future use.
 
 References:
@@ -140,3 +142,4 @@ instructions at startup.
 [cr disk]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#Create_a_ROM_with_disks_support
 [cr init]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#INIT
 [cr statement]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#STATEMENT
+[cr text]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#TEXT
