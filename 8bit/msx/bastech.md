@@ -59,6 +59,9 @@ BASIC) at MSX Wiki, [System variables and work area][sysvars].
     F676 -2442  TXTTAB  BASIC program text start addr (usu. $8001)
     F674 -2444  STKTOP  base of stack (grows down from here)
     F672 -2446  MEMSIZ  high address of string data heap
+    F3B0        LINLEN  Current screen width
+    F3AF        LINL32  Screen width in SCREEN 0 (default 39)
+    F3AE        LINL40  Screen width in SCREEN 1 (default 29)
     409B                BASIC warm start entrypoint
     002D                BASIC version ($00=1.0, $01=2.0)
 
