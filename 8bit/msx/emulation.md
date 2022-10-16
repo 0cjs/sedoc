@@ -203,6 +203,14 @@ The `toggle` command will flip the value of boolean `set` parameters
     set printerlogfilename FILE # Set filename for printer output
     set save_settings_at_exit 0 # 0=false, 1=true
 
+The console can accept TCL function definitions that become console
+commands, and this is how much of it is implemented. (Files in
+`share/scripts/` are all automatically loaded; others can be loaded with
+`-script …`.) Sample:
+
+    set_help_text hello "Print a greeting."
+    proc hello {name} { return "Hello, $name." }
+
 ### External Control
 
 See [Controlling openMSX from External Applications][control] and the
