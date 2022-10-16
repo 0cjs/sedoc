@@ -32,33 +32,33 @@ File Formats
 Memory Usage
 ------------
 
+Memory map (default/common values in brackets). See also [`rom.md`](rom.md).
+
+    HIMEM       [$DE78 on Son HB-F1XD] set by CLEAR 2nd param
+                file control block(s) (set with MAXFILES=n; 264 bytes each)
+    MEMSIZ      string data heap top
+    -           string data heap bottom
+    STKTOP      base address for stack (grows down)
+    SP          (stack pointer indicates lowest stack extent)
+    STREND      free memory start
+    ARYTAB      array variables start
+    VARTAB      scalar variables start
+    TXTTAB      [$8001] BASIC program text starts
+    BOTTOM      [$8000 (higher on < 32K RAM systems)] $00 byte
+    $0000-7FFF  BIOS and BASIC interpreter (ROM)
+
 Addresses of system variables:
 
      hex   dec  name    descr
-    002D                BASIC version ($00=1.0, $01=2.0)
-    409B                BASIC warm start entrypoint
-    F672 -2446  MEMSIZ  high address of string data heap
-    F674 -2444  STKTOP  base of stack (grows down from here)
-    F676 -2442  TXTTAB  BASIC program text start addr (usu. $8001)
-    FBB1 -1103  BASROM  BASIC text location: 0=RAM, ¬0=ROM
-    FBE5 -1051  NEWKEY  key matrix status new
-    FC48  -952  BOTTOM  $00 byte before start of BASIC text
     FC4A  -950  HIMEM   BASIC allocates only below this
-
-Memory map (default/common values in brackets). See also [`rom.md`](rom.md).
-
-    $0000-7FFF  BIOS and BASIC interpreter (ROM)
-    BOTTOM      [$8000 (higher on < 32K RAM systems)] $00 byte
-    TXTTAB      [$8001] BASIC program text starts
-    VARTAB      scalar variables start
-    ARYTAB      array variables start
-    STREND      free memory start
-    SP          (stack pointer indicates lowest stack extent)
-    STKTOP      base address for stack (grows down)
-    -           string data heap bottom
-    MEMSIZ      string data heap top
-                file control block(s) (set with MAXFILES=n; 264 bytes each)
-    HIMEM       [$DE78 on Son HB-F1XD] set by CLEAR 2nd param
+    FC48  -952  BOTTOM  $00 byte before start of BASIC text
+    FBE5 -1051  NEWKEY  key matrix status new
+    FBB1 -1103  BASROM  BASIC text location: 0=RAM, ¬0=ROM
+    F676 -2442  TXTTAB  BASIC program text start addr (usu. $8001)
+    F674 -2444  STKTOP  base of stack (grows down from here)
+    F672 -2446  MEMSIZ  high address of string data heap
+    409B                BASIC warm start entrypoint
+    002D                BASIC version ($00=1.0, $01=2.0)
 
 BASIC program text is in standard MS format as used in tokenized saves (see
 above).
