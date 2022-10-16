@@ -91,7 +91,8 @@ ROM image notes:
     cart was inserted.
 
 Share directories (under `~/.openMSX/share/`):
-- `settings.xml`: Configuration file; current config saved at emulator exit.
+- `settings.xml`: Configuration file; current config saved at emulator exit
+  if `set save_settings_at_exit` is `true`.
 - `systemroms/`, `software/`: ROM files; see above.
 - `machines/`, `extensions/`: XML machine and extension definitions.
 - `scripts/`, `skins/`: ???
@@ -200,6 +201,7 @@ The `toggle` command will flip the value of boolean `set` parameters
     diska DIR                   # Set disk directory; may also be .dsk image
     plug printerport logger     # Send printer output to file
     set printerlogfilename FILE # Set filename for printer output
+    set save_settings_at_exit 0 # 0=false, 1=true
 
 ### External Control
 
