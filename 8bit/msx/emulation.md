@@ -206,7 +206,15 @@ The `toggle` command will flip the value of boolean `set` parameters
 ### External Control
 
 See [Controlling openMSX from External Applications][control] and the
-[openMSX Console Command Reference][cmdref].
+[openMSX Console Command Reference][cmdref]. `openmsx-debugger` attaches
+to existing sessions using this mechanism.
+
+Control connections are available on:
+- Linux: `${TMP:-/tmp}/openmsx-$(id -nu)/socket.pid`
+- Linux stdio with `-control stdio` option
+- Windows: random port in 9938-9958; port number in `%USERPROFILE%\Documents
+  and Settings\<username>\Local Settings\Temp\openmsx-default\socket.<pid>`.
+- Windows named pipe with `-control pipe`
 
 Sample session; `»` prefix indicates lines typed by the user:
 
