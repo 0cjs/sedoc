@@ -135,15 +135,21 @@ BIOS Calls
 ----------
 
 References:
-- MSX Assembly Page, [MSX BIOS Calls][map bios]
-- [_MSX Technical Data Book_][td1], p.110-134
-- MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2th a1] (incomplete)
-- Sourceforge, [msxsyssrc]: MSX system sourcefiles (commented disassembly)
+- \[map bios] MSX Assembly Page, [MSX BIOS Calls][map bios]
+- \[td1] [_MSX Technical Data Book_][td1], p.110-134
+- \[td2] MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2th a1] (incomplete)
+- \[qest] [_MSX BIOS: The Complete MSX BASIC I/O Listing,_][msxbios],
+  Qest Publishing, 1985-01 (Steven M. Ting).
+- \[msxsyssrc] Sourceforge, [msxsyssrc]: MSX system sourcefiles
+  (commented disassembly)
 
-BIOS calls are at ROM addresses starting at $0000.
+BIOS calls are at ROM addresses starting at $0000. Below this table are
+further details on some of these, including discussion of names.
 
-    RST0   000  CHKRAM    also called STARTUP, RESET, BOOT
-           004  CGTABL    pointer to ROM character table
+    RST0   000  RESET     Z80 reset entry point; init system
+           004  CGTABL    Pointer to ROM character table
+           006  VDPREAD   I/O port to use for direct read/write
+           007  VDPWRITE    to VDP (TMS9918), usu. $98
     RST1   008  SYNCHR
            00C  RDSLT
     RST2   010  CHRGTR
@@ -154,9 +160,9 @@ BIOS calls are at ROM addresses starting at $0000.
            024  ENASLT
     RST5   028  GETYPR
     RST6   030  CALLF
-    RST7   038  KEYINT
+    RST7   038  KEYINT    Timer interrupt handler; keyboard scan etc.
            03B  INITIO
-           03E  INIFNK
+           03E  INIFNK    Re-initialise function key strings to default values
            041  DISSCR
            044  ENASCR
            ...            (all? at 3-byte boundaries)
@@ -174,6 +180,14 @@ BIOS calls are at ROM addresses starting at $0000.
            183  GETCPU
            186  PCMPLY
            189  PCMREC
+
+- `RST0` $000 `RESET`: Z80 CPU reset entry vector. Called `CHKRAM` in
+  [[td1 p.110]] and [[td2 p.343]] and elsewhere, but actually disables
+  interrupts and calls the real `CHKRAM` (MSX1 $02D7, MSX2 $0416). Both
+  [[td1]] and [[td2]] say that `INIT` must be called afterwards, but
+  `CHKRAM` itself does this. Other names:
+  - [[qest p.2 P.6]]: `BEGIN`
+  - [[map bios]]: `STARTUP`, `RESET`, `BOOT`
 
 
 
@@ -195,3 +209,4 @@ BIOS calls are at ROM addresses starting at $0000.
 [2th a1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Appendix1.md
 [map bios]: http://map.grauw.nl/resources/msxbios.php
 [msxsyssrc]: https://sourceforge.net/projects/msxsyssrc/
+[qest]: https://archive.org/details/MSXBIOSBook/MSX%20BIOS%20Book%20-%2001/mode/1up
