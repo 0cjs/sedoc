@@ -27,6 +27,9 @@ Memory Map
 See MSX Wiki, [System variables and work area][sysvars]. A few of the
 important ones for BASIC are also listed in [`bastech.md`](bastech.md).
 
+    FCB0  1b  OLDSCR  old screen mode
+    FCAF  1b  SCRMOD  current screen mode
+
 
 Startup
 -------
@@ -128,6 +131,50 @@ instructions at startup.
             DW <memory-address>
             RET
 
+BIOS Calls
+----------
+
+References:
+- MSX Assembly Page, [MSX BIOS Calls][map bios]
+- [_MSX Technical Data Book_][td1], p.110-134
+- MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2th a1] (incomplete)
+- Sourceforge, [msxsyssrc]: MSX system sourcefiles (commented disassembly)
+
+BIOS calls are at ROM addresses starting at $0000.
+
+    RST0   000  CHKRAM    also called STARTUP, RESET, BOOT
+           004  CGTABL    pointer to ROM character table
+    RST1   008  SYNCHR
+           00C  RDSLT
+    RST2   010  CHRGTR
+           014  WRSLT
+    RST3   018  OUTDO
+           01C  CALSLT
+    RST4   020  DCOMPR
+           024  ENASLT
+    RST5   028  GETYPR
+    RST6   030  CALLF
+    RST7   038  KEYINT
+           03B  INITIO
+           03E  INIFNK
+           041  DISSCR
+           044  ENASCR
+           ...            (all? at 3-byte boundaries)
+           159  CALBAS    inter-slot call to BASIC interpreter
+
+    MSX2   15C  SUBROM
+           15F  EXTROM
+           ...
+           177  NWRVRM
+
+    MSX2+  17A  RDRES
+           17D  WRRES
+
+    turboR 180  CHGCPU
+           183  GETCPU
+           186  PCMPLY
+           189  PCMREC
+
 
 
 <!-------------------------------------------------------------------->
@@ -143,3 +190,8 @@ instructions at startup.
 [cr init]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#INIT
 [cr statement]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#STATEMENT
 [cr text]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#TEXT
+
+<!-- BIOS Calls -->
+[2th a1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Appendix1.md
+[map bios]: http://map.grauw.nl/resources/msxbios.php
+[msxsyssrc]: https://sourceforge.net/projects/msxsyssrc/

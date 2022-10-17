@@ -56,6 +56,11 @@ BASIC) at MSX Wiki, [System variables and work area][sysvars].
     FBE5 -1051  NEWKEY  key matrix status new
     FBB1 -1103  BASROM  BASIC text location: 0=RAM, ¬0=ROM
                         (Ctrl-STOP disabled for BASIC program in ROM.)
+    FBB0        ENSTOP  non-zero if warm start enabled
+
+    F975                music/PLAY data through $FBAF
+    F959        QUETAB  queue area (for PLAY), 4× 6 bytes + 4 for BCKQ
+
     F676 -2442  TXTTAB  BASIC program text start addr (usu. $8001)
     F674 -2444  STKTOP  base of stack (grows down from here)
     F672 -2446  MEMSIZ  high address of string data heap
@@ -64,6 +69,9 @@ BASIC) at MSX Wiki, [System variables and work area][sysvars].
     F3AE        LINL40  Screen width in SCREEN 1 (default 29)
     409B                BASIC warm start entrypoint
     002D                BASIC version ($00=1.0, $01=2.0)
+
+Areas possibly reusable for storage/machine-code:
+- $F959-FBAF (599b) if not using PLAY or other sound stuff
 
 BASIC program text is in standard MS format as used in tokenized saves (see
 above).
@@ -249,6 +257,6 @@ References:
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [mem]: https://www.msx.org/wiki/The_Memory
 [sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
-[the.2.3]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
+[the.2.3]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html#3-internal-structure-of-basic
 [the.tok]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#table-220--list-of-intermediate-codes
 [thj.tok]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n74/mode/1up
