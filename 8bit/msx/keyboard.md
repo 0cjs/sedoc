@@ -3,6 +3,7 @@ MSX Keyboards
 
 References:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
+- MSX Wiki, [Keyboard Matrices][mw matrix]
 
 #### Layout (ja)
 
@@ -45,4 +46,5 @@ They are updated by the keyboard scanner in the timer interrupt handler.
 
 
 <!-------------------------------------------------------------------->
+[mw matrix]: https://www.msx.org/wiki/Keyboard_Matrices
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
