@@ -61,6 +61,18 @@ the default to `A:` (or current drive?).
 - `SAVE "<dev>[<filename>]"`
 - `BLOAD`, `BSAVE`: See [Technical/Internals](./bastech.md).
 
+### Memory Management
+
+- `CLEAR [s[,m]]`: Clear all variables and DEF FN.
+  - _s:_ Size of string heap at top of BASIC memory (default 200).
+  - _m:_ Set `HIMEM` ($FC4A); BASIC will use memory only below this.
+    - Min $831F, max $F380 (start of BASIC/BIOS work area).
+    - Check w/`?hex$(peek(-950)+peek(-949)*256)`
+    - Default depends Disk BASIC etc.: regular, Ctrl-boot, Shift-boot
+      - MSX2 1drv Sony HB-F1XD:          $DE78, $E48E, $F380
+      - MSX1 1drv National CF-3300:      $DE77, $E48D, $F380
+      - MSX2 1drv Panasonic FS-A1F/A1FM: $DE67, $E47D, $F380
+
 ### Variable Definition and Special Variables
 
 - `DEFINT`, `DEFSNG`, `DEFDBL`, `DEFSTR`: Declares all variables starting
@@ -85,8 +97,8 @@ the default to `A:` (or current drive?).
 
 ### Functions
 
-- `MID$(X$,I[,J])`: Substring of length _J_ (default to end of string)
-  beginning with the _I_th character. `1` is the first character of _X$_.
+- `MID$(s$,i[,len])`: Return substring of _s$_ starting at 1-based index
+  _i_ and of length _len_ (default to end of _s$_).
 - `INSTR([start,] str$, sub$)`: Return the 1-based offset of _sub$_ in
   _str$,_ returning 0 if _sub$_ is not found. Optional _start_ is the
   1-based offset into _str$_ to start searching. (KH: `CALL KINSTR(…)`)
