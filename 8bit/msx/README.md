@@ -97,8 +97,7 @@ MSX systems include [td1 p.8]:
 
 #### Keyboard
 
-[td1 p.13] PPI PB0-PB7 are column inputs X0-X7. PC0-PC3 go to a decoder
-that brings to ground one of 10 row outputs Y0-Y10.
+See [`keyboard.md`](./keyboard.md).
 
 #### Joysticks
 
