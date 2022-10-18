@@ -24,27 +24,31 @@ the following files:
 If you are going to use [Visual Studio Code][vsc], or have another
 favourite editor, install it before installing Git.
 
+Below, ✓ indicates things that should be selected/enabled, and ✗ things
+that should be deselected/disabled.
+
 1. Download the installer from the [gitforwindows.org][gfw] and run it; the
-   following steps/choices will appear as the install wizard progress (not
-   all steps are shown here).
+   following steps/choices will appear as the install wizard progresses.
+   (Not all steps are shown here; what to do for those not shown should be
+   obvious when you see them.)
 2. Select Components: ensure that the following are checked:
-   - Windows Explorer integration: Git Bash Here
-   - Associate .sh files to be run with Bash
+   - ✓ Windows Explorer integration: Git Bash Here
+   - ✓ Associate .sh files to be run with Bash
 3. Default editor: If your preferred option is not in the list, leave it at
    the default (Vim). This can easily be changed later.
-4. Adjusting PATH: "Git from the command line and also from 3rd-party
-   software."
+4. Adjusting PATH: "Git from the command line and also from 3rd-party software."
 5. SSH executable: "Use OpenSSH."
 6. HTTPS backend: "Use the native Windows Secure Channel library."
 7. Line ending conversions: "Checkout as-is, commit as-is." (Line endings
-  should be handled by your editor, not by Git.)
+   should be handled by your editor, not by Git. Even Windows 10 Notepad
+   now handles Unix line endings.)
 8. Terminal emulator: "Use MinTTY."
 9. Behaviour of `git pull`: "Only ever fast-forward."
 10. Credential helper: None.
 11. Extra options:
     - ✓ Enable file system caching
     - ✗ Enable symbolic links
-12. × Enable experimental support for pseudo consoles.
+12. ✗ Enable experimental support for pseudo consoles.
     (As of 2.28.0.windows.1 this produces odd behaviour such as dropping
     CRs and spawning Windows consoles with your output.)
 
