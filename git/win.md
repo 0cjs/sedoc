@@ -21,12 +21,11 @@ the following files:
     %USERPROFILE%\AppData\Local\Programs\Git\etc\install-options.txt
     /etc/install-options.txt
 
-If you are going to use [Visual Studio Code][vsc], or have another
-favourite editor, install it before installing Git.
-
 Below, ✓ indicates things that should be selected/enabled, and ✗ things
 that should be deselected/disabled.
 
+0. If you are going to use [Visual Studio Code][vsc], or have another
+   favourite editor, install it before installing Git.
 1. Download the installer from the [gitforwindows.org][gfw] and run it; the
    following steps/choices will appear as the install wizard progresses.
    (Not all steps are shown here; what to do for those not shown should be
