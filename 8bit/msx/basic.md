@@ -72,6 +72,8 @@ the default to `A:` (or current drive?).
       - MSX2 1drv Sony HB-F1XD:          $DE78, $E48E, $F380
       - MSX1 1drv National CF-3300:      $DE77, $E48D, $F380
       - MSX2 1drv Panasonic FS-A1F/A1FM: $DE67, $E47D, $F380
+- `VARPTR(v)`: Return pointer to variable data for variable _v._
+  See [§Variables in `bastech.md`](bastech.md#variables) for more information.
 
 ### Variable Definition and Special Variables
 
@@ -102,6 +104,34 @@ the default to `A:` (or current drive?).
 - `INSTR([start,] str$, sub$)`: Return the 1-based offset of _sub$_ in
   _str$,_ returning 0 if _sub$_ is not found. Optional _start_ is the
   1-based offset into _str$_ to start searching. (KH: `CALL KINSTR(…)`)
+
+### Text and File I/O
+
+Below, _f_ is a file handle, 1 to 15, but see `MAXFILES`.
+
+- `MAXFILES=n`: Clear all vars, close all files, and set open file limit to
+  _n_ (default 1). Limit is 6 on floppy disk and 2 on QuickDisk. Each
+  available file uses 267 bytes.
+- `OPEN path$ [FOR dir] AS #f [LEN=reclen]`
+  - _path$_ not required for text/graphic screen or printer
+  - _dir_ is `INPUT`, `OUTPUT` or `APPEND` and forces sequental mode.
+  - `#` can be omitted from `#f`.
+  - `LEN` uses random access mode; after open define w/`FIELD` and use `GET
+    #f,recno`/`PUT`.
+  - In sequential mode $1A char is always EOF; random treats $1A as data.
+- `INPUT ["prompt";|#f,]v[,v…]`, `LINE INPUT ["prompt";|#f,]v$`:
+  - `"prompt"` must be a string constant, not a variable
+  - Screen editor is used so existing chars on the cursor's line will be
+    returned. Open `CON:` to retrieve only what's typed.
+  - `INPUT` parses like `DATA`; commas or newlines separate vars _v,_ and
+    values can be quoted to read comma characters. `LINE INPUT` takes only
+    one var and reads everything as-is.
+- `INPUT$(n,f)`: Read _n_ characters from file. CR and LF are preserved
+  as-is, but $1A is still considered EOF on text files.
+- `FIELD #f, n as v[, n₁ as v₁ …]`
+  - _n_ is an integer constant or integer variable (`I%`).
+- `EOF(f)`: Returns 0 if not at EOF on _f._ Error on random access mode.
+
 
 ### Screen, Graphics
 
