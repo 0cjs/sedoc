@@ -156,7 +156,7 @@ further details on some of these, including discussion of names.
            014  WRSLT
     RST3   018  OUTDO
            01C  CALSLT
-    RST4   020  DCOMPR
+    RST4   020  DCOMPR    compares HL with DE
            024  ENASLT
     RST5   028  GETYPR
     RST6   030  CALLF
