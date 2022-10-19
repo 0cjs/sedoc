@@ -32,8 +32,8 @@ Key:
 |  3207 |  1665 |   2₂ |  15W | -    | 15.4 | Intel Core i5-6260U  1.80 GHz (T2.9 GHz)
 |  2915 |  1325 |   4₂ |  95W | -    | 09.3 | Intel Core i7-860    2.80 GHz (T3.5 GHz)
 |  2635 |  1344 |   2₂ |  15W | -    | 15.4 | Intel Core i3-6100U  2.30 GHz (no turbo)
-|  2150 |   859 |   4  |   6W | -    |      | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
-|  1116 |   803 |   2  |   6W | -    |      | Intel Celeron N3350  1.10 GHz (T2.4 GHz; Apollo Lake)
+|  2150 |   859 |   4  |   6W | -    | 16.4 | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
+|  1116 |   803 |   2  |   6W | -    | 16.4 | Intel Celeron N3350  1.10 GHz (T2.4 GHz; Apollo Lake)
 
 The new PassMark seems to emphasise stuff using newer/extended instrs.
 i7-3770 vs. i7-860 is 6400/2915 = 2.2×, but test suite individual results
