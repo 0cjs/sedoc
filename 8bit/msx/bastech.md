@@ -76,20 +76,9 @@ Areas possibly reusable for storage/machine-code:
 BASIC program text is in standard MS format as used in tokenized saves (see
 above).
 
-Scalar variables are stored as type (1 byte) and name (2 bytes) followed by
-variable data. `VARPTR` returns a pointer to the variable data after the
-three type/name bytes.
-
-    type           type byte   variable data
-    ───────────────────────────────────────────────────────────────────────
-    integer               02   16-bit signed 2's complement integer
-    string                03   1-byte length, 2-byte pointer to string data
-    single-prec. float    04   4 byte floating point number
-    double-prec. float    08   8 byte floating point number
-
 The string data heap is fixed size and is used only for dynamically
-generated string values; constants in program text use the value from the
-program text area. The remaining free space in the heap queried with
+generated string values; string constants in program text use the value from
+the program text area. The remaining free space in the heap queried with
 `FRE("")`; `FRE(0)` space does not include the string heap. Allocating a
 string will reduce the string heap space by the length of the string and
 `FRE(0)` space by 6 bytes for the variable overhead. Exceeding string heap
@@ -99,6 +88,19 @@ Memory from HIMEM upward is used for MSX-DOS etc, typically leaving 23-28K
 for BASIC. At boot it's $DE78 on a single-drive Sony HB-F1XD. It may be set
 to a new value with the second optional parameter to `CLEAR` which is
 typically used to reserve space for machine language routines.
+
+#### Variables
+
+Scalar variables are stored as type (1 byte) and name (2 bytes) followed by
+variable data. `VARPTR(v)` returns a pointer to the variable data for _v_
+(i.e., after the three type/name bytes).
+
+    type           type byte   variable data
+    ───────────────────────────────────────────────────────────────────────
+    integer               02   16-bit signed 2's complement integer
+    string                03   1-byte length, 2-byte pointer to string data
+    single-prec. float    04   4 byte floating point number
+    double-prec. float    08   8 byte floating point number
 
 #### Resetting TXTTAB
 
