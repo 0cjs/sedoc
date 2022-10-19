@@ -51,6 +51,9 @@ the default to `A:` (or current drive?).
 - `RUN "<dev>[<filename>]"` will load and run a file.
 - `LOAD "<dev>[<filename>]"`. Non-empty string argument required. Default
   device is cassette (`CAS:`?). Add `,R` to run after loading.
+- `MERGE file$`: Read ASCII lines from _f$_ and merge them into the current
+  program. Does not work on binary files. If used in a program, program
+  ends immediately after.
 - `CLOAD ["<filename>"]`: Load from cassette. Filename optional, baud rate
   determined automatically. After reading the header, `Found:filename` will
   be displayed.
@@ -175,6 +178,7 @@ Color codes:
 For `LIST`, `LLIST` and `DELETE` a `.` specifies the last line `LIST`ed.
 
 - `LIST lineno`, `LIST start-end`: List program. `LLIST` to list on printer.
+  Lists lines but then ends program run if used in a program.
 - `DELETE lineno`, `DELETE start-end`
 - `RENUM [new[,current[,incr]]]`: Renumber program lines, updating
   references in `GOTO`, `GOSUB`, `RESTORE` etc. Optional parameters:
