@@ -1,6 +1,10 @@
 Windows 10 Tips and Tricks
 ==========================
 
+### Find Application for File from Command Line
+
+    start filename.ext
+
 ### Keyboard Shortcuts
 
 - `Win Ctrl Shift B`: Restart graphics drivers.
