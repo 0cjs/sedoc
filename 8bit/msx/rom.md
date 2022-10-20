@@ -152,7 +152,7 @@ further details on some of these, including discussion of names.
            007  VDPWRITE    to VDP (TMS9918), usu. $98
     RST1   008  SYNCHR
            00C  RDSLT
-    RST2   010  CHRGTR
+    RST2   010  CHRGTR    Get next char from BASIC text
            014  WRSLT
     RST3   018  OUTDO
            01C  CALSLT
@@ -168,6 +168,8 @@ further details on some of these, including discussion of names.
            ...            (all? at 3-byte boundaries)
            059  LDIRMV    block xfer to memory from VRAM
            05C  LDIRVM    block xfer to VRAM from memory
+           ...
+           07E  SETGRP    set VDP to multicolor mode
            ...
            159  CALBAS    inter-slot call to BASIC interpreter
 
@@ -192,6 +194,9 @@ further details on some of these, including discussion of names.
   - [[qest p.2 P.6]]: `BEGIN`
   - [[map bios]]: `STARTUP`, `RESET`, `BOOT`
 
+- $010 `CHRGTR`: Get next character from BASIC program text pointer.
+  HL=program text pointer, A=character at that point. Flag C set if number,
+  flag Z set if at end of staement.
 - $059 `LDIRMV`, $05C `LDIRVM`: block xfer memory←VRAM, VRAM←memory.
   BC=block length, DE=source start addr, HL=dest start addr.
 
