@@ -31,10 +31,11 @@ Characters and Fonts
 In text modes the frame buffer is a linear sequence of 1-byte character
 cells determining the displayed characters from left to right on each line,
 with lines from top to bottom. This is called the [_pattern name table_][2t
-pntab]. Each byte is an index into a character definition table called the
-[_pattern generator table_][2t pgtab], which is a sequence of 8 bytes for
-each character definition, each byte a line from top to bottom and each bit
-from 7 to 0 a pixel from left to right.
+pntab] (or sometimes the _pattern layout map_). Each byte is an index into
+a character definition table called the [_pattern generator table_][2t
+pgtab], which is a sequence of 8 bytes for each character definition, each
+byte a line from top to bottom and each bit from 7 to 0 a pixel from left
+to right.
 
 Some modes also have a [_blink table_][2t btab] with the first byte's bits
 0-7 giving blink status (1=on) for character positions 0-7 first row of the
@@ -69,6 +70,53 @@ From msx.org forum [Dump character set to BIN for re-use][mf csbin]:
     POKE &hF91F, PEEK(&hF343)       ' slot ID of font
     POKE &hF920,&h00                ' LSB of font addr
     POKE &hF921,&hC0                ' MSB of font addr
+
+
+Video Modes
+-----------
+
+The following were taken from an MSX2 guide; they do not indicate what's
+missing in MSX1.
+
+    VDP Mode        BASIC
+    ─────────────────────────────────────────────────
+    T1  TEXT1       SCREEN 0 (width 1-40)
+    G1  GRAPHIC1    SCREEN 1
+    G2  GRAPHIC2    SCREEN 2
+    ─────────────────────────────────────────────────
+
+    ┌─ VDP Mode
+    │   ┌─ Pattern Size
+    │   │    ┌─ Screen Size
+    │   │    │      ┌─ Patterns
+    │   │    │      │     ┌─ Colors
+    │   │    │      │     │
+    │   │    │      │     │
+    ─────────────────────────────────────────────────
+    G1  8×8  32×24  256   16/512    0000d
+    G2  8×8  32×24  768¹  16/512
+
+    ───────────────────────────────────────────────────
+    VDP Mode    T1         G1          G2
+    ───────────────────────────────────────────────────
+    P.Size      6×8        8×8         8×8
+    Scr.Size    40×24      32×24       32×24
+    Patterns    256        256         768²
+    Colors      2/512      16/512      16/512
+    ───────────────────────────────────────────────────
+    P.Gen       0800-0fff  0000-07ff   0000-17ff
+    P.Layout    0000-03bf  1800-1aff   1800-1aff
+                           1800-1f5f
+    P.Colors        ─      2000-201f   2000-37ff
+    S.Patterns      ─      3800-3fff   3800-3fff
+    S.Attr          ─      1b00-1b7f   1b00-1b7f
+    S.Colors        ─          ─           ─
+    ───────────────────────────────────────────────────
+    TDB/PG¹     §3.3 p.25   §3.4 p.38   §3.5 p.42
+    ───────────────────────────────────────────────────
+      P = Pattern, S = Sprite
+    ¹ ASCII / Nippon Gakki V9938 Tech. Data Book/Prog. Guide (1985)
+    ² 256 per ⅓ of the screen
 
 
 
