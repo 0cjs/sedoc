@@ -23,6 +23,22 @@ the submodule to stage a new gitlink entry to that new commit; if the
 working copy is dirty you will not be able to stage until the changes
 in the submodule are commited there.
 
+### Configuration Storage Details
+
+- The commit to which a submodule should be set is stored in a commit
+  in the main repo; configuration files contain only information about
+  where to get a copy of the repo.
+- Submodule bare repositories are under `.git/modules/`; the working
+  copy under `foo/bar/` will have a `.git` file containing the line:
+  `gitdir: ../../.git/modules/foo/bar`. If present, this is used and
+  config files are ignored.
+- The `[submodule "foo/bar"]` section in `.git/config` is used when
+  `.git/modules/foo/bar` is not present; the `url =` line will determine
+  whence Git will try to fetch the module's repo.
+- A fresh clone of the main repo will not have submodules sections in
+  `.git commit`; in this case you must use `update --init` to copy the
+  default sections from `.gitmodules` to `.git/config`.
+
 
 Checking Out Submodules
 -----------------------
