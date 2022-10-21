@@ -8,8 +8,8 @@ References:
 
 Though the hardware is described below, the MSX standard strongly suggests
 using BIOS routines to change page and slot mappings, do cross-slot calls,
-etc. See [MSX-ROM](rom.md) for details on the BIOS/BASIC memory map
-and memory handling routines.
+etc. See [MSX-ROM](rom.md) for details on the BIOS/BASIC memory map,
+memory handling routines, and a description of slot descriptor bytes.
 
 ### Address Space Pages
 

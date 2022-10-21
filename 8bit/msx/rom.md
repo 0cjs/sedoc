@@ -11,6 +11,19 @@ References:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
 
 
+Slot Descriptors
+----------------
+
+A slot descriptor (in these documents, _slotdesc_) is as 8-bit value used
+to describe a slot configuration.
+
+    bit     76543201
+    value   FxxxSSPP
+            │   │ └── primary slot number 0-3
+            │   └──── secondary slot number 0-3, or `xx` if not specified
+            └──────── 1 if secondary slot specified
+
+
 Memory Map
 ----------
 
@@ -24,11 +37,28 @@ Memory Map
 
 #### System Variables and Work Area
 
-See MSX Wiki, [System variables and work area][sysvars]. A few of the
-important ones for BASIC are also listed in [`bastech.md`](bastech.md).
+References:
+- MSX Wiki, [System variables and work area][mw sysvars].
+- \[map sysvars] MSX Assembly Page, [MSX sysvars Calls][map sysvars]
+- 
 
-    FCB0  1b  OLDSCR  old screen mode
-    FCAF  1b  SCRMOD  current screen mode
+BIOS/BASIC (more also in [`bastech.md`](bastech.md)):
+
+    FCB0  1b  OLDSCR    old screen mode
+    FCAF  1b  SCRMOD    current screen mode
+    FCC4  1b        +3  slot 3: Each slot entry
+    FCC3  1b        +2  slot 2    bit 7: 1=expanded 0=not
+    FCC2  1b        +1  slot 1    bits 6-0: always 0
+    FCC1  1b  EXPTBL+0  slot 0: also main BIOS-ROM slot address.
+
+MSX-DOS and Disk BASIC (only when DiskROM present):
+
+    F348  1b  MASTER    main DiskROM slot address
+    F344  1b  RAMAD3    slotdesc of RAM in page 3 (DOS/BASIC)
+    F343  1b  RAMAD2    slotdesc of RAM in page 2 (DOS/BASIC)
+    F342  1b  RAMAD1    slotdesc of RAM in page 1 (DOS)
+    F341  1b  RAMAD0    slotdesc of RAM in page 0 (DOS)
+    F30F  4b  KANJTABLE copy of CHAR_16
 
 
 Startup
@@ -157,9 +187,16 @@ further details on some of these, including discussion of names.
     RST3   018  OUTDO
            01C  CALSLT
     RST4   020  DCOMPR    compares HL with DE
-           024  ENASLT
+           024  ENASLT    DI and map A=slotdesc to page containing addr HL
     RST5   028  GETYPR
+           02B            sysinfo: int freq, date format, charset
+           02C            sysinfo: BASIC version, keyboard
+           02D            sysinfo: MSX version
+           02E            sysinfo: MSX-MIDI (turbo R only)
+           02F            reserved
     RST6   030  CALLF
+           034  CHAR_16   4b default kanji range; DiskBIOS copies to KANJITABLE
+                          two pairs of limits for 1st bytes of Shift-JIS chars
     RST7   038  KEYINT    Timer interrupt handler; keyboard scan etc.
            03B  INITIO
            03E  INIFNK    Re-initialise function key strings to default values
@@ -194,6 +231,17 @@ further details on some of these, including discussion of names.
   - [[qest p.2 P.6]]: `BEGIN`
   - [[map bios]]: `STARTUP`, `RESET`, `BOOT`
 
+- $02B,$02C,$02D sysinfo, ROM version information:
+  - $2B   b7: default interrupt frequency: 0=60 Hz 1=50 Hz
+  - $2B b6-4: date format: 0=Y-M-D 1=M-D-Y 2=D-M-Y
+  - $2B b3-0: character set: 0=ja 1=international 2=kr
+  - $2C b7-4: BASIC version: 0=ja 1=international
+  - $2C b3-0: keyboard type: 0=JP 1=INT 2=FR (AZERTY) 3=UK 4=DE (DIN)
+  - $2D b7-0: MSX version: 0=MSX1 1=MSX2 2=MSX2+ 3=MSX turbo R
+  - $2E b7-1: reserved?
+  - $2E   b0: MSX-MIDI (turbo R only): 0=absent 1=present
+  - $2F b7-0: reserved
+
 - $010 `CHRGTR`: Get next character from BASIC program text pointer.
   HL=program text pointer, A=character at that point. Flag C set if number,
   flag Z set if at end of staement.
@@ -206,7 +254,8 @@ further details on some of these, including discussion of names.
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 
 <!-- Memory Map -->
-[sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
+[map sysvars]: https://map.grauw.nl/resources/msxsystemvars.php
+[mw sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
 
 <!-- Startup -->
 [cr]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM
