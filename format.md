@@ -245,7 +245,9 @@ this.
 YouTube
 -------
 
-- Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`.
+- Markdown-like: `*bold*`, `_italic_`, `-strikethrough text-`. There must
+  be whitespace on one side of the markup character. E.g., at the end of
+  a sentence, outside all punctuation: `..."said *what."* `.
 - Bare links only.
 
 
