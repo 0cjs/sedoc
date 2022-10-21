@@ -181,7 +181,7 @@ Suggested bindings:
     bind Meta+P toggle pause
     bind Meta+O set fastforward on
     bind Meta+O,release set fastforward off
-    bind Meta+R reset
+    bind Meta+Y reset
 
     #   STOP key; note that this doesn't doesn't pass modifiers e.g. Ctrl+STOP
     bind Meta+K keymatrixdown 7 0x10
