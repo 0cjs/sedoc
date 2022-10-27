@@ -11,11 +11,13 @@ sconnectors on the Atari?[curfaq 1.14] from Michael D. Current's [Atari 400
 
 ### 800XL
 
-Power: DIN-7
+Power: DIN-7. Unexpanded (or slightly expanded?) 800XL draws just under
+1 A, so USB power is ok.
 
-    1  +5 VDC   2  Shield   3   GND
-    4  +5 VDC               5  GND
-    6  +5 VDC               7  GND
+    1  +5 VDC     2  Shield     3  GND
+    4  +5 VDC                   5  GND
+    6  +5 VDC                   7  GND
+
 
 Video (marked "Monitor"): DIN-5, NTSC or PAL
 
