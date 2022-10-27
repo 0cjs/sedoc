@@ -215,6 +215,10 @@ __References:__
 - [Upcycling of Spent NiMH Battery Material—Reconditioned Battery Alloys
   Show Faster Activation and Reaction Kinetics than Pristine
   Alloys][PMC7288010]
+- YouTube: bigclivedotcom, [Simple NiMH battery charger (with PCB
+  files)][wVnAH17f4jg]. Schematic at 1:04. 20-30 mA charge current from USB
+  PSU, w/diodes to prevent backfeed so you can parallel as many of these as
+  you like. +5V → 1N400X →  (120R | LED → 120R) → cell → GND.
 
 ### Lithium-Ion and Lithium-Polymer Cells
 
@@ -253,6 +257,7 @@ __References:__
 [eese 500499]: https://electronics.stackexchange.com/a/500499/15390
 [seabird]: http://www.seabird.com/pdf_documents/manuals/NiMH_002.pdf
 [separator]: https://en.wikipedia.org/wiki/Separator_(electricity)
+[wVnAH17f4jg]: https://www.youtube.com/watch?v=wVnAH17f4jg
 [w NiMH]: https://en.wikipedia.org/wiki/Nickel%E2%80%93metal_hydride_battery
 
 <!-- Lithium-Ion and Lithium-Polymer Cells -->
