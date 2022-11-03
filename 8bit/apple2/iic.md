@@ -78,10 +78,10 @@ Below, LI = "looking into."
           2                  2                  4
 
     DIN    Apple   Function
-    1,4     2,3    +15 V DC
+    1,4     6,5    +15 V DC
       2       4    Chassis ground (AC input ground)
-    3,5     5,6    Signal ground
-    6,7     1,7    Not connected
+    3,5     2,3    Signal ground
+    6,7     7,1    Not connected
 
 Internally the converter generates voltages +5 (1.5A), +12 (0.6 A, 1.5
 A surge), -12 (100 mA) and -5 (50 mA). It can run all internal
