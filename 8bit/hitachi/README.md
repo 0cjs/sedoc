@@ -14,9 +14,9 @@ PC-6001 etc. spelled the end of home user popularity.
 6800 models all had monochrome 32×24 (768 bytes) text and 64×48
 character-based "graphics" (except Jr. added 256×192):
 
-- Basic Master __MB-6880__ (1978-09): 0.75 MHz, 4K RAM, 8K ROM.
+- Basic Master __MB-6880__ (1978-09, ¥188k): 0.75 MHz, 4K RAM, 8K ROM.
   300 bps cassette. 64×48 monochrome graphics.
-- Basic Master Level 2 __MB-6880L2__ (1979-02): 8K RAM, 16K ROM.
+- Basic Master Level 2 __MB-6880L2__ (1979-02, ¥228k): 8K RAM, 16K ROM.
   BASIC adds floating point.
 - Basic Master Level 2 II __MB-6881__ (1980): 16K RAM, 16K ROM.
   MZ080 and PC-8001 become noticably more popular.
@@ -48,8 +48,9 @@ and mentions a service manual.
 ### Peripherals
 
 688x Peripherals:
+- MB-ROM (?): Level 2 ROMs and board (¥40k)
 - MP-1010 放電 Printer (¥138k)
-- MP-1010A, MP-1010B "I/O Adapter" (adds centronics parallel I/O?)
+- MP-1010A, MP-1010B "I/O Adapter" (see [6880.md](6880.md)) (¥60k).
 - MP-1041 printer
 - MP-1802/MP-3550 floppy controller/drive (5.25" DS/DD)
 - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
