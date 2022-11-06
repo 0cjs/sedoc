@@ -6,7 +6,7 @@ Hitachi BASIC Master
 The MB-6880 was the first "home" computer (i.e., not a dev board)
 released in Japan, and Hitachi the first to move from ｢ﾏｲｺﾝ｣ to
 ｢ﾊﾟｰｿﾅﾙｺﾝﾋﾟｭｰﾀｰ｣ terminology. The series with the PC-8001 and MZ-80,
-was considered part of the [パソコン御三家][osanke] until around 1980,
+was considered part of the [パソコン御三家][gosanke] until around 1980,
 when it became comparatively less popular (eventually to be replaced
 by Fujitsu FM?). The release at the end of 1981 (after the Jr.) of the
 PC-6001 etc. spelled the end of home user popularity.
@@ -14,17 +14,17 @@ PC-6001 etc. spelled the end of home user popularity.
 6800 models all had monochrome 32×24 (768 bytes) text and 64×48
 character-based "graphics" (except Jr. added 256×192):
 
-- Basic Master __MB-6880__ (1978-09): 0.75 MHz, ROM/RAM 16K/4K.
+- Basic Master __MB-6880__ (1978-09): 0.75 MHz, 4K RAM, 8K ROM.
   300 bps cassette. 64×48 monochrome graphics.
-- Basic Master Level 2 __MB-6880L2__ (1979-02): ROM/RAM 16K/8K.
+- Basic Master Level 2 __MB-6880L2__ (1979-02): 8K RAM, 16K ROM.
   BASIC adds floating point.
-- Basic Master Level 2 II __MB-6881__ (1980): ROM/RAM 16K/16K.
+- Basic Master Level 2 II __MB-6881__ (1980): 16K RAM, 16K ROM.
   MZ080 and PC-8001 become noticably more popular.
 - Basic Master Jr. __MB-6885__ (1981): ROM/RAM 18K/16K (63.5K).
   Smaller case; VRAM for 256×192 b/w graphics (no ROM BASIC support).
   - Post-release ROM upgrade increased cassette speed to 1200 baud.
-  - MP-9785 adds expanded RAM (64K?) allowing full RAM address space
-    excepting I/O area.
+  - MP-9785 64K RAM exapnsion; actually gives 63.5K because the I/O area
+    of address space cannot be switched to RAM.
   - MP-1710 Color Adapter (on expansion bus) allows 8-color graphics.
   - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
 
@@ -48,6 +48,8 @@ and mentions a service manual.
 ### Peripherals
 
 688x Peripherals:
+- MP-1010 放電 Printer (¥138k)
+- MP-1010A, MP-1010B "I/O Adapter" (adds centronics parallel I/O?)
 - MP-1041 printer
 - MP-1802/MP-3550 floppy controller/drive (5.25" DS/DD)
 - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
@@ -56,6 +58,7 @@ and mentions a service manual.
 - MP-3530(?): Mini-floppy
 - MP-3540(?): Mini-floppy (expansion unit; no controller)
 - MP-9780: [VHF Color Converter](./video.md)
+- MP-9785: 64K expansion RAM for MB-6885 (Jr.)
 - C14-1180: color display
 - K12-2060G: monochrome display
 
@@ -159,8 +162,8 @@ See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 
 <!-------------------------------------------------------------------->
 [ar-bmj]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/
+[gosanke]: https://ja.wikipedia.org/wiki/8ビット御三家
 [mame]: https://github.com/mamedev/mame/blob/master/src/mame/hitachi/bml3.cpp
-[osanke]: https://ja.wikipedia.org/wiki/8ビット御三家
 [rash]: http://fuckin.rash.jp/wikihome/index.cgi/p6?page=Basic+Master+Jr.
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
 
