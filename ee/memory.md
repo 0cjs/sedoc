@@ -14,7 +14,7 @@ References:
 - A [search for "memory dip" on the JDEC site][JDEC-memory-dip] gives
   standards and pinouts for various kinds of memory chips.
 - MESS [Dump 2364 Mask ROMs][mess2364] gives 2364/2764 pinouts and adapter.
-- 64Copy [ROM & EPROM Pinouts][64copy]: nice inidvidual pinout diagrams of
+- 64Copy [ROM & EPROM Pinouts][64copy]: nice individual pinout diagrams of
   2316/32/64, 2716/32/64/128/256/512/010
 
 
