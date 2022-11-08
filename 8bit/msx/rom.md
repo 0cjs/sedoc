@@ -161,6 +161,35 @@ instructions at startup.
             DW <memory-address>
             RET
 
+Summary of hooks:
+
+    Key: [c]: to support other console devices
+
+    addr  name    called at/in
+    ────────────────────────────────────────────────────────────────────
+    FD9A  H.KEYI  start of int handler (used for RS-232, etc.)
+    FD9F  H.TIMI  timer int handler
+    FDA4  H.CHPU  [c] start of CHPUT
+    FDA9  H.DSPC  [c] start of DSPCSR (display cursor)
+    FDAE  H.ERAC  [c] start of ERACSR (erase cursor)
+    FDB3  H.DSPF  [c] start of DSPFNK (display function key)
+    FDB8  H.ERAF  [c] start of ERAFNK (erase funtion key)
+    FDBD  H.TOTE  [c] start of TOTEXT (force screen to text mode)
+    FDC2  H.CHGE  [c] start of CHGET (character get)
+    FDC7  H.INIP  [c] start of INIPAT (initialize pattern)
+    FDCC  H.KEYC  start of KEYCOD (key coder); for alternate key assignments
+    FDD1  H.KYEA  start of KYEASY (key easy); for alternate key assignments
+    FDD6  H.NMI   beginning of NMI routine
+    FDDB  H.PINL  start of PINLIN (program input line)
+    FDE0  H.QINL  start of QINLIN (question mark/input line routine)
+    FDE5  H.INLI  start of INLIN (input line) routine
+    FDEA  H.ONGO  [c] start of ONGOTP (ON GOTO procedure)
+    FDEF  H.DSKO  }
+     ~~           } ~40 I/O-related hooks that install disk driver
+    FEAD  H.BAKU  }
+     ~~           XXX more to be documented
+
+
 BIOS Calls
 ----------
 
