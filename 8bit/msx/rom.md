@@ -237,6 +237,8 @@ further details on some of these, including discussion of names.
            ...
            07E  SETGRP    set VDP to multicolor mode
            ...
+           090  GICINI    init PSG and static data for PLAY statement
+           ...
            159  CALBAS    inter-slot call to BASIC interpreter
 
     MSX2   15C  SUBROM
@@ -276,6 +278,11 @@ further details on some of these, including discussion of names.
   flag Z set if at end of staement.
 - $059 `LDIRMV`, $05C `LDIRVM`: block xfer memory←VRAM, VRAM←memory.
   BC=block length, DE=source start addr, HL=dest start addr.
+- $090 `GICINI`. According to the [MSX Wiki][mw sysvars], this initialises
+  the BASIC `PLAY` queue tables as well (probably $F3F3 `QUEUES`, $F959
+  `QUETAB`, $F971 `QUEBAK`, $F975` VOICAQ`, $F9F5` VOICBQ`, $FA75` VOICAQ`,
+  $FB3E `QUEUEN`). Beyond this, documentation exactly on what this does is
+  very hard to find.
 
 
 
