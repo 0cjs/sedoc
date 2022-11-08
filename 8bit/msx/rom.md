@@ -214,7 +214,7 @@ further details on some of these, including discussion of names.
     RST2   010  CHRGTR    Get next char from BASIC text
            014  WRSLT
     RST3   018  OUTDO
-           01C  CALSLT
+           01C  CALSLT    DI and inter-slot call: IX=call addr, IY(hi)=slotdesc
     RST4   020  DCOMPR    compares HL with DE
            024  ENASLT    DI and map A=slotdesc to page containing addr HL
     RST5   028  GETYPR
@@ -240,7 +240,7 @@ further details on some of these, including discussion of names.
            090  GICINI    init PSG and static data for PLAY statement
            093  WRTPSG    write data in E to PSG reg in A
            ...
-           159  CALBAS    inter-slot call to BASIC interpreter
+           159  CALBAS    inter-slot call to BASIC interpreter: IX=call addr
 
     MSX2   15C  SUBROM
            15F  EXTROM
