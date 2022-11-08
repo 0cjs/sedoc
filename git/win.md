@@ -62,9 +62,9 @@ the executable bit set to be marked as changed. Set  `git config
 that repo. Git probes the filesystem when a repo is cloned and sets
 this automatically if the filesystem doesn't support executable bits.
 
-To set the executable bit on a new file when committing on such a
-system, use `git add --chmod=+x`. (≤2.10 use `git update-index
---chmod=+x` after staging the file.)
+To set the executable bit on a new file when committing on such a system,
+use `git add --chmod=+x`. (≤2.10 use `git update-index --chmod=+x` after
+staging the file.)
 
 For filesystems that do support filemode and have the executable bit set,
 but where git is still complaining that it's modified, use `git
