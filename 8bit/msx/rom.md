@@ -238,6 +238,7 @@ further details on some of these, including discussion of names.
            07E  SETGRP    set VDP to multicolor mode
            ...
            090  GICINI    init PSG and static data for PLAY statement
+           093  WRTPSG    write data in E to PSG reg in A
            ...
            159  CALBAS    inter-slot call to BASIC interpreter
 
