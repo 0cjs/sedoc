@@ -129,6 +129,20 @@ Machine-language-related commands:
 I/O and Disk
 ------------
 
+### Protected Saves
+
+F-BASIC files (only, not ML files) on tape and disk have a "protect" flag
+that disables saves (to tape or disk). When set, $FF is written to location
+$00D1 which disables the `SAVE` and `LIST` commands.
+
+The protection can be disabled by writing `$D1: 00` and `$01E7: FF FF` to
+RAM after the file has been loaded.
+
+Source: Messages [[prot-ram]] and [[prot-flag]] from `@CaptainYS`
+(`Soji#1323`) in the "FM TOWNS/FM7 Forever" Discord server.
+
+### Devices
+
 Devices (2-18) optionally precede filename arguments; case sensitive:
 
     KYBD:           keyboard
@@ -266,6 +280,8 @@ Operations on open files (_n_ = file number):
 
 
 <!-------------------------------------------------------------------->
+[a3]: https://archive.org/details/FM7FBASICBASRF/page/n270/mode/1up?view=theater
 [fm7bintro]: https://archive.org/stream/F-BASICGettingStarted#page/n9/mode/1up
 [fm7bref]: https://archive.org/stream/FM7FBASICBASRF#page/n7/mode/1up
-[a3]: https://archive.org/details/FM7FBASICBASRF/page/n270/mode/1up?view=theater
+[prot-flag]: https://discord.com/channels/944417460336070656/944628818822434867/1045848200944308306
+[prot-ram]: https://discord.com/channels/944417460336070656/944628818822434867/1045796116643463178
