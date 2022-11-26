@@ -62,6 +62,7 @@ Selected system commands:
 - `EDIT n`: Clear screen and edit line _n_ for with `←↓↑→`, `EL` etc.
 
 Selected BASIC commands:
+- `EXEC addr` (3-31)
 - `DEF FN`
 - `ERROR n` (3-69): Generate error _n_ (1-255). Caught by `ON ERROR GOTO`,
   otherwise aborts execution and prints message (`Unprintable error` for
@@ -132,8 +133,9 @@ I/O and Disk
 ### Protected Saves
 
 F-BASIC files (only, not ML files) on tape and disk have a "protect" flag
-that disables saves (to tape or disk). When set, $FF is written to location
-$00D1 which disables the `SAVE` and `LIST` commands.
+(set with `SAVE ...,P`) that, after the program is loaded, disables saves
+(to tape or disk). When set, $FF is written to location $00D1 which
+disables the `SAVE` and `LIST` commands.
 
 The protection can be disabled by writing `$D1: 00` and `$01E7: FF FF` to
 RAM after the file has been loaded.
@@ -236,6 +238,16 @@ sectors/cylinder. See [`floppy`](./floppy.md) for details.
 
 ### Commands, Statements, Functions
 
+Loading/saving:
+- `LOAD fname,R` (3-19) `R` optional
+- `LOAD? fname` (3-20) _fname_ optional
+- `SAVE fname,A|P` (3-21) Save the current F-BASIC program. `A` and `P` are
+  optional and exclusive; `A` uses ASCII format; `P` protects the program
+  (see "Protected Saves" above).
+- `SAVEM fname,start,end,entry` (3-33)
+- `LOADM fname,offset,R` (3-32) _offset_ and `R` optional
+
+Maintenance:
 - `FILES ["dev:"][,L]` (3-23): Print file listing to screen (`,L`=printer)
   in four columns, giving name and other fields below (no organization/size
   for `CASn:`)
@@ -249,6 +261,8 @@ sectors/cylinder. See [`floppy`](./floppy.md) for details.
   prompt in direct mode. Does not format; not clear if it re-creates
   dir/FAT structure.
 - `DSKF(n)` (3-214): Return number of free clusters on drive _n_.
+
+Sector read/write:
 - `DSKI$(d, t, s)` (3-213): Sector read. Loads system random buffer (256
   bytes, must be set up with `FIELD` first) from the given drive, track,
   sector. Returns full buffer, as well as filling vars set up with `FIELD`.
