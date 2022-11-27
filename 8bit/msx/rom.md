@@ -203,7 +203,9 @@ References:
   (commented disassembly)
 
 BIOS calls are at ROM addresses starting at $0000. Below this table are
-further details on some of these, including discussion of names.
+further details on some of these, including discussion of names. Calls
+that disable interrupts and do not re-enable them (which is typical when
+changing the page mappings) have `DI` prefixing their description.
 
     RST0   000  RESET     Z80 reset entry point; init system
            004  CGTABL    Pointer to ROM character table
@@ -216,7 +218,7 @@ further details on some of these, including discussion of names.
     RST3   018  OUTDO
            01C  CALSLT    DI and inter-slot call: IX=call addr, IY(hi)=slotdesc
     RST4   020  DCOMPR    compares HL with DE
-           024  ENASLT    DI and map A=slotdesc to page containing addr HL
+           024  ENASLT    DI map A=slotdesc to page containing addr HL
     RST5   028  GETYPR
            02B            sysinfo: int freq, date format, charset
            02C            sysinfo: BASIC version, keyboard
