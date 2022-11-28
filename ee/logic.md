@@ -120,6 +120,11 @@ min HIGH = 0.7\*Vcc.
 |   5V  TTL |     0.0 | 0.8     |     2.0  | 5.0      |
 | 3.3V CMOS |     0.0 | 0.8     |     2.0  | 3.3      |
 
+More levels (including some slightly different ones for 5V CMOS) are given
+in Figure 1 from [TI appnote SCEA043][TXB0108-app]:
+
+![Digital Switching Levels](sch/scea043-levels.png)
+
 For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 * `74HC245`: CMOS → CMOS
 * `74VC245`: 3.3V CMOS → 5V TTL
