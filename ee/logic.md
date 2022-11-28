@@ -124,6 +124,7 @@ More levels (including some slightly different ones for 5V CMOS) are given
 in Figure 1 from [TI appnote SCEA043][TXB0108-app]:
 
 ![Digital Switching Levels](sch/levels-scea043.png)
+![Digital Switching Levels](sch/levels-eetimes.png)
 
 For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 * `74HC245`: CMOS → CMOS
