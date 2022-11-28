@@ -121,10 +121,12 @@ min HIGH = 0.7\*Vcc.
 | 3.3V CMOS |     0.0 | 0.8     |     2.0  | 3.3      |
 
 More levels (including some slightly different ones for 5V CMOS) are given
-in Figure 1 from [TI appnote SCEA043][TXB0108-app]:
+in Figure 1 from [TI appnote SCEA043][TXB0108-app] and [Logic Voltage
+Levels][jarda14] from Jarda, based on EE Times article [A brief recap of
+popular logic standards][eetimes04]:
 
 ![Digital Switching Levels](sch/levels-scea043.png)
-![Digital Switching Levels](sch/levels-eetimes.png)
+![Logic Voltage Levels](sch/levels-eetimes.png)
 
 For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 * `74HC245`: CMOS → CMOS
@@ -252,12 +254,14 @@ Level- and current-related:
 [ti-hct]: http://www.ti.com/lit/an/scla011/scla011.pdf
 [wp-ttl]: https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic
 
-<!-- level conversion -->
+<!-- Logic Levels -->
 [AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-app]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-ds]: https://cdn-shop.adafruit.com/datasheets/txb0108.pdf
 [af-395]: https://www.adafruit.com/product/395
+[eetimes04]: https://www.eetimes.com/a-brief-recap-of-popular-logic-standards/
 [f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
+[jarda14]: https://www.jsykora.info/2014/05/logic-voltage-levels/
 [sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
 [sf-12009]: https://www.sparkfun.com/products/12009
 
