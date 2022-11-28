@@ -128,6 +128,24 @@ For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 3.3V CMOS outputs actually meet the TTL spec, so you can also feed these
 directly into 5V HCT, ACT or AHCT parts.
 
+### Level Conversion
+
+The TI TXB0108 Bidrectional Voltage-level Translator with Auto-direction
+Sensing ([datasheet][TXB0108-ds], [app note][TXB0108-app] handles 1.2-3.6 V
+on A port and 1.65-5.5 V on B port. Pull-ups (such as on SPI bus) can
+confuse the direction sensing circuitry, however. AdaFruit sells this [on a
+breakout][af-395] that includes decoupling caps and a pull-up on the enable
+pin.
+
+Philips application note [AN97055], _Bi-directional level shifter for
+I²C-bus and other systems_ discusses using a MOSFET to handle
+bi-directional conversion between open-collector/open-drain busses with
+pull-ups. SparkFun sells sells a ["Logic Level Converter -
+Bi-directional"][sf-12009] ([hookup guide][sf-12009-hookup]) with four
+MOSFETs each with a 10k pullups on each side. They don't really make it
+clear that the design is probably not good for applications outside of SPI
+and I²C (or other open-collector/open-drain bus) level conversion.
+
 There's some discussion in [this thread][f6-6386] on level conversion.
 
 ### Current
@@ -216,7 +234,6 @@ Level- and current-related:
 [any 1767]: http://anycpu.org/forum/viewtopic.php?p=1767#p1767
 [bh-pullup]: https://discord.com/channels/797218899053510666/982339157529604136/989358038089601044
 [f6-195-19810]: http://forum.6502.org/viewtopic.php?f=4&t=195&start=15#p19810
-[f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
 [f6-p1288]: http://forum.6502.org/viewtopic.php?p=1288#p1288
 [f6-p904]: http://forum.6502.org/viewtopic.php?p=904#p904
 [f6-t3620-2]: http://forum.6502.org/viewtopic.php?f=12&t=3620&start=15
@@ -228,6 +245,15 @@ Level- and current-related:
 [spark-levels]: https://learn.sparkfun.com/tutorials/logic-levels/all
 [ti-hct]: http://www.ti.com/lit/an/scla011/scla011.pdf
 [wp-ttl]: https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic
+
+<!-- level conversion -->
+[AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
+[TXB0108-app]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
+[TXB0108-ds]: https://cdn-shop.adafruit.com/datasheets/txb0108.pdf
+[af-395]: https://www.adafruit.com/product/395
+[f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
+[sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
+[sf-12009]: https://www.sparkfun.com/products/12009
 
 [MOS 6502]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
 [RC65C02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
