@@ -43,12 +43,14 @@ indicates separate keyboard and desktop system unit.
 
 - __Sony HB-F1XD__               64k/128k 2C+D RGB. Ext. PSU.
 - __Panasonic FS-A1__            64k/128k 2C RGB. Ext. PSU.
-- __Toshiba HX-22__              64k/16k 2C RGB (RP13A). RS-232. "Pasopia IQ"
+- __Toshiba HX-22__              64k/16k 2C } "Pasopia IQ" (see below)
+- __Toshiba HX-21__              64k/16k 2C }
 - __Canon V-20__                 64k/16k 2C.
 - __Sanyo MPC-2 (Wavy2)__        64k/16k 2C.
 - __[National CF-3300]__  85-??  64k/16k 2C+D SK. 360K (1DD 80-track) drive.
 - __[National CF-3000]__  84-11  64k/16k 2C   SK. JP21 RGB. No space for drive.
 - __[National CF-2700]__  84-10  32k/16k 2C.
+- __[National CF-1200]__  85-??  16k/16k 2C. CF-2700 w/½ memory, 30% cheaper
 - __Sanyo PHC-SPC__       85-??  64k/16k 2C. Relatively compact.
 - __Hitachi MB-H1__       83-12  32k/16k 2C. Extra F/W. Big ext. PSU.
 - __National CF-2000__           16k/16k 2C!
@@ -66,6 +68,8 @@ Notes:
   MSX1). See also [Machines without printer port][mw-noprn], which also
   lists vendor's printer port cartridges. Small Casios have printer port
   in KB-7/10/15 expansion unit.
+- __Toshiba HX-21/22__ include RGB (RP13A) output, stereo sound output,
+  serial port (optional on -21). Firmware: JP wapro, memorydisk BASIC.
 - The __National CF-3000__ and __CF-3300__ have a connector for a
   superimpose unit, the __CF-2601.__ The 3300 has a connector for a second
   external floppy drive.
@@ -259,6 +263,7 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 <!-- Machines -->
 [Canon V-8]: ./models/Canon_V-8.md
+[National CF-1200]: https://www.msx.org/wiki/National_CF-1200
 [National CF-2700]: https://www.msx.org/wiki/National_CF-2700
 [National CF-3000]: https://www.msx.org/wiki/National_CF-3000
 [National CF-3300]: https://www.msx.org/wiki/National_CF-3300
