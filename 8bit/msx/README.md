@@ -179,8 +179,21 @@ bps, 12=9600, etc.
 DISK BASIC extensions and a "physical disk I/O driver" supplied by the
 manufacturer. No particular FDC is required.
 
-The format is MS-DOS compatible. Standard physical media include 8" SD (128
-bytes/sec) or DD (1024 bytes/sec) and 5.25"/3.5"/3" DD 512 bytes/sec.
+The format is MS-DOS compatible. Standard physical media include:
+- 8": SD (128 bytes/sec) or DD (1024 bytes/sec) (really?)
+- 5.25" 512 bytes/sec: 1D 180 KB; 2D 360 KB
+- 3.5" 512 bytes/sec: 1DD 360 KB; 2DD 720 KB
+- 3.5" HD used only in option for Daisen Sangyo MX-2021 (v.rare factory
+  automation system)
+
+Systems (1DD = single sided 360 KB; 2DD = double sided 720 KB; all 80 track)
+- Toshiba HX-F100: 3.5" 1D, Disk BASIC v1
+- Toshiba HX-F101 series: 3.5", Disk BASIC v1.1
+  - HX-F101: 2DD, JP, Ivory
+  - HX-F101AA: 1DD, Europe, Black
+  - HX-F101PE: 1DD, Europe, Black
+  - HX-F101GB: 2DD, UK, Black
+- Toshiba HX-F103: 3.5" 2DD bare drive for HX-34
 
 
 Audio/Music

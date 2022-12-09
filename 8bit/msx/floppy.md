@@ -1,6 +1,8 @@
 MSX Disk BASIC / MSX-DOS
 ========================
 
+See [README](README.md) for hardware information.
+
 Version 1 carts carts boot on any MSX system. Version 2 carts requires
 MSX2. Version 2 is built in to some MSX2 systems. Starting with a
 DOS-1-formatted diskette in the drive or or pressing the `1` key during
