@@ -119,6 +119,12 @@ missing in MSX1.
     ² 256 per ⅓ of the screen
 
 
+References
+----------
+
+- Yamaha, [V9938 MSX-Video Technical Data Book][v9938]
+
+
 
 <!-------------------------------------------------------------------->
 [vpoke]: https://www.msx.org/wiki/VPOKE
@@ -128,3 +134,5 @@ missing in MSX1.
 [2t pgtab]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter4a.md#pattern-generator-table
 [2t pntab]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter4a.md#pattern-name-table
 [mf csbin]: https://www.msx.org/forum/msx-talk/development/dump-character-set-to-bin-for-re-use
+
+[v99938]: https://archive.org/details/bitsavers_yamahaYamanicalDataBookAug85_6932685

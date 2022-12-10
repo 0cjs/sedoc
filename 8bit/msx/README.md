@@ -90,6 +90,9 @@ Standard Specifications
 References:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
   MSX1 hardwre and software.
+- Yamaha Computer [_MSX Series Technical Summary_][yamaha]
+  (GB, for series AX-100, YIS-503F, CX-5M)
+- [_MSX turbo Rテクニカル・ハンドブック_][tdR]
 
 MSX systems include [td1 p.8]:
 - Z80A-compatible CPU at 3.579545 Mhz (NTSC color subcarrier freq)
@@ -271,8 +274,10 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 <!-------------------------------------------------------------------->
 [mowiki]: https://msx.org/wiki
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[tdR]: https://archive.org/details/MsxTurboR
 [wpen]: https://en.wikipedia.org/wiki/MSX
 [wpja]: https://ja.wikipedia.org/wiki/Msx
+[yamaha]: https://archive.org/details/yamahacx5myis503ts/mode/1up
 
 <!-- Machines -->
 [Canon V-8]: ./models/Canon_V-8.md
