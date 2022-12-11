@@ -4,7 +4,7 @@ MSX
 References:
 - [Wikipedia (en)][wpen]
 - [Wikipedia (ja)][wpja]
-- [msx.org wiki][mowiki] (MSX Resource Center)
+- [msx.org wiki][mw] (MSX Resource Center)
 
 
 Usage Notes
@@ -89,6 +89,48 @@ to left (??? confirm) looking into connector on computer.
        11 in   BUSY
     12-13      n/c
        14      GND
+
+### Cartridge Slot Pinout
+
+Lots more details, including timings and physical dimenions, at MSX Wiki
+[MSX Cartridge Slot][mw cart].
+
+When looking at cart from front:
+- Alignment hole at lower left.
+- Even pin numbers right to left on front side, odd on back side.
+- Max power draw for all slots: +5 V 300 mA, ±12 V 50 mA (some have no ±12)
+ - Suggested min 20 mA/slot to support existing sound, RS-232 carts
+
+Pinout:
+
+         ($8000-$BFFF)  /CS2   2 1   /CS1  ($4000-$7FFF)
+         slot select  /SLTSL   4 3   /CS12 ($4000-$BFFF)
+                       /RFSH   6 5   Reserved
+                        /INT   8 7   /WAIT
+                     /BUSDIR  10 9   /M1
+                       /MERQ  12 11  /IORQ
+                        /RD   14 13  /WR
+                    Reserved  16 15  /RESET
+                         A15  18 17  A9
+                         A10  20 19  A11
+                         A6   22 21  A7
+                         A8   24 23  A12
+                         A13  26 25  A14
+                         A0   28 27  A1
+                         A2   30 29  A3
+                         A4   32 31  A4
+                         D0   34 33  D1
+                         D2   36 35  D3
+                         D4   38 37  D5
+                         D6   40 39  D7
+         3.579545 MHz  CLOCK  42 41  GND
+                         SW1  44 43  GND
+                         SW2  46 45  +5V
+                        +12V  48 47  +5V
+                        -12V  50 49  SOUNDIN (-5 dBm @ 600Ω)
+
+- `SOUNDIN` unconnected on Casio PV-7, General PCT-50, Hitachi MB-H1,
+  Victor HC-30, Yamaha SX-100, all Korean machines.
 
 
 Optional Peripherals
@@ -224,7 +266,8 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 
 <!-------------------------------------------------------------------->
-[mowiki]: https://msx.org/wiki
+[mw]: https://msx.org/wiki
+[mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 [tdR]: https://archive.org/details/MsxTurboR
 [wpen]: https://en.wikipedia.org/wiki/MSX
