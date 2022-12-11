@@ -135,6 +135,13 @@ Below, _f_ is a file handle, 1 to 15, but see `MAXFILES`.
   - _n_ is an integer constant or integer variable (`I%`).
 - `EOF(f)`: Returns 0 if not at EOF on _f._ Error on random access mode.
 
+### Keyboard/Controller Input
+
+- `INKEY$` (pseudo-variable): Returns `""` when no key pressed, otherwise
+  the ASCII/MSX-charset character corresponding to a keypress w/given
+  keyboard state (ctrl/shift/kana/etc.).
+  - Special keys: 11 HOME, 12 CLS, 18 INS, 24 SELECT, 28 →, 29 ←, 30 ↑, 31 ↓
+  - F-keys return their programmed sequence of characters.
 
 ### Screen, Graphics
 
