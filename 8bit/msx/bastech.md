@@ -56,7 +56,8 @@ BASIC) at MSX Wiki, [System variables and work area][sysvars].
     FBE5 -1051  NEWKEY  key matrix status new
     FBB1 -1103  BASROM  BASIC text location: 0=RAM, ¬0=ROM
                         (Ctrl-STOP disabled for BASIC program in ROM.)
-    FBB0        ENSTOP  non-zero if warm start enabled
+    FBB0 -1104  ENSTOP  if non-0: warm start enabled, Ctrl-Shift-Code-Graph
+                        will quit even if ON STOP GOSUB handler present.
 
     F975                music/PLAY data through $FBAF
     F959        QUETAB  queue area (for PLAY), 4× 6 bytes + 4 for BCKQ
@@ -126,6 +127,7 @@ the remainder in a working state.)
 - _MSX2 Technical Handbook_ (en), [Ch.2 §3 Internal Structure of BASIC][the.2.3]
 - [_Learn Assembly Programming With ChibiAkumas_][chibiaku].
   Includes a table of memory addresses and their values.
+- MSX Assembly Page, [MSX Basic tips and tricks][map basic]
 
 
 BASIC Program Text and Tokenization
@@ -257,6 +259,7 @@ References:
 [codes]: https://www.msx.org/wiki/MSX_Characters_and_Control_Codes
 [cr text]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#TEXT
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
+[map basic]: http://map.grauw.nl/articles/basic_tips_tricks.php
 [mem]: https://www.msx.org/wiki/The_Memory
 [sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
 [the.2.3]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html#3-internal-structure-of-basic
