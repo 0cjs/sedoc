@@ -2,6 +2,7 @@ AC Power and PSUs
 =================
 
 See [`dc-power`](./dc-power.md) for DC power information.
+See end of this file for load lamp to safely test unknown components.
 
 - _Inlets_ (or _receptacles_) are always male.
 - _Outlets_ are always female.
@@ -87,6 +88,39 @@ the wall end may not be polarized or the cable may be wired wrong.
      | H   N |   | N   H |   N  neutral  white, blue, grey
      +-------+   +-------+   H  hot      black, brown
        male        female
+
+
+Load Lamp Testing Rig
+---------------------
+
+The variable resistance of an incandescent lamp can be used to limit the
+current _and voltage_ into a device under test, as described in the
+electronicsNmore "Load Lamp" video at <https://youtu.be/zrbxpUfa27U>. Wire
+it (usually with a momentary contant switch in series with the DUT:
+
+    AC L (line)    ●─── LAMP ─── switch ───●─────────●
+                                           │         │
+                                       voltmeter    DUT (load)
+                                           │         │
+    AC N (neutral) ●───────────────────────●─────────●
+
+If the DUT is e.g. a 120:12 V transformer, use a 40 W bulb.
+- When the high voltage side of the transformer is connected, the lamp will
+  not light (or be very dim) and have a very low resistance; you will see
+  ~120 V on the meter.
+- When the low voltage side of the transformer is (incorrectly) connnected
+  the lamp will glow brightly, with its high hot resistance dropping most
+  of the voltage, and you will see 8-16 V on the voltmeter being supplied
+  to the DUT. (And the DUT will not be burned out by too high a voltage
+  passing through it.)
+
+Also good for testing relays where you don't know if it's a 120 V or 12 V
+relay coil, solinoids, etc. (Better to use a 15-25 W lamp for these, but
+40 W probably still ok). Generally, size the lamp wattage at 3× the wattage
+of the load you're testing, if you know it.
+
+This works with 240 V as well (use a 240 V lamp) and even 12 V (use a 12 V
+lamp).
 
 
 
