@@ -127,7 +127,7 @@ Microchip [27C256]
 
 Catalyst Semiconductor [CAT28F512]; 12 V programming/erase
 
-Amtel Parallel EEPROM [AT28C256] 32K×8, [AT28C64] 8K×8, [AT28C16A] 2K×8 \(24p)
+Atmel Parallel EEPROM [AT28C256] 32K×8, [AT28C64] 8K×8, [AT28C16A] 2K×8 \(24p)
 - TTL and CMOS compatible; speeds -12, -15, -20, -25
 - No writes for 5 ms after Vcc reaches 3.8V.
 - Erase:
