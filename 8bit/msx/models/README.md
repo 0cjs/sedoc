@@ -34,6 +34,7 @@ MSX1 16K:
 - __Casio PV-16__³        85     16k/16k 1C+E! Std CMT.     PSU 10V 800mA •-
 - __Casio MX-101__³       87     16k/16k 1C+E! Non-std CMT. PSU  7V 800mA •-
 - __Casio MX-10__³        85     16k/16k 1C+E! Non-std CMT. PSU  7V 800mA •-
+- __[Sony HB-101]__       84-??  16k/16k 2C. "Personal Data Bank" w/disk support
 
 MSX1 8K:
 - __Casio PV-7__³         84-10   8k/16k 1C+E! Non-std CMT. PSU 10V 800mA •-
@@ -75,6 +76,7 @@ FS-A1mkII) external PSUs use the same 3-pin "mini-IEC" connector and supply
 [National CF-2700]: https://www.msx.org/wiki/National_CF-2700
 [National CF-3000]: https://www.msx.org/wiki/National_CF-3000
 [National CF-3300]: https://www.msx.org/wiki/National_CF-3300
+[Sony HB-101]: https://www.msx.org/wiki/Category:Sony_HB-101
 [fa32clone]: http://basshp.blogspot.com/2015/03/casio-fa-32-clone-interface-de-cassete.html
 [fa32git]: https://github.com/Danjovic/MSX/tree/master/FA-32
 [fa32load]: https://basshp.blogspot.com/2015/05/fa-32-mini-cassete-loader-p-casio-msx.html
