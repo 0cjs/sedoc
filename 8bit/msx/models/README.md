@@ -8,18 +8,25 @@ two cartridge slots; "1C+E" one cartridge slot plus an expansion bus connector
 (usu. for a unit with more slots); "+D" indicates a 3.5" floppy drive. SK
 indicates separate keyboard and desktop system unit.
 
+MSX2:
 - __Sony HB-F1XD__               64k/128k 2C+D RGB. Ext. PSU.
 - __Panasonic FS-A1__            64k/128k 2C RGB. Ext. PSU.
+
+MSX1 64K:
 - __Toshiba HX-22__¹             64k/16k 2C } "Pasopia IQ" (see below)
 - __Toshiba HX-21__¹             64k/16k 2C }
 - __Canon V-20__                 64k/16k 2C.
 - __Sanyo MPC-2 (Wavy2)__        64k/16k 2C.
 - __[National CF-3300]__² 85-??  64k/16k 2C+D SK. 360K (1DD 80-track) drive.
 - __[National CF-3000]__² 84-11  64k/16k 2C   SK. JP21 RGB. No space for drive.
-- __[National CF-2700]__  84-10  32k/16k 2C.
-- __[National CF-1200]__  85-??  16k/16k 2C. CF-2700 w/½ memory, 30% cheaper
 - __Sanyo PHC-SPC__       85-??  64k/16k 2C. Relatively compact.
+
+MSX1 32K:
+- __[National CF-2700]__  84-10  32k/16k 2C.
 - __Hitachi MB-H1__       83-12  32k/16k 2C. Extra F/W. Big ext. PSU.
+
+MSX1 16K:
+- __[National CF-1200]__  85-??  16k/16k 2C. CF-2700 w/½ memory, 30% cheaper
 - __National CF-2000__           16k/16k 2C!
 - __Sony HB-55__                 16k/16k 1C+E. Cheap keyboard.
 - __Sony HB-55P__                16k/16k 2C. European version.
@@ -27,6 +34,8 @@ indicates separate keyboard and desktop system unit.
 - __Casio PV-16__³        85     16k/16k 1C+E! Std CMT.     PSU 10V 800mA •-
 - __Casio MX-101__³       87     16k/16k 1C+E! Non-std CMT. PSU  7V 800mA •-
 - __Casio MX-10__³        85     16k/16k 1C+E! Non-std CMT. PSU  7V 800mA •-
+
+MSX1 8K:
 - __Casio PV-7__³         84-10   8k/16k 1C+E! Non-std CMT. PSU 10V 800mA •-
 
 Notes:
