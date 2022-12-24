@@ -124,6 +124,36 @@ __MSX-Compatible Systems:__
 +5V is 50 mA max.
 
 
+Analogue Joysticks
+------------------
+
+### Apple II
+
+The original Game I/O Connector (II,II+ J14) is a DIP-16; a DE-9 (with
+mouse support) was added on the IIe and the IIc had the same, but with the
+DIP-16 removed.
+
+                ┌──U──┐
+            +5V │1• 16│ N.C.
+            SW0 │2  15│ AN0
+            SW1 │3  14│ AN1
+            SW2 │4  13│ AN2
+       C̅0̅4̅0̅ ̅S̅T̅B │5  12│ AN3
+           PDL0 │6  11│ PDL3
+           PDL2 │7  10│ PDL1
+            GND │8   9│ N.C.
+                └─────┘
+
+All outputs and digital inputs are 74LS TTL.
+- `+5V`: Max 100 mA.
+- `SW0-SW2`: Switch inputs; $C061-$C606 (and $C069-$C06B).
+- `C̅0̅4̅0̅ ̅S̅T̅B̅`: Strobe goes low during ϕ2 of a read or write cycle to
+  addresses $C040-$C04F.
+- `PDL0-PDL3`: 0-150K linear pots; centre somewhere in 65-70K. Internal
+  100R to prevent excess current if pot goes to 0 Ω.
+- `AN0-AN3`: "Annunciator" outputs set/cleared by $C058/$C059 .. $C05E/$C05F.
+
+
 Converters
 ----------
 
