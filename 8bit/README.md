@@ -90,20 +90,23 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1979-02 S Toshiba JW-10 word processor (¥6.3M = $45k)
     1979-05 h NEC PC-8001 (Z80) announced
     1979-06 S Micropro releases WordStar
-    1979-09 H NEC PC-8001 (Z80) ships
+    1979-06 H Apple II Plus released
+    1979-09 H NEC PC-8001 (Z80) ships (¥168k)
     1979-09 c Motorola 68000 introduced (samp 1980-02, prod 1980-11)
     1979-10 h TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
+    1979-10 H Sharp MZ-80C released (48K RAM, typewriter kbd, ¥268k)
     1979-10 h Sharp MZ-80K introduced in UK (20K £380, 48K £475)
     1979-11 H Atari 400 and 800 ships; 1.79 MHz 6502B, 320x192.
     1979    C Zilog Z8000 introduced
     1979      Microtan 65
 
     1980-01 h Sinclair ZX80
-    1980-05 H Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
+    1980-04 H Hitachi MB-6890 Basic Master Level 3 (6809 CPU) ships.
               (¥298,000 initially, ¥198,000 after Fujitsu FM-8 release.)
-    1980-06 H VIC-1001 released (¥69,800)
+    1980-06 H VIC-1001 released (¥69,800) (or -09?)
     1980-12 h TRS-80 Color Computer (6809, 6847, 4K $399, +16K $119)
     1980    h Acorn Atom
+    1980    h Sony 3.5" floppy drive?
 
     1981-   * VIC-20 released ($299)
     1981-     Sharp MZ-80B ships
