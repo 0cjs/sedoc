@@ -106,6 +106,8 @@ References:
 - sbeach.seesaa.net SD6031 Firmware Command List [part 1][sb-sd6031-cmd1]
   and [part 2][sb-sd6031-cmd2].
 - [PC8001-PIC][] (protocol and command diagrams at bottom of page)
+- [ＰＣ－８０Ｓ３１　ミニ　ディスク　ユニット][tok2]
+  Hardware, interface and protocol information.
 
 The protocol is driven by the PC.
 
@@ -139,7 +141,7 @@ The comments to [sb-access] discuss booting, with stuff relating to whether
 [8001game-rom]: http://w01.tp1.jp/~a571632211/pc8001/pc8001rw.png
 [8001game-sd]: http://w01.tp1.jp/~a571632211/pc8001/index.html
 [8033self]: https://blog.goo.ne.jp/tk-80/e/fd42e45f6f2e993327d567582c0df1d0
-[PC8001-PIC]: http://www8.plala.or.jp/ita-sys/K02C_PC8001-PIC.html
+[PC8001-PIC]: https://web.archive.org/web/20150502161834/http://www8.plala.or.jp/ita-sys/K02C_PC8001-PIC.html
 [SD6031-spec]: http://tulip-house.ddo.jp/DIGITAL/SD6031V1/spec.html
 [SD6031]: http://tulip-house.ddo.jp/DIGITAL/SD6031V1/
 [er-146]: https://electrelic.com/electrelic/node/146
@@ -150,4 +152,5 @@ The comments to [sb-access] discuss booting, with stuff relating to whether
 [sb-sd3601]: http://sbeach.seesaa.net/category/22105341-1.html
 [sb-sd6031-cmd1]: http://sbeach.seesaa.net/article/468174889.html
 [sb-sd6031-cmd2]: http://sbeach.seesaa.net/article/468174896.html
+[tok2]: http://www43.tok2.com/home/cmpslv/Pc80/Pc80s31.htm
 [wj-pc8800]: https://ja.wikipedia.org/wiki/PC-8800シリーズ
