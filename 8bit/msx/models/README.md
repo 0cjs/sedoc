@@ -28,8 +28,9 @@ MSX1 32K:
 MSX1 16K:
 - __[National CF-1200]__  85-??  16k/16k 2C. CF-2700 w/½ memory, 30% cheaper
 - __National CF-2000__           16k/16k 2C!
-- __Sony HB-55__                 16k/16k 1C+E. Cheap keyboard.
-- __Sony HB-55P__                16k/16k 2C. European version.
+- __Sony HB-75__          84-??  64k/16k 1C+E.
+- __Sony HB-55__          83-10  16k/16k 1C+E. Cheap keyboard.
+- __Sony HB-55P__         84-??  16k/16k 2C. European version.
 - __[Canon V-8]__         85-08  16k/16k 1C! Compact. Ext PSU 9V.
 - __Casio PV-16__³        85     16k/16k 1C+E! Std CMT.     PSU 10V 800mA •-
 - __Casio MX-101__³       87     16k/16k 1C+E! Non-std CMT. PSU  7V 800mA •-
