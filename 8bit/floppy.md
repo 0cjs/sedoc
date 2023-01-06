@@ -34,19 +34,18 @@ Tracks/sectors may be read/written at three levels:
 Diskette and Drive Types
 ------------------------
 
-The primary reference is Herb Johnson's [Tech information on floppy
-disks drives and media][hjt]. Links to this are given below as
-[[HJ-xxx]] references. All references to orientation of holes and
-notches assuming looking at the top of the diskette with the label in
-the upper left and the oval access hole at the bottom. Other useful
-references include:
+All references to orientation of holes and notches assuming looking at the
+top of the diskette with the label in the upper left and the oval access
+hole at the bottom.
 
-- Shugart [SA800/801 Diskette Storage Drive OEM Manual][sa800oem]
-- Shugart SA400 minifloppy™ Diskette Storage Drive [Service
-  Manual][sa400sm] and [OEM Manual][sa400oem]
-- Jim Sather, _Understanding the Apple II_ [Chapter 9: The Disk
-  Controller][sather9]
+General references:
+- Herb Johnson, [Tech information on floppy disks drives and media][hjt].
+  Links to this are given below as `[HJ-xxx]` references.
 - André Fachat, [_Notes on Floppy Disks_][andre19], 2019-01-02.
+  Magnetization and media, data encoding (FM, MFM, CBM/Apple GCR), zone
+  recording.
+
+### Media
 
 For standard drives there are only two types of diskette magnetic
 media: what is now called "double density" (DD, 2DD and many other
@@ -62,18 +61,27 @@ Single vs. double density refers only to the encoding format: FM for
 SD and MFM for DD. (M2FM was an early DD scheme replaced by MFM.)
 These all use what's now called "double density" media.
 
-Here's a summary of the drive type info from [[hj-data]]. Capacities
-are approximate based on a common two-sided MFM format; for more
-examples see Wikipedia [List of floppy disk formats][wp-fmtlist]. Data
-frequency is given as FM/MFM kbps.
+### Drive Types
+
+Here's a summary of the drive type info from [[hj-data]], with references
+for particular examples. Capacities are approximate based on a common
+two-sided MFM format; for more examples see Wikipedia [List of floppy disk
+formats][wp-fmtlist]. Data frequency is given as FM/MFM kbps.
 
 Double-density:
 - __8" DD__ 77-track (1 MiB). Index hole above and to the right of the
   center hole, write protect notch on the bottom towards the right.
-  360 RPM, 48 tpi, 250/500 kbps. (Typically 26×128 byte sectors.)
-  Write current reduced for tracks >43.
+  360 RPM, 48 tpi, 250/500 kbps. (Typically 26×128 byte sectors.) Write
+  current reduced for tracks >43. Separate outputs for head data and
+  separated data and clock; only some drives include a (usually FM?) data
+  separator.
+  - Shugart [SA800/801 Diskette Storage Drive OEM Manual][sa800oem]
 - __5.25" DD 40-track__ (320/360 KiB). 35 tracks for early drives and
   C64. 300 RPM, 48-tpi, 125/250 kbps. Fujitsu called these "2D".
+  - Shugart SA400 minifloppy™ Diskette Storage Drive [Service
+    Manual][sa400sm] and [OEM Manual][sa400oem] (5.25" drives)
+  - Jim Sather, _Understanding the Apple II_ [Chapter 9: The Disk
+    Controller][sather9]
 - __5.25" DD 80-track__ (720 KiB). 300 RPM, 96 tpi, 125/250 kbps.
   40-track disks written on 80-track drives may read on 40-track
   drives, but with a lot of errors.
@@ -102,6 +110,47 @@ To an FDC, all these drives look basically the same as far as track
 read/write at a supported kbps rate, though often certain other signal
 connectors (reduce write current, etc.) and sometimes termination have
 to be tweaked. See [[hj-replace]] for more details.
+
+#### 8" Drive Information
+
+Shugart SA800/801 drive connector pinout:
+
+    J4 AC       1:AC  2:FG  3:AC
+    J5 DC       1:+24V 2:GND  3:GND 4:-5V  5:+5V 6:GND  (adjacent GND return)
+    J1 data     50-pin; see OEM manual
+
+#### 5.25" Drive Information
+
+Shugart SA400:
+- `J2` power is a 4-pin AMP Mate-N-Lock connector P/N 350211-1. Recommended
+  mating connector AMP P/N 1-480424-0 using pins AMP P/N 60619-1. Use #18 AWG.
+- `J1` data is a 34-pin PCB edge card connector, numbered 1 through 34 with
+  even on component side and odd on non-component side. Key slot between
+  pins 4 and 6.
+
+SA400 pinout:
+
+    J2 DC       1:+12V 2:GND  3:GND 4:+5V   (adjacent is +V return)
+                separate frame ground
+
+    J1 data     GND  7   8  index/sector
+                GND  9  10  drive select 1
+                GND  11 12  drive select 2
+                GND  13 14  drive select 3
+                GND  15 16  motor on
+                GND  17 18  direction select
+                GND  19 20  step
+                GND  21 22  write data
+                GND  23 24  write gate
+                GND  25 26  track 00
+                GND  27 28  write protect
+                GND  29 30  read data
+
+Later new signals ([Wikipedia][wp-fddi]:
+
+    J1 data     GND  1   2  /REDWC density sel (0=HD 1=DD) host→drive
+                         4  reserved
+                         6  reserved
 
 #### 3.5" Drive Information
 
@@ -232,6 +281,7 @@ Programs:
 [sa400sm]: https://archive.org/stream/bitsavers_shugartSA4eManualApr1979_2873568#mode/1up
 [sa800oem]: https://deramp.com/downloads/floppy_drives/shugart/SA800%20OEM%20Manual.pdf
 [sather9]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n230/mode/1up
+[wp-fddi]: https://en.wikipedia.org/wiki/Floppy_disk_drive_interface
 [wp-fmtlist]: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
 
 <!-- USB UFI -->
