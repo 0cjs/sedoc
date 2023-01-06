@@ -146,6 +146,14 @@ SA400 pinout:
                 GND  27 28  write protect
                 GND  29 30  read data
 
+Also see [[ibus-pinout]] for PC-style pinout that can be used with a twist
+in the cable when both drives are jumpered as "B":
+
+                GND  9  10  motor enable 0
+                GND  11 12  drive select 1
+                GND  13 14  drive select 0
+                GND  15 16  motor enable 1
+
 Later new signals ([Wikipedia][wp-fddi]:
 
     J1 data     GND  1   2  /REDWC density sel (0=HD 1=DD) host→drive
@@ -276,6 +284,7 @@ Programs:
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
 [hj-replace]: http://www.retrotechnology.com/herbs_stuff/drive.html#threefive
 [hjt]: http://www.retrotechnology.com/herbs_stuff/drive.html
+[ibus-pinout]: http://www.interfacebus.com/PC_Floppy_Drive_PinOut.html
 [rcse 9303]: https://retrocomputing.stackexchange.com/a/9303/7208
 [sa400oem]: https://archive.org/stream/bitsavers_shugartSA478_3019449#mode/1up
 [sa400sm]: https://archive.org/stream/bitsavers_shugartSA4eManualApr1979_2873568#mode/1up
