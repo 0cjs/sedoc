@@ -95,11 +95,11 @@ Double-density:
 High-density:
 - __8" HD__. [_Very_ rare][hj-8HD]. Index hole above-left. 96 tpi,
   probably 154 tracks.
-- __5.25" HD__ (1.2 MiB). 360 RPM, 96 tpi, 500 kbps. Usually also
-  reads DD formats, but writes will fail to read on 40-track drives
-  and maybe 80-track drives too. (HD format is 600 oersteds; not clear
-  if they can reliably write 300 oersted media used by DD drives.)
-- __3.25" HD__ (1.44 MiB)
+- __5.25" HD__ (1.2 MiB). 360 RPM, 96 tpi, 500 kbps. Usually also reads DD
+  formats (at 300 RPM), but writes will fail to read on 40-track drives and
+  maybe 80-track drives too. (HD format is 600 oersteds; not clear if they
+  can reliably write 300 oersted media used by DD drives.)
+- __3.25" HD__ (720K, 1.44 MiB, 2.88 MiB) 300 RPM.
 
 There are also some EHD drives:
 - 3.5" 1.6 MiB, similar to 1.44 MB but at 360 RPM instead of 300.
