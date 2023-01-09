@@ -84,15 +84,18 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1978-06 C Intel 8086 ships
     1978-09 H Hitachi Basic Master MB-6880 (MC6800) ships
     1978-12 H Sharp MZ-80K semi-kit ships
+    1978-q4 h TRS-80 Model II design starts
     1978    H Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
     1978    H Sharp MZ-40K kit ships (around same time as MZ-80K?) (¥24,800)
 
     1979-02 S Toshiba JW-10 word processor (¥6.3M = $45k)
     1979-05 h NEC PC-8001 (Z80) announced
+    1979-05 h TRS-80 Model II announced
     1979-06 S Micropro releases WordStar
     1979-06 H Apple II Plus released
     1979-09 H NEC PC-8001 (Z80) ships (¥168k)
     1979-09 c Motorola 68000 introduced (samp 1980-02, prod 1980-11)
+    1979-10 H TRS-80 Model II (4 MHz Z-80, 500K 1DD 8", $3,450)
     1979-10 h TI-99/4 (TMS9900 3 MHz, TMS9918, $1150, 20K shipped)
     1979-10 H Sharp MZ-80C released (48K RAM, typewriter kbd, ¥268k)
     1979-10 h Sharp MZ-80K introduced in UK (20K £380, 48K £475)
