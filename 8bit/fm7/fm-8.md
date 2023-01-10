@@ -9,6 +9,12 @@ Books and References
   - Hexdump/checksum program on p.25.
   - Lots of other good technical data.
 
+Modifications and projects:
+- [FM-8改造 備忘録 (by はせりん)][haserin]. Long list of mods, mostly for
+  faster 68B09 CPU.
+- [FM-8 メインCPUの高速化 HERO-09 の製作][io8210], I/O 1982-10. Switches
+  main CPU between 2.457 and 4 MHz.
+
 
 Switches
 --------
@@ -54,3 +60,7 @@ Address Map
 
 <!-------------------------------------------------------------------->
 [fm8kk82]: https://archive.org/details/fm-8_20220609/mode/1up
+
+<!-- Modifications and projects -->
+[haserin]: http://haserin09.la.coocan.jp/fm8_kaizo.html
+[io8210]: https://archive.org/details/Io198210/page/n255/mode/2up
