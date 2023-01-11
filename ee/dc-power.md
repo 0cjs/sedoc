@@ -28,15 +28,27 @@ not for buck-boost regulators that may also pull down the output.
 
 ### Constant Current Supply
 
-The LM317 maintains a constant 1.25 V between the reference pin and the
-output pin; this can set the output to any arbitrary voltage by putting the
-reference in the middle of a voltage divider between output and ground.
+The LM317 sources the current necessary to make OUT 1.25 V higher than the
+ADJ (reference pin). The standard configuration for constant voltage is a
+voltage divider from OUT to system ground where the divider produces 1.25 V
+when OUT is at the desired voltage level.
 
-However, if you connect the output to the reference via a resistor R (with
-no connection to ground) you'll produce a constant current power supply
-supplying A = 1.25 V / R.
+Connecting a resistor R between OUT and the load, with a connection from
+the OUT/load node to ADJ will produce a constant-current output supplying
+A = 1.25 V / R. Ensure that R can handle the maximum current output.
 
 <img src='sch/lm317-cc.png'/>
+
+Sample configurations:
+
+    R  Ω   0.47    1.0     2.2    10      22      47
+       A   2.660   1.250   0.568   0.125   0.057   0.027
+       W   3.32    1.56    0.71    0.16    0.07    0.03
+
+Voltages:
+- LM317 has recommended Vin - Vout of 3 V to 40 V.
+- Vout = 1.25 V (dropped by R) plus Vload drops at the fixed current.
+- Minimum Vin is 3 V (regulator drop) + 1.25 V (R drop) + Vload.
 
 This will work with higher voltage regulators such as the 7805, but they
 will have to drop more voltage across R and thus be more wasteful (and you
@@ -174,6 +186,7 @@ __Charging:__
   - -Δt: less promenent "peak" than NiCD (may be absent at ≤C/3)
   - Greater temp. rise.
 - Highest capacity at 150% charge input, but much longer life at 120%.
+- Max ~1.55 V @ ~100% 0°C during charge cycle
 - Methods:
   - -ΔV (voltage drop): requires >C/3. Typ. terminate on 10 mV/cell drop.
   - 0ΔV (voltage plateau): slope = 0 lowers risk of overcharge. May top after.
