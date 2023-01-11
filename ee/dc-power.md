@@ -13,10 +13,11 @@ Voltage Regulators
 
 Generally voltage regulators (linear and switching) will be damaged if
 biased in reverse (output voltage significantly higher than input voltage,
-or sometimes even not enough lower). As noted at [[f6 p86851]], the Recom
-R-78xx-1.0 datasheet offers two solutions, one keeping in ≥ out - 0.7 V via
-a diode from output to input and the other keeping in ≥ out but with 0.3 V
-output drop via a zener diode on the output:
+or sometimes even not enough lower). Reverse bias can occur if you have a
+large cap on the output. As noted at [[f6 p86851]], the Recom R-78xx-1.0
+datasheet offers two solutions, one keeping in ≥ out - 0.7 V via a diode
+from output to input and the other keeping in ≥ out but with 0.3 V output
+drop via a zener diode on the output:
 
 <img src='sch/recom-protection.jpg' width='80%'>
 
