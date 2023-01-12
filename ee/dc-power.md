@@ -90,7 +90,7 @@ General charging information:
 - For voltage depression etc. see NiCD and NiMH below.
 
 General references:
-- Linden, Reddy, [_Handbook of Batteries, 3rd ed._][lin02]
+- David Linden, Thomas B. Reddy, [_Handbook of Batteries, 3rd ed._][lin02]
 
 ### Alkaline Cells
 
