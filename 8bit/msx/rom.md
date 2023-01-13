@@ -40,19 +40,20 @@ Memory Map
 References:
 - MSX Wiki, [System variables and work area][mw sysvars].
 - \[map sysvars] MSX Assembly Page, [MSX sysvars Calls][map sysvars]
-- 
 
 BIOS/BASIC (more also in [`bastech.md`](bastech.md)):
 
-    FCB0  1b  OLDSCR    old screen mode
-    FCAF  1b  SCRMOD    current screen mode
     FCC4  1b        +3  slot 3: Each slot entry
     FCC3  1b        +2  slot 2    bit 7: 1=expanded 0=not
     FCC2  1b        +1  slot 1    bits 6-0: always 0
     FCC1  1b  EXPTBL+0  slot 0: also main BIOS-ROM slot address.
+    FCB0  1b  OLDSCR    old screen mode
+    FCAF  1b  SCRMOD    current screen mode
 
 MSX-DOS and Disk BASIC (only when DiskROM present):
 
+    F37D                MSX disk BASIC system call addr; func. in C register
+                        (See [td1] §3.6 p.267 for data and functions.)
     F348  1b  MASTER    main DiskROM slot address
     F344  1b  RAMAD3    slotdesc of RAM in page 3 (DOS/BASIC)
     F343  1b  RAMAD2    slotdesc of RAM in page 2 (DOS/BASIC)
