@@ -43,6 +43,14 @@ References:
 
 BIOS/BASIC (more also in [`bastech.md`](bastech.md)):
 
+    FD09 128b SLTWRK    Work area words for owners of each slot/page
+                        offset = 32*prislot# + 4*expslot# + page ([td2] §7.2.3)
+    FCC9 64b  SLTATR    Slot page attribute table
+                        offset = 16*prislot# + 4*expslot# + page ([td2] §7.2.3)
+                           b7=1 BASIC text present
+                           b6=1 expansion device driver present
+                           b5=1 expanded statements processor present
+                           b4-0 unused
     FCC4  1b        +3  slot 3: Each slot entry
     FCC3  1b        +2  slot 2    bit 7: 1=expanded 0=not
     FCC2  1b        +1  slot 1    bits 6-0: always 0
