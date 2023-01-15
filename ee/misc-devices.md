@@ -32,8 +32,59 @@ Switches
   wide on 4.7 centers. 2.2 travel. (Ordered to try, but not arrived yet.)
 
 
+Non-MOS Memory
+--------------
+
+### Core Rope Memory (ROM)
+
+Nowadays this refers to two different forms of woven-wire ROM consisting of
+wires threaded through and around ferrite cores. According to Hilpert,
+pulse-transformer ROM may not have been called "core rope" historically.
+
+With the __pulse-transformer__ technique, the memory is effectively a
+series of transformers. Round ferrite cores are wrapped with several turns
+(for voltage amplification) for the sense (output, secondary) side; each
+has multiple inputs (primaries) consisting of a single wire per address
+that goes through or around each core in sequence.
+
+Sending a pulse down one of the address wires will produce a pulse on sense
+output of the cores through which it passes, and no pulse from the cores
+where the wire goes around instead of through it.
+
+The __switching-core__ technique also uses "word-select" wires that thread
+through and around cores, but these carry only half the current;
+"row-select" wires that thread through subsets of the cores carry the other
+half. With both energised the magnetic state of a core will be flipped and
+one sense amplifier can be used for each column (since only the activated
+row can ever be flipped). A reset wire going through all rows can be pulsed
+with a full unit current in the opposite direction of the row selects to
+clear the state.
+
+References:
+- Brief [description at Wikipedia][w-core-rope].
+- SV3ORA, [Core rope memory: A practical guide of how to build your
+  own.][sv3ora]. Demonstrates how to build a very simple memory of ten
+  words × 7 bits, with very clear explanation, diagrams and photos.
+- Brian Hilpert, [Core Rope & Woven-Wire Memory Systems][hilpert]. Much
+  more detailed explanation, with various efficiency tricks, and discussion
+  of the switching-core technique. (Some links from that page work only on
+  the [archive of his UBC pages][hilpert-ubc].)
+- High-res photo of a West German [Wagner Computer 256-word × 64 bit ROM
+  board][wagner] (16 kbit, probably used as 2 kbytes).
+
+
+
 <!-------------------------------------------------------------------->
+
+<!-- Switches -->
 [SK12D07]: https://www.aliexpress.com/item/1005004391945669.html
 [SS12D10]: https://www.aliexpress.com/item/4000680248707.html
 [SS12F44]: https://www.aliexpress.com/item/32950503406.html
 [__MT8812__]: http://pdf.datasheetcatalog.com/datasheet/zarlinksemiconductor/zarlink_MT8812_MAR_97.pdf
+
+<!-- Non-MOS Memory -->
+[hilpert-ubc]: https://web.archive.org/web/20160822041959/http://www.cs.ubc.ca/~hilpert/e/corerope/index.html
+[hilpert]: http://madrona.ca/e/corerope/index.html
+[sv3ora]: http://qrp.gr/coreROM/
+[w-core-rope]: https://en.wikipedia.org/wiki/Core_rope_memory
+[wagner]: https://i.redd.it/h9sb550uhnm61.jpg
