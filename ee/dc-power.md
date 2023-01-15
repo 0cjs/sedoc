@@ -90,7 +90,11 @@ General charging information:
 - For voltage depression etc. see NiCD and NiMH below.
 
 General references:
-- David Linden, Thomas B. Reddy, [_Handbook of Batteries, 3rd ed._][lin02]
+- David Linden, Thomas B. Reddy, [_Handbook of Batteries, 3rd ed._][lin02],
+  McGraw-Hill, 2002.
+- George Wood Vinal, [_Storage Batteries, 4th ed._][vin55], Wiley, 1955. "A
+  General Treatise on the Physics and Chemistry of Secondary Batteries and
+  their Engineering Applications".
 
 ### Alkaline Cells
 
@@ -152,18 +156,26 @@ General:
   1300 mAh w/500 mA 0.2C load).
 - Low internal resistance: voltage higher than alkaline at full discharge;
   alkaline battery meters over-state charge levels.
+- Do not store under load (e.g., in devices w/electronic-on/off switches)
+  for long periods of time; this can cause creep leakage which, while
+  cosmetic only for the battery itself, can damage nearby components. [[ene18]]
 
 __Voltage:__
 - Nominal: 1.2 V (IR: 30 mΩ; increases w/discharge, decreases w/temp)
 - Full charge: ~1.4 V @ C/5
 - Full discharge:
-  - 1.0 - 1.1 V (unloaded; maybe 0.9 V under load?)
+  - 1.0 - 1.1 V (unloaded; maybe 0.9 V under load?; see below)
   - [[seabird]] discharger runs to 0.9 V (non-LSD cell).
   - If unloaded V < 1.0 V, battery at rest is internally corroding.
   - (Alkaline nominal is 0.8 V)
 
 __Discharge__ characteristics:
 - 5C typ. max continouous discharge.
+- Avoid over-discharge; this harms the battery. In low-drain (<1C)
+  applications, a 0.9 V cutoff works well. In high-drain usage (1-4C) this
+  may be premature and a better cutoff is 75% of the mid-point voltage
+  (between full charge voltage and start of knee of discharge) at that
+  discharge rate.  [[ene18]] p.9.
 - Discharge life: CP = 1, CC = .8, CR = .65. [[lin02]] §29.4.7
 - Subject to polarity reversal/destruction with >2 in series.
 - Self-discharge (at room temp unless otherwise indicated):
@@ -187,6 +199,7 @@ __Charging:__
   - -Δt: less promenent "peak" than NiCD (may be absent at ≤C/3)
   - Greater temp. rise.
 - Highest capacity at 150% charge input, but much longer life at 120%.
+  [[ene08]] suggests 120%.
 - Max ~1.55 V @ ~100% 0°C during charge cycle
 - Methods:
   - -ΔV (voltage drop): requires >C/3. Typ. terminate on 10 mV/cell drop.
@@ -224,6 +237,12 @@ IEC names designate type (NiMH) and size.
 
 __References:__
 - [Wikipedia][w NiMH].
+- Linden, Reddy, _Handbook of Batteries, 3rd ed._ (2002) [Ch. 29: Portable
+  Sealed Nickel-Metal Hydride Batteries][lin02§29].
+- Energizer, [_Nickel Metal Hydride (NiMNH) Handbook and Application
+  Manual_][ene18], 2018.
+- Energizer, [_NiMH Battery Chargers Handbook and Application
+  Manual_][ene08], 2008.
 - EE.SE [Is voltage an accurate metric for testing the charge of an NiMH
   battery?][eese 291808]
 - [Upcycling of Spent NiMH Battery Material—Reconditioned Battery Alloys
@@ -253,8 +272,9 @@ __References:__
 
 <!-- Batteries and Charging -->
 [C-rate]: https://en.wikipedia.org/wiki/Battery_charger#C-rate
-[lin02]: https://archive.org/details/handbookofbatter0000unse/mode/2up
+[lin02]: https://archive.org/details/handbookofbatter0000unse/
 [memory effect]: https://en.wikipedia.org/wiki/Memory_effect
+[vin55]: https://archive.org/details/storagebatteries0000vina/page/n5/mode/2up
 
 <!-- Alkaline Cells -->
 [ds e91]: https://data.energizer.com/pdfs/e91.pdf
@@ -269,6 +289,9 @@ __References:__
 [ds nh15]: https://data.energizer.com/pdfs/nh15-2300.pdf
 [eese 291808]: https://electronics.stackexchange.com/q/291808/15390
 [eese 500499]: https://electronics.stackexchange.com/a/500499/15390
+[ene08]: https://data.energizer.com/pdfs/charger_appman.pdf
+[ene18]: https://data.energizer.com/pdfs/nickelmetalhydride_appman.pdf
+[lin02§29]: https://archive.org/details/handbookofbatter0000unse/page/n862/mode/1up?view=theater
 [seabird]: http://www.seabird.com/pdf_documents/manuals/NiMH_002.pdf
 [separator]: https://en.wikipedia.org/wiki/Separator_(electricity)
 [wVnAH17f4jg]: https://www.youtube.com/watch?v=wVnAH17f4jg
