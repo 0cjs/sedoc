@@ -47,19 +47,24 @@ General references:
 
 ### Media
 
-For standard drives there are only two types of diskette magnetic
-media: what is now called "double density" (DD, 2DD and many other
-acronyms) and "high density" (HD). These differ in coercivity and
-thickness of the magnetic media. DD / HD 5.25" is 300 / 600 Oersted
-and 3.5" is 660 / 720 Oe. [[Retrocomputing SE][rcse 9303]]
+For standard drives there are only two types of magnetic coating: what is
+now called "double density" (DD, 1D, 2D, 2DD and many other abbreviations)
+and "high density" (HD). These differ in coercivity and thickness of the
+magnetic media. DD / HD 5.25" is 300 / 600 Oersted and 3.5" is 660 / 720
+Oe. [[Retrocomputing SE][rcse 9303]]
 
-However, 8" floppy sleeves have the index hole in a [slightly
-different location][8ss-vs-ds] on single-sided and double-sided disks,
-and so SS disks cannot be used in DS drives and vice versa.
+Single vs. double density refers only to the encoding format: FM for SD and
+MFM for DD. (M2FM was an early DD scheme replaced by MFM.) Though differing
+in information density, both are the same flux density. and use the same
+"double density" (as it's now called) media.
 
-Single vs. double density refers only to the encoding format: FM for
-SD and MFM for DD. (M2FM was an early DD scheme replaced by MFM.)
-These all use what's now called "double density" media.
+So-called "quad density" (5.25" only) or "2DD" refers to 80-track drives;
+again the magnetic coating is standard double density media.
+
+8" floppy sleeves have the index hole in a [slightly different
+location][boginjr] on single-sided and double-sided diskettes, and so 1S
+diskettes cannot be used in 2S drives. (2S drives may have two sensors, one
+for SS and one for DS diskettes.)
 
 ### Drive Types
 
@@ -278,7 +283,7 @@ Programs:
 [pc8k]: 8bit/pc-8001/floppyif.md#protocol
 
 <!-- Diskette and Drive Types -->
-[8ss-vs-ds]: http://boginjr.com/it/hw/8inch-drives/
+[boginjr]: http://boginjr.com/it/hw/8inch-drives/
 [andre19]: https://extrapages.de/archives/20190102-Floppy-notes.html
 [hj-8HD]: http://www.retrotechnology.com/herbs_stuff/8inchHD.html
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
