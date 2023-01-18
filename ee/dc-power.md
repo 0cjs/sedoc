@@ -42,9 +42,9 @@ A = 1.25 V / R. Ensure that R can handle the maximum current output.
 
 Sample configurations:
 
-    R  Ω   0.47    1.0     2.2    10      22      47
-       A   2.660   1.250   0.568   0.125   0.057   0.027
-       W   3.32    1.56    0.71    0.16    0.07    0.03
+    R  Ω   0.47    1.0     2.2     4.7    10      22      47
+       A   2.660   1.250   0.568   0.265   0.125   0.057   0.027
+       W   3.32    1.56    0.71    0.71    0.16    0.07    0.03
 
 Voltages:
 - LM317 has recommended Vin - Vout of 3 V to 40 V.
