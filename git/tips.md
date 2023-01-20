@@ -110,6 +110,13 @@ settings, etc., the `git ls-files --eol` option is very useful.
 Normally `core.autocrlf` wants to be set to `input` to avoid any
 conversions whatsoever.
 
+### I18N Path/Filename Display
+
+By default Git will fully quote Unicode filenames and paths, e.g.
+`"\321\203\321\201..."`. Fix with `git config --global core.quotepath off`.
+
+[so 22827239]: https://stackoverflow.com/q/22827239/107294
+
 
 Connectivity and Fetch/Push
 ---------------------------
