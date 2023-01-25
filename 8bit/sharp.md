@@ -48,7 +48,7 @@ Specs:
 - Built-in 9" monitor and CMT.
 - All keyboards are "square" (PET-style) layout unless otherwise mentioned.
 
-Models:
+Built-in monochrome display:
 - MZ-80K (1978-12, ¥198,000) 20K RAM. Semi-kit (keyboard needed assembly) to
   avoid friction with w/another division (all later models are fully
   assembled). Display will snow during access conflict.
@@ -60,6 +60,11 @@ Models:
   start address).
 - MZ-1200 (1982?, ¥148,000) Basically an MZ-80A. Taken over by Information
   Systems Division.
+
+External colour display:
+- MZ-700 (1982) CMT and plotter optional.
+- MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound; 2.8" QuickDisk.
+- MZ-800 (1985) First w/640×200 graphics TI SN6489 sound; 2.8" QuickDisk.
 
 ### [MZ-80B Series]
 
