@@ -258,13 +258,22 @@ higher-level format of the data in the images:
 
 The image formats supported are:
 
-    $00  2D  320K  2 sides × 40 tracks × 16 sectors × 256 bytes
-    $10  2DD 640K  2 sides × 80 tracks × 16 sectors × 256 bytes
-    $20  2HD ???K  2 sides ×  ? tracks ×  ? sectors ×   ? bytes
-    $30¹ 1D  160K  1 sides × 40 tracks × 16 sectors × 256 bytes
-    $40¹ 1DD 320K  1 sides × 80 tracks × 16 sectors × 256 bytes
+    Type Media  Typical Format
+     $00  2D     320K  2 sides × 40 tracks × 16 sectors × 256 bytes
+     $10  2DD    640K  2 sides × 80 tracks × 16 sectors × 256 bytes
+     $20  2HD    ???K  2 sides ×  ? tracks ×  ? sectors ×   ? bytes
+     $30¹ 1D     160K  1 sides × 40 tracks × 16 sectors × 256 bytes
+     $40¹ 1DD    320K  1 sides × 80 tracks × 16 sectors × 256 bytes
 
        ¹ 1DDITT tool only
+
+The sector sizes and counts per track are actually defined on a per-sector
+basis: each sector has a header giving its cylinder, head, sector size as
+128 × 2ⁿ, deletion indicator, status code for normal/CRC error/etc., and
+actual data size. This allows for unusual formats (e.g., used by games to
+increase storage capacity) and some forms of copy protection. However, some
+programs reading/writing D88 files will assume a fixed format rather than
+writing what the sector headers indicate.
 
 See [`nec/D88STRUC.txt`](nec/D88STRUC.txt) for more details.
 (There's also a copy in a [gist from barbeque][barbeque].)
