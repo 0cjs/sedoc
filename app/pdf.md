@@ -32,6 +32,16 @@ Web-based
   <https://pdfresizer.com/multipage>.
 
 
+Page Numbering
+--------------
+
+- PDF page renumbering
+- tools (move to above): pdftk, qpdf
+- `/PageLabels`, [Page Number
+  Format](https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF17))
+
+
+
 <!-------------------------------------------------------------------->
 [`pdfarranger`]: https://github.com/jeromerobert/pdfarranger
 [jakelittle]: http://forum.6502.org/viewtopic.php?f=4&t=5952#p73594
