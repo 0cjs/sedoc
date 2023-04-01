@@ -31,6 +31,7 @@ Key:
 |  3292 |  1887 |   2₂ |  54W | 1150 | 13.1 | Intel Core i3-4130   3.40 GHz
 |  3391 |  1767 |   2₂ |  15W | -    |      | Intel Core i5-7200U  2.50 GHz (T3.1 GHz; Kalby Lake 14 nm)
 |  3207 |  1665 |   2₂ |  15W | -    | 15.4 | Intel Core i5-6260U  1.80 GHz (T2.9 GHz)
+|  2979 |  1168 |   4  |  10W | -    | 20.1 | Intel Celeron J4125  2.00 GHz
 |  2915 |  1325 |   4₂ |  95W | -    | 09.3 | Intel Core i7-860    2.80 GHz (T3.5 GHz)
 |  2635 |  1344 |   2₂ |  15W | -    | 15.4 | Intel Core i3-6100U  2.30 GHz (no turbo)
 |  2150 |   859 |   4  |   6W | -    | 16.4 | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
