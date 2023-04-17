@@ -19,11 +19,11 @@ algoritm.
 RST (reStructuredText) Docstrings
 ---------------------------------
 
-[PEP 287] describes the convention of using [reStructuredText] ([RST
-docs], [quickref])in docstrings.
+[PEP 287] describes the convention of using [reStructuredText][] ([RST
+docs], [quickref]) in docstrings.
 
 Use interpreted text (in backticks, like Markdown inline code quoting)
-for identifiers such as function parmaeters; these will be linked in
+for identifiers such as function parameters; these will be linked in
 rendered documentation.
 
 #### Differences between RST and Markdown
