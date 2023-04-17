@@ -26,6 +26,9 @@ Use interpreted text (in backticks, like Markdown inline code quoting)
 for identifiers such as function parameters; these will be linked in
 rendered documentation.
 
+Double backticks are used for literal code snippets (like single backticks
+in markdown);; these are not interpreted in any way.
+
 #### Differences between RST and Markdown
 
 Special characters are escaped with backslashes when necessary, just
