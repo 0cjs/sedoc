@@ -11,6 +11,19 @@ Abbreviations:
 Voltage Regulators
 ------------------
 
+The most important specs (typ/max or min〜max) are:
+
+                            LM117   LM317-N  LM317   LM7805
+    in/out V diff        V           -0.3
+    dropout voltage      V    ?       ?              2
+    min inp. voltage     V    ?       ?              7.5
+    min load current    mA  3.5/5   3.5/10   3.5/10  - (?)
+    operating temp      °C -55〜150 0〜125
+
+Other specs:
+- Imax varies by package, generally 1.5 A for TO-220 but depending on
+  cooling and ambient temperature.
+
 Generally voltage regulators (linear and switching) will be damaged if
 biased in reverse (output voltage significantly higher than input voltage,
 or sometimes even not enough lower). Reverse bias can occur if you have a
