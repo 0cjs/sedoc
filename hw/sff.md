@@ -13,9 +13,10 @@ Small Form Factor PCs
   * Celeron N3350 (Apollo Lake) 2c 1.1(2.4)Ghz 6W [PM 1122/756)][pm1]
   * Intel HD Graphics 500 (12 xu). mDP, HDMI. (2x 4k monitors tested ok)
   * 2x PC DDR3L-1600 slots, 4 MB installed
-  * 30 GB eMMC onboard. M.2 slot.
+  * 30 GB eMMC onboard. M.2 type 2242 SSD slot.
   * 2x GigE. USB-C. 3x USB3. WiFi 802.11ac. Bluetooth 4.0.
   * Fanless
+  * External power brick: 100-240V VAC → 19 VDC, ~15 W max.
 
 * [Livia Z N4200] ¥25-35k
   * Pentium N4200 (Apollo Lake) 4c 1.1(2.5)Ghz 6W [PM 2024/841][pm1]
