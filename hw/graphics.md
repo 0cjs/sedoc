@@ -74,6 +74,18 @@ References:
 - Verkuil, [HDMI 4k Video: Lessons Learned][elce2017].
 
 
+### Monitors
+
+Eletoker 1600XT-S: 16" 16:10 2560×1600 portable display
+- <http://eletoker.com/> (no manual online); <yatuservice@outlook.com>
+- Size: 355 × 233 × 10 mm, 674 g. Cover ~400g.
+- Power (USB): 5 VDC, 3 A max
+- Display: 2560×1600 native; IPS; 344.67 × 215.42 mm
+  - 178° viewing angle. 5 ms. 300 cd/m² 1000:1 contrast.
+- Inputs: mini-HDMI, USB-C ×2 (power and video)
+- Sound: 2× internal 2W speakers; 3.5mm stereo headphone jack
+
+
 
 <!-------------------------------------------------------------------->
 [Blue Jeans Cable]: https://www.bluejeanscable.com/articles/bad-reasons-to-upgrade-hdmi-cable.htm
