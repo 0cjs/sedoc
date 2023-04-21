@@ -1,7 +1,7 @@
 Authy
 =====
 
-    sudo apt-get install snap
+    sudo apt-get install snapd
     sudo snap install authy
     snap run authy
 
