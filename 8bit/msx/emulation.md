@@ -181,20 +181,26 @@ exit, all current bindings are saved to `.openMSX/share/settings.xml`.
   with a modifier, the modifier must be down during release.
 - [`keymatrixdown`] and `keymatrixup` are used to generate keyboard input.
   Params are _row_ and _mask_ ([key matrix layouts]), e.g., `7 0x10` for STOP.
+  This appears first to release all other keys before generating the
+  events so that if Meta+K is bound, holding Ctrl with Meta+K will not
+  add Ctrl on the MSX side.
 
-Suggested bindings:
+Suggested bindings (this entire group of lines can be copied and pasted
+into the console):
 
-    bind Meta+A toggle mute
-    bind Meta+N toggle console
-    bind Meta+M main_menu_toggle
-    bind Meta+P toggle pause
-    bind Meta+O set fastforward on
-    bind Meta+O,release set fastforward off
-    bind Meta+Y reset
+    bind Meta+A             toggle mute
+    bind Meta+N             toggle console
+    bind Meta+M             main_menu_toggle
+    bind Meta+P             toggle pause
+    bind Meta+O             set fastforward on
+    bind Meta+O,release     set fastforward off
+    bind Meta+Y             reset
 
-    #   STOP key; note that this doesn't doesn't pass modifiers e.g. Ctrl+STOP
-    bind Meta+K keymatrixdown 7 0x10
-    bind Meta+K,release keymatrixup 7 0x10
+    #   STOP key.
+    bind Meta+K             keymatrixdown 7 0x10
+    bind Meta+K,release     keymatrixup   7 0x10
+    bind Ctrl+Meta+K        "keymatrixdown 6 2; keymatrixdown 7 0x10"
+    bind Ctrl+Meta+K,release "keymatrixup   6 2; keymatrixup   7 0x10"
 
 ### Selected Console Commands and Settings
 
