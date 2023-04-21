@@ -28,10 +28,10 @@ On many systems the Docker daemon socket is owned by group `docker`
 and group members have write access to the socket. It's tempting to
 add users to this group so they need not `sudo docker`; don't do this!
 
-Anybody with access to the Docker daemon socket can easily leverage
-this for root access on the host using the technique below. Thus, if
-you're giving someone this access, make it explicit and clear by
-putting them in the `sudo` group instead.
+Anybody with access to the Docker daemon socket can easily leverage this
+(or unwittingly run a program that leverages this) for root access on the
+host using the technique below. Thus, if you're giving someone this access,
+make it explicit and clear by putting them in the `sudo` group instead.
 
     #   On the host, start a Docker container with a root shell
     #   that has access to all files on the host.
@@ -52,7 +52,11 @@ putting them in the `sudo` group instead.
 The same of course applies to making the Docker daemon socket available
 to any account (root or not) inside a container.
 
-Also see [lvh blog] for more details and a video.
+Further discussion and warnings from others:
+- [lvh blog] for more details and a video.
+- [Docker][dw-docker] on the Debian Wiki (big warning at top of page)
+- [Linux users: running docker without sudo is dangerous][suixo] by suixo.
+
 
 User/UID in Container
 ---------------------
@@ -101,8 +105,14 @@ root and non-root users in Docker containers.
 * [Issues with running as PID 1 in a Docker container.][dscpl151229]
 
 
+<!-------------------------------------------------------------------->
 
 [Docker Hub]: https://hub.docker.com/explore/
+
+[dw-docker]: https://wiki.debian.org/Docker
+[lvh blog]: https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html
+[suixo]: https://medium.com/@suixo/linux-users-running-docker-without-sudo-is-dangerous-3e5c5654abea
+
 [`nss_wrapper`]: https://cwrap.org/nss_wrapper.html
 [dscpl151218]: http://blog.dscpl.com.au/2015/12/running-ipython-as-docker-container.html
 [dscpl151218a]: http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html
@@ -111,4 +121,4 @@ root and non-root users in Docker containers.
 [dscpl151224]: http://blog.dscpl.com.au/2015/12/unknown-user-when-running-docker.html
 [dscpl151229]: http://blog.dscpl.com.au/2015/12/issues-with-running-as-pid-1-in-docker.html
 [kromtech]: https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
-[lvh blog]: https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html
+
