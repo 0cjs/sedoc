@@ -76,6 +76,14 @@ Installation:
   - Install: download using links at left-hand side of [home page][omsx].
   - ROM images go in `C:\Users\<username>\Documents\openMSX\share\systemroms\`.
 
+For building see the [Compilation Guide][compguide]. On Debian:
+
+    sudo apt-get build-dep openmsx
+    git clone https://github.com/openMSX/openMSX.git`
+    cd openMSX
+    ./configure`
+    make -j8 && sudo make install       # Installs to /opt/openmsx
+
 ROM image notes:
 - For copyright reasons, openMSX comes with the open-source C-BIOS ROM.
   This does not include BASIC (and often has other compatibility issues)
@@ -276,6 +284,7 @@ Other Emulators
 [`bind`]: https://openmsx.org/manual/commands.html#bind
 [`keymatrixdown`]: https://openmsx.org/manual/commands.html#keymatrix
 [cmdref]: https://openmsx.org/manual/commands.html
+[compguide]: https://openmsx.org/manual/compile.html
 [control]: https://openmsx.org/manual/openmsx-control.html
 [dm]: https://openmsx.org/manual/diskmanipulator.html
 [ext]: https://openmsx.org/manual/commands.html#ext
