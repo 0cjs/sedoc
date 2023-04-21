@@ -110,7 +110,7 @@ root and non-root users in Docker containers.
 [Docker Hub]: https://hub.docker.com/explore/
 
 [dw-docker]: https://wiki.debian.org/Docker
-[lvh blog]: https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html
+[lvh blog]: https://web.archive.org/web/20190623234615/https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html
 [suixo]: https://medium.com/@suixo/linux-users-running-docker-without-sudo-is-dangerous-3e5c5654abea
 
 [`nss_wrapper`]: https://cwrap.org/nss_wrapper.html
