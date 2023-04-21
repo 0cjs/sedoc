@@ -47,16 +47,18 @@ not to add DTDs the monitor makes available. If `--addmode` is used to
 add a new mode for that output, it seems to copy the same mode from another
 output, if available, otherwise it says, "cannot find mode …".
 
-Not clear if some display adapters/converters may not return all mode lines,
-particularly for higher resolutions, or if this is just `xrandr` missing
-them.
-
 `xrandr` displays the modelines returned from the display, but some
 displays, and especially display adapters/converters, don't return all
 usable modelines. New ones can be added to a display by using `--newmode
 NAME ...` to create a named mode (adds to `VIRTUAL1` output until added to
 another output?) and `--addmode OUTPUT NAME` to add that mode to a given
 output.
+
+For missing mode lines that are in the EDID, one possibility is that X11
+detects [passive Type 1 DP→HDMI converters][dphdmi] and is dropping EDID
+entries with a clock higher than 165 MHz. If that's the case, it appears
+that they can be added manually though based on information from
+`edid-decode`.
 
 
 ### Device Specs
@@ -75,3 +77,4 @@ QNX QHD2410R DP 23" QHD monitor:
 
 <!-------------------------------------------------------------------->
 [E-EDID]: https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
+[dphdmi]: ../hw/graphics.md
