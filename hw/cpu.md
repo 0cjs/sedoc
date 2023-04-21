@@ -37,6 +37,12 @@ Key:
 |  2150 |   859 |   4  |   6W | -    | 16.4 | Intel Pentium N4200  1.10 GHz (T2.5 GHz; Apollo Lake)
 |  1116 |   803 |   2  |   6W | -    | 16.4 | Intel Celeron N3350  1.10 GHz (T2.4 GHz; Apollo Lake)
 
+Laptop CPUs (ThinkPad models at end of description):
+
+|  2535 |  1567 |   2₂ |  35W | -    | 13.1 | Intel Core i5-3230M  2.60 Ghz (T3.2 GHz; X230)
+|  1794 |  1151 |   2₂ |  35W | -    | 10.1 | Intel Core i5-540M   2.35 GHz (T3.1 GHz; X201s)
+|  1718 |  1100 |   2₂ |  35W | -    | 10.1 | Intel Core i5-520M   2.40 GHz (T2.9 GHz; T510)
+
 The new PassMark seems to emphasise stuff using newer/extended instrs.
 i7-3770 vs. i7-860 is 6400/2915 = 2.2×, but test suite individual results
 are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
