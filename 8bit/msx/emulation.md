@@ -71,7 +71,8 @@ Documentation:
 Installation:
 - Debian and Ubuntu Linux:
   - Install: `sudo apt-get install openmsx`
-  - ROM images go in `~/.openMSX/share/systemroms/`.
+  - ROM images go in `~/.openMSX/share/systemroms/`. For cjs systems, rmdir
+    and `ln -s ../../Dropbox/co/SW-Images/rom/msx/systemroms/`.
 - Windows:
   - Install: download using links at left-hand side of [home page][omsx].
   - ROM images go in `C:\Users\<username>\Documents\openMSX\share\systemroms\`.
