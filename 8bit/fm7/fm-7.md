@@ -42,27 +42,32 @@ DIP Switches
 ------------
 
 4-position switch at the right of the computer as viewed from the back.
-Numbered 1-4 from left to right; up=ON, down=OFF.
+Numbered 1-4 from left to right. ●=up=ON, ○=down=OFF.
+See [[fm7re]] for hardware RE and disassemblies.
 
-    (1) ROM mode/DISK mode* (FBASIC mode)
-    1=ON, 2=ON
-    *when external floppy disk is available
+    1,2: Boot mode (●=off/open, ○=on/closed):
 
-    (2)DOS Mode
-    1=ON, 2=OFF
+        1 2  RAM   Boot Procedure
+        ───────────────────────────────────────────────────
+        ○ ○  32K   Try floppy disk, then ROM FBASIC boot
+        ● ○  64K   Bubble memory boot
+        ○ ●  64K   DOS (floppy disk) boot
+        ● ●  64K   Immediate halt (spinloop)
 
-    Unknown function (unconnected?):
-    3=OFF
+    3: Unknown function (unconnected?); default OFF
 
-    CLOCK Freq.
-          MAIN CPU   SUB CPU
-    4=ON   1.2Mhz    1.0Mhz (FM-8 compatible mode)
-    4=OFF  2.0Mhz    2.0Mhz
+    4: CLOCK Frequencies:
+
+        4   MAIN CPU  SUB CPU
+        ───────────────────────────────────────────────────
+        ○   1.2 Mhz   1.0 Mhz   (FM-8 compatible mode)
+        ●   2.0 Mhz   2.0 Mhz
 
 When set to DOS mode, the FM-7 produces an immediate sustained
 beep/tone at startup if no disk controller card is plugged in to the
 chassis. If a disk controller card is plugged without drives attached,
-the tone will be produced after about 15 seconds.
+the tone will be produced after about 15 seconds. Bubble memory
+boot is similar.
 
 A pair of the DIP switches can be used to ground boot ROM A9/A10
 lines, which appear to have pullups otherwise. (SE:1-15) This gives a
@@ -307,6 +312,7 @@ Parts Lists
 
 <!-------------------------------------------------------------------->
 [fm7assem]: https://archive.org/details/FM7MC6809ASM
+[fm7re]: https://gitlab.com/retroabandon/fm7re/
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
 [fm7w-hw]: https://web.archive.org/web/20160719040422/http://www23.tok2.com/home/fm7emu/ysm7/ysm72/ysm72.htm#TOP
 [fm7w-mmap]: https://web.archive.org/web/20160705051334/http://www23.tok2.com/home/fm7emu/ysm7/ysm7d/ysm7d.htm

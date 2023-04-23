@@ -21,7 +21,8 @@ Switches
 
 From photographs of the manual, 1-8 are RS-232C and 9-10 are boot mode.
 
-Switches 9 and 10 (external labelling) are SW2-9 and SW2-10 on [the
+Corresponding to switches 1 and 2 [on the FM-7](fm-7.md),
+switches 9 and 10 (external labelling) are SW2-9 and SW2-10 on [the
 schematic][sch]. These both set address lines A9 and A10 (open=1, closed=0)
 on the boot ROM (M16, MB8516) to select one of four 512 byte blocks and and
 determine whether the upper half of memory is RAM or the F-BASIC ROM. It
