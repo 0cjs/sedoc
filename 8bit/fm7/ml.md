@@ -58,8 +58,9 @@ reset vector on the data bus.
 I/O Map
 -------
 
-See SS:1-8 _et seq._ After the basic map tables, extensive details are
-given.
+SS:1-8 _et seq._ has basic map tables and more extensive details after
+that. The IO別冊 book [FM-8活用研究][io活用研究] (工学社, 1982) has much
+more extensive information about I/O ports, including many missing from SS.
 
     $FD00           Read Bit 0: 0=1.2 MHz, 1=2 MHz clock
                          Bit 7: "D8"
@@ -75,6 +76,7 @@ given.
     $FD0D - $FD0E   PSG (programmable sound generator)
     $FD0F           Bank mode: read for ROM, write for RAM. (SS:1-25)
     $FD10           Boot ROM Switch
+    $FD11 - $FD17   Bubble memory status/control/etc.
     $FD18 - $FD1F   Mini-floppy; see [floppy.md]
     $FD20 - $FD23   Kanji ROM
     $FD24 - $FD36   Unused
@@ -196,4 +198,6 @@ include:
 <!-------------------------------------------------------------------->
 [fm7sysspec]: https://archive.org/details/FM7SystemSpecifications
 [haserin]: http://haserin09.la.coocan.jp/difference.html
+[io活用研究]: https://archive.org/details/fm-8_20220609/page/319/mode/1up?view=theater
 [rpcg1]: http://rpcg1.home.mindspring.com/difference.html
+
