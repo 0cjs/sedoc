@@ -98,10 +98,10 @@ variable data. `VARPTR(v)` returns a pointer to the variable data for _v_
 
     type           type byte   variable data
     ───────────────────────────────────────────────────────────────────────
-    integer               02   16-bit signed 2's complement integer
-    string                03   1-byte length, 2-byte pointer to string data
-    single-prec. float    04   4 byte floating point number
-    double-prec. float    08   8 byte floating point number
+    % integer             02   16-bit signed 2's complement integer
+    $ string              03   1-byte length, 2-byte pointer to string data
+    ! single-prec. float  04   4 byte floating point number
+    # double-prec. float  08   8 byte floating point number
 
 #### Resetting TXTTAB
 
