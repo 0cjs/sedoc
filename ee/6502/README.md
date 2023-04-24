@@ -23,6 +23,9 @@ Contents:
 Systems:
 - \[a2ref] [Apple II Reference Manual][a2ref]. Apple, 1978-01.
 
+History:
+- Jason Sachs, ["Development of the MOS Technology 6502: A Historical
+  Perspective,"][sachs2206] embeddedrelated.com, 2022-06-18.
 
 Vectors
 -------
@@ -231,21 +234,32 @@ Code
 
 
 <!-------------------------------------------------------------------->
-[a2mini-asm]: https://archive.org/details/Apple2_Woz_MiniAssembler/page/n1/mode/1up
-[a2ref]: https://archive.org/details/bitsavers_appleapple_10059029/
-[brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
-[ds1976]: http://archive.6502.org/datasheets/mos_6500_mpu_preliminary_may_1976.pdf
-[ds1980]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
-[ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
+
+<!-- References -->
 [hm1976]: http://archive.6502.org/books/mcs6500_family_hardware_manual.pdf
-[nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
 [nw-guide]: http://wiki.nesdev.com/w/index.php/Programming_guide
 [nw-optimize]: http://wiki.nesdev.com/w/index.php/6502_assembly_optimisations
 [oxyron]: http://www.oxyron.de/html/opcodes02.html
 [pm1976]: https://archive.org/details/6500-50a_mcs6500pgmmanjan76
+[wmcdiff]: http://wilsonminesco.com/NMOS-CMOSdif/
+
+<!-- Systems -->
+[a2ref]: https://archive.org/details/bitsavers_appleapple_10059029/
+
+<!-- History -->
+[sachs2206]: https://www.embeddedrelated.com/showarticle/1453.php
+
+<!-- Tips and Tricks -->
+[brk-pc2]: http://forum.6502.org/viewtopic.php?t=1917
+[ds1976]: http://archive.6502.org/datasheets/mos_6500_mpu_preliminary_may_1976.pdf
+[ds1980]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
+[ds2018]: http://archive.6502.org/datasheets/wdc_w65c02s_oct_8_2018.pdf
+[nesdev-flags]: https://wiki.nesdev.com/w/index.php/Status_flags
 [sw16]: http://amigan.1emu.net/kolsen/programming/sweet16.html
 [sw16asm]: https://github.com/cbmeeks/Sweet-16/blob/master/sweet16.asm
 [v6502w B bit]: https://web.archive.org/web/20201112015502/http://visual6502.org/wiki/index.php?title=6502_BRK_and_B_bit
-[wmcdiff]: http://wilsonminesco.com/NMOS-CMOSdif/
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
+
+<!-- Code -->
+[a2mini-asm]: https://archive.org/details/Apple2_Woz_MiniAssembler/page/n1/mode/1up
