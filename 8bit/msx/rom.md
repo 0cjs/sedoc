@@ -250,6 +250,8 @@ changing the page mappings) have `DI` prefixing their description.
            ...
            090  GICINI    init PSG and static data for PLAY statement
            093  WRTPSG    write data in E to PSG reg in A
+           096  RDPSG     read data from PSG reg in A, returning in A
+           099  STRTMS    checks/starts background tasks for BASIC `PLAY`
            ...
            159  CALBAS    inter-slot call to BASIC interpreter: IX=call addr
 
