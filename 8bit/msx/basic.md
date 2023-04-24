@@ -64,6 +64,10 @@ the default to `A:` (or current drive?).
 - `SAVE "<dev>[<filename>]"`
 - `BLOAD`, `BSAVE`: See [Technical/Internals](./bastech.md).
 
+Disk-only commands:
+- `KILL "<filename>"` deletes (erases) a file.
+- `NAME "<filename>" AS "<filename">"` renames a file.
+
 ### Memory Management
 
 - `CLEAR [s[,m]]`: Clear all variables and DEF FN.
