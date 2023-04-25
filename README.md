@@ -45,7 +45,16 @@ make notes in the first first place, to avoid wasting time relearning
 the topic later.
 
 
+Important References
+--------------------
+
+- Alan G. Carter, ["Thinking about Thinking"][progstone],
+  _The Programmer's Stone_ blog, 2007-12-11.
+- Rich Hickey, ["Simple Made Easy"][hic1110],
+  infoq.com Strange Loop conference presentation, 2011-10-20.
+
 
 <!-------------------------------------------------------------------->
 [progstone]: https://web.archive.org/web/20170610210620/the-programmers-stone.com/the-original-talks/day-1-thinking-about-thinking/
 [mappers]: https://en.wikipedia.org/wiki/Mapper_orientation
+[hic1110]: https://www.infoq.com/presentations/Simple-Made-Easy/
