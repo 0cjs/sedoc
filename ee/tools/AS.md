@@ -379,18 +379,30 @@ These differ for different CPUs. General rules:
 - Numeric constants (bytes, words, …) can use a reptition factor in
   brackets before a parameter, e.g. `[(*+255)&$FFFF00-*]0`. This may
   overflow the limit of 1 KB code generated per line.
+- Repetition can also be done for one vaue  or a sequence with `n dup (data)`,
+  e.g., `2 dup (3, 4)` for `3, 4, 3, 4`.
+- Using `?` as a value will reserve space rather than generating data.
 - Strings can be delimited by double/single quotes and slashes.
 
 Common to all processors:
 - `align`: Aligns to the next byte boundary divisible by the given
   arg. An optional second arg defines the fill used for the skipped area.
 
+Intel-style platforms (incuding Z80) support:
+- `dn`: nybble (4-bit integer)
+- `db`: byte (8-bit integer) or ASCII string similar to DC.B
+- `dw`: word (16-bit integer or half precision)
+- `dd`: doubleword (32-bit integer or single precision)
+- `dq`: quadword (64 bits or double precision)
+- `dt`: extended precision (80 bits)
+
 6502:
 - `byt`, `fcb`: Byte constants or ASCII strings. ("Form Constant Byte")
 - `adr`, `fdb`: Word constants. ("Form Double Byte")
 - `fcc`: String constants; double-quoted only.
-- `dfs`, `rmb`: Reserve number of bytes given as parameter. ("Reserve
-  Memory Bytes")
+- `dfs`, `rmb`: Reserve number of bytes given as parameter.
+  ("Reserve Memory Bytes")
+- Since v1.42 Bld 234 (2022-12-21), DB/DW/DS/DDB aliases allowed
 
 ### Conditional Assembly (§3.6)
 
