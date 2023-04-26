@@ -45,6 +45,13 @@ Also `Ctrl-K` for links and `Ctrl-Shift-N` to clear formatting.
 Discord
 -------
 
+- `Ctrl-/`: list of keyboard shortcuts
+- `Ctrl-K`: quick switcher (toggle)
+- `Ctrl-I`: inbox (toggle)
+- `Shift-PgUp`: jump to oldest unread message
+
+Press `Tab` to enter keyboard mode; circles through items.
+
 [Quick Swicher][d qs] summary and prefixes:
 
     Enter   (alone) switch to previous channel
