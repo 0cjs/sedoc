@@ -123,6 +123,78 @@ MSX References:
 - _MSX Red Book Revised_ [5. Programmable Sound Generator][rrr-regs].
 
 
+FM Sound
+--------
+
+These are based around Yamaha FM synthesis chips often known as the OPL
+(FM Operator Type-L) series, which started with the YM3526. It offers 9
+channels of FM synthesis, or 6 channels of FM plus 5 of percussion. Some
+versions of the chip (such as the Y8590) also offered GPIO and keyboard
+scanning. [[opl3prog]] provides a brief overview of OPL programming.
+
+#### MSX-AUDIO
+
+[MSX-AUDIO] was available in three implementations. The Panasonic FS-CA1
+offered full suport for the standard, the Philips NMS-1205 and Toshiba
+HX-MU900 partial support. It uses the OPL1 [Y8590], which includes 4-bit
+ADPCM sampling support (sample ram varies from 0-32KB), and has a keyboard
+connector. The ROM includes [MSX-AUDIO BASIC] extensions.
+[Detection/programming][maud prog]:
+- $80-$84 contain signature `AUDIO`.
+- Y8950 ports: $C0 reg number (delay 12 cyc), $C1 data (delay 84 cyc).
+  $C2 and $C3 if second Y8950 present.
+- Page 0: $0000-$2FFFF MBIOS, $3000-$3FFF 4 KB work RAM
+- Page 1/2: $4000-$BFFF segment selected by writing $3FFF b1-b0:
+  - 0: $4000-$6FFF BASIC extn, $7000-$7FFF RAM mirror
+  - 1: $4000-$BFFF custom firmware
+  - 2, 3: $4000-$BFFF ADPCM data 1, 2
+- Also see [Hardware][maud hw] and [拡張BIOS][maud bios].
+
+#### MSX-MUSIC
+
+[MSX-MUSIC] was a later but inferior system using the cheaper OPLL
+[YM2413], which is still partially compatible (only 1 user instrument; no
+ADPCM). It was built into most MSX2+ systems. The original cart is the
+Panasonic SW-M004 FM-PAC; there were a few others, including stereo
+versions. [Detection/programming][mmus prog]
+- Scan for internal first, then external:
+  - Internal: $4018-$401F signature `APRLOPLL` (also clone carts);
+    I/O ports usable; no memory-mapped I/O.
+  - External: $401C-$401F signature `OPLL` (FM-PAC);
+    use memory mapped I/O or enable ports by setting $7FF6 b1 = 1.
+  - Also see [this thread][mmus detect]
+  - Some modern MSX-AUDIO ROMs may emulate MSX-MUSIC BIOS, e.g., `AUD1OPLL`,
+    `AUD3OPLL`, `AUD4OPLL` (Moonsound); FM-BIOS must be used for these.
+  - Writing to $7FF0-$7FFF on Panasonic MSX2+ will disable MSX-MUSIC ROM
+- YM2413 ports:
+  - $7C (mem $7FF4) register index (delay 12 cyc),
+  - $7D (mem $7FF5) data (delay 84 cyc)
+- FM-BIOS:
+  - Routines: $4110 WRTOPL, $4113 INIOPL, $4116 MSTART, $4119 MSTOP,
+    $411C RDDATA, $411F OPLDRV, $4122 TESTBGM
+  - Handlers: $5000 statement, $5003 interrupt, $5006 stop bgm,
+    $5009 enable and reset OPLL
+
+#### Moonsound
+
+The Moonsound uses an OPL4 [YMF-278B-F] offering 16-bit wavetable and FM
+synthesis.
+
+#### Konami SCC
+
+The [Konami SCC][] ([tech info][scc tech])  was a custom sound chip
+providing 5 channels of wavetable synthsis. It was included in some Konami
+game carts and in a standalone cart for use with disk games. There was also
+an improved SCC-1 version.
+
+### General Notes
+
+BiFi's Weblog post [Detection of FM sound chips][bifi] may provide further
+useful information on detecting MSX-AUDIO, MSX-MUSIC (both real and emulated
+by MSX-AUDIO with recent ROM updates) and MoonSound.
+
+
+
 <!-------------------------------------------------------------------->
 
 <!-- 1-bit Sound Port -->
@@ -140,3 +212,19 @@ MSX References:
 [th2 f5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-52--psg-register-structure
 [th2 f5.9]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-59--initial-values-of-psg-registers
 [wp-psg]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
+
+<!-- FM Sound -->
+[Konami SCC]: https://www.msx.org/wiki/Konami_SCC
+[MSX-AUDIO BASIC]: https://www.msx.org/wiki/MSX-AUDIO_BASIC
+[MSX-AUDIO]: https://www.msx.org/wiki/MSX-AUDIO
+[MSX-MUSIC]: https://www.msx.org/wiki/MSX-MUSIC
+[Y8590]: https://en.wikipedia.org/wiki/Yamaha_Y8950
+[YMF-278B-F]: http://www.msxarchive.nl/pub/msx/docs/datasheets/opl4.pdf
+[bifi]: http://bifi.msxnet.org/blog/index.php?entry=entry110809-114719
+[maud bios]: http://map.grauw.nl/resources/datapack/Vol2-4.1MSX-AUDIOHardware.pdf
+[maud hw]: http://map.grauw.nl/resources/datapack/Vol2-4.3MSX-AUDIOExtendedBIOS.pdf
+[maud prog]: https://www.msx.org/wiki/MSX-AUDIO_programming
+[mmus detect]: https://www.msx.org/forum/msx-talk/development/how-to-detect-sound-chips-without-bios
+[mmus prog]: https://www.msx.org/wiki/MSX-MUSIC_programming
+[opl3prog]: http://www.fit.vutbr.cz/~arnost/opl/opl3.html
+[scc tech]: http://bifi.msxnet.org/msxnet/tech/scc.html
