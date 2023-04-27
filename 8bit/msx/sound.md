@@ -152,11 +152,11 @@ connector. The ROM includes [MSX-AUDIO BASIC] extensions.
 
 #### MSX-MUSIC
 
-[MSX-MUSIC] was a later but inferior system using the cheaper OPLL
-[YM2413], which is still partially compatible (only 1 user instrument; no
-ADPCM). It was built into most MSX2+ systems. The original cart is the
-Panasonic SW-M004 FM-PAC; there were a few others, including stereo
-versions. [Detection/programming][mmus prog]
+[MSX-MUSIC][] (also see [here][MSX-Music-fmpac])  was a later but inferior
+system using the cheaper OPLL [Yamaha YM2413], which is still partially
+compatible (only 1 user instrument; no ADPCM). It was built into most MSX2+
+systems. The original cart is the Panasonic SW-M004 FM-PAC; there were a
+few others, including stereo versions. [Detection/programming][mmus prog]:
 - Scan for internal first, then external:
   - Internal: $4018-$401F signature `APRLOPLL` (also clone carts);
     I/O ports usable; no memory-mapped I/O.
@@ -218,7 +218,9 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [MSX-AUDIO BASIC]: https://www.msx.org/wiki/MSX-AUDIO_BASIC
 [MSX-AUDIO]: https://www.msx.org/wiki/MSX-AUDIO
 [MSX-MUSIC]: https://www.msx.org/wiki/MSX-MUSIC
+[MSX-Music-fmpac]: http://www.faq.msxnet.org/fmpac.html
 [Y8590]: https://en.wikipedia.org/wiki/Yamaha_Y8950
+[YM2413]: https://en.wikipedia.org/wiki/Yamaha_YM2413
 [YMF-278B-F]: http://www.msxarchive.nl/pub/msx/docs/datasheets/opl4.pdf
 [bifi]: http://bifi.msxnet.org/blog/index.php?entry=entry110809-114719
 [maud bios]: http://map.grauw.nl/resources/datapack/Vol2-4.1MSX-AUDIOHardware.pdf
