@@ -253,6 +253,8 @@ changing the page mappings) have `DI` prefixing their description.
            096  RDPSG     read data from PSG reg in A, returning in A
            099  STRTMS    checks/starts background tasks for BASIC `PLAY`
            ...
+           135  CHGSND    set 1-bit sound port A=0 off, A=~0 on
+           ...
            159  CALBAS    inter-slot call to BASIC interpreter: IX=call addr
 
     MSX2   15C  SUBROM
