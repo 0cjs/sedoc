@@ -169,11 +169,19 @@ few others, including stereo versions. [Detection/programming][mmus prog]:
 - YM2413 ports:
   - $7C (mem $7FF4) register index (delay 12 cyc),
   - $7D (mem $7FF5) data (delay 84 cyc)
-- FM-BIOS:
-  - Routines: $4110 WRTOPL, $4113 INIOPL, $4116 MSTART, $4119 MSTOP,
-    $411C RDDATA, $411F OPLDRV, $4122 TESTBGM
-  - Handlers: $5000 statement, $5003 interrupt, $5006 stop bgm,
-    $5009 enable and reset OPLL
+
+[FM-BIOS]:
+- Handlers: $5000 statement, $5003 interrupt, $5006 stop bgm,
+  $5009 enable and reset OPLL
+- Routines:
+  - $4110 `WRTOPL`:  Write to OPLL register. A=register, E=data.
+  - $4113 `INIOPL`:  Init OPLL. HL=work area (word aligned)
+  - $4116 `MSTART`:  Start music. HL=music addr, A=repeat count (0=infinite)
+  - $4119 `MSTOP`:   Stop music.
+  - $411C `RDDATA`:  Read instrument data. A=instno (0-63), HL=8 byte
+                     buffer for result.
+  - $411F `OPLDRV`:  H.TIMI hook for MSTART.
+  - $4122 `TESTBGM`: Status returned in A. 0=not playing.
 
 #### Moonsound
 
