@@ -23,6 +23,11 @@ warn about this. To configure this:
 
 ### Client Installation
 
+Either way you do it below, you probably want to `apt-get install dropbox`
+(Debian) to get `/usr/bin/dropbox` (command-line client) and the Dropbox
+widget for the status tray (on graphical systems). This will suggest
+installing the `nautilus` package, but not automatically bring it in.
+
 The actual sync client is a proprietary daemon installed in the above
 directories it can be installed in two ways:
 
