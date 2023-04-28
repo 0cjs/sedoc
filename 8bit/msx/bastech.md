@@ -123,8 +123,8 @@ the remainder in a working state.)
 #### References
 
 - MSX Wiki [The Memory][mem]
-- _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][thj kouzou]
-- _MSX2 Technical Handbook_ (en), [Ch.2 §3 Internal Structure of BASIC][the.2.3]
+- _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][2thj kouzou]
+- _MSX2 Technical Handbook_ (en), [Ch.2 §3 Internal Structure of BASIC][2the.2.3]
 - [_Learn Assembly Programming With ChibiAkumas_][chibiaku].
   Includes a table of memory addresses and their values.
 - MSX Assembly Page, [MSX Basic tips and tricks][map basic]
@@ -163,8 +163,8 @@ Tokenization:
 Tokenized integer values are always positive; the non-tokenized `+` or `-`
 prefix determines the sign. There is no tokenization for `&B` numbers.
 
-Keyword token lists are available in the [scanned Japanese][thj.tok] and
-[machine-readable English][the.tok] MSX2 Technical Handbooks, without the
+Keyword token lists are available in the [scanned Japanese][2thj.tok] and
+[machine-readable English][2the.tok] MSX2 Technical Handbooks, without the
 following omissions and corrections:
 - `REM` is tokenized as just `8F` (not `3A 8F`).
 - Apostrophe `'` also serves to introduce a comment and does not require a
@@ -262,6 +262,6 @@ References:
 [map basic]: http://map.grauw.nl/articles/basic_tips_tricks.php
 [mem]: https://www.msx.org/wiki/The_Memory
 [sysvars]: https://www.msx.org/wiki/System_variables_and_work_area
-[the.2.3]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html#3-internal-structure-of-basic
-[the.tok]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#table-220--list-of-intermediate-codes
-[thj.tok]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n74/mode/1up
+[2the.2.3]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html#3-internal-structure-of-basic
+[2the.tok]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#table-220--list-of-intermediate-codes
+[2thj.tok]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n74/mode/1up

@@ -9,6 +9,9 @@ Contents:
 
 References:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
+- \[rbr.6] [6. ROM BIOS], _The Revised MSX Red Book._
+  Very comprehensive, includes some disassembly info.
+- \[rbr.8] [8. Memory Usage Map], _The Revised MSX Red Book._
 
 
 Slot Descriptors
@@ -205,7 +208,7 @@ BIOS Calls
 References:
 - \[map bios] MSX Assembly Page, [MSX BIOS Calls][map bios]
 - \[td1] [_MSX Technical Data Book_][td1], p.110-134
-- \[td2] MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2th a1] (incomplete)
+- \[td2] MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2the.a1] (incomplete)
 - \[qest] [_MSX BIOS: The Complete MSX BASIC I/O Listing,_][msxbios],
   Qest Publishing, 1985-01 (Steven M. Ting).
 - \[msxsyssrc] Sourceforge, [msxsyssrc]: MSX system sourcefiles
@@ -303,7 +306,11 @@ changing the page mappings) have `DI` prefixing their description.
 
 
 <!-------------------------------------------------------------------->
+
+<!-- References -->
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[rbr.6]: https://www.angelfire.com/art2/unicorndreams/msx/RR-BIOS.html
+[rbr.8]: https://www.angelfire.com/art2/unicorndreams/msx/RR-RAM.html
 
 <!-- Memory Map -->
 [map sysvars]: https://map.grauw.nl/resources/msxsystemvars.php
@@ -318,7 +325,7 @@ changing the page mappings) have `DI` prefixing their description.
 [cr text]: https://www.msx.org/wiki/Develop_a_program_in_cartridge_ROM#TEXT
 
 <!-- BIOS Calls -->
-[2th a1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Appendix1.md
+[2the.a1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Appendix1.md
 [map bios]: http://map.grauw.nl/resources/msxbios.php
 [msxsyssrc]: https://sourceforge.net/projects/msxsyssrc/
 [qest]: https://archive.org/details/MSXBIOSBook/MSX%20BIOS%20Book%20-%2001/mode/1up

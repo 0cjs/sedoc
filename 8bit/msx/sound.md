@@ -4,13 +4,13 @@ MSX Sound Chips
 1-bit Sound Port
 ----------------
 
-Described in [[th2 5.1.2]]. This is used for key click and can be used for
+Described in [[2the 5.1.2]]. This is used for key click and can be used for
 1-bit PCM. Available on all systems from MSX1 onward.
 
 PPI Port C bit 7 is connected to the speaker (mixed with the PSG output).
 The $135 `CHGSND` will set this to 0 if A=0 or 1 if A is non-zero.
 
-[[th2 lst5.2]] gives an assembly language program to play back a cassette
+[[2the lst5.2]] gives an assembly language program to play back a cassette
 tape via the port. [[msx.org kcsp]] has a BASIC version.
 
 
@@ -38,8 +38,8 @@ On MSX, the I/O ports are:
     $A1   WR  data write
     $A2   RD  data read
 
-The [MSX BIOS has some calls][th2 5.1.2] to ease use:
-- $090 `GICINI` (no parameters): initialises the PSG (to [[th2 f5.9]],
+The [MSX BIOS has some calls][2the 5.1.2] to ease use:
+- $090 `GICINI` (no parameters): initialises the PSG (to [[2the f5.9]],
   turning off any sound that's currently running) and sets up static data
   for the MS-BASIC `PLAY` statement.
 - $093 `WRTPSG`: write data in E to PSG reg in A
@@ -109,7 +109,7 @@ Notes:
 - R7 disables do not turn off channels; write 0 to R10-R12 amplitude control.
 
 Chip References:
-- _MSX2 Technical Manual,_ [Figure 5.2 PSG register structure][th2 f5.2]
+- _MSX2 Technical Manual,_ [Figure 5.2 PSG register structure][2the f5.2]
 - _MSX Red Book Revised_ [5. Programmable Sound Generator][rrr-regs].
   This seeems to be the correct register listing for MSX.
 - [Original datasheet scan][aydata]
@@ -119,7 +119,7 @@ Chip References:
   (AY-3-8914, AY-3-8916 and AY-3-8917; not same register layout as AY-8510)
 
 MSX References:
-- _MSX2 Technical Manual,_ [Ch. 5.1 PSG and Sound Output][th2 5.1]
+- _MSX2 Technical Manual,_ [Ch. 5.1 PSG and Sound Output][2the 5.1]
 - _MSX Red Book Revised_ [5. Programmable Sound Generator][rrr-regs].
 
 
@@ -207,18 +207,18 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 <!-- 1-bit Sound Port -->
 [msx.org kcsp]: https://www.msx.org/forum/msx-talk/software/key-click-sample-player
-[th2 5.1.3]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#13-tone-generation-by-1-bit-sound-port
-[th2 lst5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#list-52--reading-from-cassette-tape
+[2the 5.1.3]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#13-tone-generation-by-1-bit-sound-port
+[2the.lst5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#list-52--reading-from-cassette-tape
 
 <!-- PSG -->
 [aydata1]: https://f.rdw.se/AY-3-8910-datasheet.pdf
 [aydata]: https://map.grauw.nl/resources/sound/generalinstrument_ay-3-8910.pdf
 [iwiki]: http://wiki.intellivision.us/index.php?title=PSG
 [rrr-regs]: https://www.angelfire.com/art2/unicorndreams/msx/RR-PSG.html
-[th2 5.1.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#12-access-to-the-psg
-[th2 5.1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#1-psg-and-sound-output
-[th2 f5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-52--psg-register-structure
-[th2 f5.9]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-59--initial-values-of-psg-registers
+[2the 5.1.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#12-access-to-the-psg
+[2the 5.1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#1-psg-and-sound-output
+[2the f5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-52--psg-register-structure
+[2the f5.9]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-59--initial-values-of-psg-registers
 [wp-psg]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
 
 <!-- FM Sound -->

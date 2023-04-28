@@ -2,10 +2,24 @@ MSX
 ===
 
 References:
-- [Wikipedia (en)][wpen]
-- [Wikipedia (ja)][wpja]
+- [Wikipedia (en)][wp-en]
+- [Wikipedia (ja)][wp-ja]
 - [msx.org wiki][mw] (MSX Resource Center)
 
+Technical books:
+- \[td1] [_MSX Technical Data Book_][td1] (en), Sony, 1984.
+  MSX1 hardwre and software.
+- \[yts] Yamaha Computer [_MSX Series Technical Summary_][yts] (en)
+  (GB, for series AX-100, YIS-503F, CX-5M)
+- \[tdR] [_MSX turbo Rテクニカル・ハンドブック_][tdR] (ja)
+- \[mdp] [_MSX-Datapack_][mdp] (ja), 株式会社アスキー. MSX2+, MSX2, some MSX1.
+  Wiki copy of a large, detailed reference published by ASCII.
+  Possibly the best reference available; includes many peripherals.
+- \[2thj] [MSX2テクニカル・ハンドブック][2thj] (ja), アスキー版局, 1986.
+- \[2the] [_MSX2 Technical Handbook_][2the] (en). Trans. of above. Markdown.
+- \[rbr] [_The Revised MSX Red Book_] (en), Avalon Software, 1985.
+  Based on [[mdp]], [[2thj]], MSX Magazine.
+  This version revised by by Cyberknight Masao Kawata 1998-2005.
 
 Usage Notes
 -----------
@@ -38,15 +52,6 @@ Standard Specifications
 
 See [`models/README.md`](models/README.md) for specs for specific models.
 Some do not have all standard specs (e.g., 8K RAM or no CMT port).
-
-References:
-- \[td1] [_MSX Technical Data Book_][td1] (en), Sony, 1984.
-  MSX1 hardwre and software.
-- Yamaha Computer [_MSX Series Technical Summary_][yamaha] (en)
-  (GB, for series AX-100, YIS-503F, CX-5M)
-- [_MSX turbo Rテクニカル・ハンドブック_][tdR] (ja)
-- \[mdp] [MSX-Datapack][mdp] (ja), 株式会社アスキー. MSX2+, MSX2, some MSX1.
-  Wiki copy of a large, detailed reference published by ASCII.
 
 MSX systems include [td1 p.8]:
 - Z80A-compatible CPU at 3.579545 Mhz (NTSC color subcarrier freq)
@@ -201,10 +206,19 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 
 
 <!-------------------------------------------------------------------->
+
+<!-- References -->
 [mw]: https://msx.org/wiki
-[mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
+[wp-en]: https://en.wikipedia.org/wiki/MSX
+[wp-ja]: https://ja.wikipedia.org/wiki/Msx
+
+<!-- Technical books -->
+[2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
+[2thj]: https://archive.org/details/MSX2TechnicalHandBookFE1986/
+[rbr]: https://www.angelfire.com/art2/unicorndreams/msx/RR-Intro.html
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 [tdR]: https://archive.org/details/MsxTurboR
-[wpen]: https://en.wikipedia.org/wiki/MSX
-[wpja]: https://ja.wikipedia.org/wiki/Msx
-[yamaha]: https://archive.org/details/yamahacx5myis503ts/mode/1up
+[yts]: https://archive.org/details/yamahacx5myis503ts/mode/1up
+
+<!-- body -->
+[mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
