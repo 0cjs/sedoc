@@ -192,7 +192,7 @@ Book Page Editor:
   - Seems to be no way within program to archive this for later restore.
   - Can probably tar up entire `SCANLINE/` dir and save for later restore, but
     tarball must be kept outside of `SCANLINE/` or will be deleted with other
-    stuff.
+    stuff. Consider putting in Dropbox under `/b/bu/cbooks/scan/iCODIS X9/`.
 
 
 
