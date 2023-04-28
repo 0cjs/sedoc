@@ -170,30 +170,38 @@ few others, including stereo versions. [Detection/programming][mmus prog]:
   - $7C (mem $7FF4) register index (delay 12 cyc),
   - $7D (mem $7FF5) data (delay 84 cyc)
 
-__[FM-BIOS]:__
+__[FM-BIOS][mdp.7.3.3]:__
 
-Handlers: $5000 statement, $5003 interrupt, $5006 stop bgm,
-$5009 enable and reset OPLL
+Memory map:
 
-BIOS calls. `INIOPL` must be called before any other routines. It's used to
-set a 160 byte _work area_ that must be in RAM. Thus it cannot be in page 1
-(FM-BIOS ROM) at all, or in page 0 (MSX-BIOS ROM) without special
-arrangements. The calls also use up to 32 bytes of stack.
+    4000        ROM header?
+    4100  2k75  FM BIOS (2.
+    4C00  0k5   Sound data area
+    4E00        unused?
 
-    $4110  WRTOPL    Write to OPLL register. A=register, E=data.
-    $4113  INIOPL    Init OPLL. HL=work area (word aligned, stored in SLTWRK)
-                     The work area is used continuously and so must be in RAM
-                     and not in page 1 (FM-BIOS ROM page).
-    $4116  MSTART    Start music. HL=music addr, A=repeat count (0=infinite)
-    $4119  MSTOP`    Stop music, re-init work area.
-    $411C  RDDATA    Read instrument data. A=instno (0-63), HL=8 byte
-                     buffer for result.
-    $411F  OPLDRV    H.TIMI hook for MSTART.
-    $4122  TESTBGM   Status returned in A. 0=not playing.
+The BIOS is usually called via interslot calls. `INIOPL` _must_ be called
+before any other routines, and given a 160 byte _work area_ that must be in
+RAM. Thus it cannot be in page 1 (FM-BIOS ROM itself, during the call) at
+all, or in page 0 (MSX-BIOS ROM) without special arrangements. Most calls
+may destroy all registers and use up to 32 bytes of stack.
 
-Data:
+    4110   WRTOPL   Write to OPLL register. A=register, E=data.
+    4113   INIOPL   Init OPLL. HL=work area (word aligned, stored in SLTWRK)
+                    The work area is used continuously and so must be in RAM
+                    and not in page 1 (FM-BIOS ROM page).
+    4116   MSTART   Start music. HL=music addr, A=repeat count (0=infinite)
+    4119   MSTOP`   Stop music, re-init work area.
+    411C   RDDATA   Read instrument data. A=instno (0-63), HL=8 byte
+                    buffer for result.
+    411F   OPLDRV   H.TIMI hook for MSTART.
+    4122   TESTBGM  Status returned in A. 0=not playing.
 
-    $FD09 2 SLTWRK  Pointer to work area set by INIOPL.
+    5000            Statement handler.
+    5003            Interrupt handler.
+    5006            Stop BGM handler.
+    5009            Enable and reset OPLL handler.
+
+    FD09 2 SLTWRK   Pointer to work area set by INIOPL.
 
 #### Moonsound
 
@@ -250,4 +258,4 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [mmus prog]: https://www.msx.org/wiki/MSX-MUSIC_programming
 [opl3prog]: http://www.fit.vutbr.cz/~arnost/opl/opl3.html
 [scc tech]: http://bifi.msxnet.org/msxnet/tech/scc.html
-[FM-BIOS]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.3+FM+BIOS
+[mdp.7.3.3]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.3+FM+BIOS
