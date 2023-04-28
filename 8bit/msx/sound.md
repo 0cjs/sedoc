@@ -1,6 +1,17 @@
 MSX Sound Chips
 ===============
 
+- Standard (MSX1 onward)
+  - 1-bit Sound Port
+  - PSG
+- FM Sound
+  - MSX-AUDIO
+  - MSX-MUSIC
+  - Moonsound
+- Other Sound Systems
+  - Konami SCC
+
+
 1-bit Sound Port
 ----------------
 
@@ -124,7 +135,7 @@ MSX References:
 
 
 FM Sound
---------
+========
 
 These are based around Yamaha FM synthesis chips often known as the OPL
 (FM Operator Type-L) series, which started with the YM3526. It offers 9
@@ -132,7 +143,18 @@ channels of FM synthesis, or 6 channels of FM plus 5 of percussion. Some
 versions of the chip (such as the Y8590) also offered GPIO and keyboard
 scanning. [[opl3prog]] provides a brief overview of OPL programming.
 
-#### MSX-AUDIO
+Summary:
+- MSX-AUDIO:  OPL1 [Y8590]
+- MSX-MUSIC:  OPLL [YM2413]
+- Moonsound:  OPL4 [YMF-278B-F]
+
+BiFi's Weblog post [Detection of FM sound chips][bifi] may provide further
+useful information on detecting MSX-AUDIO, MSX-MUSIC (both real and
+emulated by MSX-AUDIO with recent ROM updates) and MoonSound.
+
+
+MSX-AUDIO
+---------
 
 [MSX-AUDIO] was available in three implementations. The Panasonic FS-CA1
 offered full suport for the standard, the Philips NMS-1205 and Toshiba
@@ -150,10 +172,12 @@ connector. The ROM includes [MSX-AUDIO BASIC] extensions.
   - 2, 3: $4000-$BFFF ADPCM data 1, 2
 - Also see [Hardware][maud hw] and [拡張BIOS][maud bios].
 
-#### MSX-MUSIC
+
+MSX-MUSIC
+---------
 
 [MSX-MUSIC][] (also see [here][MSX-Music-fmpac])  was a later but inferior
-system using the cheaper OPLL [Yamaha YM2413], which is still partially
+system using the cheaper OPLL Yamaha [YM2413], which is still partially
 compatible (only 1 user instrument; no ADPCM). It was built into most MSX2+
 systems. The original cart is the Panasonic SW-M004 FM-PAC; there were a
 few others, including stereo versions. [Detection/programming][mmus prog]:
@@ -170,7 +194,9 @@ few others, including stereo versions. [Detection/programming][mmus prog]:
   - $7C (mem $7FF4) register index (delay 12 cyc),
   - $7D (mem $7FF5) data (delay 84 cyc)
 
-__[FM-BIOS][mdp.7.3.3]:__
+### FM-BIOS
+
+[[mdp.7.3.3]]
 
 Memory map:
 
@@ -203,23 +229,23 @@ may destroy all registers and use up to 32 bytes of stack.
 
     FD09 2 SLTWRK   Pointer to work area set by INIOPL.
 
-#### Moonsound
+
+Moonsound
+---------
 
 The Moonsound uses an OPL4 [YMF-278B-F] offering 16-bit wavetable and FM
 synthesis.
 
-#### Konami SCC
+
+Other Sound Systems
+===================
+
+### Konami SCC
 
 The [Konami SCC][] ([tech info][scc tech])  was a custom sound chip
 providing 5 channels of wavetable synthsis. It was included in some Konami
 game carts and in a standalone cart for use with disk games. There was also
 an improved SCC-1 version.
-
-### General Notes
-
-BiFi's Weblog post [Detection of FM sound chips][bifi] may provide further
-useful information on detecting MSX-AUDIO, MSX-MUSIC (both real and emulated
-by MSX-AUDIO with recent ROM updates) and MoonSound.
 
 
 
@@ -242,7 +268,6 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [wp-psg]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
 
 <!-- FM Sound -->
-[Konami SCC]: https://www.msx.org/wiki/Konami_SCC
 [MSX-AUDIO BASIC]: https://www.msx.org/wiki/MSX-AUDIO_BASIC
 [MSX-AUDIO]: https://www.msx.org/wiki/MSX-AUDIO
 [MSX-MUSIC]: https://www.msx.org/wiki/MSX-MUSIC
@@ -259,3 +284,6 @@ by MSX-AUDIO with recent ROM updates) and MoonSound.
 [opl3prog]: http://www.fit.vutbr.cz/~arnost/opl/opl3.html
 [scc tech]: http://bifi.msxnet.org/msxnet/tech/scc.html
 [mdp.7.3.3]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.3+FM+BIOS
+
+<!-- Other Sound Systems -->
+[Konami SCC]: https://www.msx.org/wiki/Konami_SCC
