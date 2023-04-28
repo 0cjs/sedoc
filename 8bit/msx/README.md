@@ -40,11 +40,13 @@ See [`models/README.md`](models/README.md) for specs for specific models.
 Some do not have all standard specs (e.g., 8K RAM or no CMT port).
 
 References:
-- \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
+- \[td1] [_MSX Technical Data Book_][td1] (en), Sony, 1984.
   MSX1 hardwre and software.
-- Yamaha Computer [_MSX Series Technical Summary_][yamaha]
+- Yamaha Computer [_MSX Series Technical Summary_][yamaha] (en)
   (GB, for series AX-100, YIS-503F, CX-5M)
-- [_MSX turbo Rテクニカル・ハンドブック_][tdR]
+- [_MSX turbo Rテクニカル・ハンドブック_][tdR] (ja)
+- \[mdp] [MSX-Datapack][mdp] (ja), 株式会社アスキー. MSX2+, MSX2, some MSX1.
+  Wiki copy of a large, detailed reference published by ASCII.
 
 MSX systems include [td1 p.8]:
 - Z80A-compatible CPU at 3.579545 Mhz (NTSC color subcarrier freq)
