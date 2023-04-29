@@ -192,6 +192,7 @@ into the console):
     bind Meta+N             toggle console
     bind Meta+M             main_menu_toggle
     bind Meta+P             toggle pause
+    bind Meta+Alt+P         toggle pause_on_lost_focus
     bind Meta+O             set fastforward on
     bind Meta+O,release     set fastforward off
     bind Meta+Y             reset
