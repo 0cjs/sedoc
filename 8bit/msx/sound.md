@@ -196,7 +196,7 @@ few others, including stereo versions. [Detection/programming][mmus prog]:
 
 ### FM-BIOS
 
-[[mdp.7.3.3]]
+References: [[mdp.7.3.3]].
 
 Memory map:
 
@@ -228,6 +228,82 @@ may destroy all registers and use up to 32 bytes of stack.
     5009            Enable and reset OPLL handler.
 
     FD09 2 SLTWRK   Pointer to work area set by INIOPL.
+
+### YM2413 Registers
+
+References: [[mdp.7.3.4]], [datasheet][YM2413ds] (pp.4-5),
+            [Application Manual][YM2413am] (pp.6-, PDF.9-)
+
+The OPLL has two modes:
+- Tone mode: 9 voices, each a 2-operator (modulator, carrier)
+  FM tone generator.
+- Rhythm mode: 6 voices of 2-operator FM tone generators;
+  5 rhythm sounds (base, snare, tom, top cymbal, hi-hat).
+
+Init `I̅C̅` clears all registers to 0.
+
+    $00 modulator   AM/VIB/EG-TYP/KSR/Mutiple
+    $00 carrier     AM/VIB/EG-TYP/KSR/Mutiple
+    $02 modulator   KSL/Total (modulation?) Level
+    $03 carrier     KSL/Distortion/Feedback level
+    $04 modulator           b7-4: attack  rate
+                            b3-0: decay   rate
+    $05 carrier             b7-4: attack  rate
+                            b3-0: decay   rate
+    $06 modulator           b7-4: sustain level
+                            b3-0: release rate
+    $06 modulator           b7-4: sustain level
+                            b3-0: release rate
+    $0E Rhythm Control      b7-6: unused
+                              b5: 0=tone mode   (9 tone voices)
+                                  1=rhythm mode (6 tone voices + drum kit)
+                              b4: base drum   0=disabled 1=enabled
+                              b3: snare drum  0=disabled 1=enabled
+                              b2: tom-tom     0=disabled 1=enabled
+                              b1: top cymbal  0=disabled 1=enabled
+                              b0: hi-hat      0=disabled 1=enabled
+
+    $0F Test mode:             0 = normal playback
+                           non-0 . undocumented test mode
+
+Per-voice registers (9 in tone mode; 6 in rhythm mode):
+
+    $10-18  F-number (frequency) low 8 bits
+
+    $20-28  Voice Config    b7-6: unused
+                              b5: 0=decay 1=sustain (RR=5 w/key off)
+                              b4: key on/off: 0=mute 1=play
+                            b1-3: octave
+                              b0: high bit of note frequency
+
+    $30-38  Inst/Vol        b7-4: instrument (0-15: see below)
+                            b3-0: volume (0-15)
+
+In rhythm mode voices 7-9 must be configured to specific values for the
+expected sounds to be produced, and the Inst/Vol settings for those voices
+are changed to just volume for the five rhythm instruments:
+
+    $16 Rhythm F-number:  $20
+    $17 Rhythm F-number:  $50
+    $18 Rhythm F-number:  $C0
+
+    $26 Rhythm config:    $05
+    $27 Rhythm config:    $05
+    $28 Rhythm config:    $01
+
+    $36 Rhythm Volume         b7-4: unused
+                              b3-0: bass drum
+    $37 Rhythm Volume         b7-4: hi-hat
+                              b3-0: snare drum
+    $38 Rhythm Volume         b7-4: tom-tom
+                              b3-0: top cymbal
+
+Instrument values (original is the sole user-programmable patch):
+
+    $0 original   $4 flute      $8 organ        $C vibraphone
+    $1 violin     $5 clarinet   $9 horn         $D synth bass
+    $2 guitar     $6 oboe       $A synthesizer  $F acoustic bass
+    $3 piano      $7 trumpet    $B harpsichord  $F elec guitar/bass
 
 
 Moonsound
@@ -274,16 +350,19 @@ an improved SCC-1 version.
 [MSX-Music-fmpac]: http://www.faq.msxnet.org/fmpac.html
 [Y8590]: https://en.wikipedia.org/wiki/Yamaha_Y8950
 [YM2413]: https://en.wikipedia.org/wiki/Yamaha_YM2413
+[YM2413am]: https://map.grauw.nl/resources/sound/yamaha_ym2413_frs.pdf
+[YM2413ds]: https://en.wikipedia.org/wiki/Yamaha_YM2413
 [YMF-278B-F]: http://www.msxarchive.nl/pub/msx/docs/datasheets/opl4.pdf
 [bifi]: http://bifi.msxnet.org/blog/index.php?entry=entry110809-114719
 [maud bios]: http://map.grauw.nl/resources/datapack/Vol2-4.1MSX-AUDIOHardware.pdf
 [maud hw]: http://map.grauw.nl/resources/datapack/Vol2-4.3MSX-AUDIOExtendedBIOS.pdf
 [maud prog]: https://www.msx.org/wiki/MSX-AUDIO_programming
+[mdp.7.3.3]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.3+FM+BIOS
+[mdp.7.3.4]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.4+YM2413(OPLL)
 [mmus detect]: https://www.msx.org/forum/msx-talk/development/how-to-detect-sound-chips-without-bios
 [mmus prog]: https://www.msx.org/wiki/MSX-MUSIC_programming
 [opl3prog]: http://www.fit.vutbr.cz/~arnost/opl/opl3.html
 [scc tech]: http://bifi.msxnet.org/msxnet/tech/scc.html
-[mdp.7.3.3]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack?page=3.3+FM+BIOS
 
 <!-- Other Sound Systems -->
 [Konami SCC]: https://www.msx.org/wiki/Konami_SCC
