@@ -86,6 +86,11 @@ Models:
 To-do XXX:
 - MZ-3500 (1982) Dual processor Z-80. CP/M; might not be MZ-80-compatible.
 - MZ-2500 (1985) "SuperMZ" series: MZ-2511, MZ-2520, MZ-2521, MZ-2531
+  - MZ-2521: desktop case
+    - CMT and 2 3.5" FDDs; 2× RS-232 (DB-25F, DE-9F)
+    - front switch for MZ-2500, MZ-200 and MZ-80B modes
+    - Coor and B/W DIN-8, each with analog/digtal switch
+
 
 Later machines (MZ-100, MZ-5500 and up) used 8086-series processors, some with
 also a Z-80 and some backward compatibility.
