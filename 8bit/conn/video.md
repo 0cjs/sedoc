@@ -146,8 +146,16 @@ Minicon 1308 (8/16-color Digital RGB)
 ----------------------------------
 
 Most Japanese dedicated home computer color displays until 1985 had a
-Hirose Minicon S1308 (female) RGB or RGBI input connector on the monitor
-with a P1308 (male) to DIN-8 cable to connect to the computer.
+[Hirose Minicon 1300 series][hm1300en] ([ja][hm1300ja]) S1308 (female) RGB
+or RGBI input connector on the monitor with a P1308 (male) to DIN-8 cable
+to connect to the computer.
+
+(Minicon 1300 is Hirose's name; HTK and Sony also produced these, possibly
+under different names. The original specification is from NTT仕様 1931,
+where the vertical entry P1308 is called NTT CN-1208DLPMS, and the standard
+government ID is TVNZ 661-33. Note that there's also a similar Minicon 1600
+series with square pins that is not compatible with the Minicon 1300
+series.)
 
 One set of pins is separated from the others by a larger gap (exaggerated
 below). The standard pin numbering is as follows. (From [minicon1300] and
@@ -395,3 +403,5 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 [towns]: http://www.hardwarebook.info/FM_Towns_Video
 
+[hm1300en]: https://www.mouser.jp/datasheet/2/185/Hirose%201300%20Series-1168152.pdf
+[hm1300ja]: https://media.digikey.com/pdf/Data%20Sheets/Hirose%20PDFs/Hirose%20JPN/1300_jp.pdf
