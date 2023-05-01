@@ -224,7 +224,7 @@ changing the page mappings) have `DI` prefixing their description.
            006  VDPREAD   I/O port to use for direct read/write
            007  VDPWRITE    to VDP (TMS9918), usu. $98
     RST1   008  SYNCHR
-           00C  RDSLT
+           00C  RDSLT     DI Read byte from slot: A=slotdesc/retval HL=addr
     RST2   010  CHRGTR    Get next char from BASIC text
            014  WRSLT
     RST3   018  OUTDO
