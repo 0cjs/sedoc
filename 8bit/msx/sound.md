@@ -133,6 +133,9 @@ MSX References:
 - _MSX2 Technical Manual,_ [Ch. 5.1 PSG and Sound Output][2the 5.1]
 - _MSX Red Book Revised_ [5. Programmable Sound Generator][rrr-regs].
 
+Other References:
+- [PSG WAV Play][wavplay] will play back 8-bit 11 KHz WAV data on the PSG.
+
 
 FM Sound
 ========
@@ -333,15 +336,17 @@ an improved SCC-1 version.
 [2the lst5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#list-52--reading-from-cassette-tape
 
 <!-- PSG -->
-[aydata1]: https://f.rdw.se/AY-3-8910-datasheet.pdf
-[aydata]: https://map.grauw.nl/resources/sound/generalinstrument_ay-3-8910.pdf
-[iwiki]: http://wiki.intellivision.us/index.php?title=PSG
-[rrr-regs]: https://www.angelfire.com/art2/unicorndreams/msx/RR-PSG.html
 [2the 5.1.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#12-access-to-the-psg
 [2the 5.1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#1-psg-and-sound-output
 [2the f5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-52--psg-register-structure
 [2the f5.9]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-59--initial-values-of-psg-registers
+[aydata1]: https://f.rdw.se/AY-3-8910-datasheet.pdf
+[aydata]: https://map.grauw.nl/resources/sound/generalinstrument_ay-3-8910.pdf
+[iwiki]: http://wiki.intellivision.us/index.php?title=PSG
+[rrr-regs]: https://www.angelfire.com/art2/unicorndreams/msx/RR-PSG.html
+[wavplay]: https://github.com/LarsThe18Th/Small-Projects/tree/master/MSX/ASM/DOS/PSG%20WAV%20Play
 [wp-psg]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
+
 
 <!-- FM Sound -->
 [MSX-AUDIO BASIC]: https://www.msx.org/wiki/MSX-AUDIO_BASIC
