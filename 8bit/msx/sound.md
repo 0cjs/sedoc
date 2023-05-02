@@ -330,7 +330,7 @@ an improved SCC-1 version.
 <!-- 1-bit Sound Port -->
 [msx.org kcsp]: https://www.msx.org/forum/msx-talk/software/key-click-sample-player
 [2the 5.1.3]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#13-tone-generation-by-1-bit-sound-port
-[2the.lst5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#list-52--reading-from-cassette-tape
+[2the lst5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#list-52--reading-from-cassette-tape
 
 <!-- PSG -->
 [aydata1]: https://f.rdw.se/AY-3-8910-datasheet.pdf
