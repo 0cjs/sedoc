@@ -4,6 +4,8 @@ MSX Address Decoding
 References:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
   MSX1 hardwre and software.
+- \[2thj] [MSX2テクニカル・ハンドブック][2thj] (ja), アスキー版局, 1986.
+- \[2the] [_MSX2 Technical Handbook_][2the] (en). Trans. of above. Markdown.
 - [RAM and Memory Mappers][mw ramm], msx.org wiki.
 
 Though the hardware is described below, the MSX standard strongly suggests
@@ -13,10 +15,11 @@ memory handling routines, and a description of slot descriptor bytes.
 
 ### Address Space Pages
 
-The MSX address space is divided into four 16 KB _pages._ Each page has a
-separate setting (two bits of PPI (i8255) port A (PA0-PA7) usually at IO
-port $A8) that determines the primary slot that should respond to accesses
-to locations in this page.
+The MSX address space is divided into four 16 KB _pages_ (ページ).
+[[td1 p.38]] [[2the 2.1.1]] [[2thj p.23]] Each page has a separate setting
+(two bits of PPI (i8255) port A (PA0-PA7) usually at IO port $A8) that
+determines the primary slot that should respond to accesses to locations in
+this page.
 
       Page  Addr.range  $A8  Typical use
        3    C000-FFFF   7,6  RAM
@@ -108,7 +111,7 @@ that determines the mapper config. (Requires MSX-DOS 2?)
 I/O Address Map
 ---------------
 
-[[td1 p.40]]. All I/O is supposed to be done via BIOS calls, except VDP. (See
+[[td1 p.40]]. All I/O is supposed to be done via BIOS calls, except VDP. (See
 notes below table.) Some MSX machines will not let cartridge slots respond
 to certain I/O port requests. Much more detailed information at MSX
 Assembly Page [MSX I/O ports overview][ma iopo].
@@ -183,6 +186,10 @@ Notes and references for I/O systems above:
 
 
 <!-------------------------------------------------------------------->
+[2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
+[2the 2.1.1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter1.md#211-address-map
+[2thj]: https://archive.org/details/MSX2TechnicalHandBookFE1986/
+[2thj p.23]: https://archive.org/details/MSX2TechnicalHandBookFE1986/page/n26/mode/1up
 [CX5MII]: https://www.msx.org/wiki/Yamaha_CX5MII
 [dos2mem]: http://map.grauw.nl/resources/dos2_environment.php#c5
 [koryakin]: https://hansotten.file-hunter.com/do-it-yourself/memory-mappers-slots/2mb-4mb-internal-slot-expander/
@@ -191,8 +198,9 @@ Notes and references for I/O systems above:
 [mmap-msx1]: https://www.msx.org/wiki/Memory_Mapper#Memory_mappers_on_MSX1
 [mw mapper]: https://www.msx.org/wiki/Memory_Mapper
 [mw ramm]: https://www.msx.org/wiki/RAM_and_Memory_Mappers
-[td1 p.40]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n42/mode/1up
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[td1 p.38]: https://archive.org/details/MSXTechnicalHandbookBySony/page/n40/mode/1up?view=theater
+[td1 p.40]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n42/mode/1up
 
 [HBI-55]: https://www.msx.org/wiki/Sony_HBI-55
 [UDC-01]: https://www.msx.org/wiki/Yamaha_UDC-01
