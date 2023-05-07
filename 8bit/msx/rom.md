@@ -134,12 +134,12 @@ if the ROM is not fully decoded (i.e., mirrored), such as openMSX does with
   called by BASIC when it encounters an unknown device name in `OPEN`.
   ($0000 = not present.) Routine must be in page 1. See [[cr device]] for
   details.
-- `$08`: Program text (with leading $00) start address for tokenized BASIC
-  program executed at startup. ($0000 = not present.) If present, must be
-  in page 1 ($8000-$BFFF). System sets `BASROM` when running this and
-  disables Ctrl-STOP (XXX confirm this). See [[cr text]] for a technique
-  to shift RAM BASIC text past the header and create a ROM image file
-  for this.
+- `$08` TEXT: Pointer to start address of tokenized BASIC program ($0000 =
+  not present). This must point to a leading $00 byte before the initial
+  line pointer, i.e., `TXTTAB`-1. If present, must be in page 1
+  ($8000-$BFFF). System sets `BASROM` when running this and disables
+  Ctrl-STOP (XXX confirm this). See [[cr text]] for a technique to shift
+  RAM BASIC text past the header and create a ROM image file for this.
 - `$0A`-`$0F`: 6 bytes reserved for future use.
 
 References:
