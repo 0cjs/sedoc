@@ -227,6 +227,12 @@ commands, and this is how much of it is implemented. (Files in
     set_help_text hello "Print a greeting."
     proc hello {name} { return "Hello, $name." }
 
+You can hexdump memory with:
+
+    showdebuggable memory <address> [<linecount>] [<columns>]
+
+Remember to use `0xNNNN` format for hex numbers.
+
 ### External Control
 
 See [Controlling openMSX from External Applications][control] and the
