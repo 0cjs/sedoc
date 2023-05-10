@@ -202,6 +202,15 @@ For `LIST`, `LLIST` and `DELETE` a `.` specifies the last line `LIST`ed.
   line number is currently unused (Enter leaves line unused), or `*` if
   line number already has text (Enter leaves line as-is).
 
+To "undelete" a program after `NEW` you can use the following.
+There are also [BASIC extensions][unnew] to do this more easily.
+
+    POKE &H8002,128
+    SAVE"TEMP.BAS"
+    LOAD"TEMP.BAS"
+    SAVE"TEMP.BAS",A
+    LOAD"TEMP.BAS"
+
 
 References
 ----------
@@ -228,8 +237,9 @@ References
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
-[instrcat]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
 [instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
+[instrcat]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
 [the.2.0]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html
 [the.2.0src]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
 [thj.kouzou]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n68/mode/1up
+[unnew]: https://www.msx.org/wiki/Category:Old_BASIC
