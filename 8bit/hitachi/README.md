@@ -8,16 +8,20 @@ released in Japan, and Hitachi the first to move from ｢ﾏｲｺﾝ｣ to
 ｢ﾊﾟｰｿﾅﾙｺﾝﾋﾟｭｰﾀｰ｣ terminology. The series with the PC-8001 and MZ-80,
 was considered part of the [パソコン御三家][gosanke] until around 1980,
 when it became comparatively less popular (eventually to be replaced
-by Fujitsu FM?). The release at the end of 1981 (after the Jr.) of the
-PC-6001 etc. spelled the end of home user popularity.
+by Fujitsu FM-7/FM77). The release of those and the PC-6001 at the end
+of 1981 (after the Jr.) spelled the end of home user popularity.
+
+A list of all models, with photos, descriptions and references, can be
+found at ["Hitachi Basic Master Family"][randoc].
 
 6800 models all had monochrome 32×24 (768 bytes) text and 64×48
-character-based "graphics" (except Jr. added 256×192):
+character-based "graphics" (except Jr. added 256×192). These used
+Hitchi's BASIC.
 
 - Basic Master __MB-6880__ (1978-09, ¥188k): 0.75 MHz, 4K RAM, 8K ROM.
-  300 bps cassette. 64×48 monochrome graphics.
+  300 bps cassette. 64×48 monochrome graphics. Level I BASIC; no FP.
 - Basic Master Level 2 __MB-6880L2__ (1979-02, ¥228k): 8K RAM, 16K ROM.
-  BASIC adds floating point.
+  Level II BASIC; adds floating point.
 - Basic Master Level 2 II __MB-6881__ (1980): 16K RAM, 16K ROM.
   MZ080 and PC-8001 become noticably more popular.
 - Basic Master Jr. __MB-6885__ (1981): ROM/RAM 18K/16K (63.5K).
@@ -28,11 +32,12 @@ character-based "graphics" (except Jr. added 256×192):
   - MP-1710 Color Adapter (on expansion bus) allows 8-color graphics.
   - MP-1803/MP-3370 3" floppy controller/drive. (MA-5380 Disk BASIC.)
 
-6809 Models (predates FM-8 by one year, FM-7 by 2.5 years):
+6809 Models (predates FM-8 by one year, FM-7 by 2.5 years). These use
+Level III BASIC, which is a Microsoft BASIC.
 
 - Basic Master Level 3 __MB-6890__ (1980-05 ¥298k, post-FM-7 ¥198k):
   640×200 b/w, 320×200×8 (per-byte color bits, FB in main addr space).
-  600 bps cassette; optional floppies.
+  600 bps cassette; optional floppies. First PC to offer kanji.
 - Mark II __MB-6891__ (1982-04 ¥198k):
 - Mark 5 __MB-6892__ (1983-04 ¥118k): Programmable character generator.
 - Mark II-A __AB-6896__ (?): little known about this
@@ -165,6 +170,7 @@ See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 [ar-bmj]: https://archive.org/details/Hitachi_MB-6885_Basic_Master_Jr/
 [gosanke]: https://ja.wikipedia.org/wiki/8ビット御三家
 [mame]: https://github.com/mamedev/mame/blob/master/src/mame/hitachi/bml3.cpp
+[randoc]: https://randoc.wordpress.com/2021/04/02/hitachi-basic-master-family/
 [rash]: http://fuckin.rash.jp/wikihome/index.cgi/p6?page=Basic+Master+Jr.
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
 
