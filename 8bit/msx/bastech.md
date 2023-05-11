@@ -51,6 +51,8 @@ Addresses of system variables. See also more extensive list (not just for
 BASIC) at MSX Wiki, [System variables and work area][sysvars].
 
      hex   dec  name    descr
+    F8D7        SAVEND  end addr of last BLOAD/BSAVE
+    FCBF        SAVENT  start addr of last BLOAD/BSAVE
     FC4A  -950  HIMEM   BASIC allocates only below this
     FC48  -952  BOTTOM  $00 byte before start of BASIC text
     FBE5 -1051  NEWKEY  key matrix status new
