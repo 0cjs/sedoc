@@ -132,6 +132,8 @@ For interfacing, `74x245` octal bus transceivers with 3-state outputs:
 * `74HC245`: CMOS → CMOS
 * `74VC245`: 3.3V CMOS → 5V TTL
 * `74HCT245`: 5V TTL → 5V CMOS
+* [`74LVC4245`]: 3.5V TTL/CMOS ↔ 5V TTL/CMOS
+                 (Octal dual-suppy translating tranceiver)
 
 3.3V CMOS outputs actually meet the TTL spec, so you can also feed these
 directly into 5V HCT, ACT or AHCT parts.
@@ -258,6 +260,7 @@ Level- and current-related:
 [AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-app]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-ds]: https://cdn-shop.adafruit.com/datasheets/txb0108.pdf
+[`74LVC4245`]: https://assets.nexperia.com/documents/data-sheet/74LVC4245A.pdf
 [af-395]: https://www.adafruit.com/product/395
 [eetimes04]: https://www.eetimes.com/a-brief-recap-of-popular-logic-standards/
 [f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
