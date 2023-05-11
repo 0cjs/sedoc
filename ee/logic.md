@@ -256,6 +256,13 @@ Level- and current-related:
 [ti-hct]: http://www.ti.com/lit/an/scla011/scla011.pdf
 [wp-ttl]: https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic
 
+<!-- Families » Levels -->
+[MOS 6502]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
+[RC65C02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
+[SN74HC138]: http://www.ti.com/lit/gpn/sn74hc138
+[SN74HCT138]: http://www.ti.com/lit/gpn/sn74hct138
+[SN74LS138]: http://www.ti.com/lit/gpn/sn74ls138
+
 <!-- Logic Levels -->
 [AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-app]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
@@ -267,9 +274,3 @@ Level- and current-related:
 [jarda14]: https://www.jsykora.info/2014/05/logic-voltage-levels/
 [sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
 [sf-12009]: https://www.sparkfun.com/products/12009
-
-[MOS 6502]: http://archive.6502.org/datasheets/mos_6500_mpu_mar_1980.pdf
-[RC65C02]: http://archive.6502.org/datasheets/rockwell_r65c00_microprocessors.pdf
-[SN74HC138]: http://www.ti.com/lit/gpn/sn74hc138
-[SN74HCT138]: http://www.ti.com/lit/gpn/sn74hct138
-[SN74LS138]: http://www.ti.com/lit/gpn/sn74ls138
