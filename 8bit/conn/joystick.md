@@ -4,8 +4,8 @@ Joystick Connectors
 The Atari-ish DE-9 standard ([more platforms here][wp atjoy other]).
 Directions and buttons are N.O., shorting to ground when activated.
 
-From experimentation it seems it may be possible to use Atari joysticks on
-MSX, but check strobe behaviour.
+From experimentation it seems it may be possible to use Atari joysticks
+on MSX, but check strobe behaviour.
 
     Pin  Atari    MSX       ────Sega────     Amiga  Pin
     ───────────────────────────────────────────────────
@@ -20,6 +20,8 @@ MSX, but check strobe behaviour.
      9   padl A   GND       Start   Start    B2(R)   9
 
      † Ground on Commodore TED (C16, C116, Plus/4) machines
+     ● Older systems: enable for alternate controls set.
+       Newer systems: strobe input to cycle atlernate sets.
 
 ### Atari
 
@@ -105,7 +107,7 @@ __MSX-Compatible Systems:__
 - National/Panasonic JR-200: 1-4,6,7:input 5:+5V 8:output 9:GND. ([_JR-200U
   Service Manual_ p.62 PDF 61][jr200].)
 
-### Sega
+### Sega (Megadrive/Genesis)
 
 - †Sega: `Select` line (pin 7, `●`) starts at GND. On older controllers,
   switching to +5V enables additional buttons (using an 74HC157?).
