@@ -1,5 +1,33 @@
+Image Manipulation Tools
+========================
+
+ExifTool
+--------
+
+[ExifTool] is the command-line interface to the Perl `Image::ExifTool`
+library that reads/writes/manipulates image, audio, video and PDF metadata.
+
+In Debian it's installed with the `libimage-exiftool-perl` package.
+
+- `-list` will give a (very long) list of available tags.
+- `-listg` will list families and groups
+- Giving just a fiename will print out all tags and values.
+- `-tagname` print tag name and value
+- `-tagname=value`: set tag value
+
+Output options:
+- `-args`: format output as `exiftool` command-line arguments
+- `-b`: binary format
+- `-csv`: CSV format
+- `-t`/`-tab`: tab-separated output
+
+Examples:
+
+    size=$(exiftool -t -imagesize foo.gif | sed -e 's/.*\t//')
+
+
 ImageMagick
-===========
+-----------
 
 `display` and `convert`/`mogrify` are the primary programs for displaying
 and transforming images.
@@ -11,8 +39,7 @@ and transforming images.
 
     import -window root screen.png  # Full screen capture
 
-display Keyboard Shortcuts
---------------------------
+### display Keyboard Shortcuts
 
 Left mouse button turns menu on/off.
 
@@ -34,8 +61,7 @@ Left mouse button turns menu on/off.
   - Various contrast/color/etc manipulations available
 
 
-Resizing an Image
------------------
+### Resizing an Image
 
 See [examples here][im-resize].
 
@@ -44,4 +70,6 @@ See [examples here][im-resize].
 
 
 <!-------------------------------------------------------------------->
+[ExifTool]: https://en.wikipedia.org/wiki/ExifTool
+
 [im-resize]: https://www.imagemagick.org/Usage/resize/
