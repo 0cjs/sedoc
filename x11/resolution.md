@@ -50,16 +50,17 @@ output, if available, otherwise it says, "cannot find mode …".
 `xrandr` displays the modelines returned from the display, but some
 displays, and especially display adapters/converters, don't return all
 usable modelines. New ones can be added to a display by using `--newmode
-NAME ...` to create a named mode (adds to `VIRTUAL1` output until added to
-another output?) and `--addmode OUTPUT NAME` to add that mode to a given
-output.
+NAME ...` to create a named mode (it's initially added to the last output,
+e.g. `VIRTUAL1` or `DP-3`) and `--addmode OUTPUT NAME` to add that mode to
+a given output (which moves it from the last output).
 
 For missing mode lines that are in the EDID, one possibility is that X11
 detects [passive Type 1 DP→HDMI converters][dphdmi] and is dropping EDID
 entries with a clock higher than 165 MHz. If that's the case, it appears
-that they can be added manually though based on information from
-`edid-decode`.
-
+that they can sometimes be added manually though based on information from
+`edid-decode`. (But not always; despite being fully within the ranges,
+adding the mode from QNIX monitor edid produces `xrandr: Configure crtc 1
+failed` when you try to use it.)
 
 ### Device Specs
 
