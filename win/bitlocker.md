@@ -41,13 +41,21 @@ follows:
 4. If you have no TPM, you may also need to ensure that "Allow Bit
    Locker without a compatible TPM" is checked.
 
-With PIN enabled via this policy, enabling BitLocker for the OS drive
-in the control panel will prompt you for an optional PIN during the
-setup phase. If BitLocker is already enabled for the drive, after you
-change the policy you can add a PIN by entering the following at an
-administrative command prompt:
+With PIN enabled via this policy, enabling BitLocker for the OS drive in
+the control panel will prompt you for an optional PIN during the setup
+phase. If BitLocker is already enabled for the drive, after you change the
+policy you can add a PIN by at an administrative command prompt:
 
+    #   To add a new PIN:
+    manage-bde -protectors -add C: -tp
+
+    #   To replace a PIN:
+    manage-bde -protectors -delete C: -t TPMAndPIN  # remove so you can add new
     manage-bde -protectors -add C: -TPMAndPIN
+    manage-bde -protectors -enable C:
+
+    #   Other useful commands:
+    manage-bde -protectors -get C:                  # displays current
 
 Some sources indicate that if using BitLocker without a TPM you must
 use a startup key from an external drive. This is not the case, at
