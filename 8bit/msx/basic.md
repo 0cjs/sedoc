@@ -160,7 +160,21 @@ Below, _f_ is a file handle, 1 to 15, but see `MAXFILES`.
     Odd page must be used for interlace mode.
   - _display:_ page to display.
   - _active:_ page to use for VRAM reads/writes (inc. line drawing).
-- `BASE`
+- `SCREEN <DisplayMode>, <SpriteSize>, <Keyclick>, <BaudRate>,
+  <PrinterType>, <InterlaceMode>`: see [SCREEN] for full details.
+  - _DisplayMode:_ 0=text 40×24 (2 colors only), 1=text 32×24, 2=block
+    graphic 32×8×3, 3=bitmap 64×48, more for MSX2.
+  - _SpriteSize:_ 0=8×8, 1=8×8 double-size, 2=16×16, 3=16×16 double-size
+  - _Keyclick:_ 0=off, 1=on
+  - _Baudrate:_ 0=1200, 1=2400
+  - _PrinterType:_ 0=MSX Printer, 1=No MSX printer (different for Arabic)
+  - _InterlaceMode:_ (MSX2 or higher)
+- `BASE <TableNumber>`: returns current address in VRAM of a VDP table.
+  See [BASE()] for full info and default values.
+  - Screen 0:  0=name             2=pattern
+  - Screen 1:  5=name   6=color   7=pattern   8=sprite-attr   9=sprite-pat
+  - Screen 2: 10=name  11=color  12=pattern  13=sprite-attr  14=sprite-pat
+  - Screen 3: 15=name            17=pattern  18=sprite-attr  19=sprite-pat
 - `VPEEK(a)`, `VPOKE a,n`. In screen modes 5-8 the adress is the offset
   from the starting address of the active page.
 
@@ -235,6 +249,7 @@ References
 [Hangul BASIC]: https://www.msx.org/wiki/Hangul_BASIC
 [Kanji BASIC]: https://www.msx.org/wiki/Kanji_BASIC
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
+[SCREEN]: https://www.msx.org/wiki/SCREEN
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
