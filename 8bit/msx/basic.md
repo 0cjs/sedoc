@@ -239,9 +239,8 @@ References
 - _MSX2 Technical Handbook_ (en) [Ch.2 BASIC][the.2.0] ([source][the.2.0src]).
   Starts with a complete list of BASIC keywords, functions and special vars,
   and continues with technical information on the internals of BASIC.
-- _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][thj.kouzou]. BASIC
-  internals only.
-- [_A Guide to MSX-BASIC Version 2.0_][guide], Sony.
+- _MSX2 Technical Handbook_ (ja), [Ch.3 BASICの内部構造][thj.kouzou].
+- [_A Guide to MSX-BASIC Version 2.0_][guide] (en), Sony. Beginner-oriented.
 
 
 
