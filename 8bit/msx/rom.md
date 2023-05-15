@@ -7,11 +7,18 @@ Contents:
 - Interrupts
 - Hooks
 
-References:
+### References
+
+(See also the references at the top of [README](README.md).)
+
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
-- \[rbr.6] [6. ROM BIOS], _The Revised MSX Red Book._
+- \[qest] [_MSX BIOS: The Complete MSX BASIC I/O Listing,_][msxbios],
+  Qest Publishing, 1985-01 (Steven M. Ting).
+- \[msxsyssrc] Sourceforge, [msxsyssrc]: MSX system sourcefiles
+  (commented disassembly)
+- \[rbr.6] [6. ROM BIOS][rbr.6], _The Revised MSX Red Book._
   Very comprehensive, includes some disassembly info.
-- \[rbr.8] [8. Memory Usage Map], _The Revised MSX Red Book._
+- \[rbr.8] [8. Memory Usage Map][rbr.8], _The Revised MSX Red Book._
 
 
 Slot Descriptors
@@ -40,7 +47,7 @@ Memory Map
 
 #### System Variables and Work Area
 
-References:
+Additiona References:
 - MSX Wiki, [System variables and work area][mw sysvars].
 - \[map sysvars] MSX Assembly Page, [MSX sysvars Calls][map sysvars]
 
@@ -142,7 +149,7 @@ if the ROM is not fully decoded (i.e., mirrored), such as openMSX does with
   RAM BASIC text past the header and create a ROM image file for this.
 - `$0A`-`$0F`: 6 bytes reserved for future use.
 
-References:
+Additional References:
 - [[td1]] p.162-164
 - MSX Wiki, [Develop a program in cartridge ROM][cr].
 
@@ -205,14 +212,11 @@ Summary of hooks:
 BIOS Calls
 ----------
 
-References:
+Additional References:
 - \[map bios] MSX Assembly Page, [MSX BIOS Calls][map bios]
 - \[td1] [_MSX Technical Data Book_][td1], p.110-134
-- \[td2] MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2the.a1] (incomplete)
-- \[qest] [_MSX BIOS: The Complete MSX BASIC I/O Listing,_][msxbios],
-  Qest Publishing, 1985-01 (Steven M. Ting).
-- \[msxsyssrc] Sourceforge, [msxsyssrc]: MSX system sourcefiles
-  (commented disassembly)
+- \[td2] MSX2-Technical-Handbook [Appendix 1 - BIOS Listing][2the.a1]
+  (incomplete)
 
 BIOS calls are at ROM addresses starting at $0000. Below this table are
 further details on some of these, including discussion of names. Calls
@@ -308,9 +312,10 @@ changing the page mappings) have `DI` prefixing their description.
 <!-------------------------------------------------------------------->
 
 <!-- References -->
-[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
+[msxsyssrc]: https://sourceforge.net/projects/msxsyssrc/
 [rbr.6]: https://www.angelfire.com/art2/unicorndreams/msx/RR-BIOS.html
 [rbr.8]: https://www.angelfire.com/art2/unicorndreams/msx/RR-RAM.html
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 
 <!-- Memory Map -->
 [map sysvars]: https://map.grauw.nl/resources/msxsystemvars.php
@@ -327,5 +332,4 @@ changing the page mappings) have `DI` prefixing their description.
 <!-- BIOS Calls -->
 [2the.a1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Appendix1.md
 [map bios]: http://map.grauw.nl/resources/msxbios.php
-[msxsyssrc]: https://sourceforge.net/projects/msxsyssrc/
 [qest]: https://archive.org/details/MSXBIOSBook/MSX%20BIOS%20Book%20-%2001/mode/1up
