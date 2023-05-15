@@ -21,6 +21,7 @@ File Formats
 #### File-handling Commands
 
 - [`BSAVE "name",start,end[,exec]`][bsave]
+  - The data at address _end_ is included in the file
   - _exec_ defaults to _start_
 - [`BLOAD "name",[RS],offset`][bload]. Optional params:
   - 2: `R` to run code after loading, `S` to load to VRAM.
