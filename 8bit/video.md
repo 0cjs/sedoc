@@ -39,6 +39,11 @@ Systems for color or monochrome video with various degrees of multiplexing
 - DRGBI: 16-color digital RGB with fourth "intensity" value.
 - Component video: Y+sync Pr Pb (Y Cr Cb is the digital format)
 - Y/C: Y+sync, chroma. Also "S-video," which has multiple meanings.
+  Old Commodore 1700 series monitors (with 2 RCA inputs for Y/C) spec'd 1 V
+  P-P for for luma and chroma, but modern miniDIN-4 Y/C ("S-video") systems
+  almost invariably spec 0.7 V P-P for luma (not including 0.3 V P-P for
+  sync) and 0.286 V P-P for chroma. [[rc-xevid]] compares video output
+  before and after an XE130 mod to tune it to those levels.
 - CVBS (color video baseband signal): Y+sync+color, using one of several
   broadast systems (NTSC, PAL, etc.) to encode the color information.
 - MVBS (monochrome video baseband signal): Y+sync
@@ -111,10 +116,12 @@ This can be thought of as using a carrier at 5×7×9/(8×11) Mhz = 315/88 Mhz
 ~= 3.579545 MHz ±10 Hz with the color information expressed by modulations
 in phase (hue) and amplitude (saturation).
 - Luminance: average value of Y, but see below.
-- Saturation (I): amplitude of 3.58 MHz waveform added to Y: ±0.07 V = 100%.
-  See below about separating this from luminance. This may show as "chroma
-  dots" on old B/W sets that don't do this separation. (Newer B/W sets are
-  supposed to filter when a color burst is present.)
+- Saturation (I): amplitude of 3.58 MHz waveform added to Y.
+  - Previously I noted levels of ±0.07 V = 100%, but separate Y/C chroma
+    (see above) specs 0.286 V P-P, so maybe that's the real 100% figure?
+  - See below about separating this from luminance. This may show as
+    "chroma dots" on old B/W sets that don't do this separation. (Newer B/W
+    sets are supposed to filter when a color burst is present.)
 - Hue (Q): phase of 3.58 MHz waveform: 0°=blue, 100°=red, 178°=yellow.
   <img src='img/1k05_ntsc_color_wheel.png' /> <!-- 172 × 127 -->
 
@@ -149,6 +156,27 @@ colors][cga1024 ac] for a detailed demonstration. At higher resolutions
 alternating pixels can be used to deliberately generate these artifact
 colours, as in the following diagram from that article:
 <img src='img/1k07_cga_composite_solid_colors_1.png' /> <!-- 313 × 222 -->
+
+Jail bars and checkerboard patterns are often due to interference affecting
+the chroma signal which, becuase of its very high frequency (relative to
+the other video signals) is more susceptable to problems. Sources of
+interference include:
+1. On Y/C connections, chroma/luma interference. Using separately shielded
+   cables for the two signals, rather than both conductors in a single
+   shield, can help with this, so long as the interference isn't happening
+   inside the source device itself. [[atariage]]
+2. In both Y/C and composite, incorrect levels can cause the issue. For Y/C
+   ensure levels match monitor specs, usually luma 0.7 V P-P and chroma
+   0.286 V P-P (see above). [[rc-xevid]]
+3. Noise in the chroma signal, often due to noise within the source device
+   itself (e.g., ground bounce from the video chip affecting nearby
+   circuits that buffer the chroma). Improving the grounding of the buffer
+   etc. can greatly improve things.  [[rc-xevid] 18:10]
+
+Note that these types of problems are often less visible on CRT monitors
+than on LCD monitors; consider using an upscaler or video capture device
+when debugging. (It also helps with taking before/after snapshots to
+compare side by side.)
 
 #### Vertical Sync
 
@@ -430,6 +458,7 @@ Sample circuits and programming:
 [mzd-ega]: http://minuszerodegrees.net/oa/OA%20-%20IBM%20Enhanced%20Color%20Display%20(5154).pdf
 [mzd]: http://minuszerodegrees.net/oa/oa.htm
 [phirenz]: https://www.youtube.com/watch?v=3JFt6t6ijLs&lc=UgxaSs9KAeuIR-tCWJ54AaABAg
+[rc-xevid]: https://youtu.be/NmrNJHNLSSY
 [vcfed 1234458]: https://forum.vcfed.org/index.php?threads/representing-ibm-5153-color-output-more-accurately.1234458/
 [wp cb]: https://en.wikipedia.org/wiki/Colorburst
 [wp ce]: https://en.wikipedia.org/wiki/NTSC#Color_encoding
@@ -457,6 +486,7 @@ Sample circuits and programming:
 [SMPTE 259M]: https://en.wikipedia.org/wiki/SMPTE_259M
 [TB476]: https://www.renesas.com/us/en/www/doc/tech-brief/tb476.pdf
 [adv7170]: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7170_7171.pdf
+[atariage]: https://forums.atariage.com/topic/339573-video-jail-bars-is-there-a-root-cause/
 [bc trv900]: http://bealecorner.com/trv900/tech/
 [c64-80]: https://archive.org/details/byte-magazine-1985-03-rescan/page/n188/mode/1up
 [cga1024]: https://int10h.org/blog/2015/04/cga-in-1024-colors-new-mode-illustrated/#a-id-artifact-colors-a-artifact-colors
