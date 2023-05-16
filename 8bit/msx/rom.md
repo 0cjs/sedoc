@@ -14,6 +14,7 @@ Contents:
 - \[td1] [_MSX Technical Data Book_][td1], Sony, 1984.
 - \[qest] [_MSX BIOS: The Complete MSX BASIC I/O Listing,_][msxbios],
   Qest Publishing, 1985-01 (Steven M. Ting).
+  BIOS only ($0000-$267F); no BASIC.
 - \[msxsyssrc] Sourceforge, [msxsyssrc]: MSX system sourcefiles
   (commented disassembly)
 - \[rbr.6] [6. ROM BIOS][rbr.6], _The Revised MSX Red Book._
