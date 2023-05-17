@@ -77,7 +77,7 @@ between the signal and the return path (like a capacitor) and the
 lowest-impedence path will tend to follow the signal line, because the
 smaller the loop area, the lower the inductance (Z = R + iωL). (A good
 explanation of this is around 40 minutes into Eric Bogatin's presentation
-[The Value of the White Space] [vws].)
+[The Value of the White Space][vws].)
 
 This effect starts at around 1 kHz and by 1 MHz it's very tight, as shown
 in the video above around 00:48 and [this video][feranec] and the following
