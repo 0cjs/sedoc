@@ -127,24 +127,21 @@ Per [[kuniser]] but untested:
 BASIC Extensions
 ----------------
 
-`CMD` was introduced from the start (PC-8001 ROM BASIC v1.01) to support
-extensions for Disk BASIC. In PC-8001 ROM BASIC (later known as N₈₀-BASIC)
-it called a hook in RAM (at $F0FC) initialised to `C3 75 18  JMP $1875`,
-which is a routine that prints a "Disk BASIC Feature" error.
-[[techknow80] p.178]
+[[techknow80] p.243] The original PC-8001 ROM BASIC (from at least v1.01)
+has keywords/tokens for many Disk BASIC commands and functions (`FILES`,
+`EOF()`, …) and changed versions of existing functions (`OPEN`, …) that are
+dispatched through a table of `JP` instructions in RAM starting at $F0E1. .
+The ROM BASIC initialises all these to `C3 75 18`/`JP $1875` which which is
+a routine that prints a "Disk BASIC Feature" error.
 
-It's not clear that PC-8001 Disk BASIC itself ever used this mechanism.
-We need a PC-8001 Disk BASIC reference manual to confirm what it does,
-but the [PC-8001mkII N₈₀-BASIC Reference Manual][basic-80mkII], released
-four years later in 1983, lists some commands as using a `CMD` prefix:
+`CMD` was incuded with these as a prefix for unanticipated commands. We need
+a PC-8001 Disk BASIC reference manual to determine what it was used for there,
+but the [PC-8001mkII N₈₀-BASIC Reference Manual][basic-80mkII] (released
+four years later in 1983) lists the following as using the `CMD` prefix:
 
-    BLOAD   COLOR   INIT    PRESET  VIEW
-    BSAVE   COLOR@  LINE    PSET
-    CIRCLE  COPY    PAINT   PUT@
-    CLS     GET@    POINT   SCREEN
-
-There are, however, commands that exist only in Disk BASIC (`FILES`,
-`KILL`, etc.) that do not use the prefix.
+    BLOAD   CLS     COPY    LINE    PRESET  SCREEN
+    BSAVE   COLOR   GET@    PAINT   PSET    VIEW
+    CIRCLE  COLOR@  INIT    POINT   PUT@
 
 ### Using the CMD Hook
 
