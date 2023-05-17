@@ -5,12 +5,23 @@ See also:
 - [`rom`](rom.md) for ROM and BASIC versions and startup messages.
 - [`programs`](programs.md) for sample programs
 
-References:
-- \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68]. Covers PC-8001
-  and PC-6001 BASIC, memory maps, disk formats, peripheral lists, and all
-  sorts of further technical info.
-- \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE
-  MANUAL][mr], PC-8801MR-RM.
+BASIC Langauge References:
+- \[basic-80mkII] [_PC-8001mkII N₈₀-BASIC Reference Manual_][basic-80mkII]
+  NEC, 1983.
+- \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE MANUAL][mr],
+  PC-8801MR-RM.
+
+ROM/Machine-level References:
+- \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68].
+  PC-8001 and PC-6001 BASIC, memory maps, disk formats, peripheral lists,
+  and all sorts of further technical info.
+- \[techknow80] [_PC-TechKnow8000_][techknow80], システムソフト, 1982.
+  Details of interfacing with hardware and ROM for assembly-language
+  programmers.
+- \[techknow88v1] [_PC-TechKnow8800 Vol.1_][techknow88v1],
+  システムソフト, 1982.
+- \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
+  システムソフト, 1985.
 
 
 Usage
@@ -107,12 +118,53 @@ Per [[kuniser]] but untested:
 - `PORT n`: "get number of buffer inputs"
 - `INPUT$(len,%port)` "get specified long characters"
 
-
-
 #### Machine-language Interface
 
 - `DEFUSRn=m`:
 - `a=USR(n)`: _n_ = 0-7
+
+
+BASIC Extensions
+----------------
+
+`CMD` was introduced from the start (PC-8001 ROM BASIC v1.01) to support
+extensions for Disk BASIC. In PC-8001 ROM BASIC (later known as N₈₀-BASIC)
+it called a hook in RAM (at $F0FC) initialised to `C3 75 18  JMP $1875`,
+which is a routine that prints a "Disk BASIC Feature" error.
+[[techknow80] p.178]
+
+It's not clear that PC-8001 Disk BASIC itself ever used this mechanism.
+We need a PC-8001 Disk BASIC reference manual to confirm what it does,
+but the [PC-8001mkII N₈₀-BASIC Reference Manual][basic-80mkII], released
+four years later in 1983, lists some commands as using a `CMD` prefix:
+
+    BLOAD   COLOR   INIT    PRESET  VIEW
+    BSAVE   COLOR@  LINE    PSET
+    CIRCLE  COPY    PAINT   PUT@
+    CLS     GET@    POINT   SCREEN
+
+There are, however, commands that exist only in Disk BASIC (`FILES`,
+`KILL`, etc.) that do not use the prefix.
+
+### Using the CMD Hook
+
+[[techknow80] p.178] gives examples of taking over the `CMD` hook to add
+commands. The first example given changes $F0FC to `JMP $FF40` where he
+places a small program:
+
+                    ; SCREEN COPY 'CMD'
+    FF40 E5             PUSH HL
+    FF41 CD 4A 12       CALL $124A      ; SCREEN COPY ROUTINE
+    FF44 E1             POP  HL
+    FF45 C9             RET             ; RETURN TO BASIC
+
+It's not clear why he preserves HL; the second example doesn't do this,
+though that one returns to BASIC via one of the following two mechanisms:
+
+                        JP   $3C82      ; JUMP TO BASIC
+
+                        LD   E,5        ; Illegal function call
+                        JP   $3BF9      ; Error message output routine
 
 
 Technical Information
@@ -120,9 +172,15 @@ Technical Information
 
 Reserved word map: [[hb68]] pp.96-97.
 
+
+
 <!-------------------------------------------------------------------->
 [asahi]: https://archive.org/details/PC8001600100160011982
 [byte]: https://tech-insider.org/personal-computers/research/acrobat/8101.pdf
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
-[mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
 [kuniser]: https://kuninet.org/2020/01/25/pc-8001-%e5%a4%96%e4%bb%98%e3%81%91232c%e3%83%9c%e3%83%bc%e3%83%89/
+[mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
+[techknow80]: https://archive.org/details/pctechknow8000
+[techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
+[techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
+[basic-80mkII]: https://archive.org/details/PC-8001mk-II-n-80-basic-reference-manual
