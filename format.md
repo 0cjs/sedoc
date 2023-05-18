@@ -57,7 +57,7 @@ Though not exactly the original Markdown, commonmark.org provides a
 [spec][cm spec] and an [online renderer][cm render]. Less-commonly used
 markups are:
 
-- `![alt text](url)`: in-line images.
+- `![alt text](url-or-filepath)`: in-line images.
 
 #### Image Sizing
 
