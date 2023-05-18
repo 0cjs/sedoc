@@ -50,22 +50,29 @@ Technical Information
 ---------------------
 
 ROM/Machine-level References:
-- \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68].
+* \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68].
   PC-8001 and PC-6001 BASIC, memory maps, disk formats, peripheral lists,
   and all sorts of further technical info.
-- \[techknow80] [_PC-TechKnow8000_][techknow80], システムソフト, 1982.
+* \[techknow80] [_PC-TechKnow8000_][techknow80], システムソフト, 1982.
   Details of interfacing with hardware and ROM for assembly-language
   programmers.
-- \[techknow88v1] [_PC-TechKnow8800 Vol.1_][techknow88v1],
+* \[techknow88v1] [_PC-TechKnow8800 Vol.1_][techknow88v1],
   システムソフト, 1982.
-- \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
+* \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
   システムソフト, 1985.
-
+* \[mlhb] [_PC-8001マシン語活用ハンドブック_][mlhb], Kawamura Kiyoshi,
+  秀和システムトレーデインク.株式会社, 1982-06.
+  - 1: Addresses and descriptions of ROM routines (but no names). Work area.
+  - 2: Detailed hardware interface descirptions.
+  - 3: ROM subroutine use and cautions.
+  - 4: Utility routines (type-in)
+  - 5: Appendicies.
 
 
 <!-------------------------------------------------------------------->
 [8xROM]: https://retrocomputerpeople.web.fc2.com/machines/nec/cmn_vers.html
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
+[mlhb]: https://archive.org/details/pc-8001
 [techknow80]: https://archive.org/details/pctechknow8000
 [techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
 [techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
