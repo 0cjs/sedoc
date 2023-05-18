@@ -2,7 +2,8 @@ N80 and N88 BASIC
 =================
 
 See also:
-- [`rom`](rom.md) for ROM and BASIC versions and startup messages.
+- [`rom`](rom.md) for ROM and BASIC versions, startup messages and
+  lower-level machine technical details.
 - [`programs`](programs.md) for sample programs
 
 BASIC Langauge References:
@@ -10,18 +11,6 @@ BASIC Langauge References:
   NEC, 1983.
 - \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE MANUAL][mr],
   PC-8801MR-RM.
-
-ROM/Machine-level References:
-- \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68].
-  PC-8001 and PC-6001 BASIC, memory maps, disk formats, peripheral lists,
-  and all sorts of further technical info.
-- \[techknow80] [_PC-TechKnow8000_][techknow80], システムソフト, 1982.
-  Details of interfacing with hardware and ROM for assembly-language
-  programmers.
-- \[techknow88v1] [_PC-TechKnow8800 Vol.1_][techknow88v1],
-  システムソフト, 1982.
-- \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
-  システムソフト, 1985.
 
 
 Usage
@@ -178,6 +167,4 @@ Reserved word map: [[hb68]] pp.96-97.
 [kuniser]: https://kuninet.org/2020/01/25/pc-8001-%e5%a4%96%e4%bb%98%e3%81%91232c%e3%83%9c%e3%83%bc%e3%83%89/
 [mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
 [techknow80]: https://archive.org/details/pctechknow8000
-[techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
-[techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
 [basic-80mkII]: https://archive.org/details/PC-8001mk-II-n-80-basic-reference-manual

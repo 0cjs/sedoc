@@ -46,6 +46,26 @@ indicates that it's been verified on one of my machines.
     PC-8801mkII MA  1987                    1.9     2.3
 
 
+Technical Information
+---------------------
+
+ROM/Machine-level References:
+- \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68].
+  PC-8001 and PC-6001 BASIC, memory maps, disk formats, peripheral lists,
+  and all sorts of further technical info.
+- \[techknow80] [_PC-TechKnow8000_][techknow80], システムソフト, 1982.
+  Details of interfacing with hardware and ROM for assembly-language
+  programmers.
+- \[techknow88v1] [_PC-TechKnow8800 Vol.1_][techknow88v1],
+  システムソフト, 1982.
+- \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
+  システムソフト, 1985.
+
+
 
 <!-------------------------------------------------------------------->
 [8xROM]: https://retrocomputerpeople.web.fc2.com/machines/nec/cmn_vers.html
+[hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
+[techknow80]: https://archive.org/details/pctechknow8000
+[techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
+[techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
