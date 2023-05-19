@@ -42,6 +42,13 @@ Information Processing. The PC-6001 and PC-100 were cancelled. (This all
 from various Wikipedia articles.)
 
 
+General Information
+-------------------
+
+Holding down the `STOP` key when you reset the computer will do a warm
+start rather than a cold start. (Confirmed only for PC-8001.)
+
+
 TransDisk (xdisk)
 -----------------
 
