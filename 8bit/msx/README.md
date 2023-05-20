@@ -140,6 +140,13 @@ Paddles [[td1 p.28]]:
   - 150 KΩ potentiometer from Vcc to `Rext`.
 - Also see [`8bit/conn/joystick`](../conn/joystick.md).
 
+[JoyNet] is a standard for ring networks via joystick ports. The MSX end is
+a DE-9M plug and the other end is a "send" DIN-5M and "recv" DIN-5F to
+insert into the ring.
+- Receive from up-ring: Read pins 1,2 as D0,D1, write acks on pin 8.
+- Send to down-ring:    Write pins 6,7 as D0,D1, read acks on pin 3.
+- Connecting just two gives you Konami's F1-Spirit 3D Special cable.
+
 ### Parallel Printer Output (optional)
 
 [td1 p.19] Pins number 1-7 across top then 8-14 across bottom, from right
@@ -277,4 +284,5 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 
 <!-- body -->
 [SN74LS122]: http://www.ti.com/lit/gpn/sn74ls122
+[joynet]: https://map.grauw.nl/resources/joynet/
 [mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
