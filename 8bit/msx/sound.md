@@ -115,6 +115,7 @@ functions to the same register numbers.
             b3-0: always 1
 
 Notes:
+- See also [`README: Joystick`](README.md#joystick) for R14/R15 ports.
 - Higher periods give lower frequencies.
 - A period of 0 actually indicates a period of $1000.
 - R7 disables do not turn off channels; write 0 to R10-R12 amplitude control.
