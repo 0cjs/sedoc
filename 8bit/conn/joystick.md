@@ -85,7 +85,7 @@ then clocks the values of this out in the usual NES way.
 ### MSX
 
 __WARNNG!__ When an MSX joystick is used on an Atari-compatible system
-(Atari, C64, Amiga, etc.), button 2 will _short +5V to GND_. This may
+(Atari, C64, Amiga, etc.), button 2 will ___short +5V to GND.___ This may
 damage the system through both the short and the subsequent voltage spike
 when the button is released.
 
@@ -98,7 +98,8 @@ when the button is released.
   8 ("STRobe out"); on this rising edge each paddle should return a TTL
   high pulse of 10-3000 μs on its pin indicating the position of the
   paddle. This can be done with a 74LS123 by putting a .04 μF cap across
-  `Cext` and `Rext` and a 150 kΩ pot between Vcc and `Rext`.
+  `Cext` and `Rext` and a 150 kΩ pot between Vcc and `Rext`. See also
+  [`8bit/msx/README`](../msx/README.md#joysticks)
 - See §1.4.6 (p. 27) and §1.4.7 (p. 28) of the Sony MSX Technical Handbook.
 - This design is probably the same as the PC-6001, with the MSX designers
   choosing controller backward compatibility with that rather than Atari.
