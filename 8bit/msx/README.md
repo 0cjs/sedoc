@@ -65,11 +65,11 @@ MSX systems include [td1 p.8]:
 - CMT: 1200 bps 1200/2400 Hz; 2400 bps 2400/4800 Hz.
   0 = 1 cycle low, 1 = 2 cycles high. Standard JP DIN-8. [td1 p.15]
 
-#### Keyboard
+### Keyboard
 
 See [`keyboard.md`](./keyboard.md).
 
-#### Joysticks
+### Joysticks
 
 Two types defined:
 - __Type A:__ One button or indistinguishable buttons.
@@ -140,7 +140,7 @@ Paddles [[td1 p.28]]:
   - 150 KΩ potentiometer from Vcc to `Rext`.
 - Also see [`8bit/conn/joystick`](../conn/joystick.md).
 
-#### Parallel Printer Output (optional)
+### Parallel Printer Output (optional)
 
 [td1 p.19] Pins number 1-7 across top then 8-14 across bottom, from right
 to left (??? confirm) looking into connector on computer.
@@ -198,7 +198,7 @@ Pinout:
 Optional Peripherals
 --------------------
 
-#### RS-232
+### RS-232
 
 [td1 p.20] i8251 USART, i8253 Programmable Interval Timer @1.8432 Mhz, 4K ROM.
 
@@ -232,7 +232,7 @@ The 8253 input clock is 1.8432 Mhz. Timers 0, 1 and 2 are Rx clock, Tx
 clock and free for applications, respectively. Divisors (x16) are 6=19200
 bps, 12=9600, etc.
 
-#### Floppy Disk
+### Floppy Disk
 
 [td1 p.18] Interface has 16K ROM at $4000-$7FFF with MSX-DOS kernel, MSX
 DISK BASIC extensions and a "physical disk I/O driver" supplied by the
@@ -254,7 +254,7 @@ Systems (1DD = single sided 360 KB; 2DD = double sided 720 KB; all 80 track)
   - HX-F101GB: 2DD, UK, Black
 - Toshiba HX-F103: 3.5" 2DD bare drive for HX-34
 
-#### Audio/Music
+### Audio/Music
 
 See [MSX Sound Chips (`sound.md`)](sound.md).
 
