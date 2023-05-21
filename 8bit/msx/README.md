@@ -80,8 +80,13 @@ Two types defined:
 Two DE-9F connectors, J3 (port 1) and optional J4 (port 2):
 - TTL levels. Pinout [[td1 p.25]] and [`conn/joystick`](../conn/joystick.md).
 - Schematics: [[td1 p.26]] switches only, [[td1 p.28]] paddle circuit.
-- All pins have pullups to Vcc (separate per port) except +5 (5) and GND (9).
-- AY-3-8910 IOA 0-5 and IOB 0-6 used for interface.
+- All pins have pullups to Vcc (typically 10 kΩ) except +5 (5) and GND (9).
+- AY-3-8910 PSG IOA 0-5 and IOB 0-6 used for interface.
+  - Ports are either all pins input or all pins output; they cannot be split.
+    - IOA is set to input and has nothing connected usable for ouput.
+    - IOB is set to output and must be to avoid floating select input on
+      the '157s. (Thus, pins 1/8 and 2/8, though wired to be input capable,
+      can not be used for input without making IOA0-5 unusable.)
   - IOB6 switches 1.5× 74LS157 routing pins 1-4,6,7 to IOA0-5 from ports 1/2
   - IOB4/5 independent to pin 8 ports 1/2 w/pullup. (Spec says output-only,
     but from schematic could also be used as input.)
