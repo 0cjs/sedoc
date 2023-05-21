@@ -67,6 +67,8 @@ the default to `A:` (or current drive?).
 Disk-only commands:
 - `KILL "<filename>"` deletes (erases) a file.
 - `NAME "<filename>" AS "<filename">"` renames a file.
+- `CALL CHDRV("<letter>")`. Change default drive. Not available in
+  Disk BASIC v1; use `POKE &HF247,n` where _n_ is 0=A, 1=B, etc.
 
 ### Memory Management
 
