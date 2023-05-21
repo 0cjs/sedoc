@@ -81,6 +81,7 @@ Two DE-9F connectors, J3 (port 1) and optional J4 (port 2):
 - TTL levels. Pinout [[td1 p.25]] and [`conn/joystick`](../conn/joystick.md).
 - Schematics: [[td1 p.26]] switches only, [[td1 p.28]] paddle circuit.
 - All pins have pullups to Vcc (typically 10 kΩ) except +5 (5) and GND (9).
+  This is in addition to the (unspecified) on-chip pull-ups.
 - AY-3-8910 PSG IOA 0-5 and IOB 0-6 used for interface.
   - Ports are either all pins input or all pins output; they cannot be split.
     - IOA is set to input and has nothing connected usable for ouput.

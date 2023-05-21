@@ -119,6 +119,8 @@ Notes:
 - Higher periods give lower frequencies.
 - A period of 0 actually indicates a period of $1000.
 - R7 disables do not turn off channels; write 0 to R10-R12 amplitude control.
+- GPIO ports have on-chip pull-ups as well as typ. 10 kΩ pull-ups on the
+  MSX motherboard.
 
 Chip References:
 - _MSX2 Technical Manual,_ [Figure 5.2 PSG register structure][2the f5.2]
