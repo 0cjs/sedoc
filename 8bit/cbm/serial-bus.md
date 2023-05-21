@@ -34,7 +34,7 @@ processing for up to 42 μs.
      5       1      5:D̅A̅T̅A̅  1:S̅R̅Q̅I̅N̅
          6              6:R̅E̅S̅E̅T̅
       4     2        4:C̅L̅K̅   2:GND
-         3              3:`A̅T̅N̅`
+         3               3:A̅T̅N̅
 
 [DIN-6 connector][din]. Pins numbered clockwise from 1 o'clock (looking
 into the female jack on the computer), then pin 6 in middle. Devices must
