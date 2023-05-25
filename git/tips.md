@@ -21,6 +21,21 @@ Logging and Graph Exploration
   script for more details.
 
 
+Default Branch Renaming
+-----------------------
+
+After renamed in remote repo:
+
+    br -m master main
+    fetch r
+    br -u r/main main           # -u == --set-upstream
+    rem set-head r -a           # query remote for its default branch
+
+Knowing the remote's default branch (stored in `refs/remotes/<name>/HEAD`)
+is not required, but gives the default branch to use if you specify only
+the name of that remote (e.g., just `origin` instead of `origin/master`).
+
+
 Fixing/Changing Commits and Branches
 ------------------------------------
 
