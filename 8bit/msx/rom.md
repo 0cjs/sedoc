@@ -261,6 +261,16 @@ changing the page mappings) have `DI` prefixing their description.
            096  RDPSG     read data from PSG reg in A, returning in A
            099  STRTMS    checks/starts background tasks for BASIC `PLAY`
            ...
+           0AE  PINLIN    store chars in (HL) until ret (cy=0) or STOP (cy=1)
+           0B1  INLIN     as PINLIN, but AUTFLG ($F6AA) set
+           0B4  QINLIN    print "? " then INLIN
+           0B7  BREAKX    test Ctrl-Stop; C flag=set when pressed
+           0C0  BEEP      generate a beep
+           0C3  CLS       clear the screen
+           0C6  POSIT     move cursor to X=H, Y=L
+           ...
+           0D2  TOTEXT    force screen to text mode
+           ...
            135  CHGSND    set 1-bit sound port A=0 off, A=~0 on
            ...
            159  CALBAS    inter-slot call to BASIC interpreter: IX=call addr
