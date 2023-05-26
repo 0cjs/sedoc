@@ -13,8 +13,13 @@ Technical books:
   (GB, for series AX-100, YIS-503F, CX-5M)
 - \[tdR] [_MSX turbo Rテクニカル・ハンドブック_][tdR] (ja)
 - \[mdp] [_MSX-Datapack_][mdp] (ja), 株式会社アスキー. MSX2+, MSX2, some MSX1.
-  Wiki copy of a large, detailed reference published by ASCII.
+  Large, detailed referenced published by ASCII.
   Possibly the best reference available; includes many peripherals.
+  Wiki copy at above link, original scans:
+  - [Volume 1][mdp-v1]: 1 Hardware. 2 System Software. 3 MSX-DOS.
+    4 VDP (V9938 and V9958).
+  - [Volume 2][mdp-v2]: 5 Slots and Cartridges. 6 Standard Peripherals.
+    7 Optional Peripherals. Appendix BIOS, Work Area, etc.
 - \[2thj] [MSX2テクニカル・ハンドブック][2thj] (ja), アスキー版局, 1986.
 - \[2the] [_MSX2 Technical Handbook_][2the] (en). Trans. of above. Markdown.
 - \[rbr] [_The Revised MSX Red Book_] (en), Avalon Software, 1985.
@@ -200,9 +205,14 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 <!-------------------------------------------------------------------->
 
 <!-- References -->
+[mdp-v1]: https://archive.org/details/MSXDatapackVolume1
+[mdp-v2]: https://archive.org/details/MSXDatapackVolume2
+[mdp-v3]: https://archive.org/details/MSXDatapackVolume31991OCRTabajara
+[mdp]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack
 [mw]: https://msx.org/wiki
 [wp-en]: https://en.wikipedia.org/wiki/MSX
 [wp-ja]: https://ja.wikipedia.org/wiki/Msx
+
 
 <!-- Technical books -->
 [2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
