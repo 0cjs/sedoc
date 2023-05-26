@@ -260,7 +260,12 @@ changing the page mappings) have `DI` prefixing their description.
            093  WRTPSG    write data in E to PSG reg in A
            096  RDPSG     read data from PSG reg in A, returning in A
            099  STRTMS    checks/starts background tasks for BASIC `PLAY`
-           ...
+           09C  CHSNS     test KB buf status: Z=1: empty, Z=0: has keystrokes
+           09F  CHGET     ♠A waits for input of 1 char
+           0A2  CHPUT     ♠A display character
+           0A5  LPTOUT    ♠A send char to printer; cy=1 on fail
+           0A8  LPTSTT    test printer status: ready: A=255 !Z, not: A=0,Z
+           0AB  CNVCHR    ♠A char code → graphic header (??? $01 prefix)
            0AE  PINLIN    store chars in (HL) until ret (cy=0) or STOP (cy=1)
            0B1  INLIN     as PINLIN, but AUTFLG ($F6AA) set
            0B4  QINLIN    print "? " then INLIN
