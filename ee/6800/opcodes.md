@@ -4,7 +4,8 @@
 6800 Opcode Quickref
 ====================
 
-This is a quick reference for hand-assembly.
+This is a quick reference for hand-assembly. The data sheets contain
+summaries of cycle-by-cycle operation for the [6800] and [6802].
 
     JMP   JMPx  BRA      JSR   JSRx  BSR   RTS      SWI    WAI   RTI     NOP
      7E₉   6E₈   20₄      BD₉   AD₈   8D₈   39₅      3F₁₂   3E₉   3B₁₀    01₂
@@ -128,4 +129,6 @@ the chart above.
 
 
 <!-------------------------------------------------------------------->
+[6800]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n146/mode/1up
+[6802]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n210/mode/1up
 [tp-is68]: https://www.tutorialspoint.com/instruction-set-of-6800
