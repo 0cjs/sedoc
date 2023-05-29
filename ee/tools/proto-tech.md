@@ -14,8 +14,28 @@ hookups, strip 10 mm, cut to length at far end, and slide insulation
 down slightly.
 
 
-Breadboards vs. Dual-Row Pin Headers
-------------------------------------
+Solderless Breadboards
+----------------------
+
+Common sizes:
+- 170 point (tiny); 400 (half-length w/power rails);
+  830 (full-length w/power rails).
+
+Protosupplies.com [Guide To Solderless Breadboards][probb] is a long and
+good article. Some points:
+- Contacts are steel/nickle-plated steel or phosphor bronze/copper/similar.
+  - Steel is cheapier, higher resistance esp. on long power lines, loses
+    spring tension quicker.
+- Contact physical design:
+  - Flat: Cheapest. Opening looks like two parallel lines when viewed from
+    top. Minimal surface are when used w/round lead. Least strength against
+    losing tension. Avoid when possible.
+  - Embossed Throat: slight embossment/oval dint at opening to help guide
+    lead, reduce loss of spring.
+  - Fully Embossed: embossment extends down entire length of contact.
+    Better strength against permanent bending etc.
+
+### vs. Dual Row Pin Headers
 
 [Topic on EEVblog forum.][msg2860602]
 
@@ -29,7 +49,6 @@ Breadboards vs. Dual-Row Pin Headers
   board for breadboards. These usually have a shrouded header 0.6" DIP
   connection to the breadboard.
 
-[msg2860602]: https://www.eevblog.com/forum/projects/breadboards-vs-dual-row-pin-headers-(dupont-berg)/msg2860602/
 
 
 Wire Wrap Materials
@@ -200,7 +219,15 @@ Fujitsu FM-7 I/O card protoboard is approx 25×43 ?×? cm.:
 
 
 <!-------------------------------------------------------------------->
+<!-- Solderless Breadboards -->
+[probb]: https://protosupplies.com/guide-to-solderless-breadboards/
+[msg2860602]: https://www.eevblog.com/forum/projects/breadboards-vs-dual-row-pin-headers-(dupont-berg)/msg2860602/
+
+<!-- Wire Wrap -->
 [THSgg]: https://groups.google.com/group/tokyohackerspace>
-[p74792]: http://forum.6502.org/viewtopic.php?f=4&t=1457#p74792
 [wmco]: http://wilsonminesco.com/6502primer/WireWrap.html
 [yt IXvEDM-m9CE]: https://www.youtube.com/watch?v=IXvEDM-m9CE
+
+<!-- Protoboards -->
+[p74792]: http://forum.6502.org/viewtopic.php?f=4&t=1457#p74792
+
