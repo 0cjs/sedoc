@@ -37,6 +37,7 @@ socket connects to the receiver's "down/secondary/2" socket.
 CVBS and RGB are 0.7 Vp-p, 75Ω.
 Audio is 0.40 V RMS, >47 kΩ input, >10 kΩ output.
 
+Chart notes:
 - Some of the following has been checked on my [FM77AV][fm77]; that file
   notes what has and hasn't.
 - `†` marks in/OUT from Wikipedia that appears to be wrong.
@@ -45,6 +46,8 @@ Audio is 0.40 V RMS, >47 kΩ input, >10 kΩ output.
   - `•`: direct connect; ground
   - `↔`: direct connect; direction chosen by negotiation
   - `S→D`: direct connect; source → display signal ("up" in SCART terminology)
+
+Chart:
 
                           ______________________________
                           \ 20 18 16 14 12 10 8 6 4 2  |
