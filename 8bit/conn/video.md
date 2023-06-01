@@ -28,38 +28,60 @@ It's used by the [FM77AV][fm77] series.
 SCART and JP-21 do not use straight-through cables; for signals marked
 "input" or "output," these are always the signals on the device connector
 and the cable is expected to swap them: i.e., the computer sends audio on
-pin 2 which is connected to the monitor's receive pin 1. The swapped pins
-on SCART are 1/2 (audioR), 3/6 (audioL), 17/18, 19/20 (CVBS/Y). For
-non-swapped signals (S-video and RGB), the signal source "up/primary/1"
+pin 2 which is connected to the monitor's receive pin 1. Swapped pins are:
+- SCART: 1/2 (audioR), 3/6 (audioL), 17/18, 19/20 (CVBS/Y).
+
+For non-swapped signals (S-video and RGB), the signal source "up/primary/1"
 socket connects to the receiver's "down/secondary/2" socket.
 
-- Signals below are referenced from the computer to the display, i.e.,
-  "output" is a signal sent by the computer and recieved by the display.
+CVBS and RGB are 0.7 Vp-p, 75Ω.
+Audio is 0.40 V RMS, >47 kΩ input, >10 kΩ output.
+
 - Some of the following has been checked on my [FM77AV][fm77]; that file
   notes what has and hasn't.
+- `†` marks in/OUT from Wikipedia that appears to be wrong.
+- `Dir` below is:
+  - `in`/`OUT`: crossover (input on source rec'd from TV tuner)
+  - `•`: direct connect; ground
+  - `↔`: direct connect; direction chosen by negotiation
+  - `S→D`: direct connect; source → display signal ("up" in SCART terminology)
 
                           ______________________________
                           \ 20 18 16 14 12 10 8 6 4 2  |
       chassis ground "21" →\ 19 17 15 13 11  9 7 5 3 1 |
-
-      Clr Pins       Dir  Description
-
-           1,5       in   audio left,right
-      WR   2,6       OUT  audio left,right
-           3         in   audio GND
-           4         OUT  audio GND
-           7         in   composite GND
-           8         OUT  composite GND
-           9         in   composite video
-      Y   10         OUT  composite video (sync only on FM77)
-      W   11         ???  AV control signal
-      W   12          ↔   Ym (RGB mask): low <0.4V, high >1V, 75Ω
-                          (switches RGB to half brightness for video overlay)
-          14          ↔   Ym,YS GND
-      W   16          ↔   Ys (RGB switch). RGB direction? FM77 +3.4 V out.
-          13,17,18    ↔   R,G,B ground
-      RGB 15,19,20    ↔   R,G,B I/O; 0.7 Vp-p, 75Ω (Ys low=output, high=input)
-          21          ↔   shield
+      ─────────────────────────────────────────────────────────────────────────
+        JP-21 SCART
+      Clr Pin Pin  Dir  Description
+      ─────────────────────────────────────────────────────────────────────────
+           1   6   in   audio left
+      WR   2   3   OUT  audio left
+           3   4    •   audio in  GND
+           4   4    •   audio OUT GND
+           5   2   in   audio right
+      WR   6   1   OUT  audio right
+           7  17    •   composite in  GND
+           8  17    •   composite OUT GND
+           9  19   in   composite video
+      Y   10  20   OUT  composite video (sync only on FM77)
+      W   11   8   S→D  JP-21 AV control signal (TTL high=AV active)
+                        (SCART Wide SW: 0-2V=off, 5-8V=on/16:9, 9.5-12V=on/4:3)
+      W   12       S→D  Ym (RGB mask): low <0.4V, high >1V, 75Ω
+                        (switches RGB to half brightness for video overlay)
+          13  13    •   R ground
+          14  18    •   JP-21 Ym,Ys GND (SCART blanking/RGB/pin-16 GND)
+      R   15  15    ↔   JP-21 R I/O (SCART R/Pr out; S-Video C out)
+      W   16  16   S→D  JP-21 Ys (RGB dir), ≤.4V=out†, ≥1V=in†. (FM77 +3.4V out)
+                        SCART: Blanking signal/RGB sel: ≤0.4V=CVBS, 1-3V=RGB
+          17   9    •   G ground
+          18   5    •   B ground
+      G   19  11    ↔   JP-21 G I/O (SCART G/Y out)
+      B   20   7    ↔   JP-21 B I/O (SCART B/Pb out; S-Video C in)
+          21  21    •   shield (always connect source before display)
+      ─────────────────────────────────────────────────────────────────────────
+              10    ?   SCART: Clock / Data; Control bus (AV.link)
+              12    ?   Reserved / Data 1
+              14    •   Data signal ground
+      ─────────────────────────────────────────────────────────────────────────
 
 #### Game Console SCART Cables
 
@@ -106,12 +128,12 @@ The wires are aluminum and cannot be soldered; they must be crimped.
 
 #### References
 
-- ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and
-  SCART pinouts.
+- ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and SCART pinouts.
 - [OLD Hard アナログ２１ピン][oh-a21]
 - [FM-77AV用TOWNSモニター接続アダプター][fmavtw]. Cable to connect
   FM77 output to FM TOWNS monitor; [FM Towns Video pinout][towns] may
   be of help decoding the interface.
+- MSX.org Wiki [RGB21 Connector][msxorg]
 
 
 DIN (CVBS, RGB)
@@ -396,6 +418,7 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 [jp-21]: https://en.wikipedia.org/wiki/SCART#JP-21
 [lgreenf]: http://www.nausicaa.net/~lgreenf/fm7page.htm
 [minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
+[msxorg]: https://www.msx.org/wiki/RGB21_connector
 [msxw-drgb]: https://www.msx.org/wiki/Digital_RGB_connector
 [oh-a21]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/a21.htm
 [oh-d8]: http://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
