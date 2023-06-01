@@ -34,6 +34,11 @@ Five-pin, eight-pin 270° and eight-pin 268°, looking into female jack:
         5     4         4     2          5     4          5     4
            2               3                2                2
 
+There is also a "DIN-6/5" (my name for it) or "domino DIN" which appears to
+be a DIN-6 with pin 3 removed (or a DIN-5b with 3 replaced by 6). I can't
+find a standard mentioning this, but it's used for the BBC Micro serial
+jack.
+
 References:
 - [Hosiden DIN Connectors][hosiden-wb] ([original][hosiden]) (PDF): Catalog
   with pin numbering and references to standards.
