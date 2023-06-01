@@ -265,7 +265,7 @@ changing the page mappings) have `DI` prefixing their description.
            0A2  CHPUT     ♠A display character
            0A5  LPTOUT    ♠A send char to printer; cy=1 on fail
            0A8  LPTSTT    test printer status: ready: A=255 !Z, not: A=0,Z
-           0AB  CNVCHR    ♠A char code → graphic header (??? $01 prefix)
+           0AB  CNVCHR    ♠A char code graphic check/graphic header convert
            0AE  PINLIN    store chars in (HL) until ret (cy=0) or STOP (cy=1)
            0B1  INLIN     as PINLIN, but AUTFLG ($F6AA) set
            0B4  QINLIN    print "? " then INLIN
@@ -322,7 +322,9 @@ changing the page mappings) have `DI` prefixing their description.
   `QUETAB`, $F971 `QUEBAK`, $F975` VOICAQ`, $F9F5` VOICBQ`, $FA75` VOICAQ`,
   $FB3E `QUEUEN`). Beyond this, documentation exactly on what this does is
   very hard to find.
-
+- $0AB `CNVCHR`. Related to "Graphic Header Byte" ($01 $xx) encoding. It's
+  not clear if `CHRGET` is returning this, or if this is converting to GHB.
+  This needs to be checked.
 
 
 <!-------------------------------------------------------------------->
