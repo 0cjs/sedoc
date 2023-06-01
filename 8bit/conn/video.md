@@ -73,7 +73,7 @@ Chart:
           13  13    •   R ground
           14  18    •   JP-21 Ym,Ys GND (SCART blanking/RGB/pin-16 GND)
       R   15  15    ↔   JP-21 R I/O (SCART R/Pr out; S-Video C out)
-      W   16  16   S→D  JP-21 Ys (RGB dir), ≤.4V=out†, ≥1V=in†. (FM77 +3.4V out)
+      W   16  16   S→D  JP-21 Ys; ja WP says same as SCART. (FM77 +3.4V)
                         SCART: Blanking signal/RGB sel: ≤0.4V=CVBS, 1-3V=RGB
           17   9    •   G ground
           18   5    •   B ground
@@ -131,7 +131,16 @@ The wires are aluminum and cannot be soldered; they must be crimped.
 
 #### References
 
+- From [JEITA規格検索結果][jeita] (scroll down; search doesn't work):
+  - [EIAJ CPR-1902 p.6][], Describes clearly television side and source
+    side with separate tables, but refers to JIS C 5591 and EIAJ CPR-1201
+    (no longer available) for electrical details.
 - ja Wikipedia: [RGB21ピン]. Includes a table with both JP-21 and SCART pinouts.
+- en Wikipedia: [Japanese RGB 21-pin connector][wp-en]
+  - Gives JP21 pintout table from TV point of view ("in" = source→display)
+  - Claims that the RGB signal is bidirectional and that Ys determines
+    direction: ≤.4V=out, ≥1-3V=in. This can't be verified from any other
+    source.
 - [OLD Hard アナログ２１ピン][oh-a21]
 - [FM-77AV用TOWNSモニター接続アダプター][fmavtw]. Cable to connect
   FM77 output to FM TOWNS monitor; [FM Towns Video pinout][towns] may
@@ -414,10 +423,12 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 [din]: ./din.md
 [fm77]: ../fm7/fm77.md
 
+[EIAJ CPR-1902 p.6]: https://www.jeita.or.jp/japanese/standard/book/CPR-1902/#target/page_no=8
 [RGB21ピン]: https://ja.wikipedia.org/wiki/RGB21ピン
 [SCART]: https://en.wikipedia.org/wiki/SCART
 [eviltim]: http://members.optusnet.com.au/eviltim/gamescart/gamescart.htm
 [fmavtw]: http://dempa.jp/rgb/drug/fmavtw01.html
+[jeita]: https://www.jeita.or.jp/cgi-bin/standard/search.cgi
 [jp-21]: https://en.wikipedia.org/wiki/SCART#JP-21
 [lgreenf]: http://www.nausicaa.net/~lgreenf/fm7page.htm
 [minicon1300]: https://www.datasheetarchive.com/pdf/download.php?id=c2e30b8b00214f56db8359b4d5ca3227d3034f&type=M&term=S1308SB
@@ -428,6 +439,7 @@ into a GND, CVBS/csync (pins 2, 1) male header on a board.
 [pru-vga]: https://pinouts.ru/Video/VGA15_pinout.shtml
 [rc 12255]: https://retrocomputing.stackexchange.com/a/12255/7208
 [towns]: http://www.hardwarebook.info/FM_Towns_Video
+[wp-en]: https://en.wikipedia.org/wiki/SCART#Japanese_RGB_21-pin_connector
 
 [hm1300en]: https://www.mouser.jp/datasheet/2/185/Hirose%201300%20Series-1168152.pdf
 [hm1300ja]: https://media.digikey.com/pdf/Data%20Sheets/Hirose%20PDFs/Hirose%20JPN/1300_jp.pdf
