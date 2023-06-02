@@ -30,17 +30,17 @@ reducing power usage and increasing accuracy. [eese 486167]
 Reset circuit at [Bench-1 QRG], and several more at WMC [6502 Primer:
 Reset Circuits][wmc-reset].
 
-The [Maxim DS1813] reset generator (~¥120/ea on Aliexpress) is a 5 V
-3-pin part that will pull down reset after a button push or voltage
-out-of-tolerance condition and after release/restoration will hold
-reset for 150 ms. AliExpress: ¥300+ in TO92, ~¥130 in SMD.
-
-There's also the Microchip [MCP130]. It also has an open drain output,
-but it doesn't appear to trigger a full-length reset pulse when the
-output is pulled down. AliExpress: <¥100 in TO92; ~¥25 in SMD.
-
-The Microchip [MCP100] is another option that's very cheap and has
-a [circuit tested with the 6502][f65 7619].
+There are also various devices designed to do proper resets:
+- __[Maxim DS1813]__ reset generator: is a 5 V 3-pin part that will pull
+  down reset after a button push or voltage out-of-tolerance condition and
+  after release/restoration will hold reset for 150 ms. AliExpress: ¥300+
+  in TO92, ~¥130 in SMD, sometimes cheaper, but these days often more
+  expensive than MCP100 below.
+- __Microchip [MCP100]:__ very cheap, works properly with the 6502
+  ([schematic][f65 7619]).
+- __Microchip [MCP130]:__ also has an open drain output, but it doesn't
+  appear to trigger a full-length reset pulse when the output is pulled
+  down. AliExpress: <¥100 in TO92; ~¥25 in SMD.
 
 
 Clock Circuits
