@@ -39,6 +39,9 @@ There's also the Microchip [MCP130]. It also has an open drain output,
 but it doesn't appear to trigger a full-length reset pulse when the
 output is pulled down. AliExpress: <¥100 in TO92; ~¥25 in SMD.
 
+The Microchip [MCP100] is another option that's very cheap and has
+a [circuit tested with the 6502][f65 7619].
+
 
 Clock Circuits
 --------------
@@ -105,6 +108,8 @@ Minimal chip count design for 6502/[6809][searle-6809]/Z-80.
 [Bench-1 QRG]: http://wilsonminesco.com/BenchCPU/B1QRG/
 [Maxim DS1813]: https://datasheets.maximintegrated.com/en/ds/DS1813.pdf
 [eese 486167]: https://electronics.stackexchange.com/a/486167/15390
+[f65 7619]: http://forum.6502.org/viewtopic.php?f=4&t=7619
+[mcp100]: https://www.microchip.com/en-us/product/MCP100
 [mcp130]: https://www.microchip.com/wwwproducts/en/MCP130
 [stretch]: http://forum.6502.org/viewtopic.php?f=4&t=5504#p66907
 [wmc-reset]: http://wilsonminesco.com/6502primer/RSTreqs.html
