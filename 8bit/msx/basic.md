@@ -81,6 +81,8 @@ Disk-only commands:
       - MSX2 1drv Sony HB-F1XD:          $DE78, $E48E, $F380
       - MSX1 1drv National CF-3300:      $DE77, $E48D, $F380
       - MSX2 1drv Panasonic FS-A1F/A1FM: $DE67, $E47D, $F380
+  - See also [How to call MSX-BASIC CLEAR command in Assembly][clear-asm],
+    and perhaps [[clear-asm2]].
 - `VARPTR(v)`: Return pointer to variable data for variable _v._
   See [§Variables in `bastech.md`](bastech.md#variables) for more information.
 
@@ -251,6 +253,8 @@ References
 [Kanji BASIC]: https://www.msx.org/wiki/Kanji_BASIC
 [MSX-BASIC]: https://www.msx.org/wiki/Category:MSX-BASIC
 [SCREEN]: https://www.msx.org/wiki/SCREEN
+[clear-asm2]: https://msx.org/forum/msx-talk/development/musica-disassembly-and-adapting-it-for-pure-asm
+[clear-asm]: https://www.msx.org/forum/msx-talk/development/how-to-call-msx-basic-clear-command-in-assembly
 [extn]: https://www.msx.org/wiki/Category:MSX-BASIC_Extensions
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
