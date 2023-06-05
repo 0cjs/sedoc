@@ -169,6 +169,7 @@ Tips and Tricks
 - `BRK` [increments PC by 2][brk-pc2] before pushing it; append filler
   byte if continuing after unless assembler does this automatically.
   Sets I flag, only CMOS versions also clear D flag.
+- `SBC`/`CMP` sets carrry if result ≥ 0 (opposite of 6800)
 
 #### Software
 
