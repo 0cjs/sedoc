@@ -24,6 +24,7 @@ SKIP 1: Left/Right
         制御        せいぎょ        control, management
      9  信号        しんごう        signal
     10  消去        しょうきょ      clear (memory, storage)
+        接点        せってん        contact (point, electrical, agreement)
         倍密度      ばいみつど      double density
         倍密度倍    ばいみつどばい  double-density double ???
         記号        きごう          symbol, code, sign, notation
