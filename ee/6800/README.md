@@ -11,7 +11,8 @@ This covers the Motorola 6800 series processors ([timeline]):
   [progcard](progcard)
 
 - __6802__, __6808__ (1977-03): Internal clock. '02 has 128 bytes of RAM
-  and can preserve 32 bytes of it with standby power.
+  (because the 6846 has no RAM) and can preserve 32 bytes of it with
+  standby power.
 - __6801__, __6803__ (1978-08): (Used by GMC.) [asm](asm.md) for details.
   - Architecture: D register; PHX, multiply and other
   - Hardware: 128 B RAM, 16-bit timer, UART, up to 13 PIA lines.
@@ -33,6 +34,21 @@ This does not cover:
   version.
 - __6811__ (1984): Greatly extended 6801. Available in modern versions.
 - __6809__ (1979-07): Entirely incompatible.
+
+### Peripherals
+
+- __6820, 6821:__ [Peripheral Interface Adapter (PIA)](../mc6820.md).
+- __[6845]__ CRT Controller (CRTC). Interface beteween MPU/memory and
+  raster-scan waveform generator. Very flexible.
+- __[6846]__ ROM – I/O – Timer
+- __[6847]__ Video Display Generator (VDG). Used in CoCo, etc.
+- __[6850]__ Asynchronous Communications Interface Adapter (ACIA).
+- __[6852]__ Synchronous Serial Data Adapter (SSDA)
+- __[6854]__ Advanced Data-Link Controller (ADLC). Supports ADCCP (Advanced
+  Data Comunication Control Procedure), HDLC, SDLC. Used for Acorn's
+  Econet. Includes features such as zero insertion/deletion and abort/idle
+  detection/transmition.
+
 
 References
 ----------
@@ -66,6 +82,12 @@ There's a [very large bibliography][og bib] at orphanedgames.com.
 
 <!-------------------------------------------------------------------->
 [timeline]: https://retrocomputing.stackexchange.com/a/11933/7208
+[6845]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n525/mode/1up
+[6846]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n548/mode/1up
+[6847]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n568/mode/1up
+[6850]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n595/mode/1up
+[6852]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n604/mode/1up
+[6854]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n618/mode/1up
 
 <!-- References -->
 [PRM]: https://archive.org/stream/bitsavers_motorola68rammingReferenceManualM68PRMDNov76_6944968#page/n0/mode/1up
