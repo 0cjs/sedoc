@@ -121,10 +121,10 @@ Contacts on board edge, pin 1 furthest from centre of board.
 
 
 <!-------------------------------------------------------------------->
-<-- ST7066 -->
+<!-- ST7066 -->
 [ST7066]: https://www.sparkfun.com/datasheets/LCD/st7066.pdf
 [flcd-st7066]: https://focuslcds.com/character-lcd-controller-compatibility-st7066/
 [HD44780U]: https://www.sparkfun.com/datasheets/LCD/HD44780.pdf
 
-<-- ST7066 Displays -->
+<!-- ST7066 Displays -->
 [vishay]: https://www.vishay.com/docs/37314/lcd020n004l.pdf
