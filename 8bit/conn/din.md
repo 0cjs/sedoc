@@ -59,7 +59,7 @@ CVBS is baseband composite video, usually color.
     Blk  Blk   2   GND        GND
     Yel  Yel   3   GND/cmt3   CVBS; csync, clock; AVC-TTL, DRGB C.CONT/I
     Red  Wht   4   rec/mic    hsync (trad. gray); GND
-    Grn  Gry   5   play/ear   vsync (trad. black); GND
+    Grn  Gry   5   play/ear   vsync (trad. black); LPEN (NEC); GND
          Red   6   rem+       DRGB red
          Grn   7   rem-       DRGB green
          Blu   8   GND        DRGB blue
@@ -79,7 +79,7 @@ use four or five female connectors:
 
 Notes:
 - [Old Hard DIN-8][oh d8] gives many JP pinouts;
-  DIN-5 B/W output has 2=GND 3=CVBS on all models
+  DIN-5 B/W output (at bottom of page) has 2=GND 3=CVBS on all models
 - C8 colors on any breakouts; C5 colours may be used on some DIN-5 breakouts
 - DIN-5 breakout can be used for CMT if remote relay not required.
 - Pin 1 varies widely between machines; take care for +12V!
