@@ -15,6 +15,7 @@ Contents:
 - [Reset Circuits](#reset-circuits)
 - [Clock Circuits](#clock-circuits)
 - [Single-Step](#single-step)
+- [Open-collector IRQs](#open-collector-irqs)
 - [SBC Designs](#sbc-designs)
 
 
@@ -101,6 +102,25 @@ comparators).
 <a href="https://web.archive.org/web/20070813011640if_/http://www.baltissen.org/images/debugger.gif"><img src="https://web.archive.org/web/20070813011640if_/http://www.baltissen.org/images/debugger.gif" height=100/></a>
 
 
+Open-collector IRQs
+-------------------
+
+You can interface an active-high always-driven IRQ line with the standard
+Motorola/MOS open-collector shared IRQ line using a single MOSFET (BS170
+suggested). Input from driven line to gate and a 3K3 to ground. Source to
+ground, drain to open-collector IRQ bus. ([floobydust][f65 100824])
+
+![mosfet-irq](sch/mosfet-irq.png)
+
+Vgs, voltage between gate and source, determines MOSFET switching.¹ On
+N-channel [BS170][] Vgs < 0.8 is off, Vgs > 3 is on, giving max 5 Ω
+resistance between source and drain at 10 V (max 60 Vds, 500 mA).
+[2N7000][BS170] is pretty much the same except max 200 mA.
+
+(¹ The voltage between the gate and the body of the substrate is the actual
+mechanism here; the source is tied to the body to ensure no body bias.)
+
+
 SBC Designs
 -----------
 
@@ -129,3 +149,7 @@ Minimal chip count design for 6502/[6809][searle-6809]/Z-80.
 
 <!-- SBC Designs -->
 [searle-6809]: http://searle.x10host.com/6809/Simple6809.html
+
+<!-- Open-collector IRQs -->
+[BS170]: https://www.vishay.com/docs/70226/70226.pdf
+[f65 100824]: http://forum.6502.org/viewtopic.php?f=12&t=7622#p100824
