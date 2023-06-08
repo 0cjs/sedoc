@@ -11,6 +11,12 @@ Many handy circuits for reset, clock, address decoding, interfacing,
 I/O, etc. can be found in the Wilson Mines Co. [Bench-1 workbench
 computer quick reference guide][Bench-1 QRG].
 
+Contents:
+- [Reset Circuits](#reset-circuits)
+- [Clock Circuits](#clock-circuits)
+- [Single-Step](#single-step)
+- [SBC Designs](#sbc-designs)
+
 
 Reset Circuits
 --------------
