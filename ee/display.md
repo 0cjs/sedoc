@@ -119,6 +119,14 @@ Contacts on board edge, pin 1 furthest from centre of board.
 [Datasheet.][vishay] 20×4 LCD (5×8 cells) w/backlight.
 
 
+ST7565 Controller
+-----------------
+
+[ST7565] a.k.a. UC1701 etc.
+
+Bitmap, 65×132 (typ. 128×64 display module). Serial and 8-bit MPU
+interfaces.
+
 
 <!-------------------------------------------------------------------->
 <!-- ST7066 -->
@@ -128,3 +136,6 @@ Contacts on board edge, pin 1 furthest from centre of board.
 
 <!-- ST7066 Displays -->
 [vishay]: https://www.vishay.com/docs/37314/lcd020n004l.pdf
+
+<!-- ST7565 -->
+[ST7565]: https://pdf1.alldatasheet.com/datasheet-pdf/view/326240/SITRONIX/ST7565/+225_53VPhySPPlbeZa.EGG+/datasheet.pdf
