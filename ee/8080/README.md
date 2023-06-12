@@ -30,10 +30,10 @@ downloaded from [`/dunfield/r`].
 
 ### Registers
 
-- `A`, status register (flags); together `PSW`.
+- `F`, `A`, status register (flags), accumulator; together `PSW`.
 - `B`, `C`; together `B` (`BC`).
 - `D`, `E`; together `D` (`DE`).
-- `H`, `L`; `M` in `MOV` instructions is pointed-to memory loc (`HL`).
+- `H`, `L`; together `H` (`HL`); indirect `M` (`(HL)`).
 - `SP` stack and `PC`; never directly referenced.
 
 Z80 adds:
