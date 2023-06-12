@@ -1,13 +1,13 @@
 Logic Gates
 -----------
 
-The [binary truth table][binop].
+The [binary truth table][binop]. `in` = number of effective inputs.
 
     0 0 1 1      A
     0 1 0 1  in  B
     -----------------------------------
     0 0 0 0   ₀  FALSE    0                 A∙/A, contradiction
-    1 1 1 1   ₀  TRUE     1                 A+/A
+    1 1 1 1   ₀  TRUE     1                 A+/A, tautology
     0 0 1 1   ₁  A        A                 projection
     1 1 0 0   ₁  NOTA     /A                negation
     0 1 0 1   ₁  B        B                 projection
@@ -23,10 +23,36 @@ The [binary truth table][binop].
     1 0 1 1               A+/B
     1 1 0 1               /A+B              A⇒B, implication
 
+For a more detailed version, see [Logic Functions](sch/Logic Functions.png),
+noting that the opcodes are reversed from above.
+
+### Multiplexer as Logic Unit
+
+A logic unit capable of all operations can be constructed from a
+multiplexer ["turned sideways," where the two inputs A and B are connected
+to the select lines, and the "opcode" from the left-hand columns of the
+table above is placed on the 4 data inputs. The output is the result. (See
+["Multiplexers: the tactical Nuke of Logic Design"][nuke], which also shows
+how this technique can be used like an ROM lookup table to implement a set
+of gates.)
+
+This can also be done with three SPDT switches or relays: A input controls
+a pair of F₀/F₁ and F₂/F₃ switches, those outputs feed an F₀₁/F₂₃ switch
+controled by B.
+
+    F₀ ──┤A̅     │
+    F₁ ──┤A  F₀₁├────┤B̅    │
+                     │     │
+    F₂ ──┤A̅  F₂₃├────┤B  Fₙ├─── Y
+    F₃ ──┤A     │
+
+### Reconfigurable Logic Unit
+
 The [NL7SZ57] is a "reconfigurable logic gate" with three inputs that, when
 connected to two outputs in various ways, can implement any one of several
 of the operations above.
 <img src='sch/NL7SZ57-fig.02-function-diagram.png'/>
+
 
 Adders
 ------
@@ -82,8 +108,9 @@ board (with a couple of 100 nF caps):
 
 
 <!-------------------------------------------------------------------->
-[binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
 [NL7SZ57]: https://www.onsemi.com/pdf/datasheet/nl7sz57-d.pdf
+[binop]: https://en.wikipedia.org/wiki/Truth_table#Binary_operations
+[nuke]: http://6502.org/users/dieter/a1/a1_4.htm
 
 [74181]: https://en.wikipedia.org/wiki/74181
 [74x181]: http://www.ti.com/lit/gpn/sn54ls181

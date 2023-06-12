@@ -1,6 +1,8 @@
 Digital Logic Levels and Families
 =================================
 
+(See [`gate`](gate.md) for logic gate theory.)
+
 Families can refer to both general TTL vs. CMOS and specific (usually
 [7400-series](7400.md) families: S-TTL, LS-TTL, ALS-TTL, HC-CMOS, etc.
 
