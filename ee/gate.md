@@ -51,6 +51,7 @@ controled by B.
 The [NL7SZ57] is a "reconfigurable logic gate" with three inputs that, when
 connected to two outputs in various ways, can implement any one of several
 of the operations above.
+
 <img src='sch/NL7SZ57-fig.02-function-diagram.png'/>
 
 
