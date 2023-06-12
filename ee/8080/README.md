@@ -6,7 +6,6 @@ Contents:
 - 8080 Architecture
 - Support Chips
 
-
 Introduction
 ------------
 
@@ -53,16 +52,17 @@ Z80 adds:
 
 Summary: status register bit, 8080 name, Z80 name (if different) and function.
 
-    7  S       sign (bit 7 of result)
-    6  Z       zero (all bits of result = 0)
-    5  X       unused
-    4  AC H    auxiliary carry/half carry (carry from bit 3)
-    3  X       unused
-    2  P  P/V  parity/overflow
-    1  X  N    8080: unused; Z80: add/subtract (most recent operation)
-    0  C       carry/borrow (0=no borrow, 1=borrow)
+    bit '80 Z80   descr
+     7   S        sign (bit 7 of result)
+     6   Z        zero (all bits of result = 0)
+     5   -        unused
+     4  AC   H    auxiliary carry/half carry (carry from bit 3)
+     3   -        unused
+     2   P  P/V   parity/overflow
+     1   -   N    8080: unused; Z80: add/subtract (most recent operation)
+     0   C        carry/borrow: 0=no borrow, 1=borrow (sometimes "CY")
 
-`AC` (`H`) and (`N`) not directly testable; used by `DAA`. decimal adjust.
+`AC` (`H`) and `N` not directly testable; used by `DAA`. decimal adjust.
 (Only Z80 has `N` and adjusts properly after a subtraction.)
 
 On the 8080/8085, `P` is always set to the parity of the result (odd/even)
@@ -79,9 +79,9 @@ registers.
 
 Z80 has NMI (8080 doesn't), restarting at $0066. The Z80 calls the standard
 Intel interrupt scheme _mode 0_, and adds _mode 1_, always restarting at
-$0038 and _mode 2_, where the device supplies 8-bits of low address (LSbit
-must be 0), 8 bits of high address is supplied by `I` register, and the
-interrupt vector is looked up from that address.
+$0038 (`RST7`) and _mode 2_, where the device supplies 8-bits of low
+address (LSbit must be 0), 8 bits of high address is supplied by `I`
+register, and the interrupt vector is looked up from that address.
 
 ### Instruction Timings
 
@@ -163,16 +163,16 @@ signals.
   - Input port generating interrupt from input strobe.
   - Latching output port w/handshake line.
   - Can be used to gate `RST` instruction on to bus during interrupt.
+- __8251 UART:__ ([P.203 p.5-135 datasheet][csum-8251] )
 - __8255 PPI:__ ([P.181 p.5-113 datasheet][csum-8255]) Ports A, B 8-bit
   input or output. Port C split 2× 4 bits each input or output. (Or as they
   put it, two groups of 12: group A ports A,C; group B ports B,C.)
-- __8251 UART:__ ([P.203 p.5-135 datasheet][csum-8251] )
 
 
 
 <!-------------------------------------------------------------------->
 [`/dunfield/r`]: http://www.classiccmp.org/dunfield/r/
-[dunfield]: http://www.classiccmp.org/dunfield/
 [csum-5]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n58/mode/1up?view=theater
-[csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
 [csum-8251]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n202/mode/1up?view=theater
+[csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
+[dunfield]: http://www.classiccmp.org/dunfield/
