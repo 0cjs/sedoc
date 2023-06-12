@@ -83,6 +83,30 @@ $0038 (`RST7`) and _mode 2_, where the device supplies 8-bits of low
 address (LSbit must be 0), 8 bits of high address is supplied by `I`
 register, and the interrupt vector is looked up from that address.
 
+### Instructions
+
+New 8085 instructions for serial bit and interrupts:
+- `RIM`:
+  - b7:   serial I/O data bit, if any
+  - b6-4: pending interrupts: 1=pending
+  - b3:   interrupt enable flag: 1=enabled
+  - b2-0: interrupt masks: 1=masked
+- `SIM`:
+  - b7:   serial output data, used only if b6=1
+  - b6:   0=ignore b7; 1=send b7 to serial output data latch
+  - b5:   ignored
+  - b4:   1=RST7.5 flip flop is reset off
+  - b3:   1=set mask, 0=b2-0 ignored
+  - b2-0: interrupt masks 7.5, 6.5, 5.5: 1=masked 0=available
+
+New Z80 instructions:
+- `ex (sp),ix`. `ex af,af'`. `eex`.
+- Relative jumps `jr a8`, with `z`, `nz`, `c`, `nc` conditions available.
+- `djnz`:
+- `ldir`: (HL) → (DE), HL++, DE++; BC--; repeat unless BC=0. [PM 184]
+  - `ED B0`. BC≠0 21 (4,4,3,5,5), BC=0 16 (4,4,3,5)
+
+
 ### Instruction Timings
 
 Here we use Z80 terminology. Clock cycles are _T cycles_; instructions use

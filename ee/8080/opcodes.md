@@ -89,5 +89,7 @@ Table:
 
     Z80 prefix CB: bit operations
     Z80 prefix DD: IX register operations
-    Z80 prefix ED: in, out, sbc, ld, neg, retn (NMI), im, rrd, …
+    Z80 prefix ED: in, out, sbc, ld, neg, retn (NMI), im, rrd, ldir, …
     Z80 prefix FD: IY register operations
+
+    XXX Add ldir and other oft-used instructions.
