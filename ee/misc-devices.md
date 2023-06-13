@@ -31,6 +31,14 @@ Switches
   wider pins. 2A 125V AC non-shorting. Dims in mm: 12.7×6.7 OD. Pins 1.3
   wide on 4.7 centers. 2.2 travel. (Ordered to try, but not arrived yet.)
 
+### DIP Switches
+
+The standard way of describing DIP switch settings is 1=ON 0=OFF,
+regardless of the logic on the board (i.e., even if the switch grounds a
+pull-up; that's just considered ON in negative logic). If there's no ON
+marking on switch, the side with the numbers is generally considered the ON
+side.
+
 
 Non-MOS Memory
 --------------
