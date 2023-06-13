@@ -87,9 +87,32 @@ Table:
     Z80:   djnz a8   jr a8   jr nz,a8   jr z,a8   jr nc,a8   jr c,a8   exx
              10        18        20        28        30         38      D9
 
+    Z80 prefix ED (undoc/dup in parens; all not listed are unused):
+
+               ldi cpi ini outi    ldd cpd ind outd
+        ⋅⋅⋅     A0  A1  A2  A3      A8  A9  AA  AB
+        ⋅⋅⋅r    B0  B1  B2  B3      B8  B9  BA  BB
+
+        ld r,a  4F      ld a,r  5F      # refresh register
+
+        neg  44 (54,64,74,4C,5C,6C,7C)  # A ← 0 - A
+        rld  6F                         # rotate (HL),A pair left 1 nybble
+                        bc  de  hl  sp
+        ld  rr,(nn)     4B  5B  6B  7B
+        ld (nn),rr      52  53  54  55
+        adc hl,rr       4A  5A  6A  7A
+        sbc hl,rr       42  43  44  45
+
+                        b   c   d   e   h   l    _   a
+        in r,(c)        40  48  50  58  60  68  70  78
+        out (c),r       41  49  51  59  61  69  71  79
+
+        reti          retn                im0       im1      im2
+         4D            45                  64        65       5E
+               (55,65,75,5D,6D,7D)     (66,4E,6E)   (67)      7E
+
     Z80 prefix CB: bit operations
     Z80 prefix DD: IX register operations
-    Z80 prefix ED: in, out, sbc, ld, neg, retn (NMI), im, rrd, ldir, …
     Z80 prefix FD: IY register operations
 
     XXX Add ldir and other oft-used instructions.
