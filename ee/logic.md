@@ -142,6 +142,25 @@ directly into 5V HCT, ACT or AHCT parts.
 
 ### Level Conversion
 
+- [Electrocredible][lshift-ec] gives unidirectional with an NPN transistor
+  and bidirectional with a MOSFET. (The MOFSET versions apparently use
+  quite a lot of power, though.)
+- [Sparkfun][lshift-sf] has a BSS138 MOSFET schematic.
+- [Big Mess o' Wires][lshift-bmow] shows clamp diodes and how they don't
+  work (particularly due to "soggy" curve around zener voltage). Comments
+  are very useful:
+  - Some interesting discussion of the Sparkfun circuit above.
+  - Series resistor on a CMOS LV input line can do the trick if it has an
+    internal protection diode from input to Vdd, though it assumes that Vdd
+    supply can _sink_ the current that flows this way if it's not all used
+    by other 3.3 V devices. Some FPGA data sheets suggest even 100-200 Ω
+    will be ok.
+  - Zener soft Iz/Vz curve bad for various reasons.
+  - 74AHC125 powered by 3.3 V is fast, cheap and low power. (AHC is
+    5V-tolerant at 3.3 Vcc.)
+- [Code and Life][lshift-cl] gives passive voltage dividers, and buffer
+  parts that can run multi-voltage (4050B, 4014B, 40109B, 74HCT125.
+
 The TI TXB0108 Bidrectional Voltage-level Translator with Auto-direction
 Sensing ([datasheet][TXB0108-ds], [app note][TXB0108-app] handles 1.2-3.6 V
 on A port and 1.65-5.5 V on B port. Pull-ups (such as on SPI bus) can
@@ -274,5 +293,9 @@ Level- and current-related:
 [eetimes04]: https://www.eetimes.com/a-brief-recap-of-popular-logic-standards/
 [f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
 [jarda14]: https://www.jsykora.info/2014/05/logic-voltage-levels/
+[lshift-bmow]: https://www.bigmessowires.com/2011/10/19/the-quest-for-a-simple-level-converter/
+[lshift-cl]: https://codeandlife.com/2012/04/06/level-shifting-101/
+[lshift-ec]: https://electrocredible.com/logic-level-converter-circuit-schematic-working/
+[lshift-sf]: https://www.sparkfun.com/datasheets/BreakoutBoards/Level-Converter-v10.pdf
 [sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
 [sf-12009]: https://www.sparkfun.com/products/12009
