@@ -175,19 +175,34 @@ __CMOS Protection Diodes and Resistors__
 
 Many FPGAs and other CMOS chips have internal protection diodes from input
 pins to Vdd; this will divert current to Vdd when the input voltage exceeds
-Vdd plus one Schottkey diode drop. (Note that the Vdd bus must be able to
-sink this extra current. Most regulators will not sink current if the
-output voltage is higher than the regulator design output, but other
-devices on the Vdd bus consuming current can use the current sourced by the
-CMOS device's Vcc pin in this case, in place of current sourced from the
-regulator.)
+Vdd plus one Schottkey diode drop. (This may be an equivalent clamping
+system in lower-voltage parts.) Note that the Vdd bus must be able to sink
+this extra current. Most regulators will not sink current if the output
+voltage is higher than the regulator design output, but other devices on
+the Vdd bus consuming current can use the current sourced by the CMOS
+device's Vcc pin in this case, in place of current sourced from the
+regulator.
 
 On systems that can handle this, a resistor on the input line can be used
 to limit the current drawn from the input line, giving the CMOS chip
 inherent level conversion. For open-collector input-only lines the pull-up
 resistor will do this; for bidirectional or output lines a series resistor
-in front of the CMOS pin will do this. Some FPGA data sheets suggest that
-even 100-200 Ω will be ok.
+in front of the CMOS pin will do this.
+
+This can have issues, however; see db-electronics.ca [The Dangers of 3.3V
+Flash in Retro Consoles][dbelec] for a very detailed discussion.
+
+That said, the [Xilinx Spartan 3 datasheet][xis3] p.59 (Table 28 and Note
+2) says that "Keeping VIN within 500 mV of the associated VCCO rails or
+ground rail ensures that the internal diode junctions that exist between
+each of these pins and the VCCO and GND rails do not turn on." If the
+voltage is higher or lower, the input clamp current per I/O pin Iik = ±100
+mA applies, but only for moderate (seconds? minutes?) periods of time, and
+only (Note 2) for 100 pins or less simultaneously. But, "Prolonged exposure
+to such current may compromise device reliability. A sustained current of
+10 mA will not compromise device reliability." Thus if you use a 200 Ω
+series resistor between a Vcco = 3.3 V pin and a 5 V line, you have a
+sustained clamp current of 1.7 V / 200 Ω = 8.5 mA and that should be fine.
 
 __Level-shifter ICs__
 
@@ -310,6 +325,7 @@ Level- and current-related:
 [TXB0108-ds]: https://cdn-shop.adafruit.com/datasheets/txb0108.pdf
 [`74LVC4245`]: https://assets.nexperia.com/documents/data-sheet/74LVC4245A.pdf
 [af-395]: https://www.adafruit.com/product/395
+[dbelec]: https://web.archive.org/web/20180823104448/https://db-electronics.ca/2017/07/05/the-dangers-of-3-3v-flash-in-retro-consoles/
 [eetimes04]: https://www.eetimes.com/a-brief-recap-of-popular-logic-standards/
 [f6-6386]: http://forum.6502.org/viewtopic.php?f=4&t=6386#p80272
 [jarda14]: https://www.jsykora.info/2014/05/logic-voltage-levels/
@@ -317,6 +333,7 @@ Level- and current-related:
 [lshift-cl]: https://codeandlife.com/2012/04/06/level-shifting-101/
 [lshift-ec]: https://electrocredible.com/logic-level-converter-circuit-schematic-working/
 [sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
-[sf-12009]: https://www.sparkfun.com/products/12009
-[sf-12009-sch-bi]: https://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
 [sf-12009-sch-10]: https://www.sparkfun.com/datasheets/BreakoutBoards/Level-Converter-v10.pdf
+[sf-12009-sch-bi]: https://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
+[sf-12009]: https://www.sparkfun.com/products/12009
+[xis3]: https://www.mouser.jp/datasheet/2/903/ds099-1595375.pdf
