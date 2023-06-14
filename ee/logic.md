@@ -144,22 +144,52 @@ directly into 5V HCT, ACT or AHCT parts.
 
 - [Electrocredible][lshift-ec] gives unidirectional with an NPN transistor
   and bidirectional with a MOSFET. (The MOFSET versions apparently use
-  quite a lot of power, though.)
-- [Sparkfun][lshift-sf] has a BSS138 MOSFET schematic.
+  quite a lot of power, though.) See below for more on MOSFET.
 - [Big Mess o' Wires][lshift-bmow] shows clamp diodes and how they don't
-  work (particularly due to "soggy" curve around zener voltage). Comments
-  are very useful:
-  - Some interesting discussion of the Sparkfun circuit above.
-  - Series resistor on a CMOS LV input line can do the trick if it has an
-    internal protection diode from input to Vdd, though it assumes that Vdd
-    supply can _sink_ the current that flows this way if it's not all used
-    by other 3.3 V devices. Some FPGA data sheets suggest even 100-200 Ω
-    will be ok.
-  - Zener soft Iz/Vz curve bad for various reasons.
-  - 74AHC125 powered by 3.3 V is fast, cheap and low power. (AHC is
-    5V-tolerant at 3.3 Vcc.)
+  work. Comments are very useful:
+  - Zener diode alone won't work due to soft Iz/Vz curve around Vz; never
+    even comes up to Vhigh.
+  - Some interesting discussion of the Sparkfun circuit below.
+  - Series resistor on CMOS LV lines as discussed below.
+  - AHC is 5V-tolerant at 3.3 Vcc; 74AHC125 powered by 3.3 V is fast, cheap
+    and low power.
 - [Code and Life][lshift-cl] gives passive voltage dividers, and buffer
   parts that can run multi-voltage (4050B, 4014B, 40109B, 74HCT125.
+- [forum.6502.org][f6-6386] discussion.
+
+__MOSFET Conversion__
+
+Philips application note [AN97055], _Bi-directional level shifter for
+I²C-bus and other systems_ discusses using a MOSFET to handle
+bi-directional conversion between open-collector/open-drain busses with
+pull-ups.
+
+SparkFun sells sells a ["Logic Level Converter - Bi-directional"][sf-12009]
+with four MOSFETs each with a 10k pullups on each side
+([schematic][sf-12009-sch-bi]). The [hookup guide][sf-12009-hookup]
+explains the operation, referring to Philips application note above. (An
+[earlier version][sf-12009-sch-10] uses two MOSFETs and two voltage
+dividers.)
+
+__CMOS Protection Diodes and Resistors__
+
+Many FPGAs and other CMOS chips have internal protection diodes from input
+pins to Vdd; this will divert current to Vdd when the input voltage exceeds
+Vdd plus one Schottkey diode drop. (Note that the Vdd bus must be able to
+sink this extra current. Most regulators will not sink current if the
+output voltage is higher than the regulator design output, but other
+devices on the Vdd bus consuming current can use the current sourced by the
+CMOS device's Vcc pin in this case, in place of current sourced from the
+regulator.)
+
+On systems that can handle this, a resistor on the input line can be used
+to limit the current drawn from the input line, giving the CMOS chip
+inherent level conversion. For open-collector input-only lines the pull-up
+resistor will do this; for bidirectional or output lines a series resistor
+in front of the CMOS pin will do this. Some FPGA data sheets suggest that
+even 100-200 Ω will be ok.
+
+__Level-shifter ICs__
 
 The TI TXB0108 Bidrectional Voltage-level Translator with Auto-direction
 Sensing ([datasheet][TXB0108-ds], [app note][TXB0108-app] handles 1.2-3.6 V
@@ -168,16 +198,6 @@ confuse the direction sensing circuitry, however. AdaFruit sells this [on a
 breakout][af-395] that includes decoupling caps and a pull-up on the enable
 pin.
 
-Philips application note [AN97055], _Bi-directional level shifter for
-I²C-bus and other systems_ discusses using a MOSFET to handle
-bi-directional conversion between open-collector/open-drain busses with
-pull-ups. SparkFun sells sells a ["Logic Level Converter -
-Bi-directional"][sf-12009] ([hookup guide][sf-12009-hookup]) with four
-MOSFETs each with a 10k pullups on each side. They don't really make it
-clear that the design is probably not good for applications outside of SPI
-and I²C (or other open-collector/open-drain bus) level conversion.
-
-There's some discussion in [this thread][f6-6386] on level conversion.
 
 ### Current
 
@@ -296,6 +316,7 @@ Level- and current-related:
 [lshift-bmow]: https://www.bigmessowires.com/2011/10/19/the-quest-for-a-simple-level-converter/
 [lshift-cl]: https://codeandlife.com/2012/04/06/level-shifting-101/
 [lshift-ec]: https://electrocredible.com/logic-level-converter-circuit-schematic-working/
-[lshift-sf]: https://www.sparkfun.com/datasheets/BreakoutBoards/Level-Converter-v10.pdf
 [sf-12009-hookup]: https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/all
 [sf-12009]: https://www.sparkfun.com/products/12009
+[sf-12009-sch-bi]: https://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
+[sf-12009-sch-10]: https://www.sparkfun.com/datasheets/BreakoutBoards/Level-Converter-v10.pdf
