@@ -16,10 +16,12 @@ For most of these information will be incomplete unless run as root.
   `tcp:80`, `:80`.
 - `fuser 80/tcp` (package `psmisc`)
 
-### Finding MTU
+### Finding and Setting MTU
 
     tracepath HOST
     ping -c 1 -s $((1500-28)) -M do HOST
+
+    sudo ip link set wlp3s0 mtu 1426
 
 
 Configuration Overview
