@@ -81,12 +81,27 @@ the same crossover as an Ethernet crossover cable (T568A to T568B above).
 Vendor-specific Pinouts and Connectors
 --------------------------------------
 
-### 5V TTL FTDI USB Serial
+### 5V TTL USB Serial
 
 Generic AliExpress FTDI USB cable with 6-pin .1" female header:
 
     1  red  +5 V    3  wht  RXD     5  yel  RTS
-    2  blk  GND     4  grn  TXD     6  blu  CTS
+    2  blk  GND     4  grn  TXD     6  blu  CTS     (no DTR!)
+
+ch341 HW-728 USB TTL board; HDM 340E932 SOIC-10:
+
+    idVendor=1A86, idProduct=7523, bcdDevice= 2.63
+    Mfr=0, Product=2, SerialNumber=0  Product=USB2.0-Serial
+
+    1:GND   2:+5V   3:TXD   4:RXD   5:DTR   6:3V3
+
+Z80 MBC2 TTL serial header:
+
+    DCE: 1:DTR  2:RXD  3:TXD  4:Vcc  5:GND  6:N/C  7:RTS  8:CTS
+
+uTerm serial header:
+
+    DTE:  1:DTR  2:RXD  3:TXD  4:Vcc  5:GND  6:N/C  7:RTS  8:CTS
 
 ### Apple IIc Serial DIN-5 (cjs v1)
 
