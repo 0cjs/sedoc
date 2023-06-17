@@ -25,9 +25,10 @@ IC Packages
                     Pin Pitch    Body Width
     Abbr.           in     mm    in  Wb  mm   Leads  Standards
     ───────────────────────────────────────────────────────────────────────
-    SIPP            .1"   2.54
-    DIP-W           .1"   2.54   .6"  15.24   24-64
-    DIP-N           .1"   2.54   .3"   7.62    8-28
+    SPDIP           .07"  1.778  .6"  15.24   64-80
+    SIPP            .10"  2.54
+    DIP-W           .10"  2.54   .6"  15.24   24-64
+    DIP-N           .10"  2.54   .3"   7.62    8-28
 
     SOIC            .05"  1.27         3.9           MS-012
     SOIC            .05"  1.27         7.5           MS-013
@@ -47,6 +48,8 @@ IC Packages
 ### Lead Styles
 
 - _Through Hole_: [DIP], ZIP.
+  - Shrink Plastic DIP (SPDIP) / Shrink DIP (SDIP): finer pin pitch.
+    Often misused as "skinny" SIP for DIP-N packages at standrd pitch.
 - [_Chip carrier_][wp cc] packages (e.g., PLCC—Plastic Leaded Chip Carrier)
   usually have connections on all four sides and either J-leads curling
   inward (which can be soldered to the surface of a PCB) or are _leadless_
