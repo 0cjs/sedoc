@@ -40,6 +40,16 @@ regulator, as described in [[eese 552710]]. This should still be confirmed
 with the data sheet, however; it is usually safe for linear regulators, but
 not for buck-boost regulators that may also pull down the output.
 
+#### Undervoltage Test
+
+LM7805 with 0.22 μF cap across input, per datasheet.
+- Moving up from Vin=0, nothing until about Vin=3.5, then moves up and down
+  around Vout=0.1-0.3 until over Vin=5, when it suddenly jumps up to around
+  Vout=3.5, and then increases steadily from there.
+- Moving down from Vin=7, drops at around Vin=3.5 to Vout=2.5, then sudden
+  collapse to Vout=0.2 after that.
+- Similar behaviour at Vin=0.5-1 higher with 100 Ω (50 mA) load.
+
 ### Constant Current Supply
 
 The LM317 sources the current necessary to make OUT 1.25 V higher than the
