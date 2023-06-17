@@ -81,6 +81,13 @@ the same crossover as an Ethernet crossover cable (T568A to T568B above).
 Vendor-specific Pinouts and Connectors
 --------------------------------------
 
+### 5V TTL FTDI USB Serial
+
+Generic AliExpress FTDI USB cable with 6-pin .1" female header:
+
+    1  red  +5 V    3  wht  RXD     5  yel  RTS
+    2  blk  GND     4  grn  TXD     6  blu  CTS
+
 ### Apple IIc Serial DIN-5 (cjs v1)
 
 Using Ethernet cable. `Dsub` are my DB-25/DE-9 colors above; `Eth` is
