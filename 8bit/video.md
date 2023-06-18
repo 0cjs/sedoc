@@ -20,14 +20,27 @@ But more frequently in modern systems it's scaled to 1.0 V P-P. CVBS
 standard levels (from [[wp cvbslev]]) and NTSC timings (from [Beale
 Corner][bc trv900] via [Modular Circuits][mc zx81]):
 
-<img src='img/video-cvbs-levels.png' /> <!-- 561 × 284 -->
-<img src='img/RS170A.jpg' width=700 /> <!-- 856 × 526-->
+<img src='img/video-cvbs-levels.png'        width=500 /> <!--  561 × 284 -->
+<img src='img/RS170A.jpg'                   width=500 /> <!--  856 × 526 -->
 
 Missing timings from the RS170A diagram above are: Scan line: 63.5 μs.
 Color burst: 8-10 cycles (2.2 - 2.8 μs). Active video: 52.6 μs.
 ([[ee 387810]] suggests visible width of 45 μs centered in borders. The
 answers there have a lot of other good information on timings, especially
 for signals sampled by LCD displays.)
+
+Color will have a 3.579545 Mhz signal overlaid on top of the lumanance
+signal; the phase determins the huge and the amplitude determines the
+saturation (see ["NTSC Color Encoding"](ntsc-color-encoding) below). A
+standard NTSC color bar test pattern looks as follows on a 'scope, where
+the 3.57 MHz signal is shown here not as sine waves but as blocks. (Source
+for below is [`www.amstzone.org/ntsc/`](https://www.amstzone.org/ntsc/),
+which has other useful NTSC and PAL information on that page, and test
+patterns.)
+
+<img src='img/CompNTSC-testpattern.png'     width=500 /> <!-- 1125 x 675 -->
+
+### Video Systems
 
 Systems for color or monochrome video with various degrees of multiplexing
 (not specifying any particular sync rates or interlace) are, roughly:
