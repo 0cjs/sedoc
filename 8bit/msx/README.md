@@ -1,12 +1,32 @@
 MSX
 ===
 
-References:
+### Contents
+
+- Introduction
+  - References
+  - Technical Books
+- Usage Notes
+  - Startup
+  - BASIC
+- Standard Specifications
+  - Keyboard
+  - Joysticks
+  - Parallel Printer Output (optional)
+  - Cartridge Slot Pinout
+- Optional Peripherals
+  - RS-232
+  - Floppy Disk
+  - Audio/Music
+
+### References
+
 - [Wikipedia (en)][wp-en]
 - [Wikipedia (ja)][wp-ja]
 - [msx.org wiki][mw] (MSX Resource Center)
 
-Technical books:
+### Technical Books
+
 - \[td1] [_MSX Technical Data Book_][td1] (en), Sony, 1984.
   MSX1 hardwre and software.
 - \[yts] Yamaha Computer [_MSX Series Technical Summary_][yts] (en)
@@ -29,6 +49,7 @@ Technical books:
 - \[rbr] [_The Revised MSX Red Book_] (en), Avalon Software, 1985.
   Based on [[mdp]], [[2thj-fe]], MSX Magazine.
   This version revised by by Cyberknight Masao Kawata 1998-2005.
+
 
 Usage Notes
 -----------
