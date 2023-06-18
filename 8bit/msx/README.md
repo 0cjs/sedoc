@@ -20,10 +20,14 @@ Technical books:
     4 VDP (V9938 and V9958).
   - [Volume 2][mdp-v2]: 5 Slots and Cartridges. 6 Standard Peripherals.
     7 Optional Peripherals. Appendix BIOS, Work Area, etc.
-- \[2thj] [MSX2テクニカル・ハンドブック][2thj] (ja), アスキー版局, 1986.
+- \[2thj-fe] [MSX2テクニカル・ハンドブック][2thj-fe], 1st ed. (ja),
+  アスキー版局, 1986. Poor scan, poor OCR. 60 or 16 MB.
+- \[2thj] [MSX2テクニカル・ハンドブック][2thj], 7th ed. (ja),
+  アスキー版局, 1988. Better scan and OCR, though OCR still not perfect.
+  200 MB. Not clear what the updates are.
 - \[2the] [_MSX2 Technical Handbook_][2the] (en). Trans. of above. Markdown.
 - \[rbr] [_The Revised MSX Red Book_] (en), Avalon Software, 1985.
-  Based on [[mdp]], [[2thj]], MSX Magazine.
+  Based on [[mdp]], [[2thj-fe]], MSX Magazine.
   This version revised by by Cyberknight Masao Kawata 1998-2005.
 
 Usage Notes
@@ -205,10 +209,6 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 <!-------------------------------------------------------------------->
 
 <!-- References -->
-[mdp-v1]: https://archive.org/details/MSXDatapackVolume1
-[mdp-v2]: https://archive.org/details/MSXDatapackVolume2
-[mdp-v3]: https://archive.org/details/MSXDatapackVolume31991OCRTabajara
-[mdp]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack
 [mw]: https://msx.org/wiki
 [wp-en]: https://en.wikipedia.org/wiki/MSX
 [wp-ja]: https://ja.wikipedia.org/wiki/Msx
@@ -216,7 +216,12 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 
 <!-- Technical books -->
 [2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
-[2thj]: https://archive.org/details/MSX2TechnicalHandBookFE1986/
+[2thj-fe]: https://archive.org/details/MSX2TechnicalHandBookFE1986/
+[2thj]: https://archive.org/details/Msx2TechnicalHandBook/
+[mdp-v1]: https://archive.org/details/MSXDatapackVolume1
+[mdp-v2]: https://archive.org/details/MSXDatapackVolume2
+[mdp-v3]: https://archive.org/details/MSXDatapackVolume31991OCRTabajara
+[mdp]: http://ngs.no.coocan.jp/doc/wiki.cgi/datapack
 [rbr]: https://www.angelfire.com/art2/unicorndreams/msx/RR-Intro.html
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n5/mode/1up
 [tdR]: https://archive.org/details/MsxTurboR
