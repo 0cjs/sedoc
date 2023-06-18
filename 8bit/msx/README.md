@@ -18,6 +18,8 @@ MSX
   - RS-232
   - Floppy Disk
   - Audio/Music
+- Modifications
+  - Adding a Third Slot
 
 ### References
 
@@ -49,6 +51,8 @@ MSX
 - \[rbr] [_The Revised MSX Red Book_] (en), Avalon Software, 1985.
   Based on [[mdp]], [[2thj-fe]], MSX Magazine.
   This version revised by by Cyberknight Masao Kawata 1998-2005.
+- \[hanso] [`/Technical/Hans Otten/`][hanso] on file-hunter.com contains
+  an enormous pile of technical information (thousands of files).
 
 
 Usage Notes
@@ -226,6 +230,27 @@ Systems (1DD = single sided 360 KB; 2DD = double sided 720 KB; all 80 track)
 See [MSX Sound Chips (`sound.md`)](sound.md).
 
 
+Modifications
+-------------
+
+### Adding a Third Slot
+
+There are various setts of instruction for adding a third slot to MSX
+computers.
+- [Third slot for MSX computers][mod-slot3] contains instructions for
+  adding a third slot to MSX systems with the S3537 engine, such as the
+  VG8235/45, NMS8250/55/80 and presumably MPC-25FD and similar; this
+  includes some helpful general information for all systems.
+- [How to make a third slot for NMS 8250 with the unused connector
+  MY][mod-vanson-2008] by Erik van Son, 2008-09.
+- The [HansO documents][hanso] may contain something related to this.
+- There may be a video on this somewhere in the [Repair-Bas (Bas
+  Kornalijnslijper)][repair-bas] YouTube channel.
+
+There's further discussion of all of these in the MSX.org forums, [Add to
+NMS8250 third SLOT][mod-slot3-nms8250].
+
+
 
 <!-------------------------------------------------------------------->
 
@@ -234,11 +259,11 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 [wp-en]: https://en.wikipedia.org/wiki/MSX
 [wp-ja]: https://ja.wikipedia.org/wiki/Msx
 
-
 <!-- Technical books -->
 [2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
 [2thj-fe]: https://archive.org/details/MSX2TechnicalHandBookFE1986/
 [2thj]: https://archive.org/details/Msx2TechnicalHandBook/
+[hanso]: https://download.file-hunter.com/Technical/Hans%20Otten/
 [mdp-v1]: https://archive.org/details/MSXDatapackVolume1
 [mdp-v2]: https://archive.org/details/MSXDatapackVolume2
 [mdp-v3]: https://archive.org/details/MSXDatapackVolume31991OCRTabajara
@@ -252,3 +277,9 @@ See [MSX Sound Chips (`sound.md`)](sound.md).
 [SN74LS122]: http://www.ti.com/lit/gpn/sn74ls122
 [joynet]: https://map.grauw.nl/resources/joynet/
 [mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
+
+<!-- Modifications: Adding a Third Slot -->
+[mod-slot3-nms8250]: https://msx.org/forum/msx-talk/hardware/add-nms8250-third-slot?page=0
+[mod-slot3]: http://www.msxarchive.nl/pub/msx/mirrors/hanso/hwmodsetc/philipsnms82xxslot3.pdf
+[mod-vanson-2008]: https://download.file-hunter.com/Technical/Hans%20Otten/3rdslotNMS8250.pdf
+[repair-bas]: https://www.youtube.com/@repair-basbaskornalijnslij9245/videos
