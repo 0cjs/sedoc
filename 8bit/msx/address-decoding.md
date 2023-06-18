@@ -121,6 +121,9 @@ Assembly Page [MSX I/O ports overview][ma iopo].
               FE  "   2   "       "      "    (BIOS default 01)
               FD  "   1   "       "      "    (BIOS default 02)
               FC  "   0   "       "      "    (BIOS default 03)
+            † Usually readable on internal memory mappers; carts may or
+              may not be readable. If two are readable, system damage may
+              result due to read-back of differing values for unused bits.
 
     F8-FF   MSX1: reserved
 
