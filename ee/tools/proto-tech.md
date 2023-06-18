@@ -40,7 +40,7 @@ good article. Some points:
 [Topic on EEVblog forum.][msg2860602]
 
 - Plug male jumper pins into female connector on the end of an IDC cable.
-- Solder a breakout board with perfboard.
+- Solder a breakout board with perfboard. Extremely simple; see below.
 - Just bend the pins (90° out then down again) of a PCB-mount IDC
   socket to make it reach across the centre gap..
 - Use DIP IDC connectors, e.g. CW Industries CWR-130 series. (These
@@ -49,6 +49,7 @@ good article. Some points:
   board for breadboards. These usually have a shrouded header 0.6" DIP
   connection to the breadboard.
 
+![2x8 header to DIP](2x8-header-to-DIP.jpg)
 
 
 Wire Wrap Materials
