@@ -10,6 +10,7 @@ MSX Sound Chips
   - Moonsound
 - Other Sound Systems
   - Konami SCC
+- Music Macro Language (MML) and MGS
 
 
 1-bit Sound Port
@@ -330,6 +331,27 @@ game carts and in a standalone cart for use with disk games. There was also
 an improved SCC-1 version.
 
 
+Music Macro Language (MML) and MGS
+==================================
+
+MSX game composers typically used MML to compose their soundtracks, but a
+far more sophisticated version of MML than that used in BASIC.
+
+[MGSC111.TXT] describes the format used by the [`MGSC.COM` MML
+compiler][mgs-create], which reads `.MUS` files containing MML and
+generates a `.MGS` file as output that can then be used by a player such as
+[`MGSDRV.COM`][mgsplay].
+
+These formats typically allow one to use all available sound sources in the
+machine simultaneously, so that a system with MSX-MUSIC can give you the
+three PSG voices along with the 6 FM voices plus rhythm.
+
+[`msxplay.com/editor.html`][msxplay-ed] is an on-line interactive
+editor/player; the [`msxplay.com`][msxplay] home page explains how to have
+it load directly from GitHub, as well as where to get the source for the JS
+player.
+
+
 
 <!-------------------------------------------------------------------->
 
@@ -374,3 +396,10 @@ an improved SCC-1 version.
 
 <!-- Other Sound Systems -->
 [Konami SCC]: https://www.msx.org/wiki/Konami_SCC
+
+<!-- MML -->
+[MGSC111.TXT]: https://www.gigamix.jp/mgsdrv/MGSC111.TXT
+[mgsc]: htps://gigamix.hatenablog.com/entry/mgsdrv/#MGS形式のデータを作りたい
+[mgsplay]: https://gigamix.hatenablog.com/entry/mgsdrv/#MGS形式のデータを聴きたい
+[msxplay-ed]: https://msxplay.com/editor.html
+[msxplay]: https://msxplay.com/
