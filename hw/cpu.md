@@ -40,11 +40,11 @@ Key:
 
 Laptop CPUs (ThinkPad models at end of description):
 
-|  2535 |  1567 |   2₄ |  35W | -    | 13.1 | 2.6 t3.2 | Intel Core i5-3230M (X230)
-|  2434 |  1567 |   2₄ |  35W | -    | 11.1 | 2.7 t3.4 | Intel Core i7-2620M (X220t)
-|  2232 |  1567 |   2₄ |  35W | -    | 11.1 | 2.5 t3.2 | Intel Core i5-2520M (X220t)
-|  1794 |  1151 |   2₂ |  35W | -    | 10.1 | 2.35t3.1 | Intel Core i5-540M  (X201s)
-|  1718 |  1100 |   2₂ |  35W | -    | 10.1 | 2.4 t2.9 | Intel Core i5-520M  (T510)
+|  2535 |  1567 |   2₂ |  35W | -    | 13.1 | 2.6 t3.2 | Intel Core i5-3230M (X230)
+|  2434 |  1567 |   2₂ |  35W | -    | 11.1 | 2.7 t3.4 | Intel Core i7-2620M (X220t)
+|  2232 |  1567 |   2₂ |  35W | -    | 11.1 | 2.5 t3.2 | Intel Core i5-2520M (X220t)
+|  1794 |  1151 |   2  |  35W | -    | 10.1 | 2.35t3.1 | Intel Core i5-540M  (X201s)
+|  1718 |  1100 |   2  |  35W | -    | 10.1 | 2.4 t2.9 | Intel Core i5-520M  (T510)
 
 The new PassMark seems to emphasise stuff using newer/extended instrs.
 i7-3770 vs. i7-860 is 6400/2915 = 2.2×, but test suite individual results
