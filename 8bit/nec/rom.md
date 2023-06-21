@@ -11,7 +11,8 @@ of the machine and indicated with a light.
 
     Series      Mode  Banner
     80 88        N    NEC PC-8001 BASIC Ver 1.0
-    80                (? N80-BASIC ?)
+    80mkII            NEC PC-8001 BASIC Ver 1.3     (©1979)
+    80mkII            NEC N-80 BASIC Ver 1.0        (©1979, Enh.1982)
     80                (? N80SR-BASIC ?)
        88        V1   NEC N-88 BASIC Version 1.x
        88        V2   NEC N-88 BASIC Version 2.x
@@ -20,8 +21,10 @@ of the machine and indicated with a light.
 PC-8001 BASIC v1.1 is a varaiant of Microsoft Disk BASIC 4.51,
 but disk I/O is not in ROM version (I think). The copyright banners are:
 
-    N-88 copyright banner:      Copyright (C) 198n by Microsoft
     PC-8001 copyright banner:   Copyright 1979 (C) by Microsoft
+    PC-8001mkII N-80 banner     Enhanced 1982 by NEC
+    N-80/88 copyright banner:   Copyright (C) 198n by Microsoft
+
 
 After booting a DOS/Disk BASIC, a prefix banner will be printed before the
 ROM banner:
