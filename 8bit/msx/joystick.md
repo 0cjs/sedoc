@@ -83,6 +83,24 @@ Paddles [[td1] p.28]:
 Applications
 ------------
 
+### Light Pen, Touchpad, SPI, NES/SNES Controllers
+
+MSX1 defined from the start a spec for input devices sending absolute
+co-ordinates; these can be received via a light pen (Sanyo or V9938
+internal) or an SPI-like serial protocol over the controller ports. The
+usual controller port device was a resistive touchpad (such as the one
+built in to the Hitachi MB-H3).
+
+The BIOS automatically detects if a touchpad is connected to a controller
+port. All interfaces are read via MSX-BIOS `GTPAD` ($0DB) or the BASIC
+`PAD()` function. (Setup may be required before using the light pen from
+BASIC.)
+
+References:
+- MSX Wiki: [Touchpad][mw-tp]; [Light Pen][mw-lp].
+- Hackaday.io, [(S)NES gamepad adapter for MSX computers][had-27494]
+- Hotbit, [Um estudo sobre o MSX Touchpad][hotbit]
+
 ### JoyNet
 
 [JoyNet] is a standard for ring networks via joystick ports. The MSX end is
@@ -98,5 +116,10 @@ insert into the ring.
 [SN74LS122]: http://www.ti.com/lit/gpn/sn74ls122
 [td1 p.44]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n46/mode/1up
 [td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n27/mode/1up
+
+[had-27494]: https://hackaday.io/project/27494-snes-gamepad-adapter-for-msx-computers
+[hotbit]: http://hotbit.blogspot.com/2014/10/recentemente-alguem-publicou-no-msx.html
+[mw-lp]: https://www.msx.org/wiki/Light_pen
+[mw-tp]: https://www.msx.org/wiki/Touchpad
 
 [joynet]: https://map.grauw.nl/resources/joynet/
