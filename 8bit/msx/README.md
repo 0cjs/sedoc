@@ -274,8 +274,6 @@ NMS8250 third SLOT][mod-slot3-nms8250].
 [yts]: https://archive.org/details/yamahacx5myis503ts/mode/1up
 
 <!-- body -->
-[SN74LS122]: http://www.ti.com/lit/gpn/sn74ls122
-[joynet]: https://map.grauw.nl/resources/joynet/
 [mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
 
 <!-- Modifications: Adding a Third Slot -->

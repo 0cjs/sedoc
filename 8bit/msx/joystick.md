@@ -1,6 +1,9 @@
 MSX Joystick Ports
 ==================
 
+References:
+- \[td1] [_MSX Technical Data Book_][td1] (en), Sony, 1984. pp.25-28, 44
+
 Two types defined:
 - __Type A:__ One button or indistinguishable buttons.
   All joysticks must be marked; software need not be.
@@ -8,8 +11,8 @@ Two types defined:
   All joysticks must be marked; software requiring Type B must be marked.
 
 Two DE-9F connectors, J3 (port 1) and optional J4 (port 2):
-- TTL levels. Pinout [[td1 p.25]] and [`conn/joystick`](../conn/joystick.md).
-- Schematics: [[td1 p.26]] switches only, [[td1 p.28]] paddle circuit.
+- TTL levels. Pinout [[td1] p.25] and [`conn/joystick`](../conn/joystick.md).
+- Schematics: [[td1] p.26] switches only, [[td1] p.28] paddle circuit.
 - All pins have pullups to Vcc (typically 10 kΩ) except +5 (5) and GND (9).
   This is in addition to the (unspecified) on-chip pull-ups.
 - AY-3-8910 PSG IOA 0-5 and IOB 0-6 used for interface.
@@ -59,9 +62,9 @@ Ports and pinout table:
         B7         o  KLAMP (kana lamp) 0=on 1=off
     ──────────────────────────────────────────────────────────────────────────
 
-Joystick schematic [[td1 p.27]] is NO switches on pins 1-4,6,7 common to 8.
+Joystick schematic [[td1] p.27] is NO switches on pins 1-4,6,7 common to 8.
 
-Paddles [[td1 p.28]]:
+Paddles [[td1] p.28]:
 - Calling `PDL` function sends query trigger pulse to pin 8 of a port
   (IOB4=port 1, IOB5=port 2). Not explictly stated, but pulse must be
   negative since there's a pull-up on the line and the paddle schematic
@@ -88,3 +91,12 @@ insert into the ring.
 - Receive from up-ring: Read pins 1,2 as D0,D1, write acks on pin 8.
 - Send to down-ring:    Write pins 6,7 as D0,D1, read acks on pin 3.
 - Connecting just two gives you Konami's F1-Spirit 3D Special cable.
+
+
+
+<!-------------------------------------------------------------------->
+[SN74LS122]: http://www.ti.com/lit/gpn/sn74ls122
+[td1 p.44]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n46/mode/1up
+[td1]: https://archive.org/stream/MSXTechnicalHandbookBySony#page/n27/mode/1up
+
+[joynet]: https://map.grauw.nl/resources/joynet/
