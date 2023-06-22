@@ -55,7 +55,7 @@ CVBS is baseband composite video, usually color.
 
     C5   C8   Pin  CMT        Video
     ───────────────────────────────────────────────────────────────────────
-    Blu  Pnk   1   GND/cmt1   Vcc/12V; dot clock; audio; vsync/blank; GND
+    Blu  Pnk   1   GND/cmt1   Vcc/12V; dot clock; audio; Ys/blank; GND
     Blk  Blk   2   GND        GND
     Yel  Yel   3   GND/cmt3   CVBS; csync, clock; AVC-TTL, DRGB C.CONT/I
     Red  Wht   4   rec/mic    hsync (trad. gray); GND
