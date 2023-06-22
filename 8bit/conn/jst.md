@@ -41,7 +41,29 @@ References:
 JST SM
 ------
 
-2.50 mm wire-to-wire connectors.
+2.50 mm wire-to-wire connectors. Commonly used for LED strip power
+connectors. Plug has female pin entries; receptacle has shroud/male pins.
+
+Holding the receptacle with pins facing away locking tab up, pin 1 is at
+left. Only receptacle has pin numbers marked, at wire entry.
+
+Pin assignments vary, a lot. Common ones are:
+
+             1    2    3   4    cjs others
+    ──────────────────────────────────────────────────────────
+    2-pin   BLK  RED             ✓  lots
+    ──────────────────────────────────────────────────────────
+    3-pin   YEL  GRN  RED           sparkfun
+    3-pin   RED  BLK  YEL           pcboard.ca
+    3-pin   BLK  YEL  RED           bc-robotics.com
+    3-pin   BLK  GRN  RED           aliexpress.com random
+    ──────────────────────────────────────────────────────────
+    4-pin   RED  BLU  GRN  YEL      sparkfun
+    4-pin   GRN  RED  BLU  BLK      pcboard.ca
+    4-pin   BLK  BLU  GRN  RED      aliexpress.com random
+
+References:
+- [Sparkfun JST-SM][sparkfun-SM] (2-, 3-, 4-pin LED Strip Pigtail Connectors)
 
 
 Power Connectors
@@ -57,7 +79,7 @@ Examples:
 - [Sparkfun] connectors page (XH)
 - [Packronics] pre-crimped power connectors (XH)
 - [Woodland] lights/3D printer (XH)
-- [Hilitand] pre-crimped power connectors (SM)
+- [Hilitand] pre-crimped power connectors ("JST")
 
 
 
@@ -65,6 +87,9 @@ Examples:
 [wp jst]: https://en.wikipedia.org/wiki/JST_connector
 [jst xh]: https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
 [jst sm]: http://www.jst-mfg.com/product/pdf/eng/eSM.pdf
+
+<!-- JST SM -->
+[sparkfun-SM]: https://www.sparkfun.com/categories/tags/jst-sm
 
 [hilitand]: https://www.amazon.com/dp/B07DL4FNTF
 [packronics]: https://www.pakronics.com.au/products/jst-2-pin-power-connector-ss321050009
