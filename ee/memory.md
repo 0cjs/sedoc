@@ -211,6 +211,13 @@ Standard pinouts:
 
     Vss = GND    Vcc = +5V   Vbb = -5V   Vdd = +12V
 
+__Replacements:__
+
+4116s are quite unreliable so consider replacing with 4164 or 41256.
+For 4164:
+- bend pin 8 up (chip +5V no entry into socket w/+12V)
+- connect pin 8 to pin 9 (chip +5V,A₇ to socket +5V)
+- cut pin 1 (chip NC no entry into socket -5V)
 
 <!-------------------------------------------------------------------->
 [64copy]: https://ist.uwaterloo.ca/~schepers/roms.html
