@@ -26,7 +26,13 @@ Usage
 - `MOTOR`: Toggle cassette motor relay. Add `1` to turn on, `0` to turn off.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.
-- `TERM`: (mr 2-228) Act as terminal via RS-232 (first arg required).
+- `TERM bpdl` (PC-8001mkII; and PC-8001?):
+  - `b` bits: `A`=8 bit  `J`=7 bit
+  - `p` parity: `0`=none  `1`=odd  `2`=even
+  - `d` baud rate divisor: `0`=64  `1`=16
+  - `l` auto-LF: `0`=off  `1`=on
+  - Exit with Graph-B (PC-8001mkII) or Ctrl-B (PC-8001)
+- `TERM`: (PC-8801, mr 2-228) Act as terminal via RS-232 (first arg required).
   - `"[COM:]pbsxz",mode,rbsize`: parity `E,O,N`; bits `7,8`;
     stop-bits `1,2,3` = 1, 1.5, 2; xon,xsoff `X,N`; s-parameter `S,N`.
   - S-parameter (`z` above) related to 7-bit char code translation.
