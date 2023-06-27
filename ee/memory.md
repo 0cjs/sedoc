@@ -24,12 +24,13 @@ JEDEC RAM and ROM pinouts are very similar but not quite identical.
 - 28nnn are 5V-programmable EEPROM using JEDEC RAM pinouts.
 - See also the [maskrom-pinouts](sch/maskrom-pinouts.png) diagram.
 
-Standard Part Numbers:
-- 23xx: PROM (16=2K, 32=4K, 64=8K)
-- 27xx: PROM (16=2K, 32=4K, 64=8K)
+Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
+- 23xx:    PROM
+- 25xx:   EPROM compatible w/23xx pinout
+- 27xx:   EPROM slightly different pinout from 23xx/25xx
 - 28Cxx: EEPROM
-- 6116: RAM 2K
-- 6264: RAM 8K
+- 6116:     RAM 2K
+- 6264:     RAM 8K
 
 
 #### 28-pin Device Pin Diagram
