@@ -18,6 +18,9 @@ Usage
 
 `ESC` pauses listings, program operation, etc. (Works in monitor, too.)
 
+Commands below may be marked ⁿ/⁰/⁸/ᵈ for
+N-BASIC (PC-8001 BASIC), N80-BASIC, N88-BASIC and Disk BASIC.
+
 #### Extensions
 
 - `BEEP`: Short beep; add `1` to turn on, `0` to turn off.
@@ -26,20 +29,21 @@ Usage
 - `MOTOR`: Toggle cassette motor relay. Add `1` to turn on, `0` to turn off.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.
-- `TERM bpdl` (PC-8001mkII; and PC-8001?):
+- `TERM bpdl`ⁿ⁰: Act as terminal via (RS-232) serial interface.
   - `b` bits: `A`=8 bit  `J`=7 bit
   - `p` parity: `0`=none  `1`=odd  `2`=even
   - `d` baud rate divisor: `0`=64  `1`=16
   - `l` auto-LF: `0`=off  `1`=on
-  - Exit with Graph-B (PC-8001mkII) or Ctrl-B (PC-8001)
-- `TERM`: (PC-8801, mr 2-228) Act as terminal via RS-232 (first arg required).
+  - Exit with Graph-B (0) or Ctrl-B (N)ⁿₙ
+- `TERM`⁸: (mr 2-228). First arg required.
   - `"[COM:]pbsxz",mode,rbsize`: parity `E,O,N`; bits `7,8`;
     stop-bits `1,2,3` = 1, 1.5, 2; xon,xsoff `X,N`; s-parameter `S,N`.
   - S-parameter (`z` above) related to 7-bit char code translation.
 
 Untested/unresearched:
-- `CMD ...`: ???
-- `IN p`,`OUT p,x`: Peek/poke for I/O ports.
+- `CMD ...`: Extension commands via table in RAM, though ROM may provide
+  some too.
+- `INP(p)`,`OUT p,x`: Peek/poke for I/O ports.
 
 #### Text/Graphics
 
@@ -65,13 +69,18 @@ backspace.)
 - `WIDTH h,v`: _h_ = 80, 72, 40, 36; 72 and 36 are same char cell size as
   80 and 24, with narrower lines. Optional _v_ = 25, 20. Use v=25 if using
   160×96 (with status line) or 160×100 graphics.
-- `CONSOLE top,len,fkey,cbw`: At least one arg required.
+- `CONSOLE top,len,fkey,cbw`ⁿ⁰: At least one arg required.
   - _top_: this many lines at top of screen do not scroll
   - _len_: this many lines in the scroll area (lines below do not scroll)
   - _fkey_: 0=last line usable; 1=last line shows fkeys.
   - _cbw_: 0=b/w mode, 1=color mode (greyscale on mono output)
-- `CLS`: N88. N80 use `PRINT CHR$(12);`.
-- `COLOR fg,bg,gr`: all args optional but at least 1 must be present.
+- `PRINT CHR$(12);`ⁿ. `CMD CLS`⁰, `CLS`⁸: clear screen.
+- `COLOR f,c,g,m`ⁿ⁰: Takes effect after clearing screen.
+  - _f_ function code: see color codes below
+  - _c_ new character code: (below?)
+  - _g_ 0=char mode, 1=graphic mode
+- `CMD COLOR fg,bg`⁰, `COLOR fg,bg,gr`⁸: all args optional but at least 1
+  must be present.
   - _fg_ color of following output.
   - _bg_ background attribute to fill on next screen clear (does not change
     background color in color mode).
@@ -88,8 +97,8 @@ backspace.)
   to draw or `PSET`/`PRESET`. _color_ is optional. Adding `B`,`F` params at
   end (no commas needed) draw a block (square) and filled square.
 
-Color codes (for `COLOR`, `LINE`, `PSET`). Monochrome mode default is
-`COLOR 0,0`; color mode default is `7,0`.
+Color codes (for `COLOR`, `LINE`, `PSET`). Monochrome mode (`CONSOLE,,,0`)
+default is `COLOR 0,0`; color mode (`CONSOLE,,,1`) default is `7,0`.
 
     Code    Color Mode      Monochrome Mode (char attributes)
     ────────────────────────────────────────────────────────────────
@@ -102,9 +111,11 @@ Color codes (for `COLOR`, `LINE`, `PSET`). Monochrome mode default is
       6      黄  yellow     reverse blink
       7      白  white      reverse secret
 
-#### Serial Port I/O
+#### Peripheral I/O
 
-Per [[kuniser]] but untested: 
+- `CLOAD "fn"`, `CLOAD? "fn"`, `CSAVE "fn"`ⁿ⁰: CMT load/verify/save
+
+Serial port I/O per [[kuniser]] but untested:
 
 - `PRINT%1,…`: Print to serial port 1 (also `%2` for 2nd port).
 - `INPUT%1,…`
