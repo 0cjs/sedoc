@@ -24,6 +24,8 @@ Sources:
   [FCN-364P056-AU][rs56] ¥1,683.
 - (2018?) [Mouser], ¥750 qty. 1. Not in stock for a long time now.
 
+### Modified FCN Connectors
+
 Since nobody can find 32-pin (or any PCB mount) any more, these pages show
 you how to cut down a 56-pin panel mount and solder it to a right-angle .1"
 header:
@@ -31,6 +33,12 @@ header:
 - [基板コネクタ　FCN-365P032　もう自作しちゃう？　その２][kk 772fd4]
 - [FM-7 RS-232Cボードの組立　その１][kk 5773e8]
 - [FM-7 RS-232Cボードの組立　その２][kk 7d9331]
+
+### Substitutes
+
+According to [FM-7_SD], the [Omron XC5A-3282-1][xc5a] can be used for I/O
+boards if you're willing to trim a little bit out of the interior corners
+of the connectors. [Mouser][xc5a-mouser] stocks them.
 
 
 RS-232 Serial
@@ -53,6 +61,7 @@ the data and status registers are $FD06 and $FD07.
 <!-------------------------------------------------------------------->
 [haserin]: http://haserin09.la.coocan.jp/index.html
 
+[FM-7_SD]: https://github.com/yanataka60/FM-7_SD
 [fcn360]: https://www.fujitsu.com/downloads/MICRO/fcl/connectors/fcn-360.pdf
 [kk 0bff17]: http://kk.txt-nifty.com/retro/2022/04/post-0bff17.html
 [kk 5773e8]: http://kk.txt-nifty.com/retro/2022/04/post-5773e8.html
@@ -61,5 +70,7 @@ the data and status registers are $FD06 and $FD07.
 [mouser]: https://www.mouser.com/ProductDetail/Fujitsu/FCN-365P032-AU?qs=PmsrIvV%2FzvfKbGjWKUmkZQ%3D%3D
 [rs56]: https://jp.rs-online.com/web/p/pcb-headers/6020353
 [rs]: https://jp.rs-online.com
+[xc5a-mouser]: https://www.mouser.jp/c/?q=OMRON%20XC5A-3282-1
+[xc5a]: https://www.mouser.jp/datasheet/2/307/omron_omrns03388-1-1740574.pdf
 
 [ys serial]: http://ysflight.in.coocan.jp/FM/fm7_rs232c/e.html
