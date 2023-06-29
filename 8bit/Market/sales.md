@@ -18,7 +18,8 @@ bit of luck for Apple entirely changed its fortunes.
 
 From the above chart [[reim09]] we can calculate market shares (thousands
 of units, same as above chart) for the major North American 1975-1983
-competitors. Note that this leaves out the large Japanese market.
+competitors. Note that this leaves out the large Japanese market, with some
+figures there mentioned in [`timeline`](timeline.md).
 
          Total    Other¹    TRS-80     CBM²   Apple2   Atari8   PC
     1975     2     2 100%
