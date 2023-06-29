@@ -9,6 +9,8 @@ General references:
 Early Computers
 ---------------
 
+See [`market/sales`](market/sales.md) for sales figures.
+
 The ["1977 trinity"][trinity] was the [Apple II][we-ap2], [TRS-80
 Model I][we-trs80i], and [Commodore PET 2001][we-pet2001], the first
 "appliance" computers.
