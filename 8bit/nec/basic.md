@@ -25,7 +25,7 @@ N-BASIC (PC-8001 BASIC), N80-BASIC, N88-BASIC and Disk BASIC.
 
 - `BEEP`: Short beep; add `1` to turn on, `0` to turn off.
 - `HEX$(n)`
-- `MON`: Enter monitor.
+- `MON`: Enter monitor (see [`README`](README.md) for commands).
 - `MOTOR`: Toggle cassette motor relay. Add `1` to turn on, `0` to turn off.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.

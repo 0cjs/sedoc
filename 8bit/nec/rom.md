@@ -1,7 +1,6 @@
 ROM and BASIC
 =============
 
-
 Versions
 --------
 
@@ -70,6 +69,28 @@ ROM/Machine-level References:
   - 3: ROM subroutine use and cautions.
   - 4: Utility routines (type-in)
   - 5: Appendicies.
+
+
+Extension ROMs
+--------------
+
+The PC-8001 and PC-8001mkII have a socket on the motherboard for an 2364
+8K×8 ROM chip that is mapped to $6000-$7FFF. The BIOS and BASIC check for
+various magic numbers:
+
+    7FFF   1b   $55 for altnerate monitor
+    7FFC   3b   alternate monitor entry point
+    6002    -   extension rom init entry point
+    6000   2b   extension ROM signature area: sig = "AB" ($41 $42)
+
+
+- $7FFF = 55: The BASIC `mon` command jumps to $7FFC instead $7FFC instead
+  of the normal monitor. (Not tested what the ML monitor entry point does.)
+- $6000 = "AB": After some initialisation (and check for DOS boot?), system
+  startup does `call $6002` if this signature is present. This can replace
+  some BASIC commands, as described in ["Basic Extensions"](
+  basic.md#basic-extensions).
+
 
 
 <!-------------------------------------------------------------------->

@@ -81,20 +81,28 @@ several times after this.
 Machine-language Monitor
 ------------------------
 
-Enter from Basic with `MON` command. Prompt is `*`. `ESC` pauses output.
-(Set `WIDTH 40` or `WIDTH 80` before entry.)
+Usage:
+- Enter `jp $5C66` or `MON` in BASIC (suggest `WIDTH 80` before entry).
+- Prompt is `*`.
+- `ESC` pauses output, `STOP` aborts output.
 
+Commands:
+- Ctrl-B: Return to Basic.
 - `Dx,y`: Display bytes at addrs _x_ (def. 0) to _y_ (def. x+$10).
   Displays 8/16 bytes per line in 40/80 column mode.
 - `Sx`: Display byte at _x_ and prompt for new value: must be two digits,
   or `Space` to skip. Continues with subsequent locations until `Enter`.
   Aborts with `?` message on invalid value.
-- `G x`: Goto addr _x_.
-- `W x, y`: Write tape block from _x_ to _y_.
+- `Gx`: Goto addr _x_ (default $0000, the reset vector!).
+- `Wx, y`: Write tape block from _x_ to _y_.
 - `L`: Load tape block.
 - `LV`: Load tape block and verify it's correctly loaded.
 - `TM`: Test memory and return to Basic.
-- Ctrl-B: Return to Basic.
+
+Extensions:
+- If an extension ROM has $7FFF = $55, the BASIC `MON` command will jump to
+  $7FFC. (Not tested what the ML entry point does.)
+
 
 Terminal Mode
 -------------
