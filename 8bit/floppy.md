@@ -76,10 +76,11 @@ formats][wp-fmtlist]. Data frequency is given as FM/MFM kbps.
 Double-density:
 - __8" DD__ 77-track (1 MiB). Index hole above and to the right of the
   center hole, write protect notch on the bottom towards the right.
-  360 RPM, 48 tpi, 250/500 kbps. (Typically 26×128 byte sectors.) Write
-  current reduced for tracks >43. Separate outputs for head data and
-  separated data and clock; only some drives include a (usually FM?) data
-  separator.
+  360 RPM, 77 tracks at 48 tpi with write current reduced for tracks >43. 
+  250/500 kbps (FM/MFM, SD/DD); typically 26 sectors of 128 bytes (FM/SD)
+  or 256 bytes (MFM/DD). Separate outputs defined for head data and
+  separated data and clock, though only some drives include a (usually FM?)
+  data separator.
   - Shugart [SA800/801 Diskette Storage Drive OEM Manual][sa800oem]
 - __5.25" DD 40-track__ (320/360 KiB). 35 tracks for early drives and
   C64. 300 RPM, 48-tpi, 125/250 kbps. Fujitsu called these "2D".
