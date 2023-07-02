@@ -210,11 +210,71 @@ mode, and so must be done in a program.
     REM rename OLDNAME → NEWNAME
     OPEN 1,8,15,"R:NEWNAME=OLDNAME":CLOSE 1
 
+### Error messages/codes
+
+From [cbm2040um] p.82:
+
+     0  OK (no error)
+     1  File scratched (no error)
+     2  unused range (start)
+    19  unused range (end)
+    20  Block header not found on disk
+    ...
+    74  Drive not read (8050 only)
+
+### Useful CBM BASIC
+
+- `GET#f,A$`: Read one character from file descriptor _f_ to `A$`.
+
+### Commodore DOS General Operation
+
+The DOS impelementation is split between two logical devices [[cbm2040um]]:
+- The _file interface controller_ (usually implemented on a 6502)
+  interfaces with the IEEE-488 or serial bus and queues jobs for the disk
+  controller. It will retry several times jobs that return an error.
+- The _disk controller_ takes jobs that give sector header and operation
+  type, executes the operations in optimal order, and returns results to
+  the file interface controller.
+- These share a set of 256 byte buffers. Three are used for BAMs, variable
+  space, command channel I/O and disk controller job queue.
+
+The secondary address given to OPEN can be 0 automatically interpreted as
+`LOAD`, 1 automatically interpreted as `SAVE`, 2-14 for up to five
+simultaneous channels of data, and 15 for writing commands and reading
+status.
+
+Commands are ASCII, but numeric parameters are usually binary, and so
+need to be sent as, e.g.,
+
+    PRINT #1 "B-R:"2;1;4;0
+    PRINT #1 "B-R:"chr$(2);chr$(1);chr$(4);chr$(0);
+    PRINT #1 "B-R:"c;d;t;s
+
+Disk Utility Command Set [[cbm2040um]] pp.47-.
+
+    Long Command    Abbr/params         Description
+    BLOCK-READ      "B-R:"ch,dr,t,s     block read
+    ...
+    memory-read     "M-R"adl/adh        memory read  adl=LSB adh=MSB of addr
+
+
+    ch: channel (secondary address to OPEN)
+    dr: drive number: 0, 1
+     t: track number: 0-77
+     s: 
+    adl:
+
+
 ### References
 
 - c64-wiki.com, [Drive command][c64w-dc]
 - c64-wiki.com, [Commodore 1541 § Disk Drive Commands][c64w-1541dc]
 - c64.org, [Commodore 1541 drive memory map][c64o-1541mmap]
+- [[cbm2040um]] _User's Manual for CBM 5¼-inch Dual Floppy Disk Drives,_
+  Commodore, 1980.
+  - "Dual Drive Floppys: Model 2040—Model 4040, Model 3040—Model-8050."
+  - "Appropriate for use with: Commodore Computers • Series 2001 (CBM-PET)
+    • Series 3000 (CBM) • Series 4000 (PET) • Series 8000 (CBM)."
 
 
 
