@@ -1,6 +1,14 @@
 Commodore Serial Bus
 ====================
 
+Contents:
+- Commodore Serial Bus
+  - Protocol Overview
+  - Device Numbers
+  - Fast Mode
+- Drive Commands
+  - References
+
 Reduced-cost version of IEEE-488 interface used on PETs. A.K.A:
 IEC-625, "IEC serial bus," and GPIB (General Purpose Interface Bus).
 
@@ -183,6 +191,32 @@ The fast serial bus uses different hardware, the serial port lines of 6526
 CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 
 
+Drive Commands
+--------------
+
+Channel 15 is the command (when written) and error (when read) channel.
+This can be accessed through BASIC v2.0 (on the C64, at least) via code
+such as the following. Note that `INPUT#` doesn't work in BASIC's direct
+mode, and so must be done in a program.
+
+    10 OPEN 1, 8, 15            :REM Open Error/Command Channel
+    20 INPUT#1, EN, ER$, TR, SC
+    30 CLOSE 1
+    40 PRINT "ErrNr: "; EN
+    50 PRINT "Error: "; ER$
+    60 PRINT "Track: "; TR
+    70 PRINT "Sector:"; SC
+
+    REM rename OLDNAME → NEWNAME
+    OPEN 1,8,15,"R:NEWNAME=OLDNAME":CLOSE 1
+
+### References
+
+- c64-wiki.com, [Drive command][c64w-dc]
+- c64-wiki.com, [Commodore 1541 § Disk Drive Commands][c64w-1541dc]
+- c64.org, [Commodore 1541 drive memory map][c64o-1541mmap]
+
+
 
 <!-------------------------------------------------------------------->
 [Commodore bus]: https://en.wikipedia.org/wiki/Commodore_bus
@@ -198,3 +232,7 @@ CIA 1, pin 39. (See also F̅S̅D̅I̅̅R̅ signal on MMU U7, pin 44.)
 [mjk]: https://ist.uwaterloo.ca/~schepers/MJK/serialbus.html
 [petieee]: https://archive.org/details/PET_and_the_IEEE488_Bus_1980_McGraw-Hill
 [uwser]: https://ist.uwaterloo.ca/~schepers/MJK/serialbus.html
+
+[c64o-1541mmap]: https://sta.c64.org/cbm1541mem.html
+[c64w-1541dc]: https://www.c64-wiki.com/wiki/Commodore_1541#Disk_Drive_Commands
+[c64w-dc]: https://www.c64-wiki.com/wiki/Drive_command
