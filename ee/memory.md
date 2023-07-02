@@ -26,7 +26,8 @@ JEDEC RAM and ROM pinouts are very similar but not quite identical.
 
 Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
 - 23xx:    PROM
-- 25xx:   EPROM compatible w/23xx pinout
+- 25xx:   EPROM diff from 28xx: 20=`PD/P̅G̅M̅`=`/CE` 21=`Vpp`. TI datasheet
+                claims ROM/EPROM compatible, but not in practice?
 - 27xx:   EPROM slightly different pinout from 23xx/25xx
 - 28Cxx: EEPROM
 - 6116:     RAM 2K
@@ -110,7 +111,15 @@ Chip Data
 _DIPnn_ is 0.3" wide dual-inline package, _nn_ pins;
 _WDIPnn_ is = 0.6" wide.
 
-### EPROM/EEPROM
+### 25xx EPROM
+
+TI [TMS 2532]
+- Datasheet claims "JEDEC Standard Pinout" and "Pin Compatible with
+  Existing ROMs and EPROMs (8K, 16K, 32K and 64K)". However, [forum
+  posts][aa-285971] have said different, and it's been seen to fail
+  personally in a CBM 3040 drive unit.
+
+### 27xx EPROM
 
 Winbond [W27C512-45Z] 64K×8 (45 ns., Z=lead free)
 - TTL and CMOS compatible
@@ -128,6 +137,8 @@ Winbond [W27C512-45Z] 64K×8 (45 ns., Z=lead free)
 - Pricing: ¥80~¥120 on aliexpress.com
 
 Microchip [27C256]
+
+### 28xx EEPROM
 
 Catalyst Semiconductor [CAT28F512]; 12 V programming/erase
 
@@ -235,8 +246,11 @@ For 4164:
 [FM1808]: https://docs.isy.liu.se/pub/VanHeden/DataSheets/fm1808.pdf
 [HM62256A]: https://datasheet.octopart.com/HM62256ALP-10-Hitachi-datasheet-115281844.pdf
 [IDT6116SA/LA]: https://www.renesas.com/jp/en/document/dst/6116sala-data-sheet
+[TMS 2532]: https://archive.org/details/2532_EPROM_Data_Sheet/mode/1up
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
+[aa-285971]: https://forums.atariage.com/topic/285971-2532-eprom-uses-adapter-for-tl866/#comment-4223453
+
 
 [ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
