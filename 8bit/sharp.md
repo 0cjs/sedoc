@@ -82,6 +82,10 @@ Typewriter keyboard.
 Models:
 - MZ-80B (1981, ¥278,000) 64 KB.
 - MZ-80B2 (1982, ¥278,000) 64 KB. Graphics VRAM standard?
+- MZ-2000 (1982): optional color monitor, BASIC-level compatible with MZ-80B.
+- MZ-2200 (1983): only one in series w/o monitor or CMT (but still very deep).
+  No built-in CMT; special CMT connector. Expansion card unit bolts on back
+  to make it even deeper.
 
 To-do XXX:
 - MZ-3500 (1982) Dual processor Z-80. CP/M; might not be MZ-80-compatible.
