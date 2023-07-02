@@ -13,10 +13,10 @@ The ["1977 trinity"][trinity] was the [Apple II][we-ap2], [TRS-80
 Model I][we-trs80i], and [Commodore PET 2001][we-pet2001], the first
 "appliance" computers.
 
-The Japanese parallel, 1-2 years later, was the [8ビット御三家][gosanke8],
-the original models of which were the [Hitachi Basic Master
-MB-6880][wj-bm], [Sharp MZ-80K][wj-mz80k] (start of the [MZ series][wj-mz])
-and [NEC PC-8001][wj-pc8001].
+The Japanese parallel, 1-2 years later, was the [8ビット御三家][gosanke8]
+(はちビットごさんけ, _hachi-bitto gosannke_) the original models of which
+were the [Hitachi Basic Master MB-6880][wj-bm], [Sharp MZ-80K][wj-mz80k]
+(start of the [MZ series][wj-mz]) and [NEC PC-8001][wj-pc8001].
 
 In 1988 NEC had the largest market share (51%), followed by Fujitsu
 (14%), Toshiba (10%), and Epson (10%). From 1992 NEC's share started
