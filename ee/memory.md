@@ -26,8 +26,7 @@ JEDEC RAM and ROM pinouts are very similar but not quite identical.
 
 Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
 - 23xx:    PROM
-- 25xx:   EPROM diff from 28xx: 20=`PD/P̅G̅M̅`=`/CE` 21=`Vpp`. TI datasheet
-                claims ROM/EPROM compatible, but not in practice?
+- 25xx:   EPROM 20=`PD/P̅G̅M̅`=`/CE` 21=`Vpp`. (not fully 23xx compatible)
 - 27xx:   EPROM slightly different pinout from 23xx/25xx
 - 28Cxx: EEPROM
 - 6116:     RAM 2K
@@ -115,9 +114,13 @@ _WDIPnn_ is = 0.6" wide.
 
 TI [TMS 2532]
 - Datasheet claims "JEDEC Standard Pinout" and "Pin Compatible with
-  Existing ROMs and EPROMs (8K, 16K, 32K and 64K)". However, [forum
-  posts][aa-285971] have said different, and it's been seen to fail
-  personally in a CBM 3040 drive unit.
+  Existing ROMs and EPROMs (8K, 16K, 32K and 64K)". But they really mean
+  "pin-compatible with TMS 4732." For 23xx, not: anything needing `CS2`
+  chip select working will not work because this chip ignores `CS2` and
+  uses only `C̅S̅1`.
+- Above is seen in [forum posts][aa-285971], and personally in a CBM 3040
+  drive unit, where ϕ2 on `CS2` is essential to keep it off the bus on the
+  other phase when the 6504 is using its ROM.
 
 ### 27xx EPROM
 
