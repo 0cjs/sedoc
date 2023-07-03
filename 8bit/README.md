@@ -6,8 +6,8 @@ General references:
 - [Computers using the Kansas City standard][kctape]
 
 History;
-- Timeline: [`market/timeline`](market/timeline.md)
-- Sales and market share: [`market/sales`](market/sales.md)
+- Timeline: [`Market/timeline`](Market/timeline.md)
+- Sales and market share: [`Market/sales`](Market/sales.md)
 
 
 
