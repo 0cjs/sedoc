@@ -45,6 +45,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1974-12 C Motorola 6800 in full production
     1974    H SCELBI 8H kit (8008 CPU, front panel; ~150 sold)
 
+    1975    H Intel MCS-80/SDK-80
     1975-01 H Altair 8800 ships; on cover of Popular Electronics
     1975-02 s Gates/Allen finish first BASIC, license it to MITS
     1975-05 c General Instrument CP1600 (16-bit, CP1610 used in Intellivision)
@@ -182,7 +183,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
 
 ### Magazine Publishing Dates
 
-- 1976      _I/O_
+- 1976      [_I/O_][io]. ([ToC scans][io-toc]
 - 1977-01   [_Kilobaud_][m kb] (from 1979-01, _Microcomputing_)
 - 1977      _ASCII_
 - 1979-01   _Kiloboad_ → _Microcomputing_
@@ -223,6 +224,8 @@ Online references (some of dubious accuracy) include:
 <!-------------------------------------------------------------------->
 
 <!-- Magazine publishing dates -->
+[io-toc]: http://io40th.kohgakusha.co.jp/2017/09/3440io40.html
+[io]: https://archive.org/details/iomagazine
 [m kb]: https://archive.org/details/kilobaudmagazine?&sort=date
 
 <!-- Overview -->
