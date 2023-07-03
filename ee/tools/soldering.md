@@ -18,21 +18,31 @@ Soldering
 
 Desoldering ([jre-sol10]):
 - Iron:
-  - For removing solder alone (no part), clean tip and touch to solder;
-    after it melts some will come away with the iron when you lift it off.
-  - Add solder first to help with heat transfer and remove oxidization.
+  - Raise rather than slide iron when done to help avoid lifiting pads.
+  - Lots and lots of flux!
+  - For removing solder alone (no part), clean tip, add flux to solder,
+    touch tip to  touch to solder; after it melts some will come away with
+    the iron when you lift it off.
+  - On pins, add flux and solder first to help with heat transfer and
+    remove oxidization.
+  - For multi-pin parts, place a thick copper wire along the pins, flux and
+    solder all the pins to it, then heat the wire by running wide tip along
+    it to loosen all pins simultaneously. Wire can be taped (w/kapton tape)
+    to board to keep it in place if necessary. [MrSolderFix][msf]
+  - For xformers etc. w/sidely separated pins, two separate wires and two
+    irons, one to heat each.
   - For SMD discrete parts add solder to get big blobs on both ends so you
     can then touch/melt both at once with the iron. Put solder on iron tip
     for heat xfer before removing part.
-  - Raise rather than slide iron when done to help avoid lifiting pads.
-    (Also never slide wick across a pad.)
 - Desoldering braid:
   - Put a little flux on the braid to help with desoldering (bigclive.com).
+  - Sliding braid across pads may remove pads, or may be better if you're
+    doing it because you're maintaining heat with the iron until the braid
+    is away, avoiding braid gettin stuck to traces.
 - Solder sucker (not as good as braid):
   - Clean solder sucker tip after every suck.
   - Notch the tip (just one side) of a solder sucker to let it get closer
-    to a PCB hole while still leaving space for the soldering iron to get
-    in.
+    to a PCB hole while still leaving space for the soldering iron to get in.
 
 Heat shrink can also be shrunk by rubbing the shank of the soldering
 iron against it (not too slowly).
@@ -79,10 +89,12 @@ Other suggestions I've seen:
 
 <!-------------------------------------------------------------------->
 [Al]: https://users.monash.edu.au/~ralphk/solder-aluminium.html
-[jre]: https://josepheoff.github.io/posts/howtosolder-toc
 [jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
 [jre-sol09]: https://josepheoff.github.io/posts/howtosolder-9throughhole-remove
 [jre-sol10]: https://josepheoff.github.io/posts/howtosolder-10soldersucker
+[jre]: https://josepheoff.github.io/posts/howtosolder-toc
+[msf]: https://youtu.be/Vou2xlJkuoU
 
 [goot px-201]: http://www.goot.jp/en/handakote/px-201/
 [KSGER T12]: https://www.amazon.com/dp/B07PMZGPQQ
+
