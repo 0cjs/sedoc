@@ -26,7 +26,7 @@ mentioned in [`timeline`](timeline.md).
          Total    Other¹    Altair   TRS-80    PET    Apple2   Atari8      PC
     1975     5               5 100%
     1976    46    40 87%     6 13%
-    1977   150    50 33%    10      100 66%   4  3%   .6  1%
+    1977   150    50 33%    10      100 66%   4  3%   .6  0%
     1978   258   100 39%     4      150 58%  30 12%  7.6  3%
     1979   535   200 37%            200 37%  45  8%   35  7%  100 19%
     1980   724   424 59%            225 31%  90 12%   78 11%  200 28%
@@ -35,6 +35,17 @@ mentioned in [`timeline`](timeline.md).
     1983  4920   500 10%  2000 40%  200  4%   0      420  9%  500 10%  1300 26%
 
     ¹ Mainly CP/M, may include PET
+
+Other notes:
+- "In 1980 some two dozen firms sold 724,000 personal computers for $1.8
+  billion. The following year 20 more companies joined the stampede,
+  including giant IBM, and sales doubled to 1.4 million units at just under
+  $3 billion." ... "At the moment, Dataquest estimates that Texas
+  Instruments leads the low-price parade with a 35% share of the market in
+  computers selling for less than $1,000. Next come Timex (26%), Commodore
+  (15%) and Atari (13%). In the race among machines priced between $1,000
+  and $5,000, Apple still commands 26% followed by IBM (17% and Tandy/Radio
+  Shack (10%)." [[time83]]
 
 ### Sources
 
@@ -52,7 +63,8 @@ Additional sources:
   blog posts are so much later than this article.
 - [[riem12]] Jeremy Reimer, "From Altair to iPad: 35 years of personal
   computer market share." arstechnical.com, 2012-08-14.
-
+- [[time83]] "Machine of the Year: The Computer Moves In," _Time,_
+  1983-01-03.
 
 
 <!-------------------------------------------------------------------->
@@ -64,3 +76,4 @@ Additional sources:
 
 [reim05]: https://arstechnica.com/features/2005/12/total-share/
 [reim12]: https://arstechnica.com/information-technology/2012/08/from-altair-to-ipad-35-years-of-personal-computer-market-share/
+[time83]: https://web.archive.org/web/20040803105533/https://www.time.com/time/special/moy/1982.html
