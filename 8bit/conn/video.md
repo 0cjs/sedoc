@@ -321,7 +321,7 @@ pinout][pru-vga] for details) and breakout connector wire colours:
      6  red ground                              //red
      7  green ground                            //green
      8  blue ground                             //blue
-     9  key (no pin); opt 5 V from PC                   grey
+     9  DDC +5V 50-100 mA; key on old PS/2              grey
     10  sync ground                             black
     11  ID0 monitor ID bit 0 (optional)                 orange
     12  SDA I2C serial data (DDC1: ID1)                 //orange
