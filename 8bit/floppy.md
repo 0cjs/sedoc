@@ -47,19 +47,25 @@ General references:
 
 ### Media
 
-For standard drives there are only two types of magnetic coating: what is
-now called "double density" (DD, 1D, 2D, 2DD and many other abbreviations)
-and "high density" (HD). These differ in coercivity and thickness of the
-magnetic media. DD / HD 5.25" is 300 / 600 Oersted and 3.5" is 660 / 720
-Oe. [[Retrocomputing SE][rcse 9303]]
+For standard drives there are only two types of magnetic coating: what I
+call "standard" and by many is now called "double density" (DD, 1D, 2D, 2DD
+and many other abbreviations) and "high density" (HD). These differ in
+coercivity and thickness of the magnetic media. DD / HD 5.25" is 300 / 600
+Oersted and 3.5" is 660 / 720 Oe. [[Retrocomputing SE][rcse 9303]]
+
+All recordings to standard density diskettes use the same _flux density,_
+regardless of other aspects of the format. Even with just the one flux
+density, different ways of recording give a very wide range of capacities,
+from around 90 KB for single-sided 40-track "single-density" FM formats to
+800 KB or more for double-sided 80-track MFM formats.
 
 Single vs. double density refers only to the encoding format: FM for SD and
 MFM for DD. (M2FM was an early DD scheme replaced by MFM.) Though differing
-in information density, both are the same flux density. and use the same
-"double density" (as it's now called) media.
+in information density, both are the same flux density, and use the same
+standard density (or "double density," as it's now called) media.
 
 So-called "quad density" (5.25" only) or "2DD" refers to 80-track drives;
-again the magnetic coating is standard double density media.
+again the magnetic coating is standard ("double density") media.
 
 8" floppy sleeves have the index hole in a [slightly different
 location][boginjr] on single-sided and double-sided diskettes, and so 1S
