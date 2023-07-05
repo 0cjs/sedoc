@@ -10,6 +10,7 @@ Subject Index:
 - Power: [Barrel], [DIN], [JST]
 - Serial: [DIN], [serial].
 - Video: [Video], [DIN].
+- Printer/expansion ("Centronics"): [ribbon]
 
 Connector Index:
 - [0.1" Pin Headers][header]
@@ -37,6 +38,7 @@ A massive source for all sorts of Japanese computer connectors is
 [header]: ./header.md
 [joystick]: ./joystick.md
 [jst]: ./jst.md
+[ribbon]: ./ribbon.md
 [serial]: ./serial.md
 [video]: ./video.md
 
