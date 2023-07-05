@@ -1,38 +1,55 @@
 Generic BASIC Programs and Information
 ======================================
 
+General References:
+- [[ms5ref]] _BASIC-80 Reference Manual,_ Microsoft, 1979. For Revision 5.0
+  of MS-BASIC for 8080 and Z80 (8K, Extended, Disk); major changes from
+  4.51. Missing some front matter and appendicies; more complete but poorer
+  scan at [[ms5ref-full]].
 
-Mandelbrot, by Gordon Henderson (drogon)
-----------------------------------------
 
-[`mandel.bas`](./mandel.bas.txt), from forum.6502.org thread
-[Benchmarking][f65 bench].
+Input and Editing
+-----------------
 
-#### MSX1 (Sanyo MPC-2 Wavy2)
+`EDIT lnno` ([[ms5ref]] p.2-20 P.39) edits a single line and activates the
+edit mode subcommands, many of which are available in the screen editors on
+microcomputers such as the PC-8001 and MSX. Commands preceeded with `ⁿ`
+can take an optional repeat count for the action.
 
-The following changes may be made:
+    ⁿSpace      cursor right
+    ⁿ<DEL>      cursor left
+     I          insert text; ESC to return to edit, CR to enter line
+     X          extend line; cursor to EOL then insert mode
+    ⁿD          delete char to right
+    ⁿH          delete char to left
+    ⁿSc         (search) move forward up to char `c`
+    ⁿKc         (kill) delete forward up to char `c`
+    ⁿC          change next ⁿ chars to same number of new chars typed
 
-    165 DEFSNG A-Z          Use single-precision ints (vs. [dbl])
-    265 W=38:H=21           Make it fit 40x24 screen (per litwr)
-    285 TIME=0              Avoid wrap so runtime is not a negative number
-    515 GOTO 515            Avoid prompt scrolling screen (per litwr)
+    <CR>        print remainder of line, save, exit edit mode
+    E           same as <CR> but no print of remainder of line
+    Q           exit editing without saving changes
+    L           list remainder of line; reposition cursor at start
+    A           restart editing from original version of line
 
-Also change the end of line 510 from `100` to `60;` (for NTSC systems) to
-show number of seconds and scroll the screen one line less at the end (per
-litwr in the first reply). The first line will still scroll off unless you
-turn off the function key labels.
+MS-BASIC 5.0 will enter edit mode on any line throwing a Syntax Error;
+press `Q` to exit without re-inserting line to avoid wiping variables.
 
-Timings (in seconds):
+<Ctrl-A> will enter edit mode on a line you're currently entering in input
+mode.
 
-                  Sanyo MPC-2  Sony HB-55
-    ──────────────────────────────────────
-      DBL           521.9        521.98
-      SNG           413.37       413.45
-      improvement    21%          21%
 
-(HB-55 once produced 412.78, perhaps because first run after reset?)
+Programs
+--------
+
+The [`retroabandon/bascode`] repo contains various code, the Mandelbrot
+program, by Gordon Henderson (drogon), often used as a
+[benchmark][f65 bench]. (The original is in `bbcmicro/mandel.bas`.)
 
 
 
 <!-------------------------------------------------------------------->
-[f65 bench]: http://forum.6502.org/viewtopic.php?f=1&t=6323
+[`retroabandon/bascode`]: https://gitlab.com/retroabandon/bascode
+[f65 bench]: http://forum.6502.org/viewtopic.php?f=1&t=6323
+[ms5ref]: https://archive.org/details/BASIC-80_MBASIC_Reference_Manual/
+[ms5ref-full]: https://archive.org/details/BASIC-80_v5.0_1979_Microsoft/
