@@ -21,11 +21,12 @@ and [Hangul BASIC] with extended functionality.
 - Optional parameters (`[,…]`) may be omitted; the trailing comma must be
   given if parameters after that are specified.
 
-From MSX-DOS, you can enter Disk BASIC with the `BASIC` command and
-return with the `CALL SYSTEM` command. (`CALL SYSTEM` seems to do a warm
-boot of whatever diskette is in the drive; returning does not prompt for
-the date/time, but BASIC will restart if there's no MSX-DOS diskette in
-the drive.)
+From MSX-DOS, you can enter Disk BASIC with the `BASIC` command and return
+with the `CALL SYSTEM` command. (You must have previously booted MSX-DOS,
+otherwise you will get an "Illegal function call" error. You must also have
+an MSX-DOS system diskette in the drive; it seems to do a warm start, as
+returning does not prompt for the date/time or run `AUTOEXEC.BAT`. BASIC
+will restart if there's no system diskette in the drive.)
 
 ### Devices
 
