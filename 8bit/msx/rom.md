@@ -242,7 +242,7 @@ changing the page mappings) have `DI` prefixing their description.
            02D            sysinfo: MSX version
            02E            sysinfo: MSX-MIDI (turbo R only)
            02F            reserved
-    RST6   030  CALLF
+    RST6   030  CALLF     cross-slot call: follow w/db slotdesc, dw addr
            034  CHAR_16   4b default kanji range; DiskBIOS copies to KANJITABLE
                           two pairs of limits for 1st bytes of Shift-JIS chars
     RST7   038  KEYINT    Timer interrupt handler; keyboard scan etc.
