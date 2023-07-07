@@ -38,8 +38,8 @@ allowed).
   - `/P` pause at end of each page of ouptut.
   - `/W` "wide" output; filenames only.
 - `FORMAT`: prompts for drive, and type of format if options available.
-  Manual claims 8 or 9 sector options, but v1.03 on Toshiba HX-F101 offers
-  only single/double sided. Perhaps determined by the Disk ROM?
+  (This is the same as `CALL FORMAT` so options depends on your Disk ROM.)
+  Manual shows 8 or 9 sector options, not on Toshiba HX-F101.
 - `MODE width`: _width_ 0-40, 0-80 on MSX2 machines. 32 or less will use
   screen mode 1, 33-40 screen mode 0. Very short widths will break `DIR`,
   wedging the system when it tries to print.
