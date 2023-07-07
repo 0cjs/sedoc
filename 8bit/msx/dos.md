@@ -28,7 +28,8 @@ allowed).
   - Wildcards copy multiple files.
   - Additional _fspecs_ with `+` concatentates files.
   - You may append `/A` or `/B` to any fspec to force ASCII or binary mode.
-    mode. This is used for EOF (`^Z`) detection.
+    mode. This is related to EOF (`^Z`) usage. (`COPY .../A .../B` will
+    remove trailing $1A from the first file during copy.)
 - `DATE [yyyy-mm-dd]`: prompts for entry if no param given. Years are
   displayed as two digits even through four are kept internally.
   International systems use `mm-dd-yyyy`; European systems use `dd-mm-yyyy`
