@@ -1,6 +1,9 @@
 MSX-DOS
 =======
 
+MSX-DOS 1.x
+-----------
+
 The original MSX-DOS distribution diskettes, at least for v1.03, come with
 only `MSXDOS.SYS` (2432 bytes) and `COMMAND.COM` (6656) bytes. (From the
 small size, these probably make heavy use of the Disk BASIC ROM.) The
@@ -63,8 +66,7 @@ the date/time, but BASIC will restart if there's no MSX-DOS diskette in
 the drive.)
 
 
-Documentation
--------------
+### Documentation
 
 The [_MSX-DOS Tools Users Manual_][mtdum] (ASCII, 1987) is a huge book that
 actually contains several different manuals in it, without a proper table
@@ -87,8 +89,17 @@ below are the PDF page numbers from the original full scan.
 - `END-Material.pdf` (P.439)
 
 
+MSX-DOS 2.x
+-----------
+
+This adds significantly more internal commands in `COMMAND2.COM`.
+See [MSX wiki][mw-dosint] for details.
+
+
 
 <!-------------------------------------------------------------------->
 [ar-MSXDOS]: https://archive.org/details/MSXDOS
 [mdtum]: https://archive.org/details/MSXDOSTOOLS/
 [ar-TOOLS]: https://archive.org/details/MSXDOSTOOLS_201606
+
+[mw-dosint]: https://www.msx.org/wiki/MSX-DOS_Internal_Commands
