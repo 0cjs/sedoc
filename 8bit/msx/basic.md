@@ -45,9 +45,12 @@ the drive.)
   ports $B0-$B3 described in the [I/O Address Map](
   ./address-decoding.md#i/o-address-map). The Sony HBI-55 and Yamaha UDC-01
   carts implementing this are also described there.
-- `MEM:`: The device cannot be used until you `CALL MEMINI (size)` (default
-  size is 32000 bytes). List files on it with `CALL MFILES`, and erase with
-  `CALL MKILL ("myfile.bas")`.
+- `MEM:`: The device cannot be used until you [`CALL MEMINI
+  (size)`][memini] (_size_ in bytes; default `(32000)`). List files on it
+  with `CALL MFILES`, and erase with `CALL MKILL ("myfile.bas")`. All MSX2
+  machines support this, and MSX-BASIC 2.1 can use a 128K/256K memory
+  mapper. Some MSX1 machines (e.g., Toshiba HX-21) also support this, but
+  do not take a `(size)` parameter.
 
 ### Loading/Saving
 
@@ -265,6 +268,7 @@ References
 [guide]: https://archive.org/stream/AGuideToMSXVersion2.0#page/n3/mode/1up
 [instr]: https://www.msx.org/wiki/MSX-BASIC_Instructions
 [instrcat]: https://www.msx.org/wiki/Category:MSX-BASIC_Instructions
+[memini]: https://www.msx.org/wiki/CALL_MEMINI
 [the.2.0]: https://konamiman.github.io/MSX2-Technical-Handbook/md/Chapter2.html
 [the.2.0src]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter2.md/#3-internal-structure-of-basic
 [thj.kouzou]: https://archive.org/stream/MSX2TechnicalHandBookFE1986#page/n68/mode/1up
