@@ -18,8 +18,8 @@ PDP-1 (1959)
   further operation information).
 
                   ↓── 1=indirect through address
-      operation | I | address
-          0 ‥ 4 | 5 | 6 . . . . . . . . . . 17
+      operation │ I │ address
+          0 ‥ 4 │ 5 │ 6 . . . . . . . . . . 17
 
 PDP-8 (1965)
 ------------
@@ -34,8 +34,8 @@ PDP-8 (1965)
 - Single-word instructions that may access memory only in page 0 or page
   into which the PC points:
 
-                           0 . 2 | 3 | 4 | 5 . . . . . 11
-                       operation | I | Z | offset (address)
+                           0 . 2 │ 3 │ 4 │ 5 . . . . . 11
+                       operation │ I │ Z │ offset (address)
       indirect through address=1 ──↑   ↑ addr 0‥4: 0=0000, 1=PC 0‥4
 
 Basic instructions:
@@ -63,9 +63,9 @@ PDP-10 (1966)
 - Addrs 256 K (2^18) words × 36 bits
 - Instructions
 
-         | 0 .. 8 |  9 .. 12 | 13 | 14 .. 17 | 18 .. 35 |
-         | opcode | register |  I |  effective address  |
-            indir. through EA=1 ↑ | register |  offset  |
+         │ 0 .. 8 │  9 .. 12 │ 13 │ 14 .. 17 │ 18 .. 35 │
+         │ opcode │ register │  I │  effectiv│ address  │
+         │  indir. through EA=1 ↑ │ register │  offset  │
 
 
 Data General Nova (1969)
@@ -86,13 +86,13 @@ Instruction formats:
 - No I/O instructions; memory-mapped I/O.
 - Index addressing modes are followed by 1 or 2 words giving index `m`.
 
-      | 15 ─── 12 | 11 ─ 9 | 8 ─ 6 | 5 ── 3 | 2 ─ 0 |
-      |  opcode   |  mode  |  reg  |  mode  |  reg  |
-      |           |     source     |   destination  |  2-operand
-      |          opcode            |                |  1-operand
+      │ 15 ─── 12 │ 11 ─ 9 │ 8 ─ 6 │ 5 ── 3 │ 2 ─ 0 │
+      │           │  mode  │  reg  │  mode  │  reg  │
+      │   opcode  │     source     │   destination  │  2-operand
+      │           opcode           │   destination  │  1-operand
 
-      | 15  ──────────── 9 | 8 | 7 ────────────── 0 |  branch
-      |        opcode      | C |    signed offset   |  C = condition code value
+      │ 15  ──────────── 9 │ 8 │ 7 ────────────── 0 │  branch
+      │        opcode      │ C │    signed offset   │  C = condition code value
 
       JSR Rn,addr: (SP--) ← Rn; Rn ← PC; PC ← addr
       RTS Rn     : PC ← Rn; Rn ← (SP++)
