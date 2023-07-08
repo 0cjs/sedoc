@@ -118,6 +118,11 @@ Standards:
 - RS-170A / NTSC-M (1953 NTSC): (480i60) 525-line
   30/1.001 ≈ 29.970 FPS interlaced. 15.734 kHz color.
   Backward-compatible w/RC-170.
+- NTSC-J: Similar to NTSC-M except that black level is same as blanking
+  level: 0 IRE rather than 7.5 IRE. Also, the colour encoding is slightly
+  different; "you also will see red look like dried blood rather than a
+  cartoon apple when using a VIC-1001 in an NTSC-M environment"
+  (CommodoreZ, _The Coriolis Effect_ Discord).
 - CCIR System B: (576i50) 625-line 25 FPS interlaced 15.625 kHz B/W,
   European (and later British). Used with both PAL (4.43361875 Mhz) and
   SECAM color.
