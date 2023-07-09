@@ -12,8 +12,57 @@ what provides the completion code for many commands, helper functions for
 creating new completions and completion code autoload.
 
 Contents:
+- [Bash Completion](#bash-completion)
 - [Debian bash-completion Package](#debian-bash-completion-package)
 - [bash-completion Framework](bash-completion-framework)
+
+
+Bash Completion
+---------------
+
+When completion is requested (usually with `Tab`), Bash first determines
+the command name and then tries to find a completion specification, called
+a _comspec_ for that name, using a default comspec if a specific one is not
+found. The comspec is used to generate the list of matching words, and is
+defined with the `complete` command, which is roughly:
+
+    complete -p [CMD]           # show comspec for CMD (default: all)
+    complete -r [CMD]           # remove comspec for CMD (default: all)
+    complete -F FN CMD          # Use function FN to complete CMD
+    complete -C CCMD CMD        # Execute CCMD in a subshell to complete CMD
+
+A comspec function called for completion is given:
+- `$1`: name of command to be completed
+- `$2`: the word being completed
+- `$3`: the word preceeding the word being completed
+- `$COMP_TYPE`: integer for various completion types; values unclear
+- `$COMP_LINE`: the current command line
+- `$COMP_WORDS`: array of individual words in current command line
+- `$COMP_CWORD`: index into `$COMP_WORDS` of the word containing the current
+  cursor position.
+- Various other `COMP_*` variables are also available; see the manpage.
+
+The comspec function should set the `COMPREPLY` array variable to the list
+of possible completions. The `compgen` command is useful for this; it takes
+the same options as `complete` for generating completions based on
+filenames, etc. The output is one completion per line; to set the
+`COMPREPLY` array from this:
+
+    mapfile -t COMPREPLY < <(compgen -W "various words" -- "$2")
+
+If you need to do something more sophisticated, such as complete only
+executable files that are in another path, and you don't want the full path
+to that being displayed, you need to build `COMPREPLY` yourself, making
+sure that you include only the options that match any partial word being
+completed:
+
+    COMPREPLY=()
+    local i
+    for i in "$bindir/"*; do
+        [[ ! -x $i && ! -L $i ]] && continue    # not executable
+        i="$(basename "$i")"
+        [[ $i == ${word}* ]] && COMPREPLY+=( "$(basename "$i")" )
+    done
 
 
 Debian bash-completion Package
