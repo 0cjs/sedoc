@@ -7,6 +7,14 @@ Docs:
 - [An introduction to bash completion: part 1][debintro],
   debian-administration.org article
 
+The [bash-completion][gh-bc] framework is separate from Bash itself; it is
+what provides the completion code for many commands, helper functions for
+creating new completions and completion code autoload.
+
+Contents:
+- [Debian bash-completion Package](#debian-bash-completion-package)
+- [bash-completion Framework](bash-completion-framework)
+
 
 Debian bash-completion Package
 ------------------------------
@@ -40,7 +48,7 @@ This will:
 bash-completion Framework
 -------------------------
 
-The current project site for bash-completion is on [github]. Old versions,
+The current project site for bash-completion is on [gh-bc]. Old versions,
 including the one distributed with Debian 9, list the project site as
 <http://bash-completion.alioth.debian.org>, which is no longer available.
 
@@ -61,7 +69,7 @@ have completions eagerly loaded at startup instead of on-demand.
   source `${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion`, if present,
   before sourcing `/usr/share/bash-completion/bash_completion`;
 
-The [latest version][github] of bash-completion does appear to offer
+The [latest version][gh-bc] of bash-completion does appear to offer
 user-specific load-on-demand from `$BASH_COMPLETION_USER_DIR/completions`,
 defaulting to `${XDG_DATA_HOME:-.local/share}/bash-completion`.
 
@@ -92,6 +100,7 @@ Using these can be as simple as, e.g., `complete -F _known_hosts myssh`.
 
 
 
+<!-------------------------------------------------------------------->
 [bashref]: https://tiswww.case.edu/php/chet/bash/bashref.html#Programmable-Completion
 [debintro]: https://debian-administration.org/article/316/An_introduction_to_bash_completion_part_1
-[github]: https://github.com/scop/bash-completion
+[gh-bc]: https://github.com/scop/bash-completion
