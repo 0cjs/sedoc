@@ -7,15 +7,41 @@ Summary (pin pitch in mm, wire size range in AWG). All are 1-row, shrouded.
 
     Series  Pitch  Wire   Lock  Type
     ───────────────────────────────────────────────────────────────────
+      VH    3.96   22-16  yes   Wire-to-board, inline female, PCB male
       XH    2.50   30-22   no   Wire-to-board; inline female, PCB male
-      SM    2.50   28-22  yes   Wire-to-wire;  inline male and female
       PH    2.0    32-24¹  no   Wire-to-board, inline female, PCB male
+      SM    2.50   28-22  yes   Wire-to-wire;  inline male and female
 
     ¹ 30-24, 28-24, 32-28 depending on connector
 
 
-JST XH
-------
+[JST VH]
+--------
+
+Large, square pins at 3.96 mm pitch; locking connector. Popular for PCB
+power supplies and old data connectors. Unshrouded board connectors more
+common.
+
+Wire Connectors (female; 2=no. of pins):
+- `VHR-2N` N type (more common?)
+- `VHR-2M` M type
+- `VHS-2V` retainer mountable type
+
+Board connectors (male; 2=no. of pins):
+- `B2P-VH` top entry
+- `B2PS-VH` side entry
+- `B2P-VH-B` top entry PBT
+- `S2P-VH` side entry w/PCB stabilizer
+- `B2P-VH-FB-B` top-entry shrouded
+- `B6P7-VH` is 7-position, 6th pin omitted; see data sheet for more
+
+Pin 1 at left:
+- looking into female wire connector with pin openings at botom.
+- looking down on male board connector w/latch at top, wide area at bot.
+
+
+[JST XH]
+--------
 
 2.50 mm wire-to-board connectors:
 - Female wire connectors; male shrouded PCB connectors.
@@ -38,8 +64,8 @@ References:
 - JST, [SM Connector][jst se] datasheet.
 
 
-JST SM
-------
+[JST SM]
+--------
 
 2.50 mm wire-to-wire connectors. Commonly used for LED strip power
 connectors. Plug has female pin entries; receptacle has shroud/male pins.
@@ -84,9 +110,10 @@ Examples:
 
 
 <!-------------------------------------------------------------------->
-[wp jst]: https://en.wikipedia.org/wiki/JST_connector
-[jst xh]: https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
 [jst sm]: http://www.jst-mfg.com/product/pdf/eng/eSM.pdf
+[jst vh]: https://www.jst-mfg.com/product/pdf/eng/eVH.pdf
+[jst xh]: https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
+[wp jst]: https://en.wikipedia.org/wiki/JST_connector
 
 <!-- JST SM -->
 [sparkfun-SM]: https://www.sparkfun.com/categories/tags/jst-sm
