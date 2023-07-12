@@ -1,9 +1,17 @@
 Windows 10 Tips and Tricks
 ==========================
 
-### Find Application for File from Command Line
+### Start Application for File from Command Line
 
-    start filename.ext
+    START "" filename.ext
+    "$COMSPEC" //c start "${@//&/^&}"       # in MINGW /usr/bin/start script
+
+The first parameter is an optional window name; it's best always to supply
+this otherwise `START` may get confused and open a Command Prompt window.
+`START /?` will print help.
+
+I've also seen someone suggest using `CALL`, though I don't see how that
+works.
 
 ### Keyboard Shortcuts
 
