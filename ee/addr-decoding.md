@@ -140,6 +140,13 @@ in one arrangement from `H L L`, `L H L`, `L L H`. E.g., A15-13 as
 `L H L` for $0000-$FFFF → $0000-$7FFF → $4000-$7FFF → $4000-$5FFF
 resp.
 
+A __'688__ can decode any arbitrary up-to-2⁸ contiguous range "within"
+a range for which you already have a chip select:
+- `G̅` selects decoding for address space subrange
+- B₇ to B₀  tied high/low.
+- A₇ to A₀ from address bus AD₁₄… or whatever.
+- For less range, replace B₀ tie w/A₀ link, and so on for fewer bits decoded.
+
 ### Commonly used parts:
 
 -  ['00][SN74LS00]  (14)  4× NAND, inputs `1̅A̅∙̅1̅B̅` etc.
