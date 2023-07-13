@@ -9,6 +9,21 @@ Books and References
   - Hexdump/checksum program on p.25.
   - Lots of other good technical data.
 
+### Expansion and Accessories
+
+Fujitsu:
+- システム拡張ユニット MB26001:
+  - Power switch on front
+  - Rear left: fan, "4A" fuse, "AC 100V" power cord,
+    ""/"S-G"/"F-G"/"" 4-way terminals w/SG/FG bridge
+  - Rear mid top: "RS-232-C" "1", "2", "3", "4", "IEEE-488" (all just empty
+    holes w/metal panel covers)
+  - Rear mid bot: "AC 100V" 2× 2-prong outlets
+  - Rear right: plastic cover; "CABLE OUT" empty hole,
+    "DIN CONNECTOR" "1" "2" "3" round holes w/metal plates.
+  - Manual: 81HM-000070-1 Fujitsu Micro 8
+            ユーザーズマニュアル システム拡張Ⅱ
+
 Modifications and projects:
 - [FM-8改造 備忘録 (by はせりん)][haserin]. Long list of mods, mostly for
   faster 68B09 CPU.
