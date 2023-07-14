@@ -1,15 +1,27 @@
 Windows Notes
 =============
 
+Bash vs. CMD
+------------
+
+Certain commands, such as `mklink`, are internal to the `cmd` command and
+thus can't be called from MINGW Bash. To run these:
+- `cmd //c mklink` to run a single command
+- `cmd` to start a Command Prompt in the current window, do your stuff,
+  and type `exit` to return.
+- `winpty` is not needed here for some reason and does not work.
+
 
 File and Directory Links
 ------------------------
 
 [NTFS links] are of three types:
 - Hard links, for files only, which have files share the same MFT entry
-  (inode), in the same filesystem.
+  (inode), in the same filesystem. These are very similar to Unix hard
+  links.
 - Junction points, which are similar to hard links, but defined for folders
-  and can be only local, absolute paths.
+  and can be only local (i.e., storage on the machine), absolute paths.
+  These are shown as and act like Unix symlinks in Bash.
 - [Symbolic Links][gfw sym], which are not widely available and still not
   understood by many programs. Note that `ln -s` in Git Bash creates
   copies, not symbolic links.
@@ -20,8 +32,8 @@ parsed by Windows Explorer, not the OS, and are not transparent to
 applications.
 
 The `mklink` command below is an internal `CMD.exe` and cannot be used in
-Git Bash. `fsutil.exe` does work from Git Bash and offers `hardlink` and
-`reparsePoint` subcommands that provide similar functionality.
+Git Bash (but see above). `fsutil.exe` does work from Git Bash and offers
+`hardlink` and `reparsePoint` subcommands that provide similar functionality.
 
 ### Hard Links
 
@@ -31,8 +43,13 @@ Git Bash. `fsutil.exe` does work from Git Bash and offers `hardlink` and
 
 ### Junction Points
 
-    fsutil reparsePoint ???         # XXX fill this in
     mklink /j linkname target
+    fsutil reparsePoint query PATH
+    fsutil reparsePoint delete PATH
+
+Note that reparse points are used for much more than just directory
+junctions. They can include arbitrary information for various file system
+filters.
 
 ### Symlinks
 
