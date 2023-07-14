@@ -275,6 +275,10 @@ changing the page mappings) have `DI` prefixing their description.
            0C6  POSIT     move cursor to X=H, Y=L
            ...
            0D2  TOTEXT    force screen to text mode
+           0D5  GTSTCK    joystick dir read; A=param/ret, see BASIC `STICK()`
+           0D8  GTTRIG    joystick btn read; A=param/ret; see BASIC `STRIG()`
+           0DB  GTPAD     touchpad read; A=param/ret
+           0DE  GTPD      paddle read; A=param/ret
            ...
            135  CHGSND    set 1-bit sound port A=0 off, A=~0 on
            ...

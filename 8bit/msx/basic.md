@@ -160,6 +160,14 @@ Below, _f_ is a file handle, 1 to 15, but see `MAXFILES`.
   keyboard state (ctrl/shift/kana/etc.).
   - Special keys: 11 HOME, 12 CLS, 18 INS, 24 SELECT, 28 →, 29 ←, 30 ↑, 31 ↓
   - F-keys return their programmed sequence of characters.
+- `STICK(n)`: Returns direction of joystick.
+  - _n:_ 0=arrow keys, 1=controller port 1, 2=controller port 2
+  - Returns: 0=no direction, 1=up, 2=up+right, 3=right, ..., 8=up+left
+- `STRIG(n)`: Trigger button status.
+  - _n:_ 0=space bar, 1,3=controller 1, 2,4=controller 2
+  - Returns: 0=not pressed, -1=pressed.
+- `PDL(n)`
+- `PAD(n)`
 
 ### Screen, Graphics
 
