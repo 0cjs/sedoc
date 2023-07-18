@@ -19,8 +19,10 @@ algoritm.
 RST (reStructuredText) Docstrings
 ---------------------------------
 
-[PEP 287] describes the convention of using [reStructuredText][] ([RST
-docs], [quickref]) in docstrings.
+[PEP 287] describes the convention of using [reStructuredText][wp-rst]
+([RST docs], [quickref]) in docstrings. The [Restructred Text][sp-rst]
+section of the Sphinx documentation is also useful, partciularly since it's
+the usual program that reads and renders docstrings to HTML documentation.
 
 Use interpreted text (in backticks, like Markdown inline code quoting)
 for identifiers such as function parameters; these will be linked in
@@ -100,4 +102,5 @@ References
 [RST docs]: http://docutils.sourceforge.net/rst.html
 [doctest]: http://www.python.org/doc/current/lib/module-doctest.html
 [quickref]: http://docutils.sourceforge.net/docs/user/rst/quickref.html
-[reStructuredText]: https://en.wikipedia.org/wiki/ReStructuredText
+[sp-rst]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+[wp-rst]: https://en.wikipedia.org/wiki/ReStructuredText
