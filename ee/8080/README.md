@@ -69,6 +69,14 @@ On the 8080/8085, `P` is always set to the parity of the result (odd/even)
 on the 8080/8085. The Z80  does that only for logical operations, instead
 using it to indicate signed overflow for arithmetic operations.
 
+### Stack Pointer
+
+The stack pointer points to the lowest _used_ address on the stack. Stack
+operations always use a a register pair (`AF`, `BC`, `DE`, `HL`) using the
+following sequence
+- `PSH`: (SP-1) ← MSB; (SP-2) ← LSB; SP ← SP - 2.
+- `POP`: LSB ← (SP); MSB ← (SP+1); SP ← SP + 2.
+
 ### Addressing Modes
 
 Addressing modes: direct and indirect through a register. Nothing involving
