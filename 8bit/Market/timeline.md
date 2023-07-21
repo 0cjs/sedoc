@@ -62,11 +62,12 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1976-01 s Ric Weiland finishes 6800 BASIC for MS
     1976-02 S Commercial Tiny BASIC for 6800
     1976-02 s Gates writes diskette code for BASIC
-    1976-03 C Z-80 ships
+    1976-04 c Z80 announced
     1976-04 H Altair 680 ships (delayed from late 1975)
     1976-05 s Digital Research copyrights CP/M
-    1976-06 S Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
     1976-05 c Intel 8086 project started
+    1976-06 C Z80 ships
+    1976-06 S Robert Uiterwyck's Micro Basic (SWTPC 6800 4K) released
     1976-06 H Apple I kit ships (assembled vers for Byte Shop 1 mo. later)
     1976-06 h SWTPC AC-30 cassette interface
     1976-06 s MS BASIC-80 ported to 6502 (summer)
