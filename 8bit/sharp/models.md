@@ -35,7 +35,7 @@ SM-B-80T
 - Z-80PIO (LH-0081) for LED/kbd/CMT; socket for 2nd PIO
 - Tape I/F is now FSK, 1200 bps.
 
-### [MZ-80K Series]
+### [MZ-80K "Hobby" Series][80k-series]
 
 All from the Electronic Parts division until the Information Systems division
 takes over and releases the MZ-1200.
@@ -47,6 +47,7 @@ Specs:
   1 KB VRAM, 2 KB character ROM.
 - Built-in 9" monitor and CMT.
 - All keyboards are "square" (PET-style) layout unless otherwise mentioned.
+- CMT: 1200 bps.
 
 Built-in monochrome display:
 - MZ-80K (1978-12, ¥198,000) 20K RAM. Semi-kit (keyboard needed assembly) to
@@ -54,7 +55,7 @@ Built-in monochrome display:
   assembled). Display will snow during access conflict.
 - MZ-80C (1979, ¥268,000) 48K RAM. Typewriter keyboard. No longer kit.
 - MZ-80K2 (1980, ¥198,000) 32K RAM.
-- MZ-80KE (1981, ¥148,000) Cost-reduced MZ-80K2.
+- MZ-80K2E (1981, ¥148,000) Cost-reduced MZ-80K2.
 - MZ-80A (1982) 24K RAM. Typewriter keyboard. ROM can be bank-switched out.
   Cycle-stealing CRTC (no snow) and hardware scroll (via moving frame buffer
   start address).
@@ -62,11 +63,27 @@ Built-in monochrome display:
   Systems Division.
 
 External colour display:
-- MZ-700 (1982) CMT and plotter optional.
-- MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound; 2.8" QuickDisk.
+- MZ-700 (1982-11) 3.58 Mhz. 64K + 4K VRAM.
+  - Almost perfectly compatible with MZ-80K. Came with S-BASIC and Hu-BASIC.
+  - MZ-711: Base model; no CMT or plotter.
+  - MZ-721: MZ-1T01 CMT (MZ-721).
+  - MZ-731: CMT and  MZ-1P01 color plotter printer.
+  - External printer MZ-80P5(K) available. PCB printer switch must be set
+    to external position (left), not `INT` (right). Printer connector port
+    covered with metal panel on MZ-731.
+  - Back panel:
+    - Upper: RF (RCA), CH2-CH1 (SW), B/W-COLOR (SW), CVBS (RCA), RGB (DIN-8)
+    - Lower: CMT READ, WRITE (2×3.5mm mono)
+      - JOYSTICK (2 5-pin headers (JST?) behind panel)
+      - I/O-BUS (2×25 edge connector, key between 19-20, behind panel)
+      - PRINTER (2×13 edge connector, key between 10-11, behind panel)
+      - VOLUME (pot), RESET (btn).
+    - Right: Power (IEC C8), FG (terminal), POWER (sw).
+- MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound;
+  2.8" QuickDisk.
 - MZ-800 (1985) First w/640×200 graphics TI SN6489 sound; 2.8" QuickDisk.
 
-### [MZ-80B Series]
+### [MZ-80B "Business" Series][80b-series]
 
 ROM has IPL only, no low-level I/O routines. (IPL copied from ROM to RAM.)
 
@@ -103,8 +120,8 @@ also a Z-80 and some backward compatibility.
 
 <!-------------------------------------------------------------------->
 [MZ-40K]: https://ja.wikipedia.org/wiki/MZ-40K
-[MZ-80B Series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80B
-[MZ-80K Series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K系機種
+[80b-series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80B
+[80k-series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K系機種
 [SB-B-80TE]: http://retropc.net/ohishi/museum/80te.htm
 [SB-B-80T]: http://retropc.net/ohishi/museum/80t.htm
 [nib]: http://retropc.net/ohishi/museum/index.htm
