@@ -46,16 +46,17 @@ Variable locations (all values in hex): [[smzo-monicmd]]
     1038    3           jp to time interrupt (038D)
     1000   38           unused
 
-Standard routines (subscript is RST number):
+Standard routines (subscript is RST number) [[som 151]]:
 
     0000 ₀  MONIT       monitor on (reset entry point)
     0003    GETL        get line (end w/CR)
-    0006    LETNL       "new line"?
+    0006    LETNL       ♣A cursor to beginning of next line
     0009    NL
-    000C    PRNTS       print space
+    000C    PRNTS       ♣A print space
     000F    PRNTT       print tab
     0012    PRNT        print 1 character
-    0015    MSG         print 1 line (end w/$00?)
+    0015    MSG         ♡全 print message ♠DE→msg, end w/CR (not printed)
+                            control codes 11-16 move cursor
     0018 ₃  MSGX
     001B    GETKY       get key
     001E    BRKEY       get break
@@ -64,12 +65,13 @@ Standard routines (subscript is RST number):
     0027    RDINF
     002A    RDDAT
     002D    VERFY       verify CMT (header and?) data
-    0030 ₆  MELDY
+    0030 ₆  MELDY       ♣A play music DE→music data (same format as BASIC)
+                            end w/CR or $C8. CF=0 no break, CF=1 break intr.
     0033    TIMST       set time
     0038                interrupt routine (jp $1038)
     003B    TIMRD       read time
-    003E    BELL        bell on
-    0041    XTEMP       tempo set
+    003E    BELL        ♣A briefly sound ~880 Hz
+    0041    XTEMP       ♡全 tempo set (A=tempo, 0=slowest, 7=highest)
     0044    MSTA        melody start
     0047    MSTP        melody stop
 
@@ -104,3 +106,4 @@ European/PAL ROMs may be different from the Japanese ones.
 [smzo-monicmd]: https://original.sharpmz.org/mz-700/monicmd.htm
 [smzo-newmon]: https://original.sharpmz.org/mz-80k/newmoni.htm
 [smzo-bascopy]: https://original.sharpmz.org/mz-700/basiccpy.htm
+[som 151]: https://archive.org/details/sharpmz700ownersmanual/page/n153/mode/1up?view=theater
