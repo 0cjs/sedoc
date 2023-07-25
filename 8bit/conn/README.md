@@ -36,6 +36,9 @@ Sources for Japanese computer connectors:
 - [OLD Hard Connector Information ][oh].
 - Electrelic [コネクタ資料集][el]
 
+The [Identiconn Connector Identification Utility][cbid], part of the
+website for [The Electronic Connector Book][cb], may be able to help
+identify connectors, though I've not had much luck with it.
 
 
 <!-------------------------------------------------------------------->
@@ -51,6 +54,8 @@ Sources for Japanese computer connectors:
 
 [fm77]: ../fm7fm77.md
 
+[cb]: https://connectorbook.com/
+[cbid]: https://connectorbook.com/identification.html?m=NN
 [el]: https://electrelic.com/electrelic/node/226
 [mtp]: https://www.mattmillman.com/info/crimpconnectors/
 [oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
