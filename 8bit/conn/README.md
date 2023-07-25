@@ -7,7 +7,7 @@ often touching on 16- and higher-bit systems as well.
 
 Subject Index:
 - CMT (Cassette Tape): [DIN].
-- Power: [Barrel], [DIN], [JST]
+- Power: [Barrel], [DIN], [JST], [misc]
 - Serial: [DIN], [serial].
 - Video: [Video], [DIN].
 - Printer/expansion ("Centronics"): [ribbon]
@@ -27,21 +27,24 @@ Connector Index:
 References
 ----------
 
-A massive source for all sorts of Japanese computer connectors is
-[OLD Hard Connector Information ][oh].
+Sources for Japanese computer connectors:
+- [OLD Hard Connector Information ][oh].
+- Electrelic [コネクタ資料集][el]
 
 
 
 <!-------------------------------------------------------------------->
-[din]: ./din.md
 [barrel]: ./barrel.md
+[din]: ./din.md
 [header]: ./header.md
 [joystick]: ./joystick.md
 [jst]: ./jst.md
+[misc]: ./misc.md
 [ribbon]: ./ribbon.md
 [serial]: ./serial.md
 [video]: ./video.md
 
 [fm77]: ../fm7fm77.md
 
+[el]: https://electrelic.com/electrelic/node/226
 [oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
