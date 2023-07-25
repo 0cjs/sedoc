@@ -65,9 +65,9 @@ Built-in monochrome display:
 External colour display:
 - MZ-700 (1982-11) 3.58 Mhz. 64K + 4K VRAM.
   - Almost perfectly compatible with MZ-80K. Came with S-BASIC and Hu-BASIC.
-  - MZ-711: Base model; no CMT or plotter.
-  - MZ-721: MZ-1T01 CMT (MZ-721).
-  - MZ-731: CMT and  MZ-1P01 color plotter printer.
+  - MZ-711 (¥79,000): Base model; no CMT or plotter.
+  - MZ-721 (¥89,000): MZ-1T01 CMT (MZ-721).
+  - MZ-731 (¥128,000): CMT and  MZ-1P01 color plotter printer.
   - External printer MZ-80P5(K) available. PCB printer switch must be set
     to external position (left), not `INT` (right). Printer connector port
     covered with metal panel on MZ-731.
@@ -82,6 +82,11 @@ External colour display:
 - MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound;
   2.8" QuickDisk.
 - MZ-800 (1985) First w/640×200 graphics TI SN6489 sound; 2.8" QuickDisk.
+
+Peripherals:
+- MZ-IU06 Extension Unit: external card cage expansion for MZ-700.
+- MZ-1E05 Floppy Disk Interface: controller for MZ-1F02.
+- MZ-1F02: Floppy disk drive (1-2, appears to be 5.25").
 
 ### [MZ-80B "Business" Series][80b-series]
 

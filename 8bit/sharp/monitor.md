@@ -48,32 +48,57 @@ Variable locations (all values in hex): [[smzo-monicmd]]
 
 Standard routines (subscript is RST number) [[som 151]]:
 
-    0000 ₀  MONIT       monitor on (reset entry point)
-    0003    GETL        get line (end w/CR)
-    0006    LETNL       ♣A cursor to beginning of next line
+    0000 ₀  MONIT   monitor on (reset entry point)
+    0003    GETL    ♡全 get line ending in CR or shift-break; DE→input buf
+                        max 80 chars, echos chars, break/CR codes included
+    0006    LETNL   ♣A cursor to beginning of next line
     0009    NL
-    000C    PRNTS       ♣A print space
-    000F    PRNTT       print tab
-    0012    PRNT        print 1 character
-    0015    MSG         ♡全 print message ♠DE→msg, end w/CR (not printed)
-                            control codes 11-16 move cursor
+    000C    PRNTS   ♣A print space
+    000F    PRNTT   print tab
+    0012    PRNT    print 1 character
+    0015    MSG     ♡全 print message ♠DE→msg, end w/CR (not printed)
+                        control codes 11-16 move cursor
     0018 ₃  MSGX
-    001B    GETKY       get key
-    001E    BRKEY       get break
-    0021    WRINF       write information (tape header?)
-    0024    WRDAT       write data (tape data?)
+    001B    GETKY   ♣A get keycode in A, or $00 = no key pressed
+    001E    BRKEY   ♣A z=1 if shift+break being pressed, z=0 otherwise
+    0021    WRINF   write information (tape header?)
+    0024    WRDAT   write data (tape data?)
     0027    RDINF
     002A    RDDAT
-    002D    VERFY       verify CMT (header and?) data
-    0030 ₆  MELDY       ♣A play music DE→music data (same format as BASIC)
-                            end w/CR or $C8. CF=0 no break, CF=1 break intr.
-    0033    TIMST       set time
-    0038                interrupt routine (jp $1038)
-    003B    TIMRD       read time
-    003E    BELL        ♣A briefly sound ~880 Hz
-    0041    XTEMP       ♡全 tempo set (A=tempo, 0=slowest, 7=highest)
-    0044    MSTA        melody start
-    0047    MSTP        melody stop
+    002D    VERFY   verify CMT (header and?) data
+    0030 ₆  MELDY   ♣A play music DE→music data (same format as BASIC)
+                        end w/CR or $C8. cy=0 no break, cy=1 break intr.
+    0033    TIMST   ♣A set time ACC=0(AM),1(PM), DE=time in secs
+    0038            interrupt routine (jp $1038)
+    003B    TIMRD   ♠A,DE read time (per TIMST)
+    003E    BELL    ♣A briefly sound ~880 Hz
+    0041    XTEMP   ♡全 tempo set (A=tempo, 0=slowest, 7=highest)
+    0044    MSTA    melody start
+    0047    MSTP    ♣A melody stop
+
+Special key codes returned by `GETKY` etc.:
+
+      Key Code Screen Code      Key Code Screen Code
+      DEL  60    C7               ↓  11    C1
+     INST  61    C8               ↑  12    C2
+    ALPHA  62    C9               →  13    C3
+    BREAK  64    CB               ←  14    C4
+       CR  66    CD            HOME  15    C5
+                                CLR  16    C6
+
+Other routines described in manual [[som 151]]
+
+    03DA  ASC     ♠A ← ASCII char for number in A low nybble
+    03F9  HEX     ♠A ← number represented by ASCII value in A
+    0410  HLHEX   ♣A ♠HL ← 16-bit value repres. by DE → 4 ASCII chars
+                      cy 0=success, 1=fail
+    041F  2HEX    ♣DE ♠A -< 8-bit vlaue repres. by DE → 2 ASCII chars
+    09B3  ??KEY   ♠A blink cursor, wait for keypress, code returned in A
+    0BB9  ?ADCN   ♠A ← display code from ASCII code in A
+    0BCE  ?DACN   ♠A ← ASCII code from display code in A
+    0DA6  ?BLNK   ♡全 wait for vertical blank period to start
+    0DDC  ?DPCT   ♡全 "display control": A=screen code for key to emulate (↑)
+    0FB1  ?PONT   ♣A ♠HL ← current cursor location
 
 ### Loading ML Programs
 

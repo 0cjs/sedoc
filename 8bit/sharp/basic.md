@@ -56,8 +56,26 @@ statements.
 - `LIMIT`, `LIMIT MAX`
 
 
+Disk Basic
+----------
+
+See Sharp [_Disk Basic Manual_][sdbm] for details. Requires MZ-IU06
+Extension Unit, MZ-1E05 Floppy Disk Interface card for MZ-IU06 (with
+appropriate ROM in its socket), and MZ-1F02 floppy drives (appear to be
+5.25").
+
+Autoboots disk at startup; `AUTO LOAD` program loaded and run if present.
+
+Four file types:
+- `BSD`: data, sequential access
+- `BRD`: data, random access
+- `BTX`: BASIC text
+- `OBJ`: machine-language program
+
+
 
 <!-------------------------------------------------------------------->
 [som 28]: https://archive.org/details/sharpmz700ownersmanual/page/n29/mode/1up?view=theater
 
 [smzo-bascopy]: https://original.sharpmz.org/mz-700/basiccpy.htm
+[sdbm]: https://archive.org/details/manualzilla-id-7339763/page/17/mode/1up?view=theater

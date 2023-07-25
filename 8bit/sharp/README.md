@@ -36,6 +36,7 @@ Keyboard:
 Monitor:
 - `LOAD` or `L` to load next thing from tape.
 
+Ctrl-RESET or `#` in IPL/Monitor will boot RAM? XXX [[ssm] p.5]
 
 Hardware
 --------
@@ -46,9 +47,13 @@ Video:
   - Pin 1: CVBS. Pin 3: `C̅S̅Y̅N̅C̅`
 
 CMT:
-- Internal 9-pin connector for MZ-1T01 CMT. Read/write 3.5mm mono jacks
-  for external CMT. "Push Record/Play" messages do not appear when using
+- Internal 9-pin connector for MZ-1T01 CMT. Read/write 3.5mm mono jacks for
+  external CMT. "Push Record/Play" messages do not appear when using
   external CMT.
+- 1200 baud. Format given in [[ssm] p.13 P.14]. Each data block written
+  twice. Header includes 16-char name, file size, load/exec addresses and
+  124-byte "comment" not usually used, but S-BASIC has a "save a copy"
+  program hidden in there.
 
 
 References
@@ -62,6 +67,8 @@ References
   - p.131 (P.133): 8255 keyboard scan, VRAM description, etc.
   - p.134 (P.136): Schematics
   - p.146 (P.149): IPL Monitor documentation
+  - p.154 (P.159): "ASCII" and screen code tables (2nd SC set p.155-2)
+- [[ssm]] _Sharp Service Manual MZ-700 MZ-1T01 MZ-1P01,_ code 00ZMZ700SM//E.
 
 
 <!-------------------------------------------------------------------->
@@ -70,3 +77,4 @@ References
 [som]: https://archive.org/details/sharpmz700ownersmanual/page/n5/mode/1up?view=theater
 [som 006]: https://archive.org/details/sharpmz700ownersmanual/page/n7/mode/1up?view=theater
 [som 027]: https://archive.org/details/sharpmz700ownersmanual/page/n28/mode/1up?view=theater
+[ssm]: https://archive.org/details/sharpmz700servicemanual/
