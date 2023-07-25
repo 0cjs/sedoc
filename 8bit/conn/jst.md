@@ -14,13 +14,18 @@ Summary (pin pitch in mm, wire size range in AWG). All are 1-row, shrouded.
 
     ¹ 30-24, 28-24, 32-28 depending on connector
 
+Also see:
+- Matt's Tech Pages [Common JST Connector Types][mtp-jst]
+- jst.co.uk [Proudcts page][jstcouk]
+
 
 [JST VH]
 --------
 
 Large, square pins at 3.96 mm pitch; locking connector. Popular for PCB
 power supplies and old data connectors. Unshrouded board connectors more
-common.
+common. Do not confuse with [Molex KK 396 / KK .156][kk386], which have
+same pitch but a curvy "hump" in the board connector tab.
 
 Wire Connectors (female; 2=no. of pins):
 - `VHR-2N` N type (more common?)
@@ -110,9 +115,13 @@ Examples:
 
 
 <!-------------------------------------------------------------------->
+[jstcouk]: https://www.jst.co.uk/products.php?cat=30&nm=JST+Wire-to-Board+Connectors+%28Crimp+Style%29
+[mtp-jst]: https://www.mattmillman.com/info/crimpconnectors/common-jst-connector-types/
+
 [jst sm]: http://www.jst-mfg.com/product/pdf/eng/eSM.pdf
 [jst vh]: https://www.jst-mfg.com/product/pdf/eng/eVH.pdf
 [jst xh]: https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
+[kk386]: https://www.mattmillman.com/info/crimpconnectors/#kk156
 [wp jst]: https://en.wikipedia.org/wiki/JST_connector
 
 <!-- JST SM -->

@@ -28,6 +28,11 @@ References
 ----------
 
 Sources for Japanese computer connectors:
+- Matt's Tech Pages [Common Crimp Connector/Tools][mtp]. Covers a huge
+  variety of common wire-to-board and wire-to-wire connectors and their
+  crimp tools. Photos of everything!
+- Matt's Tech Pages [Common JST Connector Types][mtp-jst]
+[mtp-jst]: https://www.mattmillman.com/info/crimpconnectors/common-jst-connector-types/
 - [OLD Hard Connector Information ][oh].
 - Electrelic [コネクタ資料集][el]
 
@@ -47,4 +52,5 @@ Sources for Japanese computer connectors:
 [fm77]: ../fm7fm77.md
 
 [el]: https://electrelic.com/electrelic/node/226
+[mtp]: https://www.mattmillman.com/info/crimpconnectors/
 [oh]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect.htm
