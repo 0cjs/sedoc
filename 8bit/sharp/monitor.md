@@ -29,6 +29,33 @@ After a reset: [[smzo-h&t]]
 
 All numbers are entered and displayed in hex.
 
+Commands (from [[som 149]], monitor listing). `ss` etc must be a full
+four-digit hex value.
+
+    L[fname]    Load named file from tape, or next file.
+    Ssseexx     Save memory starting at <ss> through <ee> with execution
+                address <xx>. Prompts for filename. Hold Shift-Break to abort.
+    V           Compares save with <S> above to memory.
+
+    Dssee       Dump memory from <ss> through <ee>
+    Maaaa       Modify memory starting at <aaaa>. Location and old value
+                displayed; Enter or new value. Shift-Break to exit.
+    Jaaaa       Jump to address <aaaa>
+
+    #           Switch all memory to DRAM and jump to $0000.
+                Same as holding Ctrl while resetting.
+    F           Floppy boot, if present.
+
+    Pchars      Print <chars> on printer. Control codes include:
+                &T=test pattern  &S=80 chars/line  &L=40 chars/line
+                &G=graphic mode  &C=change pen color
+    B           Toggle sound on keypress
+
+Notes:
+- `F` checks to see if $F000 contains $00; if it does it jumps to $F000.
+  (This is presumably a magic number for an  an expansion RAM at $F000;
+  unmapped addresses presumably return non-zero.)
+
 ### Loading ML Programs
 
 This small routine loads an ML program without executing it after load, the
@@ -41,11 +68,21 @@ way the `L` command does. [[smzo-bascopy]]
     CF0B: C3 AD 00  jp   $00AD      ; goback to monitor
     CF0E: C3 CB 0F  jp   $0FCB      ; execute the verify routine from monitor
 
+### Command Table
+
+The command loop is at $00AD; after checking the standard commands
+(`JLFB#PMSVD`) there are four NOPs at $00ED before continuing to parse the
+line, presumably so if the monitor is copied to RAM this can call a
+subroutine to check for further commands.
+
+
+
 
 
 <!-------------------------------------------------------------------->
 [basmon]: https://archive.org/details/sharpmz700ownersmanual/page/n100/mode/1up?view=theater
+[smzo-bascopy]: https://original.sharpmz.org/mz-700/basiccpy.htm
 [smzo-dldrom]: https://original.sharpmz.org/mz-80k/dldrom.htm
 [smzo-h&t]: https://original.sharpmz.org/mz-80k/tips.htm
 [smzo-newmon]: https://original.sharpmz.org/mz-80k/newmoni.htm
-[smzo-bascopy]: https://original.sharpmz.org/mz-700/basiccpy.htm
+[som 149]: https://archive.org/details/sharpmz700ownersmanual/page/n148/mode/1up?view=theater
