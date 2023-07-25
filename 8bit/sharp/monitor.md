@@ -12,8 +12,8 @@ here][smzo-dldrom]. The standard MZ-80K ROM is SP-1002. The [new monitor
 ROM][smzo-newmon] is also available here.
 
 Versions:
-- `1Z-009A`: JP MZ-700
-- `1Z-013A`: EU MZ-700
+- `1Z-009A`: JP MZ-700. No `D` command.
+- `1Z-013A`: EU MZ-700.
 
 ### Tips
 
@@ -49,12 +49,16 @@ four-digit hex value.
     Pchars      Print <chars> on printer. Control codes include:
                 &T=test pattern  &S=80 chars/line  &L=40 chars/line
                 &G=graphic mode  &C=change pen color
-    B           Toggle sound on keypress
+    B           Toggle beep on keypress
 
 Notes:
 - `F` checks to see if $F000 contains $00; if it does it jumps to $F000.
-  (This is presumably a magic number for an  an expansion RAM at $F000;
-  unmapped addresses presumably return non-zero.)
+  (This is a magic number for an expansion ROM at $F000; when unmapped
+  that area always returns $7F.)
+- `D` does exist in the JP ROM `1Z-009A`.
+
+The monitor prompt/parse routine starts at $00AD; to return it from
+a program you've entered, `C3 AD 00` (jp $00AD). A `C9` (ret) will reset.
 
 ### Loading ML Programs
 
@@ -73,7 +77,8 @@ way the `L` command does. [[smzo-bascopy]]
 The command loop is at $00AD; after checking the standard commands
 (`JLFB#PMSVD`) there are four NOPs at $00ED before continuing to parse the
 line, presumably so if the monitor is copied to RAM this can call a
-subroutine to check for further commands.
+subroutine to check for further commands. (This is only for 1Z-013A ROM,
+the 1Z-009A ROM loops back immediately after the `V` command.)
 
 
 
