@@ -75,8 +75,8 @@ External colour display:
     - Upper: RF (RCA), CH2-CH1 (SW), B/W-COLOR (SW), CVBS (RCA), RGB (DIN-8)
     - Lower: CMT READ, WRITE (2×3.5mm mono)
       - JOYSTICK (2 5-pin headers (JST?) behind panel)
-      - I/O-BUS (2×25 edge connector, key between 19-20, behind panel)
-      - PRINTER (2×13 edge connector, key between 10-11, behind panel, -logic)
+      - I/O-BUS: 2×25 edge connector, key between 11/13, behind panel
+      - PRINTER: 2×13 edge connector, key between 5/7, behind panel, neg.logic
       - VOLUME (pot), RESET (btn).
     - Right: Power (IEC C8), FG (terminal), POWER (sw).
   - Dimenstions: 440 × 305 × 86/102 (printer), 3.6/4.0/4.6 kg
