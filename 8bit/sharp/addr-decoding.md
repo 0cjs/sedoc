@@ -52,7 +52,7 @@ Port writes:
 
 Memory mapped I/O:
 
-    8255 PPI:
+    8255 Programmable Peripheral Interface (PPI):
       E000  PA  output: 0-3=keyboard strobe, 7=cursor blink timer reset
       E001  PB  input: 0-7 from keyboard
       E002  PC  output: 0=unused
@@ -65,7 +65,7 @@ Memory mapped I/O:
                         7=VBLNK  vertical blank sense
       E003  control
 
-    8253 Timer:
+    8253 Programmable Interval Timer (PIT):
       E004  C0  mode 3 square save rate generator
       E005  C1  mode 2 rate generator
       E006  C2  mode 0 terminal counter
