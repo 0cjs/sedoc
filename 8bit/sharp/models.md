@@ -76,7 +76,7 @@ External colour display:
     - Lower: CMT READ, WRITE (2×3.5mm mono)
       - JOYSTICK (2 5-pin headers (JST?) behind panel)
       - I/O-BUS (2×25 edge connector, key between 19-20, behind panel)
-      - PRINTER (2×13 edge connector, key between 10-11, behind panel)
+      - PRINTER (2×13 edge connector, key between 10-11, behind panel, -logic)
       - VOLUME (pot), RESET (btn).
     - Right: Power (IEC C8), FG (terminal), POWER (sw).
 - MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound;
