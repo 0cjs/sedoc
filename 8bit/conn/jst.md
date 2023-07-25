@@ -23,9 +23,13 @@ Also see:
 --------
 
 Large, square pins at 3.96 mm pitch; locking connector. Popular for PCB
-power supplies and old data connectors. Unshrouded board connectors more
-common. Do not confuse with [Molex KK 396 / KK .156][kk386], which have
-same pitch but a curvy "hump" in the board connector tab.
+power supplies and old data connectors.
+- Unshrouded board connectors more common.
+- Narrower wire shrouds will not fit wider board connectors due to guides
+  on shroud. However, a wider wire shroud _will_ fit a narrower connector
+  in at least two positions.
+- Do not confuse with [Molex KK 396 / KK .156][kk386], which have same
+  pitch but a curvy "hump" in the board connector tab.
 
 Wire Connectors (female; 2=no. of pins):
 - `VHR-2N` N type (more common?)
@@ -43,6 +47,21 @@ Board connectors (male; 2=no. of pins):
 Pin 1 at left:
 - looking into female wire connector with pin openings at botom.
 - looking down on male board connector w/latch at top, wide area at bot.
+
+##### VH Multi-Rail Power Supply
+
+My own standard for multi-rail power supply uses a 5-position connector.
+The colors are ATX standard. There's no standard pinout I could find, so I
+went with most to least commonly used rails. The 5-position wire-connector
+will fit on 4-position or smaller board terminals, but that's easy to
+accidentally shift off by one pin. Always using 5-position terminals (even
+if not all rails are available or used) is recommended.
+
+    1   GND   black
+    2   +5V   red
+    3  +12V   yellow
+    4  -12V   blue
+    5   -5V   white
 
 
 [JST XH]
