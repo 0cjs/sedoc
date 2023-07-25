@@ -2,7 +2,7 @@ Sharp S-BASIC
 =============
 
 - MZ-700 version; probably applies to all of the MZ-80K series.
-- MZ-700 also came with Hu-BASIC.
+- MZ-700 also came with Hu-BASIC (MS-BASIC).
 - S-BASIC includes a small program in the tape header comment section to
   save a copy of itself; see [[smzo-bascopy]] for how to load with
   executing and then run this.
