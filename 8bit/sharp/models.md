@@ -79,6 +79,7 @@ External colour display:
       - PRINTER (2×13 edge connector, key between 10-11, behind panel, -logic)
       - VOLUME (pot), RESET (btn).
     - Right: Power (IEC C8), FG (terminal), POWER (sw).
+  - Dimenstions: 440 × 305 × 86/102 (printer), 3.6/4.0/4.6 kg
 - MZ-1500 (1984, JP only) 320×200 graphics; TI SN76489 sound;
   2.8" QuickDisk.
 - MZ-800 (1985) First w/640×200 graphics TI SN6489 sound; 2.8" QuickDisk.
