@@ -40,7 +40,7 @@ determine the mapping of the two changable banks. [[ssm] p.7 P.8]
 Port writes:
 
     E0: INH1=0 (low DRAM)   E1: INH2=0 (high DRAM)  E4: INH3=0 (no access?)
-    E2: INH1=1 (low ROM)    E3: INH2=1 (high VRAM   E6: INH3=1 (prev state?)
+    E2: INH1=1 (low ROM)    E3: INH2=1 (high VRAM)  E6: INH3=1 (prev state?)
 
     E4: INH1=1 INH2=1 INH3=1 (reset state)
 
