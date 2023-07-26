@@ -27,6 +27,9 @@ Families
 - LS loads signal lines a lot more than HC; outputs can't pull high
   enough into some CMOS loads for them to consistently recognize HIGH
 - HC is fast enough for 4 MHz; AC required for faster.
+- HCT is not as efficient as HC and has worse noise margins, but still uses
+  1/5 the power of LS and requires _much_ less input current (so no fanout
+  restrictions).
 - 74LVC1G and 74AHCT1G families (TI "litle logic," mostly single gates in
   4-8 pin "flyspeck" packages) simplify routing and have a maximum
   propagation time of ≤ 3 ns, combining these can be faster than more
@@ -44,10 +47,8 @@ HC][f6-p1288] extensively, and even occsionally mixed LS with HC. Also
 see later bogax post in same thread, where he also mentions that TTL
 sources less current so is slower to bring up a CMOS input.
 
-Here's a comparison of non-HC outputs to HC inputs. All HC parts use
-the Vcc = 4.5 V spec. It appears that LS driving HC is not within min
-specs, but would work if the LS chip has "typical" output specs.
-Pull-ups might help make things compatible.
+Here's a comparison of non-HC outputs to HC inputs. All HC parts use the
+Vcc = 4.5 V spec.
 
                 │ Fam  │ VOLmax  VILmax │ VOHmin  VOHtyp  VIHmin │
     ────────────┼──────┼────────────────┼────────────────────────┤
@@ -55,6 +56,20 @@ Pull-ups might help make things compatible.
     RC65C02     │ CMOS │  0.4           │  2.4      -            │
     SN74LS138   │  LS  │  0.5           │  2.7     3.4           │
     SN74HC138   │  HC  │          1.35  │                  3.15  │
+
+It appears that LS driving HC is not within minimum specs, but would work
+if the LS chip has "typical" output specs. (per AN-368, below, "...in an
+actual application the TTL output will pull-up probably to about VCC minus
+2 diode voltages, and HC will accept voltages as low as 3V as a valid one
+level so that in almost all cases there is no problem driving HC with
+TTL.") Nonetheless, pull-ups are usually suggested.
+
+Additional data comes from Fairchild [AN-368][fc-an-368], "An Introduction
+to and Comparison of 74HCT TTL Compatible CMOS Logic" (March 1984):
+
+                 LS Output    NMOS Output    HC Inputs    HCT Input
+    Output High 2.7V  400 μA  2.4V  400 μA  3.15V  1 μA  2.0V  1 μA High Input
+    Output Low  0.5V  8.0 mA  0.4V  2.0 mA  0.9V   1 μA  0.8V  1 μA Low Input
 
 Data sheets: [[MOS 6502]], [[RC65C02]], [[SN74LS138]], [[SN74HC138]],
 [[SN74HCT138]].
@@ -318,6 +333,7 @@ Level- and current-related:
 [SN74HC138]: http://www.ti.com/lit/gpn/sn74hc138
 [SN74HCT138]: http://www.ti.com/lit/gpn/sn74hct138
 [SN74LS138]: http://www.ti.com/lit/gpn/sn74ls138
+[fc-an-368]: https://www.farnell.com/datasheets/311607.pdf
 
 <!-- Logic Levels -->
 [AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
