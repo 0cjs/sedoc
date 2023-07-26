@@ -82,7 +82,7 @@ For building see the [Compilation Guide][compguide]. On Debian:
     sudo apt-get build-dep openmsx
     git clone https://github.com/openMSX/openMSX.git`
     cd openMSX
-    ./configure`
+    ./configure
     make -j8 && sudo make install       # Installs to /opt/openmsx
 
 ROM image notes:
