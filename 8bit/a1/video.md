@@ -22,12 +22,27 @@ Theory of Operation
 
 (This is very incomplete.)
 
-Character data output via `PB0`-`PB6` on the 6820 are passed to the
-video circuit as `RD1`-`RD7` (read data, from the terminal's point of
-view). `PB7` is input for the `DA` (data available?) signal.
+Character data output via `PB0`-`PB6` on the 6820 are passed to the video
+circuit as `RD1`-`RD7` (read data, from the terminal's point of view).
+`PB7` is input for the `DA` (data available?) signal, which is high when
+you may write a new character to the video system. A write at that time
+also clears the cursor bit, which causes flip-flops 2 and 3 at C13 to
+re-set the cursor bit on the next character clock; this advances the cursor
+one position.
 
 The video circuitry asserts `R̅D̅A̅ ` (ready for data available) when ready
 for input (?); this generates (via 74123 B3) a ???
+
+The shift register at C11b stores `1` bit as a cursor marker amongst all
+the `0` bits it's shifting. It's clocked through the flip-flop at C13, and
+gated with the output of the 555 at D13 into the 2519 shift register as
+bits 5 (inverted) and 6.
+
+The 2519 shifts through the 40 characters on the line for 7 scan lines (+1
+blanking line) into the 2513 generator, whose output bits O1-O5 are shifted
+out into the video signal. When the 555 oscillates, it changes the
+character in the cursor cell from $20 (space) to $40 (@-sign), which is the
+blinking cursor.
 
 My guess is that output of OR gate C8 50 at the far right triggers a
 new line. The inputs are Q5∧Q3 would indicate reaching the end of the
@@ -43,6 +58,30 @@ line; the other OR gate input (per below) is triggered when
 
     RD 765 4321
        000 1101 = $0D
+
+[The comments on Ken Shirriff's shift register blog post][shirriff] include
+a little bit of further information.
+
+----------------------------------------------------------------------
+
+The 6821 handles both keyboard input (Port A) and output to the display
+(Port B). Port B is configured to use PB7 as an input and PB0 through PB6
+as outputs. PB7 will read high when the shift sequence is at the cursor
+location; you can then write the character to Port B which will send it
+over PB0 through PB6 to be inserted at that point in the shift sequence.
+This is very simply done in code: just execute BIT $D012 followed by BMI
+back to that BIT instruction to loop until the video system is ready and
+then STA $D012 to send the character. (That code starts at $FFEF in the
+ROM, labeled ECHO in the listing.)
+
+The 6502 can update once per frame, as the cursor location comes around, so
+60 times per second. The only control character available is CR to move to
+the start of the next line (scrolling if the cursor was on the bottom
+line); there's no way to move the cursor (beyond printing a character) or
+even to clear the screen via software (there is a switch provided that you
+can close to clear the screen manually).
+
+The scroll feature is a bit complex; it's done all in hardware in the terminal section of the board. On the far right of the terminal section sheet you can see how some gates are used to detect when RD7 through RD1 are 0001101 = $0D = ASCII CR; you can try to follow along from there to see how the scroll is done.
 
 
 IC Notes
@@ -72,3 +111,5 @@ In processor section, 1/2 used for 6820 `CB1` input. Pin 9 is `A` input.
 [74161]: http://www.ti.com/lit/gpn/sn74ls161a
 [74166]: http://www.ti.com/lit/gpn/sn54ls166a
 [74174]: http://www.ti.com/lit/gpn/sn74s175
+
+[shirriff]: https://www.blogger.com/comment.g?blogID=6264947694886887540&postID=6988848721781537170
