@@ -160,6 +160,12 @@ directly into 5V HCT, ACT or AHCT parts.
 - [Electrocredible][lshift-ec] gives unidirectional with an NPN transistor
   and bidirectional with a MOSFET. (The MOFSET versions apparently use
   quite a lot of power, though.) See below for more on MOSFET.
+- TI has a [Voltage Translation Quick Reference][ti-vtqr] covering
+  suggested chips for many different applications, from FET replacement to
+  GPIO to SPI.
+  - The TI [TXS0108E] is a bidirectional level converter with no need for a
+    control line, using different pullups for high/low outputs to reduce
+    power consumption. Data sheet, application note and TI's [Voltage Tran
 - [Big Mess o' Wires][lshift-bmow] shows clamp diodes and how they don't
   work. Comments are very useful:
   - Zener diode alone won't work due to soft Iz/Vz curve around Vz; never
@@ -339,6 +345,7 @@ Level- and current-related:
 [AN97055]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-app]: https://cdn-shop.adafruit.com/datasheets/txb0108appnote.pdf
 [TXB0108-ds]: https://cdn-shop.adafruit.com/datasheets/txb0108.pdf
+[TXS0108E]: https://www.ti.com/product/TXS0108E
 [`74LVC4245`]: https://assets.nexperia.com/documents/data-sheet/74LVC4245A.pdf
 [af-395]: https://www.adafruit.com/product/395
 [dbelec]: https://web.archive.org/web/20180823104448/https://db-electronics.ca/2017/07/05/the-dangers-of-3-3v-flash-in-retro-consoles/
@@ -352,4 +359,5 @@ Level- and current-related:
 [sf-12009-sch-10]: https://www.sparkfun.com/datasheets/BreakoutBoards/Level-Converter-v10.pdf
 [sf-12009-sch-bi]: https://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
 [sf-12009]: https://www.sparkfun.com/products/12009
+[ti-vtqr]: https://www.ti.com/lit/ml/scea118/scea118.pdf
 [xis3]: https://www.mouser.jp/datasheet/2/903/ds099-1595375.pdf
