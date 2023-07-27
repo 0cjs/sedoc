@@ -11,7 +11,7 @@ VRAM is static RAM; all other ram is DRAM.
     E800        Expansion ROM
     E000        I/O keyboard and timer ports (to $E400? or just 9 bytes?)
     D800    2k  VRAM color data
-    D000    2k  VRAM character data (2 pages, 50 lines)
+    D000    2k  VRAM character data (50 lines, view 25 from any start point)
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
     D000        DRAM to $FFFF when paged in, otherwise as above
     ───────────────────────────────────────────────────────────────────────
@@ -53,8 +53,8 @@ Port writes:
 Memory mapped I/O:
 
     8255 Programmable Peripheral Interface (PPI):
-      E000  PA  output: 0-3=keyboard strobe, 7=cursor blink timer reset
-      E001  PB  input: 0-7 from keyboard
+      E000  PA  output: 0-3=keyboard strobe 10 cols, 7=cursor blink timer reset
+      E001  PB  input:  D₀-D₇ rows 18-11 from keyboard
       E002  PC  output: 0=unused
                         1=WDATA  CMT data write
                         2=INTMSK timer interrupt disable
@@ -66,13 +66,16 @@ Memory mapped I/O:
       E003  control
 
     8253 Programmable Interval Timer (PIT):
-      E004  C0  mode 3 square save rate generator
-      E005  C1  mode 2 rate generator
+      E004  C0  mode 3 square wave rate generator (sound, 895 kHz)
+      E005  C1  mode 2 rate generator (BLNK 15.6 kHz)
       E006  C2  mode 0 terminal counter
       E007  control
 
     LS367 Hex Bus Drivers, 3-State:
       E008  tempo, joystick, HBLNK input
+
+    Other
+      E8A3  Screen 0=blank 1=display (MZ-80K), helpful for preventing snow
 
 
 

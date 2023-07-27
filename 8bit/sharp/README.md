@@ -55,6 +55,14 @@ CMT:
   124-byte "comment" not usually used, but S-BASIC has a "save a copy"
   program hidden in there.
 
+Sound:
+- MZ-80K Apparently uses a [74LS221] for sound. (Dual monostable
+  multivibrators with Schmitt-trigger inputs. Dual versions of '121
+  one-shots, pinout identical to '123.)
+- MZ-700 uses `OUT0` on 8253 PIT (Programmable Interval Timer). Counter #0
+  counts 895 kHz pulses, divides by value for particular note, sends on to
+  amp.
+
 #### MZ-700 Connectors
 
 From [[smzo-conn]]. Also see [[som 141]].
@@ -134,6 +142,7 @@ References
 <!-------------------------------------------------------------------->
 [smzo-h&t]: https://original.sharpmz.org/mz-80k/tips.htm
 
+[74LS221]: https://www.ti.com/product/SN74LS221
 [smzo-conn]: https://original.sharpmz.org/mz-700/connect.htm
 [som]: https://archive.org/details/sharpmz700ownersmanual/page/n5/mode/1up?view=theater
 [som 006]: https://archive.org/details/sharpmz700ownersmanual/page/n7/mode/1up?view=theater

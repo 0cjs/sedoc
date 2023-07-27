@@ -39,6 +39,8 @@ ROM Memory, Variables and Subroutines
 Variable locations (all values in hex): [[smzo-monicmd]]
 
     addr  len   name    descr
+    11A1    2           2 MHz/n, n=divisor freq. for 74LS221 used for sound
+    117D                screen top current addr (MZ-80A, ¿MZ-700)
     10F0   80   IBUFE   tape header buffer
     103C   B4   SP      180 bytes for stack
     1038    3           jp to time interrupt (038D)
@@ -76,10 +78,10 @@ Standard routines (subscript is RST number) [[som 151]]:
     0044    MSTA    melody start
     0047    MSTP    ♣A melody stop
 
-### Internal Routines
+### Documented Internal Routines
 
-These are described in the user's manual, so are presumably unlikely to
-change location. [[som 151]]
+These are described in the (EU) user's manual, so are presumably unlikely
+to change location. [[som 151]]
 
     03DA  ASC     ♠A ← ASCII char for number in A low nybble
     03F9  HEX     ♠A ← number represented by ASCII value in A
@@ -93,6 +95,11 @@ change location. [[som 151]]
     0DDC  ?DPCT   ♡全 "display control": A=screen code for key to emulate (↑)
     0FB1  ?PONT   ♣A ♠HL ← current cursor location
 
+### Internal Routines
+
+    0082          monitor prompt/command loop MZ-80K
+    0095          monitor prompt/command loop MZ-80A
+    00AD          monitor prompt/command loop MZ-700
 
 Hardware Modification
 ---------------------
