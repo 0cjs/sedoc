@@ -1,7 +1,9 @@
 Intel 8080/8085 and Zilog Z80 Opcodes
 =====================================
 
-- See also [`8080.txt`](8080.txt) for instruction encoding/bitfield details.
+- See also:
+  - [`8080.txt`](8080.txt) for instruction encoding/bitfield details.
+  - [c.s.s FAQ][cssfaq] for architecture insights and undocumented info.
 - Cycles are 8080; 8085 varies.
 - `rp`=register pair B, D, H. `rr`=Z80 register pair BC, DE, HL.
 - Z80 mnemonics given in lower case. `c`=condition. `xx`=`a16`.
@@ -116,3 +118,8 @@ Table:
     Z80 prefix FD: IY register operations
 
     XXX Add ldir and other oft-used instructions.
+
+
+
+<!-------------------------------------------------------------------->
+[cssfaq]: https://worldofspectrum.org/faq/reference/z80reference.htm
