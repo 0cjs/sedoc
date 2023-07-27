@@ -72,6 +72,19 @@ location][boginjr] on single-sided and double-sided diskettes, and so 1S
 diskettes cannot be used in 2S drives. (2S drives may have two sensors, one
 for SS and one for DS diskettes.)
 
+8" floppies also require a [reduced write current][hj-tg43] after track 43
+in order to avoid self-erasure due to the higher flux/distance density on
+the inner tracks. Earlier drives have a `TG43` (track greater than 43)
+signal input that the controller must assert; later drives did this
+automatically (which is useful when interfacing with a controller designed
+for 5.25" drives that does not provide this signal).
+
+The above is entirely separate from [_write precompensation,_][wp-precomp]
+which was rarely used on floppies but more often [on on RLL and ESDI
+HDDs][hj-tg43]. That's a change in timing such that the readback is closer
+to the original signal before the timing change, and is done solely by the
+controller.
+
 ### Drive Types
 
 Here's a summary of the drive type info from [[hj-data]], with references
@@ -123,6 +136,12 @@ read/write at a supported kbps rate, though often certain other signal
 connectors (reduce write current, etc.) and sometimes termination have
 to be tweaked. See [[hj-replace]] for more details.
 
+The last drive on a chain should be terminated. Normally this is done with
+150 Ω resistors. However, many modern 3.5" drives (and a few 5.25" ones)
+use 1000 Ω resistors on all drives, which usually works ok. If there are
+issues with these 1000 Ω drives and a final drive terminated with 150 Ω,
+you can try raising the value of the termination resistors in the final drive.
+
 #### 8" Drive Information
 
 Shugart SA800/801 drive connector pinout:
@@ -130,6 +149,35 @@ Shugart SA800/801 drive connector pinout:
     J4 AC       1:AC  2:FG  3:AC
     J5 DC       1:+24V 2:GND  3:GND 4:-5V  5:+5V 6:GND  (adjacent GND return)
     J1 data     50-pin; see OEM manual
+
+The SA800/801 does not have a `TG43` input; it appears to handle reduced
+write current automatically. That's normally on pin 2 when present.
+
+Daves Old Computers [Connecting drives to PC][doa-8pc] gives instructions
+to build a 5.25" IBM PC controller to 8" drive adapter. The pinout is:
+
+    PC(34p)   8"(50p)   Description
+                2        TG43                 (see below)
+        8      20        Index
+        12     26        DS1(PC) -> DS0(8")
+        16     18        Motor ON/Head Load
+        18     34        Direction            (see below)
+        20     36        Step
+        22     38        Write Data
+        24     40        Write Gate
+        26     42        Track 0 detect       All Odd numbered
+        28     44        Write Protect        pins are GROUND
+        30     46        Read Data
+        32     14        Side1 Select
+        34     12        Ready
+
+If the 8" drive requires a TG43 signal, you have the following options:
+- Live without it. Reads will be fine; writes past track 43 will be unreliable.
+- The PC FDC chip provides `TG43` on the `DIRECTION` line during writes.
+  Depending on the board design, you may just be able to connect controller
+  `DIRECTION` to drive `DIRECTION` and `TG43`.
+- His ImageDisk program can generate `TG43` from the parallel port.
+- You can install a toggle switch for manual control.
 
 #### 5.25" Drive Information
 
@@ -299,11 +347,13 @@ Programs:
 [pc8k]: 8bit/pc-8001/floppyif.md#protocol
 
 <!-- Diskette and Drive Types -->
-[boginjr]: http://boginjr.com/it/hw/8inch-drives/
 [andre19]: https://extrapages.de/archives/20190102-Floppy-notes.html
+[boginjr]: http://boginjr.com/it/hw/8inch-drives/
+[doa-8pc]: http://dunfield.classiccmp.org/img42841/cnct.htm
 [hj-8HD]: http://www.retrotechnology.com/herbs_stuff/8inchHD.html
 [hj-data]: http://www.retrotechnology.com/herbs_stuff/drive.html#data
 [hj-replace]: http://www.retrotechnology.com/herbs_stuff/drive.html#threefive
+[hj-tg43]: https://www.retrotechnology.com/herbs_stuff/drive.html#43
 [hjt]: http://www.retrotechnology.com/herbs_stuff/drive.html
 [ibus-pinout]: http://www.interfacebus.com/PC_Floppy_Drive_PinOut.html
 [rcse 9303]: https://retrocomputing.stackexchange.com/a/9303/7208
@@ -313,6 +363,7 @@ Programs:
 [sather9]: https://archive.org/stream/Understanding_the_Apple_II_1983_Quality_Software#page/n230/mode/1up
 [wp-fddi]: https://en.wikipedia.org/wiki/Floppy_disk_drive_interface
 [wp-fmtlist]: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
+[wp-precomp]: https://en.wikipedia.org/wiki/Write_precompensation
 
 <!-- USB UFI -->
 [UFI spec]: https://usb.org/sites/default/files/usbmass-ufi10.pdf
