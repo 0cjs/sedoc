@@ -45,8 +45,9 @@ Board connectors (male; 2=no. of pins):
 - `B6P7-VH` is 7-position, 6th pin omitted; see data sheet for more
 
 Pin 1 at left:
-- looking into female wire connector with pin openings at botom.
 - looking down on male board connector w/latch at top, wide area at bot.
+- looking into wire entry side of shroud with clip at top.
+- looking into female wire connector with clip at bottom, pin openings at top.
 
 ##### VH Multi-Rail Power Supply
 
