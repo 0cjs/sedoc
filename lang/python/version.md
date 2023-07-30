@@ -56,16 +56,21 @@ point version as of the last update to this file; "RelDate" the date of the
 original n.n.0 release. See also the table of [all versions] and
 [downloads] for lastest info.
 
-| SupportEnd | Version | RelDate    | RelNotes  |
-|------------|---------|------------|-----------|
-| 2026-10    | 3.10.6  | 2021-10-04 | [rel3.10] |
-| 2025-10    | 3.9.13  | 2020-10-05 | [rel3.9]  |
-| 2024-10    | 3.8.13  | 2019-10-14 | [rel3.8]  |
-| 2023-06-27 | 3.7.13  | 2018-06-27 | [rel3.7]  |
-| 2021-12-23 | 3.6.15  | 2016-12-23 | [rel3.6]  |
-| 2020-09-13 | 3.5.10  | 2015-09-13 |           |
-| 2020-01-01 | 2.7.18  | 2010-07-03 |           |
-| 2019-03-16 | 3.4.10  | 2014-03-16 |           |
+| SupportEnd | Version | RelDate    | RelNotes   |
+|------------|---------|------------|------------|
+| 2029-10    | 3.13    | 2024-10-01 | [PEP 719]  |
+| 2028-10    | 3.12    | 2023-10-02 | [PEP 693]  |
+| 2027-10    | 3.11.4  | 2022-10-24 | [PEP 664]  |
+| 2026-10    | 3.10.12 | 2021-10-04 | [PEP 619]  |
+| 2025-10    | 3.9.17  | 2020-10-05 | [PEP 596]  |
+| 2024-10    | 3.8.17  | 2019-10-14 | [PEP 569]  |
+|------------|---------|------------|------------|
+| 2023-06-27 | 3.7.17  | 2018-06-27 | [PEP 537]  |
+| 2021-12-23 | 3.6.15  | 2016-12-23 | [PEP 494]  |
+| 2020-09-13 | 3.5.10  | 2015-09-13 |            |
+| 2020-01-01 | 2.7.18  | 2010-07-03 |            |
+| 2019-03-16 | 3.4.10  | 2014-03-16 |            |
+|------------|---------|------------|------------|
 
 ### OS- and Distribution-shipped Versions
 
@@ -204,8 +209,12 @@ build it:
 [cpython]: https://en.wikipedia.org/wiki/CPython
 [downloads]: https://www.python.org/downloads/
 [pythonz]: https://github.com/saghul/pythonz
-[rel3.10]: https://www.python.org/dev/peps/pep-0619
-[rel3.6]: https://www.python.org/dev/peps/pep-0494/
-[rel3.7]: https://www.python.org/dev/peps/pep-0537/
-[rel3.8]: https://www.python.org/dev/peps/pep-0569/
-[rel3.9]: https://www.python.org/dev/peps/pep-0596
+
+[PEP 494]: https://www.python.org/dev/peps/pep-0494/
+[PEP 537]: https://www.python.org/dev/peps/pep-0537/
+[PEP 569]: https://www.python.org/dev/peps/pep-0569/
+[PEP 596]: https://www.python.org/dev/peps/pep-0596/
+[PEP 619]: https://www.python.org/dev/peps/pep-0619/
+[PEP 664]: https://peps.python.org/pep-0664/
+[PEP 693]: https://peps.python.org/pep-0693/
+[PEP 719]: https://peps.python.org/pep-0719/
