@@ -74,8 +74,8 @@ UI Hints
   readable on the screen.
 
 
-Printing and Capture
---------------------
+Printing, Capture, Remote Control
+---------------------------------
 
 The print button will create a `DS1Z_QuickPrint#.png` file where `#` is the
 lowest number starting from `1` that is not already on the USB disk. The
@@ -89,16 +89,52 @@ Programmable Instruments and [LXI][] (LAN eXtensions for Instrumentation);
 not sure of the relationship between the two, but SCPI seems lower level.
 Some computers use [VISA][] ( Virtual instrument software architecture)
 APIs to communicate with instruments via LAN/USB/etc.; The VISA address for
-the 'scope will look like `TCPIP::192.168.1.8::INSTR`.
+the 'scope will look like `TCPIP::192.168.xx.xx::INSTR`.
 
-Software includes:
+Windows Software:
 - (Win) Rigol Ultrascope for DS1000Z Series software.
 - (Win) marmad software; EEVblog forums ["Software & tips for Rigol
   DS2072"][marmad]. Record/playback control/setting, screen
   grab/save/preview and animated GIF compilation, and markers when zooming
   in large memory depths. Requires Rigol's software to be installed first
   for VISA drivers etc.
-- Need to find the Python software that can pull screen caps.
+
+Python:
+- cibomahto.com, [Controlling a Rigol oscilloscope using Linux and
+  Python][cibo]. Simple code for using the `usbtmc` driver.
+- [PyVISA][] library. Uses IVI-VISA library if installed, otherwise uses
+  `pyvista-py` (pure Python implementation) backend.
+- orborneee.com, [Control Your New Rigol-DS1054Z With An Old-School Text
+  User Interface][oee-blog].
+  - [PiPy `rigol-ds1000z` package][oee-pipy]. [GitHub][oee-gh]. Uses
+    [PyVISA][] to communicate with the 'scope. On Debian, requires
+    `python-tk` package.
+  - Text user interface to the 'scope, giving a wide range of settings
+    directly available and visible in a terminal, including one-key screen
+    capture.
+  - [Issue #3][rd1kz-i3] describes the failure in `find_visas()`. That can
+    be hacked around with the following, at which point the next issue
+    is that commands are very slow (106 seconds or so to respond).
+
+        #   XXX hack from https://github.com/amosborne/rigol-ds1000z/issues/2#issuecomment-1558026543
+        return [("TCPIP0::192.168.xx.xx::INSTR", "@py")]
+
+- [`rdpoor/rigol-grab`]: Seems to work well; the `rigol_grab.py` can be run
+  in a virtualenv where `rigol-ds1000z` was installed as it uses the same
+  depenedencies. `python ./rigol-grab/rigol_grab.py -p 192.168.xx.xx` dumps
+  the screen to `rigol.png` (overwriting any existing file).
+
+### VISA Interface
+
+__Utility » IO Setting » LAN Conf.__ will pop up a settings window that
+includes network information and a VISA address such as
+`TCPIP0::192.168.1.40::INSTR`. Connectivity can be confirmed with PyVISA:
+
+    import pyvisa
+    rm = pyvisa.ResourceManager()
+    inst = rm.open_resource('TCPIP0::192.168.xx.xx::INSTR')
+    inst.query('*IDN?')
+      # ⇒ 'RIGOL TECHNOLOGIES,DS1104Z,DS1ZA191003179,00.04.04.SP1\n'
 
 
 Acquisition and Memory Depth (Ch. 4)
@@ -379,10 +415,20 @@ Pass/Fail` might be a better option.
 
 
 <!-------------------------------------------------------------------->
+[manual]: https://int.rigol.com/Public/Uploads/uploadfile/files/ftp/DS/手册/DS1000Z/EN/DS1000Z_UserGuide_EN.pdf
+
 [LXI]: https://en.wikipedia.org/wiki/LAN_eXtensions_for_Instrumentation
 [SCPI]: https://en.wikipedia.org/wiki/Standard_Commands_for_Programmable_Instruments
 [VISA]: https://en.wikipedia.org/wiki/Virtual_instrument_software_architecture
-[manual]: https://int.rigol.com/Public/Uploads/uploadfile/files/ftp/DS/手册/DS1000Z/EN/DS1000Z_UserGuide_EN.pdf
+
+[PyVISA]: https://pyvisa.readthedocs.io/en/latest/
+[`rdpoor/rigol-grab`]: https://github.com/rdpoor/rigol-grab
+[cibo]: https://www.cibomahto.com/2010/04/controlling-a-rigol-oscilloscope-using-linux-and-python/
 [marmad]: https://www.eevblog.com/forum/projects/software-tips-and-tricks-for-rigol-ds200040006000-ultravision-dsos/
+[oee-blog]: https://www.osborneee.com/rigol-ds1000z/
+[oee-gh]: https://github.com/amosborne/rigol-ds1000z
+[oee-pipy]: https://pypi.org/project/rigol-ds1000z/
+[rd1kz-i3]: https://github.com/amosborne/rigol-ds1000z/issues/3
+
 [rv bas]: https://www.rigolna.com/scopebasics/
 [rv uvt]: https://www.youtube.com/watch?v=uAVDTghrqYc&pbjreload=101
