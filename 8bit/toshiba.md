@@ -10,7 +10,9 @@ Models:
   - 64K RAM, 16K VRAM
   - Graphics: 160×100/8, 640×200/2
   - PA7010: T-BASIC (MS-BASIC). PA7012: OA-BASIC.
-   - North American version: T100, T-BASIC 1.1
+- PA7010U: __T100__
+  - NA version, improved keyboard layout.
+  - T-BASIC 1.1
 - PA7007: __Pasopia 7__ (1983)
   - T-BASIC7.  48K VRAM, 2× [SN76489] sound chips.
   - Hardware dithering for 27 colors (each pixel 1 of 8 colors).
@@ -39,9 +41,54 @@ PC-compatibles:
 Peripherals
 -----------
 
+PASOPIA周辺機器 (Peripheral equipment) list from the web.
+Sources: マイコン1983-1, I/O 1982.12, I/O 1982.3　広告より (adverts).
+
+    PA7150 グリーンディスプレイ                     ¥ 45,000
+    PA7160  カラーディスプレイ                      ¥ 79,000
+    PA7161 ファインカラーディスプレイ               ¥168,000
+    PA7170 液晶ディスプレイ                         ¥ 40,000
+    PA7200 ミニフロッピーディスクユニット 280kb x2  ¥290,000
+    PA7201 増設フロッピーディスクユニット280kb x2   ¥266,000
+    PA7202 片面ミニフロッピーディスクユニット       ¥ 79,000
+    PA7210 8インチフロッピーディスクユニット        ¥375,000
+    PA7240 4Kバイト RAM PAC2                        ¥ 14,000
+    PA7242 16Kバイト RAM PAC2                       ¥ 28,000
+    PA7244 32Kバイト RAM PAC2 未定
+    PA7246 漢字 ROM PAC2                            ¥ 40,000
+    PA7250 ドットプリンタI                          ¥ 69,000
+    PA7251 ドットプリンタII                         ¥153,000
+    PA7300 拡張ユニット                             ¥ 78,000
+    PA7370 カラーTVアダプタ                         ¥ 13,000
+    PA7419 ユニバーサルカード                       ¥  4,800
+    PA7426 RS-232Cケーブル
+    PA7500 CP/M                                     ¥ 34,000
+    PA7504 ジェネラルプログラムローダー             ¥  5,000
+    PA7520 T-BASIC(ROM PAC1)                        ¥ 33,000
+    PA7521 T-DISK BASIC                             ¥ 18,000
+    PA7522 OA-BASIC(ROM PAC1)                       ¥ 33,000
+    PA7523 OA-DISK BASIC                            ¥ 18,000
+    PA7540 MINI-PASCAL(ROM PAC1)                    ¥ 33,000
+
+Peripheral details:
 - __PA7370__ DIN-8 DRGB to RF (no CVBS output). Powered from DIN-8.
   Color/BW switch.
 - __PA7373__ DIN-8 DRGB to CVBS and RF. Powered from DIN-8.
+
+
+BASIC
+-----
+
+Error messages:
+
+    DN  ファイル装置の指定が誤っている。
+        システムに つながっていない装置を指定した。
+        "Number"? Possibly when controller not present.
+
+    DO  指定した装置がつながっていない。
+        "Offline"? Seems to be when controller present, media not.
+
+
 
 
 <!-------------------------------------------------------------------->
