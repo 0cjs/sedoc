@@ -11,8 +11,11 @@ Models:
   - Graphics: 160×100/8, 640×200/2
   - PA7010: T-BASIC (MS-BASIC). PA7012: OA-BASIC.
 - PA7010U: __T100__
-  - NA version, improved keyboard layout.
-  - T-BASIC 1.1
+  - NA version. Improved keyboard layout, RS-232 added. T-BASIC 1.1.
+  - Back panel (_very_ different from Japanese models):
+    - RESET (pushbutton). VOLUME (recessed trim pot). CASSETTE (DIN-8F).
+      COLOR (DIN-8F). LCD (MiniDIN-8F). B/W (RCA). EXT.BUS (DD-50F). PRINTER
+      (DB-25M). ??? (recessed jumper?). RS-232C (DB-25F). AC IN.
 - PA7007: __Pasopia 7__ (1983)
   - T-BASIC7.  48K VRAM, 2× [SN76489] sound chips.
   - Hardware dithering for 27 colors (each pixel 1 of 8 colors).
