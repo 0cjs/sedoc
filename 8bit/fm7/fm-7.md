@@ -13,6 +13,13 @@ Specs:
 - Sound: Buzzer, AY-3-8913 Programmable Sound Generator (PSG).
   Internal/external speaker switch. FM synth card option.
 
+Models:
+- FM-7
+- FM-NEW7
+- MB25012S (S13B-0800-B600): Secosina FM-7. Spanish model; NEW7 motherboard.
+  Same physical keyboard; slight changes to the keytops for `ñ`, `¿` etc.
+
+
 Documentation
 -------------
 
