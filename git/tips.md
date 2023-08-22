@@ -44,13 +44,15 @@ Fixing/Changing Commits and Branches
 
       git update-index --chmod=-x PATH …
 
-
 * See [Rebasing in Git](rebase.md) for tips on handling merge conflicts.
 
 * To rewrite the author and timestamp of a commit (using the
   [filter-branch](filter-branch.md) variables if set):
 
       git commit --amend --reset-author
+
+For other history changes examples (e.g., moving a subdir) see
+[filter-branch](filter-branch.md).
 
 * To change the author of each of several commits without changing the
   dates, `git rebase --interactive` and after each commit,

@@ -25,3 +25,28 @@ The setup (`git filter-branch --setup`) has less:
     GIT_INDEX_FILE=/home/cjs/co/a-repo/.git-rewrite/t/../index
     GIT_WORK_TREE=.
 
+
+Procedures
+----------
+
+### Rewrite Commit Metadata (Author, etc.)
+
+To rewrite the author and timestamp of a commit (using the filter-branch
+variables above if set):
+
+      git commit --amend --reset-author
+
+### Create New Repo from Subdirectory
+
+Per the manpage, to rewrite the repository to look as if `foo/bar/` had
+been its project root, and discard all other history:
+
+  git-filter-branch --subdirectory-filter foo/bar -- --all
+
+If you don't want to make `foo/bar/` the new root, you'll need to use
+`--tree-filter` instead. See [[so 3142419]] about that and other ideas.
+
+
+
+<!-------------------------------------------------------------------->
+[so 3142419]: https://stackoverflow.com/q/3142419/107294
