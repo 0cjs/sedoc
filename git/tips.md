@@ -36,6 +36,20 @@ is not required, but gives the default branch to use if you specify only
 the name of that remote (e.g., just `origin` instead of `origin/master`).
 
 
+Git Interactive Rebase (`rebase -i`)
+------------------------------------
+
+Commits can be split by marking them edit and, when editing, starting
+with `git reset HEAD^`. This "rewinds" the HEAD and index to the
+previous commit, leaving the changes from the commit being edited in
+the work tree.
+* `git add -p` etc. to generate a series of new commits that will
+  replace the commit originally being edited.
+* `git stash` to temporarily clean the work tree to test intermediate
+  commits.
+* When the working copy is clean, `git rebase --continue`
+
+
 Fixing/Changing Commits and Branches
 ------------------------------------
 
