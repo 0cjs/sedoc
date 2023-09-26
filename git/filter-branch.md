@@ -41,7 +41,7 @@ variables above if set):
 Per the manpage, to rewrite the repository to look as if `foo/bar/` had
 been its project root, and discard all other history:
 
-  git-filter-branch --subdirectory-filter foo/bar -- --all
+    git filter-branch --subdirectory-filter foo/bar -- --all
 
 If you don't want to make `foo/bar/` the new root, you'll need to use
 `--tree-filter` instead. See [[so 3142419]] about that and other ideas.
