@@ -85,12 +85,13 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1978-06 H Apple Disk II released ($600)
     1978-06 C Intel 8086 ships
     1978-09 H Hitachi Basic Master MB-6880 (MC6800) ships
+    1978-09 h Toshiba JW-10 announced (first ja wapro)
     1978-12 H Sharp MZ-80K semi-kit ships
     1978-q4 h TRS-80 Model II design starts
     1978    H Heathkit H11 (LSI-11 2.5 MHz, 4Kw, $1295)
     1978    H Sharp MZ-40K kit ships (around same time as MZ-80K?) (¥24,800)
 
-    1979-02 S Toshiba JW-10 word processor (¥6.3M = $45k)
+    1979-02 S Toshiba JW-10 word processor ships (¥6.3M = $45k)
     1979-05 h NEC PC-8001 (Z80) announced
     1979-05 h TRS-80 Model II announced
     1979-06 S Micropro releases WordStar
