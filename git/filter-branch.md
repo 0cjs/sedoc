@@ -46,6 +46,28 @@ been its project root, and discard all other history:
 If you don't want to make `foo/bar/` the new root, you'll need to use
 `--tree-filter` instead. See [[so 3142419]] about that and other ideas.
 
+### Removing All But Certain Files
+
+Create a pathspec file (documented in `gitglossary(1)`) containing, e.g.:
+
+    :!:.gitignore
+    :!:README.md
+    :!:Test
+    :!:dir-I-want-to-keep/
+    *
+
+and use it with a an index filter, to avoid having to do checkouts of
+files (and thus speeding things up greatly):
+
+    git filter-branch --prune-empty --index-filter \
+        'git rm --cached --ignore-unmatch --pathspec-from-file psfile'
+
+Further cleanup may be necessary; this can be done with something like the
+following to avoid having to re-merge every commit, where `f0160bd` is some
+very early commit (typically the second in the new branch).
+
+    git rebase -i --empty=drop -s recursive -X theirs f0160bd
+
 
 
 <!-------------------------------------------------------------------->
