@@ -51,6 +51,7 @@ spaces. The sink name or number can be passed to:
     paplay -d SINKNAME
     paplay --device SINKNAME
     mplayer -ao pulse::SINKNUM
+    pactl set-default-sink SINKNUM
 
 The following options to paplay may also be useful:
 
