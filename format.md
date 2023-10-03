@@ -228,6 +228,10 @@ made clickable.) Escape opening formatting symbols with `\`.
 - Code: backticks
 - Strikethrough: `~~foo~~`
 - Spoiler: `||foo||`
+- Timestamps: `<t:1696329000:F>` where the number is a Unix timestamp, and
+  suffix is: `R`=relative ("in 3 hours"), `t`=short (HH:MM), `T`=long time
+  (HH:MM:SS), `d`=short date, `D` long date, `f`=long date and time,
+  `F`=long date w/weekday and time. Also see [`discordtimestamp.com`].
 
 Block formats:
 - Quote text: `>` (single line), `>>>` (all following lines until paragraph
@@ -238,8 +242,9 @@ Syntax highlighting uses Highlight.js, which can be used to color code
 blocks. (Colors will not appear on mobile.) See [[alrigh]] for tricks for
 this.
 
-[alrigh]: https://alrigh.com/discord-markdown-formatting/
 [discord]: https://discordia.me/en/markdown
+[`discordtimestamp.com`]: https://discordtimestamp.com
+[alrigh]: https://alrigh.com/discord-markdown-formatting/
 
 
 YouTube
