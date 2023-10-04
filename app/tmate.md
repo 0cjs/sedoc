@@ -40,15 +40,17 @@ file.
 
 ### Configuration Options
 
-Tmate has three different types of configuration options:
+Tmate has three different types of configuration options, two of which have
+_global_ values for the defaults and _local_ values that override the
+global default for a particular session or window.
 - _Server_ options which do not apply to any particular window or session.
   There is only one set of these. This includes things like the
   `default-terminal`, `escape-time` and the tmate server.
 - _Session_ options which apply to __???__. The global set provides the
   defaults; these can be overridden by the (often empty) list of local
   options.
-- _Window_ options apply to individual windows within a session and also
-  have a global set with optional overrides from a local set.
+- _Window_ options apply to individual windows within a session; the global
+  options are used except where overrriden by the local set.
 
 XXX `tmate set-option ...` works from the command line for curren thing
 XXX global vs. session vs. window options
