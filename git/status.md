@@ -19,6 +19,18 @@ answer is higher voted than accepted answer) and blog post [Adding Git
 Status Information to your Terminal Prompt][0xfe].
 
 
+git ls-files
+------------
 
+`git ls-files` is another approach to doing this.
+
+To get a list of all the non-ignored files in a working copy (unchanged,
+staged, modified and new that are not ignored):
+
+    git ls-files -c -o --exclude-standard
+
+
+
+<!-------------------------------------------------------------------->
 [0xfe]: http://0xfe.blogspot.jp/2010/04/adding-git-status-information-to-your.html
 [so-2657935]: https://stackoverflow.com/q/2657935/107294
