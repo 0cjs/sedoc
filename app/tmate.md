@@ -18,6 +18,13 @@ tmate
     allow scrolling on client.
 
 
+Key Bindings
+------------
+
+The default prefix key is `<C-b>`; `<C-b>?` will show all the current key
+bindings.
+
+
 Configuration
 -------------
 
