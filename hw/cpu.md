@@ -4,13 +4,14 @@ CPU Information
 Key:
 * __PM__: [PassMark CPU]
 * __ST__: Single thread PassMark
-* __Cores__: Phyiscal cores, with subscript for threads/core
+* __Cores__: Phyiscal cores, subscript=threads/core, superscript=efficient cores
 * __TDP__
 * __Date__: Approx. release date (year.quarter)
 * __GHz__: standard/turbo
 
-|    PM |    ST | Cores|  TDP | LGA  | Date | GHz     | CPU
-|------:|:-----:|:-----|-----:|------|------|---------|-----------------------
+|    PM |    ST | Cores|  TDP | LGA  | Date | GHz      | CPU
+|------:|:-----:|:-----|-----:|------|------|----------|-----------------------
+| 39791 |  4159 |   8₂⁸|65/219│FC1700│ 23.1 │ 2.1 t5.2 │ Intel Core i7-13700F
 | 19358 |  2610 |  10₂ | 140W | 2066 | 17.2 | 3.3      | Intel Core i9-7900X
 | 17828 |  2571 |   6₂ |  65W |  AM4 | 19.2 | 3.6      | AMD Ryzen 5 3600
 | 14533 |  2897 |   8  |  95W | 1151 | 18.4 | 3.6      | Intel Core i7-9700K
