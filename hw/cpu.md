@@ -12,9 +12,11 @@ Key:
 |    PM |    ST | Cores|  TDP | LGA  | Date | GHz      | CPU
 |------:|:-----:|:-----|-----:|------|------|----------|-----------------------
 | 39791 |  4159 |   8₂⁸|65/219│FC1700│ 23.1 │ 2.1 t5.2 │ Intel Core i7-13700F
+| 32457 |  3919 |   6₂⁸|65/154|FC1700| 22.3 | 2.5 t4.8 | Intel Core i5-13500
 | 19358 |  2610 |  10₂ | 140W | 2066 | 17.2 | 3.3      | Intel Core i9-7900X
 | 17828 |  2571 |   6₂ |  65W |  AM4 | 19.2 | 3.6      | AMD Ryzen 5 3600
 | 14533 |  2897 |   8  |  95W | 1151 | 18.4 | 3.6      | Intel Core i7-9700K
+| 14224 |  3484 |   4₂ |  89W |FC1700| 22.1 | 3.3 t4.3 | Intel Core i3-12100F
 | 12675 |  1973 |   8₂ | 140W | 2011 | 14.2 | 3.0      | Intel Core i7-5960X
 | 13012 |  2657 |   6₂ |  65W | 1151 | 17.4 | 3.2      | Intel Core i7-8700
 |  9545 |  2469 |   6  |  65W | 1151 | 19.1 | 2.9      | Intel Core i5-9400F
@@ -60,6 +62,7 @@ See also [CPU benchmarks by socket type][pm-socket].
 
 Be careful about the Xeons. E3-1230 v3 vs. v6 are different sockets.
 
+- FCLGA1700 (2022?)
 - LGA1151 (2017-18)
 - LGA1150 (2013-14)
 - LGA1155 (2012)
