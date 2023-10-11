@@ -16,7 +16,8 @@ Summary (pin pitch in mm, wire size range in AWG). All are 1-row, shrouded.
 
 Also see:
 - Matt's Tech Pages [Common JST Connector Types][mtp-jst]
-- jst.co.uk [Proudcts page][jstcouk]
+- jst-mfg.com [Products page][jstmfg] includes search, manuals and 3D models.
+- jst.co.uk [Products page][jstcouk]
 
 
 [JST VH]
@@ -136,6 +137,7 @@ Examples:
 
 <!-------------------------------------------------------------------->
 [jstcouk]: https://www.jst.co.uk/products.php?cat=30&nm=JST+Wire-to-Board+Connectors+%28Crimp+Style%29
+[jstmfg]: https://www.jst-mfg.com/index_e.php
 [mtp-jst]: https://www.mattmillman.com/info/crimpconnectors/common-jst-connector-types/
 
 [jst sm]: http://www.jst-mfg.com/product/pdf/eng/eSM.pdf
