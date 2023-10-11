@@ -318,6 +318,9 @@ Circuits
 - [PentaVeega][pv] generates 8-color VGA from a 6-pin ATtiny5, using some
   clever tricks with tri-state outputs and the monitor's 75Ω termination as
   part of a voltage divider. Schematic in [`hardware/pentaveega_v1.pdf`][pvs].
+- [TMS9928/29 and TMS2128/29 Interface to Color Monitors][tms9-rgb].
+  Schematic and theory of operation for converting the Y/R-Y/B-Y signals to
+  separate sync and RGB or to CVBS.
 
 
 Common Resolutions and Timings
@@ -483,9 +486,10 @@ Sample circuits and programming:
 [wp tmm]: https://en.wikipedia.org/wiki/NTSC#Transmission_modulation_method
 
 <!-- Circuits -->
+[f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
 [pv]: https://bitbucket.org/jartza/pentaveega/
 [pvs]: https://bitbucket.org/jartza/pentaveega/raw/2752ce4ea366d7cf59fe165aef9c6175a3016da9/hardware/pentaveega_v1.pdf
-[f6 76975]: http://forum.6502.org/viewtopic.php?p=76975#p76975
+[tms9-rgb]: https://tms-rgb.com/media/tms-doc.pdf
 
 <!-- Common resolutions and timings -->
 [mac128tech]: https://archive.org/details/Mac_Hardware_Info_Mac_128K/page/n4/mode/1up
