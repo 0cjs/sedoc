@@ -33,6 +33,10 @@ The MSX standard specifies that all machines will have a PSG (Programmable
 Sound Generator), which is [GI AY-3-8910][wp-psg] compatible. It has three
 square wave sound channels (A, B and C) and one noise channel.
 
+MSX1 often uses an actual AY-3-8910; MSX2/2+/TurboR use a compatible YM2149
+SSG (Software Sound Generator), which was also used on the Atari ST and some
+arcade games.
+
 The AY-3-8910 also has two 8-bit GPIO ports with internal pull-ups on each
 pin. (Other AY-3-89xx models are missing the ports.) On MSX these are
 used for joystick inputs, the kana lamp, etc. (See section 1.7.12 in the
@@ -132,6 +136,8 @@ Chip References:
   Reformatted version; searchable text. Registers in octal.
 - [PSG][iwiki] page on the Intellivision Wiki
   (AY-3-8914, AY-3-8916 and AY-3-8917; not same register layout as AY-8510)
+- [YM2149 pinout]
+
 
 MSX References:
 - _MSX2 Technical Manual,_ [Ch. 5.1 PSG and Sound Output][2the 5.1]
@@ -365,13 +371,13 @@ player.
 [2the 5.1]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#1-psg-and-sound-output
 [2the f5.2]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-52--psg-register-structure
 [2the f5.9]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter5a.md#figure-59--initial-values-of-psg-registers
+[YM2149 pinout]: https://www.vgmpf.com/Wiki/index.php?title=File:YM2149_-_Pin_Out.png
 [aydata1]: https://f.rdw.se/AY-3-8910-datasheet.pdf
 [aydata]: https://map.grauw.nl/resources/sound/generalinstrument_ay-3-8910.pdf
 [iwiki]: http://wiki.intellivision.us/index.php?title=PSG
 [rrr-regs]: https://www.angelfire.com/art2/unicorndreams/msx/RR-PSG.html
 [wavplay]: https://github.com/LarsThe18Th/Small-Projects/tree/master/MSX/ASM/DOS/PSG%20WAV%20Play
 [wp-psg]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
-
 
 <!-- FM Sound -->
 [MSX-AUDIO BASIC]: https://www.msx.org/wiki/MSX-AUDIO_BASIC
