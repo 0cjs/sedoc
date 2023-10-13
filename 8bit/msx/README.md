@@ -26,6 +26,8 @@ MSX
 - [Wikipedia (en)][wp-en]
 - [Wikipedia (ja)][wp-ja]
 - [msx.org wiki][mw] (MSX Resource Center)
+- MSX Info pages, [Manuals and Guides][mi-mag]. Many manuals and documents,
+  both user and technical. Many links broken, however.
 
 ### Technical Books
 
@@ -256,6 +258,7 @@ NMS8250 third SLOT][mod-slot3-nms8250].
 [mw]: https://msx.org/wiki
 [wp-en]: https://en.wikipedia.org/wiki/MSX
 [wp-ja]: https://ja.wikipedia.org/wiki/Msx
+[mi-mag]: https://web.archive.org/web/20120116115102/http://gomsx.net/hansotten/index.php?page=msxmanuals
 
 <!-- Technical books -->
 [2the]: https://github.com/Konamiman/MSX2-Technical-Handbook/
