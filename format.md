@@ -201,6 +201,8 @@ Textual markup:
 - `__italic__`, `**bold**` and `` `monospace` ``
 - Multi-line code blocks can be delimited with three backticks before
   and after. (These need not be on separate lines.)
+  - 4.11/2023-10-30: Syntax highlighting with three backticks followed by
+    language name (no space).
 - URLs will automatically be turned into links, but to link text
   without showing the URL you need to use Ctrl-K as above.
 - `@name` will be replaced with a clickable representation of the
