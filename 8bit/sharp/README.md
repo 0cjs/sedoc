@@ -15,6 +15,7 @@ Keyboard:
   location) are mode locks; `Shift` can be used with `Graph` for additional
   graphics characters (replacing kana). Kana key has blank top.
 - `Graph` cursor is inverted cross.
+- 3D model for MZ-700 Key Post [available from thingiverse][tv-mz700-keypost]
 
 [Keyboard input control codes][som 027]:
 
@@ -137,15 +138,19 @@ References
   - p.146 (P.149): IPL Monitor documentation
   - p.154 (P.159): "ASCII" and screen code tables (2nd SC set p.155-2)
 - [[ssm]] _Sharp Service Manual MZ-700 MZ-1T01 MZ-1P01,_ code 00ZMZ700SM//E.
+- [[ppmz7]] G.P. Ridley, _Peeking and Pokeing the Sharp MZ-700._
+
 
 
 <!-------------------------------------------------------------------->
 [smzo-h&t]: https://original.sharpmz.org/mz-80k/tips.htm
 
 [74LS221]: https://www.ti.com/product/SN74LS221
+[ppmz7]: https://archive.org/details/peeking-poking-the-sharp-mz-700
 [smzo-conn]: https://original.sharpmz.org/mz-700/connect.htm
 [som]: https://archive.org/details/sharpmz700ownersmanual/page/n5/mode/1up?view=theater
 [som 006]: https://archive.org/details/sharpmz700ownersmanual/page/n7/mode/1up?view=theater
 [som 027]: https://archive.org/details/sharpmz700ownersmanual/page/n28/mode/1up?view=theater
 [som 141]: https://archive.org/details/sharpmz700ownersmanual/page/n142/mode/1up?view=theater
 [ssm]: https://archive.org/details/sharpmz700servicemanual/
+[tv-mz700-keypost]: https://archive.org/details/thingiverse-5447518
