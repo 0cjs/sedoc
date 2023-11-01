@@ -218,8 +218,9 @@ Textual markup:
 Discord
 -------
 
-[Similar to Markdown][discord] but, like Slack, no hyperlinks. (URLs are
-made clickable.) Escape opening formatting symbols with `\`.
+[Similar to Markdown][discord]. Escape opening formatting symbols with `\`.
+Around mid-2023 Markdown hyperlinks were added; before that but, like
+Slack, just URLs made clickable.
 
 - Italic: `_foo_`, `*foo*`
 - Bold: `**foo**`
@@ -230,6 +231,7 @@ made clickable.) Escape opening formatting symbols with `\`.
 - Code: backticks
 - Strikethrough: `~~foo~~`
 - Spoiler: `||foo||`
+- Link: `[foo](https://foo.com)` (added sometime in 2023).
 - Timestamps: `<t:1696329000:F>` where the number is a Unix timestamp, and
   suffix is: `R`=relative ("in 3 hours"), `t`=short (HH:MM), `T`=long time
   (HH:MM:SS), `d`=short date, `D` long date, `f`=long date and time,
