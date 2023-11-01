@@ -165,6 +165,24 @@ BiFi's Weblog post [Detection of FM sound chips][bifi] may provide further
 useful information on detecting MSX-AUDIO, MSX-MUSIC (both real and
 emulated by MSX-AUDIO with recent ROM updates) and MoonSound.
 
+#### Yamaha Custom FM Sound and MIDI
+
+Additionally Yamaha had some custom cartridges for their CX series that
+included different FM sound generators:
+- SFG-01 FM Sound Synthesizer Unit: 16 KB ROM (MBIOS 1.0?), OPM (YM2151),
+  MKS (YM2148) MIDI UART (output only), 16 KB ROM.
+- SFK-01: as SFG-01 without MIDI.
+- The SFG-05 FM Sound Synthesizer Unit II: 32 KB ROM (MBIOS 2.0) with
+  support for MIDI input, OPP (YM2164), 2× ROM, stereo DAC (YM3012), and a
+  MKS (YM2148) MIDI UART.
+
+The MSX1 Yamaha CX11 computer included PSG (YM2149 integrated in MSX-Engine
+X3527), SFG, MIDI. (And also an MSX2 video chip.)
+
+MBIOS 2.0 added support for MIDI input, so it allows the internal FM synth
+to be played by any external MIDI keyboard, disk and printer support,
+loading of user voices, recording of auto bass chords.
+
 
 MSX-AUDIO
 ---------
