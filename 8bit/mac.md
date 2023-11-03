@@ -1,6 +1,9 @@
 Apple Macintosh
 ===============
 
+Mac Classic:
+- Command-Option-X-O boots ROM MacOS 6.x (if held down early enough)
+
 Floppy Drives
 -------------
 
