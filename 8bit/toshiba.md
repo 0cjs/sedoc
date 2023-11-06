@@ -41,6 +41,21 @@ PC-compatibles:
   - TS100/300 variant w/'286.
 
 
+### References
+- [Toshiba T100 Computer and Floppy Drive Owners Manual and Programmers
+  Reference Manual][t100-own-progref], Toshiba America, 1982.
+- [Toshiba T100 Owners Manual][t100-own-aus], Toshiba Australia, 1982.
+- [Toshiba T100 Technical Reference Manual (English)][t100-techref].
+  Photocopy of handwritten document.
+- [Toshiba T100 (Pasopia) Maintenance Manual][t100-maint], Toshiba America,
+  1983.
+- [Toshiba 8-bit system IC reference][tosh8]. ROM, DRAM, CPU, PIA, USART
+  etc. IC desginations.
+-  Vogons.org thread, [Toshiba T-100 - the US counterpart to the Japanese
+   Pasopia][vog95487]. Includes pics of the T-100 and links to various
+   references.
+
+
 Peripherals
 -----------
 
@@ -93,7 +108,11 @@ Error messages:
 
 
 
-
 <!-------------------------------------------------------------------->
 [SN76489]: https://en.wikipedia.org/wiki/Texas_Instruments_SN76489
 
+[t100-maint]: https://archive.org/details/toshiba-t-100-maintenance-manual
+[t100-own-progref]: https://archive.org/details/toshiba-t-100-manuals/Toshiba%20T100%20Owners%20Manual/
+[t100-techref]: https://archive.org/details/toshiba-t-100-tech-ref-eng/
+[tosh8]: https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-X2/DSA12010006539.pdf
+[vog95487]: https://www.vogons.org/viewtopic.php?f=46&t=95487
