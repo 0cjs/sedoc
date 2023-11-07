@@ -16,14 +16,16 @@ File and Directory Links
 ------------------------
 
 [NTFS links] are of three types:
-- Hard links, for files only, which have files share the same MFT entry
+- __Hard links__ for files only, which have files share the same MFT entry
   (inode), in the same filesystem. These are very similar to Unix hard
   links.
-- Junction points, which are similar to hard links, but defined for folders
-  and can be only local (i.e., storage on the machine), absolute paths.
-  These are shown as and act like Unix symlinks in Bash.
-- [Symbolic Links][gfw sym], which are not widely available and still not
-  understood by many programs. Note that `ln -s` in Git Bash creates
+- __Junction points__ which are special files that can contain redirects to
+  other directories on the machine, amongst other information. The target
+  path must be absolute, but can be on any local drive. The File Manager
+  icon is a folder icon with a small arrow at the lower left; in MINGW Bash
+  these are shown as and act like Unix symlinks.
+- [__Symbolic Links__][gfw sym], which are not widely available and still
+  not understood by many programs. Note that `ln -s` in Git Bash creates
   copies, not symbolic links.
 
 Windows also uses [shortcut files][.lnk] (also known as "shell links");
@@ -49,7 +51,8 @@ Git Bash (but see above). `fsutil.exe` does work from Git Bash and offers
 
 Note that reparse points are used for much more than just directory
 junctions. They can include arbitrary information for various file system
-filters.
+filters. The `fsutil reparsePoint query` command will show all the tags
+within the junction point file and their interpreted and raw data.
 
 ### Symlinks
 
