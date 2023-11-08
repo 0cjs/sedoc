@@ -68,7 +68,7 @@ the drive.)
 
 ### Documentation
 
-The [_MSX-DOS Tools Users Manual_][mtdum] (ASCII, 1987) is a huge book that
+The [_MSX-DOS Tools Users Manual_][mdtum] (ASCII, 1987) is a huge book that
 actually contains several different manuals in it, without a proper table
 of contents at the beginning or index at the end. (Each manual within the
 book has its own ToC and index.) For convenience, I have split the
