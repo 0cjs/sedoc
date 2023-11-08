@@ -37,7 +37,7 @@ The original (8080) and Z80 keypad layouts:
     ┃     SI│   LOAD│   DUMP│       ┃    ┃     IR│    AF'│    BC'│+   DE'┃
     ┠───────┼───────┼───────┼───────┨    ┠───────┼───────┼───────┼───────┨
     ┃DE     │HL     │PC     │       ┃    ┃GO     │IN     │OUT    │LAST   ┃
-    ┃   4   │   5   │   9   │   -   ┃    ┃   4   │   5   │   9   │   B   ┃
+    ┃   4   │   5   │   6   │   -   ┃    ┃   4   │   5   │   6   │   B   ┃
     ┃     GO│     IN│    OUT│       ┃    ┃     HL│    IX │    IY │-   HL'┃
     ┠───────┼───────┼───────┼───────┨    ┠───────┼───────┼───────┼───────┨
     ┃SP     │AF     │BC     │       ┃    ┃PRI  47│SEC  67│RDX† 37│CANCEL ┃
@@ -126,14 +126,37 @@ The monitor runs in two modes:
   panel commands are available except RTM.
 - User mode: MON light is off and user program is running. The display will
   continue to be updated if interrupts are enabled (e.g., if you were last
-  displaying the HL register contents, this will be updated every 2 ms as the
-  stack changes). Only RTM and RST commands are valid.
-- In user mode with interrupts disabled the RTM command will not work and you
-  can only break out of this by resetting the machine with RST.
+  displaying the register or memory contents, this will be updated every
+  2 ms with any changes). Only RTM and RST commands are valid. This uses
+  about 10% of the computer's resources.
+- In user mode with interrupts disabled the RTM command will not work and
+  you can only break out of this by resetting the machine with RST.
+
+Address entry and display is in offset octal (separate groups per byte),
+i.e., 377.377 for $FF. Entering 4-7 for high digit just drops 9th bit.
+
+The keypad has 1-char/second autorepeat (particularly useful with `+`/`-`).
+Keypad keystrokes are verified with a short beep. Medium beeps indicate
+data entry complete, and long beeps indicate error.
 
 - `0`+`/`: RST ("master clear")
-- `0`+`#`: RTM (return to monitor): generates an INT10 via hardware, executing
-  an RST1 instruction.
+- `0`+`#`: RTM (return to monitor): generates an INT10 via hardware,
+  executing an RST1 instruction.
+- `MEM`: enter memory address mode (all decimal points light) and enter six
+  digits of address. All decimal points clear, address and current value at
+  that address displayed. Any non-octal key during address entry signals an
+  error (long beep) and aborts memory entry mode.
+- `+`/`-`: Increment/decrement current address.
+- `ALTER`: Enter memory alter mode indicated by decimal point rotating
+  thorugh all nine digits. Type three octal digits, beep indicates data
+  were accepted and address is incremented, ready to accept another value.
+  In ALTER mode, `+`/`-` will increment/decrement address. Leave ALTER mode
+  with `ALTER`, `MEM` or `REG`.
+- `REG`: Select register for display. Six decmial points light and register
+  is chosen by marking on key (1-6, marked on upper left). Here `ALTER`
+  will alter the register value instead of memory; exits are the same as
+  `ALTER` above. `SP` is display-only and cannot be altered from front
+  panel (run SPHL instruction instead).
 
 
 ### References
