@@ -165,6 +165,15 @@ left→right: front side 50→2; rear side 49→1. Top-down view:
 - `SOUNDIN` unconnected on Casio PV-7, General PCT-50, Hitachi MB-H1,
   Victor HC-30, Yamaha SX-100, all Korean machines.
 
+### Expansion Bus Pinouts
+
+There are various expansion bus pinouts, but 1-slot MSX systems often have
+a [2×25 shrouded connector with the same signals as a slot][mw exp]. (The
+shroud may have the standard single key or may have two keys.) It varies
+from model to model even signal numbers or odd signal numbers are on the
+key side. The bottom of that page also lists some other more customised
+expansion bus formats.
+
 
 Optional Peripherals
 --------------------
@@ -276,6 +285,7 @@ NMS8250 third SLOT][mod-slot3-nms8250].
 
 <!-- body -->
 [mw cart]: https://www.msx.org/wiki/MSX_Cartridge_slot
+[mw exp]: https://www.msx.org/wiki/Expansion_bus_slots_%2850-pin_IDC%29
 
 <!-- Modifications: Adding a Third Slot -->
 [mod-slot3-nms8250]: https://msx.org/forum/msx-talk/hardware/add-nms8250-third-slot?page=0
