@@ -155,7 +155,7 @@ left→right: front side 50→2; rear side 49→1. Top-down view:
                          A15  18 17  A9
                     Reserved  16 15  /RESET
                         /RD   14 13  /WR
-                       /MERQ  12 11  /IORQ
+                       /MREQ  12 11  /IORQ
                      /BUSDIR  10 9   /M1
                         /INT   8 7   /WAIT
                        /RFSH   6 5   Reserved
