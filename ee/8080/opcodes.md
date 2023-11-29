@@ -25,9 +25,9 @@ Table:
 
     ──────────────────────────────────────────────────────────────────────
 
-    ld a,(xx)  ld (xx),a  ld (xx),hl  ld hl,(xx)   │
-    LDA a16    STA a16     SHLD a16   LHLD a16     │   IN  OUT   p8 (port)
-    3A₁₃       32₁₃        22₁₆       2A₁₆         │   DB   D3   ₁₀
+    ld a,(xx)  ld (xx),a  ld hl,(xx)  ld (xx),hl   │
+    LDA a16    STA a16    LHLD a16     SHLD a16    │   IN  OUT   p8 (port)
+    3A₁₃       32₁₃       2A₁₆         22₁₆        │   DB   D3   ₁₀
 
                     B   D   H   SP
     LXI  rp,d16     01  11  21  31  ₁₀      ld rr,d16
