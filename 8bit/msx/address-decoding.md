@@ -19,7 +19,7 @@ The MSX address space is divided into four 16 KB _pages_ (ページ).
 [[td1 p.38]] [[2the 2.1.1]] [[2thj p.23]] Each page has a separate setting
 (two bits of PPI (i8255) port A (PA0-PA7) usually at IO port $A8) that
 determines the primary slot that should respond to accesses to locations in
-this page.
+this page. This port can be read/written via $138 `RSLREG`/$13B `WSLREG`.
 
       Page  Addr.range  $A8  Typical use
        3    C000-FFFF   7,6  RAM
