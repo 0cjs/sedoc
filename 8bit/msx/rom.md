@@ -62,6 +62,10 @@ BIOS/BASIC (more also in [`bastech.md`](bastech.md)):
                            b6=1 expansion device driver present
                            b5=1 expanded statements processor present
                            b4-0 unused
+    FCC8  1b        +3  Saved state of the four expansion slot registers
+    FCC7  1b        +2  for each expanded slot.
+    FCC6  1b        +1      b7-6:page 3   b5-4:page 2
+    FCC5  1b  SLTTBL+0      b3-2:page 1   b1-0:page 0
     FCC4  1b        +3  slot 3: Each slot entry
     FCC3  1b        +2  slot 2    bit 7: 1=expanded 0=not
     FCC2  1b        +1  slot 1    bits 6-0: always 0
@@ -281,6 +285,12 @@ changing the page mappings) have `DI` prefixing their description.
            0DE  GTPD      paddle read; A=param/ret
            ...
            135  CHGSND    set 1-bit sound port A=0 off, A=~0 on
+           138  RSLREG    A←current output to primary slot register
+           13B  WSLREG    A→primary slot register
+           13E  RDVDP     A←VDP register
+           141  SNSMAT    Reads row=A of keyboard matrix; A=result, 0=keydown
+           144  PHYDIO    operation for mass storage (e.g., floppy)
+           147  FORMAT    init mass storage (e.g., floppy)
            ...
            159  CALBAS    inter-slot call to BASIC interpreter: IX=call addr
 
