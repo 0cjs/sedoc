@@ -10,8 +10,8 @@ Jumpers:
 - `K4`, `K5`, `A8`, `A16`: sets cartridge MegaROM emulation mode.
   - `K4`: Konami4 mapper (`FLK4.COM`)
   - `K5`: Konami5 ([SCC]) mapper (`FL.COM`)
-  - `A8`: [ASCII8] mapper (`FL16.COM`)
-  - `A16`: [ASCII16] mapper (`FL8.COM`)
+  - `A8`: [ASCII8] mapper (`FL8.COM`)
+  - `A16`: [ASCII16] mapper (`FL16.COM`)
   - None, or more than one: disabled; all `FL*.COM` programs will say
     "MegaFlashRom not found!"
 
