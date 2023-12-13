@@ -6,6 +6,28 @@ References:
 - MSX.org Wiki, [Toshiba T6950][mw-t6950]
 
 
+TMS9xxx Design
+--------------
+
+The output resolution is 256×192, with 15 unique colours plus transparent.
+The display has 35 planes which are, Bottom to top, external VDP, backdrop,
+pattern plane, and sprite planes 31 through 0.
+
+Many modes set the pattern plane as table of _patterns_ (characters). This
+uses the following tables:
+- __Pattern Name Table__ (32×24 = 768 bytes in Graphics mode; 40×24 = 960
+  bytes in Text mode; aligned to 1024 byte boundary). Each entry references
+  an 8×8 (Graphics mode) or 6×8 (Text mode) entry in the Pattern Generator
+  Table; the upper 5 bits also index into the Color Table.
+- __Pattern Generator Table__ (256 entries × 8 bytes = 2048 bytes; aligned
+  to 2048 byte boundary). Each entry is the a row in the bit pattern, with
+  TI bit 0 (standard bit 7) at left. The upper 5 bits determine the entry
+  from the Color Table.
+- __Color Table__ (32 entries × 1 byte). Each entry MS nybble defines the
+  colour for 1 bits in the PGT and each LS nybble defines colours for the 0
+  bits. Entry 0 is used for patterns 0-7, entry 1 for patterns 8-15, etc.
+
+
 TMS9xxx Pinouts
 ---------------
 
