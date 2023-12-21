@@ -5,6 +5,7 @@ Contents:
 - Introduction
 - 8080 Architecture
 - Support Chips
+- Tools
 
 Introduction
 ------------
@@ -201,6 +202,17 @@ signals.
   put it, two groups of 12: group A ports A,C; group B ports B,C.)
 
 
+Tools
+-----
+
+- [z80dasm]: Improved version of dz80; still overly simplistic but packaged
+  in most Linux distros.
+- [z88dk]: Development kit for over a hundred Z80 family machines,
+  including C compilers (`sccz80` and `zsdcc`), assembler, linker,
+  libraries, simulator/debugger, disassembler, and more. Targets include
+  TRS-80, PC-8801, Sharp MZ, Kyotronic 85, Pasopia 7, MSX,
+  ZX80/81/Spectrum, Robotron KC 87, RC2014 (CP/M, HBIOS, RC2014), etc.
+
 
 <!-------------------------------------------------------------------->
 [`/dunfield/r`]: http://www.classiccmp.org/dunfield/r/
@@ -208,3 +220,7 @@ signals.
 [csum-8251]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n202/mode/1up?view=theater
 [csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
 [dunfield]: http://www.classiccmp.org/dunfield/
+
+<-- Tools -->
+[z88dk]: https://github.com/z88dk/z88dk
+[z80dasm]: https://web.archive.org/web/20230925185822/https://www.tablix.org/~avian/blog/articles/z80dasm/
