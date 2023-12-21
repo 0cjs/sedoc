@@ -8,8 +8,9 @@ presumably) with its own Z-80 controlling the disks; the FDD port used an
 [i8255]-compatible PIO chip for communications with the peripheral.
 
 The mkII series have a "controller" built in, but the original PC-8001 did
-not. It seems that the PC-8033 interface was just an 8255 chip, however,
-and one can build it oneself fairly easily: [PC-8033を自作する][8033self].
+not. It seems that the PC-8033 interface was just an 8255 chip (see
+[PC-8033の中身][8033contents]), however, and one can build it oneself
+fairly easily: [PC-8033を自作する][8033self].
 
 #### Projects
 
@@ -140,6 +141,7 @@ The comments to [sb-access] discuss booting, with stuff relating to whether
 <!-------------------------------------------------------------------->
 [8001game-rom]: http://w01.tp1.jp/~a571632211/pc8001/pc8001rw.png
 [8001game-sd]: http://w01.tp1.jp/~a571632211/pc8001/index.html
+[8033contents]: https://blog.goo.ne.jp/tk-80/e/6ac4226f93ae2f80224ee7fcf31cb796
 [8033self]: https://blog.goo.ne.jp/tk-80/e/fd42e45f6f2e993327d567582c0df1d0
 [PC8001-PIC]: https://web.archive.org/web/20150502161834/http://www8.plala.or.jp/ita-sys/K02C_PC8001-PIC.html
 [SD6031-spec]: http://tulip-house.ddo.jp/DIGITAL/SD6031V1/spec.html
