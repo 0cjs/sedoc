@@ -334,8 +334,10 @@ See [`nec/D88STRUC.txt`](nec/D88STRUC.txt) for more details.
 (There's also a copy in a [gist from barbeque][barbeque].)
 
 Programs:
+- [`d88dmp`]: D88 file dump tool
 - [`d88split.pl`]: splits a file containing several images into files
   containing one image each.
+
 
 
 
@@ -379,5 +381,6 @@ Programs:
 [stmfake]: https://github.com/keirf/Greaseweazle/wiki/STM32-Fakes
 
 <!-- sector level images -->
+[`d88dmp`]: https://github.com/ORYZAPAO/d88dmp
 [`d88split.pl`]: https://github.com/tomari/d88split/blob/master/d88split.pl
 [barbeque]: https://gist.github.com/barbeque/33ee77a440fb9796d309bdc980bb067a
