@@ -139,6 +139,12 @@ The keypad has 1-char/second autorepeat (particularly useful with `+`/`-`).
 Keypad keystrokes are verified with a short beep. Medium beeps indicate
 data entry complete, and long beeps indicate error.
 
+Monitor mode has three sub-modes:
+- Command: Executes the command given at the lower right (Z80: upper left)
+  of the keypad. Also allows switching to ???.
+- Memory: entered from command mode with the `MEM` key.
+- Register: entered from command mode with the `REG` key.
+
 - `0`+`/`: RST ("master clear")
 - `0`+`#`: RTM (return to monitor): generates an INT10 via hardware,
   executing an RST1 instruction.
@@ -147,6 +153,7 @@ data entry complete, and long beeps indicate error.
   that address displayed. Any non-octal key during address entry signals an
   error (long beep) and aborts memory entry mode.
 - `+`/`-`: Increment/decrement current address.
+- `* CANCEL`: Cancel input.
 - `ALTER`: Enter memory alter mode indicated by decimal point rotating
   thorugh all nine digits. Type three octal digits, beep indicates data
   were accepted and address is incremented, ready to accept another value.
