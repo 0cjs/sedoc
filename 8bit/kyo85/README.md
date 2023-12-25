@@ -27,10 +27,10 @@ Contents
   - Add. software: Address, Scheduler.
   - Internal: 4× RAM/ROM socket.
 
-M100 and PC82 both appear to work with NiMH batteries and do not show a low
-battery light, but during TELCOM downloads and at other times the M100 shut
-off even with >1.2 V (no load) batteries, so it's probably best to stick
-with alkaline (1.5 V nominal) batteries.
+The KC85 was called only "Kyotronic 85" on the machine itself, but the
+English-language service manual calls it the "Kyotronic KC-85 Portable
+Computer." (Still, in the manual it's the "KYOTRONIC 85.") We use "KC-85"
+or "KC85" here because that's the more frequent short name on the Internet.
 
 
 Usage Notes
@@ -47,6 +47,13 @@ while pushing the RESET button.
 (M100) The default power-off timeout is after 10 minutes of no keypresses.
 In BASIC, `POWER n` (_n_ = 10 - 255) sets the timeout to _n*6_ seconds and
 `POWER CONT` disables the timeout.
+
+### Batteries
+
+M100 and PC82 both appear to work with NiMH batteries and do not show a low
+battery light, but during TELCOM downloads and at other times the M100 shut
+off even with >1.2 V (no load) batteries, so it's probably best to stick
+with alkaline (1.5 V nominal) batteries.
 
 (M100) 4×AA alkaline batteries give about 20 hours of runtime. gLow battery
 indicator lights when about 20 minutes of battery (alkaline) remaining.
