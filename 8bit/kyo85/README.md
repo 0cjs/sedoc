@@ -1,7 +1,15 @@
 Kyocera Kyotronic 85 Family
 ===========================
 
-Models:
+Contents
+- Models
+- Usage Notes
+- Connector Pinouts
+- Documentation
+- Cross-development Tools and Emulators
+
+### Models
+
 - __KC85__ Kyocera Kyotronic 85: Original system.
   - Ports: RS-232, printer, cassette.
   - Software: BASIC, Text, Telcom.
@@ -87,6 +95,7 @@ Filenames are 6 chars plus 2 char extension, (M100) upper-case only or
     .CO     machine-language ("command") program
 
 Delete files from BASIC with `KILL "fname.ex"`.
+
 
 Connector Pinouts
 -----------------
