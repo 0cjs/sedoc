@@ -23,11 +23,19 @@ architectures (and ZIPped docs on C64 cassette and video monitor).
 8080 Architecture
 -----------------
 
-Where the Z80 differs in naming from the 8080/8085, the Z80 alternative
-name is given in parens after the Intel name.
+An excellent instruction summary is [8080.txt](8080.txt), downloaded
+from [`/dunfield/r`]. Intel mnemonics given here in upper case
 
-An excellent instruction summary is [8080.txt](8080.txt),
-downloaded from [`/dunfield/r`].
+The 8085 adds:
+- Single +5V power supply
+- Has many 8224/8228 features, but addr/data buses require demux.
+- ~50% faster (fewer cycles)
+- New interrupts; `SI`/`SO` pins for bitbanged serial in/out
+- `RIM`, `SIM` instructions
+
+Where the Z80 differs in naming from the 8080/8085, the Z80 alternative
+name is given in parens after the Intel name. Z80 mnemonics are given
+in lower case.
 
 ### Registers
 
@@ -38,16 +46,14 @@ downloaded from [`/dunfield/r`].
 - `SP` stack and `PC`; never directly referenced.
 
 Z80 adds:
-- `IX`, `IY`: Index registers; op prefixes give new instructions to use
-  these with a 1-byte offset. These tend to be slower than using `HL` and
-  `INC`.
+- `IX`, `IY`: Index registers; op prefixes give new instructions to use these
+  with a 1-byte offset. These tend to be slower than using `HL` and `inc`.
 - `I`: Interrupt page: high-order 8 bits of addr on interrupt in mode 2. In
-  modes 0 and 1, can be used for programmer-defined purposes. Set to $00
-  on reset.
+  modes 0 and 1, can be used for programmer-defined purposes. $00 on reset.
 - `R`: Memory refresh (7 bits): incremented with each instruction fetch.
   Can be read/set by programmer for testing or other purposes.
-- `AF'` alternate accumulator and flags, swapped with `EX AF, AF'`.
-- `BC' DE' HL'` alternate register set swapped with `EXX`.
+- `AF'` alternate accumulator and flags, swapped with `ex af,af'`.
+- `BC' DE' HL'` alternate register set swapped with `exx`.
 
 ### Flags
 
@@ -84,14 +90,6 @@ Addressing modes: direct and indirect through a register. Nothing involving
 addition of offsets. (Such poverty!) Z80 adds offsets for `IX` and `IY`
 registers.
 
-### Interrupts
-
-Z80 has NMI (8080 doesn't), restarting at $0066. The Z80 calls the standard
-Intel interrupt scheme _mode 0_, and adds _mode 1_, always restarting at
-$0038 (`RST7`) and _mode 2_, where the device supplies 8-bits of low
-address (LSbit must be 0), 8 bits of high address is supplied by `I`
-register, and the interrupt vector is looked up from that address.
-
 ### Instructions
 
 New 8085 instructions for serial bit and interrupts:
@@ -115,13 +113,83 @@ New Z80 instructions:
 - `ldir`: (HL) → (DE), HL++, DE++; BC--; repeat unless BC=0. [PM 184]
   - `ED B0`. BC≠0 21 (4,4,3,5,5), BC=0 16 (4,4,3,5)
 
-
 ### Instruction Timings
 
 Here we use Z80 terminology. Clock cycles are _T cycles_; instructions use
 one or more _M cycles_ each of 2-5 T cycles. Generally, the first M-cycle
 (opcode fetch) is four T cycles. Intell calls M and T cycles _cycles_ and
 _states_.
+
+
+Interrupts
+----------
+
+On all processors, `DI` masks all interrupts except NMI and `EI` enables
+all interrupts. Interrupts exit `halt` state.
+
+Single-byte instructions intended for interrupt use are "restart" `RST 0` -
+`RST 7` jumping to $0000, $0008, $0010, ..., $0038.
+
+Interrupt routine should `push AF` at start, execute `EI` before/at end,
+and `pop AF`, `RTS` at end.
+
+### 8080
+
+One maskable interrupt, `INTR` signal, level sensitive input on `INT` pin 14.
+`INTE` pin 16 high output indicates interrupts are enabled.
+
+On interrupt: current instruction is completed; all interrupts masked
+(effectively `DI`); current PC placed on address bus while next complete
+instruction (single- or multi-byte) is read from data bus, then executed.
+
+Typically an `RST n` is stuffed on to the bus to avoid dealing with
+multi-cycle byte stuffing. Sufficiently sophisticated systems can gate e.g.
+`CALL` on to the bus.
+
+Hardware must ensure that instruction byte(s) for interrupt, rather than
+data from memory, is returned during first FETCH cycle after interrupt.
+8228 can optionally handle this internally, gating `RST 7` on to data bus.
+
+RST and interrupt vectors:
+
+    intr    addr    notes
+    ────────────────────────────────────────────
+    RST0    $0000
+    RST1    $0008
+    RST2    $0010
+    RST3    $0018
+    RST4    $0020
+    TRAP    $0024   8085 only
+    RST5    $0028
+    RST5.5  $002B   8085 only
+    RST6    $0030
+    RST6.5  $0034   8085 only
+    RST7    $0038
+    RST7.5  $003B   8085 only
+    NMI     $0066   Z80 only
+
+### 8085
+
+8085 adds four more interrupts with dedicated pins for each, all with
+higher priority than `INTR`:
+
+    priority    intr    addr    notes
+    ────────────────────────────────────────────────────────
+    highest     TRAP    $0024   edge sensitive, non-maskable
+                RST7.5  $003B   edge sensitive
+                RST6.5  $0034
+                RST5.5  $002B
+    lowest      INTR    -
+
+### Z80
+
+Z80 has NMI (8080 doesn't), restarting at $0066. The Z80 has three
+interrupt modes:
+- _mode 0:_ standard Intel interrupt scheme
+- _mode 1:_ always restarting at with `RST7` at $0038 (à la 8228 option)
+- _mode 2:_ the interrupting device supplies 8-bits of low address (LSbit
+  must be 0), 8 bits of high address is supplied by `I` register, and the
+  interrupt vector is looked up from that address.
 
 
 Support Chips
@@ -184,11 +252,16 @@ signals.
 
 #### 8228 System Controller
 
-- Data bus driver
-- Latched output of derived status signals `M̅E̅M̅ ̅R̅`, `M̅E̅M̅ ̅W̅`, `I̅/̅O̅ ̅R̅`,
-  `I̅/̅O̅ ̅W̅`, `I̅N̅T̅A̅`.
-- Can gate `RST7` on to data bus on interrupt, or generate `I̅N̅T̅A̅` pulses
-  for each of the three bytes of a `CALL` instruction.
+- Data bus driver for monitoring status, tristate and better fanout.
+- Latched output of derived status signals:
+  - Generates `M̅E̅M̅ ̅R̅`, `M̅E̅M̅ ̅W̅`, `I̅/̅O̅ ̅R̅`, `I̅/̅O̅ ̅W̅`, `I̅N̅T̅A̅`.
+  - From 8080 `DBIN`, `W̅R̅` and start-of-cycle status on data bus
+- Interrupt handling:
+  - Connect `I̅N̅T̅A̅` output to +12V via 1kΩ to have 8228 gate `RST 7` on to
+    data bus on any interrupt.
+  - Otherwise use standard interrupt data bus stuffing; if 8228 detects
+    instruction to be `CALL` it will generate `I̅N̅T̅A̅` pulses for additional
+    two bytes read by CPU.
 
 #### Other
 
