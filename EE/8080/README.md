@@ -93,12 +93,12 @@ registers.
 ### Instructions
 
 New 8085 instructions for serial bit and interrupts:
-- `RIM`:
+- `RIM`: Read Interrupt Mask
   - b7:   serial I/O data bit, if any
   - b6-4: pending interrupts: 1=pending
   - b3:   interrupt enable flag: 1=enabled
   - b2-0: interrupt masks: 1=masked
-- `SIM`:
+- `SIM`: Set Interrupt Mask
   - b7:   serial output data, used only if b6=1
   - b6:   0=ignore b7; 1=send b7 to serial output data latch
   - b5:   ignored
