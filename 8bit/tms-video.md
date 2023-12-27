@@ -27,6 +27,10 @@ uses the following tables:
   colour for 1 bits in the PGT and each LS nybble defines colours for the 0
   bits. Entry 0 is used for patterns 0-7, entry 1 for patterns 8-15, etc.
 
+Tables Summary:
+<img src='img/MSX-VDP-tables.png' /> <!--  1160 x 758 -->
+(Source: aoineko, MSXGL author.)
+
 
 TMS9xxx Pinouts
 ---------------
