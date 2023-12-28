@@ -116,13 +116,31 @@ default is `COLOR 0,0`; color mode (`CONSOLE,,,1`) default is `7,0`.
 - `CLOAD "fn"`, `CLOAD? "fn"`, `CSAVE "fn"`ⁿ⁰: CMT load/verify/save
 
 Serial port I/O per [[kuniser]] but untested:
-
 - `PRINT%1,…`: Print to serial port 1 (also `%2` for 2nd port).
 - `INPUT%1,…`
 - `INIT%1,mode,cmd`: Init with mode and command bytes. E.g. `&h4E,&h37` for
   9600 (7E1 or N81?).
 - `PORT n`: "get number of buffer inputs"
 - `INPUT$(len,%port)` "get specified long characters"
+
+Floppy Disk I/O (_dn_ = drive number 1-4):
+- `MOUNT [n[,n…]]`: Prepares diskette(s) in given drive numbers (default
+  all drives) for use by reading FAT into memory.
+- `REMOVE [n[,n…]]`: Writes FAT back to given drive numbers to allow
+  removal of diskette(s). (FAT _is not updated on disk until this command
+  is run._)
+- `SAVE "[dn:]fname[.ext][,a]"`: _dn_ is 1-4, default 1. _fname_
+  max 6 chars. _ext_ 3 chars, default `.BAS` when saving BASIC files.
+- `LOAD "[dn:]fname[.ext]"`
+- `MERGE "[dn:]fname[.ext]"`: _fname_ must be an ASCII save.
+- `FILES [dn]`, `LFILES [dn]`: _dn_ default 1; `L` version is to printer.
+- `NAME old AS new`: rename files
+- `KILL "[dn:]fname[.ext]"`
+- `SET "[dn:]fname[.ext]","attr"`: Attibute set: `R`=read-after-write,
+  `P`=write-protect, any other char (or empty) cancels current attr.
+  Can also be given drive number (1-4)to set for entire diskette, and file
+  number (? `#n` maybe?) for temporary setting while file open.
+- `RUN "BACKUP"`: Image copy tool on system diskette.
 
 #### Machine-language Interface
 
