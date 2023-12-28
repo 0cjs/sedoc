@@ -29,16 +29,27 @@ N-BASIC (PC-8001 BASIC), N80-BASIC, N88-BASIC and Disk BASIC.
 - `MOTOR`: Toggle cassette motor relay. Add `1` to turn on, `0` to turn off.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.
-- `TERM bpdl`ⁿ⁰: Act as terminal via (RS-232) serial interface.
+
+Terminal Mode:
+- `TERM bpdl`ⁿ⁰: (or `b,p,d,l`?) Act as terminal via (RS-232) serial interface.
   - `b` bits: `A`=8 bit  `J`=7 bit
   - `p` parity: `0`=none  `1`=odd  `2`=even
   - `d` baud rate divisor: `0`=64  `1`=16
   - `l` auto-LF: `0`=off  `1`=on
-  - Exit with Graph-B (0) or Ctrl-B (N)ⁿₙ
+  - Exit with  Ctrl-Bⁿ  or Graph-B⁰.
+  - `F6`:visible control codes; `F7`:full/half duplex; `F8`:echo to LP;
+    `F9`:print page to LP; `F10`:linefeed to LP
 - `TERM`⁸: (mr 2-228). First arg required.
   - `"[COM:]pbsxz",mode,rbsize`: parity `E,O,N`; bits `7,8`;
     stop-bits `1,2,3` = 1, 1.5, 2; xon,xsoff `X,N`; s-parameter `S,N`.
   - S-parameter (`z` above) related to 7-bit char code translation.
+
+RS-232 Ports Usageⁿ:
+- `INIT% p,m,c`: Init RS-232. _port_ 1 or 2. _m, c_ are μPD8251 mode and
+  command bytes.
+- `PRINT% p,…`, `INPUT% p,…`
+- `PORT(p)`: returns number of unread chars in buffer (max 127)
+- `INPUT$(n,%p)`: Read/return _n_ chars from port _p._
 
 Untested/unresearched:
 - `CMD ...`: Extension commands via table in RAM, though ROM may provide
@@ -145,7 +156,10 @@ Floppy Disk I/O (_dn_ = drive number 1-4):
 #### Machine-language Interface
 
 - `DEFUSRn=m`:
-- `a=USR(n)`: _n_ = 0-7
+- `a=USR(n)`: _n_ = 0-7. 16 bytes of stack available; allocate your own if
+  you need more. See en manual p.76/P.80 for arg types, etc. (MS-standard).
+- `CLEAR s,t`: Set top of basic to addr _t_ and reserve _s_ bytes below
+  that for string heap. Default top is 59903 ($E9FF).
 
 
 BASIC Extensions

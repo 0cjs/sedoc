@@ -4,6 +4,9 @@ NEC PC-8001/PC-8801 Video Programming
 PC-8001
 -------
 
+The RAM above the video memory, $FEB8-$FFFF, is free for scratchpad use.
+(Or used by ROM?)
+
 $0257 is CRT output routine.
 
 [[hb68]] pp.88-

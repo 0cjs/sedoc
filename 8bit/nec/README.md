@@ -88,16 +88,18 @@ Usage:
 
 Commands:
 - Ctrl-B: Return to Basic.
-- `Dx,y`: Display bytes at addrs _x_ (def. 0) to _y_ (def. x+$10).
+- `Dx,y`: Display bytes at addrs _x_ (def. 0) through _y_ (def. x+$0F).
   Displays 8/16 bytes per line in 40/80 column mode.
 - `Sx`: Display byte at _x_ and prompt for new value: must be two digits,
   or `Space` to skip. Continues with subsequent locations until `Enter`.
   Aborts with `?` message on invalid value.
 - `Gx`: Goto addr _x_ (default $0000, the reset vector!).
-- `Wx, y`: Write tape block from _x_ to _y_.
+- `Wx, y`: Write tape block from _x_ through _y_.
 - `L`: Load tape block.
 - `LV`: Load tape block and verify it's correctly loaded.
-- `TM`: Test memory and return to Basic.
+- `TM`: Test memory and return to Basic. Failure of this test or
+  startup leaves bad addr in $FF39/3A, data written in $FF3B, and data
+  read in $FF3C.
 
 Extensions:
 - If an extension ROM has $7FFF = $55, the BASIC `MON` command will jump to
