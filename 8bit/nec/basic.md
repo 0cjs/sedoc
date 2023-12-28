@@ -155,6 +155,12 @@ Floppy Disk I/O (_dn_ = drive number 1-4):
 
 #### Machine-language Interface
 
+    8000    BASIC text/vars/stack/string heap (32K)
+    C000    BASIC text/vars/stack/string heap (16K)
+    EA00    ROM/BASIC work area
+    F300    Video RAM
+    FFB8    Work area (free? or used by ROM?)
+
 - `DEFUSRn=m`:
 - `a=USR(n)`: _n_ = 0-7. 16 bytes of stack available; allocate your own if
   you need more. See en manual p.76/P.80 for arg types, etc. (MS-standard).
