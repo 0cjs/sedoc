@@ -76,7 +76,7 @@ Table:
      C6   CE   D6   DE   E6   EE   F6   FE    ₇         xor/or/cp a,d8
 
     cpl                 rcla  rrca  rla  rra
-    CMA   │   DAA   │   RLC   RRC   RAL  RAR
+    CMA   │   DAA   │   RLC   RRC   RAL  RAR            2nd pair through carry
     2F₄   │   27₄   │    07    0F    17   1F  ₄
 
     ──────────────────────────────────────────────────────────────────────
