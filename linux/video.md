@@ -18,10 +18,15 @@ when playing back from capture devices.
 ### OBS Streaming
 
 To use the virtual camera for output you need the [V4l2loopback] module
-started in your kernel. It does not create a virtual camera by default;
-`modprobe` with parameters is used to do this. Set up the virtual camera
-before starting OBS as it will otherwise try to use [polkit] to run
-modprobe to create the device, and fail to auth (on my system, anyway).
+started in your kernel, and you probably also want v4l-utils:
+
+    sudo apt install v4l2loopback-dkms v4l-utils
+    #   Reboot so new module can take effect.
+
+It does not create a virtual camera by default; `modprobe` with parameters
+is used to do this. Set up the virtual camera before starting OBS as it
+will otherwise try to use [polkit] to run modprobe to create the device,
+and fail to auth (on my system, anyway).
 
     sudo modprobe v4l2loopback \
         video_nr=9 card_label=Video-Loopback exclusive_caps=1
