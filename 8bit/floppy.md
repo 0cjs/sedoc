@@ -222,8 +222,11 @@ Later new signals ([Wikipedia][wp-fddi]:
 
 #### 3.5" Drive Information
 
-The power plug on the cable is an AMP 170204-2 or 171822-4. FDDs
-often (but not always) need only +5 V.
+The power plug on the cable, is a TE Connectivity/AMP 170204-2 or 171822-4;
+the pins have a 2.50 mm pitch. (This is often called a [Berg connector][berg],
+though proper Berg connectors have 2.54 mm pitch.)
+
+FDDs often (but not always) need only +5 V.
 
 
 USB UFI - Universal Floppy Interface
@@ -350,6 +353,7 @@ Programs:
 
 <!-- Diskette and Drive Types -->
 [andre19]: https://extrapages.de/archives/20190102-Floppy-notes.html
+[berg]: https://en.wikipedia.org/wiki/Berg_connector
 [boginjr]: http://boginjr.com/it/hw/8inch-drives/
 [doa-8pc]: http://dunfield.classiccmp.org/img42841/cnct.htm
 [hj-8HD]: http://www.retrotechnology.com/herbs_stuff/8inchHD.html
