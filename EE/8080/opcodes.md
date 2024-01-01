@@ -70,14 +70,15 @@ Table:
     ANA r     A7  A0  A1  A2  A3  A4  A5 ₄   A6₇        and r
     XRA r     AF  A8  A9  AA  AB  AC  AD ₄   AE₇        xor r
     ORA r     B7  B0  B1  B2  B3  B4  B5 ₄   B6₇        or  r
-    CMP r     BF  B8  B9  BA  BB  BC  BD ₄   BE₇        cp  r
+    CMP r     BF  B8  B9  BA  BB  BC  BD ₄   BE₇        cp  r   (C ← A ≥ arg; Z)
 
     ADI  ACI  SUI  SBI  ANI  XRI  ORI  CPI    d8        add/adc/sub/sbc/and/
      C6   CE   D6   DE   E6   EE   F6   FE    ₇         xor/or/cp a,d8
 
-    cpl                 rcla  rrca  rla  rra
-    CMA   │   DAA   │   RLC   RRC   RAL  RAR            2nd pair through carry
-    2F₄   │   27₄   │    07    0F    17   1F  ₄
+    (copy to carry) │ (through carry) │ 1's cpl │
+       rcla  rrca   │   rla  rra      │   cpl   │
+       RLC   RRC    │   RAL  RAR      │   CMA   │   DAA
+        07    0F    │    17   1F  ₄   │   2F₄   │   27₄
 
     ──────────────────────────────────────────────────────────────────────
 
