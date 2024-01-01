@@ -76,7 +76,7 @@ On the 8080/8085, `P` is always set to the parity of the result (odd/even)
 on the 8080/8085. The Z80  does that only for logical operations, instead
 using it to indicate signed overflow for arithmetic operations.
 
-For `cmp`/`sub` doing an _unsiged_ comparsion of A to operand:
+`cmp`/`sub` affect all flags. For _unsigned_ numbers:
 - (nc) C=0: A ≥ operand
 -  (c) C=1: A < operand
 
