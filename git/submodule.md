@@ -50,6 +50,8 @@ this by default, it's best to have the test script check that
 necessary submodules are present and either ask the user to
 `git submodule update --init` or do that itself.
 
+    warn() { echo 1>&2 "WARNNG:" "$@"; }
+
     #   From: https://github.com/0cjs/sedoc, git/submodule.md
     check_submodules() {
         count=$(git submodule status --recursive | sed -n -e '/^[^ ]/p' | wc -l)
