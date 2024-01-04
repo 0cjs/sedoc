@@ -24,10 +24,10 @@ Logging and Graph Exploration
 Default Branch Renaming
 -----------------------
 
-After renamed in remote repo:
+After renamed in remote repo `r`:
 
     br -m master main
-    fetch r
+    fetch -p r                  # remove tracking branch for `master`
     br -u r/main main           # -u == --set-upstream
     rem set-head r -a           # query remote for its default branch
 
