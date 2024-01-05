@@ -62,21 +62,21 @@ top-level parser. This can also be used for [subcommands].
 
 See [`add_argument()`] for the full set of options. Briefly:
 * `action`
-  * `store`: Stores value (default)
-  * `store_const`: Stores value set by `const` argument (defaults to None)
-  * `store_true`, `store_false`: Stores boolean and sets default to negation
-  * `append`: Stores a list (`None` if no args) and appends each arg to it
-  * `append_const`: As append but stores `const`, useful with `dest`:
-  * `count`: Stores count of times specified, e.g., for verbosity
-  * `help`: Prints help message (added as `-h` and `--help` by default)
-  * `version`: Prints `version=` argument given to `ArgumentParser`
-  * Pass an [`Action`] (extending `__call__` and `__init__`) to customize
+  - `store`: Stores value (default)
+  - `store_const`: Stores value set by `const` argument (defaults to None)
+  - `store_true`, `store_false`: Stores boolean and sets default to negation
+  - `append`: Stores a list (`None` if no args) and appends each arg to it
+  - `append_const`: As append but stores `const`, useful with `dest`:
+  - `count`: Stores count of times specified, e.g., for verbosity
+  - `help`: Prints help message (added as `-h` and `--help` by default)
+  - `version`: Prints `version=` argument given to `ArgumentParser`
+  - Pass an [`Action`] (extending `__call__` and `__init__`) to customize
 * `nargs`: args to consume following flag (default determined by `action`).
-  * `None`: Stores a scalar
-  * `1`: Stores a list of one item.
-  * `'?'`: Consumes if it can, otherwise stores `default`
-  * `'*'`, `+`: Stores list of all remaining args, `+` requires at least one
-  * `argparse.REMAINDER`: Like `'*'` except also terminates options
+  - `None`: Stores a scalar
+  - `1`: Stores a list of one item.
+  - `'?'`: Consumes if it can, otherwise stores `default`
+  - `'*'`, `+`: Stores list of all remaining args, `+` requires at least one
+  - `argparse.REMAINDER`: Like `'*'` except also terminates options
     processing (like adding an implied `--` argument)
 * `const`: Used with `store_const`, `append_const`, `nargs='?'`.
 * `default`: If string, parsed as if it were specified on command line.
