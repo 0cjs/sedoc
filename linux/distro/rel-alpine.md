@@ -2,7 +2,7 @@ Alpine Releases
 ===============
 
 Independent, non-commercial distro focused on small size, resource
-efficiency and security, with a very wide set of packages available.
+efficiency and security, but also with over 20,000 packages available.
 - Small: uses musl libc and BusyBox; Docker image is only 5 MB.
 - Security: All userland binaries are PIE with stack smashing protection.
 - Simple: `apk` package manager, OpenRC init, script-driven setups.
