@@ -54,8 +54,9 @@ Give `-h` to any subcommand for help.
 
 ### Database
 
-- `/etc/apk/world` lists packages you want explicitly installed. Can be
-  edited by hand. `apk add` brings host to this state.
+- `/etc/apk/world` Lists packages you want explicitly installed. Can be
+  edited by hand. `apk add` brings host to this state. This file is
+  updated when `apk add` is run manually.
 - `/etc/apk/repositories`: Edit this to switch to a new release.
 
 
