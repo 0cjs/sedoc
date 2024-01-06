@@ -64,6 +64,13 @@ Environment and Dependency Managers
   and apps (more features than Poetry in this area). No dependency
   graph calculation?
 
+### Pip
+
+`requirements.txt` format:
+- `pkgname`
+- `pkgname < 6.0`
+- `pkgname@git+https://github.com/…/pkgname.git`
+
 
 To-read
 -------
