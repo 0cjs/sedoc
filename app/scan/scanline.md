@@ -1,19 +1,26 @@
-Scanners and Scanning Books, etc.
-=================================
+SCANLINE Scanning Software
+==========================
 
-iCODIS X9
----------
+The SCANLINE software (Windows-only) comes with iCODIS scanners, which
+call it "CamShop" in the manual. The [Download page][x9-dl] leads to one
+of:
+- (previously) ZIP file on Dropbox. Use the Dropbox "Download" button to
+  download  it,  unzip and run `setup.exe`. Latest version was v6.8.4.0.
+- (now) .EXE file on Google Drive. Download and run to install. v7.0.7.
 
+SCANLINE works with:
 - iCODIS [Megascan Pro X9][x9-home] 21 MP Book Scanner (5312×3984)
-- "Scanline" software (called "CamShop" in manual) for Windows linked from
-  the [download page][x9-dl]. Use the Dropbox "Download" button to download
-  a ZIP file; unzip and run `setup.exe`. Latest version is v6.8.4.0.
+- (others?)
+
+Documentation:
 - The manual is brought up through the Help menu, which will open
   `C:\Program Files (x86)\ScanLine\Documents\en-us.pdf` (`ja` and `zh` also
   available) in your PDF viewer.
 - The [FAQ][x9-faq] online is oriented towards pre-purchase questions.
 
-#### Usage
+
+Usage
+-----
 
 __IMPORTANT:__
 - Carefully check _all_ export settings before export; see notes below.
@@ -105,13 +112,13 @@ Export:
 - Pages are all different sizes in PDF depending on scan borders; don't
   know how to fix this.
 
-#### Document Mode
+### Document Mode
 
 "Auto Cropping (multiple objects)" will generate a separate image file for
 each object it detects on the mat. Ensure one object is in centre of frame
 or the image may be over-exposed.
 
-#### Book Mode
+### Book Mode
 
 General:
 - Pairs of pages are stored as a single image. (JPEGs are somewhere.)
@@ -160,7 +167,7 @@ Book Page Editor:
     - Common issue is it detects edges of pages underneath as part of page.
       Just delete the last few points to fix this.
 
-#### Technical Info / Hacking
+### Technical Info / Hacking
 
 - "Export log" under the gear menu will drop a ZIP file in the selected
   directory that contains lots of useful internal info.
