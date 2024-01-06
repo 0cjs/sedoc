@@ -16,7 +16,7 @@ References:
 - [Altair 8800 Operator's Manual][8800opman]
 - [Altair 8800 Theory of Operation Manual][88theory]
   §Display/Control Board Operation (p.5)
-- [Altair 8800 Schematics] 880-T06 Computer Front Panel Control (p.9)
+- [Altair 8800 Schematics][8800sch]: 880-T06 Computer Front Panel Control (p.9)
 - [Altair 8800 Front Panel Schematic][8800psch]
 
 Bus/data display/input:
@@ -72,4 +72,4 @@ Notes:
 [8800panel]: https://upload.wikimedia.org/wikipedia/commons/4/43/Living_Computers_-_Altair_8800_%2839802981903%29.jpg
 [8800psch]: http://dunfield.classiccmp.org/altair/d/88fp_lgl.pdf
 [8800sch]: http://dunfield.classiccmp.org/altair/d/88schema.pdf
-[8800theory]: http://dunfield.classiccmp.org/altair/d/88theory.pdf
+[88theory]: http://dunfield.classiccmp.org/altair/d/88theory.pdf
