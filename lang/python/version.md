@@ -146,7 +146,10 @@ installed; see below under "Building from Source" for a package list.
 Install with:
 
     curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
-    #   Also apt-get build dependencies as per "From Source" below.
+    #   Also apt-get build dependencies as per "From Source" below:
+    sudo apt-get install build-essential dpkg-dev \
+        libffi-dev zlib1g-dev libbz2-dev liblzma-dev \
+        libssl-dev libgdbm-dev libncurses5-dev libreadline-dev
 
 To enable the `pythonz` command:
 
