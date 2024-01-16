@@ -66,10 +66,19 @@ Environment and Dependency Managers
 
 ### Pip
 
-`requirements.txt` format:
-- `pkgname`
-- `pkgname < 6.0`
-- `pkgname@git+https://github.com/…/pkgname.git`
+[`requirements.txt` format][pip-rq-fmt]:
+
+    pkgname                     # ordinary package names
+    pkgname == 1.0              # specific version: does not match higher
+    pkgname == 2.*              # highest 2.x.y version
+    pkgname <= 7                # version ranges
+    pkgname >= 5.1.2
+
+    pkgname @ git+https://github.com/…/pkgname.git
+    ./downloads/foo-1.2.3.whl
+
+    -r other-requirements.txt
+    -c constraints.txt
 
 
 To-read
@@ -98,6 +107,7 @@ To-read
 [Hatch]: https://github.com/ofek/hatch
 [Pipenv]: https://docs.pipenv.org/
 [Poetry]: https://github.com/sdispater/poetry
+[pip-rq-fmt]: https://pip.pypa.io/en/stable/reference/requirements-file-format/
 [pip-tools]: https://github.com/jazzband/pip-tools
 
 [packaging]: https://packaging.python.org/
