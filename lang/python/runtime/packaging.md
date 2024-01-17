@@ -74,8 +74,10 @@ Environment and Dependency Managers
     pkgname <= 7                # version ranges
     pkgname >= 5.1.2
 
-    pkgname @ git+https://github.com/…/pkgname.git
     ./downloads/foo-1.2.3.whl
+    pkgname @ git+https://github.com/…/pkgname.git
+    requests [security] @ https://github.com/psf/requests/archive/refs/heads/main.zip ; python_version >= "3.11"
+    #   Note above is a .zip file downloaded from GitHub releases, not the repo.
 
     -r other-requirements.txt
     -c constraints.txt
