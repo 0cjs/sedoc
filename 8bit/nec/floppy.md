@@ -5,6 +5,8 @@ References:
 - [PC-8001⇒Windows floppy conversion][marugoto] (ja). Some information
   on and a program to analyze/convert both BASIC and CP/M disk
   formats.
+- [Chapter 8: Structure of Disk Files][8031-8], P.100,
+  _PC-8031B-32B Mini Disk Unit Reference Manual_ (en), NEC.
 
 Also see [floppyif](floppyif.md) for information on the interface
 between disk drive units and the computer.
@@ -88,5 +90,6 @@ system format][cpm].
 
 
 <!-------------------------------------------------------------------->
-[marugoto]: http://www8.plala.or.jp/ita-sys/K02B_PC8001-Marugoto.html
+[8031-8]: https://archive.org/details/pc-8031b-32b-mini-disk-unit-reference-manual-nec-en/page/n99/mode/1up
 [cpm]: https://www.cpm8680.com/cpmtools/cpm.htm
+[marugoto]: http://www8.plala.or.jp/ita-sys/K02B_PC8001-Marugoto.html
