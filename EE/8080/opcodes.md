@@ -121,6 +121,15 @@ Table:
     XXX Add ldir and other oft-used instructions.
 
 
+### Other References
+
+- [8085 Assembly language reference][vcf-op8085-pdf]. PDF produced by a
+  Club100 member. Menomnic meanings, actions by functional group,
+  alphabetical order by mnemonic, machine cycles by functional group,
+  menmonics by op-code. Does not include undocumented instructions.
+
+
 
 <!-------------------------------------------------------------------->
 [cssfaq]: https://worldofspectrum.org/faq/reference/z80reference.htm
+[vcf-op8085-pdf]: https://forum.vcfed.org/index.php?attachments/op8085-pdf.1244177/
