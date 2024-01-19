@@ -70,7 +70,10 @@ Summary: status register bit, 8080 name, Z80 name (if different) and function.
      0   C        carry/borrow: 0=no borrow, 1=borrow (sometimes "CY")
 
 `AC` (`H`) and `N` not directly testable; used by `DAA`. decimal adjust.
-(Only Z80 has `N` and adjusts properly after a subtraction.)
+- 8080 logcal AND instructions set AC to the logical OR of bit 3 of the
+  two operands.
+- 8085 logical AND instructions set the AC flag.
+- Only Z80 has `N` and adjusts properly after a subtraction.
 
 On the 8080/8085, `P` is always set to the parity of the result (odd/even)
 on the 8080/8085. The Z80  does that only for logical operations, instead
