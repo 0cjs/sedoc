@@ -288,14 +288,15 @@ Tools
 Development:
 - [z80dasm]: Improved version of dz80; still overly simplistic but packaged
   in most Linux distros.
-- [z88dk]: Development kit for over a hundred Z80 family machines,
-  including C compilers (`sccz80` and `zsdcc`), assembler, linker,
-  libraries, simulator/debugger, disassembler, and more. Targets include
-  TRS-80, PC-8801, Sharp MZ, Kyotronic 85, Pasopia 7, MSX,
+- [z88dk]: Development kit for over a hundred 8080/8085/Z80 family
+  machines, including C compilers (`sccz80` and `zsdcc`), assembler,
+  linker, libraries, simulator/debugger, disassembler, and more. Targets
+  include TRS-80, PC-8801, Sharp MZ, Kyotronic 85, Pasopia 7, MSX,
   ZX80/81/Spectrum, Robotron KC 87, RC2014 (CP/M, HBIOS, RC2014), etc.
 
 Testing:
 - [8080/8085 CPU Exerciser][85exc] for testing CPU simulators.
+- `z80-ticks` from z88dk above: determines timing of routines.
 
 
 
