@@ -70,8 +70,8 @@ Summary: status register bit, 8080 name, Z80 name (if different) and function.
      0   C        carry/borrow: 0=no borrow, 1=borrow (sometimes "CY")
 
 `AC` (`H`) and `N` not directly testable; used by `DAA`. decimal adjust.
-- 8080 logcal AND instructions set AC to the logical OR of bit 3 of the
-  two operands.
+- 8080 logcal AND instructions (ANA/ANI) set AC to the logical OR of bit 3
+  of the two operands.
 - 8085 logical AND instructions set the AC flag.
 - Only Z80 has `N` and adjusts properly after a subtraction.
 
@@ -285,6 +285,7 @@ signals.
 Tools
 -----
 
+Development:
 - [z80dasm]: Improved version of dz80; still overly simplistic but packaged
   in most Linux distros.
 - [z88dk]: Development kit for over a hundred Z80 family machines,
@@ -292,6 +293,10 @@ Tools
   libraries, simulator/debugger, disassembler, and more. Targets include
   TRS-80, PC-8801, Sharp MZ, Kyotronic 85, Pasopia 7, MSX,
   ZX80/81/Spectrum, Robotron KC 87, RC2014 (CP/M, HBIOS, RC2014), etc.
+
+Testing:
+- [8080/8085 CPU Exerciser][85exc] for testing CPU simulators.
+
 
 
 <!-------------------------------------------------------------------->
@@ -302,5 +307,6 @@ Tools
 [dunfield]: http://www.classiccmp.org/dunfield/
 
 <-- Tools -->
-[z88dk]: https://github.com/z88dk/z88dk
+[85exc]: https://web.archive.org/web/20151108135453/http://www.idb.me.uk/sunhillow/8080.html
 [z80dasm]: https://web.archive.org/web/20230925185822/https://www.tablix.org/~avian/blog/articles/z80dasm/
+[z88dk]: https://github.com/z88dk/z88dk
