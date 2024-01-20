@@ -13,8 +13,8 @@ MSX2:
 - __Panasonic FS-A1__            64k/128k 2C RGB. Ext. PSU.
 
 MSX1 64K:
-- __Toshiba HX-22__¹             64k/16k 2C } "Pasopia IQ" (see below)
-- __Toshiba HX-21__¹             64k/16k 2C }
+- __Toshiba HX-22__ ¹            64k/16k 2C } "Pasopia IQ" (see below)
+- __Toshiba HX-21__ ¹            64k/16k 2C }
 - __Canon V-20__                 64k/16k 2C.
 - __Sanyo MPC-2 (Wavy2)__        64k/16k 2C.
 - __[National CF-3300]__² 85-??  64k/16k 2C+D SK. 360K (1DD 80-track) drive.
