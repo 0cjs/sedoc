@@ -63,6 +63,35 @@ line:
 
     The above is a simple Python statement.
 
+#### Interpreted Text Roles
+
+RST provides [interpreted text roles][rst-roles] of the form ``
+:role:`text` `` to give special markup to the backquoted text. Systems
+using RST may extend this, e.g., [Sphinx roles][sp-roles]. Useful roles
+include the following.
+
+[Standard RST]:
+- `:literal:`: Same as double-backticks.
+- `:code:`: Same as double-backticks; used for role customisation (see docs).
+- `:strong:`: Same as double-asterisks: `**foo**`.
+- `:superscript:`, `:sup:`: Superscript
+- `:title-reference:`, `:title:`, `:t:`: Book title (rendered w/HTML `<cite>`).
+- `:math:`: LaTeX math syntax (do not add `($ $)` math delimters).
+- `:pep-reference:`, `:pep:`: Reference Python Enhancement Proposal; give just
+  the number in backticks.
+- `:rfc-reference:`, `:rfc:`: Reference IETF Reqeust for Comments; give just
+  the number in backticks.
+
+[Sphinx roles]:
+- `:samp:`: Literal text with "variable" parts in braces, e.g., `1+{x}`.
+- `:command:`: OS-level command, e.g., `rm`.
+- `:file:`: Name of file/directory, with braced variable parts as `:samp:`.
+  `python3.{x}`.
+- `:program:`: Name of an executable program; omit `.exe` for Windows.
+- `:kbd:`: Keystrokes.
+- `:guilabel:`: Label from an interactive UI.
+- `:manpage:`: Reference to manualpage, including section number in parens.
+
 #### Links
 
 Links end with an `_`, quoting a phrase with backticks (`` ` ``) if
@@ -102,5 +131,7 @@ References
 [RST docs]: http://docutils.sourceforge.net/rst.html
 [doctest]: http://www.python.org/doc/current/lib/module-doctest.html
 [quickref]: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+[rst-roles]: https://docutils.sourceforge.io/docs/ref/rst/roles.html
+[sp-roles]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html
 [sp-rst]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 [wp-rst]: https://en.wikipedia.org/wiki/ReStructuredText
