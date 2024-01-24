@@ -76,11 +76,17 @@ Environment and Dependency Managers
 
     ./downloads/foo-1.2.3.whl
     pkgname @ git+https://github.com/…/pkgname.git
+    #   Append `@REF` to use a particular ref, e.g., `@refs/pull/123/head`
     requests [security] @ https://github.com/psf/requests/archive/refs/heads/main.zip ; python_version >= "3.11"
     #   Note above is a .zip file downloaded from GitHub releases, not the repo.
 
     -r other-requirements.txt
     -c constraints.txt
+
+Using the `--editable`/`-e` option of Pip will do an [editable VCS
+install][pip-e]. The default clone location is `VENV/src/PKGNAME/`
+(when using a virtualenv) or `CWD/src/PKGNAME/` (when not). This can
+be modified with the `--src` option.
 
 
 To-read
@@ -109,6 +115,7 @@ To-read
 [Hatch]: https://github.com/ofek/hatch
 [Pipenv]: https://docs.pipenv.org/
 [Poetry]: https://github.com/sdispater/poetry
+[pip-e]: https://pip.pypa.io/en/latest/topics/vcs-support/#editable-vcs-installs
 [pip-rq-fmt]: https://pip.pypa.io/en/stable/reference/requirements-file-format/
 [pip-tools]: https://github.com/jazzband/pip-tools
 
