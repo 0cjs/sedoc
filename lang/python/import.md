@@ -338,6 +338,24 @@ renaming the file:
        mod = importlib.import_module("path.to.my-module")
 
 
+Other Resources from Packages
+-----------------------------
+
+Packages may provide arbitrary resources (which are like—and may even
+be—files) from a resource container (like a directory). These are loaded
+via [`importlib.resources`]. The functions that take a _package_ argument
+may be given either a module object or a module name as a string.
+- `importlib.resources.files(package)` (≥3.9): returns a `Traversable` of
+  the resource container (directory), which contains resources (files) and
+  possibly sub-containers.
+- `importlib.resources.as_file(traversable)` (≥3.9): Given a `Traversable`
+  representing a file (usually from `files()` above), return a context
+  manager (for a `with` statement) that provides a `pathlib.Path` object.
+
+The older deprecated functions (available up to and including 3.12 only)
+allow access only as "files," not "directories."
+
+
 Further Documentation
 ---------------------
 
@@ -357,6 +375,7 @@ Further Documentation
 [`__import__`]: https://docs.python.org/3/library/functions.html#__import__
 [`__main__`]: https://docs.python.org/3/library/__main__.html
 [`__path__`]: https://docs.python.org/3/reference/import.html#__path__
+[`importlib.resources`]: https://docs.python.org/3.11/library/importlib.resources.html
 [factory functions]: https://www.python.org/dev/peps/pep-0451/#factory-functions
 [find_spec()]: https://docs.python.org/3/library/importlib.html?highlight=import_module#importlib.util.find_spec
 [globals()]: https://docs.python.org/3/library/functions.html#globals
