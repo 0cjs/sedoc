@@ -5,6 +5,70 @@ Packaging Python Code
 * Distutils is part of standard library, but functionality is very basic.
 * Setuptools recommended over Distutils.
 
+Terminology
+-----------
+
+The following are from the [glossary] of the Pythong Packaging User Guide
+at packaging.python.org and the terms from the [pkg-resources][pkgr] page
+of the setuptools documentation.
+
+- __[Project]:__ A library, app, etc. intended to be packaged into a
+  _distribution package._ Typcially available as a Git repo, other VCS
+  checkout, or (for a single version) a _source archive._ Contains  a
+  project _specification file._
+- __[Source Archive]:__ Contains raw source code for a _release,_ from
+  which you create _source distributions_ and _built distributions._
+- __Specification File:__ Build information for a _project._ Usually one of:
+  - `pyproject.toml`: [PEP 518], used by many tools including setuptools.
+  - `setup.py` and/or `setup.cfg`: distutils; legacy support in setuptools.
+
+Distribution formats:
+- __[Release]:__ A snapshot of a _project_ with a version identifier. May
+  be published as multiple _distribution packages_ (e.g., source, Windows
+  installer).
+- __[Distribution Package]:__ (Often just "package" or "distribution", but
+  both terms are used in other ways as well.) A versioned archive file
+  built from a _project_ and downloaded by end-users. Note that this is
+  different from an _import package,_ as used by the Python module system. 
+- __[Source Distribution]__ or __sdist:__ Source code with metadata,
+  installable by Pip etc. Still requires a build step.
+- __[Built Distribution]:__ Files and metadata that need only be copied to
+  the install location. E.g, _wheel,_ _egg._
+- __[Binary Distribution]:__ A _built distribution_ that contains compiled
+  extensions.
+- __[Importable Distribution][pkgr]:__ A file or directory that can be
+  placed directly on `sys.path`.
+- __[Wheel]:__ _Built distribution_ format that replaces _Egg._ Has a
+  [standard spec][wheel-spec]. Supported by Pip.
+- __[Egg]:__ Older _built distribution_ format introduced by setuptools.
+  [Quick guide][egg-quick]. [Internal structure][egg-int].
+
+
+Libraries and Packaging Tools
+-----------------------------
+
+Build frontends:
+- [Pip]: Can build and install from a project or source archive, as well as
+  a release.
+- [build]: Standard simple build frontend.
+- [Hatch]: ([GitHub][hatch-gh]) CLI tool to manage dependencies and
+  environment isolation. Includes build backend hatchling.
+
+Build backends (may include a frontend, too):
+- [setuptools]: Enhanced distutils.  Includes `easy_install`.
+- hatchling: see Hatch above.
+
+Libraries:
+- [distlib]: Library to aid third-party packaging tools, succeeds `packaging`.
+- [packaging]; Packaging library. Used by Pip and setuptools.
+- [distutils]: Original packaging system. Deprecated 3.10, removed 3.12.
+  Use setuptools instead.
+- [`importlib.metadata`]: Python standard library module for getting
+  information about installed packages.
+
+More at packaging.python.org [Key Projects] page.
+
+
 PyInstaller
 -----------
 
@@ -115,6 +179,29 @@ To-read
 
 
 <!-------------------------------------------------------------------->
+[PEP 518]: https://peps.python.org/pep-0518/
+[built distribution]: https://packaging.python.org/en/latest/glossary/#term-Built-Distribution
+[distribution package]: https://packaging.python.org/en/latest/glossary/#term-Distribution-Package
+[egg-int]: https://setuptools.pypa.io/en/latest/deprecated/python_eggs.html
+[egg-quick]: http://peak.telecommunity.com/DevCenter/PythonEggs
+[glossary]: https://packaging.python.org/en/latest/glossary/
+[pkgr]: https://setuptools.pypa.io/en/latest/pkg_resources.html
+[project]: https://packaging.python.org/en/latest/glossary/#term-Project
+[release]: https://packaging.python.org/en/latest/glossary/#term-Release
+[source distribution]: https://packaging.python.org/en/latest/glossary/#term-Source-Distribution
+[wheel-spec]: https://packaging.python.org/en/latest/specifications/binary-distribution-format/
+[wheel]: https://packaging.python.org/en/latest/glossary/#term-Wheel
+
+[`importlib.metadata`]: https://docs.python.org/3.11/library/importlib.metadata.html
+[build]: https://build.pypa.io/en/stable/
+[distlib]: https://distlib.readthedocs.io/en/latest/
+[distutils]: https://packaging.python.org/en/latest/key_projects/#distutils
+[hatch-gh]: https://github.com/ofek/hatch
+[hatch]: https://hatch.pypa.io/latest/
+[key proejcts]: https://packaging.python.org/en/latest/key_projects/#setuptools
+[packaging]: https://packaging.pypa.io/en/latest/
+[setuptools]: https://setuptools.readthedocs.io/en/latest/
+
 [PyInstaller]: https://pypi.org/project/PyInstaller/
 [docker-compose]: https://github.com/docker/compose
 [pyinst-adv]: https://pyinstaller.readthedocs.io/en/stable/advanced-topics.html
@@ -122,7 +209,6 @@ To-read
 [pyinst-man]: https://pyinstaller.readthedocs.io/en/stable/man/pyinstaller.html
 [pyinst-rti]: https://pyinstaller.readthedocs.io/en/stable/runtime-information.html
 
-[Hatch]: https://github.com/ofek/hatch
 [PEP 508]: https://peps.python.org/pep-0508/
 [Pipenv]: https://docs.pipenv.org/
 [Poetry]: https://github.com/sdispater/poetry
