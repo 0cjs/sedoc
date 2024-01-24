@@ -88,6 +88,16 @@ install][pip-e]. The default clone location is `VENV/src/PKGNAME/`
 (when using a virtualenv) or `CWD/src/PKGNAME/` (when not). This can
 be modified with the `--src` option.
 
+The optional dependencies brought in with e.g. `pip install .[NAME]` can be
+specified (among other ways) as `optional-dependencies.NAME` entries in the
+`[project]` section of `pyproject.toml` files, e.g.:
+
+    [project]
+    optional-dependencies.foo = [ 'abc', 'def', ]
+
+    [project.optional-dependencies]
+    bar = [ 'ghi', 'jkl', ]
+
 
 To-read
 -------
