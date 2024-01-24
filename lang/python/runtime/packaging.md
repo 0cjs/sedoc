@@ -66,7 +66,7 @@ Environment and Dependency Managers
 
 ### Pip
 
-[`requirements.txt` format][pip-rq-fmt]:
+The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]:
 
     pkgname                     # ordinary package names
     pkgname == 1.0              # specific version: does not match higher
@@ -88,9 +88,9 @@ install][pip-e]. The default clone location is `VENV/src/PKGNAME/`
 (when using a virtualenv) or `CWD/src/PKGNAME/` (when not). This can
 be modified with the `--src` option.
 
-The optional dependencies brought in with e.g. `pip install .[NAME]` can be
-specified (among other ways) as `optional-dependencies.NAME` entries in the
-`[project]` section of `pyproject.toml` files, e.g.:
+The optional dependencies brought in with e.g. `pip install .[foo,bar]` can
+be specified (among other ways) as `optional-dependencies.NAME` entries in
+the `[project]` section of `pyproject.toml` files, e.g.:
 
     [project]
     optional-dependencies.foo = [ 'abc', 'def', ]
@@ -123,6 +123,7 @@ To-read
 [pyinst-rti]: https://pyinstaller.readthedocs.io/en/stable/runtime-information.html
 
 [Hatch]: https://github.com/ofek/hatch
+[PEP 508]: https://peps.python.org/pep-0508/
 [Pipenv]: https://docs.pipenv.org/
 [Poetry]: https://github.com/sdispater/poetry
 [pip-e]: https://pip.pypa.io/en/latest/topics/vcs-support/#editable-vcs-installs
