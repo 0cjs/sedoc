@@ -77,6 +77,7 @@ python or an appropriate one based on a shebang line.
 Usage (unknown parameters will be passed to the Python interpreter):
 
     py              # Run latest version of all installed Pythons
+    py -h           # Show py version followed by default Python's `-h` output
     py -3.4         # Run Python 3.4
     py -2           # Run latest Python 2.x
     py foo.py       # Choose version based on shebang in foo.py, e.g.,
