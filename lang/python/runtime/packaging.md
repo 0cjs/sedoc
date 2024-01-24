@@ -30,8 +30,11 @@ Distribution formats:
   both terms are used in other ways as well.) A versioned archive file
   built from a _project_ and downloaded by end-users. Note that this is
   different from an _import package,_ as used by the Python module system. 
-- __[Source Distribution]__ or __sdist:__ Source code with metadata,
-  installable by Pip etc. Still requires a build step.
+- __[Source Distribution]__ or __sdist:__ [[sdist-spec]] An _unbuilt
+  distribution_ in a file named `{pkgname}-{version}.tar.gz`, containing a
+  `{pkgname}-{version}/` directory which in turn has a `pyproject.toml`, a
+  `PKG-INFO` with metadata, and the source files. See also [PEP 643],
+  [PEP 625], [PEP 721]. Pip can build/install these.
 - __[Built Distribution]:__ Files and metadata that need only be copied to
   the install location. E.g, _wheel,_ _egg._
 - __[Binary Distribution]:__ A _built distribution_ that contains compiled
@@ -39,7 +42,7 @@ Distribution formats:
 - __[Importable Distribution][pkgr]:__ A file or directory that can be
   placed directly on `sys.path`.
 - __[Wheel]:__ _Built distribution_ format that replaces _Egg._ Has a
-  [standard spec][wheel-spec]. Supported by Pip.
+  [standard spec][wheel-spec] later approved as [PEP 427]. Supported by Pip.
 - __[Egg]:__ Older _built distribution_ format introduced by setuptools.
   [Quick guide][egg-quick]. [Internal structure][egg-int].
 
@@ -179,7 +182,11 @@ To-read
 
 
 <!-------------------------------------------------------------------->
+[PEP 427]: https://peps.python.org/pep-0427/
 [PEP 518]: https://peps.python.org/pep-0518/
+[PEP 625]: https://peps.python.org/pep-0625/
+[PEP 643]: https://peps.python.org/pep-0643/
+[PEP 721]: https://peps.python.org/pep-0721/
 [built distribution]: https://packaging.python.org/en/latest/glossary/#term-Built-Distribution
 [distribution package]: https://packaging.python.org/en/latest/glossary/#term-Distribution-Package
 [egg-int]: https://setuptools.pypa.io/en/latest/deprecated/python_eggs.html
@@ -188,6 +195,7 @@ To-read
 [pkgr]: https://setuptools.pypa.io/en/latest/pkg_resources.html
 [project]: https://packaging.python.org/en/latest/glossary/#term-Project
 [release]: https://packaging.python.org/en/latest/glossary/#term-Release
+[sdist-spec]: https://packaging.python.org/en/latest/specifications/source-distribution-format/
 [source distribution]: https://packaging.python.org/en/latest/glossary/#term-Source-Distribution
 [wheel-spec]: https://packaging.python.org/en/latest/specifications/binary-distribution-format/
 [wheel]: https://packaging.python.org/en/latest/glossary/#term-Wheel
