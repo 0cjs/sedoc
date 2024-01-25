@@ -67,8 +67,8 @@ line:
 
 RST provides [interpreted text roles][rst-roles] of the form ``
 :role:`text` `` to give special markup to the backquoted text. Systems
-using RST may extend this, e.g., [Sphinx roles][sp-roles]. Useful roles
-include the following.
+using RST may extend this, e.g., [Sphinx roles][sp-roles] and
+[sphinx-issues]. Useful roles include the following.
 
 [Standard RST][rst-roles]:
 - `:literal:`: Same as double-backticks.
@@ -91,6 +91,17 @@ include the following.
 - `:kbd:`: Keystrokes.
 - `:guilabel:`: Label from an interactive UI.
 - `:manpage:`: Reference to manualpage, including section number in parens.
+
+[Sphinx-issues roles][sphinx-issues] (used with GitHub etc.):
+- `:issue:`, `:pr:`: These take an issue/PR number or comma-separated list
+  of them.
+- `:commit:`: Takes a commit ID. (Not sure if partial IDs will work.)
+- `:user:`: Takes a GitHub (or other, if configured) user name and links to
+  the user profile; do not use a leading `@`. Can also take an arbitrary
+  string, e.g., `Curt J. Sampson <cjs@cynic.net>`.
+- `:cve:`: Takes a CVE ID (e.g. `CVE-2018-17175`) for <https://cve.mitre.org>.
+- `:cve:`: Takes a CWE ID (e.g. `CWE-787`); links to <https://cwe.mitre.org>.
+- `:role:`: Takes `Custom title <target>`; links to _target._
 
 #### Links
 
@@ -134,4 +145,5 @@ References
 [rst-roles]: https://docutils.sourceforge.io/docs/ref/rst/roles.html
 [sp-roles]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html
 [sp-rst]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+[sphinx-issues]: https://github.com/sloria/sphinx-issues#usage-inside-the-documentation
 [wp-rst]: https://en.wikipedia.org/wiki/ReStructuredText
