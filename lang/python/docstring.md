@@ -70,7 +70,7 @@ RST provides [interpreted text roles][rst-roles] of the form ``
 using RST may extend this, e.g., [Sphinx roles][sp-roles]. Useful roles
 include the following.
 
-[Standard RST]:
+[Standard RST][rst-roles]:
 - `:literal:`: Same as double-backticks.
 - `:code:`: Same as double-backticks; used for role customisation (see docs).
 - `:strong:`: Same as double-asterisks: `**foo**`.
@@ -82,7 +82,7 @@ include the following.
 - `:rfc-reference:`, `:rfc:`: Reference IETF Reqeust for Comments; give just
   the number in backticks.
 
-[Sphinx roles]:
+[Sphinx roles][sp-roles]:
 - `:samp:`: Literal text with "variable" parts in braces, e.g., `1+{x}`.
 - `:command:`: OS-level command, e.g., `rm`.
 - `:file:`: Name of file/directory, with braced variable parts as `:samp:`.
