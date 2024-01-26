@@ -48,6 +48,8 @@ with both 2 and 3.
 Version Reference
 -----------------
 
+(See [README](./README.md) for a quickref of major changes in new versions.)
+
 ### CPython Releases
 
 Python 3 minor versions get bug support fixes for 18 months from release
