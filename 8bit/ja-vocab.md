@@ -38,6 +38,7 @@ SKIP 1: Left/Right
         解説        かいせつ        explanation (hardware manuals)
         継続        けいぞく        continuation (e.g., of a read)
     14  種類        しゅるい        type (e.g., file type)
+        増設        ぞうせつ        expansion/addition (e.g. memory)
         認識        にんしき        recognition (e.g. of a disk)
     15  編成        へんせい        organization (of a file)
         領域        りょういき      area, range, region (of memory)
@@ -51,6 +52,7 @@ SKIP 2: Up/Down
         行番号      ぎょうばんごう  line number (現在… = current lno)
      8  表示        ひょうじ        display, indication
      9  発生        はっせい        generate
+        負論理      ふろんり        negative logic signal
         省略値      しょうりゃくち  default value
         音量        おんりょう      audio volume
     10  書き込む    かきこむ        fill in, post, store
@@ -77,6 +79,7 @@ SKIP 4: Solid
      4  －化        －か            suffix for a changing action
         水平        すいへい        horizontal
         水平同期信号                video hsync
+     5  正論理      せいろんり      true logic signal (positive logic)
      8  垂直        すいちょく      vertical, perpendicular (for vsync)
 
 
