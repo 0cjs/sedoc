@@ -3,6 +3,7 @@ MSX System Emulation
 
 Contents:
 - Common Hardware; ROM Sources
+- Emulation-related File Formats
 - OpenMSX
   - Installation and Setup
   - Invocation
@@ -50,6 +51,37 @@ Accessories:
   - `fmpac` (Panasoft SW-M004 FM-PAC): [`fmpac.rom`][fh erom]
 - Floppy Disk Systems:
   - `Sony_HBD-F1` DSDD 3.5" 720K: [`hbd-f1.rom`][fh erom]
+
+
+Emulation-related File Formats
+------------------------------
+
+Cartridges and CMT:
+- `.rom`: raw byte data of cartridge, starting at zero address of the ROM
+  itself (not mapping). Contains no information about mappings or
+  additional hardware.
+- `.cas`: "BIOS format" byte data: header of `1F A6 DE BA CC 13 7D 74` on
+  an eight byte boundary followed by file data. Except for the final file,
+  files must be a multiple of eight bytes in length.
+- `.tsx`: Extension of [TZX format][tzx] format with:
+  - Version number 1.21.
+  - New block with ID [$4B] to hold Kansas City Standard data compactly.
+- `.wav`: OpenMSX reads raw 8- and 16-bit uncompress WAV files, as well as
+  MS-ADPCM compression.
+
+Disks:
+- `.dsk`: Dump of sector data. Sectors in order on tracks from 1 upward;
+  tracks from side 0 track 0, side 1 track 0, side 0 track 1, etc. No
+  geometry information. Emulators generally guess 360 KB to be
+  single-sided, 740 KB to be double sided.
+- `.msx`: As `.dsk` but does all tracks from side 0 then all tracks from
+  side 1.
+- `.img`: As `.dsk` but prefixed by one byte for geometry. 1=1DD 360 KB,
+  2=2DD 720 KB.
+- `.dmk`: Flux image. See [[mw erff dmk]].
+
+References:
+- MSX Wiki, [Emulation related file formats][mw erff]
 
 
 OpenMSX
@@ -289,6 +321,12 @@ Other Emulators
 [fh erom]: https://download.file-hunter.com/System%20ROMs/extensions/
 [fh srom]: https://download.file-hunter.com/System%20ROMs/machines/
 [fs-a1f]: https://msx.org/wiki/Panasonic_FS-A1F
+
+<!-- Emulation-related File Formats -->
+[$4b]: http://www.zonadepruebas.com/viewtopic.php?f=4&t=5369&start=110#p71926
+[mw erff]: https://www.msx.org/wiki/Emulation_related_file_formats
+[mw erff dmk]: https://www.msx.org/wiki/Emulation_related_file_formats#.DMK
+[tzx]: https://www.alessandrogrussu.it/tapir/tzxform120.html
 
 <!-- OpenMSX -->
 [gh]: https://github.com/openMSX/openMSX
