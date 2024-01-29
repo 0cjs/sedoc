@@ -122,6 +122,11 @@ __MSX-Compatible Systems:__
   selections? Low for 1.8 ms resets the clock to start of sequence? See
   [[nfg]], [[letoine]].
 
+[This adapter][badc] will let you use a Sega gamepad on the MSX, but only
+the basic control set will be available unless the MSX software knows to
+toggle pin 8 to get the alternate control set. (Apparently buttons B and C
+are detected as MSX buttons 1 and 2.)
+
 ### Amiga
 
 [Controllers][amiga]:
@@ -196,6 +201,7 @@ variety of different controllers.
 
 [jr200]: https://www.manualslib.com/manual/1238042/Panasonic-Jr-200u.html?page=61#manual
 
+[badc]: https://frs.badcoffee.info/hardware/joymega-en.html
 [letoine]: https://github.com/letoine/MegadriveControllerToUSB
 [nfg]: https://nfggames.com/forum2/index.php?topic=2266.0
 
