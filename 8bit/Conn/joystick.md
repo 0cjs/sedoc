@@ -7,21 +7,23 @@ Directions and buttons are N.O., shorting to ground when activated.
 From experimentation it seems it may be possible to use Atari joysticks
 on MSX, but check strobe behaviour.
 
-    Pin  Atari    MSX       ────Sega────     Amiga  Pin
-    ───────────────────────────────────────────────────
-     1   up       up           Up            up      1
-     2   down     down       Down            down    2
-     3   left     left       Left            left    3
-     4   right    right     Right            right   4
-     5   padl B   +5V Vcc     +5V   +5V      B3(M)   5
-     6   button   btn 1     Btn A   Btn B    B1(L)   6
-     7   +5V†     btn 2       GND ● +5V      +5V     7
-     8   GND      COM/STR     GND   GND      GND     8
-     9   padl A   GND       Start   Start    B2(R)   9
+    Pin Atari/CBM  CBM-TED   MSX       ────Sega────    Amiga  Pin
+    ─────────────────────────────────────────────────────────────
+     1   up        up        up           Up           up      1
+     2   down      down      down       Down           down    2
+     3   left      left      left       Left           left    3
+     4   right     right     right     Right           right   4
+     5   pdl B    •+5V      •+5V Vcc     +5V• •+5V     B3(M)   5
+     6   button    button    btn 1     Btn A   Btn B   B1(L)   6
+     7  •+5V      •GND       btn 2      (lo)•×•(hi)   •+5V     7
+     8  •GND      •GND      •COM/STR     GND• •GND    •GND     8
+     9   pdl A              •GND       Start   Start   B2(R)   9
 
+     • pin is an output, common or GND
      † Ground on Commodore TED (C16, C116, Plus/4) machines
-     ● Older systems: enable for alternate controls set.
-       Newer systems: strobe input to cycle atlernate sets.
+     × Input to controller to select control set:
+       Older systems: low=left set, high=right set.
+       Newer systems: strobe to cycle through control sets.
 
 ### Atari
 
