@@ -8,6 +8,10 @@ Commodore Emulators
 - [ROMs](#ROMs): ROM images for Commodore machines
 - [Disk, Tape and Cartridge Images](#disk-tape-and-cartridge-images)
 
+A list of emulators and binaries for many platforms is on
+[Zimmers FTP][zim] at [`cbm/crossplatform/emulators`][zim-emu].
+
+
 VICE
 ----
 
@@ -219,3 +223,5 @@ delete/rename file, format disk, and allocate/deallocate sector.
 [vm-autostart]: https://vice-emu.sourceforge.io/vice_6.html#SEC46
 [vm-d64]: http://vice-emu.sourceforge.net/vice_16.html#SEC308
 [vm-imgfmt]: http://vice-emu.sourceforge.net/vice_16.html#SEC294
+[zim-emu]: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/
+[zim]: https://www.zimmers.net/anonftp/pub/
