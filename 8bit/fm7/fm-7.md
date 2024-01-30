@@ -302,6 +302,11 @@ An FM sound card containing a Yamaha YM2203C sound synthesis chip and two
 DE-9 joystick ports. Information, pictures, schematic and PCB design are
 [at ysflight.com][ys fmjoy].
 
+#### Other
+
+- MB22045 漢字ROMカード
+- MB28021 Z80 カード, for FM-7/NEW7. Came with CP/M-80 on 5.25" floppy.
+
 
 Parts Lists
 -----------
