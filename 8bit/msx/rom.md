@@ -315,7 +315,8 @@ changing the page mappings) have `DI` prefixing their description.
   - [[qest p.2 P.6]]: `BEGIN`
   - [[map bios]]: `STARTUP`, `RESET`, `BOOT`
 
-- $02B,$02C,$02D sysinfo, ROM version information:
+- $02B,$02C,$02D sysinfo, ROM version information. Charset and perhaps
+  other information is not reliable in some (many?) BIOSes.
   - $2B   b7: default interrupt frequency: 0=60 Hz 1=50 Hz
   - $2B b6-4: date format: 0=Y-M-D 1=M-D-Y 2=D-M-Y
   - $2B b3-0: character set: 0=ja 1=international 2=kr
