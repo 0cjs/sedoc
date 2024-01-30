@@ -15,12 +15,13 @@ See also:
 - [C64 Wiki: Bank Switching][64w-bank]
 - [C64 Service Manual][c64servman]
 - [Christian Bauer's VIC-II article][vic-ii]
+- [_Mapping the Commdodore 64_][m64text] text version, from Project 64 etext.
 
 Onboard memory devices are 64K RAM, 512 bytes color RAM (cRAM), 8K
 KERNAL ROM and 8K BASIC ROM. The cartridge may additionally supply two
 8K ROM banks, LOW and HIGH.
 
-### C64 Memory map
+### C64 Memory Map
 
 Devices have two sources: internal (RAM, IntROM, I/O + color RAM) or
 external (CartROM, unmapped). When a range is unmapped internally, the
@@ -379,12 +380,14 @@ References:
 
 <!-------------------------------------------------------------------->
 [64w-bank]: https://www.c64-wiki.com/wiki/Bank_Switching
-[64w-maxmap]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine#Memory_map
-[6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
 [c64servman]: https://archive.org/details/C64-C64C_Service_Manual_1992-03_Commodore
-[max]: https://www.floodgap.com/retrobits/ckb/secret/ultimax.html
+[m64text]: http://unusedino.de/ec64/technical/project64/mapping_c64.html
 [rc 5715]: https://retrocomputing.stackexchange.com/a/5715/7208
 [vic-ii]: https://www.cebix.net/VIC-Article.txt
+
+[64w-maxmap]: https://www.c64-wiki.com/wiki/Commodore_MAX_Machine#Memory_map
+[6510]: http://archive.6502.org/datasheets/mos_6510_mpu.pdf
+[max]: https://www.floodgap.com/retrobits/ckb/secret/ultimax.html
 
 [map128]: https://archive.org/details/Compute_s_Mapping_the_Commodore_128
 
