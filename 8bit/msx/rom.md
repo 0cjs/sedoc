@@ -224,9 +224,14 @@ Additional References:
   (incomplete)
 
 BIOS calls are at ROM addresses starting at $0000. Below this table are
-further details on some of these, including discussion of names. Calls
-that disable interrupts and do not re-enable them (which is typical when
-changing the page mappings) have `DI` prefixing their description.
+further details on some of these, including discussion of names.
+Additonally:
+- Calls that disable interrupts and do not re-enable them (which is typical
+  when changing the page mappings) have `DI` prefixing their description.
+- Calls marked `(cyE)` return success as carry flag = 0, failure as carry
+  flag = 1.
+
+Calls:
 
     RST0   000  RESET     Z80 reset entry point; init system
            004  CGTABL    Pointer to ROM character table
@@ -283,6 +288,14 @@ changing the page mappings) have `DI` prefixing their description.
            0D8  GTTRIG    joystick btn read; A=param/ret; see BASIC `STRIG()`
            0DB  GTPAD     touchpad read; A=param/ret
            0DE  GTPD      paddle read; A=param/ret
+           ...
+           0E1  TAPION    turn on CMT motor and read header block (cyE)
+           0E4  TAPIN     read data from CMT into A (cyE)
+           0E7  TAPIOF    stop reading from CMT
+           0EA  TAPOON    CMT motor on, write short(A=0)/long(A≠0) header (cyE)
+           0ED  TPOUT     write data in A to CMT (cyE)
+           0F0  TAPOUT    stop writing to CMT
+           0F3  STMOTR    CMT motor A: 00=stop 01=start FF=toggle
            ...
            135  CHGSND    set 1-bit sound port A=0 off, A=~0 on
            138  RSLREG    A←current output to primary slot register
