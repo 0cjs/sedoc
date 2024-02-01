@@ -256,6 +256,14 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
   until the next falling edge occurs." Thus for 6502 `C̅E̅` should be
   qualified with φ2. See [forum.6502.org thread][f65 6380] for more.
 
+### Maxim SmartWatch RAM/ROM
+
+The [DS1216] series are are "smart sockets" placed between an SRAM IC and
+the PCB (they cannot be used with ROM). They convert 2K×8 through 512K×8
+JEDEC static RAMs into nonvolatile memory (SmartWatch RAM) or just add a
+non-volatile clock (SmartWatch ROM). They use only Vcc, A0, A2, D0, /CE,
+/OE and /WE for control and access via reading/writing special 64-cycle
+sequences; all signals are also passed through to the SRAM.
 
 
 
@@ -286,3 +294,5 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 
 [pcbj-ram]: http://pcbjunkie.net/index.php/resources/ram-info-and-cross-reference-page/
 [pcbj-rom]: http://pcbjunkie.net/index.php/resources/prom-eprom-info-page/
+
+[DS1216]: https://pdfserv.maximintegrated.com/en/ds/DS1216-DS1216H.pdf
