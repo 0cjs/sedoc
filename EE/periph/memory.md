@@ -259,11 +259,18 @@ Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
 ### Maxim SmartWatch RAM/ROM
 
 The [DS1216] series are are "smart sockets" placed between an SRAM IC and
-the PCB (they cannot be used with ROM). They convert 2K×8 through 512K×8
-JEDEC static RAMs into nonvolatile memory (SmartWatch RAM) or just add a
-non-volatile clock (SmartWatch ROM). They use only Vcc, A0, A2, D0, /CE,
-/OE and /WE for control and access via reading/writing special 64-cycle
-sequences; all signals are also passed through to the SRAM.
+the PCB (they are not designed to be used with ROM, but see below). They
+convert 2K×8 through 512K×8 JEDEC static RAMs into nonvolatile memory
+(SmartWatch RAM) or just add a non-volatile clock (SmartWatch ROM). They
+use only Vcc, A0, A2, D0, /CE, /OE and /WE for control and access via
+reading/writing special 64-cycle sequences; all signals are also passed
+through to the SRAM.
+
+In a ROM socket, /WE will be A14, and the magic sequences would need to be
+modified appropriately. D0 is also required; this can't be set by the CPU
+because the chip would be disabled for write cycles from the CPU to avoid
+data bus conflicts. But perhaps it can be set in the other direction from
+the ROM via a _read,_ since /WR is being toggled by A14 anyway?
 
 
 
