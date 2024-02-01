@@ -1,6 +1,24 @@
 ROM and RAM Pinouts, Data
 =========================
 
+Contents:
+- General Information
+  - Terminology; References; Pinout Notes; Standard Part Numbers
+  - 24/²⁸-pin Device Pin Diagram
+  - JEDEC Common Pin Diagram:
+- ROM and RAM Chip Data
+  - 25xx EPROM
+  - 27xx EPROM
+  - 28xx EEPROM
+  - SRAM
+  - DRAM
+- Non-volatile RAM
+  - FRAM
+
+
+General Information
+-------------------
+
 Terminology:
 - PROM: (Field-)programmable once only.
 - UV EPROM, EE EPROM: Erasable only as a whole (electrically or via UV).
@@ -9,9 +27,9 @@ Terminology:
 References:
 - JEDEC (I think) pinouts, from Ciarcia, "Build an Intelligent Serial
   EPROM Programmer," _BYTE_ Oct. 1986, [p.106][byte-8610-106].
-- [JDEC Standard No. 21-C §3.7.5][JDEC-3.7.5] has standard pinouts for
+- [JEDEC Standard No. 21-C §3.7.5][JEDEC-3.7.5] has standard pinouts for
   byte-wide and TTL MOS SRAM.
-- A [search for "memory dip" on the JDEC site][JDEC-memory-dip] gives
+- A [search for "memory dip" on the JEDEC site][JEDEC-memory-dip] gives
   standards and pinouts for various kinds of memory chips.
 - MESS [Dump 2364 Mask ROMs][mess2364] gives 2364/2764 pinouts and adapter.
 - 64Copy [ROM & EPROM Pinouts][64copy]: nice individual pinout diagrams of
@@ -31,7 +49,6 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
 - 28Cxx: EEPROM
 - 6116:     RAM 2K
 - 6264:     RAM 8K
-
 
 #### 24/²⁸-pin Device Pin Diagram
 
@@ -104,8 +121,9 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
                    JEDEC Common Pin Diagram by cjs
         https://github.com/0cjs/sedoc/blob/master/ee/memory.md
 
-Chip Data
----------
+
+ROM and RAM Chip Data
+---------------------
 
 _DIPnn_ is 0.3" wide dual-inline package, _nn_ pins;
 _WDIPnn_ is = 0.6" wide.
@@ -187,22 +205,6 @@ article](sch/simpleCMOS_RAMbackup.jpg) (from [this message][f65 32004]) for
 CMOS switch and single-transistor designs. [Robert Sprowson's EPROM
 Emulator][ee sprow] design also has much useful information.
 
-### FRAM
-
-Reading as well as writing wears out cells; keep an eye on endurance and
-consider moving tight frequent loops (e.g., wait for character input) to
-traditional RAM. (On 6502, below stack can work well.)
--         2003-03 rev 2.3: 10^10 read/writes (Windfall [[f65 6380]])
-- FM1608  2007-05 rev 3.2: 10^12 read/writes (datasheet)
-- FM1808  2007-08 rev 3.3: 10^12 read/writes (datasheet)
-- FM18L08 2007-07 rev 3.4: unlimited read/write cycles
-
-Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
-- Critical point: "Asserting /CE low causes the address to be latched
-  internally. Address changes that occur after /CE goes low will be ignored
-  until the next falling edge occurs." Thus for 6502 `C̅E̅` should be
-  qualified with φ2. See [forum.6502.org thread][f65 6380] for more.
-
 ### DRAM
 
 References:
@@ -234,10 +236,33 @@ For 4164:
 - connect pin 8 to pin 9 (chip +5V,A₇ to socket +5V)
 - cut pin 1 (chip NC no entry into socket -5V)
 
+
+Non-volatile RAM
+----------------
+
+### FRAM
+
+Reading as well as writing wears out cells; keep an eye on endurance and
+consider moving tight frequent loops (e.g., wait for character input) to
+traditional RAM. (On 6502, below stack can work well.)
+-         2003-03 rev 2.3: 10^10 read/writes (Windfall [[f65 6380]])
+- FM1608  2007-05 rev 3.2: 10^12 read/writes (datasheet)
+- FM1808  2007-08 rev 3.3: 10^12 read/writes (datasheet)
+- FM18L08 2007-07 rev 3.4: unlimited read/write cycles
+
+Ramtron FM1608 (8K×8), [FM1808][] (32K×8) Nonvolatile RAM
+- Critical point: "Asserting /CE low causes the address to be latched
+  internally. Address changes that occur after /CE goes low will be ignored
+  until the next falling edge occurs." Thus for 6502 `C̅E̅` should be
+  qualified with φ2. See [forum.6502.org thread][f65 6380] for more.
+
+
+
+
 <!-------------------------------------------------------------------->
 [64copy]: https://ist.uwaterloo.ca/~schepers/roms.html
-[JDEC-3.7.5]: https://www.jedec.org/system/files/docs/3_07_05R12.pdf
-[JDEC-memory-dip]: https://www.jedec.org/document_search/field_committees/25?search_api_views_fulltext=memory+dip
+[JEDEC-3.7.5]: https://www.jedec.org/system/files/docs/3_07_05R12.pdf
+[JEDEC-memory-dip]: https://www.jedec.org/document_search/field_committees/25?search_api_views_fulltext=memory+dip
 [byte-8610-106]: https://archive.org/details/byte-magazine-1986-10/page/n117/mode/1up
 [mess2364]: http://mess.redump.net/dumping/2364_mask_roms
 
