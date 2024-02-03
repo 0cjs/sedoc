@@ -14,6 +14,18 @@ References:
 - \[bados] Don Worth and Pieter Lechner, [_Beneath Apple DOS_], 1981.
 
 
+Foreign Versions
+----------------
+
+__Apple II j-Plus:__
+- Char ROM and input method code switched with annunciator 2 soft switch.
+  - $C05C (-16292) = katakana; ^T switches romaji/katakana.
+  - $C05D (-16291) = original English mode.
+- PSU tweaked for 100 V 50/60 Hz.
+
+See also apple2history.org, [12 - The Apple II Abroad/Clones][abroad].
+
+
 Memory Map
 ----------
 
@@ -232,6 +244,7 @@ available on the peripheral slots.
 <!-------------------------------------------------------------------->
 [a2cref]: https://archive.org/stream/Apple_IIc_Technical_Reference_Manual
 [a2ref]: https://archive.org/stream/Apple_II_Reference_Manual_1979_Apple#page/n3/mode/1up
+[abroad]: https://www.apple2history.org/history/ah12/#04
 [bados]: https://archive.org/stream/Beneath_Apple_DOS_OCR#page/n2/mode/1up
 [jr-screenholes]: http://www.kreativekorp.com/miscpages/a2info/screenholes.shtml
 [lanc84]: http://forum.6502.org/download/file.php?id=7848
