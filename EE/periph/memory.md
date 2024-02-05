@@ -211,6 +211,9 @@ References:
 - pcbjunkie.net [RAM Info and Cross Reference Page][pcbj-ram]
   (Includes many static RAM pinouts as well. Another page has
   a few [PROM/EPROM pinouts][pcbj-rom].)
+- minuszerodegrees.net [41xxx/51xxx references][mz-ram]. Listings of many
+  different brands of 41xxx-compatible DRAMs and particular characteristics
+  (e.g., 7- vs. 8-row refresh).
 
 Standard pinouts:
 
@@ -229,6 +232,9 @@ Standard pinouts:
     Vss = GND    Vcc = +5V   Vbb = -5V   Vdd = +12V
 
 __Replacements:__
+
+Check minuszerodegrees.net tables above; even exact-pinout and same timing
+chips may not be compatible due to 7- vs. 8-row refresh, etc.
 
 4116s are quite unreliable so consider replacing with 4164 or 41256.
 For 4164:
@@ -299,6 +305,7 @@ the ROM via a _read,_ since /WR is being toggled by A14 anyway?
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
 [f65 6380]: http://forum.6502.org/viewtopic.php?f=4&t=6380
 
+[mz-ram]: https://www.minuszerodegrees.net/memory/ram.htm
 [pcbj-ram]: http://pcbjunkie.net/index.php/resources/ram-info-and-cross-reference-page/
 [pcbj-rom]: http://pcbjunkie.net/index.php/resources/prom-eprom-info-page/
 
