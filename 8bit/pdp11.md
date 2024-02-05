@@ -38,15 +38,15 @@ Timeline of PDP-11/_nn_ systems:
           "/34a supports fast FP option. /34c supports cache mem option."
 - 1978-??: __PDT__ family, in card cage of VT100. Equiv. of 11/2.
            4 KB I/O page.
-- 1979-??: __/23__ (Q2ᵈ) F-11 chipset.
-- 1979-??: __/24__ (U2) Only F-11 Unibus model.
+- 1979-??: __/23__ (Q2ᵈ) F11 chipset.
+- 1979-??: __/24__ (U2) Only F11 Unibus model.
 - 1979-??: __/44__ (U2ᵈ) Low-cost successor to /70. 256K-1MB RAM.
            Last non-microprocessor PDP-11.
-- 1983-??: __/73__ (Q2ᵈ) First J-11 (MicroPDP-11), 15 MHz, integrated FPU.
+- 1983-??: __/73__ (Q2ᵈ) First J11 (MicroPDP-11), 15 MHz, integrated FPU.
 - 1984-??: __/53__ (Q2ᵈ) Stripped down, slower /73. Deskside case.
-- 1988-??: __/83__ (Q2ᵈ) 18 MHz J-11.
+- 1988-??: __/83__ (Q2ᵈ) 18 MHz J11.
 - 1988-??: __/84__ (U2ᵈ)
-- 1990-??: __/93__ (Q2ᵈ) J-11, 2/4 MB RAM, 1 VUPS, fastest PDP-11
+- 1990-??: __/93__ (Q2ᵈ) J11, 2/4 MB RAM, 1 VUPS, fastest PDP-11
 - 1990-??: __/94__ (U2ᵈ)
 
 Notes:
@@ -73,7 +73,9 @@ References:
 J11 Processor
 -------------
 
-XXX
+References:
+- [DCJ11 Microprocessor User's Guide (preliminary][j11-mugp]
+
 
 
 <!-------------------------------------------------------------------->
@@ -83,5 +85,9 @@ XXX
 [rcse 28404]: https://retrocomputing.stackexchange.com/a/28404/7208
 [wp]: https://en.wikipedia.org/wiki/PDP-11#Models
 
+<!-- General Programming -->
 [hb-arch]: https://archive.org/details/pdp-11-architecture-handbook-dec-eb-23657-18
 [wfjm]: https://wfjm.github.io/home/w11/info/manuals.html
+
+<!-- J11 Processor -->
+[j11-mugp]: https://archive.org/details/dcj11-microprocessor-users-guide-dec-1983-10-ek-dcj-11-ug-pre-preliminary
