@@ -19,17 +19,18 @@ Timeline of PDP-11/_nn_ systems:
 - 1970-06: __/20 /15__ (Un6) 4/8 KB, 28KB max. 4K IO page at 28K. Clock
   State CPU control (only non-microcoded machine).
 - 1972-06: __/10 /05__ (Un6) Cost-reduced succcessor to /20 /15.
-- 1972-06: __/45__  (U8ᵈ) MMU optional. Up to 256K semiconductor RAM. Much
-          faster. FP11 floating point coprocessor available.
-- 1973-01: __/40 /35__ (U8) Faster successors to /20 /15.
+- 1972-06: __/45__  (U8ᵈ) MMU optional. Up to 256K core RAM. Much faster. CPU.
+           FP11 floating point coprocessor available.
+- 1973-01: __/40 /35__ (U8) Faster successors to /20 /15. /45 architecture,
+           but less power. Initially core memory, later MOS.
+- 1973-07: __/50__ (U8ᵈ) Same KB11-A CPU as /45; faster due to MOS/fastbus mem.
 - 1975-??: __LSI-11__ (Q6) 4-chip set for OEMs.
 - 1975-03: __/70__ (U2ᵈ) Up to 4 MB physical RAM on private memory bus.
            Only system with Massbus. Best I/O throughput of any PDP-11.
 - 1975-06: __/03__ (Q6) First DEC LSI/Q-bus system.
 - 1975-09: __/04__ (U6) Cost-reduced /05.
 - 1976-03: __/34__ (U8) Cost-reduced /35. Up to 256 KB Unibus memory.
-- 1976-06: __/50__ (U8ᵈ) MOS memory for faster CPU than /45.
-- 1976-06: __/55__ (U8ᵈ) Bipolor memory for yet faster CPU than /45.
+- 1976-06: __/55__ (U8ᵈ) KB11-D CPU and bipolor memory; faster than /50.
 - 1976-??: __LSI-11/2__ (Q6) Improved LSI-11 CPU board.
 - 1977-06: __/60__ (U8) Higher-performance /40. Writable control store.
            FP in microcode, hardware FP avaialble.
@@ -48,10 +49,15 @@ Timeline of PDP-11/_nn_ systems:
 - 1990-??: __/93__ (Q2ᵈ) J-11, 2/4 MB RAM, 1 VUPS, fastest PDP-11
 - 1990-??: __/94__ (U2ᵈ)
 
+Notes:
+- Release dates are all over the place for the 11/50, from '73 to '76. But
+  an 11/50 was [definitely shipped][rcse 28404] in Sept. '75 as DEC's
+  50,000th system.
+
 References:
 - PDP-11 FAQ, [What different PDP-11 models were made?][faq-models]
-- Computer History Wiki, [PDP-11 Models and notes][11mn]. This may have
-  some errors in the dates.
+- Computer History Wiki, [PDP-11 Models and notes][11mn].
+  Definitely has some errors in the dates.
 - Wikipedia, [PDP-11: Models][wp]
 
 
@@ -74,6 +80,7 @@ XXX
 [11mn]: https://gunkies.org/wiki/PDP-11
 [KS11]: https://gunkies.org/wiki/KS11_Memory_Protection_and_Relocation_option
 [faq-models]: https://web.archive.org/web/20160618161413/http://www.village.org/pdp11/faq.pages/11model.html
+[rcse 28404]: https://retrocomputing.stackexchange.com/a/28404/7208
 [wp]: https://en.wikipedia.org/wiki/PDP-11#Models
 
 [hb-arch]: https://archive.org/details/pdp-11-architecture-handbook-dec-eb-23657-18
