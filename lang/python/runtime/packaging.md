@@ -46,6 +46,39 @@ Distribution formats:
 - __[Egg]:__ Older _built distribution_ format introduced by setuptools.
   [Quick guide][egg-quick]. [Internal structure][egg-int].
 
+### Version Specifiers
+
+Per the _Python Packaging User Guide_ [Version specifiers][ppug-ver]:
+
+    [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
+
+All numbers _N_ are ordered numerically with no regard for leading zeros,
+i.e., `10` succeeds `9`.
+
+All the following are optional except for the release segment:
+- `N!` Epoch segment. default _0!_, used when changing versioning scheme.
+  Rarely used.
+- `N(.N)*` Release segment. Required. E.g., _2.1_, _2.12.3_.
+- `{a|b|rc}N` Pre-release segment. Appended to the _next_ release version
+  number, e.g., _2.3a7_ → _2.3b1_ → _2.3rc4_ → _2.3_ for alpha, beta,
+  release candidate and final release. `c` may be accepted as meaning `rc`.
+- `.postN` Post-release segment. Used for small fixes that do not affect
+  the distributed software (e.g., correcting release notes).
+- `.devN` Development release segment.
+
+A _final release_ version specifier may consist of only an optional epoch
+segment followed by a release segment.
+
+#### Dependency Specifiers
+
+[PEP 508]-compliant [dependency specifiers][ppug-depver] have additional
+syntax to specify version ranges and other depencency options.
+
+### Package Metadata Fields
+
+- `requires-python`: [PEP 508] version string for Python version range.
+  E.g., `>=3.6` for a Python with [f-strings][PEP 498].
+
 
 Libraries and Packaging Tools
 -----------------------------
@@ -183,6 +216,7 @@ To-read
 
 <!-------------------------------------------------------------------->
 [PEP 427]: https://peps.python.org/pep-0427/
+[PEP 498]: https://peps.python.org/pep-0498/
 [PEP 518]: https://peps.python.org/pep-0518/
 [PEP 625]: https://peps.python.org/pep-0625/
 [PEP 643]: https://peps.python.org/pep-0643/
@@ -199,6 +233,9 @@ To-read
 [source distribution]: https://packaging.python.org/en/latest/glossary/#term-Source-Distribution
 [wheel-spec]: https://packaging.python.org/en/latest/specifications/binary-distribution-format/
 [wheel]: https://packaging.python.org/en/latest/glossary/#term-Wheel
+
+[ppug-depver]: https://packaging.python.org/en/latest/specifications/dependency-specifiers/
+[ppug-ver]: https://packaging.python.org/en/latest/specifications/version-specifiers/
 
 [`importlib.metadata`]: https://docs.python.org/3.11/library/importlib.metadata.html
 [build]: https://build.pypa.io/en/stable/

@@ -76,7 +76,7 @@ See also [python-version-cheat-sheet] and offical [changelog].
 - 3.4: `pathlib` (PEP 428)
 - 3.5: Additional unpacking generalisations (PEP 448).
   Type annotations excepting variables (PEP 484).
-- 3.6: f-strings (PEP 498).
+- 3.6: f-strings ([PEP 498], for ≥3.12 [PEP 701]).
   Underscores in numeric literals, e.g. 1_000 (PEP 515).
   Type annotations for variables (PEP 526).
 - 3.7: Guaranteed sort order of dicts.
@@ -101,3 +101,6 @@ See also [python-version-cheat-sheet] and offical [changelog].
 [python-version-cheat-sheet]: https://github.com/jugmac00/python-version-cheat-sheet
 [toolz-docs]: https://toolz.readthedocs.io/
 [toolz-pypy]: https://pypi.python.org/pypi/toolz
+
+[PEP 498]: https://peps.python.org/pep-0498/
+[PEP 701]: https://peps.python.org/pep-0701/
