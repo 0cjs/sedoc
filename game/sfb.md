@@ -271,11 +271,12 @@ Turn mode chart and weapons charts are on SSDs.
     - __F1.0, F2.1-5__ Seeking Weapons
     - __F2.0__ Uncontrolled Seeking special rule (solo scenarios only)
   - "Under Attack":
-    - Federation Cadet Cruiser; 8 Klingon drones.
+    - FCC: 0913A. 8×KD: 0109C 0301D 1101D 1701E 2501E 2803E 2808E 2815F.
     - 8-impulse chart. All speed 8 (Cruiser turn mode 2).
     - Drones do 6 damage. Disable any systems you like (including excess
       damage), excepting that drones after the first drone on same shield
-      in volley must disable a weapon.
+      in volley must disable a weapon. (But if you take any non-shield
+      damage, you lose.)
 
 - Scenario #3 (1-2 players):
   - Rules:
