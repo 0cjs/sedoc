@@ -242,6 +242,8 @@ tables, some SSDs (ship diagrams only), counters and hex maps.
      7-12   Energy Allocation Form (add 7-8, 11-13, 15, 17-18, phaser caps)
 
 Turn mode chart and weapons charts are on SSDs.
+- FCC = Federation Cadet Cruiser.
+- KD  = Klingon Drone
 
 - Scenario #1 (1 player):
   - Rules:
@@ -252,7 +254,7 @@ Turn mode chart and weapons charts are on SSDs.
     - __E2.1-2, E2.4__ Phasers,
     - __E2.3__ ignored (energising phasers)
   - "Battle Drill":
-    - Federation Cadet Cruiser; 5 Klingon drones.
+    - FCC: 111A. 5×KD: 101C 207B 705D 810F 801D
     - 8-impulse chart. All speed 8 (Cruiser turn mode 2).
     - Destroy all drones before they move the map (83% chance possible).
     - Federation Cadet Cruiser can take no damage.
@@ -297,12 +299,22 @@ Turn mode chart and weapons charts are on SSDs.
     - 
 
 
-Counters and Maps
------------------
+Maps, Counters, SSDs
+--------------------
 
-Colors. (`vol` is from _Commander's Edition._) Use read-through markers to
-mark B/W printouts, with colour marked with `⁼` for stripe, `‡` for entire
-counter.
+### Maps
+
+_Cadet Training Handbook_ [_CTH_] map pages:
+
+    0101 1301  A B  1501 2701
+    0116 1416  A B  1516 2816
+    0117 1317  C D  1517 2717
+    0132 1432  C D  1532 2832
+
+### Counter Colors
+
+(`vol` is from _Commander's Edition._) Use read-through markers to mark B/W
+printouts, with colour marked with `⁼` for stripe, `‡` for entire counter.
 
     BG      FG      Race
     ──────────────────────────────
@@ -319,13 +331,16 @@ counter.
     Yellow  Red     WYN (vol II)
     Yellow‡ Black   ISC (vol III)
 
+### SSD Colors
 
-_Cadet Training Handbook_ [_CTH_] map pages:
-
-    0101 1301  A B  1501 2701
-    0116 1416  A B  1516 2816
-    0117 1317  C D  1517 2717
-    0132 1432  C D  1532 2832
+    purple      shield (4 shades?)
+    lt-blue     power generation (warp, imp, APR)
+    dk-blue     battery
+    pink        weapon
+    yellow      shuttle, transporter, tractor beam, probe, lab
+    dk-orange   bridges, security, aux (?)
+    lt-orange   hull
+    dk-green    sensor, scanner, dam.con, ex.dam, crew, etc.
 
 
 Parts to Print
