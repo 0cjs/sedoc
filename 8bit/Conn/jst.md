@@ -87,7 +87,6 @@ up.)
 References:
 - Wikipedia, [JST connector][wp jst]
 - JST, [XH Connector][jst xh] datasheet.
-- JST, [SM Connector][jst se] datasheet.
 
 
 [JST SM]
@@ -115,6 +114,7 @@ Pin assignments vary, a lot. Common ones are:
     4-pin   BLK  BLU  GRN  RED      aliexpress.com random
 
 References:
+- JST, [SM Connector][jst sm] datasheet.
 - [Sparkfun JST-SM][sparkfun-SM] (2-, 3-, 4-pin LED Strip Pigtail Connectors)
 
 
@@ -129,6 +129,7 @@ Power seems to be informally standardized as:
 
 Examples:
 - [Sparkfun] connectors page (XH)
+- [Aidafruit] JST PH 2-Pin Cable (and battery holders, etc.)
 - [Packronics] pre-crimped power connectors (XH)
 - [Woodland] lights/3D printer (XH)
 - [Hilitand] pre-crimped power connectors ("JST")
@@ -149,6 +150,7 @@ Examples:
 <!-- JST SM -->
 [sparkfun-SM]: https://www.sparkfun.com/categories/tags/jst-sm
 
+<!-- Power Connectors -->
 [hilitand]: https://www.amazon.com/dp/B07DL4FNTF
 [packronics]: https://www.pakronics.com.au/products/jst-2-pin-power-connector-ss321050009
 [sparkfun]: https://learn.sparkfun.com/tutorials/connector-basics/all#power-connectors
