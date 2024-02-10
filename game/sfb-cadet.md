@@ -1,7 +1,53 @@
 Star Fleet Battles: Cadet's Game
 --------------------------------
 
-### Captain's Edition (2005)
+Commander's Edition (1983)
+--------------------------
+
+Section __A4__ in Volume 1 [[__V1__]]
+
+- __B__ General Rules
+  - __B2.1__ Cadet's Game Sequence of Play
+  - __B2.3__ Explanation of the Sequence of Play (Annex #2 not needed)
+  - __B3.0__ Energy Allocation
+- __C__ Movement Rules
+  - __C1.1, C1.2, C1.31__ Procedure, Facing, Free Movement
+  - __C1.4__ Performing Movement
+  - __C2.0__ Energy Cost of Movement
+  - __C3.0__ Turning and Turn Modes
+- __D__ Combat
+  - __D1.0, D2.0__ General Rules, Firing Arcs
+  - __D3.0__ Shields (min/full cost, reinforcement, dropping, ...)
+  - __D4.0__ Damage Allocation
+- __E__ Direct-fire Weapons
+  - __E1.0, E2.0__ General, Phasers
+  - __E3.0, E4.0__  Disrupter Bolts, Photon Torpedoes
+- __H__ Power Systems (all excepting 7.0, Reserve Power)
+  - __H1.0, H2.0, H3.0, H4.0, H5.0__ General, Warp, Impulse, Aux, Batt
+  - __H6.0__ Phaser Capacitors
+- __R__ Starship Types and Classes
+  - __R2.4__ Federation CA Heavy Cruiser
+  - __R3.4__ Klingon D7 D-7 Battlecruiser
+- __S__ Scenarios
+  - __S1.0__ General Rules
+  - __SG1.0__ The Introductory Scenario (The Duel)
+
+> Read the indicated sections and play scenario (SG1.0) NOW, before going
+> on to read any other sections. AFTER playing it, return to the rules and
+> read those sections that imemdiately capture your interest. After playing
+> another scenario or two, stop and read all rules that are NOT marked as
+> Advanced, Optional or Commander's Level.
+
+(B2.1) Cadet's Game Sequence of Play is same as standard except:
+- 4. Initial Activity Phase → Drone and Shuttlecraft Launch Phase
+- 6. Impulse Procedure:
+  - Skip B (Impulse Activity Segment)
+  - Skip C (Dogfight Resolution Interface)
+- 7. Final Activity Phase → Plasma Torpedo Launch Phase
+
+
+Captain's Edition (2005)
+------------------------
 
 Section __A4__ in Basic Set _Rulebook_ [[_BR_]].
 
@@ -32,7 +78,9 @@ Section __A4__ in Basic Set _Rulebook_ [[_BR_]].
     - R4.4: Romulan KR; R5.2 Kzinti CS
     - All rules not marked as Advanced, Optional, Commander's Level.
 
-### Cadet Training Handbook (1996)
+
+Cadet Training Handbook (1996)
+------------------------------
 
 A free longer version with consolidated Cadet's rules is in the
 75-page _Cadet Training Handbook_ [_CTH_], which also includes key
