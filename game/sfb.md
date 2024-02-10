@@ -312,6 +312,14 @@ _Cadet Training Handbook_ [_CTH_] map pages:
     0117 1317  C D  1517 2717
     0132 1432  C D  1532 2832
 
+- Map sheets are 233×177 just 24×5 smaller than B5 257×182
+- Glue to B5/[A4 0.6 mm magnetic sheets][B000ENC5B0]? (These have no
+  adhesive, unfortunately.)
+
+### Counter Mounting
+
+Stick to Daiso ¥100 300×100×1.0 mm self-adhesive magnetic sheets and cut.
+
 ### Counter Colors
 
 (`vol` is from _Commander's Edition._) Use read-through markers to mark B/W
@@ -319,15 +327,18 @@ printouts, with colour marked with `⁼` for stripe, `‡` for entire counter.
 
     BG      FG      Race
     ──────────────────────────────
-    White   Blue    All fleets
+    White   Blue    All Fleets
+    White   Black   Asteroids
+    White   various Monsters
     White   Black   Kzinti
     White   Red⁼    Gorn
-    Black   White   Klingons
+    Black   White   Klingon
     Blue‡   Black   Federation
-    Blue⁼   White   Orions
-    Red‡    Black   Romulans
-    Green‡  White   Hydrans (vol II)
-    Green   Black   Andromedans (vol II)
+    Blue⁼   White   Orion Pirate
+    Red‡    Black   Romulan
+    Red     White   Tholian
+    Green‡  White   Hydran (vol II)
+    Green   Black   Andromedan (vol II)
     Yellow‡ Green   Lyran (vol II)
     Yellow  Red     WYN (vol II)
     Yellow‡ Black   ISC (vol III)
@@ -431,3 +442,6 @@ FC _First Missions_ rules sections:
 [_DE_]: https://warehouse23.com/products/star-fleet-battles-designers-edition-first-printing
 [_MR_]: https://warehouse23.com/products/star-fleet-battles-electronic-master-rulebook
 [_V1_]: https://warehouse23.com/products/star-fleet-battles-commanders-edition-volume-i-revision-1
+
+<!-- magnetic sheets, etc. -->
+[B000ENC5B0]: https://www.amazon.co.jp/dp/B000ENC5B0
