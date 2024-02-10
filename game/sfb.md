@@ -8,6 +8,12 @@ Editions:
 - 1980 _Designers Edition_ Boxed [_DE_]; 3 expansions (pocket).
      - DE rulebook is 28 p. PE followed by 28 p. expansion.
 - 1983-5 _Commander's Edition_ (_Com_) Boxed [_V1_], [_V2_], [_V3_]; expansions.
+- 1988 _Commander's Rulebok Update #2_
+     - D15 Ground Combat, D16 Advanced Boarding Parties, D22 Energy Balance
+       Due to Damage, FD10-15 Advaned Modular Drone Construction, FP8-10
+       Plasma Bolts. Ship data from SSD books #7 #8 #9, Supplement #3,
+       addenda. Lyrans. 21 Nexus scenarios. Bargantine Campaign. SSDs.
+       Annex #5 Abbreviations update.
 - 1990 _Captain's Edition_ (Doomsday)
 - 1992 _Captain's Module S1_ (Scenario Book #1)
      - SG27-37, SH16-18,23-26,32-39,47-66, SM8-11, U8
