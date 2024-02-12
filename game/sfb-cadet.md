@@ -39,11 +39,12 @@ Section __A4__ in Volume 1 [[__V1__]]
 > Advanced, Optional or Commander's Level.
 
 (B2.1) Cadet's Game Sequence of Play is same as standard except:
-- 4. Initial Activity Phase → Drone and Shuttlecraft Launch Phase
+- 4. Drone and Shuttlecraft Launch Phase (not 6B) replaces Initial Activity Ph.
 - 6. Impulse Procedure:
-  - Skip B (Impulse Activity Segment)
+  - Skip B (Impulse Activity Segment); no drone/shuttlecraft launch
   - Skip C (Dogfight Resolution Interface)
-- 7. Final Activity Phase → Plasma Torpedo Launch Phase
+  - E Post-Combat Segment: no plasma torpedo launch
+- 7. Plasma Torpedo Launch Phase (not 6E) replaces Final Activity Phase.
 
 
 Captain's Edition (2005)
@@ -175,6 +176,20 @@ Turn mode chart and weapons charts are on SSDs.
 - Scenario #4 (1-2 players):
   - Rules:
     - 
+
+
+Notes on Learning
+-----------------
+
+Sequence of Play:
+- 6. Impulse Procedure
+  - Reserve Power:
+    - Allocation of charged batteries on on any impulse. Cannot operate
+      systems more often than rules allow (e.g., no 2nd phaser fire).
+    - Shields reinforced after enemies resolve fire, so affects that fire.
+    - Unallocated warp power can be used during turn up to number of
+      _discharged_ batteries (inc. discharged in energy allocation phase);
+      unused charges batteries at end of turn.
 
 
 
