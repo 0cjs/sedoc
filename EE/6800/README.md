@@ -29,7 +29,8 @@ Hitachi equivalents:
 This does not cover:
 - __6805__ (1979): 8-bit X register and other incompatible changes.
   M14065: CMOS version. 68HC05: low power version. 6804: reduced cost
-  version.
+  version. [MC1468705F2]/[MC1468705G2] CMOS user-programmable UVEPROM
+  versions.
 - __6811__ (1984): Greatly extended 6801. Available in modern versions.
 - __6809__ (1979-07): Entirely incompatible.
 
@@ -79,6 +80,9 @@ There's a [very large bibliography][og bib] at orphanedgames.com.
 
 
 <!-------------------------------------------------------------------->
+[MC1468705F2]: https://archive.org/details/bitsavers_motoroladaSingleChipMicrocomputerData_68061538/page/n1077/mode/1up?view=theater
+[MC1468705G2]: https://archive.org/details/bitsavers_motoroladaSingleChipMicrocomputerData_68061538/page/n1079/mode/1up?view=theater
+
 [timeline]: https://retrocomputing.stackexchange.com/a/11933/7208
 [6845]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n525/mode/1up
 [6846]: https://archive.org/details/bitsavers_motoroladaMicroprocessorsDataManual_80083566/page/n548/mode/1up
