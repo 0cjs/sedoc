@@ -7,8 +7,6 @@ Motorola 6800-series Microprocessors and Microcontrollers
 This covers the Motorola 6800 series processors ([timeline]):
 - __6800__ (1974-11): 1 MHz. External clock required.
   __68A00__=1.5 MHz, __68B00__=2.0 MHz (1976).
-- [README](README.md), [asm](asm.md), [opcodes](opcodes.md),
-  [progcard](progcard)
 
 - __6802__, __6808__ (1977-03): Internal clock. '02 has 128 bytes of RAM
   (because the 6846 has no RAM) and can preserve 32 bytes of it with
