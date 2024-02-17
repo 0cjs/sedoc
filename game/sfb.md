@@ -319,6 +319,7 @@ FC _First Missions_ rules sections:
 [_BR_]: https://warehouse23.com/products/star-fleet-battles-basic-set-rulebook-2012
 [_BSB_]: https://warehouse23.com/products/star-fleet-battles-basic-set-ssd-book-2011_b_and_w
 [_BSC_]: https://warehouse23.com/products/star-fleet-battles-basic-set-ssd-book-2011_color
+[_CTH_]: https://warehouse23.com/products/star-fleet-battles-cadet-training-handbook
 [_DE_]: https://warehouse23.com/products/star-fleet-battles-designers-edition-first-printing
 [_MR_]: https://warehouse23.com/products/star-fleet-battles-electronic-master-rulebook
 [_V1_]: https://warehouse23.com/products/star-fleet-battles-commanders-edition-volume-i-revision-1

@@ -195,3 +195,4 @@ Sequence of Play:
 
 <!-------------------------------------------------------------------->
 [_BR_]: https://warehouse23.com/products/star-fleet-battles-basic-set-rulebook-2012
+[_CTH_]: https://warehouse23.com/products/star-fleet-battles-cadet-training-handbook
