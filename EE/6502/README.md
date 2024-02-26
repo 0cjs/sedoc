@@ -15,10 +15,10 @@ Contents:
 - [Execution Cycles and Timing](#execution-cycles-and-timing)
 - [Tips and Tricks](#tips-and-tricks)
   - Instruction Set Notes
-  - Software
+  - General Programming
   - Wilson Mines Notes
-- [Code](#code)
-  - Hardware
+- [Hardware Design](#hardware-design)
+- [Software](#software)
 
 #### References
 
@@ -184,7 +184,7 @@ Tips and Tricks
   Sets I flag, only CMOS versions also clear D flag.
 - `SBC`/`CMP` sets carrry if result ≥ 0 (opposite of 6800)
 
-#### Software
+#### General Programming
 
 - Always `CLD` on reset. Probably `CLD` in interrupt routines (unless
   no `ADC/SBC`). Subroutines with totally unknown callers should
@@ -231,20 +231,23 @@ Programming the 65(c)02][wmtips] page. Also see [routines](routines.md).
   above that already set Z/N flags. (Load/xfer/pull, inc/dec,
   arithmetic/bits).
 
-Code
-----
 
-- [a2ref], as well as containing the BIOS listing, also contains
-  listings for floating point routines and the mini-assembler.
-- [Apple-II Mini-Assembler][a2mini-asm] instructions and listing.
-
-
-#### Hardware
+Hardware Design
+---------------
 
 - See [hm1976] pp. 123-132 (Chapter 3) for suggestions on bring-up
   testing, including static testing, single cycle and instruction
   execution, bus data latching, hardware-induced loops via RESET and
   scope sync for them, etc.
+
+
+Software
+--------
+
+- [a2ref], as well as containing the BIOS listing, also contains
+  listings for floating point routines and the mini-assembler.
+- [Apple-II Mini-Assembler][a2mini-asm] instructions and listing.
+
 
 
 <!-------------------------------------------------------------------->
@@ -275,5 +278,5 @@ Code
 [wmint2.2]: http://wilsonminesco.com/6502interrupts/#2.2
 [wmtips]: http://wilsonminesco.com/6502primer/PgmTips.html
 
-<!-- Code -->
+<!-- Software -->
 [a2mini-asm]: https://archive.org/details/Apple2_Woz_MiniAssembler/page/n1/mode/1up
