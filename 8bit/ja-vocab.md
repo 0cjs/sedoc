@@ -61,6 +61,7 @@ SKIP 2: Up/Down
 SKIP 3: Enclosure
 
      3  内蔵        ないぞう        internal
+        処理        しょり          processing (usu. データ処理)
      6  同期        どうき          same period, synchronization
         回路        かいろ          circuit
         回路図      かいろず        schematic diagram
@@ -79,6 +80,7 @@ SKIP 4: Solid
      4  －化        －か            suffix for a changing action
         水平        すいへい        horizontal
         水平同期信号                video hsync
+        水準        すいじゅん      level (e.g. JIS第2水準漢字)
      5  正論理      せいろんり      true logic signal (positive logic)
      8  垂直        すいちょく      vertical, perpendicular (for vsync)
 
