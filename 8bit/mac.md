@@ -2,6 +2,7 @@ Apple Macintosh
 ===============
 
 Mac Classic:
+- Left side front button is reset; rear button is NMI.
 - Command-Option-X-O boots ROM MacOS 6.x (if held down early enough)
 
 Floppy Drives
