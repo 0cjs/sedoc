@@ -98,7 +98,7 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
     ────────────────────────────────────────────────────────────────────
           ────2K────  ──4K──  ──────8K──────  16K  ────32K──── 64K
 
-#### JEDEC Common Pin Diagram:
+#### JEDEC Common Pin Diagram
 
                         ┌─────────∪─────────┐
                 ────────│1                32│──────── (Vcc)
@@ -120,6 +120,34 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
                         └───────────────────┘
                    JEDEC Common Pin Diagram by cjs
         https://github.com/0cjs/sedoc/blob/master/ee/memory.md
+
+#### 40-pin Diagram
+
+AM27C400, MX27C4100.
+
+
+                        ┌───∪───┐
+                  A17 ━━│1    40│━━ A8
+                   A7 ━━│2    39│━━ A9
+                   A6 ━━│3    38│━━ A10
+                   A5 ━━│4    37│━━ A11
+                   A4 ━━│5    36│━━ A12
+                   A3 ━━│6    35│━━ A13
+                   A2 ━━│7    34│━━ A14
+                   A1 ━━│8    33│━━ A15
+                   A0 ━━│9    32│━━ A16
+             /PGM|/CE ━━│10   31│━━ /BYTE|VPP
+                  GND ━━│11   30│━━ GND
+                  /OE ━━│12   29│━━ D15/A1
+                   D0 ━━│13   28│━━ D7
+                   D8 ━━│14   27│━━ D14
+                   D1 ━━│15   26│━━ D6
+                   D9 ━━│16   25│━━ D13
+                   D2 ━━│17   24│━━ D5
+                  D10 ━━│18   23│━━ D12
+                   D3 ━━│19   22│━━ D4
+                  D11 ━━│20   21│━━ Vcc
+                        └───────┘
 
 
 ROM and RAM Chip Data
