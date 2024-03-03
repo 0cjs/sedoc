@@ -29,7 +29,7 @@ Table:
     LDA a16    STA a16    LHLD a16     SHLD a16    │   IN  OUT   p8 (port)
     3A₁₃       32₁₃       2A₁₆         22₁₆        │   DB   D3   ₁₀
 
-                    B   D   H   SP
+                    BC  DE  HL  SP
     LXI  rp,d16     01  11  21  31  ₁₀      ld rr,d16
     DAD  rp         09  19  29  39  ₁₀      add hl,rr
     INX  rp         03  13  23  33   ₅      inc rr
