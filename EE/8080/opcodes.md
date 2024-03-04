@@ -99,7 +99,8 @@ Table:
         ld r,a  4F      ld a,r  5F      # refresh register
 
         neg  44 (54,64,74,4C,5C,6C,7C)  # A ← 0 - A
-        rld  6F                         # rotate (HL),A pair left 1 nybble
+        rld  6F₁₈                       # rotate A₃₋₀:(HL)₇₋₀ left 1 nybble
+        rrd  67₁₈                       # rotate A₃₋₀:(HL)₇₋₀ right 1 nybble
                         bc  de  hl  sp
         ld  rr,(nn)     4B  5B  6B  7B
         ld (nn),rr      52  53  54  55
