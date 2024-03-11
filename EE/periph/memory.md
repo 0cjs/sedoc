@@ -156,6 +156,14 @@ ROM and RAM Chip Data
 _DIPnn_ is 0.3" wide dual-inline package, _nn_ pins;
 _WDIPnn_ is = 0.6" wide.
 
+### Mask ROM
+
+Mask ROMs often can have enables inverted from the standard as part of the
+mask programming process.
+
+28-pin:
+- 32K×8 [MB83256][] (Fujitsu). Pins: 1:NC, 25:A14 (27C256-compatible)
+
 ### 25xx EPROM
 
 TI [TMS 2532]
@@ -315,6 +323,10 @@ the ROM via a _read,_ since /WR is being toggled by A14 anyway?
 [byte-8610-106]: https://archive.org/details/byte-magazine-1986-10/page/n117/mode/1up
 [mess2364]: http://mess.redump.net/dumping/2364_mask_roms
 
+<!-- Mask ROM Data -->
+[MB83256]: https://archive.org/details/bitsavers_fujitsudatmoriesDatabook_60280304/page/n813/mode/1up
+
+<!-- EPROM and RAM Chip Data -->
 [27C256]: http://esd.cs.ucr.edu/webres/27c256.pdf
 [AT28C16A]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0001h.pdf
 [AT28C256]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf
