@@ -78,6 +78,62 @@ Commonly-used functions:
   setting `.SHELLSTATUS` var to exit code. Inefficient with `=`
   because of delayed evaluation, but `!=` does immediate evaluation.
 
+String functions (complete list):
+- `$(subst from,to,text)`: substitution of constant values only.
+- `$(patsubst pattern,replacement,text)`, `$(var:pattern=replacement)`: For
+  each whitespace-separated word word in _text,_ replace any characters
+  matching _pattern_ with _replacement._ The second form returns a modified
+  version of the text in a the given variable. The only pattern is `%`,
+  matching anything; `%` in _replacement_ substitutes the matched text.
+- `$(strip string)`: Remove all leading/trailing whitespace from _string_
+  and also collapse any internal whitespace sequences to a single space.
+  One use is to prevent problems as `if neq "$(strip $(needs_made))" ""`.
+- `$(findstring find,in)`
+- `$(filter pattern…,text)`: Return all words in _text_ that match any of the _pattern_ words.
+- `$(filter-out pattern…,text)`: Return all words in _text_ that do not match any of the _pattern_ words.
+- `$(sort list)`
+- `$(word n,txt)`: Return the _n_ th word of _text;_ 1-based index.
+- `$(wordlist s,e,text)`
+- `$(words text)`: Return the number of words in _text._
+- `$(firstword names…)`
+- `$(lastword names…)`
+
+Filename functions (complete list):
+- `$(dir names…)`
+- `$(notdir names…)`
+- `$(suffix names…)`
+- `$(basename names…)`
+- `$(addsuffix suffix,names…)`
+- `$(addprefix prefix,names…)`
+- `$(join list1,list2)`: concatenates two lists word by word pairwise.
+- `$(wildcard pattern)`: space-separated list of names of existing files
+  matching shell glob _pattern._
+- `$(realpath names…)`: cannonical path for each _name_ (no `.`/`..` or
+  repeated `/` and symlinks resolved). Each _name_ must exist.
+- `$(abspath names…)`: cannonical path for each _name_ (no `.`/`..` or
+  repeated `/`). Symlinks not resolved; each _name_ need not exist.
+
+Conditional functions (complete list):
+- `$(if cond,then-part[,else-part])`
+- `$(or cond1[,cond2…])`
+- `$(and cond1[,cond2…])`
+- `$(intcmp lhs,rhs[,lt-part[,eq-part[,gt-part])`: integer conmparison.
+
+Other functions:
+- `$(let ...)`
+- `$(foreach ...)`
+- `$(file ...)`: read/write a file.
+- `$(call ...)`: creates new parameterized functions.
+- `$(value var)`
+- `$(eval ...)`
+- `$(origin var)`: indicate how variable named _var_ was defined.
+- `$(flavor var)`: indicate flavour of variable named _var_ (`undefined`,
+  `recursive`, `simple`).
+- `$(error text…)`
+- `$(warning text…)`
+- `$(info text…)`
+- `$(guile text)`: Pass _text_ to GNU Guile langauge, if compiled in.
+  (`.FEATURES` contains "guile" if available.)
 
 Rules
 -----
