@@ -29,6 +29,10 @@ Color burst: 8-10 cycles (2.2 - 2.8 μs). Active video: 52.6 μs.
 answers there have a lot of other good information on timings, especially
 for signals sampled by LCD displays.)
 
+Further NTSC and PAL timings (especially including vsync equalising pulses)
+can be found at [Characteristics of B,G/PAL and M/NTSC television
+systems][kolumbus].
+
 Color will have a 3.579545 Mhz signal overlaid on top of the lumanance
 signal; the phase determins the huge and the amplitude determines the
 saturation (see ["NTSC Color Encoding"](ntsc-color-encoding) below). A
@@ -518,6 +522,7 @@ Sample circuits and programming:
 [hdr csync1]: https://www.hdretrovision.com/blog/2018/10/22/engineering-csync-part-1-setting-the-stage
 [hdr csync2]: https://www.hdretrovision.com/blog/2019/10/10/engineering-csync-part-2-falling-short
 [hdr jit]: https://www.hdretrovision.com/jitter
+[kolumbus]: https://web.archive.org/web/20190830211910/http://www.kolumbus.fi/pami1/video/pal_ntsc.html
 [man734]: https://pdfserv.maximintegrated.com/en/an/AN734.pdf
 [mc zx81]: https://www.modularcircuits.com/blog/projects/the-dinosaur-computer/
 [pc6001vid4]: http://p6ers.net/mm/pc-6001/dev/screen4color/
