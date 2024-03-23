@@ -81,9 +81,11 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1977-08 h TRS-80 Mod1 press conference
     1977-09 H TRS-80 Mod1 ships, $600 (4K), +12K $289
     1977-10 H PET 2001 ships, $600 (4K) $800 (8K)
+    1977-11 H NEC TK-80BS (5K RAM/8K ROM, disp/kbd, Lv.I BASIC 4K) ¥128,000
 
     1978-06 H Apple Disk II released ($600)
     1978-06 C Intel 8086 ships
+    1978-09 H NEC TK-80BS Level II BASIC 8K (incompatble, free to 4K owners)
     1978-09 H Hitachi Basic Master MB-6880 (MC6800) ships
     1978-09 h Toshiba JW-10 announced (first ja wapro)
     1978-12 H Sharp MZ-80K semi-kit ships
