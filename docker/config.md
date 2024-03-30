@@ -8,6 +8,26 @@ Docker Installation and Configuration
 Install Docker
 --------------
 
+If you don't need the latest version of Docker, the system packages that
+come with your Linux distribution will generally be fine.
+
+On Debian-derived systems (Debian, Ubuntu, etc.) this package is named
+`docker.io`. (Do not confuse this with `docker`; that package is a
+compatibility shim for `wmdocker`, a completely different thing.)
+
+
+Install Docker from Docker instead of OS Distribution
+-----------------------------------------------------
+
+#### Versions
+
+The versioning system seems somewhat confusing; their web site talks only
+about "Docker Desktop," which is (I suppose) one of the Docker versions
+below plus a GUI front-end for management and, for Windows and Mac, a VM
+setup for Linux in which to run Docker. In this file we don't cover Docker
+Desktop but only the Docker application (server and command line tool)
+itself.
+
 | Edition                 | Channel | Releases    | Support
 |:------------------------|:--------|:------------|:--------------------
 | Enterprise Edition (EE) | -       | Monthly     | stops at next rel.
