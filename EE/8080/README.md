@@ -73,6 +73,8 @@ Summary: status register bit, 8080 name, Z80 name (if different) and function.
 - `AC` (`H`) and `N` not directly testable; used by `DAA`. decimal adjust.
 - 8080 logcal AND instructions (ANA/ANI) set AC to the logical OR of bit 3
   of the two operands. 8085 logical AND sets the AC flag.
+- 8080 SUB/CMP/DEC invert the source operand, add, set AC flag from that
+  intermediate result, then increment to get final result. [[PCx80]]
 - Only Z80 has `N` and adjusts properly after a subtraction.
 
 On the 8080/8085, `P` is always set to the parity of the result (odd/even)
@@ -309,6 +311,7 @@ CPU/Simulator Testers:
 
 
 <!-------------------------------------------------------------------->
+[PCx80]: https://www.pcjs.org/machines/pcx80/exerciser/
 [`/dunfield/r`]: http://www.classiccmp.org/dunfield/r/
 [csum-5]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n58/mode/1up?view=theater
 [csum-8251]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n202/mode/1up?view=theater
