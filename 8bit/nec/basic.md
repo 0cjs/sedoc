@@ -7,8 +7,7 @@ See also:
 - [`programs`](programs.md) for sample programs
 
 BASIC Langauge References:
-- \[basic-80mkII] [_PC-8001mkII N₈₀-BASIC Reference Manual_][basic-80mkII]
-  NEC, 1983.
+- \[um01ii] [_PC-8001mkII N₈₀-BASIC Reference Manual_][um01ii] NEC, 1983.
 - \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE MANUAL][mr],
   PC-8801MR-RM.
 
@@ -30,7 +29,7 @@ N-BASIC (PC-8001 BASIC), N80-BASIC, N88-BASIC and Disk BASIC.
 - `STRING$(n,c)`: _n_ copies of character code _c_.
 - `SWAP`: Exchange values of two vars.
 
-Terminal Mode ([[um01b p51]]):
+Terminal Mode ([[um01b p51]], [[um01ii p9-1]]):
 - `TERM bpdl`ⁿ⁰: (or `b,p,d,l`?) Act as terminal via (RS-232) serial interface.
   - `b` bits: `A`=8 bit  `J`=7 bit
   - `p` parity: `0`=none  `1`=odd  `2`=even
@@ -182,7 +181,7 @@ a routine that prints a "Disk BASIC Feature" error.
 
 `CMD` was incuded with these as a prefix for unanticipated commands. We need
 a PC-8001 Disk BASIC reference manual to determine what it was used for there,
-but the [PC-8001mkII N₈₀-BASIC Reference Manual][basic-80mkII] (released
+but the [PC-8001mkII N₈₀-BASIC Reference Manual][um01ii] (released
 four years later in 1983) lists the following as using the `CMD` prefix:
 
     BLOAD   CLS     COPY    LINE    PRESET  SCREEN
@@ -219,10 +218,11 @@ Reserved word map: [[hb68]] pp.96-97.
 
 <!-------------------------------------------------------------------->
 [asahi]: https://archive.org/details/PC8001600100160011982
-[basic-80mkII]: https://archive.org/details/PC-8001mk-II-n-80-basic-reference-manual
 [byte]: https://tech-insider.org/personal-computers/research/acrobat/8101.pdf
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [kuniser]: https://kuninet.org/2020/01/25/pc-8001-%e5%a4%96%e4%bb%98%e3%81%91232c%e3%83%9c%e3%83%bc%e3%83%89/
 [mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
 [techknow80]: https://archive.org/details/pctechknow8000
 [um01b p51]: https://archive.org/details/pc-8001b-micro-computer-users-manual-nec-en-1981/page/n56/mode/1up?view=theater
+[um01ii]: https://archive.org/details/PC-8001mk-II-n-80-basic-reference-manual
+[um01ii p9-1]: https://archive.org/details/PC8001mk-II-users-manual/page/n169/mode/1up?view=theater
