@@ -7,6 +7,7 @@ tmate
 - document settings stuff in sedoc
 - update ~/.tmux.conf for esc timeout
 - ctrl-P thing
+- Document [Control Mode][cmode]
 
 ### General Notes
 
@@ -98,4 +99,5 @@ Tmate uses the xterm title as the initial status bar title.
 
 
 <!-------------------------------------------------------------------->
+[cmode]: https://github.com/tmux/tmux/wiki/Control-Mode
 [delay]: https://www.reddit.com/r/vim/comments/40257u/delay_on_esc_with_tmux_and_vim/
