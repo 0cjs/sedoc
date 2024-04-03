@@ -293,10 +293,18 @@ Development:
   linker, libraries, simulator/debugger, disassembler, and more. Targets
   include TRS-80, PC-8801, Sharp MZ, Kyotronic 85, Pasopia 7, MSX,
   ZX80/81/Spectrum, Robotron KC 87, RC2014 (CP/M, HBIOS, RC2014), etc.
-
-Testing:
-- [8080/8085 CPU Exerciser][85exc] for testing CPU simulators.
 - `z80-ticks` from z88dk above: determines timing of routines.
+
+CPU/Simulator Testers:
+- [8080/8085 CPU Exerciser][bart] by Ian Bartholomew (2009-02). Ports of
+  Frank D. Cringle's `prelim.z80` and `zexlax.z80` to 8080 and 8085.
+  [`8080PRE.MAC`] checks that enough functionality works to run the main
+  exerciser. [`8080EXER.MAC`], [`8085EXER.MAC`] are mainly test vectors and
+  a framework to run them. Getting on a million CPU cycles for all vectors.
+- [Microcosm Associates 8080/8085 CPU Diagnostic][microcosm] (1980).
+  Originally designed to check an Altair 8800. (Referenced at [[so 37282696]].)
+- Diagnostics II, version 1.2, CPU test by Supersoft Associates. Source not
+  available, but a GitHub repo has [`CPUTEST.COM`].
 
 
 
@@ -307,7 +315,15 @@ Testing:
 [csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
 [dunfield]: http://www.classiccmp.org/dunfield/
 
-<-- Tools -->
-[85exc]: https://web.archive.org/web/20151108135453/http://www.idb.me.uk/sunhillow/8080.html
+<-- Tools: Development -->
 [z80dasm]: https://web.archive.org/web/20230925185822/https://www.tablix.org/~avian/blog/articles/z80dasm/
 [z88dk]: https://github.com/z88dk/z88dk
+
+<-- Tools: CPU/Simulator Testers -->
+[`8080EXER.MAC`]: https://web.archive.org/web/20150723091056/http://www.idb.me.uk/sunhillow/files/8080EXER.MAC
+[`8080PRE.MAC`]: https://web.archive.org/web/20150723091101/http://www.idb.me.uk/sunhillow/files/8080PRE.MAC
+[`8085EXER.MAC`]: https://web.archive.org/web/20150723081847/http://www.idb.me.uk/sunhillow/files/8085EXER.MAC
+[`CPUTEST.COM`]: https://github.com/JALsnipe/i8080-core/blob/master/CPUTEST.COM
+[bart]: https://web.archive.org/web/20141129075303/www.idb.me.uk/sunhillow/8080.html
+[microcosm]: https://github.com/begoon/i8080-core/blob/master/asm/TEST.ASM
+[so 37282696]: https://stackoverflow.com/a/37282696/107294
