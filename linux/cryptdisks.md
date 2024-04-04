@@ -1,6 +1,11 @@
 cryptdisks, LUKS, etc.
 ======================
 
+Contents:
+- Volume UUIDs
+- /etc/crypttab
+- LUKS Commands
+- Secure Erase
 
 #### Manpages
 
@@ -98,3 +103,30 @@ Commands (arguments to `cryptsetup`):
   Without `-q` will prompt for a remaining passphrase first.
 * `luksErase <device>`  
    Wipes LUKS header making device permanently inaccessible.
+
+
+Secure Erase
+------------
+
+References:
+- tinyapps.org/docs, [ATA Secure Erase (SE) and hdparm][ta-se]
+- thomas-krenn.com, [Perform an SSD Secure Erase][tk-se]
+
+`hdparm -I /dev/sdX` gives information on the current security settings.
+
+Lenovo T510 BIOS, and probably many others will set the SSD to 'frozen'
+mode. Suspend (sleep mode) the system and bring it back, or hot-swap the
+drive, in order to unfreeze it. (`hdparm -I` will say `not frozen` in the
+'Security:' section near the end of its output.)
+
+You must set a password to use secure erase if `hdparm -I` says security is
+'not enabled': 
+
+    hdparm --user-master u --security-set-pass p /dev/sdX
+
+Erase with:
+
+    hdparm --user-master u --security-erase p /dev/sdx
+
+[ta-se]: https://tinyapps.org/docs/wipe_drives_hdparm.html
+[tk-se]: https://www.thomas-krenn.com/en/wiki/Perform_a_SSD_Secure_Erase
