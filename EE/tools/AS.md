@@ -404,6 +404,22 @@ Intel-style platforms (incuding Z80) support:
   ("Reserve Memory Bytes")
 - Since v1.42 Bld 234 (2022-12-21), DB/DW/DS/DDB aliases allowed
 
+### Macros (§3.4)
+
+    name    [MACRO|IRP|IRPC|REPT] [arg[,arg...]]
+            (body)
+            ENDM
+    name    FUNCTION arg[,arg...],expression
+
+`IRP` repeats the body for each argument. `IRPC name,str` repeats the body
+assigning each char in _str_ to _name_ for each repetition. `REPT n`
+repeats the body _n_ times.
+
+Use `_` between arg names to concatenate them as `arg1_arg2`.
+
+Labels in macros are local to the macro unless `GLOBALSYMBOLS` was used
+in the macro's definition.
+
 ### Conditional Assembly (§3.6)
 
 _EXPR_ below evaluates to false for any 0 result or true for any non-0
