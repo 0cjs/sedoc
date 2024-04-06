@@ -14,8 +14,8 @@ Table:
     NOP    HLT      EI   DI      STC   CMC
     00₄    76₇      FB₄  F3₄     37₄   3F₄
 
-    RST0 RST1 RST2 RST3 RST4 RST5 RST6 RST7
-     C7   CF   D7   DF   E7   EF   F7   FF    ₁₁
+    RST  00 08 10 18 20 28 30 38    rst nn
+         C7 CF D7 DF E7 EF F7 FF    ₁₁
 
                     xC xNC  xZ xNZ  xP  xM  xPE xPO
     JMP  a16   C3   DA  D2  CA  C2  F2  FA  EA  E2    ₁₀        jp   c,a16
