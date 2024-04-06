@@ -20,6 +20,14 @@ works.
 - `Ctrl Alt Del`: Windows Security (cannot be intercepted by programs).
   Secure Attention when that feature is enabled.
 
+### Windows User Spelling Dictionary
+
+Many programs use a Windows-supplied service for spellcheck. The user
+dictionaries containing words you've added while using tht are at:
+
+    %AppData%\Microsoft\Spelling\
+    C:\User\cjs\%AppData%\Roaming\Microsoft\Spelling\
+
 ### Lock Icon
 
 Create a shortcut to `rundll32.exe user32.dll,LockWorkStation`.
