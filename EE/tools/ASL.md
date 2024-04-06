@@ -415,6 +415,17 @@ Intel-style platforms (incuding Z80) support:
 assigning each char in _str_ to _name_ for each repetition. `REPT n`
 repeats the body _n_ times.
 
+Special parameters are:
+- `{EXPAND}`,`{NOEXPAND}`
+- `{EXPIF}`,`{NOEXPIF}`
+- `{EXPMACRO}`,`{NOEXPMACRO}`
+- `{EXPREST}`,`{NOEXPREST}`
+- `{PUBLIC[:section_name]}`
+- `{GLOBAL[:section_name]}`
+- `{EXPORT}`,`{NOEXPORT}`
+- `{INTLABEL}`,`{NOINTLABEL}`
+- `{GLOBALSYMBOLS}`,`{NOGLOBALSYMBOLS}`
+
 Use `_` between arg names to concatenate them as `arg1_arg2`.
 
 Labels in macros are local to the macro unless `GLOBALSYMBOLS` was used
