@@ -1,8 +1,9 @@
 PC-8001/8801 Emulators
 ======================
 
-- [XM8]: Windows only? Several models.
-- [Common Source Code Project]
+- ePC-8801/mkII/MA, ePC-8001/mkII/SR from the 
+  [Common Source Code Project][cscp]. These are Win32 only.
+- [XM8]: Derived from ePC-8x01 above. Windows/Linux/MacOS/Android.
 - MAME
 
 MAME
@@ -26,3 +27,4 @@ https://docs.mamedev.org/usingmame/assetsearch.html
 
 <!-------------------------------------------------------------------->
 [XM8]: http://retropc.net/pi/xm8/
+[cscp]: http://takeda-toshiya.my.coocan.jp/
