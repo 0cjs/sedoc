@@ -2,6 +2,25 @@ PC-8001/8801 Emulators
 ======================
 
 - [XM8]: Windows only? Several models.
+- [Common Source Code Project]
+- MAME
+
+MAME
+----
+
+Starting `mame` will bring up a selection window where you can search for
+PC-8001 and get a start menu for it. Without proper configuration of ROMs
+it will just give you a message that they are missing.
+
+- `mame -ll` to list all "game" (system emulation) names.
+- `mame -romident DIR`
+- `mame -lr pc8001` to list internal hashes it wants for a system.
+  (But it still says `BAD` and `BAD_DUMP` for the system ROMs!)
+
+Options:
+- `-rp PATHNAME`: list of paths to find ROM or HDD images.
+
+https://docs.mamedev.org/usingmame/assetsearch.html
 
 
 
