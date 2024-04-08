@@ -1,7 +1,8 @@
 Video on 8-bit Systems
 ======================
 
-For connector information, see [conn/video](conn/video.md).
+- For connector information, see [conn/video](conn/video.md).
+- [List of modern monitors that support 15 kHz analog RGB signals][lcd15]
 
 Video output is generally vertical sync for ~50-60 Hz frames or fields (two
 interlaced fields per frame), horizontal synchronization signals for 260 or
@@ -474,6 +475,7 @@ Sample circuits and programming:
 
 
 <!-------------------------------------------------------------------->
+[lcd15]: http://15khz.wikidot.com/
 
 [Holden2016]: https://www.worldphaco.com/uploads/FITTING_AN_EGA_CARD_TO_AN_IBM_5155.pdf
 [IBM 5154]: https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/897/ENUS184-113/index.html
