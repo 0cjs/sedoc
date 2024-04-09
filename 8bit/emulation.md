@@ -5,6 +5,12 @@ This file contains generic information; for specific systems also see
 `*/emulators.md`. ( [cbm](./cbm/emulators.md), [nec](./nec/emulation.md),
 [trs-80](./trs-80/emulation.md), [msx](./msx/emulation.md).)
 
+References:
+-  Takeda Toshiya's [Common Source Code Project][cssp] contains many
+   emulators for Japanese machines. His [国産マシン エミュレータリスト][tt]
+   (Domestic machines emulators list) lists a fuller set of Japanese
+   machines and emulators.
+
 
 MAME
 ----
@@ -33,5 +39,8 @@ Source at [[mame-gh]]. Debian requires the following to build: [[mame-comp]]
 
 
 <!-------------------------------------------------------------------->
+[cssp]: http://takeda-toshiya.my.coocan.jp/common/index.html
+[tt]: http://takeda-toshiya.my.coocan.jp/list.html
+
 [mame-comp]: https://docs.mamedev.org/initialsetup/compilingmame.html#debian-and-ubuntu-including-raspberry-pi-and-odroid-devices
 [mame-gh]: https://github.com/mamedev/mame
