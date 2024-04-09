@@ -12,6 +12,12 @@ References:
    machines and emulators.
 
 
+ROM Sources
+-----------
+
+- archive.org, [[mame-merged]]
+
+
 MAME
 ----
 
@@ -41,6 +47,8 @@ Source at [[mame-gh]]. Debian requires the following to build: [[mame-comp]]
 <!-------------------------------------------------------------------->
 [cssp]: http://takeda-toshiya.my.coocan.jp/common/index.html
 [tt]: http://takeda-toshiya.my.coocan.jp/list.html
+
+[mame-merged]: https://archive.org/download/mame-merged/mame-merged/
 
 [mame-comp]: https://docs.mamedev.org/initialsetup/compilingmame.html#debian-and-ubuntu-including-raspberry-pi-and-odroid-devices
 [mame-gh]: https://github.com/mamedev/mame
