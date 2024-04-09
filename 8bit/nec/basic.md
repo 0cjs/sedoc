@@ -8,14 +8,15 @@ See also:
 
 BASIC Langauge References:
 - \[um01ii] [_PC-8001mkII N₈₀-BASIC Reference Manual_][um01ii] NEC, 1983.
-- \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE MANUAL][mr],
-  PC-8801MR-RM.
+- \[br01b] [PC-8001B N-Basic Reference Manual][br01b] (PC-8102B/PTS-069), 1981.
+- \[mr] [NEC PC-8801mkIIMR N88-BASIC / N88-日本語BASIC REFERENCE
+  MANUAL][mr], PC-8801MR-RM.
 
 
 Usage
 -----
 
-`ESC` pauses listings, program operation, etc. (Works in monitor, too.)
+See [`rom`](rom.md) for BIOS control codes and editing keys.
 
 Commands below may be marked ⁿ/⁰/⁸/ᵈ for
 N-BASIC (PC-8001 BASIC), N80-BASIC, N88-BASIC and Disk BASIC.
@@ -223,6 +224,7 @@ Reserved word map: [[hb68]] pp.96-97.
 [kuniser]: https://kuninet.org/2020/01/25/pc-8001-%e5%a4%96%e4%bb%98%e3%81%91232c%e3%83%9c%e3%83%bc%e3%83%89/
 [mr]: https://archive.org/stream/NECPC8801mkIIMRN88BASICN88BASICREFERENCEMANUAL1986L#mode/1up
 [techknow80]: https://archive.org/details/pctechknow8000
+[br01b]: https://archive.org/details/pc-8001b-n-basic-reference-manual-nec-en-1981
 [um01b p51]: https://archive.org/details/pc-8001b-micro-computer-users-manual-nec-en-1981/page/n56/mode/1up?view=theater
 [um01ii]: https://archive.org/details/PC-8001mk-II-n-80-basic-reference-manual
 [um01ii p9-1]: https://archive.org/details/PC8001mk-II-users-manual/page/n169/mode/1up?view=theater

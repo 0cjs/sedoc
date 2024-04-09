@@ -48,6 +48,32 @@ indicates that it's been verified on one of my machines.
     PC-8801mkII MA  1987                    1.9     2.3
 
 
+Keyboard, Control Characters and Editing
+----------------------------------------
+
+BIOS control codes/editing keys:
+
+    ESC Pause listing/program operation/etc.
+    ^B  Move cursor to head of preceding item (roughly, word)
+    ^B  (in TERM/MON/etc.) Return to BASIC
+    ^C  Terminate input and return control to direct mode
+    ^E  Delete to EOL
+    ^G  Sound buzzer
+    ^H  Destructive backspace
+    ^I  Tab
+    ^J  Split line
+    ^K  Cursor to home (upper left corner of screen)
+    ^L  Clear screen
+    ^N  Move cursor to head of next item (roughly, word)
+    ^R  Insert space char
+    $1C →
+    $1D ←
+    $1E ↑
+    $1F ↓
+
+[[br01b] p.1-2 P.12]
+
+
 Technical Information
 ---------------------
 
@@ -69,6 +95,9 @@ ROM/Machine-level References:
   - 3: ROM subroutine use and cautions.
   - 4: Utility routines (type-in)
   - 5: Appendicies.
+
+Other references:
+- \[br01b] [PC-8001B N-Basic Reference Manual][br01b] (PC-8102B/PTS-069), 1981.
 
 
 Extension ROMs
@@ -100,3 +129,5 @@ various magic numbers:
 [techknow80]: https://archive.org/details/pctechknow8000
 [techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
 [techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
+
+[br01b]: https://archive.org/details/pc-8001b-n-basic-reference-manual-nec-en-1981
