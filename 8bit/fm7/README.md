@@ -5,7 +5,8 @@ Documentation
 -------------
 
 - [Retro PC Gallery (by はせりん)][haserin] has lots of great
-  FM-8/FM-7/FM77 info: hardware, screenshots, software.
+  FM-8/FM-7/FM77 info: hardware, screenshots, software, including
+  [CPU cards][has-cpu].
 
 
 Expansion Connectors
@@ -60,6 +61,7 @@ the data and status registers are $FD06 and $FD07.
 
 <!-------------------------------------------------------------------->
 [haserin]: http://haserin09.la.coocan.jp/index.html
+[has-cpu]: http://haserin09.la.coocan.jp/cpucard.html
 
 [FM-7_SD]: https://github.com/yanataka60/FM-7_SD
 [fcn360]: https://www.fujitsu.com/downloads/MICRO/fcl/connectors/fcn-360.pdf
