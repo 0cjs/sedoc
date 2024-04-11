@@ -44,6 +44,12 @@ The internal CCP has a built-in `exit` command, otherwise use `EXIT.COM`,
 distributed with the emulator in `DISK/A.ZIP` (along with many other tools
 and sources).
 
+You can have CP/M 2.2 auto-run programs on boot by placing a `$$$.SUB` file
+on your `A` drive. This contains a set of 128-byte records in reverse order
+of execution; each record is a byte with the length of the command, the
+command itself, and padded out to the end of the 128-byte record.
+[[rcse 26080]]
+
 
 MAME
 ----
@@ -76,6 +82,7 @@ Source at [[mame-gh]]. Debian requires the following to build: [[mame-comp]]
 [tt]: http://takeda-toshiya.my.coocan.jp/list.html
 
 [RunCPM]: https://github.com/MockbaTheBorg/RunCPM
+[rcse 26080]: https://retrocomputing.stackexchange.com/a/26080/7208
 [runcpm 189]: https://github.com/MockbaTheBorg/RunCPM/issues/189
 
 [mame-merged]: https://archive.org/download/mame-merged/mame-merged/
