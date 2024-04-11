@@ -18,6 +18,33 @@ ROM Sources
 - archive.org, [[mame-merged]]
 
 
+RunCPM
+------
+
+[RunCPM] emulates a Z80 and CPM 2.2 (or runs real CP/M 2.2) that directly
+uses the host filesystem, with options to support TPAs about as large as
+possible.
+
+It runs on Posix, MacOS, Windows, large Arduino systems, and some other
+microcontroller systems. The API is a bit clunky, and different versions
+(built-in emulated CCP vs. various external CCPs, etc.) require different
+builds. (This is unlikely to change; see [issue #189][runcpm 189].)
+
+The only dependency is the ncurses library (`libncurses-dev` on Debian).
+Build with `(cd RunCPM && make posix build)` (or `rebuild` if any options
+have changed).
+
+Directories for the drives _must_ be under the directory in which the
+executable resides (no other options are supported) and named
+_drive-letter_/_user-area-number,_ e.g., `A/0/`. With the internal BIOS,
+BDOS and CCP no files are required to boot, but the A drive user area 0
+must exist.
+
+The internal CCP has a built-in `exit` command, otherwise use `EXIT.COM`,
+distributed with the emulator in `DISK/A.ZIP` (along with many other tools
+and sources).
+
+
 MAME
 ----
 
@@ -47,6 +74,9 @@ Source at [[mame-gh]]. Debian requires the following to build: [[mame-comp]]
 <!-------------------------------------------------------------------->
 [cssp]: http://takeda-toshiya.my.coocan.jp/common/index.html
 [tt]: http://takeda-toshiya.my.coocan.jp/list.html
+
+[RunCPM]: https://github.com/MockbaTheBorg/RunCPM
+[runcpm 189]: https://github.com/MockbaTheBorg/RunCPM/issues/189
 
 [mame-merged]: https://archive.org/download/mame-merged/mame-merged/
 
