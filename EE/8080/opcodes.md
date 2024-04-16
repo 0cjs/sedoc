@@ -76,7 +76,7 @@ Table:
      C6   CE   D6   DE   E6   EE   F6   FE    ₇         xor/or/cp a,d8
 
     (copy to carry) │ (through carry) │ 1's cpl │
-       rcla  rrca   │   rla  rra      │   cpl   │
+       rlca  rrca   │   rla  rra      │   cpl   │
        RLC   RRC    │   RAL  RAR      │   CMA   │   DAA
         07    0F    │    17   1F  ₄   │   2F₄   │   27₄
 
