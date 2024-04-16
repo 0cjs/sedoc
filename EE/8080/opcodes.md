@@ -17,11 +17,11 @@ Table:
     RST  00 08 10 18 20 28 30 38    rst nn
          C7 CF D7 DF E7 EF F7 FF    ₁₁
 
-                    xC xNC  xZ xNZ  xP  xM  xPE xPO
-    JMP  a16   C3   DA  D2  CA  C2  F2  FA  EA  E2    ₁₀        jp   c,a16
-    CALL a16   CD   DC  D4  CC  C4  F4  FC  EC  E4    ₁₁/₁₇     call c,a16
-    RET        C9   D8  D0  C8  C0  F0  F8  E8  E0    ₅/₁₁      ret  c,a16
-    PCHL       E9₅
+                    nc   c  nz   z   p   m  po  pe
+    JMP  a16   C3   D2  DA  C2  CA  F2  FA  E2  EA    ₁₀        jp   c,a16
+    CALL a16   CD   D4  DC  C4  CC  F4  FC  E4  EC    ₁₁/₁₇     call c,a16
+    RET        C9   D0  D8  C0  C8  F0  F8  E0  E8    ₅/₁₁      ret  c,a16
+    PCHL       E9₅                                              jp   (hl)
 
     ──────────────────────────────────────────────────────────────────────
 
