@@ -2,8 +2,46 @@ Apple Macintosh
 ===============
 
 Mac Classic:
-- Left side front button is reset; rear button is NMI.
+- Left side front button is reset; rear button is NMI, which brings up
+  [MicroBug].
 - Command-Option-X-O boots ROM MacOS 6.x (if held down early enough)
+
+
+MicroBug
+--------
+
+Numbers are entered in hex. All expressions have an inherent size of byte,
+word (16 bits) or long (32 bits) based on the number of hex digits. `.`,
+registers, etc. are 4 bytes. Bad expressions do not produce an error but
+instead do random stuff.Parsing is extremely "forgiving," 
+
+- `.`: Yields "dot address." Initially 0; set by `DM` and `SM`
+- `@<expr>`: Yields value of memory at _expr._
+- `RAx`: Yields contents of address register _Ax._
+- `RDx`: Yields contents of data register _Dx._
+- `PC`: Yields contents of program counter.
+- `- <expr>`: Yields _expr_ negated.
+- `<expr> + <expr>`: Sum.
+- `<expr> - <expr>`: Difference.
+
+Commands:
+- `DM [addr]`: Dump memory and set `.` to _addr._ Defaults to one past last
+  location dumped. Typing Enter after continues dump.
+- `SM addr expr...`: Set memory, set `.` to _addr_ and display dump of
+  entered data. _exprs_ may be byte, word or long. Typing Enter after
+  continues dump.
+- `G [addr]`: Start execution at _addr._ Defaults to where MicroBug was
+  entered (i.e., resume program).
+- `TD`: Display all registers ("total display").
+- `Ax|Dx|PC|SR [expr]`. Display or set register.
+
+Tips and tricks:
+- Force quit current process with `SM 0 A9F4G 0`. (Places an `_ExitToShell`
+  trap at 0 and continues at that trap.)
+- If system hangs in debugger, try turnning off your modem.
+- Use MacsBug on a second Mac (running similar code?) to be able to
+  disassemble code, etc.
+
 
 Floppy Drives
 -------------
@@ -40,3 +78,4 @@ Videos:
 [jdw-1440]: https://www.youtube.com/watch?v=ia513LCN7jY
 [noc]: https://www.youtube.com/watch?v=1yH9OF92fE8
 [silicone grease]: https://en.wikipedia.org/wiki/Silicone_grease
+[MicroBug]: https://developer.apple.com/library/archive/technotes/tn/tn1136.html
