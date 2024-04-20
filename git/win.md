@@ -55,12 +55,14 @@ that should be deselected/disabled.
 File Modes
 ----------
 
-Some Windows filesystems (particularly FAT ones) don't support setting an
-executable bit, causing Git has recorded as executable to be marked as
-changed. Set `git config --local core.filemode false` to suppress checking
-of the file mode for that repo. Git probes the filesystem when a repo is
-cloned and sets this automatically if the filesystem doesn't support
-executable bits, but shared drives.
+MS-DOS and Windows filesystems (including NTFS) do not support setting an
+executable bit. Git handles this automatically on clone by setting the repo
+local config (`.git/config`) to include `core.filemode = false`,. which
+suppresses checking of the executable bit in the working copy.
+
+But if the repo was cloned on Unix and then shared with a Windows machine
+this will not be set and the execute bit will appear to be reset in the
+working copy. Fix this with `git config --local core.filemode false`.
 
 To set the executable bit on a new file when committing on such a system,
 use `git add --chmod=+x`. (≤2.10 use `git update-index --chmod=+x` after
