@@ -3,6 +3,8 @@ TRS-80 Model I Family
 
 References:
 - classiccmp.org [TRS-80 Model I Internals][ccmp-1-int]
+- Console5 Tech Wiki, [TRS80 Cap Lists][c5-cap]. Lists capacitors
+  for a dozen different TRS-80 models.
 
 
 Case Screws
@@ -71,4 +73,5 @@ See [classiccmp.org page][ccmp-1-int].
 
 
 <!-------------------------------------------------------------------->
+[c5-cap]: https://wiki.console5.com/wiki/TRS80
 [ccmp-1-int]: http://www.classiccmp.org/cpmarchives/trs80/mirrors/kjsl/www.kjsl.com/trs80/mod1intern.html
