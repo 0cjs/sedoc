@@ -96,6 +96,8 @@ Common options:
 * `--key-slot <0-7>`  
 
 Commands (arguments to `cryptsetup`):
+* `luksDump <device>`
+* `luksFormat <device> [<keyfile>]`
 * `luksAddKey <device> [<new-keyfile>]`
 * `luksRemoveKey <device> [<old-keyfile>]`
 * `luksChangeKey <device> [<new-keyfile>]`
