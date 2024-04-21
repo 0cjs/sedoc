@@ -69,7 +69,10 @@ Summary: status register bit, 8080 name, Z80 name (if different) and function.
      1   -   N    8080: unused; Z80: add/subtract (most recent operation)
      0   C        carry/borrow: 0=no borrow, 1=borrow (sometimes "CY")
 
-- 8080 defines unused bits to be `0`; 8085 and Z80 leave them undefined.
+- When the flags are pushed on to the stack (a pseudo-"F register" value),
+  the 8080 defines bits 5 and 3 to be `0` and bit 1 to be `1`. The 8085 and
+  Z80 leave them undefined. (But on 8085 or 80C85 bit 1 is an undocumented
+  `V` flag for 2s-complement overflow?)
 - `AC` (`H`) and `N` not directly testable; used by `DAA`. decimal adjust.
 - 8080 logcal AND instructions (ANA/ANI) set AC to the logical OR of bit 3
   of the two operands. 8085 logical AND sets the AC flag.
