@@ -74,6 +74,10 @@ segment followed by a release segment.
 [PEP 508]-compliant [dependency specifiers][ppug-depver] have additional
 syntax to specify version ranges and other depencency options.
 
+One of these is _extras,_ which adds sets of optional dependencies. These
+are specified as a comma-separated list of package-specific names in
+square brackets after the package name, e.g., `requests[security,tests]`.
+
 ### Package Metadata Fields
 
 - `requires-python`: [PEP 508] version string for Python version range.
