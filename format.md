@@ -11,6 +11,7 @@ Contents:
 - [YouTube](#youtube)
 - [MediaWiki/Wikipedia Wikitext](#mediawikiwikipedia-wikitext)
 - [WordPress](#wordpress)
+- [BB Code](#bb-code)
 
 For some general information on reStructuredText (RST) markup see
 [lang/python/docstring](./lang/python/docstring.md).
@@ -320,3 +321,12 @@ be something like the following.
     <strong>
 
 [KSES filter]: https://core.trac.wordpress.org/browser/trunk/src/wp-includes/kses.php#L414
+
+
+BB Code
+-------
+
+BB code varies by implmentation; this covers XenForo as used by
+forum.vcfed.org.
+
+- `[plain]...[/plain]`: disable parsing of BBCode/links/smileys/etc.
