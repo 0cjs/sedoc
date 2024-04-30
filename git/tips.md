@@ -138,8 +138,30 @@ Change behaviour:
 For debugging Git [attributes], the `core.eol` and `core.autocrlf`
 settings, etc., the `git ls-files --eol` option is very useful.
 
-Normally `core.autocrlf` wants to be set to `input` to avoid any
-conversions whatsoever.
+Normally `core.autocrlf` wants to be set to `false` to avoid any
+conversions whatsoever. [The possible values are][so 3206843]:
+- `false`: No processing done; git leaves all CRs and LFs just
+  as they are, always.
+- `true`: Get uses LF in the object database, and converts to
+  CR-LF on ouptut (vice versa on input) on Windows etc.
+- `input`: When reading files with CR-LF, Git converts them to LF
+  when writing them to the database, but does no conversion on output.
+
+A table from another answer on that question above:
+
+    ╔═══════════════╦══════════════╦══════════════╦══════════════╗
+    ║ core.autocrlf ║     false    ║     input    ║     true     ║
+    ╠═══════════════╬══════════════╬══════════════╬══════════════╣
+    ║               ║ LF   => LF   ║ LF   => LF   ║ LF   => CRLF ║
+    ║ git checkout  ║ CR   => CR   ║ CR   => CR   ║ CR   => CR   ║
+    ║               ║ CRLF => CRLF ║ CRLF => CRLF ║ CRLF => CRLF ║
+    ╠═══════════════╬══════════════╬══════════════╬══════════════╣
+    ║               ║ LF   => LF   ║ LF   => LF   ║ LF   => LF   ║
+    ║ git commit    ║ CR   => CR   ║ CR   => CR   ║ CR   => CR   ║
+    ║               ║ CRLF => CRLF ║ CRLF => LF   ║ CRLF => LF   ║
+    ╚═══════════════╩══════════════╩══════════════╩══════════════╝
+
+[so 3206843]:https://stackoverflow.com/q/3206843/107294
 
 ### I18N Path/Filename Display
 
