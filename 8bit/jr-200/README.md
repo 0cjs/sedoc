@@ -217,7 +217,8 @@ Supposedly a 5.25" floppy drive was made.
 
 
 <!-------------------------------------------------------------------->
-[FIND]: http://www17.plala.or.jp/find_jr200/hard.html
+[FIND]: https://web.archive.org/web/20230403173507/http://www43.tok2.com/home/cmpslv/Jr200/EnrJr2.htm
+[FIND ]: http://www17.plala.or.jp/find_jr200/hard.html
 [Heikkinen]: https://oldmachinery.blogspot.com/search/label/jr200up
 [Reunanen]: http://www.kameli.net/marq/?page_id=1270
 [ccreview]: https://archive.org/stream/creativecomputing-1983-05./Creative_Computing_v09_n05_1983_05#page/n19/mode/1up
