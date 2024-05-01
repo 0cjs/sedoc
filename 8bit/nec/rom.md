@@ -47,6 +47,11 @@ indicates that it's been verified on one of my machines.
     PC-8801mkII MR  1985                    1.5     2.1
     PC-8801mkII MA  1987                    1.9     2.3
 
+#### Software ROM Version Checks
+
+Versions can be checked via [version strings in ROM locations][ohta-ident].
+This may require [determining the BASIC mode][ohta-mode], first.
+
 
 Keyboard, Control Characters and Editing
 ----------------------------------------
@@ -123,6 +128,9 @@ various magic numbers:
 
 
 <!-------------------------------------------------------------------->
+[ohta-ident]: http://www.kiwi-us.com/~ohta/pc88/ident.htm
+[ohta-mode]: http://www.kiwi-us.com/~ohta/pc88/mode.htm
+
 [8xROM]: https://retrocomputerpeople.web.fc2.com/machines/nec/cmn_vers.html
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [mlhb]: https://archive.org/details/pc-8001

@@ -49,6 +49,30 @@ General Information
 Holding down the `STOP` key when you reset the computer will do a warm
 start rather than a cold start. (Confirmed only for PC-8001.)
 
+#### Compatibility Settings
+
+Systems after the PC-8001 had various compatibility modes, selected through
+hardware switches and, later, a BIOS setup screen. Some modes could also be
+selected by software. These are documented in detail on this
+[モードスイッチ][ohta-mode] page.
+
+BASIC modes:
+- __N:__ All models except PC-88VA.
+  - From PC-8801MR/FR, use V1S mode and execute `NEW ON 1`.
+  - 88FH/MH and later, and 98DO: reset while holding down `N`/`8`/`0` keys.
+  - See reference above for software switching.
+- __N80:__ PC-8001mkII, PC-8001mkIISR.
+  - Switch selected; hold down `Ctrl` at startup to invert switch sense.
+- __N80SR:__ PC-8001mkIISR only. `Shift` at startup to invert switch sense.
+- __N88V1:__ All PC-8801 series, PC-98DO series.
+  - Includes DISK BASIC functions.
+  - Later renamed V1S from PC-8801mkIISR onward.
+- __N88V1H:__ Later machines; N88V1 without VRAM wait states.
+- __N88V2:__ PC-8801mkIISR onward. Always "H" speed even if switch is "S".
+- __N88V3:__ PC-88VA series only; V30 (16-bit) 8 MHz.
+
+Clock speed: 4 MHz, 8 MHz "S", 8 MHz "H"
+
 
 TransDisk (xdisk)
 -----------------
@@ -118,6 +142,8 @@ wire; other models have externally-accessible switches.
 
 
 <!-------------------------------------------------------------------->
+[ohta-mode]: http://www.kiwi-us.com/~ohta/pc88/mode.htm
+
 [5inch-cache]: https://webcache.googleusercontent.com/search?q=cache:http%3A%2F%2F5inch.floppy.jp%2Fpc88serialconnect.txt
 [5inch]: http://5inch.floppy.jp/pc88serialconnect.txt
 [ra-pc8]: https://gitlab.com/retroabandon/pc8001-re/-/tree/main/emu?ref_type=heads
