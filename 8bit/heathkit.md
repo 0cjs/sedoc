@@ -172,6 +172,8 @@ Monitor mode has three sub-modes:
   descriptions.
 - [Heathkit Catalog, Fall 1977][hk77]
 - Heath, [Front Panel Monitor PAM-8][pam8], 1979.
+- SEBHC.ORG, [Society of Eight-Bit Heathkit Computerists][sebhc].
+  Extensive H-8 documentation, software, links and a wiki.
 
 
 
@@ -179,3 +181,4 @@ Monitor mode has three sub-modes:
 [hk77]: https://heathkit.garlanger.com/catalogs/1977/Heathkit_Catalog_817.pdf
 [pam8]: https://bitsavers.org/pdf/zenith/z89/595-2348_H8_Front_Panel_Monitor_PAM-8_1979.pdf
 [wallace]: https://web.archive.org/web/20110723052102/http://davidwallace2000.home.comcast.net/~davidwallace2000/h8/technical.htm#z80%20cpu
+[sebhc]: https://sebhc.github.io/sebhc/
