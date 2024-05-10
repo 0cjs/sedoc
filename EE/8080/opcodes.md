@@ -87,6 +87,18 @@ Table:
     8085:  RIM  SIM
            20₄  30₄
 
+    8085 undocumented (UI flag set for INX overflow, DCX underflow):
+      ED₁₀  LHLX      HL ← (DE) [Tundra doc error adds d8 arg]
+      D9₁₀  SHLX      (DE) ← HL
+      28₁₀  LDHI d8   DE ← HL + d8
+      38₁₀  LDSI d8   DE ← SP + d8
+      08₁₀  DSUB      HL ← HL - BC (affects Z,S,P,C)
+      10₇   ARHL      arithmetic shift right of HL (bit 0 into carry)
+      18₁₀  RDEL      rotate DE left through carry (V flag affected?)
+      DD₇   JNUI a16  jump on not UI flag (10 cycles on taken)
+      FD₇   JUI  a16  jump on UI flag set
+      CB₆   RSTV      restart at $0040 if V flag set (12 if taken)
+
     Z80:   djnz a8   jr a8   jr nz,a8   jr z,a8   jr nc,a8   jr c,a8   exx
              10        18        20        28        30         38      D9
 
