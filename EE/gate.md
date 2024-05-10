@@ -17,11 +17,11 @@ The [binary truth table][binop]. `in` = number of effective inputs.
     0 1 1 1      OR       A+B
     1 0 0 0      NOR      /(A+B), /A∙/B
     0 1 1 0      XOR      A⊕B, A≠B
-    1 0 0 1      XNOR     A=B,              A⇔B, iff, biconditional
+    1 0 0 1      XNOR     A=B,              A↔B, iff, biconditional
     0 0 1 0               A∙/B
     0 1 0 0               /A∙B
     1 0 1 1               A+/B
-    1 1 0 1               /A+B              A⇒B, implication
+    1 1 0 1               /A+B              A→B, implication
 
 For a more detailed version, see [Logic Functions](sch/Logic Functions.png),
 noting that the opcodes are reversed from above.
