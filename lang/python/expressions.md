@@ -137,8 +137,10 @@ Full details at [Compound Statements][stmts] in the Python docs.
 - `try: ...` / `finally: ...`  
   `try: ...` / (`except [EXPR [as ID]]: ...`)+ / [`else: ...`] / `finally: ...`
   - Searches through multiple `except` clauses for match.
+  - `else` is executed if no exception is thrown
+  - `finally` is always executed
   - _ID_ is cleared at end of `except` clause; assign to other var if necessary.
-  - [`sys.exc_info()`] gives exception info; not available in `finally`.
+  - [`sys.exc_info()`] gives exception info; not available in `else`/`finally`.
   - More info in [Exceptions].
 - `with EXPR [as TARGET] [, EXPR [as TARGET] ...]: ...`
   - _expr_ produces a [context manager] having methods:
