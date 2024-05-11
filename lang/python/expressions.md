@@ -124,21 +124,30 @@ Compound Statements
 Full details at [Compound Statements][stmts] in the Python docs.
 
 - `if P: ...` / `elif P: ...` / `else: ...`
+
+Looping:
 - `while EXPR: ...` / `else: ...`
   - `else` always executed at end of loop.
 - `for TARGETS in EXPRS: ...` / `else: ...`
-   - Comma-separate _[targets]_ and _[exprs]_ .
-   - Use `range(10)` for 0..9.
-   - Assignments in _targets_ override all previous assignments even in loop.
-   - Careful when mutating _exprs_; copy (`for x in xs[:]:x`) if necessary.
+  - Comma-separate _[targets]_ and _[exprs]_ .
+  - Use `range(10)` for 0..9.
+  - Assignments in _targets_ override all previous assignments even in loop.
+  - Careful when mutating _exprs_; copy (`for x in xs[:]:x`) if necessary.
 - `break` / `continue`
   - Work as expected in `while` and `for`.
   - `break` in the first part causes `else` to be skipped.
+
+Exception Handling:
 - `try: ...` / `finally: ...`  
   `try: ...` / (`except [EXPR [as ID]]: ...`)+ / [`else: ...`] / `finally: ...`
+  - Exited via fall-through, `return` from enclosing function,
+    or `break`/`continue` from enclosing loop.
   - Searches through multiple `except` clauses for match.
-  - `else` is executed if no exception is thrown
-  - `finally` is always executed
+    An `except` clause cannot use `break`/`continue`/`return`.
+  - `else` is executed if no exception is thrown,
+    and no `break`/`continue`/`return` is executed in the `try`.
+  - `finally` is always executed;
+    exception is discarded if `break`/`continue`/`return` is executed.
   - _ID_ is cleared at end of `except` clause; assign to other var if necessary.
   - [`sys.exc_info()`] gives exception info; not available in `else`/`finally`.
   - More info in [Exceptions].
@@ -158,6 +167,8 @@ Full details at [Compound Statements][stmts] in the Python docs.
     - `ExitStack` to ammend context in `with` block (like nested `with`)
   - [Examples and recipes][contextlib-ex], e.g., optional context managers
     (particularly note rentrancy and reusability considerations)
+
+Definitions:
 - [Function definitions](functions.md)
 - [Class definitions][classdef]
 - Coroutines
