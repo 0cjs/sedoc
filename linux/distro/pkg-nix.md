@@ -377,9 +377,9 @@ All packages below are available in Nixpkgs unless noted otherwise.
 [Nixpkgs]: https://nixos.org/manual/nixpkgs/stable/
 
 <!-- Manual deep links -->
-[bc]: https://nixos.wiki/wiki/Binary_Cache
+[bc]: https://wiki.nixos.org/wiki/Binary_Cache
 [cachix]: https://docs.cachix.org/
-[channels]: https://nixos.wiki/wiki/Nix_channels
+[channels]: https://wiki.nixos.org/wiki/Nix_channels
 [nix #!]: https://nixos.org/manual/nix/stable/#use-as-a-interpreter
 [nix env]: https://nixos.org/manual/nix/stable/#sec-common-env
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
