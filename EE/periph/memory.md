@@ -251,21 +251,24 @@ References:
   different brands of 41xxx-compatible DRAMs and particular characteristics
   (e.g., 7- vs. 8-row refresh).
 
-Standard pinouts:
+Standard pinouts (D=data IN only; Q=data out):
 
-    4116 │ 4164         4164 │ 4116 │ MK4096
-         │      ┌──∪──┐      │      │
-     -5V │   NC │1  16│ GND  │      │
-         │    D │2  15│ C̅A̅S̅  │      │
-         │    W̅ │3  14│ Q    │      │
-         │  R̅A̅S̅ │4  13│ A₆   │      │ C̅E̅
-         │   A₀ │5  12│ A₃   │      │
-         │   A₁ │6  11│ A₄   │      │
-         │   A₂ │7  10│ A₅   │      │
-    +12V │  +5V │8   9│ A₇   │ +5V  │
-         │      └─────┘      │      │
+    4116 │ 8118 │ 4164         4164 │ 8118 │ 4116 │ MK4096
+         │      │      ┌──∪──┐      │      │      │
+     -5V │   NC │   NC │1  16│ GND  │      │      │
+         │      │    D │2  15│ C̅A̅S̅  │      │      │
+         │      │    W̅ │3  14│ Q    │      │      │
+         │      │  R̅A̅S̅ │4  13│ A₆   │      │      │ C̅E̅
+         │      │   A₀ │5  12│ A₃   │      │      │
+         │      │   A₁ │6  11│ A₄   │      │      │
+         │      │   A₂ │7  10│ A₅   │      │      │
+    +12V │  +5V │  +5V │8   9│ A₇   │ NC   │ +5V  │
+         │      │      └─────┘      │      │      │
 
     Vss = GND    Vcc = +5V   Vbb = -5V   Vdd = +12V
+
+Notes:
+- Fujitsu MB8118 is a 16K×1 DRAM but powered like 4164.
 
 __Replacements:__
 
