@@ -57,7 +57,7 @@ version of the output for that particular platform. See the `nix-store
 --realise` command for more details.
 
 Subsitutes may come from the following sources:
-- Binaries distributed with [channels] (XXX how do those work?).
+- Binaries distributed with [channels][] (XXX how do those work?).
 - A ["binary cache"][bc] made available via `nix-serve` by any machine from
   its own Nix store (populated via local builds or `nix copy`).
 - A dedicated cache server such as [Cachix].
