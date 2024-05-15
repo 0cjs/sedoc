@@ -1,27 +1,65 @@
 Docstrings
 ==========
 
-A string literal occuring as the first statement in a module,
-function, class or method definition is the _docstring_, and is stored
-as the `__doc__` attribute of that object. (A package docstring is in
-the `__init__.py` in the package's directory.)
+References:
+- [PEP 257] Docstring Conventions
+- [PEP 286] reStructuredText Docstring Format
 
-The style guides suggest always using three double-quotes (`"""`)
-around docstrings. I don't see the point of the extra ink and just use
-single or triple single quotes (`'`, `'''`) as appropriate.
 
-Docstring tools generally strip indentiation based on the minimum
+Overview
+--------
+
+A string literal occurring as the first statement in a module,
+function/method or class definition is the _docstring_, and is stored as
+the `__doc__` attribute of that object. (A package docstring is in the
+`__init__.py` in the package's directory.) Most documentation generators
+support inheritance: a method without a docstring will inherit the
+docstring of the superclass's method, if present.
+
+Python itself cannot attach docstrings to variables, but many tools (such
+as Sphinx and [pdoc][pdoc-vars]) will examine the AST and take any string
+immediately following an assignment statement as a docstring for that
+variable. (This is (rejected) [PEP 224] style.) For more, see below.
+
+The style guides, including [PEP 257] _Docstring Conventions,_ suggest
+always using three double-quotes (`"""`) around docstrings. I don't see the
+point of the extra ink and just use single or triple single quotes (`'`,
+`'''`) as appropriate.
+
+Docstring tools generally strip indentation based on the minimum
 indentation of all non-blank lines in the docstring after the first,
-preserving remaining indentation. See [PEP 257] for the exact
-algoritm.
+preserving remaining indentation. See [PEP 257] for the exact algorithm.
+
+#### Variable/Attribute Docstrings
+
+The original proposal for "docstring after assignment" is [PEP 224][]
+(2000-08-23, Python 2.0), with the same syntax as common systems currently
+use, but having the compiler attach it to the enclosing object as an
+attribute named `__doc_VARNAME__`. This was rejected by Guido because he
+really didn't like the syntax. Yet most documentation generators today seem
+to use this anyway, though via examination of the AST as it's not in the
+compiler.
+
+An alternative syntax, supported by [pdoc3][pdoc3-vars], is to take
+documentation from `#:` comments, e.g.
+
+    class C:
+        #: Documentation comment for class_variable
+        #: spanning over three lines.
+        class_variable = 2  #: Assignment line is included.
+
+        def __init__(self):
+            #: Instance variable's doc-comment
+            self.variable = 3
+            """But note, PEP 224 docstrings take precedence."""
 
 
 RST (reStructuredText) Docstrings
 ---------------------------------
 
-[PEP 287] describes the convention of using [reStructuredText][wp-rst]
-([RST docs], [quickref]) in docstrings. The [Restructred Text][sp-rst]
-section of the Sphinx documentation is also useful, partciularly since it's
+[PEP 287] describes the convention of using [reStructuredText][wp-rst]
+([RST docs], [quickref]) in docstrings. The [Restructured Text][sp-rst]
+section of the Sphinx documentation is also useful, particularly since it's
 the usual program that reads and renders docstrings to HTML documentation.
 
 Use interpreted text (in backticks, like Markdown inline code quoting)
@@ -50,7 +88,7 @@ like Markdown. See also the [quickref].
 - Enumerated lists use the number, `#` or similar before a period or
   right paren. E.g. `1.`, `#.`, etc.
 - Definition lists are a term at the left margin with the body in
-  two-space indended lines directly below.
+  two-space indented lines directly below.
 - Titles may be underlined or over-and-underlined with any printing
   non-alpha character; the first one is an H1 and the rest H2.
 - Images: `.. image:: /path/to/image.jpg`
@@ -76,10 +114,10 @@ using RST may extend this, e.g., [Sphinx roles][sp-roles] and
 - `:strong:`: Same as double-asterisks: `**foo**`.
 - `:superscript:`, `:sup:`: Superscript
 - `:title-reference:`, `:title:`, `:t:`: Book title (rendered w/HTML `<cite>`).
-- `:math:`: LaTeX math syntax (do not add `($ $)` math delimters).
+- `:math:`: LaTeX math syntax (do not add `($ $)` math delimiters).
 - `:pep-reference:`, `:pep:`: Reference Python Enhancement Proposal; give just
   the number in backticks.
-- `:rfc-reference:`, `:rfc:`: Reference IETF Reqeust for Comments; give just
+- `:rfc-reference:`, `:rfc:`: Reference IETF Request for Comments; give just
   the number in backticks.
 
 [Sphinx roles][sp-roles]:
@@ -90,7 +128,7 @@ using RST may extend this, e.g., [Sphinx roles][sp-roles] and
 - `:program:`: Name of an executable program; omit `.exe` for Windows.
 - `:kbd:`: Keystrokes.
 - `:guilabel:`: Label from an interactive UI.
-- `:manpage:`: Reference to manualpage, including section number in parens.
+- `:manpage:`: Reference to manual page, including section number in parens.
 
 [Sphinx-issues roles][sphinx-issues] (used with GitHub etc.):
 - `:issue:`, `:pr:`: These take an issue/PR number or comma-separated list
@@ -129,18 +167,15 @@ are implict named references.
     the `Documentation Document`_.
 
 
-References
-----------
 
-* [PEP 257] Docstring Conventions
-* [PEP 286] reStructuredText Docstring Format
-
-
-
-[PEP 257]: https://www.python.org/dev/peps/pep-0257/
-[PEP 287]: https://www.python.org/dev/peps/pep-0287/
+<!-------------------------------------------------------------------->
+[PEP 224]: https://peps.python.org/pep-0224/
+[PEP 257]: https://www.python.org/dev/peps/pep-0257/
+[PEP 287]: https://www.python.org/dev/peps/pep-0287/
 [RST docs]: http://docutils.sourceforge.net/rst.html
 [doctest]: http://www.python.org/doc/current/lib/module-doctest.html
+[pdoc-vars]: https://pdoc.dev/docs/pdoc.html#document-variables
+[pdoc3-vars]: https://pdoc3.github.io/pdoc/doc/pdoc/#docstrings-for-variables
 [quickref]: http://docutils.sourceforge.net/docs/user/rst/quickref.html
 [rst-roles]: https://docutils.sourceforge.io/docs/ref/rst/roles.html
 [sp-roles]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html
