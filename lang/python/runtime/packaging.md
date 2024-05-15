@@ -15,7 +15,8 @@ of the setuptools documentation.
 - __[Project]:__ A library, app, etc. intended to be packaged into a
   _distribution package._ Typcially available as a Git repo, other VCS
   checkout, or (for a single version) a _source archive._ Contains  a
-  project _specification file._
+  project _specification file._ It will also generally use one of
+  [two standard layouts][layout] for the files and directories.
 - __[Source Archive]:__ Contains raw source code for a _release,_ from
   which you create _source distributions_ and _built distributions._
 - __Specification File:__ Build information for a _project._ Usually one of:
@@ -29,7 +30,7 @@ Distribution formats:
 - __[Distribution Package]:__ (Often just "package" or "distribution", but
   both terms are used in other ways as well.) A versioned archive file
   built from a _project_ and downloaded by end-users. Note that this is
-  different from an _import package,_ as used by the Python module system. 
+  different from an _import package,_ as used by the Python module system.
 - __[Source Distribution]__ or __sdist:__ [[sdist-spec]] An _unbuilt
   distribution_ in a file named `{pkgname}-{version}.tar.gz`, containing a
   `{pkgname}-{version}/` directory which in turn has a `pyproject.toml`, a
@@ -230,6 +231,7 @@ To-read
 [egg-int]: https://setuptools.pypa.io/en/latest/deprecated/python_eggs.html
 [egg-quick]: http://peak.telecommunity.com/DevCenter/PythonEggs
 [glossary]: https://packaging.python.org/en/latest/glossary/
+[layout]: https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/
 [pkgr]: https://setuptools.pypa.io/en/latest/pkg_resources.html
 [project]: https://packaging.python.org/en/latest/glossary/#term-Project
 [release]: https://packaging.python.org/en/latest/glossary/#term-Release
