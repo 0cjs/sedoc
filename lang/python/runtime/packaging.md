@@ -181,6 +181,7 @@ The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]:
 
     ./downloads/foo-1.2.3.whl
     pkgname @ git+https://github.com/…/pkgname.git
+    pkgname @ git+ssh://git@github.com./…/pkgname.git
     #   Append `@REF` to use a particular ref, e.g., `@refs/pull/123/head`
     requests [security] @ https://github.com/psf/requests/archive/refs/heads/main.zip ; python_version >= "3.11"
     #   Note above is a .zip file downloaded from GitHub releases, not the repo.
