@@ -75,6 +75,7 @@ SKIP 3: Enclosure
         座標        ざひょう        co-ordinate (on a screen)
     12  開回路      かいあいろ      open circuit
         関数        かんすう        function
+    14  関係        かんけい        relationship
 
 SKIP 4: Solid
 
