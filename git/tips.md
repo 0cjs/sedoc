@@ -1,6 +1,13 @@
 Git Tips
 ========
 
+Status
+------
+
+* To show untracked files (i.e., not ignored) files in subdirectories
+  that have not been added, `git status --untracked-files=all` or
+  `git status -uall`.
+
 
 Logging and Graph Exploration
 -----------------------------
