@@ -46,6 +46,7 @@ SKIP 1: Left/Right
 
 SKIP 2: Up/Down
 
+     2  命令セット  めいれいセット  instruction set
      3  実行        じっこ          execution
      6  共有        きょうゆう      shared
         色相        しきそう        huge, color phase
