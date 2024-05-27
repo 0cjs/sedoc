@@ -300,6 +300,12 @@ Development:
   ZX80/81/Spectrum, Robotron KC 87, RC2014 (CP/M, HBIOS, RC2014), etc.
 - `z80-ticks` from z88dk above: determines timing of routines.
 
+Disassemblers:
+- [SkoolKit] is a disassembly system for Sinclair Spectrum games that is
+  written in Python and generates both HTML and source code from its
+  disassemblies, and uses a text control file that looks fairly easy and
+  flexible.
+
 CPU/Simulator Testers:
 - [8080/8085 CPU Exerciser][bart] by Ian Bartholomew (2009-02). Ports of
   Frank D. Cringle's `prelim.z80` and `zexlax.z80` to 8080 and 8085.
@@ -321,11 +327,14 @@ CPU/Simulator Testers:
 [csum-8255]: https://archive.org/details/bitsavers_intelMCS80ocomputerSystemsUsersManual197509_43049640/page/n180/mode/1up?view=theater
 [dunfield]: http://www.classiccmp.org/dunfield/
 
-<-- Tools: Development -->
+<!-- Tools: Development -->
 [z80dasm]: https://web.archive.org/web/20230925185822/https://www.tablix.org/~avian/blog/articles/z80dasm/
 [z88dk]: https://github.com/z88dk/z88dk
 
-<-- Tools: CPU/Simulator Testers -->
+<!-- Tools: Disassemblers -->
+[SkoolKit]: https://skoolkid.github.io/skoolkit/
+
+<!-- Tools: CPU/Simulator Testers -->
 [`8080EXER.MAC`]: https://web.archive.org/web/20150723091056/http://www.idb.me.uk/sunhillow/files/8080EXER.MAC
 [`8080PRE.MAC`]: https://web.archive.org/web/20150723091101/http://www.idb.me.uk/sunhillow/files/8080PRE.MAC
 [`8085EXER.MAC`]: https://web.archive.org/web/20150723081847/http://www.idb.me.uk/sunhillow/files/8085EXER.MAC
