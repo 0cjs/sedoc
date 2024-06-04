@@ -16,6 +16,7 @@ ROM Sources
 -----------
 
 - archive.org, [[mame-merged]]
+- [retrostic.com]
 
 
 RunCPM
@@ -86,6 +87,7 @@ Source at [[mame-gh]]. Debian requires the following to build: [[mame-comp]]
 [runcpm 189]: https://github.com/MockbaTheBorg/RunCPM/issues/189
 
 [mame-merged]: https://archive.org/download/mame-merged/mame-merged/
+[retrostic.com]: https://www.retrostic.com/roms/mame
 
 [mame-comp]: https://docs.mamedev.org/initialsetup/compilingmame.html#debian-and-ubuntu-including-raspberry-pi-and-odroid-devices
 [mame-gh]: https://github.com/mamedev/mame
