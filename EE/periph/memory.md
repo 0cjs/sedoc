@@ -9,6 +9,7 @@ Contents:
 - ROM and RAM Chip Data
   - 25xx EPROM
   - 27xx EPROM
+  - 27xxx EEPROM
   - 28xx EEPROM
   - SRAM
   - DRAM
@@ -178,6 +179,25 @@ TI [TMS 2532]
 
 ### 27xx EPROM
 
+References:
+- [TMS 2716 datasheet][tms2716]
+- <http://www.bitsavers.org/components/ti/_dataBooks/>
+  - `1980_TI_The_MOS_Memory_Data_Book_for_Design_Engineers.pdf`
+    TMS2716 p.137 P.141
+  - `1982_LCC7061_TI_MOS_Memory_Data_Book.pdf` TMS2716 p.167 P.168
+  - `1984_TI_MOS_Memory_Data_Book.pdf` TMS2716 p.6-41 P.237
+- <http://www.bitsavers.org/components/motorola/_dataBooks/>
+  - `1979_Motorola_Memory_Data_Book.pdf` TMS2716, p.2-106 P.123
+  - `1980_Motorola_Memory_Data_Manual.pdf` TMS2716, p.2-131 P.152
+  - `1981_82_Motorola_Memory_Databook.pdf` TMS2716, p.2-114 P.132
+  - `1982_Motorola_Memory.pdf` TMS2716, p.4-9 P.158
+
+### 27xxx EEPROM
+
+These are modern electrically-erasable versions using the 27xx EPROM
+pinout, but different erase (of course) and slightly different programming
+algorithms.
+
 Winbond [W27C512-45Z] 64K×8 (45 ns., Z=lead free)
 - TTL and CMOS compatible
 - Packaging: WDIP28, .33" 32-pin PLCC
@@ -342,7 +362,7 @@ the ROM via a _read,_ since /WR is being toggled by A14 anyway?
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
 [aa-285971]: https://forums.atariage.com/topic/285971-2532-eprom-uses-adapter-for-tl866/#comment-4223453
-
+[tms2716]: https://archive.org/details/tms-2716-datasheet/mode/1up
 
 [ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
