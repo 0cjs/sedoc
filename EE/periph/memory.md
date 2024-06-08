@@ -179,6 +179,9 @@ TI [TMS 2532]
 
 ### 27xx EPROM
 
+Apparently the TMS 2716 has a different pinout from the Intel 2716 (as used
+in the PET) and 2816.
+
 References:
 - [TMS 2716 datasheet][tms2716]
 - <http://www.bitsavers.org/components/ti/_dataBooks/>
