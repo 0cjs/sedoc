@@ -306,6 +306,9 @@ Disassemblers:
   disassemblies, and uses a text control file that looks fairly easy and
   flexible.
 
+Generic Simulators/Emulators:
+- [rz80]: Command-line Z80 CPU core from trs80gp.
+
 CPU/Simulator Testers:
 - [8080/8085 CPU Exerciser][bart] by Ian Bartholomew (2009-02). Ports of
   Frank D. Cringle's `prelim.z80` and `zexlax.z80` to 8080 and 8085.
@@ -333,6 +336,9 @@ CPU/Simulator Testers:
 
 <!-- Tools: Disassemblers -->
 [SkoolKit]: https://skoolkid.github.io/skoolkit/
+
+<!-- Tools: Genric Simulators/Emulators -->
+[rz80]: http://48k.ca/rz80.html
 
 <!-- Tools: CPU/Simulator Testers -->
 [`8080EXER.MAC`]: https://web.archive.org/web/20150723091056/http://www.idb.me.uk/sunhillow/files/8080EXER.MAC
