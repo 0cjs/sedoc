@@ -8,13 +8,15 @@ Soldering
 - Thoroughly tin tip, leaving lots of solder on it, before first use
   and before putting iron back in stand. Wipe when removing from
   stand. [jre-sol05]
-- For conical tip, use edge in preferent to point (where room) for
+- For conical tip, use edge in preference to point (where room) for
   better heat transfer.
 - Primary heat transfer is _through solder_. Use blob of fresh solder
   on tip to help heat transfer, but not to solder the work. Solder
   bonding the work should be melted on the work itself, not on the iron.
 - Generally no need to remove solder from holes when re-soldering;
   just cut off device and remove pins. [jre-sol09]
+- Good info on tip construction and life in HakkoUSA Knowledge Base article
+  [How to Maximize Soldering Iron Tip Life][hkb-10322].
 
 Desoldering ([jre-sol10]):
 - Iron:
@@ -87,8 +89,11 @@ Other suggestions I've seen:
 - [KSGER T12]: Hakko-compatible tips.
 - Anesty ZD-915 vacuum desoldering unit; cheap and works well.
 
+
+
 <!-------------------------------------------------------------------->
 [Al]: https://users.monash.edu.au/~ralphk/solder-aluminium.html
+[hkb-10322]: https://kb.hakkousa.com/Knowledgebase/10322/How-to-Maximize-Soldering-Iron-Tip-Life
 [jre-sol05]: https://josepheoff.github.io/posts/howtosolder-5getstarted
 [jre-sol09]: https://josepheoff.github.io/posts/howtosolder-9throughhole-remove
 [jre-sol10]: https://josepheoff.github.io/posts/howtosolder-10soldersucker
