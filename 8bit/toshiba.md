@@ -40,8 +40,8 @@ PC-compatibles:
   - 8 Mhz, 384K VRAM, mouse.
   - TS100/300 variant w/'286.
 
-
 ### References
+
 - [Toshiba T100 Computer and Floppy Drive Owners Manual and Programmers
   Reference Manual][t100-own-progref], Toshiba America, 1982.
 - [Toshiba T100 Owners Manual][t100-own-aus], Toshiba Australia, 1982.
@@ -69,6 +69,7 @@ Sources: マイコン1983-1, I/O 1982.12, I/O 1982.3　広告より (adverts).
     PA7200 ミニフロッピーディスクユニット 280kb x2  ¥290,000
     PA7201 増設フロッピーディスクユニット280kb x2   ¥266,000
     PA7202 片面ミニフロッピーディスクユニット       ¥ 79,000
+    PA7204 ミニフロッピーディスクユニット
     PA7210 8インチフロッピーディスクユニット        ¥375,000
     PA7240 4Kバイト RAM PAC2                        ¥ 14,000
     PA7242 16Kバイト RAM PAC2                       ¥ 28,000
