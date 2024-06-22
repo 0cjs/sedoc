@@ -25,6 +25,14 @@ of a replacement. (Help wanted on this!)
 Telegram
 --------
 
+### Installation
+
+`homeinst telegram` will do it. Or download the .tar.gz from the downloads
+page and place the two files `Telegram/{Telegram,Update}` into your
+`~/.local/bin/`. Snap and Flatpak are also available.
+
+### Usage
+
 Settings » Advanced contains useful stuff:
 - Manage local storage: reduce max disk usage from 3 GB
 - Export Telegram data: account info, contacts, messages, media.
