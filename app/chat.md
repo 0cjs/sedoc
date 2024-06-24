@@ -78,6 +78,11 @@ Tips:
   In a browser this will attempt to open the Slack app. To jump
   directly to the message, replace `archive` with `message`.
 
+UI:
+- Links can be added most easily by copying the link, selecting the
+  hyperlink text when editing the message, and pasting (Ctr-V).
+- Code text cannot be linked.
+
 
 Signal
 ------
@@ -103,6 +108,31 @@ Linux] button on the [Signal download] page (with added `chmod` commands).
     sudo apt update && sudo apt install signal-desktop
 
 
+Google Meet
+-----------
+
+            Space   Push-to-talk (when enabled)
+                C   Captions show/hide
+          Shift-M   Picture-in-picture mode
+    ────────────────────────────────────────────────────────
+           Ctrl-D   Microphone mute/unmute
+               -E   Camera off/on
+    ────────────────────────────────────────────────────────
+       Ctrl-Alt-C   Meeting chat window show/hide
+               -P   Participants show/hide
+               -H   Hand raise/lower
+               -K   Increase number of participant tiles
+               -J   Decrease   "    "      "        "
+               -M   Your video minimise/expand
+    ────────────────────────────────────────────────────────
+       Ctrl-Alt-S   Announce who is currently speaking
+               -I      "     current information about room
+               -X      "     recently received reactions
+    ────────────────────────────────────────────────────────
+
+References: [[gm-shortcuts]]
+
+
 <!-------------------------------------------------------------------->
 [Gitter]: https://gitter.im/apps
 [g zoom]: https://gist.github.com/MadLittleMods/fd8cebe7e370a471b073
@@ -112,3 +142,5 @@ Linux] button on the [Signal download] page (with added `chmod` commands).
 [d qs]: https://support.discord.com/hc/en-us/articles/115000070311
 
 [Signal download]: https://signal.org/download/
+
+[gm-shortcuts]: https://support.google.com/a/users/answer/9896256?hl=en
