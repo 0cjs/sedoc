@@ -16,7 +16,8 @@ of the setuptools documentation.
   _distribution package._ Typcially available as a Git repo, other VCS
   checkout, or (for a single version) a _source archive._ Contains  a
   project _specification file._ It will also generally use one of
-  [two standard layouts][layout] for the files and directories.
+  [two standard layouts][layout], "flat" or "src," for the files and
+  directories.
 - __[Source Archive]:__ Contains raw source code for a _release,_ from
   which you create _source distributions_ and _built distributions._
 - __Specification File:__ Build information for a _project._ Usually one of:
