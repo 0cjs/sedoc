@@ -6,6 +6,12 @@ can be found in [this SO answer][so-23303550]. (This discusses only
 objects and should be supplemented with the information in
 [`ref`](./ref.md).)
 
+Object can be displayed with `git cat-file TYPE OBJECT`. Batch output
+options are also available. The following options omit the type:
+- `-t`: show object type (`blob`, `tree`, `commit`, `tag`, …)
+- `-p`: pretty-print.
+- `-e`: check for existence.
+
 ### [Identifier Terminology][ident-term]
 
 * `<object>` The name (SHA1) of any type of object
