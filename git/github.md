@@ -29,6 +29,13 @@ Delimiters are:
 - Display (block): ` ```math` `\n` …lines…  `\n` ` ``` `
 
 
+GitHub Merging
+--------------
+
+- "Rebase merge" createes new commits from the branch commits even when a
+  rebase isn't necessary; that changes only the committer timestamps.
+
+
 
 <!-------------------------------------------------------------------->
 [Mathjax]: https://docs.mathjax.org/en/latest/input/tex/
