@@ -72,7 +72,7 @@ Press `Tab` to enter keyboard mode; circles through items.
 Slack
 -----
 
-Tips:
+Usage Tips:
 * Copying a message link in Slack produces a URL like
   `https://something.slack.com/archive/CE7MF912Q/p1555997770049100`.
   In a browser this will attempt to open the Slack app. To jump
@@ -80,8 +80,18 @@ Tips:
 
 UI:
 - Links can be added most easily by copying the link, selecting the
-  hyperlink text when editing the message, and pasting (Ctr-V).
+  hyperlink text when editing the message, and pasting (Ctr-V). (This
+  assumes that you're using the standard WYSIWYG formatter, not
+  markup formatting.)
 - Code text cannot be linked.
+
+Configuration:
+- Under __Preferences » Advanced » Input Options__ there is a "Format
+  message with markup" setting; checking this box will disable the
+  formatting toolbar in the composer and render Markdown formatting when
+  you send the message. (The WYSIWYG composer also accepts Markdown to some
+  degree, but renders it immediately, which can be awkward when going back
+  to re-edit text.)
 
 
 Signal
