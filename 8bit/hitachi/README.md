@@ -72,6 +72,8 @@ and mentions a service manual.
 
 - [MB-6885 ﾍﾞｰｼｯｸﾏｽﾀｰJr.][ar-bmj] system manual.
 - [Basic master Jr.][rash] specs and tech. info
+- [zu2/BASICMASTER] repo has lots of good software, including
+  for conversion of files (presumably character-set conversion).
 
 ## Emulators
 - [日立ベーシックマスターJr.エミュレータ bm2][emu-bm2]
@@ -173,6 +175,7 @@ See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 [randoc]: https://randoc.wordpress.com/2021/04/02/hitachi-basic-master-family/
 [rash]: http://fuckin.rash.jp/wikihome/index.cgi/p6?page=Basic+Master+Jr.
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
+[zu2/BASICMASTER]: https://github.com/zu2/BASICMASTER
 
 [emu-6800ide]: http://www.hvrsoftware.com/6800emu.htm
 [emu-bm2]: http://ver0.sakura.ne.jp/pc/index.html#bm2
