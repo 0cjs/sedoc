@@ -9,14 +9,92 @@ used standalone on any Linux distro or MacOS.
 Installation
 ------------
 
-* __Debian:__ `apt-get install nix-bin` and add yourself to the `nix-users`
-  group. (The `nix-setup-systemd` package for the Nix daemon will be
-  included as a recommendation unless you specifically exclude it.)
+Nix may be installed in one of two ways.
+- Multiuser (`--daemon`), where `/nix/` is owned by root and a Nix daemon
+  manages the directory and does the builds. 
+- Single user (`--no-daemon`), where `/nix/` is owned by a user whose tools
+  manage the directory and do the builds.
+
+In a multi-user configuration where you do not have the system starting
+the daemon (e.g., in a Docker container), you can start it yourself with:
+
+    sudo nix-daemon --daemon &
+
+An installation is probably working if you can run (without errors)
+`nix-store --gc` and `nix-shell -p cowsay --run 'cowsay Hello.'`. (The
+latter will also expose missing locale databases.)
+
+Nix may be [built from source][nix instsrc] or there are many binary
+install options:
+
+#### Vendor (NixOS.org)
+
+The version from NixOS.org is almost invariably far more recent
+than those supplied by packages from Linux distributions. Note that
+doing a re-install without properly cleaning up from a previous install
+may cause the install and the installation to break. At least part of
+the cleanup can be done with:
+
+    sudo rm -rf /nix/ ~/.nix-profile ~/.local/state/nix/
+
+__Multi-User Install:__
+
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+
+__Single-User Install:__
+
+The single-user-mode install will invoke sudo to create the
+`/nix/` directory if it doesn't exist; you can pre-create it
+(owned by your account) if necessary. Install with:
+
+    sudo apt install xz-utils
+    sudo install -d -m 755 -o $(id -u) /nix/    # optional; install will do this
+    sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+Nix itself will be installed under `~/.nix-profile/{etc,bin,...}`
+(actually simlinks to `~/.local/state/nix/…`) and the following
+line will be added to `.bash_profile`:
+
+    if [ -e /home/cjs/.nix-profile/etc/profile.d/nix.sh ]; then
+        . /home/cjs/.nix-profile/etc/profile.d/nix.sh;
+    fi # added by Nix installer
+
+__Docker Containers__
+
+Bind-mount `/nix/` or `/nix/store/` plus the socket into the container?
+See more at
+<https://discourse.nixos.org/t/sharing-nix-store-between-containers/9733/5>
+
+#### Debian
+
+Multi-user only.
+- `apt-get install nix-bin`
+- Add yourself to the `nix-users` group.
+- Add the default channel:
+
+      nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+      nix-channel --update
+
+If you use `--no-install-recommends` to exclude the `nix-setup-systemd`
+package you can still run the daemon with `sudo nix-daemon --daemon &`. But
+you will get complaints about the missing `nixbld` group and perhaps
+missing `nixbld*` users. Further, for some reason `nix-channel --update`
+doesn't work. Probably just don't do this.
+
+In Docker containers, the Debian package (with `nix-setup-systemd`) brings
+with it quite a number of extra packages, including `util-linux-locales`
+(probably fine) and various `systemd-*` and `dbus` (probably unwanted). But
+these seem to do no harm and `nix-setup-systemd` seems required for proper
+operation (see above).
+
+#### Arch
+
 * __Arch:__ `nix` and `archlinux-nix` packages available, but seems to
   require [some manual configuration][arch].
-* __Vendor:__ [Binary install][nix instbin] typically via `sh <(curl -L
-  https://nixos.org/nix/install) --daemon`, or [build from source][nix
-  instsrc]
+
+
+XXX FIXME (where does this really go?)
+--------------------------------------
 
 Individual scripts may use nix via [`nix-shell` hashbang][nix #!] to
 build an environment for the script:
@@ -370,6 +448,33 @@ All packages below are available in Nixpkgs unless noted otherwise.
   environment with Nix and Nixpkgs.
 
 
+Errors and Problems
+-------------------
+
+### nixpkgs not found
+
+    error: file 'nixpkgs' was not found in the Nix search path
+        (add it using $NIX_PATH or -I)
+
+This indicates that Nix cannot find the `nixpkgs` package repository. You
+can confirm this with `nix-channel --list`. As the message says, you can
+get an arbitrary one with e.g.,
+
+    export NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs/archive/74e2faf5965a12e8fa5cff799b1b19c6cd26b0e3.tar.gz
+
+But probably more sensible is:
+
+    nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+    nix-channel --update
+
+References: [[so 73164546]]
+
+### nixbld group not found
+
+    error: the group 'nixbld' specified in 'build-users-group' does not exist
+
+Probably a Debian install that's missing the `nix-setup-systemd` package.
+
 
 <!-------------------------------------------------------------------->
 [NixOS]: https://nixos.org/manual/nixos/stable/
@@ -383,7 +488,7 @@ All packages below are available in Nixpkgs unless noted otherwise.
 [nix #!]: https://nixos.org/manual/nix/stable/#use-as-a-interpreter
 [nix env]: https://nixos.org/manual/nix/stable/#sec-common-env
 [nix instbin]: https://nixos.org/manual/nix/stable/#ch-installing-binary
-[nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
+[nix instsrc]: https://nixos.org/manual/nix/stable/#ch-installing-source
 [nix expr]: https://nixos.org/manual/nix/stable/#ch-expression-language
 
 [arch]: https://wiki.archlinux.org/title/Nix
@@ -394,3 +499,5 @@ All packages below are available in Nixpkgs unless noted otherwise.
 [docker]: https://nix.dev/tutorials/building-and-running-docker-images
 [home-manager]: https://github.com/nix-community/home-manager
 [niv]: https://github.com/nmattia/niv
+
+[so 73164546]: https://stackoverflow.com/q/73164546/107294
