@@ -71,48 +71,11 @@ processes in the container.
 
 ### Docker ps and Filters
 
-The [`ps`] command offers various [filters][ps-filtering] passed as
-`--filter key=value`. See the docs for a full list of keys and their
-individual parsing details.
-
-The `name` filter may be a regular expression, but always does a
-substring match (`^` and `$` appear not to be supported). To print
-a list of GitLab CI cache containers:
-
-    docker ps --format='{{.ID}}' \
-      --filter name=runner-[0-9a-f]*-project-[0-9]*-concurrent-[0-9]*-cache-
+See [`format.md`](./format.md).
 
 ### Docker Inspect and Templates
 
-`docker inspect` prints Json information about any object (containers,
-images, volumes, etc.) The `-f` argument lets you specify a [Go template][]
-(also see [formatting]) to Docker inspect to query and extract specific
-parts of the output. E.g.,:
-
-    $ docker inspect -f 'Tags: {{.RepoTags[0]}}' ubuntu
-    Tags: [ubuntu:16.04 ubuntu:latest]
-
-* Directives in `{{ }}` will be substituted; everything else is
-  cstring literal (`\t` is a tab, etc.).
-* `$` is root context (the whole input)
-* `.` is current context (initially `$`);  rebinding:  
-  `{{with .Foo}} {{$.TopThing}} {{.UnderFooThing}} {{end}}`
-
-Functions and actions take space-separated args and use parens for
-grouping:
-
-    {{len .RepoTags}}
-    {{index .RepoTags 0}}
-    {{index .Volumes "/var/jenkins_home"}}      # When you can't use `.`
-    {{if gt (len .RepoTags) 3}} BIG {{else}} SMALL {{end}}
-    {{if false}} N {{else if true}} Y {{else}} ? {{end}}
-
-`--format` can also be used with [`ps`]. Prefix the pattern with the
-`table` directive to print headers.
-
-References:
-* Go library [Package template][go template]
-* [Docker Inspect Template Magic][ditm] blog entry
+See [`format.md`](./format.md).
 
 ### Force Intermediate Image Rebuilds
 
@@ -245,11 +208,6 @@ See [Docker Security](security.md)
 
 <!-------------------------------------------------------------------->
 [REST API]: https://docs.docker.com/engine/api/v1.24/
-[`ps`]: https://docs.docker.com/engine/reference/commandline/ps/#formatting
-[ditm]: https://container-solutions.com/docker-inspect-template-magic/
-[formatting]: https://docs.docker.com/config/formatting/
-[go template]: https://pkg.go.dev/text/template
 [juggery]: https://medium.com/lucjuggery/about-var-run-docker-sock-3bfd276e12fd
-[ps-filtering]: https://docs.docker.com/engine/reference/commandline/ps/#filtering
 [so 52081984]: https://stackoverflow.com/a/52081984/107294
 [so-23513045]: https://stackoverflow.com/q/23513045/107294
