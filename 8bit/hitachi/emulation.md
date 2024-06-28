@@ -9,6 +9,8 @@ Hiatchi Basic Master Emulators
 * \[mk5] [マーク５エミュレータ(MARK5 Emulator)][mk5]. MB-6892 (Lv3mk5).
   Windows10/DX9, MacOS. Site now down.
 
+* \[bmjr] ["eBASICMasterJr" - HITACHI BASIC Master Jr emulator for Win32].
+  Windows 2000/XP/Vista/7. GPL, part of [CSCP], as `bmjr`.
 
 Other Emulators
 ---------------
@@ -18,8 +20,10 @@ Other Emulators
 
 
 <!-------------------------------------------------------------------->
+[CSCP]: http://takeda-toshiya.my.coocan.jp/common/index.html
 [bm2]: http://ver0.sakura.ne.jp/pc/index.html#bm2
-[mk5-orig]: http://s-sasaji.ddo.jp/bml3mk5/
+[bmjr]: http://takeda-toshiya.my.coocan.jp/bmjr/index.html
+[mk5-dead]: http://s-sasaji.ddo.jp/bml3mk5/
 [mk5]: https://web.archive.org/web/20240514120840/http://s-sasaji.ddo.jp/bml3mk5/
 
 [6800ide]: http://www.hvrsoftware.com/6800emu.htm
