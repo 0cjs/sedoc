@@ -65,5 +65,7 @@ commonly suggested solution is to
 Further references:
 - NixOS/nixpkgs #38991 [glibc 2.27 breaks locale support][nn#38991].
   This references some other discussions as well.
+- Gist [peti/README.md][gist-2c818d6]
 
 [nn#38991]: https://github.com/NixOS/nixpkgs/issues/38991
+[gist-2c818d6]: https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
