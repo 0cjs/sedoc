@@ -69,3 +69,16 @@ Further references:
 
 [nn#38991]: https://github.com/NixOS/nixpkgs/issues/38991
 [gist-2c818d6]: https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
+
+
+Segfaults During Garbage Collection
+-----------------------------------
+
+Not clear how/when this occurs, but it's worked around with `GC_DONT_GC=1`,
+which disables the Boehm garbage collector in nix. This apparently avoids
+edge cases where nix can segfault.
+
+This is used in e.g. `nix profile remove|install` commands in the K
+installer, as well as with [Plutus Playground][ca-6658].
+
+[ca-6658]: https://cardano.stackexchange.com/q/6658
