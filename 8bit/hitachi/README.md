@@ -75,10 +75,7 @@ and mentions a service manual.
 - [zu2/BASICMASTER] repo has lots of good software, including
   for conversion of files (presumably character-set conversion).
 
-## Emulators
-- [日立ベーシックマスターJr.エミュレータ bm2][emu-bm2]
-- [マーク５エミュレータ(MARK5 Emulator)][emu-mk5]
-- [6800IDE][emu-6800ide]: Windows-based 6800 IDE/emulator
+Emulators: see [`emulation`](./emulation.md).
 
 
 Usage Notes
@@ -176,9 +173,5 @@ See [`conn/din`](../conn/din.md#DIN-6) for breakout.
 [rash]: http://fuckin.rash.jp/wikihome/index.cgi/p6?page=Basic+Master+Jr.
 [wj-bm]: https://ja.wikipedia.org/wiki/ベーシックマスター
 [zu2/BASICMASTER]: https://github.com/zu2/BASICMASTER
-
-[emu-6800ide]: http://www.hvrsoftware.com/6800emu.htm
-[emu-bm2]: http://ver0.sakura.ne.jp/pc/index.html#bm2
-[emu-mk5]: http://s-sasaji.ddo.jp/bml3mk5/
 
 [asm]: https://archive.org/stream/Hitachi_Basic_Master_Level_3_MB-6890_Assembler_Manual_1983#page/n3/mode/1up
