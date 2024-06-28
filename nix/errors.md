@@ -29,3 +29,41 @@ nixbld group not found
     error: the group 'nixbld' specified in 'build-users-group' does not exist
 
 Probably a Debian install that's missing the `nix-setup-systemd` package.
+
+
+Setting Locale Failed
+---------------------
+
+A command such as `nix-shell -p cowsay --run 'cowsay Hello'` produces:
+
+    perl: warning: Setting locale failed.
+    perl: warning: Please check that your locale settings:
+            LANGUAGE = (unset),
+            LC_ALL = (unset),
+            LC_COLLATE = "C",
+            LANG = "en_US.UTF-8"
+        are supported and installed on your system.
+    perl: warning: Falling back to the standard locale ("C").
+
+Note that `LANG` is set here; the issue is that the local database is not
+available. It's not entirely clear what's going on with this, but the
+commonly suggested solution is to
+
+    #   In the external environment, to use your system's version
+    export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
+    #   To use the version that comes with the Nix glibc you're using
+    nix-shell --pure --run \
+      'export LOCALE_ARCHIVE="/nix/store/<hash>-glibc-<version>/lib/locale/locale-archive"; exec bash'
+
+    #   In shell.nix (typically in the project root dir)
+    LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
+
+    #   In flake.nix
+    LOCALE_ARCHIVE = optionalString isLinux "${glibcLocales}/lib/locale/locale-archive";
+
+Further references:
+- NixOS/nixpkgs #38991 [glibc 2.27 breaks locale support][nn#38991].
+  This references some other discussions as well.
+
+[nn#38991]: https://github.com/NixOS/nixpkgs/issues/38991
