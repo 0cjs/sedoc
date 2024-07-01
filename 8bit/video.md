@@ -14,15 +14,17 @@ luma signal (CVBS/composite color video).
 
 Separate sync signals are typically TTL; Luminance (B/W or RGB) signals are
 TTL in digital/DRGB systems (8 colors, or 16 with an additional intensity
-signal) or about a volt into 75Ω in analogue systems. The original
-[RS-170][epanorama] standard specified levels into 75Ω of 1.4 V P-P: -0.400
-V sync, 0 V blank (reference), +0.075 V black, and +1.000 V white +1.000.
-But more frequently in modern systems it's scaled to 1.0 V P-P. CVBS
-standard levels (from [[wp cvbslev]]) and NTSC timings (from [Beale
+signal) or about a volt into 75Ω in analogue systems. The original RS-170
+standard ([[epanorama]], [[rgh-8]]) specified levels into 75Ω of 1.4 V P-P:
+-0.400 V sync, 0 V blank (reference), +0.075 V black, and +1.000 V white
++1.000. But more frequently in modern systems it's scaled to 1.0 V P-P.
+CVBS standard levels (from [[wp cvbslev]]) and NTSC timings (from [Beale
 Corner][bc trv900] via [Modular Circuits][mc zx81]):
 
 <img src='img/video-cvbs-levels.png'        width=500 /> <!--  561 × 284 -->
 <img src='img/RS170A.jpg'                   width=500 /> <!--  856 × 526 -->
+
+See also [[RS-170]].
 
 Missing timings from the RS170A diagram above are: Scan line: 63.5 μs.
 Color burst: 8-10 cycles (2.2 - 2.8 μs). Active video: 52.6 μs.
@@ -108,8 +110,8 @@ Notes:
   luminance image broadcast standards (typically 625 and 525 lines).
 - Technically "CCIR System" standards are for broadcast, and include RF
   frequency assignments as well as video encoding.
-- See [[epanorama]] for some further details on video signal standards not
-  modulated on RF for broadcast.
+- See [[rgh-8]] and [[epanorama]] for some further details on video signal
+  standards not modulated on RF for broadcast.
 
 Standards:
 - CCIR System A: (376i50) 405-line 25 FPS interlaced 10.125 kHz. Britian
@@ -455,6 +457,9 @@ HD Retrovision articles and posts:
 - \[hdr 240] [More information than you need about “240p” video][hdr 240].
 
 Other sources
+- _Raster Graphics Handbook,_ [Chapter 8: The Monitor Interface][rgh-8].
+  Covers NTSC signals in great detail. Includes Appendix A with excerpts
+  (partiuclarly good timing diagrams) from the EIA RS-170 standard.
 - \[scanlines] [Scanlines Demystified / Special Downscaling Edition
   Q&A][scanlines]. Extensive 240p discussion and pics; equipment
   information.
@@ -532,6 +537,7 @@ Sample circuits and programming:
 [pet andre]: http://6502.org/users/andre/petindex/crtc.html
 [pet f6 623]: http://forum.6502.org/viewtopic.php?f=1&t=6231
 [pet_crtc]: http://inchocks.co.uk/commodore/PET/PET_CRTC.xls
+[rgh-8]: https://ece-classes.usc.edu/ee459/library/documents/RS170.pdf
 [scanlines]: http://scanlines.hazard-city.de/
 [wp cvbslev]: https://en.wikipedia.org/wiki/Composite_video#Signal_components
 [wp hline]: https://en.wikipedia.org/wiki/Analog_television#Structure_of_a_video_signal
