@@ -111,7 +111,7 @@ Models:
 
 To-do XXX:
 - MZ-3100, 3200 (not the palmtops).
-- MZ-3500 (1982) Dual processor Z-80. CP/M; might not be MZ-80-compatible.
+- [MZ-3500][] (1982) Dual processor Z-80. CP/M; might not be MZ-80-compatible.
 - MZ-2500 (1985) "SuperMZ" series: MZ-2511, MZ-2520, MZ-2521, MZ-2531
   - MZ-2521: desktop case
     - CMT and 2 3.5" FDDs; 2× RS-232 (DB-25F, DE-9F)
@@ -132,3 +132,5 @@ also a Z-80 and some backward compatibility.
 [SB-B-80T]: http://retropc.net/ohishi/museum/80t.htm
 [nib]: http://retropc.net/ohishi/museum/index.htm
 [rpc-mz40k]: http://retropc.net/ohishi/museum/mz40k.htm
+
+[MZ-3500]: https://original.sharpmz.org/mz-3500/mztdata.htm
