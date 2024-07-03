@@ -23,6 +23,24 @@ For most of these information will be incomplete unless run as root.
 
     sudo ip link set wlp3s0 mtu 1426
 
+### Network interface information
+
+    nmcli con
+    nmcli device [show DEVICE]
+    ip addr [show dev DEVICE]
+
+### Renew DHCP Lease
+
+    networkctl renew DEVICES...     # doesn't work with NetworkManager?
+
+    systemctl.restart networking.service    # Rather aggressive.
+
+    #   Just bringing the I/F down and up does not renew.
+    nmcli con down id CONNNAME && nmcli con up id CONNAME
+
+    #   `-r` releases; may need to run again w/o -r to get new lease.
+    sudo dhclient -r DEVICE
+
 
 Configuration Overview
 ----------------------
