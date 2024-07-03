@@ -9,6 +9,7 @@ Graphics Card Information
 
 | Model                 | kG3D | Date | TDP  |  GB | ¥1000 | Comment
 |-----------------------|-----:|------|-----:|----:|------:|-------------------
+| GeForce RTX 3060      | 17.0 | 21.1 | 170W |  12 |       |
 | GeForce GTX 1080 Ti   | 13.6 |      |      |     |   90+ |
 | GeForce GTX 1070 Ti   | 12.5 |      |      |     |   68+ |
 | GeForce GTX 1080      | 12.0 |      |      |     | 64-80 |
