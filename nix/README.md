@@ -25,13 +25,18 @@ build an environment for the script:
 Overview
 --------
 
-Paths:
+System paths:
 
     /nix/store/             object store
     /nix/var/nix/profiles/  profile symlinks into /nix/store/*-environment
-    ~/.nix-profile          symlink to current environment
-    ~/.nix-channels         file listing channels
-    ~/.nix-defexpr/         (see nix-env(1) manpage)
+
+User paths vary depending on if it's using the XDG paths or the old legacy
+paths. See [`user.md`](./user.md) for more details and the option to change
+these.
+
+    ~/.nix-profile      →  $XDG_STATE_HOME/nix/profile
+    ~/.nix-defexpr      →  $XDG_STATE_HOME/nix/defexpr
+    ~/.nix-channels     →  $XDG_STATE_HOME/nix/channels
 
 Most Nix package-related information outside `/nix/store/` is just symlinks
 into that object store. In a "multi-user" configuration all changes to
