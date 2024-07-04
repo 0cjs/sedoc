@@ -9,7 +9,9 @@ correct Git does not care about the source of the submodule repo.
 
 However, usually the tree referencing a submodule will also include a
 `.gitmodules` file at the root giving a logical name and default
-source URL for the submodule repo.
+source URL for the submodule repo. The source URL may be made relative
+by starting it with `./` or `../` in which case it's relative to the
+URL of the superproject's default remote.
 
 The history of the submodule repo remains completely independent of
 the repo using the submodule, though Git provides help maintaining the
