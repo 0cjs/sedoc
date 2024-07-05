@@ -14,6 +14,8 @@ options are also available. The following options omit the type:
 
 ### [Identifier Terminology][ident-term]
 
+* `<ref>`: A "branch" name (mutable pointer) in the local repo.
+  Stored under `.git/refs/…`.
 * `<object>` The name (SHA1) of any type of object
 * `<blob>`, `<tree>`, `<commit>`: The name of a specific type of object
 * `<type>`: one of the git object types: blob, tree, commit, tag
