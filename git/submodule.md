@@ -9,9 +9,8 @@ correct Git does not care about the source of the submodule repo.
 
 However, usually the tree referencing a submodule will also include a
 `.gitmodules` file at the root giving a logical name and default
-source URL for the submodule repo. The source URL may be made relative
-by starting it with `./` or `../` in which case it's relative to the
-URL of the superproject's default remote.
+source URL for the submodule repo. URLs starting with `./` or `../`
+are relative; see below.
 
 The history of the submodule repo remains completely independent of
 the repo using the submodule, though Git provides help maintaining the
@@ -24,6 +23,32 @@ superproject's status. If the working copy is clean, you can `git add`
 the submodule to stage a new gitlink entry to that new commit; if the
 working copy is dirty you will not be able to stage until the changes
 in the submodule are commited there.
+
+### Relative Source URLs
+
+The source URL may be made relative by starting it with `./` or `../`
+in which case it's relative to the URL of the superproject's "default
+remote."
+
+The default remote appears to be found by derferencing `HEAD` and, if
+that's a ref and has a tracking ref, using the URL of the remote of
+that tracking ref. If that remote does not exist, it tries to look up
+the URL for the remote `origin`. If that doesn't exist, it doesn't
+fail but instead interprets the relative path relative to the
+filesystem location of the parent repo.
+
+This last case can occur e.g. when you're init'ing the subrepo of a
+subrepo. the upper subrepo has HEAD pointing to a commit (so no
+tracking ref) because it's set based it's parent repo's commit. If
+your git config is not the default `core.defaultRemoteName = origin`,
+it won't find a remote URL.
+
+If it gets to this relative fileystem path point, the filesystem path
+is unlikely to be a Git repo and so won't be a valid source and the
+clone will fail. However, `git submodule update` does not recognise
+this, retries (failing again), and then leaves the submodule init'd to
+that bad remote. Any further attempt to use any of this will fail
+until you `deinit` that submodule and init it again to a valid URL.
 
 ### Configuration Storage Details
 
