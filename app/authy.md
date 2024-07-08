@@ -1,6 +1,16 @@
 Authy
 =====
 
+
+Desktop App
+-----------
+
+While the from-file install still works to install the app itself, as
+of 2024-07-08 it appears impossible to log in with it; it just shows
+an "Attestation token is missing" error.
+
+### Store Install (no longer available)
+
 The authy snap is no longer in the store, and so can no longer be
 downloaded via `snap install authy`. See below for how to deal with this.
 
