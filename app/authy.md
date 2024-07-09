@@ -5,9 +5,11 @@ Authy
 Desktop App
 -----------
 
-While the from-file install still works to install the app itself, as
-of 2024-07-08 it appears impossible to log in with it; it just shows
-an "Attestation token is missing" error.
+While the from-file install still works to install the app itself, as of
+2024-07-08 it appears impossible to log in with it; it just shows an
+"Attestation token is missing" or "The device does not meet the minimum
+integrity requirements" error. (And it looks as if existing installs
+may be disabled soon as well.)
 
 ### Store Install (no longer available)
 
