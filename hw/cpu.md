@@ -12,6 +12,7 @@ Key:
 |    PM |    ST | Cores|  TDP | LGA  | Date | GHz      | CPU
 |------:|:-----:|:-----|-----:|------|------|----------|-----------------------
 | 53704 |  3946 |  16₂ |  55W |  AM5 | 24.1 | 2.4 t5.2 | AMD Ryzen 9 7940HX
+| 45647 |  3468 |  16₂ | 105W |  AM4 | 20.4 | 3.4 t4.9 | AMD Ryzen 9 5950X
 | 39791 |  4159 |   8₂⁸|65/219│FC1700│ 23.1 │ 2.1 t5.2 │ Intel Core i7-13700F
 | 32457 |  3919 |   6₂⁸|65/154|FC1700| 22.3 | 2.5 t4.8 | Intel Core i5-13500
 | 28885 |  3752 |   8₂ |  45W |  FP* | 24.1 | 3.8 t5.1 | AMD Ryzen 7 8845HS
@@ -66,6 +67,10 @@ i7-3770 vs. i7-860 is 6400/2915 = 2.2×, but test suite individual results
 are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
 1.6 physics 1.3 extended-instr 2.6 single-thread 1.6.
 
+#### Locations
+- Ryzen 9 7940HX: greg
+- Ryzen 7 7735HS: cjs desktop
+
 
 Socket Types
 ------------
@@ -81,5 +86,6 @@ Be careful about the Xeons. E3-1230 v3 vs. v6 are different sockets.
 
 
 
+<!-------------------------------------------------------------------->
 [PassMark CPU]: https://www.cpubenchmark.net/cpu_list.php
 [pm-socket]: https://www.cpubenchmark.net/socketType.html
