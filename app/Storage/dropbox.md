@@ -23,13 +23,13 @@ warn about this. To configure this:
 
 ### Client Installation
 
-Either way you do it below, you probably want to `apt-get install dropbox`
-(Debian) to get `/usr/bin/dropbox` (command-line client) and the Dropbox
-widget for the status tray (on graphical systems). This will suggest
-installing the `nautilus` package, but not automatically bring it in.
+The command line client to control Dropbox is in `.home/cjs1/bin/dropbox`;
+there's no need to install `nautilus-dropbox` if you just use that.
+The Dropbox widget for the status tray seems to be included with the
+raw binary daemon.
 
 The actual sync client is a proprietary daemon installed in the above
-directories it can be installed in two ways:
+directories it can be installed in two ways, with the first preferred:
 
 1. Per the Dropbox [`install-linux` page ][install-linux] instructions,
    download and extract the headless-capable "raw binary"  client via
