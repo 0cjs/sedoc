@@ -42,7 +42,7 @@ Settings » Advanced contains useful stuff:
 [Telgram markdown formatting][t md] varies by client. For Android,
 Web and Win/Unix desktop:
 
-    Markup:     __italic__   **bold**   `monspace`  ```multiline monospace```
+    Markup:     __italic__   **bold**   `monospace`  ```multiline monospace```
     Shortcut:   Ctrl-I       Ctrl-B     Ctrl-Shift-M
 
 Also `Ctrl-K` for links and `Ctrl-Shift-N` to clear formatting.
