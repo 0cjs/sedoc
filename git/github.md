@@ -52,6 +52,13 @@ GitHub Merging
   rebase isn't necessary; that changes only the committer timestamps.
 
 
+Actions
+-------
+
+Workflows contain jobs, jobs run steps that execute actions. Actions can be
+comprised of additional steps.
+
+
 
 <!-------------------------------------------------------------------->
 [Mathjax]: https://docs.mathjax.org/en/latest/input/tex/
