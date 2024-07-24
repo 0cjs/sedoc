@@ -30,6 +30,16 @@ staged, modified and new that are not ignored):
     git ls-files -c -o --exclude-standard
 
 
+git check-ignore
+----------------
+
+To find what is causing any particular file(s) to be ignored:
+
+    git check-ignore -v filename [...]
+
+Exits with `1` if any file in the list is not ignored.
+
+
 
 <!-------------------------------------------------------------------->
 [0xfe]: http://0xfe.blogspot.jp/2010/04/adding-git-status-information-to-your.html
