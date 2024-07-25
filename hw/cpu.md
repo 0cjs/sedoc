@@ -11,6 +11,7 @@ Key:
 
 |    PM |    ST | Cores|  TDP | LGA  | Date | GHz      | CPU
 |------:|:-----:|:-----|-----:|------|------|----------|-----------------------
+| 62796 |  4281 |  16₂ | 170W |  AM5 | 22.3 | 4.5 t5.7 | AMD Ryzen 9 7950X
 | 53704 |  3946 |  16₂ |  55W |  AM5 | 24.1 | 2.4 t5.2 | AMD Ryzen 9 7940HX
 | 45647 |  3468 |  16₂ | 105W |  AM4 | 20.4 | 3.4 t4.9 | AMD Ryzen 9 5950X
 | 39791 |  4159 |   8₂⁸|65/219│FC1700│ 23.1 │ 2.1 t5.2 │ Intel Core i7-13700F
@@ -70,6 +71,7 @@ are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
 #### Locations
 - Ryzen 9 7940HX: greg
 - Ryzen 7 7735HS: cjs desktop
+- AMD Ryzen 9 7950X: Company X parent
 
 
 Socket Types
