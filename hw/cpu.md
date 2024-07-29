@@ -19,6 +19,7 @@ Key:
 | 29492 |  3782 |  8₁₆ |  54W |  FP* | 23.1 | 3.8 t5.1 | AMD Ryzen 7 7840HS
 | 28885 |  3752 |  8₂  |  45W |  FP* | 24.1 | 3.8 t5.1 | AMD Ryzen 7 8845HS
 | 28120 |  3795 |  6₂  |45/115|FC1744| 22.1 | 2.5 t5.0 | Intel Core i9-12900H
+| 26510 |  4146 | 12₂  |      |      | 23.1 | 3.7      | Apple M2 Max 12 Core 3680 MHz
 | 25392 |  3684 |  6₂  |45/115|FC1744| 23.1 | 2.4 t4.9 | Intel Core i7-13620H
 | 24123 |  3358 |  8₂  |  54W |  FP7 | 23.1 | 3.2      | AMD Ryzen 7 7735HS
 | 22768 |  3600 |  6₂  |45/115|FC1744| 22.1 | 2.3 t4.7 | Intel Core i7-12650H
@@ -73,6 +74,7 @@ are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
 - Ryzen 9 7940HX: greg
 - Ryzen 7 7735HS: cjs desktop
 - AMD Ryzen 9 7950X: Company X parent
+- Apple M2 Max 12 Core 3680 MHz: Sv.
 
 
 Socket Types
