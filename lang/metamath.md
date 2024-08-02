@@ -12,6 +12,8 @@ information. It's available in several formats, including [PDF][book-pdf].
 The Metamath Language
 ---------------------
 
+All § references below are to the _Metamath_ book.
+
 Misc:
 - All tokens must be surrounded by whitespace.
 - `$(`,`$)`: comment (no nesting)
@@ -42,8 +44,10 @@ _Assertions:_
     axiom (typ. "af-…") or definition (typ. "df-…") of ordinary
     mathematics.
 - _label_ `$p` _typecode_ _sym_ … _sym_ `$=` _proof_ `$.`:
-  - __Provable assertion.__ A claim followed by its proof
-  - (or `?` to leave a "proof gap"?)
+  - __Provable assertion.__ A claim followed by its proof.
+  - _proof_ may be `?` when entirely unknown; the verifier will accept but
+    warn about this. Compressed proof data may have `?`s in it for
+    partially developed proofs. (§4.4.6)
 
 Other:
 - `|-`: "is a theorem"/"the following is provable" (def. w/`$c |- $.`?)
