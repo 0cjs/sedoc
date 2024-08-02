@@ -12,6 +12,10 @@ is a GitHub "repo."
 
 ### Special URLs
 
+Appending `.keys` to a GitHub user URL gives the SSH public keys
+that a user has authorised for access to the account. E.g.,
+<https://github.com/InnovativeInventor.keys>.
+
 Appending `/stargazers` after the repo name shows everybody who's starred
 the repo. (This is linked from "n Stars" in the About panel.)
 
