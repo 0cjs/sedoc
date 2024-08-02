@@ -52,6 +52,21 @@ _Assertions:_
 Other:
 - `|-`: "is a theorem"/"the following is provable" (def. w/`$c |- $.`?)
 
+### Axioms vs. Definitions (§4.5)
+
+- Metamath does not distinguish; both use `$a`.
+  - Developer must make sure that definitions are "proper," not "creative."
+  - Metamath assumes this is done, and so can take all as axioms.
+- In math, definitions:
+  - Is an abbreviation that can be replaced by the expression for which it
+    stands.
+  - Must not strengthen the language, and any symbols a def introduces
+    should be eliminable from the langauge. I.e., "proper," not "creative."
+  - ∴ Are typographical conveniences.
+  - "Not creative" can be subtle; e.g. P → Q → R denotes P → (Q → R): no
+    new symbols introduced, but ok because the former is not a WFF in the
+    base language.
+
 
 
 <!-------------------------------------------------------------------->
