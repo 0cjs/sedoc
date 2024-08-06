@@ -55,6 +55,13 @@ PC-compatibles:
    Pasopia][vog95487]. Includes pics of the T-100 and links to various
    references.
 
+Other:
+- takashima.pose.jp, [東芝パソピア（PA7010）][taka]. Basic tech info, a few
+  peripheral listings, including Aiwa PV-2123 modem.
+- JVCC, [Pasopia7 Peripheral Set][jvcc-348]. Excellent, detailed photos of
+  several peripherapls and carts, including an Epson TF-10 and an Aiwa
+  PV-2123 modem.
+
 
 Peripherals
 -----------
@@ -75,9 +82,12 @@ Sources: マイコン1983-1, I/O 1982.12, I/O 1982.3　広告より (adverts).
     PA7242 16Kバイト RAM PAC2                       ¥ 28,000
     PA7244 32Kバイト RAM PAC2 未定
     PA7246 漢字 ROM PAC2                            ¥ 40,000
+    PA7247 漢字 ROM PAC2
     PA7250 ドットプリンタI                          ¥ 69,000
     PA7251 ドットプリンタII                         ¥153,000
     PA7300 拡張ユニット                             ¥ 78,000
+    PA7380 RS-232Cアダプター
+    PA7390 JOY PAC 2  (2× joystick ports)
     PA7370 カラーTVアダプタ                         ¥ 13,000
     PA7419 ユニバーサルカード                       ¥  4,800
     PA7426 RS-232Cケーブル
@@ -89,10 +99,22 @@ Sources: マイコン1983-1, I/O 1982.12, I/O 1982.3　広告より (adverts).
     PA7523 OA-DISK BASIC                            ¥ 18,000
     PA7540 MINI-PASCAL(ROM PAC1)                    ¥ 33,000
 
+Third-party peripherals:
+
+    F10TA  Epson TF-10 (2 × 5.25") for PA7010
+    CF-80T 湘南電送 (Shonan Denso) CF-80T 5インチ2ドライブ
+
 Peripheral details:
+- Not clear why PA7246 ([mentioned here][taka]) and PA7247 ([shown
+  here][jvcc-348] are both "ROM PAC2".
 - __PA7370__ DIN-8 DRGB to RF (no CVBS output). Powered from DIN-8.
   Color/BW switch.
 - __PA7373__ DIN-8 DRGB to CVBS and RF. Powered from DIN-8.
+- Serial Adapters: not clear why some systems need the (huge!)
+  [PA7380][jvcc-348] (which has both a serial and expansion cable coming
+  out of it) and others can use the PA7426, or what that even is. (The the
+  cable coming out of one of my PA7010s?
+
 
 
 BASIC
@@ -117,3 +139,6 @@ Error messages:
 [t100-techref]: https://archive.org/details/toshiba-t-100-tech-ref-eng/
 [tosh8]: https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-X2/DSA12010006539.pdf
 [vog95487]: https://www.vogons.org/viewtopic.php?f=46&t=95487
+
+[jvcc-348]: https://hachibitto.com/jvcc/articles/view_article.php?id=348
+[taka]: https://takashima.pose.jp/computer/PA7010.html
