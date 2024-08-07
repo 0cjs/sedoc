@@ -121,6 +121,11 @@ Linux] button on the [Signal download] page (with added `chmod` commands).
 Google Meet
 -----------
 
+Unless pinned, text messages can be seen only by people who were in the
+call when the message was sent.
+
+Shortcuts:
+
             Space   Push-to-talk (when enabled)
                 C   Captions show/hide
           Shift-M   Picture-in-picture mode
