@@ -29,6 +29,11 @@ producing a single line of output like one of the following:
     system: "x86_64-linux", multi-user?: yes, version: nix-env (Nix) 2.24.2, channels(root): "nixpkgs", nixpkgs: /nix/var/nix/profiles/per-user/root/channels/nixpkgs
     system: "x86_64-linux", multi-user?: no, version: nix-env (Nix) 2.24.1, nixpkgs: /home/cjs/.nix-defexpr/channels/nixpkgs
 
+`nix-info` itself is a shell script that can be examined to see what it
+does. It appears to check if a system is multiuser by building the
+`multiuser.nix` package, that just checks during the build to see if the
+builder is in the `nixbld` group.
+
 #### Hashbangs
 
 Individual scripts may use nix via [`nix-shell` hashbang][nix #!] to
