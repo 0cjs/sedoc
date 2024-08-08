@@ -78,7 +78,9 @@ Build-related files:
 - `HASH-PNAME-PVER.drv` files are (compiled?) derivation expressions for
   one or more packages. Subscribing to a channel will copy all of its
   `.drv` files to the store. (Actually, these are maybe created by
-  `nix-instantiate` from the package's `.nix` files?)
+  `nix-instantiate` from the package's `.nix` files?) _HASH_ is the hash of
+  that derivation expression (?), _not_ the hash of any outputs. (Those can
+  be found in the `.drv` file.)
 - Loose files ending in `.sh`, `.toml`, `.patch`, etc., also copied from
   channels. These appear to be additional files such as custom builders
   that are part of a package expression/description; they're referenced in
