@@ -15,6 +15,22 @@ separate files as necessary.
 XXX FIXME (where does this really go?)
 --------------------------------------
 
+#### Nix Installation Information
+
+Information about the current Nix installation can be printed with:
+
+    nix-shell -p nix-info --run "nix-info -m"
+
+This "markdown" output is more human-readable than the standard output,
+but if you're parsing it, leaving out the `-m` (which will also leave
+out host OS information unless you add `--host-os`) is probably easier,
+producing a single line of output like one of the following:
+
+    system: "x86_64-linux", multi-user?: yes, version: nix-env (Nix) 2.24.2, channels(root): "nixpkgs", nixpkgs: /nix/var/nix/profiles/per-user/root/channels/nixpkgs
+    system: "x86_64-linux", multi-user?: no, version: nix-env (Nix) 2.24.1, nixpkgs: /home/cjs/.nix-defexpr/channels/nixpkgs
+
+#### Hashbangs
+
 Individual scripts may use nix via [`nix-shell` hashbang][nix #!] to
 build an environment for the script:
 
