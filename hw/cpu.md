@@ -13,7 +13,7 @@ Key:
 |    PM |    ST | Cores|  TDP | LGA  | Date | GHz      | CPU
 |------:|:-----:|:-----|-----:|------|------|----------|-----------------------
 | 62796 |  4281 | 16₂  | 170W |  AM5 | 22.3 | 4.5 t5.7 | AMD Ryzen 9 7950X
-| 54738 |       |      |      |      |      |          | AMD Ryzen 9 7945HX
+| 54738 |  4051 | 16₂  |  55W |      | 23.1 | 25. t5.4 | AMD Ryzen 9 7945HX
 | 53704 |  3946 | 16₂  |  55W |  AM5 | 24.1 | 2.4 t5.2 | AMD Ryzen 9 7940HX
 | 45647 |  3468 | 16₂  | 105W |  AM4 | 20.4 | 3.4 t4.9 | AMD Ryzen 9 5950X
 | 45634 |       |      |      |      |      |          | AMD Ryzen 9 7845HX
@@ -77,7 +77,7 @@ are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
 1.6 physics 1.3 extended-instr 2.6 single-thread 1.6.
 
 #### Locations
-- AMD Ryzen 9 7950X: Company X parent
+- AMD Ryzen 9 7950X: Company RV, and co-worker DG.
 - Ryzen 9 7940HX: greg desktop
 - Apple M2 Max 12 Core 3680 MHz: Steven
 - Ryzen 7 7735HS: cjs/njr mini-desktop

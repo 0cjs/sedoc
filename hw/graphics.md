@@ -6,10 +6,15 @@ Graphics Card Information
 - GB: Standard mem configs
 - Prices from Amazon.co.jp as of 2018-07 or 2017-11.
   Price is for most appropriate memory config, e.g., 4 GB for 1050
+- †=integrated graphics
+
+To-do: 7945HX
 
 | Model                 | kG3D | Date | TDP  |  GB | ¥1000 | Comment
 |-----------------------|-----:|------|-----:|----:|------:|-------------------
-| GeForce RTX 3060      | 17.0 | 21.1 | 170W |  12 |       |
+| GeForce RTX 4080      | 34.6 | 22.4 | 320W |  16 |  170+ |
+| GeForce RTX 3070      | 22.4 | 20.4 | 220W |   8 |   65+ |
+| GeForce RTX 3060      | 17.0 | 21.1 | 170W |  12 |   30+ |
 | GeForce GTX 1080 Ti   | 13.6 |      |      |     |   90+ |
 | GeForce GTX 1070 Ti   | 12.5 |      |      |     |   68+ |
 | GeForce GTX 1080      | 12.0 |      |      |     | 64-80 |
@@ -17,13 +22,14 @@ Graphics Card Information
 | GeForce GTX 1070      | 11.1 | 16.2 | 150W |     | 49-60 |
 | GeForce GTX 980       |  9.6 |      |      |     |       |
 | GeForce GTX 1060      |  8.9 | 16.2 | 120W | 3,6 | 30-40 | 3G ver. a few K cheaper
-| GeForce GTX 970       |  8.6 | 14.2 | 145W |   4 |    19 |
+| GeForce GTX 970       |  9.6 | 14.2 | 145W |   4 |    19 |
 | Radeon RX 580         |  8.4 | 17.2 | 185W | 4,8 | 24-32 |
 | GeForce GTX 1050 Ti   |  5.8 | 16.4 |  75W |   4 |    20 |
 | GeForce GTX 960       |  5.8 |      |      |     |       |
 | GeForce GTX 980M      |  5.7 |      |      |     |       |
 | GeForce GTX 1050      |  4.5 | 16.4 |  75W |     |    20 |
 | Radeon HD 7870        |  4.4 | 12.2 | 175W |   2 |       |
+| †Ryzen 9 7950X        |  4.1 | 22.4 |      |     |       |
 | GeForce GTX 970M      |  3.9 |      |      |     |       |
 | GeForce GTX 960M      |  2.1 |      |      |     |       |
 | GeForce GT  1030      |  2.2 | 17.2 |  30W |   2 |    12 |
