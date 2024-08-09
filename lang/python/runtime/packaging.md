@@ -66,10 +66,34 @@ All the following are optional except for the release segment:
   release candidate and final release. `c` may be accepted as meaning `rc`.
 - `.postN` Post-release segment. Used for small fixes that do not affect
   the distributed software (e.g., correcting release notes).
-- `.devN` Development release segment.
+- `.devN` Development release segment. Appended to the _next_ release
+  version number.
 
 A _final release_ version specifier may consist of only an optional epoch
 segment followed by a release segment.
+
+Example sorts (left is from [[ppug-ver]], right is locally made):
+
+    1.dev0                              1.0.0.dev4
+    1.0.dev456                          1.0.0a3
+    1.0a1                               1.0.0b1.dev1
+    1.0a2.dev456                        1.0.0b1
+    1.0a12.dev456                       1.0.0b2
+    1.0a12                              1.0.0rc1        # or `c1`
+    1.0b1.dev456                        1.0.0
+    1.0b2                               1.0.0.post1.dev1
+    1.0b2.post345.dev456                1.0.0.post1
+    1.0b2.post345                       1.0.1.dev1
+    1.0rc1.dev456
+    1.0rc1
+    1.0
+    1.0+abc.5
+    1.0+abc.7
+    1.0+5
+    1.0.post456.dev34
+    1.0.post456
+    1.0.15
+    1.1.dev1
 
 #### Dependency Specifiers
 
