@@ -47,10 +47,12 @@ installed with the application will typically be stored in
 application, and users should never be expected to put things there.
 
 User-specific config/data/etc. directories should follow the [XDG Base
-Directory Specification][xdg-spec]. These supply an `_HOME` directory
-which is always searched first and which is expected to be writable,
-and a `_DIRS` list of paths which are searched in order after `_HOME`.
+Directory Specification][xdg-spec]. These directories are defined with env
+vars, or default values if they are not set.
+- `XDG_*_HOME`: Always searched first. Expected to be writable.
+- `XDG_*_DIRS` List of paths which are searched in order after above.
 
+The `*` above are:
 - __DATA__: Data files. (These are files supplied by the user to
   override installed data files, not files that the application is
   expected to write.)
