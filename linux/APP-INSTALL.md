@@ -52,16 +52,22 @@ vars, or default values if they are not set.
 - `XDG_*_HOME`: Always searched first. Expected to be writable.
 - `XDG_*_DIRS` List of paths which are searched in order after above.
 
-The `*` above are:
-- __DATA__: Data files. (These are files supplied by the user to
-  override installed data files, not files that the application is
-  expected to write.)
-- __CONFIG__: Configuration files. These may be created independently
-  by the user and/or (re-)written by the application.
-- __CACHE__: Non-essential (cached) data.
-- __RUNTIME__: Things relevant when the program is running, e.g.,
-  sockets. This has many special conditions (ownership, lifetime)
-  described in [the spec][xdg-spec].
+The `*` above and their default paths for `*_HOME` (relative to $HOME) and
+`*_DIRS` (absolute) are:
+- __DATA__ (`.local/share/`; `/usr/share/`): Data files. Generally not
+  written by the application, but supplied by the user.
+- __CONFIG__ (`.config/`; `/etc/`): Configuration files. These may be
+  created independently by the user and/or (re-)written by the application.
+- __STATE__ (`.local/state/`): User-specific state files that should
+  persist between application restarts, but not important enough for
+  $XDG_DATA_HOME. E.g., history, logs, app layout.
+- __CACHE__ (`.cache/`): Non-essential (cached) data.
+- __RUNTIME__: Things relevant when the program is running, e.g., sockets.
+  This has many special conditions (ownership, lifetime) described in [the
+  spec][xdg-spec]. Generally set up by OS, e.g., `/run/user/1765/`.
+
+Additional standard directories that do not use env vars are:
+- `.local/bin/`: User-specific executable files.
 
 The environment variables and their defaults values are:
 
