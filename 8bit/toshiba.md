@@ -99,6 +99,9 @@ Sources: マイコン1983-1, I/O 1982.12, I/O 1982.3　広告より (adverts).
     PA7523 OA-DISK BASIC                            ¥ 18,000
     PA7540 MINI-PASCAL(ROM PAC1)                    ¥ 33,000
 
+Notes:
+- RAM PAC2 appears to have battery backup (2× coin cells).
+
 Third-party peripherals:
 
     F10TA  Epson TF-10 (2 × 5.25") for PA7010
