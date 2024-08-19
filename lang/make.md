@@ -36,17 +36,35 @@ the shell that make starts.
 Variables
 ---------
 
-From manual chapter 6, [How to Use Variables][vars].
+Ref [6. How to Use Variables][§6].
 
-Assignment:
-- Standard vars assigned with `=` are literal at assignment time and
-  recursively expanded at expansion time: `A=1`, `B=${A}` will expand
-  `B` to `${A}` and then expand that to the current value of `${A}`.
-- (GNU) Simply expanded vars assigned with `:=` are expanded at
-  assignment time and literal at substitution time.
-- (GNU) `!=` Runs RHS as a shell command and does immediate asignment.
+The four _flavors_ of variable assignment are :
+- [Recursively expanded][§6.2.1] `N = v` or `define`.
+  Expanded at substitution time.
+- [Simply expanded][§6.2.2] (POSIX/GNU) `N ::= v`, (GNU) `N := v`
+  Expanded at definition time.
+  (Note: BSD `:=` is different from GNU `:=`.)
+- [Immediately expanded][§6.2.3] (GNU) `N :::= v`
+  Expanded at definition _and_ substitution time.
+- [Conditional][§6.2.4]: `FOO ?= bar`.
+  Assigned only if undefined (not if defined but empty!).
 
-Reference:
+Additional assignment forms:
+- `!=` (GNU) Runs RHS as a shell command and does immediate assignment.
+- `+=` [§6.6] Adds additional text to a var. Prepends a space to the text
+  if var has a value already. Check docs for details of behaviour with
+  different assignment/expansion flavors.
+
+Leading whitespace is stripped during substitution; this can be protected
+as follows. Note that if you do _not_ want trailing whitespace, avoid EOL
+comments!
+
+    nullstring := 
+    space := ${nullstring} # EOL at `#`; `space` is exactly one space
+    dir := /foo/bar  # ${dir} is `/foo/bar  ` here!
+
+#### Referencing Variables
+
 - Escape stand-alone dollar sign with itself: `$$`.
 - Reference vars with `$(foo)` or `${foo}`. Works in any context.
   (Single char vars can be referenced as `$A` but this is deprecated
@@ -57,9 +75,43 @@ Reference:
   wildcard in source matched. Abbreviation for `$(patsubst .o,.c,${foo})`
   function.
 
-### Functions
+#### Environment Variables
 
-From manual chapter 8, [Functions for Transforming Text][funcs].
+- All variables in the environment are read and makefile variables of the
+  same names are set to the same values. Explicitly set makefile variables
+  override environment variables of the same name unless `make -e` is used.
+- `export VARNAME …` / `export VARNAME = …` (also `:=` and `+=`) will
+  export makefile vars into the recipe environments. `unexport` will will
+  prevent a makefile variable from being exported.
+- `export` alone will export to the recipe environments all makefile
+  variables that are not explicitly `unexport`ed. `unexport` undoes this
+  (restoring the default behaviour).
+- Older versions of Gnu make without `export` did the same functionality by
+  default. For backward compatibility with this behaviour, define special
+  target `.EXPORT_ALL_VARIABLES`, which is ignored by old versions where
+  `export` would produce an error.
+- Exporting a variable requires expansion; if the expansion has side
+  effects you will see them every time a command is invoked.
+- Related special variables:
+  - `SHELL` is not exported; the calling environment's value is passed on.
+    This can be overridden with `export`.
+  - `MAKEFLAGS` is always exported; can be overridden with `unexport`.
+  - `MAKEFILES` is exported if you set it to anything.
+  - `MAKELEVEL`, see below.
+
+#### Pre-defined and Special Variables
+
+- [6.14 Other Special Variables][§6.14] (Many, not all.)
+- `MAKELEVEL`: 0 at top level; incremented with every sub-make. [§5.7.2]
+- A few other places.
+- Also see ["Automatic Variables"](#automatic-variables) below for
+  variables automatically defined in recipies (`$<` etc.).
+
+
+Functions
+---------
+
+Ref [8. Functions for Transforming Text][§8].
 
 - Call  with syntax similar to variables: `$(function arguments)` or
   `${function arguments}`, with args separated by one or more spaces
@@ -98,9 +150,11 @@ String functions (complete list):
 - `$(firstword names…)`
 - `$(lastword names…)`
 
-Filename functions (complete list):
-- `$(dir names…)`
-- `$(notdir names…)`
+Filename functions (complete list); these map on each item in _names…_:
+- `$(dir names…)`: "Directory part," which is everything through (and
+  including) the last slash in the string. If no slash present, `./`.
+- `$(notdir names…)`: "Filename part"; removes all through last slash.
+  (String ending in `/` becomes empty string.)
 - `$(suffix names…)`
 - `$(basename names…)`
 - `$(addsuffix suffix,names…)`
@@ -127,7 +181,7 @@ Other functions:
 - `$(value var)`
 - `$(eval ...)`
 - `$(origin var)`: indicate how variable named _var_ was defined.
-- `$(flavor var)`: indicate flavour of variable named _var_ (`undefined`,
+- `$(flavor var)`: indicate flavor of variable named _var_ (`undefined`,
   `recursive`, `simple`).
 - `$(error text…)`
 - `$(warning text…)`
@@ -167,7 +221,7 @@ When targets are built via a [chain of implicit rules][imp-chain]
 deleted automatically by make. Adding an empty `.SECONDARY` target
 will preserve all of these. (Preserving specific ones seems tricky.)
 
-#### Automatic Variables
+### Automatic Variables
 
 Within the recipe, the following _automatic variables_ may be used.
 When the variable expands to multiple filenames, they are
@@ -213,11 +267,18 @@ __[`.SECONDARY`][imp-chain]__.
 [posix]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html
 
 [`.PHONY`]: https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
-[funcs]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
 [imp-builtin]: https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
 [imp-cancel]: https://www.gnu.org/software/make/manual/make.html#Canceling-Rules
 [imp-chain]: https://www.gnu.org/software/make/manual/make.html#Chained-Rules
 [implicit]: http://www.gnu.org/software/make/manual/make.html#Implicit-Rules
 [pattern rule]: https://www.gnu.org/software/make/manual/make.html#Pattern-Rules
 [spectarg]: https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
-[vars]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_6.html
+[§5.7.2]: https://www.gnu.org/software/make/manual/html_node/Variables_002fRecursion.html
+[§6.14]: https://www.gnu.org/software/make/manual/html_node/Special-Variables.html
+[§6.2.1]: https://www.gnu.org/software/make/manual/html_node/Recursive-Assignment.html
+[§6.2.2]: https://www.gnu.org/software/make/manual/html_node/Simple-Assignment.html
+[§6.2.3]: https://www.gnu.org/software/make/manual/html_node/Immediate-Assignment.html
+[§6.2.4]: https://www.gnu.org/software/make/manual/html_node/Conditional-Assignment.html
+[§6.6]: https://www.gnu.org/software/make/manual/html_node/Appending.html
+[§6]: https://www.gnu.org/software/make/manual/html_node/Using-Variables.html
+[§8]: https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_8.html
