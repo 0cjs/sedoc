@@ -3,7 +3,7 @@ Docstrings
 
 References:
 - [PEP 257] Docstring Conventions
-- [PEP 286] reStructuredText Docstring Format
+- [PEP 287] reStructuredText Docstring Format
 
 
 Overview
@@ -171,6 +171,7 @@ are implict named references.
 <!-------------------------------------------------------------------->
 [PEP 224]: https://peps.python.org/pep-0224/
 [PEP 257]: https://www.python.org/dev/peps/pep-0257/
+[PEP 287]: https://peps.python.org/pep-0287/
 [PEP 287]: https://www.python.org/dev/peps/pep-0287/
 [RST docs]: http://docutils.sourceforge.net/rst.html
 [doctest]: http://www.python.org/doc/current/lib/module-doctest.html
