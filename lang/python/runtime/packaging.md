@@ -230,6 +230,22 @@ the `[project]` section of `pyproject.toml` files, e.g.:
     bar = [ 'ghi', 'jkl', ]
 
 
+Package Repositories
+--------------------
+
+The [PyPI] Package Index is the most widely used repository of Python
+packages, and is the default source for tools like Pip and Poetry.
+- You can file a [PyPI issue] to handle things like account recovery, name
+  squatting, etc. ([PEP 541] "Package Index Name Retention" covers taking
+  over of existing package names on PyPI.)
+- There are "Organizations" accounts available for those handling packages
+  maintained by organisations.
+
+[PEP 541]: https://peps.python.org/pep-0541/
+[PyPI]: https://pypi.org
+[PyPI issue]: https://github.com/pypi/support/issues/new/choose
+
+
 To-read
 -------
 
