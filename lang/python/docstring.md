@@ -103,10 +103,10 @@ line:
 
 #### Interpreted Text Roles
 
-RST provides [interpreted text roles][rst-roles] of the form ``
-:role:`text` `` to give special markup to the backquoted text. Systems
-using RST may extend this, e.g., [Sphinx roles][sp-roles] and
-[sphinx-issues]. Useful roles include the following.
+RST provides [interpreted text roles][rst-roles] of the form
+`` :role:`text` `` to give special markup to the backquoted text.
+Systems using RST may extend this, e.g., [Sphinx roles][sp-roles]
+and [sphinx-issues]. Useful roles include the following.
 
 [Standard RST][rst-roles]:
 - `:literal:`: Same as double-backticks.
