@@ -189,10 +189,15 @@ Environment and Dependency Managers
   applications but not libraries due to strict pinning in
   `Pipfile.lock`.
 * [Poetry] has better and more reliable dependency determination than
-  Pipenv. Designed for both apps and libraries.
+  Pipenv. Designed for both apps and libraries. Quite slow.
 * [Hatch] simplifies/wraps process of creating/managing/testing libs
   and apps (more features than Poetry in this area). No dependency
   graph calculation?
+* [uv] is very new and very fast (it's written in Rust).
+  - `uv run|lock|sync` do cross-platform lock files (> Poetry/PDM/Rye)
+  - `uv run` handles PEP 723 standalone scripts with inline dependency data
+  - `uv tool` is an alternative to `pipx`
+  - `uv python` is an alternative to pyenv, pythonx, etc.
 
 ### Pip
 
@@ -308,6 +313,7 @@ To-read
 [pip-e]: https://pip.pypa.io/en/latest/topics/vcs-support/#editable-vcs-installs
 [pip-rq-fmt]: https://pip.pypa.io/en/stable/reference/requirements-file-format/
 [pip-tools]: https://github.com/jazzband/pip-tools
+[uv]: https://astral.sh/blog/uv-unified-python-packaging
 
 [packaging]: https://packaging.python.org/
 [setupscript]: https://docs.python.org/2/distutils/setupscript.html
