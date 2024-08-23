@@ -175,6 +175,14 @@ Configuration:
 
 Layer filesystem updates:
 - `RUN`: Run command and add results to new layer.
+  - [Exec form]: Parsed as JSON array
+    - e.g. `RUN [ "echo", "$HOME", 'C:\\Windows' ]`.
+    - Backslashes must be escaped.
+    - No variable substitution: need `[ "sh", "-c", "echo $HOME" ]`
+  - [Shell form]
+    - Escape char continues lines; removes whitespace after it!
+    - Can use heredocs: `RUN <<END`, `...`, `END`.
+    - `SHELL` sets interpreter cmd; default `SHELL ["/bin/bash", "-c"]`?
 - `ADD`: Copy files from the build context into the container. Arg is
   - `["<src>", ... "<dest">]` but may be unquoted if no whitespace.
   - `<src>` files/dir paths are relative to the build context.
@@ -231,4 +239,6 @@ Layer filesystem updates:
 [so 37798643]: https://stackoverflow.com/a/37798643/107294
 [so 49831094]: https://stackoverflow.com/a/49831094/107294
 
+[exec form]: https://docs.docker.com/reference/dockerfile/#exec-form
 [filepath.Match]: http://golang.org/pkg/path/filepath#Match
+[shell form]: https://docs.docker.com/reference/dockerfile/#shell-form
