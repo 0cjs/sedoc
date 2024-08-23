@@ -26,7 +26,7 @@ instructions. This is:
 A `.dockerignore` file in the context dir can list patterns matching
 files not to upload to the daemon when uploading context.
 
-`docker build` options include:
+`docker build` options (not all documented in manpage) include:
 - `-f`, `--file`: Use the given filename instead of `Dockerfile` in the
   context as the list of instructions for building the image. Must be
   within the build context.
@@ -37,6 +37,10 @@ files not to upload to the daemon when uploading context.
 - `--ssh`: SSH agent socket/keys to expose to build.
 - `--build-arg`: Set build-time variable.
 - `--label`: Set image metadata.
+- `--progress=[auto|plain|tty|rawjson]`: How progress is shown. The default
+  seems to be to show "partial window scrolling" output which is good to
+  give some sense of progress when interactive. `plain` gives straight
+  log output without tty fancyness and is good for debugging.
 
 For ideas about testing docker images and the software they contain,
 see [Testing Strategies for Docker Containers][terra-testing].
