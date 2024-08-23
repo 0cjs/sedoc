@@ -9,6 +9,16 @@ Status
   `git status -uall`.
 
 
+Global Ignore Setup
+-------------------
+
+    git config --global core.excludesfile ~/.config/git/ignore
+    #   Mac users
+    echo >> ~/.config/git/ignore .DS_Store
+    #   Python users without PYTHONPYCACHEPREFIX=~/.cache/pycache__
+    echo >> ~/.config/git/ignore __pycache__
+
+
 Logging and Graph Exploration
 -----------------------------
 
