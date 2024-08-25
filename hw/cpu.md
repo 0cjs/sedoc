@@ -66,11 +66,14 @@ Key:
 
 Laptop CPUs (ThinkPad models at end of description):
 
+| 18640 |  3066 |  8₂  |  15W |  FP6 | 23.1 | 2.0 t4.5 | AMD Ryzen 7 7730U (ThinkPad E14 G5)
 |  2535 |  1567 |   2₂ |  35W | -    | 13.1 | 2.6 t3.2 | Intel Core i5-3230M (X230)
 |  2434 |  1567 |   2₂ |  35W | -    | 11.1 | 2.7 t3.4 | Intel Core i7-2620M (X220t)
 |  2232 |  1567 |   2₂ |  35W | -    | 11.1 | 2.5 t3.2 | Intel Core i5-2520M (X220t)
 |  1808 |  1161 |   2₂ |  35W | 1288 | 10.1 | 2.5 t3.1 | Intel Core i5-540M  (X201s)
 |  1721 |  1094 |   2₂ |  35W | 1288 | 10.1 | 2.4 t2.9 | Intel Core i5-520M  (T510)
+
+(Thinkpad X1 Carbon: G4=2016, G6=2018, G8=2020, G10=2022, G12=2024.)
 
 The new PassMark seems to emphasise stuff using newer/extended instrs.
 i7-3770 vs. i7-860 is 6400/2915 = 2.2×, but test suite individual results
