@@ -106,8 +106,8 @@ square brackets after the package name, e.g., `requests[security,tests]`.
 
 ### Package Metadata Fields
 
-- `requires-python`: [PEP 508] version string for Python version range.
-  E.g., `>=3.6` for a Python with [f-strings][PEP 498].
+- `requires-python`: [PEP 508]/[PEP 440] version string for Python version
+  range. E.g., `>=3.6` for a Python with [f-strings][PEP 498].
 
 
 Libraries and Packaging Tools
@@ -201,11 +201,13 @@ Environment and Dependency Managers
 
 ### Pip
 
-The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]:
+The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]/[PEP 440]:
 
     pkgname                     # ordinary package names
     pkgname == 1.0              # specific version: does not match higher
     pkgname == 2.*              # highest 2.x.y version
+    pkgname ~= 3.4.5            # no less than given, less than 4.0.0
+    pkgname ~= 0.5.6            # no less than given, less than 0.6.0
     pkgname <= 7                # version ranges
     pkgname >= 5.1.2
 
@@ -307,6 +309,7 @@ To-read
 [pyinst-man]: https://pyinstaller.readthedocs.io/en/stable/man/pyinstaller.html
 [pyinst-rti]: https://pyinstaller.readthedocs.io/en/stable/runtime-information.html
 
+[PEP 440]: https://peps.python.org/pep-0440/
 [PEP 508]: https://peps.python.org/pep-0508/
 [Pipenv]: https://docs.pipenv.org/
 [Poetry]: https://github.com/sdispater/poetry
