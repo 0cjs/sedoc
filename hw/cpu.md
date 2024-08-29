@@ -18,6 +18,7 @@ Key:
 | 45647 |  3468 | 16₂  | 105W |  AM4 | 20.4 | 3.4 t4.9 | AMD Ryzen 9 5950X
 | 45634 |       |      |      |      |      |          | AMD Ryzen 9 7845HX
 | 39791 |  4159 |  8₂⁸ |65/219|FC1700| 23.1 | 2.1 t5.2 │ Intel Core i7-13700F
+| 34549 |  4058 |  8₂  |      |  AM5 | 23.1 | 3.8 t5.3 | AMD Ryzen 7 7700
 | 32702 |       |      |      |      |      |          | AMD Ryzen 9 7745HX
 | 32457 |  3919 |  6₂⁸ |65/154|FC1700| 22.3 | 2.5 t4.8 | Intel Core i5-13500
 | 30385 |  3902 |  8₂  |35/54 | FP\* | 23.2 | 4.0 t5.2 | AMD Ryzen 9 7940HS
@@ -78,6 +79,7 @@ are: int 1.4 float 1.7 primes 1.4 stringsort 1.555 encrypt 3.446 compress
 
 #### Locations
 - AMD Ryzen 9 7950X: Company RV, and co-worker DG.
+- AMD Ryzen 7 7700: Hetzner €70/mo
 - Ryzen 9 7940HX: greg desktop
 - Apple M2 Max 12 Core 3680 MHz: Steven
 - Ryzen 7 7735HS: cjs/njr mini-desktop
