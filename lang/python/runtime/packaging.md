@@ -236,6 +236,22 @@ the `[project]` section of `pyproject.toml` files, e.g.:
     [project.optional-dependencies]
     bar = [ 'ghi', 'jkl', ]
 
+### pipx
+
+- `pipx -h` lists global options and commands; `pipx CMD -h` gives more
+  detailed help for a particular command.
+- `pipx ensurepath [--global]`: Updates `.bashrc`, etc. and $PATH to add
+  directories where pipx stores apps.
+- `pipx environment` shows where various things are stored.
+- `pipx run PKG`: Installs _PKG_ to a temporary virtual environment (cached
+  for 14 days) and run the command.
+
+Installation notes:
+- `pae -C pipx pipx` will not create a working version on Debian if you've
+  not installed the `python3-venv` package. Installing `virtualenv` into
+  that pae environment doesn't help. Get around this by using a "full"
+  Python build such as one made by `pythonz`.
+
 
 Package Repositories
 --------------------
