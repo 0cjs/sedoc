@@ -50,8 +50,6 @@ __Workspaces__ are covered in [RPL§14.3] and [CB§3.3].
 Cargo Configuration
 -------------------
 
-[[CB§3.6]] "Configuration"
-
 Commands:
 - Common parameters (most, not all commands):
   - `--manifest-path PATH`: path to `Cargo.toml` (including filename)
@@ -64,8 +62,13 @@ Commands:
   - `--package [SPEC]`: packages to build
   - `--exclude SPEC`: exclude packages from build
 
-Configuration file search:
+Configuration file search: [[CB§3.6]]
+- __NOTE:__ This search is done from the CWD where `cargo` was run, _not_
+  from where the `Cargo.toml` lives if specified by `--manifest-path`.
 - If present, `config` read instead of `config.toml`.
+- Configuration files passed as `--config` parameters, in _reverse_ order
+  of the command line (i.e., later `--config file` params take precedence
+  over earlier ones).
 - `.cargo/config.toml` in current dir and parents all the way to root.
 - `$CARGO_HOME/config.toml`.
 - `$CARGO_HOME` defaults to `$HOME/.cargo/` or `%USERPROFILE%/.cargo/`.
