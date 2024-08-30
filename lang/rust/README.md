@@ -52,6 +52,18 @@ Cargo Configuration
 
 [[CB§3.6]] "Configuration"
 
+Commands:
+- Common parameters (most, not all commands):
+  - `--manifest-path PATH`: path to `Cargo.toml` (including filename)
+- `cargo metadata`: JSON output of build configuration.
+- `cargo update`: Update all dependencies in the lockfile.
+- `cargot fetch`: Download dependencies
+- `cargo build`:
+  - `--jobs N`, `-j N`: number of parallel jobs (default # of CPUs)
+  - `--keep-going`
+  - `--package [SPEC]`: packages to build
+  - `--exclude SPEC`: exclude packages from build
+
 Configuration file search:
 - If present, `config` read instead of `config.toml`.
 - `.cargo/config.toml` in current dir and parents all the way to root.
