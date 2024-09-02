@@ -8,9 +8,9 @@ Debian Releases and Upgrading
 |         | 14    | Forky    |          |           |
 |         | 13    | Trixie   |          |           |
 | 2024-05 | 24.04 | Noble    | 2029/34  |           |
-| 2023-06 | 12    | Bookworm |          |           |
+| 2023-06 | 12    | Bookworm | 2028-06  |           |
 | 2022-04 | 22.04 | Jammy    | 2027/32  | 5.15      |
-| 2021-08 | 11    | Bullseye |          | 5.10      | release on 2021-08-14
+| 2021-08 | 11    | Bullseye | 2026-08  | 5.10      | release on 2021-08-14
 | 2020-04 | 20.04 | Focal    | 2025/30  |           |
 | 2019-07 | 10    | Buster   | 2024-07  | 4.19      | wayland,apparmor,bash5
 | 2018-04 | 18.04 | Bionic   | 2028-04  | 4.15, TBD |
@@ -28,8 +28,9 @@ Unbuntu LTS releases EOL 20gg/ss are end dates for general and security
 support. LTS releases provide optional (but recommended) new kernel/X11
 versions at point (and sometimes major) releases; see [LTSEnablementStack].
 
-Debian figures above are end of [Debian LTS] support; regular support
-ends two years earlier.
+Debian figures above are end of [Debian LTS] support (done by a separate
+set of volunteers); regular support ends two years earlier; commercial
+[Debian ELTS] ends five years later.
 
 There is a set of "current" names for Debian releases that roll forward to
 different releases when a new release is made. These may be used instead of
@@ -185,6 +186,7 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 
 
 <!-------------------------------------------------------------------->
+[Debian ELTS]: https://wiki.debian.org/LTS/Extended
 [Debian LTS]: https://wiki.debian.org/LTS
 [LTSEnablementStack]: https://wiki.ubuntu.com/Kernel/LTSEnablementStack
 [Salsa]: https://wiki.debian.org/Salsa
@@ -201,4 +203,3 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [dinst]: https://www.debian.org/distrib/netinst
 [so 314792]: https://unix.stackexchange.com/questions/314792/
 [usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
-
