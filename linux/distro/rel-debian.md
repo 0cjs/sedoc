@@ -137,9 +137,9 @@ Also see the stable to testing upgrade instructions at
    wish to use ` sed -i.old` to keep backup copies of the source lists.)
 
         cd /etc
-        sed -i -e 's/jessie/stretch/g' apt/sources.list apt/sources.list.d/*
+        sed -i -e 's/bullseye/bookworm/g' apt/sources.list apt/sources.list.d/*
         git diff --word-diff    # Confirm nothing weird happened
-        etckeeper commit -m 'apt/sources.list: Update from jessie to stretch'
+        etckeeper commit -m 'apt/sources.list: Update from bullseye to bookworm'
 
     You also may need to check `/etc/apt/apt.conf.d/00default-release` to
     ensure the installation is not fixed to a specific release.
