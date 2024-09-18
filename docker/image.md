@@ -204,7 +204,8 @@ Layer filesystem updates:
     - Escape char continues lines; removes whitespace after it!
     - Can use heredocs: `RUN <<END`, `...`, `END`.
     - `SHELL` sets interpreter cmd; default `SHELL ["/bin/bash", "-c"]`?
-- `ADD`: Copy files from the build context into the container. Arg is
+- `ADD`: Copy files from the build context, a tarfile or a remote URL
+  (HTTPS or Git) into the container. Arg is
   - `["<src>", ... "<dest">]` but may be unquoted if no whitespace.
   - `<src>` files/dir paths are relative to the build context.
     Wildcards are matched using Go's [filepath.Match] rules; escape
