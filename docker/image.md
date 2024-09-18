@@ -68,11 +68,11 @@ is built and run with:
 Build Cache
 -----------
 
-Each line in `Dockerfile` produces a new (unnamed, intermediate) image that
-is used as the parent of the image for the next line. As well as the file
-changes in the image's filesystem layer, the image also records the line
-that created it, checksums of the files in the context, and a reference to
-the parent image.
+Each command in `Dockerfile` produces a new (unnamed, intermediate) image
+that is used as the parent of the image for the next line. (Comments and
+blank lines are ignored.) As well as the file changes in the image's
+filesystem layer, the image also records the line that created it,
+checksums of the files in the context, and a reference to the parent image.
 
 These images are kept in the local repository a build cache and may be
 re-used in subsequent builds if the line producing that image is determined
@@ -83,17 +83,37 @@ change in parent.
 The `--no-cache=true` or `--no-cache` command-line option to `build` will
 always rebuild all images.
 
-"Changed" lines are detected by comparing the line in the Dockerfile to the
-line recorded in the cached image that was created from the same parent.
-The rules for determining whether the line is changed are as follows:
+"Changed" commands are detected by comparing the line in the Dockerfile to
+the line recorded in the cached image that was created from the same
+parent. The rules for determining whether the line is changed are as
+follows:
 
-* Any line that is textually different from the line recorded in the cached
-  image (even if just a comment or whitespace difference) is considered
-  changed.
-  - Other than for the commands discussed below, nothing else is checked.
-    In particular, the output of commands is not considered so that `RUN
-    date >build-date` will always use the cached image after the first
-    build.
+- Only changes in _commands_ and their arguments can invalidate the cache;
+  Dockerfile comments are ignored.
+
+- Any command that is textually different from the line recorded in the
+  cached image (even if just a whitespace difference) is considered
+  changed. But:
+
+- Syntatic differences at the Dockerfile level do not count as changes if
+  they leave you with the same command and arguments. E.g., all of the
+  following are the same, and changing any one to any other will not
+  invalidate the cache.
+
+      RUN echo hello
+      RUN    echo hello
+      RUN ["echo", "hello"]
+      RUN ["echo",   "hello"]
+
+  But note that adding a second space between the words in `echo hello` in
+  the first two examples above _will_ invalidate the cache.
+
+- Other than for the commands discussed below, nothing else is checked.
+  In particular, the output of commands is not considered so that `RUN
+  date >build-date` will always use the cached image after the first
+  build.
+
+Commands with semantic invalidation checking:
 
 * `ADD`, `COPY`: Checksums are generated for the applicable source files in
   the current context and compared against the checksums recorded in the
@@ -122,7 +142,8 @@ The rules for determining whether the line is changed are as follows:
   environment variable will still use the cached images that used the old
   value.
 
-References (all have incomplete information):
+References (all but first have incomplete information):
+- Docker Build manual: [Build Cache Invalidation][dd-bci]
 - Docker docs: Dockerfile best practices [§ Leverage build cache][dd-dbp-lbc]
 - [[so 49831094]]: Invalidate cache with COPY command
 - [[so 37798643]]: Invalidate cache with ARG command
@@ -235,6 +256,7 @@ Layer filesystem updates:
 [alp-pkg]: https://pkgs.alpinelinux.org/packages
 [alpine]: https://hub.docker.com/_/alpine/
 
+[dd-bci]: https://docs.docker.com/build/cache/invalidation/
 [dd-dbp-lbc]: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache
 [so 37798643]: https://stackoverflow.com/a/37798643/107294
 [so 49831094]: https://stackoverflow.com/a/49831094/107294
