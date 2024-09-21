@@ -1,11 +1,17 @@
 Logic Gates
 -----------
 
-The [binary truth table][binop]. `in` = number of effective inputs.
+The [binary truth table][binop].
 
-    0 0 1 1      A
-    0 1 0 1  in  B
-    -----------------------------------
+The top two rows are all combinations of the `A` and `B` input values.
+The rows below the line are the output values for each of the 16 possible
+functions. `ei` is the number of _effective_ inputs used by each function.
+
+    0 0 1 1  ← A input value
+    0 1 0 1  ← B input value
+    ─────────────────────────────────────────────────────────────────
+    output   ei    function
+    ─────────────────────────────────────────────────────────────────
     0 0 0 0   ₀  FALSE    0                 A∙/A, contradiction
     1 1 1 1   ₀  TRUE     1                 A+/A, tautology
     0 0 1 1   ₁  A        A                 projection
@@ -22,6 +28,7 @@ The [binary truth table][binop]. `in` = number of effective inputs.
     0 1 0 0               /A∙B
     1 0 1 1               A+/B
     1 1 0 1               /A+B              A→B, implication
+    ─────────────────────────────────────────────────────────────────
 
 For a more detailed version, see [Logic Functions](sch/Logic Functions.png),
 noting that the opcodes are reversed from above.
@@ -29,7 +36,7 @@ noting that the opcodes are reversed from above.
 ### Multiplexer as Logic Unit
 
 A logic unit capable of all operations can be constructed from a
-multiplexer ["turned sideways," where the two inputs A and B are connected
+multiplexer "turned sideways," where the two inputs A and B are connected
 to the select lines, and the "opcode" from the left-hand columns of the
 table above is placed on the 4 data inputs. The output is the result. (See
 ["Multiplexers: the tactical Nuke of Logic Design"][nuke], which also shows
@@ -53,6 +60,15 @@ connected to two outputs in various ways, can implement any one of several
 of the operations above.
 
 <img src='sch/NL7SZ57-fig.02-function-diagram.png'/>
+
+### LUT (Look-up-table) as Logic Unit
+
+You can program a ROM with two address pins selecting a four-address range,
+at which are programmed the four possible output values for a particular
+function. Use two more address pins, `A` and `B` to select the correct
+output pre-programmed for that particular function (i.e., select it from a
+look-up table or LUT), and you have your arbitrary logic gate. The is the
+core idea of how FPGAs work.
 
 
 Adders
