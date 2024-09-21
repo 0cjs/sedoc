@@ -123,6 +123,9 @@ References
 ----------
 
 - Yamaha, [V9938 MSX-Video Technical Data Book][v9938]
+- Wouter Vermaelen et al., ["V9938 VRAM Timings"][v9938-vrt].
+  Medium-level description of VRAM access patterns and interleaving for
+  modes 7/8.
 
 
 
@@ -135,4 +138,5 @@ References
 [2t pntab]: https://github.com/Konamiman/MSX2-Technical-Handbook/blob/master/md/Chapter4a.md#pattern-name-table
 [mf csbin]: https://www.msx.org/forum/msx-talk/development/dump-character-set-to-bin-for-re-use
 
+[v9938-vrt]: https://map.grauw.nl/articles/vdp-vram-timing/vdp-timing.html
 [v99938]: https://archive.org/details/bitsavers_yamahaYamanicalDataBookAug85_6932685
