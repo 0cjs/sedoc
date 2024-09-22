@@ -12,10 +12,10 @@ the Arch Wiki [XDG Base Directory][arch-xdg-basedir] page. Brief overview:
     XDG NAME          Default               Analagous to
     ───────────────────────────────────────────────────────────────────
     XDG_CONFIG_HOME   $HOME/.config         /etc
-    XDG_CACHE_HOME    $HOME/.cache          /var/cache
     XDG_DATA_HOME     $HOME/.local/share    /usr/share
-    XDG_STATE_HOME    $HOME/.local/state    /var/lib
-    XDG_RUNTIME_DIR   (none)
+    XDG_STATE_HOME    $HOME/.local/state    /var/lib  (and /var/log?)
+    XDG_CACHE_HOME    $HOME/.cache          /var/cache
+    XDG_RUNTIME_DIR   (none; always set)    /var/run
     ───────────────────────────────────────────────────────────────────
     XDG_DATA_DIRS     /usr/local/share:/usr/share
     XDG_CONFIG_DIRS   /etc/xdg
