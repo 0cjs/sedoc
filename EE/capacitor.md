@@ -7,6 +7,10 @@ Bypass Caps
 Also see [Build Techniques](tools/build-tech.md) for routing and cap
 placement information.
 
+Edoardo suggests 220 nF for TTL (74LS and similar), 100 nF for HC or HCT,
+and 330 nF for DRAM, SRAM and the like. These figures are based on the
+internal RC of equivalent circuits for those logic families.
+
 [[MS-520]] seems to indicate that 0.1 μF is usually enough for local
 bypass; they should be "of the high K ceramic type with low ESR," such as
 5Zu dielectric. In the EMI section it says they should be located as close
