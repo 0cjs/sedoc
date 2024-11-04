@@ -10,7 +10,7 @@ Intel 8080/8085 and Zilog Z80 Opcodes
 
 Table:
 
-                                 scf   ccf¹     ¹not clear, complement!
+           halt                  scf   ccf¹     ¹not clear, complement!
     NOP    HLT      EI   DI      STC   CMC
     00₄    76₇      FB₄  F3₄     37₄   3F₄
 
