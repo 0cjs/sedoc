@@ -98,7 +98,11 @@ Example sorts (left is from [[ppug-ver]], right is locally made):
 #### Dependency Specifiers
 
 [PEP 508]-compliant [dependency specifiers][ppug-depver] have additional
-syntax to specify version ranges and other depencency options.
+syntax to specify [version ranges][ppug-ver] and other depencency options.
+
+Note that `~= 0.x` does _not_ follow semantic versioning; it treats 0.2 as
+compatible with 0.1, exactly as if the major version number were non-zero.
+Instead use `== 0.x.*`.
 
 One of these is _extras,_ which adds sets of optional dependencies. These
 are specified as a comma-separated list of package-specific names in
@@ -201,7 +205,9 @@ Environment and Dependency Managers
 
 ### Pip
 
-The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]/[PEP 440]:
+The Pip [`requirements.txt` format][pip-rq-fmt] follows [PEP 508]/[PEP 440].
+[Version specifiers][ver] are documented above; watch out for the non-semver
+`~=` operator when used with `0.x` versions.
 
     pkgname                     # ordinary package names
     pkgname == 1.0              # specific version: does not match higher
