@@ -3,7 +3,10 @@ CP/M Notes
 
 References;
 - [_CP/M 2.2 Operating System Manual_][htm] (HTML), 3rd ed., 1983-09.
+  - [§5 CP/M 2 System Interface][htm5]
+  - [§6 CP/M Alteration][htm6]
 - [_CP/M 2.0 Interface Guide_][ig], Digital Research, 1979. (PDF)
+- [_CP/M 2.2 Alteration Guide_][ag], Digital Research, 1979. (PDF)
 
 ### Compressor and Archiver File Extensions
 
@@ -48,11 +51,9 @@ indicate the compressed version, e.g., `FOO.TXT` → `FOO.TQT` for Squeeze.
 BDOS and BIOS
 -------------
 
-References:
-- CP/M Manual [§5 CP/M 2 System Interface][htm5]
-- CP/M Manual [§6 CP/M Alteration][htm6]
+"§" references are to the _CP/M 2.2 Operating System Manual_ above.
 
-### System Paramter Area
+### System Parameter Area
 
 (§6.9) Memory from $0000 through $00FF.
 
@@ -141,9 +142,36 @@ with the parameter, and calling $0005.
     $22 r1  Random record number MSB
     $23 r2  Random record number overflow byte
 
+### Memory Layout
+
+The CCP starts no lower than $3400, but on systems with more than 20K RAM
+will be relocated higher. The offset beyond $3400 is called the _bias._
+(This is done at system generation time.) §5 of the [_Alteration
+Guide_]][ag] shows the organisation; the original MDS-800 system boot
+sector loads the entire OS in order from tracks 0 and 1. (CP/M does not
+require it be loaded this way, but is a common and convenient way of doing
+this.)
+
+    boot block  128b  $3000 (or anywhere) t0 s01
+    CCP         2.0K  $3400-$3BFF +bias   t0 s02-17
+    BDOS        3.5K  $3C00-$49FF +bias   t0 s18-26, t1 s01-19
+    BIOS        768b  $4A00-$4CFF +bias   t1 s20-26
+    dir/data                              t2-76 s01-26
+
+The BIOS `BOOT` entry point is called from a cold start; it may assume that
+the system is loaded and, after initialisation, jump to the CCP at $3400 +bias.
+
+The BIOS `WBOOT` entry point is called via a jump to $0000 or a reset; the
+BIOS is expected to set $0000 to a `JMP $4A03+bias` instruction, as well as
+setting $0005 to jump to the BDOS. The warm start must reload the CCP and
+BDOS (but _not_ BIOS) from disk and then jump to the CCP as above. Register
+C should be set to the drive to select after system initialisation.
+
+
 
 <!-------------------------------------------------------------------->
-[htm]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/
+[ag]: https://bitsavers.org/pdf/digitalResearch/cpm/2.2/CPM_2.2_Alteration_Guide_1979.pdf
 [htm5]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/ch5.htm
 [htm6]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/ch6.htm
+[htm]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/
 [ig]: https://bitsavers.org/pdf/digitalResearch/cpm/2.0/CPM_2_0_Interface_Guide_1979.pdf
