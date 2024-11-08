@@ -130,17 +130,23 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1981-12 * BBC Micro released
     1981-12   Hitachi MB-6885 Basic Master Jr. released (¥89,800)
 
+    1982-     Sony/HP 3.5" (non-ANSI-std) drive: 280 KB, 70t 16s 256b
     1982-   * Commodore MAX Machine released (¥34,800)
     1982-02 * TRS-80 Model 16 (68000, $4999)
     1982-04 * Hitachi MB-6891 Basic Master Level 3 MarkII (¥198,000)
     1982-04   Sinclair Spectrum
+    1982-05    Microfloppy Industry Committee (MIC) established
+    1982-05   Sony SMC-70 announced (2nd system w/3.5" drives)
     1982-08 * Commodore 64 Released
+    1982-05 * Sony SMC-70 released (¥228,000 + drives); popular telopper
+    1982-09   MIC initial 3.5" standard (will change w/Sony agreement)
     1982-10   NEC PC-9801 anounced (¥298,000)
     1982-11   Fujitsu FM-11ST FM-11AD (6809), FM-11EX (6809, 8088, CP/M-86)
     1982-11 * Fujitsu FM-7 released (¥126,000)
     1982-11 * Sharp X1 (CZ-800C) released (¥155,000)
     1982-q4   Panasonic/National JR-200 released (¥79,800)
 
+    1983-01   MIC/Sony 3.5" floppy standard (future ANSI X3.137)
     1983-01   Apple IIe ($1395; $1995 w/Disk II, 80-col, Monitor III)
     1983-01   Apple Lisa ($9995)
     1983-03 * NEC PC-8201 (¥138,000)
@@ -154,6 +160,7 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
     1983-10 * Sharp X1C (CZ-801C, ¥119,800), X1D (CZ-802C, ¥198,000) released
     1983-10   MSX release
     1983-11   NEC PC-8801mkII (¥168k/¥225k/¥275k 0/1/2 drives)
+    1983-12 * Sony SMC-777 (ｽﾘｰｾｳﾞﾝ) released (¥148,000, w/3.5" drive!)
     1983-12   NEC consolidation to PC-88 and PC-98 only (see nec/README)
     1983-12   Fujitsu FM-X MB25150 (MSX)
     1983      Radio Shack TRS-80 Model 100
@@ -223,6 +230,7 @@ Online references (some of dubious accuracy) include:
 - IPSJ Computer Museum [Personal Computers in Japan][ipsj] timeline.
 - 佐々木潤, [80年代マイコン大百科][suzuki2013], timeline starting p.8.
   (Viewable in preview.)
+- ["The New Microfloppy Standards"][byte8309], BYTE, V8n9 1983-09, p.166.
 
 
 <!-------------------------------------------------------------------->
@@ -245,6 +253,7 @@ Online references (some of dubious accuracy) include:
 
 <!-- Online References -->
 [JIPDEC ar J]: https://www.jipdec.or.jp/library/archives_keyword_J.html
+[byte8309]: https://archive.org/details/byte-magazine-1983-09/page/n167/mode/1up
 [byte8509]: https://archive.org/details/BYTE_Vol_10-09_1985-09_10th_Anniversary_Issue/page/n398/mode/1up?view=theater
 [ipsj]: http://museum.ipsj.or.jp/en/computer/personal/index.html
 [jcq46]: https://www.jipdec.or.jp/archives/publications/J0001270
