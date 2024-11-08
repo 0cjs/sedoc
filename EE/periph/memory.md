@@ -341,6 +341,18 @@ data bus conflicts. But perhaps it can be set in the other direction from
 the ROM via a _read,_ since /WR is being toggled by A14 anyway?
 
 
+Non-standard Parts
+------------------
+
+### LH-535618 28-pin 32K×8 ROM
+
+Used in the TRS-80 Model 100.
+
+    ₂₈               ₂₄              ₂₀                  ₁₅
+    A14 /CS  A8  A9 A12 /CE A13 /OE A14  D7  D6  D5  D4  D3
+    Vcc A10  A7  A6  A5  A4  A3  A2  A1  A0  D0  D1  D2 GND
+    ¹                 ⁵              ¹⁰                  ¹⁴
+
 
 <!-------------------------------------------------------------------->
 [64copy]: https://ist.uwaterloo.ca/~schepers/roms.html
