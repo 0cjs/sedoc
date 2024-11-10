@@ -89,8 +89,8 @@ changed from the default.)
 
 ### BDOS Calls
 
-(§5.2, §5.6) BDOS calls are made by loading C with the function code, DE
-with the parameter, and calling $0005.
+BDOS calls are made by loading C with the function code, DE with the
+parameter, and calling $0005. (§5.2, §5.6, [[seasip-bdos]])
 
     00 $00 System Reset
     01 $01 Console Input        A ← char
@@ -121,6 +121,9 @@ with the parameter, and calling $0005.
     ...
     37     Reset Drive
     40     Write Random with Zero Fill
+
+- 13/$0D must be called at system startup to init the BDOS; normally the
+  CCP does this. Returns $FF is there's na `A:$*.*` file, otherwise 0.
 
 ### File Control Blocks (FCBs)
 
@@ -176,4 +179,5 @@ C should be set to the drive to select after system initialisation.
 [htm6]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/ch6.htm
 [htm]: http://www.gaby.de/cpm/manuals/archive/cpm22htm/
 [ig]: https://bitsavers.org/pdf/digitalResearch/cpm/2.0/CPM_2_0_Interface_Guide_1979.pdf
+[seasip-bdos]: https://www.seasip.info/Cpm/bdos.html
 [ucws]: http://www.cpm.z80.de/
