@@ -18,11 +18,31 @@ VICE
 [VICE] \([manual][viceman]) emulates all CBM models and has a
 menu-driven interface for all options.
 
-Windows versions usually come with ROMs; for Linux you need to
-download and install them yourself. The ROMs have names like `basic`
-and `kernal` and are installed into the `C64/`, `DRIVES/` etc.
-subdirectories under `/usr/lib/vice/` or `~/.vice/`. See the "ROMs"
-section below for more details.
+On Linux the configuration file is found under `~/.config/vice/vicrc`
+(older versions used `~/.vice/vicrc`).
+
+Windows versions usually come with ROMs; for Linux you need to download and
+install them yourself. The ROMs have names like `basic` and `kernal` and
+are installed into the `C64/`, `DRIVES/` etc. subdirectories under under
+the paths in the `Directory` resource, which in recent versions defaults to
+(`EMU` being the emulator name):
+
+    $HOME/.local/share/vice/EMU:PREFIX/share/vice/EMU:BOOTPATH/EMU
+
+Paths worth trying are the following:
+
+    ~/.local/share/vice/
+    ~/.vice/                        # old path replaced by above
+    /usr/local/share/vice/
+    /usr/local/bin/
+    /usr/share/vice/
+    /usr/lib/vice/                  # old path replaced by above
+
+If you have difficutly with it finding the ROMs, add the `-dumpconfig F`
+option and examine the file _F_ for the `Directory`, `ChargenName`,
+`KernalName` and `BasicName` options.
+
+See the "ROMs" section below for more details.
 
 ### Key Mappings
 
