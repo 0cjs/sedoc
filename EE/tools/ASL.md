@@ -453,6 +453,16 @@ Additional special `if` constructs are:
 `switch EXPR` / `case VAL` / `elsecase` / `endcase` compares the value
 of _EXPR_ against each _VAL_, assembling only the first matching case.
 
+Note that `if` expressions do not allow arguments that contain forward
+references. To handle this, you can simply assume enough to generate
+code on the first pass, and fix it up on the second:
+
+    if (~~defined(target)) && (MOMPASS < 2)
+        ... ; not using `target`
+    else
+        ... ; using `target`
+    endif
+
 ### Listing Control (§3.7)
 
 - `title TITLE`
