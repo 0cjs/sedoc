@@ -296,6 +296,8 @@ have same precedence for all operators.
 
     =   <>    >=    <=     >     <        = == (same)
 
+(≥bld278: `AND`/`OR` do short-circuit evaluation.)
+
 Functions ([§2.10.7]).
 
 There is also an (almost undocumented) `defined(SYM)` function.
@@ -443,6 +445,7 @@ constructions `elseif` always refers to the innermost unclosed `if`.
 
 Additional special `if` constructs are:
 - `ifdef SYM` / `ifndef SYM`: Symbol _SYM_ is/is not defined.
+  (≥bld277: expression in which any symbol is undefined)
 - `ifused SYM` / `ifnused SYM`: Symbol _SYM_ has been referenced before
   this point in the assembly.
 - `ifexist FILE` / `ifnexist FILE`: File _FILE_ does/doesn't exist. Same
