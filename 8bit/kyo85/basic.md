@@ -36,10 +36,21 @@ function call).
 - `SAVE "[dev:]fname",A` (or with `.DO` extension given) will save a copy
   of the current program in ASCII format to `fname.DO`; the current
   workspace does not change.
+
 - `LOAD "fname.xx"` when _xx_ is not a `.BA` file will wipe the current
   workspace, replacing it with the ASCII load.
 - `NEW` will switch back to the unnamed workspace and clear it, leaving the
   previous workspace as it was (unless it was already the unnamed workspace).
+
+Machine-language files:
+- `.CO` files are machine-language commands, prefixed by three words: start
+  addr, end addr, entrypoint. In the commands below, adding the `.CO`
+  extension is optional.
+- `SAVEM "[RAM:|CAS:]fname",start,end[,entry]`: Save binary data from
+  memory. _entry_ defaults to _start._
+- `RUNM "[RAM:|CAS:]fname",start,end[,entry]`: Run a machine-lanuage program.
+- `LOADM "[RAM:|CAS:]fname"`: Load a machine-lanuage program. The start
+  addr, end addr and entrypoint are printed.
 
 File management commands:
 - `MERGE "[dev:]fname"` merges another file into the current workspace.
