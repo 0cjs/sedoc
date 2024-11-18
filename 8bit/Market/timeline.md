@@ -248,7 +248,7 @@ Online references (some of dubious accuracy) include:
 [wj-pc8001]: https://ja.wikipedia.org/wiki/PC-8000シリーズ
 [we-ap2]: https://en.wikipedia.org/wiki/Apple_II
 [we-pet2001]: https://en.wikipedia.org/wiki/Commodore_PET
-[we-trs80i]: https://page.auctions.yahoo.co.jp/jp/auction/g373420258
+[we-trs80i]: https://en.wikipedia.org/wiki/TRS-80
 [wj-mz80k]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K
 
 <!-- Online References -->
