@@ -6,7 +6,7 @@ configuration, deployment and orchestration, written in Python.
 [Ansible Galaxy][galaxy] is a community site for sharing roles; you
 can also run a self-hosted private version.
 
-The latest version is 2.8 as of 2019-08.
+The latest version is 2.18 as of 2024-11.
 
 As with most systems of this type, update scripts should be
 idempotent, but it's left to the developer to ensure that this is the
