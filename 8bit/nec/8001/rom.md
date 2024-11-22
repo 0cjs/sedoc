@@ -4,7 +4,25 @@ PC-8001 ROM Notes
 If `STOP` key is being held down while the reset button is pushed, the
 system will warm start (like `RST 8`) instead of cold start (`RST 0`).
 
-### RST Disassembly
+ROM Routines
+------------
+
+- $0257  crt output routine
+- $0D5D  monitor (BASIC keyword routine)
+- $0D60  printer output routine
+- $0F75  INKEY$ 担当機能
+- $0F7B  INP 担当機能
+- $1875  "Disk Basic Feature" error; return to BASIC prompt
+- $279C  MAKINT routine
+- $34C1  BASIC reserved words (keywords)
+- $3C82  ??? Return to BASIC after USR, etc.
+- $3F71  error message
+- $52ED  Print HL→ $00-terminated string. Does not work before full init.
+- $5C66  monitor restart
+
+
+RST Disassembly
+---------------
 
     RST $00  ;  Cold start (reset)
              0000: F3           di          ; disable interrupts
@@ -19,6 +37,7 @@ system will warm start (like `RST 8`) instead of cold start (`RST 0`).
     RST $10  0010: C3 59 42     jp $4259
              0013: C3 6A 00     jp $006A
              0016: DA 0C        db $DA,$0C
+             ;  Print char in A
     RST $18  0018: C3 A6 40     jp $40A6
              001B: F3           di
              001C: 0B           dec bc

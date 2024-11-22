@@ -61,15 +61,6 @@ Special addresses (prob. much more at [[EnrPc]]):
     801CH-8011DH: / INT1
     801EH-801FH: / INT0
 
-    5C66            monitor restart
-    3F71            error message
-    34C1            BASIC reserved words (keywords)
-    279C            MAKINT routine
-    0F7B            INP 担当機能
-    0F75            INKEY$ 担当機能
-    0D60            printer output routine
-    0D5D            monitor (BASIC keyword routine)
-    0257            crt output routine
 
 [ROM images for PC-8001 and PC-8001mkII][rom] (including font ROM).
 

@@ -140,11 +140,11 @@ initialisation routine is called.
 
 ### BASIC
 
-These work only after BASIC has initialised. I.e., they do not work
-at the time the expansion ROM initialisation routine is first called.
+Many BASIC calls (e.g. $52ED to print a string) work only after BASIC has
+initialised. I.e., they do not work at the time the expansion ROM
+initialisation routine is first called.
 
-- $3C82: ??? Return to BASIC after USR, etc.
-- $52ED: Print HL→ $00-terminated string. Does not work before full init.
+- [PC-8001 ROM and BASIC calls](./8001/rom.md).
 
 
 
