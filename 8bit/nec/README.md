@@ -1,7 +1,7 @@
-NEC PC-nnn Series
-=================
+NEC PC-nnnn Desktop Series
+==========================
 
-- 1979: [PC-8001](8001.md): Business/games.
+- 1979: [PC-8001](8001/):   Business/games.
 - 1981: [PC-6001](6001/):   Lower-end gaming; includes cartridge port.
 - 1981: [PC-8801](8801.md): Moving more towards business. Separate keyboard
   on all models; integrated FDDs in models after the first.
