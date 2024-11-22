@@ -3,6 +3,8 @@ NEC PC-8001 Series
 
 Contents:
 - Product Line
+  - Specifications
+  - Peripherals and Software
 - Documentation
 - User Interface Notes
 
@@ -33,7 +35,10 @@ it could run CP/M.
 - 1985-01 PC-8801mkII xR: V2 graphics mode
 - 1985-03 __PC-8001mkIISR:__ Improved graphics again.
 
-Specs (also see [[rcp80spc]]):
+### Specifications
+
+Also see [[rcp80spc]].
+
 - CPU: μPD780C-1 (Z80 clone), 4 MHz.
   - Actually runs ~2.3 MHz due to DMA interrupt wait [[sb8001]]
 - Memory: 16/32 KB (sockets for 32K); mkII: 64 KB.
@@ -65,7 +70,10 @@ Specs (also see [[rcp80spc]]):
     - Lower row: printer (micro-ribbon), RS-232 (DB-25F), FDD? (micro-ribbon),
       switches, knob, RCA, DIN, DIN, DIN, DIN, RESET (button).
 
-Peripherals (Ⅱ marks mkII items). [[hb68]] p.73, [[rcp8000]], [[rcp80mn]].
+### Peripherals and Software
+
+'Ⅱ' marks mkII items. See also [[hb68]] p.73, [[rcp8000]], [[rcp80mn]].
+
 - __PC-8001mkII-01:__ Kanji board for mkII dedicated connector (not exp. slot)
 - __PC-8005:__ 16K RAM expansion for PC-8001 or PC-8011
                (8× μPD416C-3, 150 ns), ¥24,500
@@ -157,7 +165,8 @@ Documentation
 - [`rom`](./rom.md) ROM Notes.
   (But also see [ROM and BASIC](../rom.md) in parent directory.)
 
-Manuals:
+#### Manuals
+
 - __[PC-8101B]:__ _PC-8001 Micro Computer User's Manual_ (NEC, en, 1981)
 - __[PC-8102B]:__ _PC-8001 N-Basic Reference Manual_ (NEC, en, 1981)
 - __[PC-8105B]:__ _PC-8031B/32B Mini Disk Unit Reference Manual_ (NEC, en)
@@ -166,17 +175,20 @@ Manuals:
   including connector, serial and expansion bus pinouts.
 - \[um01ii] [_PC-8001mkII User's Manual_][um01ii] (ja, PC-8001MK2-UM, PTS-120A)
 
-Books:
+#### Books
+
 - \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68]. Covers PC-8001
   and PC-6001 BASIC, memory maps, disk formats, peripheral lists, and all
   sorts of further technical info.
 - \[km82] Kiyoshi Kawamura, [PC-8001 マシン語活用ハンドブック 初級編][km82].
   Hardware and N-BASIC interfaces (including disk); utility programs.
 
-Magazines:
+#### Magazines
+
 - [Byte Magazine review][byte], Jan. 1981. w/block diagram, chip names.
 
-Internet:
+#### Internet
+
 - \[EnrPc] [ＰＣ－８００１][EnrPc]. Extensive internals info and
   memory/interrupt maps, including [PC-8011][Enr11], [PC-8012][Enr12],
   [PC-80S31][Enr31], [PCG8100][Enr81], serial mouse.
