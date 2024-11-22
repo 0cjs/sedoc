@@ -120,8 +120,8 @@ various magic numbers:
     6000   2b   extension ROM signature area: sig = "AB" ($41 $42)
 
 
-- $7FFF = 55: The BASIC `mon` command jumps to $7FFC instead $7FFC instead
-  of the normal monitor. (Not tested what the ML monitor entry point does.)
+- $7FFF = 55: The BASIC `mon` command jumps to $7FFC instead of the normal
+  monitor. (Not tested what the ML monitor entry point does.)
 - $6000 = "AB": After some initialisation (and check for DOS boot?), system
   startup does `call $6002` if this signature is present. This can replace
   some BASIC commands, as described in ["Basic Extensions"](
