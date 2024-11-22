@@ -192,9 +192,6 @@ Documentation
 - \[EnrPc] [ＰＣ－８００１][EnrPc]. Extensive internals info and
   memory/interrupt maps, including [PC-8011][Enr11], [PC-8012][Enr12],
   [PC-80S31][Enr31], [PCG8100][Enr81], serial mouse.
-- [sbeach.seesaa.net] is the blog for a project to create the PC-6001F, an
-  FPGA clone of the 6001. It has articles with extensive information on
-  many aspects of PC-6000/PC-8000 hardware and software.
 - [electric.com][er] has many posts on various PC-8001 topics.
 - [PC-8001でマシン語 : VRAMアドレス取得のテストコード][expgig]
 - \[rcp80] [Retro Computer People PC-8001 Models/Parts Lists/specs/etc.][rcp80]
@@ -256,7 +253,6 @@ B/W composite output colors are:
 [rcp80spc]: https://retrocomputerpeople.web.fc2.com/machines/nec/8001/spc80.html
 [retropc.net/404]: http://www.retropc.net/mm/archives/404
 [sb8001]: https://www.starbrother.net/pc-8001-nec-2/
-[sbeach.seesaa.net]: http://sbeach.seesaa.net/
 [vcf 36037]: https://forum.vcfed.org/index.php?threads/searching-for-nec-pc-8001a-software-hardware.36037
 
 <!-- Peripherals and Expansion Boards -->

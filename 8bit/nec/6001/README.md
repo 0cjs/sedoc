@@ -19,9 +19,7 @@ Models and Accessories
   three cartridge slots and 36-pin Centronics/57-series mini-ribbon
   connector for floppy kit (same parallel interface as PC-8001).
 
-
-Floppy Disk
------------
+### Floppy Disk
 
 NEC "intelligent type" floppy disk drives (e.g. PC-8031, PC-80S31) can be
 but use of the drive requires Extended BASIC cartridge to be booted.
@@ -195,6 +193,9 @@ References
 - \[p6tech fdd] PC-6001シリーズ技術情報いろいろ. _PC-6001 series various
   technical information_.
   Hand-gathered accumulation of various PC-6001/mkII/6601 knowledge.
+- [sbeach.seesaa.net] is the blog for a project to create the PC-6001F, an
+  FPGA clone of the 6001. It has articles with extensive information on
+  many aspects of PC-6000/PC-8000 hardware and software.
 
 
 
@@ -208,5 +209,6 @@ References
 [p6ers basmem]: http://p6ers.net/hashi/furoku2.html
 [p6ram]: http://sbeach.seesaa.net/article/387861385.html
 [p6tech fdd]: http://000.la.coocan.jp/p6/tech.html#auto_fd
+[sbeach.seesaa.net]: http://sbeach.seesaa.net/
 [tsutsui]: https://ch.nicovideo.jp/tsutsui/blomaga/ar1315944
 [vid4]: http://p6ers.net/mm/pc-6001/dev/screen4color/
