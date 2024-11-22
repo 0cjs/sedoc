@@ -1,6 +1,14 @@
 NEC PC-8001 Series
 ==================
 
+Contents:
+- Product Line
+- Documentation
+- User Interface Notes
+
+Product Line
+------------
+
 The Z80-based __PC-8001__ was one of the first non-kit micros introduced
 into Japan, announced in 1979-05 and released in 1979-09, preceeded only by
 the Hitachi Basic Master. (The Sharp MZ-80K semi-kit was released in
@@ -137,7 +145,17 @@ The specs (SS/DS and SD/DD) for the various drive units, and whether any
 had just one drive installed rather than two, are not clear, and ja/en
 Wikipedia don't entirely agree with each other.
 
-### Documentation
+
+Documentation
+-------------
+
+- [`interfaces`](./interfaces.md) Hardware Setup and Interfaces.
+  DIP switch and jump settings; connector pinouts.
+- [`memory-map`](./memory-map.md) Memory.
+  Memory layout (including locations used by ROM), bank switching,
+  I/O port assignments.
+- [`rom`](./rom.md) ROM Notes.
+  (But also see [ROM and BASIC](../rom.md) in parent directory.)
 
 Manuals:
 - __[PC-8101B]:__ _PC-8001 Micro Computer User's Manual_ (NEC, en, 1981)
@@ -177,288 +195,15 @@ Internet:
   English discussion of PC-8001A by several owners.
 
 
-DIP Switches and Jumpers
-------------------------
+User Interface Notes
+--------------------
 
-The PC-8001 has no switches, but an internal jumper to select a pair
-of serial port baud rates. See "Serial / RS-232" below.
+If `STOP` key is being held down while the reset button is pushed, the
+system will warm start (like `RST 8`) instead of cold start (`RST 0`).
 
-### PC-8001mkII
+### Character Set and Colors
 
-From the _PC-8001mk II User's Manual_ [p.3-4 P.38][m2um.38]:
-
-8 DIP switches: up=on, down=off.
-- 0-7: ???
-- 8: up/on=N-BASIC; down/off=N80-BASIC
-
-8×2 header for jumpering RS-232 baud rate.
-
-
-Connector Pinouts
------------------
-
-See [DIN Connectors](../conn/din.md) for pin numbering details.
-
-#### Board Power Connectors
-
-I don't know the names of these, but NEC often uses a power connector with
-3 mm dia. pins about 10 mm high, 9 mm between pin 1 (ground) and pin 2 (for
-keying) and 7 mm between addtitional pins. Pinouts include:
-
-    Pin 1 ─── 2 ── 3 ── 4 ── 5
-       GND   +5  +12  -12           PC-8001, PC-8001mkII
-       GND   +5  +12   -5  +12      PC-8031-2W (mainboard power)
-       GND   +5  +12                PC-8031-2W (FDD supply)
-
-(With the PC-8801 NEC switched to JST VH (?) with a missing key pin.
-
-#### RGBI (8-pin 270° DIN)
-
-Sources:
-- [PC-8001 Manual][vcf 1375656]
-- [デジタル RGB コンポーネント・アダプタ][nr-drgb]
-- [PC-8001用RGBケーブルを作成してみよう！！ ][hkjunk0], which also has
-  information on converting it via passive parts only to analogue RGB.
-- [デジタルRGB(8ピン）はアナログRGBの夢を見れるか？ ][def_int].
-- Leaded Solder, [A mystical journey...][ls-pc88cv]
-
-    ＃      PC-8001mkII     備考
-    1       VDD (+12V)      N/C
-    2       GND
-    3       Clock(14MHz)    N/C
-    4       HSync           水平同期信号 (TTL or video level?)
-    5       VSync           垂直同期信号 (TTL or video level?)
-    6       Red
-    7       Green
-    8       Blue
-    GND     GND             外周のシールド
-
-Roughly, the passive conversion described above and in
-[X1のデジタルRGB出力をSONYのTVのAVマルチ入力端子につなぐ実験][kenko858] is:
-- To get composite sync, run hsync and vsync each into a 1N4148, tie the
-  ouputs together with a 200Ω pulldown. 330Ω works too.
-- Run R, G, B through 150Ω resistors, per [x1/rgb21]?
-
-See also [RGBコンバータ(11)][sb-rgb11] (and updates [here][sb-rgb13] for an
-FPGA-based RGB converter project.
-
-#### B/W Composite (5-pin 180° DIN)
-
-2/3 seem to be GND/CVBS on most systems; tested on PC-8xxx and FM-7.
-
-    1: +12V     2: GND      3: CVBS     4: NC       5: LPEN
-
-References:
-- Old Hard [デジタル８ピン][oh-d8]
-  has "M5A モノクロ (PC-8001/8801)" at the bottom of the page.
-- The [Byte review][byte] claims that the 5-pin connector provides +12V.
-
-#### CMT/Cassette (8-pin 270° DIN)
-
-600 bps FSK Kansas City (1200/2400 Hz).
-
-Motor relay included. (Toggle w/`MOTOR` in Basic.)
-
-This pinout from [PC-8001 Manual][vcf 1375656] and [Enri's PC-8001][EnrPc]:
-
-    1   GND
-    2   GND           Signal ground
-    3   GND
-    4   CMTOUT  out   Cassette record (red)
-    5   CMTOUT  in    Cassette playback (white)
-    6   REM+    out   Remote signal (black)
-    7   REM-    out   Remote signal (black)
-    8   GND           Signal ground
-
-The pinout for the PC-6001mkII in [NEC PC-6001mkII 取扱説明書][pc6001]
-is the same except:
-
-    1   CMT1    out   Cassette control signal 1
-    3   CMT2    out   Cassette control signal 2
-
-PC-8801 pins 1 and 3 are `VCC` and `/ INT5`.
-
-#### Printer
-
-PC-8001 is standard centronics-style on 2×17P edge connector.
-`←` indicates input from printer.
-([PC-8001 Manual][vcf 1375656], [Enri's PC-8001][EnrPc].)
-
-                  pin │ pin
-              ────────┼────────
-             /STB   1 │ 2   GND
-              PD0   3 │ 4   GND
-              PD1   5 │ 6   GND
-              PD2   7 │ 8   GND
-              PD3   9 │ 10  GND
-              PD4  11 │ 12  GND
-              PD5  13 │ 14  GND
-              PD6  15 │ 16  GND
-              PD7  17 │ 18  GND
-         ←   /ACK  19 │ 20  GND
-         ← /READY  21 │ 22  GND
-              N/C  23 │ 24  N/C
-              N/C  25 │ 26  HIGH
-              N/C  27 │ 28  N/C
-             HIGH  29 │ 30  HIGH
-              GND  31 │ 32  N/C
-              N/C  33 │ 34  N/C
-
-PC-8001mkII is a 14-pin mini-ribbon. ([Enri's PC-8001][EnrPc])
-
-        P1: /PSTB
-     P2-P9: PDB0 - PDB7
-        10: N/C
-        11: BUSY (/READY)
-        12: N/C
-        13: N/C
-        14: GND
-
-#### Serial / RS-232
-
-On the original PC-8001 there's an on-board 8251 USART that's apparently
-used for both CMT and the terminal mode. There is no external connector;
-you need a PC-8062 cable to bring out the internal connector and do level
-conversion from TTL to RS-232. [[sb8001]]. The PC-8062 cable has a DIP-16N
-ribbon cable connector at one end (connection pictured in the PC-8001B
-manual) for the DIP socket below; a picture of the full device
-(unconnected) is in the PC-8801mkII manual [ターミナルモード][um01ii c9]
-chapter.
-
-There's also the PC-8062-1 "terminal firmware"; not clear how this is
-different from the standard ROM BASIC `TERM` command.
-
-The internal connector is TTL [[sb8001] with the following pinout. (`i`/`o`
-indicates input to/output from the computer. ([PC-8001 Manual][vcf 1375656],
-[[EnrPc]]):
-
-    1:   GND     16:   GND
-    2:o /TxD     15:o  VBB -12V
-    3:i /RxD     14:   GND
-    4:o  RTS     13:o  VDD +12V
-    5:i  CTS     12:   GND
-    6:i  DSR     11:o  VCC +5V
-    7:i  CD      10:   GND
-    8:o  DTR      9:   GND
-
-There is an internal jumper block for baud rate [[hb68]] p.91:
-
-                                         ×16     ×64
-             CN8                1-2     4800    1200
-       ┌─────────────┐          1-3     2400     600
-     1 │ ○ ○ ○ ○ ○ ○ │ 6        1-4     1200     300
-       └─────────────┘          1-5      600     150
-                                1-6      300      75
-
-Mods exist to allow programmatic setting of the jumpers.
-
-__PC-8001mkII__
-
-The PC-8001mkII has the PC-8062 built in and brought to a DB-25F on the
-back. The bps rate jumper block is also now an external 2×8 .1" header on
-the back; jumper the top and bottom pins of _one_ column to set the rate.
-
-    │········│             ×16/×64 UART divisor
-    │········│  8:9600/2400    6:2400/600   4:600/150   2:150/-
-     87654321   7:4800/1200    5:1200/300   3:300/75    1:75/-
-
-#### Floppy Disk
-
-- [Hardware interface and commands](floppyif.md).
-- [Disk data format](floppy.md).
-
-#### Expansion Connector and Cards
-
-The expansion connector is a 50-pin edge connector. ([PC-8001
-Manual][vcf 1375656], [[EnrPc]]) The [PC-8001_SD] project has schematics
-and a board layout that supports either a 50-pin header (for use with a
-cable) or a 50-conductor female edge connector (to plug in directly) in the
-same position. The data bus signals are bidirectional, all others are
-outputs except where marked.
-
-                  pin │ pin
-              ────────┼────────
-          +5V Vcc   1 │ 2   +12V
-              DB0   3 │ 4   -12V
-              DB1   5 │ 6   R̅O̅M̅D̅I̅S̅0̅ (input)
-              DB2   7 │ 8   R̅O̅M̅D̅I̅S̅1̅ (input)
-              DB3   9 │ 10  R̅O̅M̅D̅I̅S̅2̅ (input)
-              DB4  11 │ 12  R̅O̅M̅D̅I̅S̅3 (input)
-              DB5  13 │ 14  I̅N̅T̅     (input)
-              DB6  15 │ 16  N̅M̅I̅     (input)
-              DB7  17 │ 18  E̅X̅T̅O̅N̅   (input)
-              AB0  19 │ 20  AB8
-              AB1  21 │ 22  AB9
-              AB2  23 │ 24  AB10
-              AB3  25 │ 26  AB11
-              AB4  27 │ 28  AB12
-              AB5  29 │ 30  AB13
-              AB6  31 │ 32  AB14
-              AB7  33 │ 34  AB15
-               R̅D̅  35 │ 36  R̅E̅S̅E̅T̅
-               W̅R̅  37 │ 38  W̅A̅I̅T̅    (input)
-             M̅R̅E̅Q̅  39 │ 40  W̅E̅
-             I̅O̅R̅Q̅  41 │ 42  M̅U̅X̅
-             R̅F̅S̅H̅  43 │ 44  R̅A̅S̅0̅
-               M̅1̅  45 │ 46  R̅A̅S̅1̅
-           SCLOCK  47 │ 48  GND
-                ϕ  49 │ 50  GND
-
-The card pinout is documented at [【コネクタ】 PC-8001,PC-8801シリーズ
-拡張スロット][er519]. It varies slightly between the PC-8012 expansion
-unit, PC-8001mkII and PC-8801. That page refs a 1984-10 I/O magazine
-article, [「マイクロプロセッサを比較する10：BUSについて３」][IO8410p238],
-that covers the expansion buses for all three systems.
-
-See [PC-8001mk2 拡張ボード][er78] for an example of a homebrew
-expansion card on protoboard adding a parallel port, ROM writer and FM
-sound generator.
-
-                 solder │ component side
-              all   pin │ pin  all    8012   8801        8001mkII
-              ──────────┼─────────────────────────────────────────
-              GND    A1 │ B1   GND
-              GND    A2 │ B2   GND
-              +5V    A3 │ B3   +5V
-              +5V    A4 │ B4   +5V
-              AB0    A5 │ B5   I̅N̅T̅0          N.C.
-              AB1    A6 │ B6   I̅N̅T̅1          N.C.
-              AB2    A7 │ B7   I̅N̅T̅2          M̅W̅A̅IT̅̅
-              AB3    A8 │ B8   I̅N̅T̅3          I̅N̅T̅4
-              AB4    A9 │ B9   I̅N̅T̅4          I̅N̅T̅3
-              AB5   A10 │ B10         I̅N̅T̅5   INT2        M̅W̅A̅I̅T̅
-              AB6   A11 │ B11         I̅N̅T̅6   F̅D̅I̅N̅T̅1      F̅D̅I̅N̅T̅1
-              AB7   A12 │ B12         I̅N̅T̅7   F̅D̅I̅N̅T̅2      F̅D̅I̅N̅T̅2
-              AB8   A13 │ B13  DB0
-              AB9   A14 │ B14  DB1
-              AB10  A15 │ B15  DB2
-              AB11  A16 │ B16  DB3
-              AB12  A17 │ B17  DB4
-              AB13  A18 │ B18  DB5
-              AB14  A19 │ B19  DB6
-              AB15  A20 │ B20  DB7
-                R̅D̅  A21 │ B21  M̅E̅M̅R̅
-                W̅R̅  A22 │ B22         I̅O̅W̅R̅   POWER       POWER
-              M̅R̅E̅Q̅  A23 │ B23  I̅O̅W̅
-              I̅O̅R̅Q̅  A24 │ B24  I̅O̅R̅
-                M̅1̅  A25 │ B25         N.C.   M̅E̅M̅W̅        M̅E̅M̅W̅
-              R̅A̅S̅0̅  A26 │ B26         N.C.   D̅M̅A̅T̅C̅       D̅M̅A̅T̅C̅
-              R̅A̅S̅1̅  A27 │ B27         N.C.   F̅D̅R̅D̅Y̅       F̅D̅R̅D̅Y̅
-              R̅F̅S̅H̅  A28 │ B28         N.C.   D̅R̅Q̅1̅/D̅R̅Q̅2̅   D̅R̅Q̅1̅/D̅R̅Q̅2̅
-               M̅U̅X̅  A29 │ B29         N.C.   D̅A̅C̅K̅1̅/D̅A̅C̅K̅2̅ D̅A̅C̅K̅1̅/D̅A̅C̅K̅2̅
-                W̅E̅  A30 │ B30         N.C.   4CLK        4CLK
-           R̅O̅M̅K̅I̅L̅L̅  A31 │ B31  N̅M̅I̅
-             R̅E̅S̅E̅T̅  A32 │ B32  W̅A̅I̅T̅
-            SCLOCK  A33 │ B33  +12V
-                 Φ  A34 │ B34  -12V
-                V1  A35 │ B35  V1
-                V2  A36 │ B36  V2
-
-
-Character Set and Colors
-------------------------
-
-![NEC PC-8001 character set](PC-8001_character_set.png)
+![NEC PC-8001 character set](../img/PC-8001_character_set.png)
 
 RGBI colors (0-7): black, blue, red, magenta, green, cyan, yellow, white.
 
@@ -467,212 +212,6 @@ B/W composite output colors are:
 - Bit 1: 0 = no flash, 1 = flash.
 - Bit 2: 0 = normal, 1 = reverse.
 
-
-Memory Map
-----------
-
-Overview ([[hb68]] p.85):
-
-    C000 FFFF 16K   Standard RAM
-    F300 F3B7       VRAM
-    8000 BFFF 16K   Expansion RAM
-    6000 7FFF  8K   Expansion ROM (unpopulated socket)
-    0000 5FFF 24K   BASIC
-
-    C000 EA00       Disk BASIC (unconfirmed)
-    EA00 FFFF       BIOS/BASIC work area
-    F300 FEB8       Screen memory (see Byte article)
-
-Special addresses (prob. much more at [[EnrPc]]):
-
-    F1E3            RST $38 target
-    F1E0            RST $30 target
-    F1DD            RST $28 target
-    F1DA            RST $20 target
-    E9FF            start of BASIC string area (grows down)
-    C021            start of BASIC text (16K system)
-    8021            start of BASIC text (32K system)
-
-    PC-8011 ROM BASIC Interrupt table
-    801E                INT 0
-    801C                INT 1
-    801A                INT 2
-    8018                INT 3
-    8016                INT 4
-    8017                INT 5
-    8012                INT 6
-    8010                INT 7
-    800E                INT 8 GPIO parallel
-    800C                INT 9 GPIO parallel
-    800A                RS-232 Ch2
-    8008                RS-232 Ch1
-    8006                (unused)
-    8004                "real time clock"
-    8002                IEEE-448
-    8000                IEEE-448
-
-    8000H-8001H: IEEE-448
-    8002H-8003H: IEEE-448
-    8004H-8005H: Real
-    - time clock 8006H-8007H: Unused
-    8008H-8809H: RS-232C Ch1　
-    800AH-800BH: RS-232C Ch2　
-    800CH-800DH: / INT9 General
-    - purpose parallel 800EH-800FH: / INT8 General
-    - purpose parallel 8010H-8011H: / INT7
-    8012H-8013H: / INT6
-    8014H-8015H: / INT5
-    8016H-8017H: / INT4
-    8018H-8019H: / INT3
-    801AH-8019H: / INT2
-    801CH-8011DH: / INT1
-    801EH-801FH: / INT0
-
-    5C66            monitor restart
-    3F71            error message
-    34C1            BASIC reserved words (keywords)
-    279C            MAKINT routine
-    0F7B            INP 担当機能
-    0F75            INKEY$ 担当機能
-    0D60            printer output routine
-    0D5D            monitor (BASIC keyword routine)
-    0257            crt output routine
-
-[ROM images for PC-8001 and PC-8001mkII][rom] (including font ROM).
-
-### Banked Memory (64K)
-
-The ROM area can be replaced by 32K RAM from the PC-8011 or one of up to
-four banks of 32K RAM from the PC-8012. It appears that for the 8011 all
-writes to $0000-$7FFF write to RAM, and writing any value to I/O port $E2
-changes reads from ROM to RAM. For the 8012, port $E2 takes the following
-output values. ($E7 also used in sample code below; not clear what it
-does.)
-
-    $10     write bank 0
-    $01     read bank 0
-    $11     write/read bank 0
-    $00     no read/write bank 0
-
-The following are `DEFUSR0=&hFF80: A=USR(0)` routines that will copy the
-BASIC ROM to low RAM and switch it in, restarting BASIC with a 40K text
-area. ([[hb68]] pp.76-77):
-
-    ;   PC-8011
-    FF80: 01 00 60  ld bc,$6000     ; N.B.: In Z80 assembly, "n" is immediate
-    FF83: 11 00 00  ld de,$0000     ;   value, "(n)" is contents of address.
-    FF86: 21 00 00  ld hl,$0000
-    FF89: ED B0     ldir            ; [HL]→[DE] decrementing BC until 0
-    FF8B: D3 E2     out ($E2),a
-    FF8D: C3 E9 17  jp $17E9        ; BASIC cold entry (no h/w init or CLS)
-
-    ;   PC-8012
-    FF80: 3E 01     ld a,1
-    FF82: D3 E7     out ($E7),a
-    FF84: 3E 10     ld a,$10
-    FF86: D3 E2     out ($E2),a
-    FF88: 01 00 60  ld bc,$6000
-    FF8B: 11 00 00  ld de,$0000
-    FF8E: 21 00 00  ld hl,$0000
-    FF91: ED B0     ldir
-    FF93: E3        ex (sp),hl      ; swap HL and top word on stack
-    FF94: 11        ld (de),a
-    FF95: D3 E2     out ($E2),a
-    FF97: C3 E9 17  jp $E917
-
-See also [[km82]] pp.250-251 for a simpler PC-8012 routine:
-
-    ;   N-BASIC ON RAM
-                    org  $EE00
-    EEOO: 3E 10     ld   a,$10
-    EE02: D3 E2     out  ($E2),a
-    EE04: 01 00 80  ld   bc,$8000
-    EE07: 11 00 00  ld   de,0
-    EEOA: 21 00 00  ld   hl,0
-    EEOD: ED BO     ldir
-    EEOF: 3E 11     ld   a,$11
-    EE11: D3 E2     out  ($E2),a
-    EE13: C3 81 00  jp   $0081
-
-
-ROM Notes
----------
-
-If `STOP` key is being held down while the reset button is pushed, the
-system will warm start (like `RST 8`) instead of cold start (`RST 0`).
-
-### RST Disassembly
-
-    RST $00  ;  Cold start (reset)
-             0000: F3           di          ; disable interrupts
-             0001: 31 FF FF     ld sp,$FFFF
-             0004: C3 3B 00     jp reset
-             0007: 00
-    RST $08  ;  Warm start (stop+reset)
-             0008: C3 6A 00     jp $006A
-             000B: C3 57 17     jp $1757
-             000E: AB           xor e
-             000F: F0           ret p       ; ? flag
-    RST $10  0010: C3 59 42     jp $4259
-             0013: C3 6A 00     jp $006A
-             0016: DA 0C        db $DA,$0C
-    RST $18  0018: C3 A6 40     jp $40A6
-             001B: F3           di
-             001C: 0B           dec bc
-             001D: C3 7E 50     jp $507E
-    RST $20  0020: C3 DA F1     jp $F1DA    ; to user-set jump instruction
-                                            ; (defaults to `ret`)
-             0023: C3 9C 27     jp $279C
-             0026: 88           adc a,b     ; data?
-             0027: 0C           inc c
-    RST $28  0028: C3 DD F1     jp $F1DD    ; to user-set jump instruction
-             002B: C3 60 0D     jp $0D60
-             002E: 46           ld b,(hl)   ; data?
-             002F: 0C           inc c
-    RST $30  0030: C3 E0 F1     jp $F1E0    ; to user-set jump instruction
-             0033: 9F           sbc a,a     ; data?
-             0034: 0F           rrca        ; rotate A right through carry
-             0035: C3 57 02     jp $0257    ; CRT output routine
-    RST $38  0038: C3 E3 F1     jp $F1E3    ; to user-set jump instruction
-
-    reset:   003B: AF           xor a
-             003C: 32 75 EA     ld sp,$EA75
-             003F: CD F1 0C     call $0CF1
-
-I/O Ports
----------
-
-Bit 7 0=internal 1=external. Bits 6-4 are device code, 3-0 are registers
-within a device ("order code"). [[hb68]] pp.92-93, [[rcp88io]].
-
-    F0-FF   Floppy disk control
-    E0-EF   PC-8011 system control
-            - E4: RS-232C channel usage initial setting
-            - E0-E3: modes 0-3
-    D0-DF   IEEE-488
-            - D8 control signal input
-            - D3 8255 control
-            - D2 control signal output
-            - D1 data in
-            - D0 data out
-    C0-CF   RS-232C interface (C1=channel 1; C2=channel 2)
-    B0-BF   GPIO (outputs to high level on system reset)
-            - B3: 4-bit output
-            - B2: 4-bit input
-            - B1: 8-bit output
-            - B0: 8-bit input
-    80-AF   expansion I/O (free)
-    70-7F   unused
-    60-6F   DMA control
-    50-5F   CRT control
-    40-4F   IN: printer busy, ack; OUT: printer, beep
-    30-3F   CPU system control
-    20-2F   8251 USART
-    11-1F   (↓mirror)
-    10      OUT: printer, calendar/clock chip command
-    00-0A   Keyboard input row registers (0 bits indicate key down in row).
-            See keyboard map [hb68] p.94-95 or ./8801.md map rows 0-9.
-            Rows 0-1 are numeric keypad.
 
 
 <!-------------------------------------------------------------------->
@@ -703,33 +242,10 @@ within a device ("order code"). [[hb68]] pp.92-93, [[rcp88io]].
 [rcp80]: https://retrocomputerpeople.web.fc2.com/machines/nec/8001/
 [rcp80mn]: https://retrocomputerpeople.web.fc2.com/machines/nec/8001/mdl80.html
 [rcp80spc]: https://retrocomputerpeople.web.fc2.com/machines/nec/8001/spc80.html
-[rcp88io]: https://retrocomputerpeople.web.fc2.com/machines/nec/8801/io_map88.html
 [retropc.net/404]: http://www.retropc.net/mm/archives/404
-[rom]: https://ia902908.us.archive.org/view_archive.php?archive=/33/items/NEC_PC_8001_TOSEC_2012_04_23/NEC_PC_8001_TOSEC_2012_04_23.zip
 [sb8001]: https://www.starbrother.net/pc-8001-nec-2/
 [sbeach.seesaa.net]: http://sbeach.seesaa.net/
 [vcf 36037]: https://forum.vcfed.org/index.php?threads/searching-for-nec-pc-8001a-software-hardware.36037
 
 <!-- Peripherals and Expansion Boards -->
 [PC-8881]: https://electrelic.com/electrelic/node/208
-
-<!-- Switches and Jumpers -->
-[m2um.38]: https://archive.org/details/PC8001mk-II-users-manual/page/n37/mode/1up
-
-<!-- Connector Pinouts -->
-[IO8410p238]: https://archive.org/details/Io198410/page/n238/mode/1up?view=theater
-[PC-8001_SD]: https://github.com/yanataka60/PC-8001_SD
-[def_int]: https://web.archive.org/web/20191127114212/blogs.yahoo.co.jp/def_int/34113679.html
-[er519]: https://electrelic.com/electrelic/node/519
-[er78]: https://electrelic.com/electrelic/node/78
-[hkjunk0]: https://hkjunk0.com/computer/hardware-and-maintenance/pc8001-rgb-output.html
-[kenko858]: http://kenko858.blog.fc2.com/blog-entry-4.html
-[ls-pc88cv]: https://www.leadedsolder.com/2018/09/24/pc88-colour-video.html
-[nr-drgb]: http://tulip-house.ddo.jp/DIGITAL/DIGITAL_RGB_COMPONENT/
-[oh-d8]: https://www14.big.or.jp/~nijiyume/hard/jyoho/connect/d8.htm
-[pc6001]: https://archive.org/details/PC6001mkII
-[sb-rgb11]: http://sbeach.seesaa.net/article/450572908.html
-[sb-rgb13]: http://sbeach.seesaa.net/article/450981469.html
-[we-pc8000]: https://en.wikipedia.org/wiki/PC-8000_series
-[wj-pc8000]: https://ja.wikipedia.org/wiki/PC-8000シリーズ
-[x1/rgb21]: http://www.retropc.net/mm/x1/rgb21/index.html
