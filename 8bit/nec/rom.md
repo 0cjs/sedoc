@@ -93,7 +93,7 @@ ROM/Machine-level References:
   システムソフト, 1982.
 * \[techknow88mkII] [_PC-TechKnow8800mkII_][techknow88mkII],
   システムソフト, 1985.
-* \[mlhb] [_PC-8001マシン語活用ハンドブック_][mlhb], Kawamura Kiyoshi,
+* \[km82] [_PC-8001マシン語活用ハンドブック_][km82], Kawamura Kiyoshi,
   秀和システムトレーデインク.株式会社, 1982-06.
   - 1: Addresses and descriptions of ROM routines (but no names). Work area.
   - 2: Detailed hardware interface descirptions.
@@ -142,8 +142,8 @@ ROM Calls
 [8xROM]: https://retrocomputerpeople.web.fc2.com/machines/nec/cmn_vers.html
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [kaiseki]: https://archive.org/details/pc-8801mk-ii-sr
-[mlhb]: https://archive.org/details/pc-8001
-]: https://archive.org/details/pctechknow8000
+[km82]: https://archive.org/details/pc-8001
+[techknow80]: https://archive.org/details/pctechknow8000
 [techknow88mkII]: https://archive.org/details/pc-techknow-8801mk-ii
 [techknow88v1]: https://archive.org/details/PCTechknow8801Vol.11982/
 
