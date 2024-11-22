@@ -131,7 +131,20 @@ various magic numbers:
 ROM Calls
 ---------
 
-- `RST $18`: Print char in A
+### BIOS
+
+These work very early on, including by the time the expansion ROM
+initialisation routine is called.
+
+- `RST $18` ($6AC3): Print char in A
+
+### BASIC
+
+These work only after BASIC has initialised. I.e., they do not work
+at the time the expansion ROM initialisation routine is first called.
+
+- $3C82: ??? Return to BASIC after USR, etc.
+- $52ED: Print HL→ $00-terminated string. Does not work before full init.
 
 
 
