@@ -33,24 +33,14 @@ function call).
   workspace to that file and `RUN`, going to interpreter after break/exit.
 - Selecting `BASIC` uses the unnamed workspace; this is preserved across
   runs of other selected programs.
-- `SAVE "[dev:]fname",A` (or with `.DO` extension given) will save a copy
-  of the current program in ASCII format to `fname.DO`; the current
-  workspace does not change.
-
 - `LOAD "fname.xx"` when _xx_ is not a `.BA` file will wipe the current
   workspace, replacing it with the ASCII load.
 - `NEW` will switch back to the unnamed workspace and clear it, leaving the
   previous workspace as it was (unless it was already the unnamed workspace).
-
-Machine-language files:
-- `.CO` files are machine-language commands, prefixed by three words: start
-  addr, end addr, entrypoint. In the commands below, adding the `.CO`
-  extension is optional.
-- `SAVEM "[RAM:|CAS:]fname",start,end[,entry]`: Save binary data from
-  memory. _entry_ defaults to _start._
-- `RUNM "[RAM:|CAS:]fname",start,end[,entry]`: Run a machine-lanuage program.
-- `LOADM "[RAM:|CAS:]fname"`: Load a machine-lanuage program. The start
-  addr, end addr and entrypoint are printed.
+- `SAVE "[dev:]fname",A` (or with `.DO` extension given) will save a copy
+  of the current program in ASCII format to `fname.DO`; the current
+  workspace does not change.
+- See "Machine Language Interface" for using/managing `.CO` files.
 
 File management commands:
 - `MERGE "[dev:]fname"` merges another file into the current workspace.
@@ -132,7 +122,8 @@ Use `COM/MDM/KEY/TIME$` followed by `ON` to re-enable, `STOP` to mask
 Special Variables
 -----------------
 
-- `MAXRAM`: highest memory addr available to BASIC?
+(For memory-related vars, see "Machine Language Interface" below.)
+
 - `INKEY$`: Next char from keyboard buffer, or empty string if none avail.
 
 
@@ -164,7 +155,30 @@ Graphics (_x_ = 0-239, _y_ = 0-63):
 Machine Language Interface
 --------------------------
 
-- `CALL addr[,a[,hl]]`: Calls _addr_ with A register and HL register.
+`.CO` files are machine-language programs prefixed by three words: start
+addr, length, entrypoint. These return to the caller (BASIC or menu) on RET.
+
+BASIC load/save:
+- `SAVEM "[RAM:|CAS:]fname",start,end[,entry]`: Save binary data from
+  memory with given header. _Entry_ defaults to _start._
+- `LOADM "[RAM:|CAS:]fname"`: Load a machine-lanuage program. The device
+  defaults to `RAM:` and the `.CO` extension is optional. Prints `Top:…`,
+  `End:…`, `Exe:…` addresses in decimal before load. Returns `?OM Error` if
+  load overlaps BASIC memory space.
+- `RUNM "[RAM:|CAS:]fname",start,end[,entry]`: Run a machine-lanuage
+  program. Prints address as `LOAD`. Program start with cursor at end of
+  `End:…` line. Running directly from menu starts with clear screen
+  instead. (If `CLEAR` not set properly, no error is printed.)
+
+BASIC memory setup/access:
+- `MAXRAM`: highest memory addr possibly available to BASIC. will return
+  `?FC ERROR` for _aaaa_ above this. Always $5F50, the start of BASIC/BIOS
+  workspace area.
+- `HIMEM`: Current end of BASIC RAM. Default `MAXRAM`; set with `CLEAR`.
+- `CLEAR n[,aaaa]`: Set string heap to size _n_ and optionally `HIMEM` to
+  address _aaaa_ (given in decimal).
+- `CALL addr[,a[,hl]]`: Calls _addr_ with A register and HL register values
+  (in decimal).
 
 
 Converting Programs Between Models
