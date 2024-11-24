@@ -19,7 +19,7 @@ toy or soldering exercise than a real computer.
 - Built-in programs: clock, timer, sensor, organ, tone playback, telephone
   charge calculation, games (random number generator based on keypress).
 
-__[SB-B-80T][]__ (197?, ¥85,000) Z-80 trainer/development board.
+__[SB-B-80T][]__ (197?, ¥85,000) Z80 trainer/development board.
 - Keyboard separate from main board: hex keypad and 8 digits of 7-segment LED
 - 2× Z80PIO (one used for keyboard/display)
 - Kansas City tape
@@ -28,14 +28,14 @@ __[SB-B-80T][]__ (197?, ¥85,000) Z-80 trainer/development board.
   keyboard, video display, printer I/F, etc. (similar to NEC TK-80 BASIC
   Station)
 
-__[SM-B-80TE][]__ (19??, ¥39,800) Z-80 trainer/development board;
+__[SM-B-80TE][]__ (19??, ¥39,800) Z80 trainer/development board;
 much-revised SM-B-80T.
 - Keyboard/display moved on to main board and permanently attached to
   Z80PIO.
-- CPU: Z-80 (LH-0080) 2.4576MHz (4.9152MHz crystal)
+- CPU: Z80 (LH-0080) 2.4576MHz (4.9152MHz crystal)
 - ROM: 2× 2716 / 2732 sockets for 4KB/8KB total; supplied w/2K 2716
 - RAM: 2K static RAM; expandable to 4K (monitor uses $700-$7FF)
-- Z-80PIO (LH-0081) for LED/kbd/CMT; socket for 2nd PIO
+- Z80PIO (LH-0081) for LED/kbd/CMT; socket for 2nd PIO
 - Tape I/F is now FSK, 1200 bps.
 
 
@@ -47,7 +47,7 @@ until the Information Systems division takes over and releases the MZ-1200.
 
 ### Specs
 
-- CPU: 2 MHz Z-80
+- CPU: 2 MHz Z80
 - 48 KB max. RAM. 4K ROM w/loaders and low-level I/O routines.
 - Video: 40×25 text (8×8 cells; 2×2 block graphics avail.).
   1 KB VRAM, 2 KB character ROM.
@@ -108,7 +108,7 @@ ROM has IPL only, no low-level I/O routines. (IPL copied from ROM to RAM.)
 
 ### Specs
 
-- CPU: 4 MHz Z-80
+- CPU: 4 MHz Z80
 - 64K RAM (32K in some overseas models). 2KB ROM (IPL only).
 - Video: 40×25 and 80×25 (8×8 cells).
   - MZ-8BG board: 320×200 monochrome (overlaid over text screen).
@@ -133,7 +133,7 @@ XXX Research needed on these ones.
   - Predecessors to the MZ-3500; not much known about them.
   - Not to be confused with the much later PC-3000/3100 palmtop series.
   - Sometimes given MZ- prefix?
-- __[MZ-3500][]__ (1982) Dual processor Z-80. CP/M; might not be
+- __[MZ-3500][]__ (1982) Dual processor Z80. CP/M; might not be
   MZ-80-compatible.
 - __MZ-2500__ (1985) "SuperMZ" series: MZ-2511, MZ-2520, MZ-2521, MZ-2531
   - MZ-2521: desktop case
@@ -146,7 +146,7 @@ XXX Research needed on these ones.
 -------------
 
 Later machines (MZ-100, MZ-5500 and up) used 8086-series processors, some
-with also a Z-80 and some backward compatibility.
+with also a Z80 and some backward compatibility.
 
 
 
