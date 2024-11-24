@@ -182,8 +182,8 @@ a routine that prints a "Disk BASIC Feature" error.
 
 `CMD` was incuded with these as a prefix for unanticipated commands. We need
 a PC-8001 Disk BASIC reference manual to determine what it was used for there,
-but the [PC-8001mkII N₈₀-BASIC Reference Manual][um01ii] (released
-four years later in 1983) lists the following as using the `CMD` prefix:
+but the [PC-8001mkII N₈₀-BASIC Reference Manual][um01ii] (released four years
+later in 1983) lists the following as using the `CMD` prefix (p.ii P.7):
 
     BLOAD   CLS     COPY    LINE    PRESET  SCREEN
     BSAVE   COLOR   GET@    PAINT   PSET    VIEW
@@ -191,9 +191,9 @@ four years later in 1983) lists the following as using the `CMD` prefix:
 
 ### Using the CMD Hook
 
-[[techknow80] p.178] gives examples of taking over the `CMD` hook to add
-commands. The first example given changes $F0FC to `JMP $FF40` where he
-places a small program:
+[[techknow80] p.178] gives examples of taking over the `CMD` hook at $F0FC
+to add commands. The first example given changes the hook to `JMP $FF40`
+where he places a small program:
 
                     ; SCREEN COPY 'CMD'
     FF40 E5             PUSH HL
