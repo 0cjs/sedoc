@@ -172,8 +172,8 @@ BASIC load/save:
 
 BASIC memory setup/access:
 - `MAXRAM`: highest memory addr possibly available to BASIC. will return
-  `?FC ERROR` for _aaaa_ above this. Always $5F50, the start of BASIC/BIOS
-  workspace area.
+  `?FC ERROR` for _aaaa_ above this. Always at the start of BASIC/BIOS
+  workspace area: T100=$F5F0, T200=EEB0.
 - `HIMEM`: Current end of BASIC RAM. Default `MAXRAM`; set with `CLEAR`.
 - `CLEAR n[,aaaa]`: Set string heap to size _n_ and optionally `HIMEM` to
   address _aaaa_ (given in decimal).
