@@ -177,7 +177,7 @@ RST and interrupt vectors:
     RST6    $0030
     RST6.5  $0034   8085 only
     RST7    $0038
-    RST7.5  $003B   8085 only
+    RST7.5  $003C   8085 only
     NMI     $0066   Z80 only
 
 ### 8085
