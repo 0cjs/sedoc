@@ -43,7 +43,8 @@ directories it can be installed in two ways, with the first preferred:
    browser rather than starting a browser.
 
    This does not include a `dropbox` control command (the file of that name
-   in the distro is the daemon).
+   in the distro is the daemon). A copy of the `dropbox` command is in
+   [`.home/cjs1/bin/dropbox`][cjs1db].
 
 2. Install the Debian `nautilus-dropbox` package and run `/usr/bin/dropbox
    start -i`. This requires a graphical system; it will download and
@@ -76,4 +77,5 @@ script, but only one sync client may be running at a time.
 
 
 <!-------------------------------------------------------------------->
+[cjs1db]: https://github.com/0cjs/dot-home-cjs1/blob/master/bin/dropbox
 [install-linux]: https://www.dropbox.com/install-linux
