@@ -121,12 +121,17 @@ Also see [[rcp80spc]].
 - __PC-8033:__ "FDD I/F" (standalone version of that included in PC-8011/12).
 - __PC-8034:__ Disk BASIC (1D) (¥5000)
 - __PC-8034-2W:__ Disk BASIC (2D) (¥5000)
-- __PC-8041:__ 12" green display (JB1201M)
-- __PC-8042:__ 12" color display (DRGB, low-res, but 80 char) (JB1202DH)
-- __PC-8044:__ TV colour adapter (RF modulator)
+- __PC-8041:__ 12" green display (JB-120M ¥48,800)
+- __PC-8042:__ 12" color display (DRGB, low-res, but 80 char) (JC-121D ¥109,000)
+- __PC-8043:__ 12" high-res color display (JC-1202DH ¥219,000)
+- __PC-8044:__ TV color adapter (RF modulator) (¥13,500)
 - __PC-8045:__ Light pen
-- __PC-8046:__ 9" green display
-- __PC-8049:__ 12" color display (high-res)
+- __PC-8046:__ 9" green display (JB-902M ¥35,800)
+- __PC-8047:__ 12" amber yellow display (JB-1202M ¥46,800)
+- __PC-8048:__ 12" color display (.63mm JC-1202D ¥88,000)
+                PC-8048K (JC-1203D ¥67,800), PC-8048N (JC-1204D ¥59,800)
+- __PC-8049:__ 12" high resolution color display (.31mm JC-1204DH ¥188,000),
+                PC-8049K (JC-1205DH ¥158,000), PC-8049N (JC-1206DH ¥158,000)
 - __PC-8062:__ RS-232C level converter for PC-8001 internal I/F (¥18,700)
 - __PC-8062-1:__ Terminal firmware (¥6500)
 - __PC-8064:__ Network Interface Board (¥110,000)
@@ -152,6 +157,31 @@ _ __RM-210:__ Cassette tape recorder
 The specs (SS/DS and SD/DD) for the various drive units, and whether any
 had just one drive installed rather than two, are not clear, and ja/en
 Wikipedia don't entirely agree with each other.
+
+### Monitor Pricing
+
+The exchange rate for the given date taken from [macrotrends.net].
+The Purchasing Power Parity for given date from [ceicdata.com].
+
+
+    PC-Model  Description     Model         Price Year      Exchg. PPP
+    ──────────────────────────────────────────────────────────────────
+    PC-8041   12" green       JB-120M     ¥48,800 ?1979     $195  $196
+    PC-8042   12" color       JC-121D    ¥109,000 ?1979     $436  $439
+    PC-8043   12" high-res    JC-1202DH  ¥219,000 ?1979     $876  $883
+    ──────────────────────────────────────────────────────────────────
+    PC-8046   9" green        JB-902M     ¥35,800  1980-09  $169  $147
+    PC-8047   12" amber       JB-1202M    ¥46,800  1980-09  $221  $193
+    PC-8048   12" color .63mm JC-1202D    ¥88,000 ?1980     $415  $362
+    PC-8048K                  JC-1203D    ¥67,800  1982-03  $288  $314
+    PC-8048N                  JC-1204D    ¥59,800
+    PC-8049   12" HR .31mm    JC-1204DH  ¥188,000  1980-12  $887  $787
+    PC-8049K                  JC-1205DH  ¥158,000
+    PC-8049N                  JC-1206DH  ¥158,000  1982-08  $601  $715
+    ──────────────────────────────────────────────────────────────────
+
+[macrotrends.net] https://www.macrotrends.net/2550/dollar-yen-exchange-rate-historical-chart
+[ceicdata.com]: https://www.ceicdata.com/en/japan/exchange-rate-forecast-oecd-member-quarterly/jp-purchasing-power-parity-national-currency-per-usd
 
 
 Documentation
