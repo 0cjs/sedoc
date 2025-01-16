@@ -1,10 +1,10 @@
 Docker Compose
 ==============
 
-* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
-  | [Tips](tips.md) | [Compose](compose.md)
-
+* [Overview](README.md) | [Install](install.md) | [Config](config.md)
+  | [Image Build](image.md) | [Registries](registries.md)
+  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+  | [Compose](compose.md)
 
 Compose v2 has been rewritten in Go; the previous version was in Python.
 [`compose-switch`] can translate old `docker-compose` command lines into

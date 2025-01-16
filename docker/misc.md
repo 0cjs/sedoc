@@ -1,9 +1,10 @@
 Docker Miscellaneous Documentation
 ==================================
 
-* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
-  | [Tips](tips.md) | [Compose](compose.md)
+* [Overview](README.md) | [Install](install.md) | [Config](config.md)
+  | [Image Build](image.md) | [Registries](registries.md)
+  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+  | [Compose](compose.md)
 
 Object Labels
 -------------

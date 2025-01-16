@@ -1,9 +1,10 @@
 Docker
 ======
 
-* [Overview](README.md) | [Install/Config](config.md) | [Image Build](image.md)
-  | [Registries](registries.md) | [Security](security.md) | [Misc](misc.md)
-  | [Tips](tips.md) | [Compose](compose.md)
+* [Overview](README.md) | [Install](install.md) | [Config](config.md)
+  | [Image Build](image.md) | [Registries](registries.md)
+  | [Security](security.md) | [Misc](misc.md) | [Tips](tips.md)
+  | [Compose](compose.md)
 
 Detailed list of pages here:
 * [Overview](README.md)
@@ -23,6 +24,9 @@ External Documentation:
 
 Terminology
 -----------
+
+(Italics indicates a term of art defined elsewhere;
+bold is used at the definition.)
 
 ### Containers, Images, Filesystems
 
@@ -66,7 +70,7 @@ layers are configured with `docker run --mount`.
 
 Each Docker instance (daemon) has an image store, a local set of images and
 their associated layers. These are either created locally using the
-[`docker build`] process or pulled (copied) from a _registry._ Newly built
+[`docker build`] process or _pulled_ (copied) from a _registry._ Newly built
 images will always have a new image ID (see above), but the caching system
 may re-use previously built or downloaded layers.
 
@@ -101,7 +105,7 @@ Some sub-commands that can specify multiple images (docker `ls`, `push`,
 _alias;_ in that case the repository refers to all aliases with that
 repository component, regardless of tag.
 
-The __repository__ is one or more slash-separated _name components_ with an
+The _repository_ is one or more slash-separated _name components_ with an
 optional _registry hostname_ prefixing the name components.
 * A __name component__ is no more than 32 characters from `[a-z0-9]` and
   separators that may not start or end the name. Separators are single `.`,
@@ -128,8 +132,8 @@ optional _registry hostname_ prefixing the name components.
 
 #### Registries
 
-A __registry__ is an image store from which one can __pull__ images to
-or __push__ images from a local Docker instance. Registries use a
+A __registry__ is an image store from which one can _pull_ images to
+or _push_ images from a local Docker instance. Registries use a
 standard [HTTP API] currently at version 2. Images in registries are
 stored in collections known as __repositories__; each collection
 usually contains different versions of an image designed for a
