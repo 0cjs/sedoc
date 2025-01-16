@@ -32,8 +32,8 @@ A few non-obvious notes:
     appropriate for them.
 
 
-XDG MIME Settings and gnome-open
---------------------------------
+XDG MIME Settings and gnome-open (xdg-open too?)
+------------------------------------------------
 
 For the issue with `gnome-open` and Telegram using the wrong browser, the
 issue appears be with some XDG MIME settings. `xdg-mime query default TYPE`
