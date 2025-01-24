@@ -67,6 +67,14 @@ the work tree.
 * When the working copy is clean, `git rebase --continue`
 
 
+Push/Pull
+---------
+
+* `push r @:main` to "merge" your current branch (presumably already rebased
+  on to main with `pull && rebase main@{u}` on to main, using a "rebase merge"
+  but not actually generating new commits like GitHub does.
+
+
 Fixing/Changing Commits and Branches
 ------------------------------------
 
