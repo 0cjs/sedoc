@@ -4,16 +4,10 @@ NEC PC-8001/PC-8801 Video Programming
 PC-8001
 -------
 
-The RAM above the video memory, $FEB8-$FFFF, is free for scratchpad use.
-(Or used by ROM?)
-
-$0257 is CRT output routine.
-
-[[hb68]] pp.88-
-
-Video RAM starts at $F300 and is organized in rows of 80 character bytes
-followed by 40 attribute bytes. (The first character byte cannot be used in
-colour mode.) In 40-column mode only even character bytes are used.
+Video RAM is at $F300 up to $FEB8 and is organized in rows of 80 character
+bytes followed by 40 attribute bytes. (The first character byte cannot be
+used in colour mode.) In 40-column mode only even character bytes are used.
+[[hb68] p.88] [[km82] p.207]
 
     row char attr   row char attr   row char attr
      0  F300 F350    8  F6C0 F710   10  FA80 FAD0
@@ -24,12 +18,32 @@ colour mode.) In 40-column mode only even character bytes are used.
      5  F558 F5A8    D  F918 F968   15  FCD8 FD28
      6  F5D0 F620    E  F990 F9E0   16  FD50 FDA0
      7  F648 F698    F  FA08 FA58   17  FDC8 FE18
-                                    18  FE40 FE90 (-FEB7)
+                                    18  FE40 FE90
+                                    --  FEB8 (workspace RAM)
+
+#### Attributes
+
+#### Graphics Mode
 
 When a character cell is being interpreted as 2×4 graphics pixels, the bits
-are encoded as:
+are encoded as follows. [[hb68] p.88]
 
     01 10
     02 20
     04 40
     08 80
+
+#### ROM Support
+
+$0257 is CRT output routine.
+
+The RAM above the video memory, $FEB8-$FFFF, is free for scratchpad use.
+(Or used by ROM?)
+
+
+
+
+
+<!-------------------------------------------------------------------->
+[hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
+[km82]: https://archive.org/details/pc-8001

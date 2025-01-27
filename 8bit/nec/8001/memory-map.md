@@ -4,27 +4,53 @@ PC-8001 Memory
 Memory Map
 ----------
 
-Overview ([[hb68]] p.85):
+Hardware Overview ([[hb68]] p.85):
 
-    C000 FFFF 16K   Standard RAM
-    F300 F3B7       VRAM
-    8000 BFFF 16K   Expansion RAM
+    C000 FFFF  16K  Standard RAM
+    F300 FEB7  <3K  VRAM (characters and attributes)
+    8000 BFFF  16K  Expansion RAM
+    6000 7FFF   8K  Expansion ROM (unpopulated socket)
+    0000 5FFF  24K  BASIC
+
+System Use Overview:
+
+    FEB8 FFFF 328b  BIOS/BASIC workspace RAM
+    F300 FEB7 3000  VRAM (characters and attributes)
+    EA00 F2FF       BIOS/BASIC workspace RAM
+    8000 E9FF       BASIC text/vars/stack/string heap (C000〜 on 16K systems)
     6000 7FFF  8K   Expansion ROM (unpopulated socket)
-    0000 5FFF 24K   BASIC
+    0000 5FFF 24K   BIOS/BASIC ROM
 
     C000 EA00       Disk BASIC (unconfirmed)
-    EA00 FFFF       BIOS/BASIC work area
-    F300 FEB8       Screen memory (see Byte article)
 
 Special addresses (prob. much more at [[EnrPc]]):
 
-    F1E3            RST $38 target
-    F1E0            RST $30 target
-    F1DD            RST $28 target
-    F1DA            RST $20 target
-    E9FF            start of BASIC string area (grows down)
-    C021            start of BASIC text (16K system)
-    8021            start of BASIC text (32K system)
+    FFFF            top of stack?
+    FF30 FF3C       MON monitor work area
+
+    FEB8      120b  "VRLINE"
+
+    F1E3            RST $38 target      (First four restarts are into
+    F1E0            RST $30 target       ROM; last four are vectored
+    F1DD            RST $28 target       through RAM and not used by
+    F1DA            RST $20 target       the ROM BIOS/BASIC.)
+
+    8000H-8001H: IEEE-448
+    8002H-8003H: IEEE-448
+    8004H-8005H: Real
+    - time clock 8006H-8007H: Unused
+    8008H-8809H: RS-232C Ch1　
+    800AH-800BH: RS-232C Ch2　
+    800CH-800DH: / INT9 General
+    - purpose parallel 800EH-800FH: / INT8 General
+    - purpose parallel 8010H-8011H: / INT7
+    8012H-8013H: / INT6
+    8014H-8015H: / INT5
+    8016H-8017H: / INT4
+    8018H-8019H: / INT3
+    801AH-8019H: / INT2
+    801CH-8011DH: / INT1
+    801EH-801FH: / INT0
 
     PC-8011 ROM BASIC Interrupt table
     801E                INT 0
@@ -44,25 +70,14 @@ Special addresses (prob. much more at [[EnrPc]]):
     8002                IEEE-448
     8000                IEEE-448
 
-    8000H-8001H: IEEE-448
-    8002H-8003H: IEEE-448
-    8004H-8005H: Real
-    - time clock 8006H-8007H: Unused
-    8008H-8809H: RS-232C Ch1　
-    800AH-800BH: RS-232C Ch2　
-    800CH-800DH: / INT9 General
-    - purpose parallel 800EH-800FH: / INT8 General
-    - purpose parallel 8010H-8011H: / INT7
-    8012H-8013H: / INT6
-    8014H-8015H: / INT5
-    8016H-8017H: / INT4
-    8018H-8019H: / INT3
-    801AH-8019H: / INT2
-    801CH-8011DH: / INT1
-    801EH-801FH: / INT0
-
 
 [ROM images for PC-8001 and PC-8001mkII][rom] (including font ROM).
+
+#### BASIC Memory Addresses
+
+    E9FF            start of BASIC string area (grows down)
+    C021            start of BASIC text (16K system)
+    8021            start of BASIC text (32K system)
 
 
 Banked Memory (64K)
