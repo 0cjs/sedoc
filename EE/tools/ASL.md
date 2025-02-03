@@ -179,7 +179,7 @@ also displayed in the listing and `.map` file, with the following exceptions:
     $                    " (Intel, Zilog, TI, Toshiba, NEC, Siemens, AMD)
     MOMSEGMENT          Current segment
     MOMSECTION          Name of current section or empty string
-    MOMPASS             Current assembly pass
+    MOMPASS             Current assembly pass (first pass is 1)
     MOMFILE, MOMLINE    Current source file, line
 
 ### Temporary Symbols
