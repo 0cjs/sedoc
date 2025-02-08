@@ -37,6 +37,14 @@ keying) and 7 mm between addtitional pins. Pinouts include:
 
 (With the PC-8801 NEC switched to JST VH (?) with a missing key pin.
 
+#### Speaker
+
+Internal.
+
+8001, 8001mkII:
+- Internal 45mm: NEC 63001005 8Ω 8Ω 0.1W JAPAN 24I.
+- 2-pin crimped connector, polarised.
+
 #### RGBI (8-pin 270° DIN)
 
 Sources:
