@@ -298,9 +298,13 @@ have same precedence for all operators.
 
 (≥bld278: `AND`/`OR` do short-circuit evaluation.)
 
-Functions ([§2.10.7]).
-
-There is also an (almost undocumented) `defined(SYM)` function.
+"Symbol Conventions" ([§2.10.7]) documents some further symbol-related
+functions:
+- `defined(SYM)`: true if _SYM_ has been defined in the current pass before
+  the point in the file in which `defined()` is used.
+- `symexist(SYM)`: true if _SYM_ is defined from this or a previous pass
+  (i.e., false for forward decarations in pass 1, and true in subsequent
+  passes).
 
 
 Assembler Directives
