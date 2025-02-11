@@ -62,6 +62,8 @@ Workflows / Actions
 References:
 - [About workflows][w-about]
 - ["Creating your first workflow"][w-first] has a sample workflow.
+- [Monitoring Workflows][w-mon] (including notifications)
+- [About status checks][statchk]
 
 [GitHub Actions][actions] is the overall name for the _workflows_ system
 and also the name of steps within jobs. Output is viewed on the "Actions"
@@ -106,6 +108,13 @@ definitions.
 Printing `${{github.event}}` or `${{toJSON(github.event)}}` to see
 properties of the triggering event.
 
+Commonly used events:
+- `push`:
+- `pull_request`: [Action types][w-ev-pr];
+  default `[opened, synchronize, reopened]`
+  - `synchronize:` is a head update on ref.
+  - `paths: […]` useful to skip long tests on unmodifed files?
+
 #### Jobs
 
 Each _job_ has sequence of _steps_ that execute actions specified either
@@ -133,6 +142,16 @@ run a script or `uses:` to use a reusable extension called an _action_
 (e.g., `uses: actions/checkout@v4`). Additional parameters include:
 - `name:`: Displayed in workflow output instead of `Run …`.
 
+### Status Checks
+
+[Status checks][statchk] may be _checks_ or _commit statuses._ Both can be
+created with REST API endpoints; workflows create only _checks._ A "Checks"
+tab appears for PRs with checks; commit statuses are visible only only
+the commits list for the PR (or branch?).
+
+Workflows generate _checks_:
+- 
+
 
 
 <!-------------------------------------------------------------------->
@@ -141,13 +160,18 @@ run a script or `uses:` to use a reusable extension called an _action_
 [gfmath]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions
 [latex]: http://en.wikibooks.org/wiki/LaTeX/Mathematics
 
+<!-- GitHub Docs (general) -->
+[statchk]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks
+
 <!-- Workflows ("Actions") -->
 [w-about]: https://docs.github.com/en/actions/writing-workflows/about-workflows
 [w-actions]: https://docs.github.com/en/actions
+[w-ev-pr]: https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request
 [w-events]: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
 [w-first]: https://docs.github.com/en/actions/writing-workflows/quickstart#creating-your-first-workflow
 [w-ghhost]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for-public-repositories
 [w-jobs]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobs
+[w-mon]: https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows
 [w-overview]: https://docs.github.com/en/actions/writing-workflows/quickstart
 [w-syntax]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 [w-trig]: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow
