@@ -210,6 +210,7 @@ Documentation
 - \[hb68] [パソコンPCシリーズ 8001 6001 ハンドブック][hb68]. Covers PC-8001
   and PC-6001 BASIC, memory maps, disk formats, peripheral lists, and all
   sorts of further technical info.
+- \[tk80] 牟田 et al. [PC-Techknow8000][tk80], Systemsoft, 1982-04-01.
 - \[km82] Kiyoshi Kawamura, [PC-8001 マシン語活用ハンドブック 初級編][km82].
   Hardware and N-BASIC interfaces (including disk); utility programs.
 
@@ -264,6 +265,7 @@ B/W composite output colors are:
 <!-- References: Books -->
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [km82]: https://archive.org/details/pc-8001
+[tk80]: https://archive.org/details/pctechknow8000
 
 [80s_john]: https://vintagecomputers.sdfeu.org/nec/index.html
 [Enr11]: http://cmpslv2.starfree.jp/Pc80/Pc8011.htm

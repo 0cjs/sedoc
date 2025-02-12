@@ -4,10 +4,18 @@ NEC PC-8001/PC-8801 Video Programming
 PC-8001
 -------
 
+The text modes are any combination of:
+- Width: 36, 40, 72, 80
+- Height: 20, 25
+- Mode: b/w, colour
+
+Four text modes are supported: 40×20, 40×25, 80×20 and 80×25, each having
+both a colour and a black and white mode.
+
 Video RAM is at $F300 up to $FEB8 and is organized in rows of 80 character
 bytes followed by 40 attribute bytes. (The first character byte cannot be
-used in colour mode.) In 40-column mode only even character bytes are used.
-[[hb68] p.88] [[km82] p.207]
+used in colour mode.) In 36/40-column mode only even character bytes are
+used. [[tk80] p.50] [[hb68] p.88] [[km82] p.207]
 
     row char attr   row char attr   row char attr
      0  F300 F350    8  F6C0 F710   10  FA80 FAD0
@@ -47,3 +55,4 @@ The RAM above the video memory, $FEB8-$FFFF, is free for scratchpad use.
 <!-------------------------------------------------------------------->
 [hb68]: https://archive.org/stream/PC8001600100160011982#page/n5/mode/1up
 [km82]: https://archive.org/details/pc-8001
+[tk80]: https://archive.org/details/pctechknow8000
