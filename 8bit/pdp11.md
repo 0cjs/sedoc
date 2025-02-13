@@ -75,6 +75,10 @@ J11 Processor
 
 References:
 - [DCJ11 Microprocessor User's Guide (preliminary][j11-mugp]
+- Original [PDP-11/HACK]: Breadboarded CPU, 16 KB RAM, console.
+  - [HACK/128]: 128 KW version
+- [5volts.ch PDP-11/Hack]: ECB bus (Eurocard connector) "QBUS64" system
+  using CPLD glue logic, RL01/02 disk emulation. Runs RSX-11M-Plus.
 
 
 
@@ -90,4 +94,7 @@ References:
 [wfjm]: https://wfjm.github.io/home/w11/info/manuals.html
 
 <!-- J11 Processor -->
+[5volts.ch PDP-11/Hack]: https://www.5volts.ch/pages/pdp11hack/
+[HACK/128]: https://web.archive.org/web/20161116035835/http://www.cs.ubc.ca/~hilpert/e/pdp11hack/pschranz.html
+[PDP-11/HACK]: https://web.archive.org/web/20161103213716/http://www.cs.ubc.ca:80/~hilpert/e/pdp11hack/index.html
 [j11-mugp]: https://archive.org/details/dcj11-microprocessor-users-guide-dec-1983-10-ek-dcj-11-ug-pre-preliminary
