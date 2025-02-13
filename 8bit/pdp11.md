@@ -74,7 +74,7 @@ J11 Processor
 -------------
 
 References:
-- [DCJ11 Microprocessor User's Guide (preliminary][j11-mugp]
+- [DCJ11 Microprocessor User's Guide (preliminary)][j11-mugp]
 - Original [PDP-11/HACK]: Breadboarded CPU, 16 KB RAM, console.
   - [HACK/128]: 128 KW version
 - [5volts.ch PDP-11/Hack]: ECB bus (Eurocard connector) "QBUS64" system
