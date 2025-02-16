@@ -163,7 +163,14 @@ within a device ("order code"). [[hb68]] pp.92-93, [[rcp88io]].
     60-6F   DMA control
     50-5F   CRT control
     40-4F   IN: printer busy, ack; OUT: printer, beep
-    30-3F   CPU system control
+            - 40: system control #2
+    35
+    34
+    32      IN/OUT: system control #4 (input/output)
+            - only PC-8801mkⅡSR and above, 8801-24/25 sound board II
+    31      OUT: system control #3 (no input)
+    30      OUT: system control #1 (no input)
+            - B0: screen width  1=narrow (36/40), 0=wide (72/80)
     20-2F   8251 USART
     11-1F   (↓mirror)
     10      OUT: printer, calendar/clock chip command
