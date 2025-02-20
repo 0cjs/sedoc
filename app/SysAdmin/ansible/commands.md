@@ -5,13 +5,9 @@ Ansible Commands
 
 See [Using Ansible command line tools][cli].
 
-- `ansible-inventory --list`
 - `ansible HOST -m MOD -a ARG`: run module to perform an action on _host._
   - `-b` option for "become" (sudo).
 - `ansible-playbook playbook/foo.yml`: Manually run a playbook.
-
-### Inventory Management
-- `ansible-inventory --list`: tree of groups/hosts/etc.
 
 ### Modules (to perform command-line or playbook actions):
 
@@ -40,6 +36,28 @@ Connecting to managed hosts:
   - [`community.docker.docker_api`][cp_dockapi]: Connects directly to the
     Docker daemon. Makes the sudo problem worse, but one could use the
     [`dockerd-proxy`] from `dent`.
+
+
+Inventory Management: `ansible-inventory`
+-----------------------------------------
+
+`ansible-inventory` queries and shows inventory information (in JSON by
+default—use `jq` to parse).
+- `-y`/`-t`: Output YAML/TOML instead of JSON.
+- `-i dir/`: specify the inventory database.
+- `-l pattern`: Limit hosts to those matching _pattern._ All groups
+  containing that host, either directly or in a child group, will be
+  printed.
+- `[group]`: (Only with `--graph`, otherwise ignored.) Show information
+  only about hosts in the given group. Patterns not allowed.
+
+- `--list`: Full inventory list, within given limits (`-l` and `[group]`).
+  An initial `_meta.hostvars` section lists the hosts and their variables;
+  the remainder is group names, each with lists `hosts` (individual
+  hostnames) and/or `children` (other group names).
+- `--graph`: Generally only useful with a specific (smallish) group. `-l`
+  ignored; `[group]` used.
+- `--host host`: Prints only info for a single host; no group information.
 
 
 Command-line Completion
