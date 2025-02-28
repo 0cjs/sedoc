@@ -52,6 +52,27 @@ Delimiters are:
 - Display (block): ` ```math` `\n` …lines…  `\n` ` ``` `
 
 
+Files and Paths Special to GitHub
+---------------------------------
+
+Reference: [joelparkerhenderson/github-special-files-and-paths][specialfp]
+
+Repository names:
+- `USER/USER`: Files associated with a user account.
+- `ORG/.github`, `ORG/.github-private`
+
+Several different directories may be searched for specific files; [[specialfp]]
+explains for each one the directory search order. Common ones are:
+- `./`
+- `.github/`
+- `docs/` is a "well known path" to documentation.
+
+Filenames:
+- Text files such as `README` may contain no extension, `.txt`, `.md`,
+  `.markdown`, `.asciidoc`, etc.
+
+
+
 GitHub Merging
 --------------
 
@@ -65,3 +86,5 @@ GitHub Merging
 [gfm]: https://github.github.com/gfm/
 [gfmath]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions
 [latex]: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+[specialfp]: https://github.com/joelparkerhenderson/github-special-files-and-paths
