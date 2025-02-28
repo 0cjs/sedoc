@@ -1,63 +1,8 @@
-GitHub Tips and Tricks
-======================
+GitHub Workflows / Actions
+==========================
 
-### Terminology
+* [General](hub-general.md) | [Workflows](hub-workflows.md)
 
-The _NAME_ in `https://github.com/ORG/NAME` is a "repo"; this includes not
-only the Git repo itself (which may be empty of objects) but the
-issues/PRs, "Projects" (tables to sort issues/PRs), Wiki, and all metadata.
-
-__Note:__ "Project" has a different meaning from GitLab, where a "project"
-is a GitHub "repo."
-
-### Special URLs
-
-Appending `.keys` to a GitHub user URL gives the SSH public keys
-that a user has authorised for access to the account. E.g.,
-<https://github.com/InnovativeInventor.keys>.
-
-Appending `/stargazers` after the repo name shows everybody who's starred
-the repo. (This is linked from "n Stars" in the About panel.)
-
-GitHib creates "invisible" branches for pull requests. Doing a
-`git fetch origin pull/###/head` will leave the `FETCH_HEAD` set
-to the head of a branch for the code for that PR.
-
-### Forked Repos
-
-Forked repos have many restrictions:
-- A fork of a private repo must remain private.
-- A private fork (XXX and public?) cannot be transferred to another
-  user/org.
-
-
-GitHub Markdown Rendering
--------------------------
-
-The GitHub web site renders `.md` files in repos, issues, pull requests,
-discussions and wikis using [GitHub-flavoured Markdown][gfm]. Additionally,
-[math markup][gfmath] is allowed; this is [LaTeX-formatted math][latex]
-rendered using [Mathjax]. Note that GitHub has particular configuration of
-Mathjax (e.g., with `$` enabled for math mode?), and you need to know this
-as well as Mathjax generalities.
-
-Delimiters are:
-- Inline: `$` … `$` (not default; enabled on GitHub? Escape `$` as `\$` in ….)
-- Escape above with `<span>$</span>` (only in lines with a math expression?)
-- Inline: `` $` `` … `` `$ ``
-- Display (block): `$$` …lines… `$$`
-- Display (block): ` ```math` `\n` …lines…  `\n` ` ``` `
-
-
-GitHub Merging
---------------
-
-- "Rebase merge" createes new commits from the branch commits even when a
-  rebase isn't necessary; that changes only the committer timestamps.
-
-
-Workflows / Actions
--------------------
 
 References:
 - [About workflows][w-about]
@@ -84,7 +29,9 @@ syntax][w-syntax], including the following top-level properties:
 Runners run a single job at a time. GitHub-provided runners are fresh VMs
 (Ubuntu, Windows, macOS), or you can provide your own.
 
-#### Events
+
+Events
+------
 
 References:
 - [Triggering a workflow][w-trig]
@@ -115,7 +62,9 @@ Commonly used events:
   - `synchronize:` is a head update on ref.
   - `paths: […]` useful to skip long tests on unmodifed files?
 
-#### Jobs
+
+Jobs
+----
 
 Each _job_ has sequence of _steps_ that execute actions specified either
 with `run: …` lines or `uses: actions/checkout@v4` etc. for a third-party
@@ -142,7 +91,9 @@ run a script or `uses:` to use a reusable extension called an _action_
 (e.g., `uses: actions/checkout@v4`). Additional parameters include:
 - `name:`: Displayed in workflow output instead of `Run …`.
 
-### Status Checks
+
+Status Checks
+-------------
 
 [Status checks][statchk] may be _checks_ or _commit statuses._ Both can be
 created with REST API endpoints; workflows create only _checks._ A "Checks"
@@ -155,12 +106,6 @@ Workflows generate _checks_:
 
 
 <!-------------------------------------------------------------------->
-[Mathjax]: https://docs.mathjax.org/en/latest/input/tex/
-[gfm]: https://github.github.com/gfm/
-[gfmath]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions
-[latex]: http://en.wikibooks.org/wiki/LaTeX/Mathematics
-
-<!-- GitHub Docs (general) -->
 [statchk]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks
 
 <!-- Workflows ("Actions") -->
