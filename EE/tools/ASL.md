@@ -204,19 +204,19 @@ defines conflicting ones. The three forms of temporary symbols are:
 
 ### Sections / Local Symbols (§3.8)
 
-Sections are declared with `section NAME` and `endsection NAME`
-(_NAME_ optional) directives, which may be nested. Unqualified
-references are searched from inner to outer sections. Section names
-conflict only at the same level; a section name does not conflict with
-any parent or child with the same name, nor with section names in
-other branches of the hierarchy.
+Sections are declared with `section NAME` and `endsection NAME` (_NAME_
+optional) directives, which may be nested. Different sections may have the
+same name so long as they are under different parent sections.
 
-References may be qualified with `name[secname]` to reference (only)
-enclosing sections; _secname_ may be `parent0`…`parent9` for current
-and parent sections. `parent` is the same as `parent1`.
+Bare references are always searched from the current section upwards.
+References may be qualified with `name[secname]`, where _secname_ is (only)
+a section name under which the current one is nested (at any level of
+depth). _secname_ may also be `parent0`…`parent9` for current and parent
+sections. `parent` is the same as `parent1`.
 
-Symbols defined in sections are not visible outside those sections
-except when one of the following is used:
+Symbols defined in sections are not visible (even through qualified
+references) outside those sections except when one of the following is
+used:
 - `public NAME`: Make _NAME_ a global symbol rather than a
   section-qualified symbol. Must appear before symbol definition.
 - `public NAME:SECNAME`: Lifts _NAME_ to enclosing section _SECNAME_.
