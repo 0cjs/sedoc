@@ -2,6 +2,7 @@ Debian Package Information
 ==========================
 
 See also:
+- [`bld-debian`](./bld-debian.md) for creating Debian/Ubuntu packages.
 - `versions-debian` file, [Upgrading Debian](
   ../versions-debian.md#upgrading-debian) section
 - Debian Wiki [SourcesList](https://wiki.debian.org/SourcesList)
@@ -54,19 +55,23 @@ Backports
 ---------
 
 Debian supplies ["backports" repositories][backports] with packages at the
-same version as later Debian releases. `*-backports` contains packages from
-the next release, and `*-backports-sloppy` contains packages from the
-following release. currently available are:
+same version as later Debian releases. For release `REL`, `REL-backports`
+contains packages from the next release, and `REL-backports-sloppy`
+contains packages from the release following that. This is the list of
+distributions and their currently (†previously) available repos of
+backports from that version to previous versions of Debian.
 
-    Source Distro   Backports           Backports²
-    ────────────────────────────────────────────────────────────
-    buster          stretch-backports
-    bullseye        buster-backports    stretch-backports-sloppy
-
-
-For Debian 9 (Stretch) these are `stretch-backports`
-(for versions at Buster level) and `stretch-backports-sloppy` (for versions
-at Bullseye level).
+    Ver Source Distro   Backports to prev   Backports to prev²
+    ─────────────────────────────────────────────────────────────────
+    13  trixie          bookworm-backports  bullseye-backports-sloppy
+    12  bookworm        bullseye-backports
+    11  bullseye        †buster-backports   †stretch-backports-sloppy
+    10  buster          †stretch-backports
+    ─────────────────────────────────────────────────────────────────
+                                            stable-backports-sloppy
+                        stable-backports
+        stable
+    ─────────────────────────────────────────────────────────────────
 
 The definitions are normally already installed in `/etc/apt/sources.list`,
 and are also shown below.
