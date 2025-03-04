@@ -223,11 +223,14 @@ Layer filesystem updates:
     `0600`/`Last-modified:` for remote URLs.
   - Default UID:GID is 0:0; `--chown=<user>:<group>` option available
     in Linux containers.
+  - `--chown`, `--chmod`, `--link`: As for `COPY`.
 - `COPY`: Similar to `ADD`, but copies only from build context.
   - `--from=<name|index>` copies from a previous build stage.
     - `<index>`th previous build stage with a `FROM` instruction.
     - Build stage created with `FROM ... AS <name>`.
     - Image named `<name>`.
+  - `--chown=USER[:GROUP]`, `--chmod=PERMS` (octal/ugo±rwX)
+  - `--link`: see docs.
 
 ### Run-time configuration
 
