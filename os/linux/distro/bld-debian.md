@@ -16,8 +16,7 @@ Binary Packages
 ---------------
 
 A Debian binary package is a [`.deb` file], which is simply an `ar` archive
-that can be extracted with `ar x`. (But it's generally handled with the
-`dpkg` program). It contains three files:
+that can be extracted with `ar x`. It contains three files:
 - `debian-binary`: A text file containing the version number (`2.0\n`).
 - `control.tar.xz`: Package metadata, checksums, etc. This is built from
   the `DEBIAN/` directory (with that prefix removed) in the filesystem
@@ -25,6 +24,10 @@ that can be extracted with `ar x`. (But it's generally handled with the
 - `data.tar.xz`: The files to be installed, including ownership information
   and permissions. This may be "installed" with `tar -C / -p -x -f
   data.tar.xz`
+
+Packing and unpacking `.deb` files is generally handled with the
+`dpkg-deb(1)` program, and installation and removal of binary packages by
+`dpkg(1)`.
 
 #### Metadata
 
@@ -84,14 +87,91 @@ References:
 - Manpages: `deb822(5)`, `deb-src-control(5)`
 
 
+Building Packages
+-----------------
+
+At the lowest level, a Debian binary package can be built with just `ar`
+and `tar`, if you know what you're doing and understand the binary package
+standard. There are a multitude of higher-level tools for building and
+assisting with building Debian packages, ranging from essentially wrappers
+around the above to sophisticated multi-level systems involving source
+packages, upstream code fetching and patches, changelog generation, and the
+like.
+
+### dpkg-deb and dpkg --build
+
+The simplest step above `ar`/`tar` is `dpkg-deb`, which packs and
+unpacks `.deb` files and can also be used (in a more limited way) via the
+`dpkg --build` option.
+
+`dpkg-deb --build BINDIR [ARCHIVE|DIR]` works from a "binary directory"
+_bindir_ containing the files to be packaged and a `DEBIAN/` subdir with
+the `control` file and other other metadata. From this it creates a `.deb`
+file with `DEBIAN/**` in `control.tar.gz` (without the `DEBIAN/` prefix)
+and the remainder in `data.tar.xz`.
+
+Unless given `--nocheck`, `dpkg-deb --build` does a certain amount of
+syntax checking (e.g., on `DEBIAN/control`) and permission checking.
+
+It has many more options to inspect and extract package information.
+
+### Others
+
+- `dpkg-buildpackage`
+
+
+Minimal Package Build
+---------------------
+
+`dpkg` expects package names to be in the `pkgname-ver-rel-arch.deb`
+format, and other tools (not used here) also extract information from
+filenames and directory names in that format, so that's what we use here.
+
+    bdir=shello.0.1-1-all
+    #   The "binary directory" whence the package is built.
+    mkdir $bdir/
+    mkdir $bdir/bin/
+    echo > $bdir/bin/shello -e '#!/bin/sh\necho hello'
+    chmod 0755 $bdir/bin/shello
+    mkdir -m 0755 $bdir/DEBIAN/
+
+Create a `$bdir/DEBIAN/control` file containing the following:
+
+    Package: shello
+    Version: 0.0.1-1
+    Maintainer: E. Xample <example@example.com>
+    Architecture: all
+    Depends: dash
+    Description: Bourne shell "Hello, world" program.
+
+Build and check the package:
+
+    #   Output .deb is placed in dir that contains $bdir.
+    dpkg-deb --build --root-owner-group $bdir
+    ar tv $bdir.deb
+    dpkg-deb -c $bdir.deb
+
+The `--root-owner-group` option ignores the current owners of files in the
+binary directory and instead marks them all as owned by UID/GID 0/0 in
+`data.tar.xz`. This is useful for rootless builds, but does not work if
+your package needs to include any files owned by non-root users.
+
+Install with one of:
+
+    dpkg -i $bdir.deb
+    apt-get install ./$bdir.deb     # Note './' to install from file.
+
+Further documentation:
+- `deb-control(5)`: The control file format and required files.
+- `deb-version(1)`: Format of the `Version:` field.
+- [[earthly]] shows how to create a package in a way similar to this and
+  also set up an apt server to serve it.
+
+
 ----------------------------------------------------------------------
-- XXX Following sections need rewriting in view of the above.
-- XXX read `dpkg-buildpackage` documentation
 
-Source vs. Binary Packages
---------------------------
-
-XXX `dpkg --build` vs. `dpkg-buildpackage`
+XXX Cruft to be cleaned up and integrated above
+===============================================
 
 Note that the source packages include a `debian/` dir with patches, build
 configuration, extra Debian files beyond the upstream, etc. This is
@@ -151,30 +231,7 @@ info, and then `debuild`. This will produce:
 Simple Build from Files
 -----------------------
 
-- Package binary output dirs generally in `pkgname-ver-rel-arch` format.
-  (_Rel_ allows you to update the package with patches etc. even when based
-  on the same upstream release.) Some tools take info from this naming
-  format.
-- _Arch_ can be `all` for platform-independent stuff (e.g. scripts).
-- Stuff under that dir can be created entirely by hand:
-  - Build amd64 version, and copy to  `hello_0.0.1-1_amd64/usr/bin/hello`
-    (or wherever).
-  - Create a `DEBIAN/control` file along the lines of:
-
-      Package: hello-world
-      Version: 0.0.1
-      Maintainer: example <example@example.com>
-      Depends: libc6
-      Architecture: amd64
-      Homepage: http://example.com
-      Description: A program that prints hello
-
-- Build with `dpkg --build …/hello_0.0.1-1_amd64`, creating
-  `…/hello-world_0.0.1_amd64.deb`. This will complain if perms are bad,
-  e.g., "dpkg-deb: error: control directory has bad permissions 750 (must
-  be >=0755 and <=0775)". (Not sure what other perms are used.)
-- View info with `dpkg-deb --info` and `dpkg-deb --contents`.
-- Install with `apt-get install -f …/hello_0.0.1-1_amd64.deb`.
+XXX much of this moved to §"Minimal Package Build".
 
 Things missing:
 - `debian/changelog` file (has a specific format).
