@@ -189,8 +189,17 @@ Setting values:
 
 ### Build-time commands
 
-Configuration:
-- `FROM name:tag`: Use _name:tag_ as the base image for the new image.
+Base Images and Build Stages:
+- [`FROM name:tag [AS stagename]`][df-FROM]:
+  - Use _name:tag_ as the base image for the new image, or `scratch`
+    for no base image.
+  - May [use variables declared by `ARG`][df-argfrom]; that is the only
+    instruction that may preceed the first FROM. However, the preceeding
+    ARG declarations are cleared at FROM; use `ARG foo` to re-declare the
+    var, setting it to the previous value.
+  - May be used multiple times. Each stage starts fresh, but may reference
+    build products from previous stages with `COPY --from=stagename` and
+    `RUN --mount=type=bind,from=stagename`.
 - `ONBUILD`: Store a command to be run in an immediate child build
   based on this image (stored commands are executed immediately after
   the child build's `FROM`).
@@ -251,6 +260,8 @@ Layer filesystem updates:
 
 <!-------------------------------------------------------------------->
 [`Dockerfile`]: https://docs.docker.com/engine/reference/builder/
+[df-FROM]: https://docs.docker.com/reference/dockerfile/#from
+[df-argfrom]: https://docs.docker.com/reference/dockerfile/#understand-how-arg-and-from-interact
 
 [`docker build`]: https://docs.docker.com/engine/reference/commandline/build/
 [another image]: config.md#public-docker-images
