@@ -168,6 +168,25 @@ Further documentation:
   also set up an apt server to serve it.
 
 
+Package Distribution
+--------------------
+
+There are plenty of options here, at varying levels of "publicness"
+and supervision.
+
+Stand-alone:
+- Create a `.deb` file and hand it out to people.
+- Set up your own apt repository, served via HTTP. (See [[earthly]].) The
+  simplest version of this does not sign anything but is very insecure;
+  better ways add PGP-signing of the repository contents.
+
+As part of a distro's process (requires a source package/`.dsc`):
+- Bring your package into Debian (whence it will also eventually end up in
+  Ubuntu and other derivatives). Or go just into Ubuntu. [[asku 16456]]
+- For Ubuntu only, set up a [PPA][] (Personal Package Archive) on
+  Launchpad; they will build it for you and supervise certain other things.
+
+
 ----------------------------------------------------------------------
 
 XXX Cruft to be cleaned up and integrated above
@@ -249,7 +268,9 @@ like the above.
 
 
 <!-------------------------------------------------------------------->
+[PPA]: https://help.launchpad.net/Packaging/PPA
 [`.deb` file]: https://en.wikipedia.org/wiki/Deb_(file_format)
+[asku 16456]: https://askubuntu.com/a/16456/354600
 [dah5.1]: https://www.debian.org/doc/manuals/debian-handbook/packaging-system.en.html#sect.binary-package-structure
 [dah5.2]: https://www.debian.org/doc/manuals/debian-handbook/sect.package-meta-information.en.html
 [dah5.3]: https://www.debian.org/doc/manuals/debian-handbook/sect.source-package-structure.en.html
