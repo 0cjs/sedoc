@@ -203,6 +203,9 @@ necessarily in large quanitities). `c`=CPU; `h`=hardware/computer;
 ### References
 
 Online references (some of dubious accuracy) include:
+- retropctraditioner.net [8ビットパソコン資料倉庫 - マシン一覧表][rpctrad].
+  _Very_ large list of Japanese and foreign systems, with good core data on
+  each, including release year/month and price in Japan.
 - Wikipedia list of [Notable 8-bit CPUs][w-not-8bit]
 - _Popular Computing Weekly_ [Datelines][pcw-dl] 1982 to 1987-04 timeline.
 - [Motorola M6800 Microprocessory History[sw68hist], archived from Michael
@@ -266,6 +269,7 @@ Online references (some of dubious accuracy) include:
 [pol-pcmini]: http://kpolsson.com/comphist/mini.htm
 [pol-soft]: http://kpolsson.com/software/
 [pol]: http://kpolsson.com/
+[rpctrad]: https://www.retropctraditioner.net/devicelist.html
 [suzuki2013]: https://www.amazon.co.jp/dp/4881818325/
 [sw68hist]: https://web.archive.org/web/20180820122406/http://www.swtpc.com/mholley/Microprocessors/Microprocessor_History.htm
 [uber]: http://uber-leet.com/index.php?page=allsystems
