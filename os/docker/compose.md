@@ -22,6 +22,15 @@ Ignore old instructions that talk about downloading a binary or using Pip
 to install `docker-compose`. The new version is included in Docker Desktop
 for Windows and MacOS.
 
+### Local (for user)
+
+    mdcd -p ~/.docker/cli-plugins
+    #   Check version number and platform in URL below.
+    curl -L -o docker-compose https://github.com/docker/compose/releases/download/v2.33.1/docker-compose-linux-x86_64
+    chmod a+x docker-compose
+
+The other instructions after this probably shouldn't be used.
+
 ### Debian (Global)
 
     mkdir -p /usr/local/libexec/docker/cli-plugins
