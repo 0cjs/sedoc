@@ -7,6 +7,14 @@ Contents:
 - Support Chips
 - Tools
 
+Other files:
+- [`opcodes.md`](./opcodes.md): Opcode table.
+- [`8080.txt`](./8080.txt): 8080 instruction table.
+- [`instr.md`](./instr.md): 8080/8085/Z80 Instruction Summaries.
+- [`z80.md`](./z80.md): Z80 assembler syntax and some diffs from 8080.
+- [`undoc.md`](./undoc.md): "Undocumented" (to some degree) opcodes.
+
+
 Introduction
 ------------
 
