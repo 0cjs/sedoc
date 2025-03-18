@@ -44,6 +44,14 @@ The following files may be found in the control archive:
 - `shlibs`: Shared library dependencies.
 - `config`: [Debconf] configuration.
 
+#### Control Files
+
+The control file is `control` in `control.tar.gz`. Lower-level package
+build tools such as `dpkg-deb` copy this directly from `DEBIAN/control` in
+the directory they are packing into a package; higher-level tools often use
+a (similar, but _not_ the same) `debian/control` file that they process in
+various ways first.
+
 #### Notes
 
 Individual packages may be signed, but this is rarely used; instead signing
