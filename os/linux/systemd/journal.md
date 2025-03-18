@@ -6,26 +6,51 @@ systemd-journal
 If you don't have `journalctl` available, you can just use `strings` on
 a journal to see the messages.
 
+#### Fields
+
+Each journal entry has a set of __fields__ to which are assigned values.
+- See all field names with `journalctl -N`; `systemd.journal-fields(7)` has
+  more details, including the field categories:
+  - Trusted: filled in by `journald`; cannot be altered by the client.
+  - User: directly passed from clients.
+  - Kernel.
+  - Logged on behalf of a different program.
+
+Try `journalctl -o verbose -n 1` to see an example log entry with all the
+fields. (On a terminal, trusted fields will be coloured.)
+
+Useful fields: `SYSLOG_IDENTIFIER`, `_COMM` (command), `_EXE`, `_PID`.
+
+#### Values
+
+For any field, you can see all __values__ that field has taken on in the
+current logs with `journalctl -F FIELDNAME`.
+
 ### journalctl options
 
 Remember to sudo to run this if you're not in the `adm` or other
 appropriate group.
 
-* `-f`: follow as new log messages arrive
-* `-n N`: show only last N entries
-* `-S/-U DATE`: shows since/until given date(s) or '20 sec ago' etc.
-* `-o FMT`: formats: `short-iso`, `verbose`
-* `-t PAT`: messages where SYSLOG_IDENTIFIER (program name) matches PAT
-* `-u PAT`: messages where systemd unit matching PAT
-* `-p PRIO`: Shows <= `emerg` (0), `alert` (1), `crit`, `err`, `warning`, etc.
+* Output:
+  * `-f`: Follow as new log messages arrive.
+  * `-o FMT`: Output format. Handy are `short-iso`, `verbose`.
 
-Use `-F FIELD` to get a list of all values for a given field, e.g.,
-`_COMM` (command), `_EXE`, `_PID`.
-* Quick reference: `journalctl -o verbose -n 1`. For a fu
-* Full reference: `man systemd.journal-fields`
+* Non-field selection:
+  * `-n N`: show only last N entries
+  * `-S/-U DATE`: shows since/until given time/date/'20 sec ago' etc.
 
-The patterns above don't seem to work (it just does exact matches),
-nor does it seem to be possible to use patterns for `_MESSAGE`.
+* Selection based on fields (no wildcards, no negation):
+  * `NAME=VAL` Entries where field _name_ matches value _val._
+  * `-t VAL`: SYSLOG_IDENTIFIER=_val_ (program name, generally)
+  * `-u PAT`: Special; only thing that can use a pattern, allegedly,
+    though I've not been able to get it to work. Not clear which of
+    the `*UNIT*` fields it uses.
+
+* Other selection:
+  * `-p PRIO`: Shows <= `emerg` (0), `alert` (1), `crit`, `err`, `warning`, etc.
 
 
+
+
+<!-------------------------------------------------------------------->
 [arch-journal]: https://wiki.archlinux.org/index.php/Systemd#Journal
