@@ -101,3 +101,10 @@ commited. Uncommited modifications to the submodule working copy will
 be noted as the superproject's submodule entry being modified, but
 they will be ignored on commit (i.e., only the commit ID of the
 submodule's HEAD is committed).
+
+
+Showing Submodule Information
+-----------------------------
+
+`git show REF:PATH` cannot show submodule commit IDs.
+Instead you need to use `git ls-tree REF PATH`.

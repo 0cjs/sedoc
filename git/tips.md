@@ -37,6 +37,9 @@ Logging and Graph Exploration
   https://github.com/git/git/blob/master/contrib/hooks/post-receive-email#L292)
   script for more details.
 
+* `git show` cannot show submodule commit IDs. Instead you need to use
+  `git ls-tree REF PATH`.
+
 
 Default Branch Renaming
 -----------------------
