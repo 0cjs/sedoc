@@ -1,8 +1,28 @@
 Digital PDP-11 Systems
 ======================
 
-Systems
--------
+Operating Systems
+-----------------
+
+- 1971 __[DOS-11]:__ First OS released to public. Single user. Replaced by
+  [RT-11]
+- 1970 __[RSTS-11]:__ (Not released with 11/20?) Time-sharing. BASIC-PLUS
+  system language. Developed from PDP-8 TSS-8 time-sharing system.
+  Eventually became RSTS/E.
+- 1973 __[RT-11]:__ Single user; supported real-time applications.
+- 1973 __[RSX-11]:__
+  - 1973-03 __RSX-11A:__ Paper-tape based.
+  - 197?-?? __RSX-11B:__ Adds disk support.
+  - 197?-?? __RSX-11C:__ Successor of RSX-11A.
+  - 1973-05 __RSX-11D:__ Evolved from RSX-11B; significantly more capable.
+  - 1974-11 __RSX-11M:__ Small memory footprint version. Spearheaded by
+    Dave Cutler. Influenced Windows NT.
+
+
+Models
+------
+
+Memeory/storage sizes usually in KW (kilowords, each 16 bits).
 
 "MMU" refers to the memory mapping and protection provided by some CPUs or
 extra hardware such as the [KS11] on on the /20. This could be implemented
@@ -16,8 +36,13 @@ Timeline symbology:
 - __ᵈ__ Split I/D.
 
 Timeline of PDP-11/_nn_ systems:
-- 1970-06: __/20 /15__ (Un6) 4/8 KB, 28KB max. 4K IO page at 28K. Clock
-  State CPU control (only non-microcoded machine).
+- 1970-06: __/20 /15__ (Un6) Clock state CPU control (only non-microcoded
+  machine). 4KW IO page at 28KW address. 4-28 KW core.
+  - 32 word diode ROMs avail.
+  - Magentic tape (TU56, TU10), disks (RS11 256KW fixed, RK02 600KW
+    cartridge, RS64 64KW).
+  - /15 was OEM version with slightly fewer features.
+  - [11/20 price list][20pl]
 - 1972-06: __/10 /05__ (Un6) Cost-reduced succcessor to /20 /15.
 - 1972-06: __/45__  (U8ᵈ) MMU optional. Up to 256K core RAM. Much faster. CPU.
            FP11 floating point coprocessor available.
@@ -83,7 +108,15 @@ References:
 
 
 <!-------------------------------------------------------------------->
+<!-- Operating Systems -->
+[DOS-11]: https://en.wikipedia.org/wiki/DEC_BATCH-11/DOS-11
+[RSTS-11]: https://en.wikipedia.org/wiki/RSTS-11
+[RSX-11]: https://en.wikipedia.org/wiki/RSX-11
+[RT-11]: https://en.wikipedia.org/wiki/DEC_BATCH-11/RT-11
+
+<!-- Models -->
 [11mn]: https://gunkies.org/wiki/PDP-11
+[20pl]: http://bitsavers.org/pdf/dec/pdp11/1120/PDP11-20_Price_List_19701101.pdf
 [KS11]: https://gunkies.org/wiki/KS11_Memory_Protection_and_Relocation_option
 [faq-models]: https://web.archive.org/web/20160618161413/http://www.village.org/pdp11/faq.pages/11model.html
 [rcse 28404]: https://retrocomputing.stackexchange.com/a/28404/7208
