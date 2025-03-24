@@ -1,24 +1,10 @@
 KiCad Schematic/PCB EDA
 =======================
 
-[KiCad]'s current stable release (as of 2019-12-06) is 5.1.5.
+The [KiCad website][kicad] changed to `kicad.org` from `kicad-pcb.org`;
+the latter now goes to a gambling site.
 
-
-Installation
-------------
-
-The [KiCad Debian page][inst-debian] claims that `stretch-backports` has
-5.1, but actually that has 5.0; 5.1 is in `stretch-backports-sloppy`:
-
-    apt install -t stretch-backports-sloppy kicad
-
-Versions available from Debian repos:
-- Debian 9 `stretch`: 4.0.5
-- Debian 9 `stretch-backports`: 5.0.2
-- Debian 9 `stretch-backports-sloppy`: 5.1.6
-- Debian 10 `buster`: 5.0.2
-- Debian 10 `buster-backports`: 5.1.8
-- Debian unstable `sid`: 5.1.5
+See [KiCad-install](./KiCad-install) for installation details.
 
 
 Templates
@@ -275,13 +261,9 @@ the order of these lists within `DRAW` is not significant.
 
 
 <!-------------------------------------------------------------------->
-[KiCad]: https://www.kicad-pcb.org/
-[inst-debian]: https://www.kicad-pcb.org/
-[pcbnewref]: https://docs.kicad.org/5.1/en/pcbnew/pcbnew.html
-
-[hill]: https://github.com/sethhillbrand/kicad_templates
-
 [File Formats]: https://kicad.org/help/file-formats/
-
+[KiCad]: https://www.kicad.org/
+[hill]: https://github.com/sethhillbrand/kicad_templates
+[pcbnewref]: https://docs.kicad.org/5.1/en/pcbnew/pcbnew.html
 [se 198934]: https://electronics.stackexchange.com/q/198934/15390
 [se 5524]: https://electronics.stackexchange.com/a/256368/15390
