@@ -76,6 +76,8 @@ backports from that version to previous versions of Debian.
 The definitions are normally already installed in `/etc/apt/sources.list`,
 and are also shown below.
 
+Note that `-t` does not work with `apt list` use `apt search -t …` instead.
+
 All backports are deactivated by default via using `ButAutomaticUpgrades:
 yes` (which pins them to 100) in the Release files. The `-t` option to apt
 commands tweaks the policy engine to prefer the backports packages.

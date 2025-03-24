@@ -35,8 +35,8 @@ set of volunteers); regular support ends two years earlier; commercial
 There is a set of "current" names for Debian releases that roll forward to
 different releases when a new release is made. These may be used instead of
 actual release names in [source lists][debsources] to automatically roll
-systems forward as these change. See also [Debian Package Information](
-package/debian.md) for information on backports and the like.
+systems forward as these change. See also [Debian Package
+Information](pkg-debian.md) for information on backports and the like.
 - [_stable_][debstable]: the current Debian release
 - _oldstable_: the previous stable release
 - [_testing_][debtest]: current development state of the next stable
