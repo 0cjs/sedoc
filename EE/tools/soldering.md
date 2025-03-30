@@ -100,6 +100,6 @@ Other suggestions I've seen:
 [jre]: https://josepheoff.github.io/posts/howtosolder-toc
 [msf]: https://youtu.be/Vou2xlJkuoU
 
-[goot px-201]: http://www.goot.jp/en/handakote/px-201/
+[goot px-201]: http://en.goot.jp/products/detail/px_201
 [KSGER T12]: https://www.amazon.com/dp/B07PMZGPQQ
 
