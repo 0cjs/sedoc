@@ -60,6 +60,8 @@ References:
     Port   IO   Description
     ────────────────────────────────────────────────────
     E0-E6   o   memory banking control (see above)
+    FE     io   printer?
+    FF     ?o   printer?
 
 Memory mapped I/O:
 
