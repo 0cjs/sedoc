@@ -57,12 +57,14 @@ Standard routines (subscript is RST number) [[som 151]]:
     0009    NL
     000C    PRNTS   ♣A print space
     000F    PRNTT   print tab
-    0012    PRNT    print 1 character
+    0012    PRNT    ♠♣A print ASCII char in A
     0015    MSG     ♡全 print message ♠DE→msg, end w/CR (not printed)
                         control codes 11-16 move cursor
     0018 ₃  MSGX
     001B    GETKY   ♣A get keycode in A, or $00 = no key pressed
-    001E    BRKEY   ♣A z=1 if shift+break being pressed, z=0 otherwise
+                    $60-66 = DEL, INST, ALPHA, BREAK, CR
+                    $11-16 = ↓, ↑, →, ←, HOME, CLR
+    001E    BRKEY   ♣A Z=1 if shift+break being pressed, Z=0 otherwise
     0021    WRINF   write information (tape header?)
     0024    WRDAT   write data (tape data?)
     0027    RDINF
@@ -75,7 +77,7 @@ Standard routines (subscript is RST number) [[som 151]]:
     003B    TIMRD   ♠A,DE read time (per TIMST)
     003E    BELL    ♣A briefly sound ~880 Hz
     0041    XTEMP   ♡全 tempo set (A=tempo, 0=slowest, 7=highest)
-    0044    MSTA    melody start
+    0044    MSTA    ♡BCDE melody start
     0047    MSTP    ♣A melody stop
 
 ### Documented Internal Routines
@@ -92,7 +94,9 @@ to change location. [[som 151]]
     0BB9  ?ADCN   ♠A ← display code from ASCII code in A
     0BCE  ?DACN   ♠A ← ASCII code from display code in A
     0DA6  ?BLNK   ♡全 wait for vertical blank period to start
-    0DDC  ?DPCT   ♡全 "display control": A=screen code for key to emulate (↑)
+    0DDC  ?DPCT   ♡全 "display control": update display as if key code in
+                  A was pressed. $C0=scrolling, $C1-C4=↓↑→←, C5=HOME,
+                  $C6=CLR, $C7=DEL, $C8=INST, $C9=ALPHA, $CD=CR
     0FB1  ?PONT   ♣A ♠HL ← current cursor location
 
 ### Internal Routines
