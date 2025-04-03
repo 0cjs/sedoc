@@ -108,6 +108,23 @@ Screen scan, from [this vapor lock description][vapor]:
   had a flip-flop that would capture `D0` during Φ1; the test would read
   that to figure out a value for the 6522 timer.
 
+### Color Generation
+
+A [VCF post from resman][resman] provides an excellent description. To
+summarise:
+
+> It's best to break up the chroma cycle into four pieces: each quarter of
+> the chroma cycle representing one fundamental artifact color. The Apple
+> IIs video bitstream in HGR mode is twice the chroma frequency, so each
+> bit will overlay two quarters of the chroma cycle. Understand that the
+> resultant color is additive of the chroma cycle colors. If both bits are
+> zero, then black is output, if both are one, then white is output, as it
+> covers the complete chroma cycle and the result is the summation of the
+> entire cycle, thus producing white. If one bit is one and the other zero,
+> then half of the chroma cycle is summed up and output - either the first
+> half of the chroma cycle or the second, depending on where the one bit
+> falls.
+
 
 
 <!-------------------------------------------------------------------->
@@ -119,3 +136,4 @@ Screen scan, from [this vapor lock description][vapor]:
 [rcse 14027]: https://retrocomputing.stackexchange.com/q/14027/7208
 [vapor]: http://www.deater.net/weave/vmwprod/megademo/vapor_lock.html
 [mouse]: https://www.folklore.org/StoryView.py?project=Macintosh&story=Apple_II_Mouse_Card.txt
+[resman]: https://forum.vcfed.org/index.php?threads/understanding-hgr-mode-is-driving-me-insane.1252182/post-1436735
