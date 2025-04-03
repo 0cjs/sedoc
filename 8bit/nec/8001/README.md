@@ -158,30 +158,7 @@ The specs (SS/DS and SD/DD) for the various drive units, and whether any
 had just one drive installed rather than two, are not clear, and ja/en
 Wikipedia don't entirely agree with each other.
 
-### Monitor Pricing
-
-The exchange rate for the given date taken from [macrotrends.net].
-The Purchasing Power Parity for given date from [ceicdata.com].
-
-
-    PC-Model  Description     Model         Price Year      Exchg. PPP
-    ──────────────────────────────────────────────────────────────────
-    PC-8041   12" green       JB-120M     ¥48,800 ?1979     $195  $196
-    PC-8042   12" color       JC-121D    ¥109,000 ?1979     $436  $439
-    PC-8043   12" high-res    JC-1202DH  ¥219,000 ?1979     $876  $883
-    ──────────────────────────────────────────────────────────────────
-    PC-8046   9" green        JB-902M     ¥35,800  1980-09  $169  $147
-    PC-8047   12" amber       JB-1202M    ¥46,800  1980-09  $221  $193
-    PC-8048   12" color .63mm JC-1202D    ¥88,000 ?1980     $415  $362
-    PC-8048K                  JC-1203D    ¥67,800  1982-03  $288  $314
-    PC-8048N                  JC-1204D    ¥59,800
-    PC-8049   12" HR .31mm    JC-1204DH  ¥188,000  1980-12  $887  $787
-    PC-8049K                  JC-1205DH  ¥158,000
-    PC-8049N                  JC-1206DH  ¥158,000  1982-08  $601  $715
-    ──────────────────────────────────────────────────────────────────
-
-[macrotrends.net] https://www.macrotrends.net/2550/dollar-yen-exchange-rate-historical-chart
-[ceicdata.com]: https://www.ceicdata.com/en/japan/exchange-rate-forecast-oecd-member-quarterly/jp-purchasing-power-parity-national-currency-per-usd
+Also see [displays.md](../displays.md) for monitor information and pricing.
 
 
 Documentation
