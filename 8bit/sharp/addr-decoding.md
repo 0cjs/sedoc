@@ -1,7 +1,8 @@
 Sharp Address Decoding
 ======================
 
-Ctrl-RESET or `#` in IPL/Monitor will boot RAM? XXX [[ssm] p.5]
+Holding Ctrl during reset or typing `#` in IPL/Monitor will switch to
+all-RAM configuration and jump to location $0000. [[ssm] p.5]
 
 MZ-700 version; probably applies to all of the MZ-80K series.
 VRAM is static RAM; all other ram is DRAM.
@@ -13,7 +14,7 @@ VRAM is static RAM; all other ram is DRAM.
     D800    2k  VRAM color data
     D000    2k  VRAM character data (50 lines, view 25 from any start point)
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-    D000        DRAM to $FFFF when paged in, otherwise as above
+    D000   12k  → $FFFF DRAM when paged in, otherwise as above
     ───────────────────────────────────────────────────────────────────────
     1200  47½k  DRAM system and text area.
     1000   .5k  DRAM monitor work area.
@@ -28,21 +29,31 @@ automatically by the IPL ROM. Expansion ROM at $F000 is started with the
 
 ### Memory Banking Control
 
-The MZ-700 CRTC and memory controller are in a custom LSI (M60719).
-[[ssm] p. 8 P.9] This generates `INH1` through `INH3` signals controlled
-via I/O ports $E0 through $E8; send any output to these to set. These
-determine the mapping of the two changable banks. [[ssm] p.7 P.8]
+The MZ-700 CRTC and memory controller are in a custom LSI (M60719). [[ssm]
+p. 8 P.9] This generates `INH1` through `INH3` signals controlled via
+writing to I/O ports $E0 through $E8; send any value to these to set.
+These determine the mapping of the two changable banks. [[ssm] p.7 P.8]
 
-    D000 - FFFF     INH2: 0=DRAM 1=VRAM, 8255 keyboard PPI, 8253 timer I/O
-    1000 - CFFF     ───── always DRAM ─────
-    0000 - 0FFF     INH1: 0=DRAM 1=ROM
+The initial state at reset is as $E4 below (IPL ROM and VRAM/IO), but
+holding down the Ctrl key during reset will switch to all-RAM and jump to
+location $0000.
 
 Port writes:
 
-    E0: INH1=0 (low DRAM)   E1: INH2=0 (high DRAM)  E4: INH3=0 (no access?)
-    E2: INH1=1 (low ROM)    E3: INH2=1 (high VRAM)  E6: INH3=1 (prev state?)
+    OUT  INH123   Action
+    ────────────────────────────────────────────────
+    $E0  0 - -    $0000–$0FFF → DRAM
+    $E1  - 0 -    $D000–$FFFF → DRAM
+    $E2  1 - -    $0000–$0FFF → IPL (Monitor) ROM
+    $E3  - 1 -    $D000–$FFFF → VRAM, I/O (8255 keyboard PPI, 8253 timer)
+    $E4  1 1 1    $0000–$0FFF → IPL ROM, $D000–$FFFF → VRAM, I/O
+    $E5  - - 0    $D000–$FFFF → Inhibit access
+    $E6  - - 1    $D000–$FFFF → Restore access
 
-    E4: INH1=1 INH2=1 INH3=1 (reset state)
+References:
+- MZ-700 User's Manual, p.127
+- MZ-700 Service Manual, p.k
+- sharpmz.org, [MZ-700 Bank switching][so-700banksw]
 
 ### I/O Ports
 
@@ -82,3 +93,4 @@ Memory mapped I/O:
 <!-------------------------------------------------------------------->
 [som 127]: https://archive.org/details/sharpmz700ownersmanual/page/n128/mode/1up?view=theater
 [ssm]: https://archive.org/details/sharpmz700servicemanual/page/n7/mode/1up?view=theater
+[so-700banksw]: https://original.sharpmz.org/mz-700/coremain.htm#banksw
