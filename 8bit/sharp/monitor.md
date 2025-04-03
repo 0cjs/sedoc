@@ -30,11 +30,11 @@ After a reset: [[smzo-h&t]]
 All numbers are entered and displayed in hex.
 
 Commands (from [[som 149]], monitor listing). `ss` etc must be a full
-four-digit hex value.
+four-digit hex value. In the CSCP emulator, `Break` is backspace.
 
     L[fname]    Load named file from tape, or next file.
     Ssseexx     Save memory starting at <ss> through <ee> with execution
-                address <xx>. Prompts for filename. Hold Shift-Break to abort.
+                address <xx>. Prompts for filename. Shift-Break to exit.
     V           Compares save with <S> above to memory.
 
     Dssee       Dump memory from <ss> through <ee>
