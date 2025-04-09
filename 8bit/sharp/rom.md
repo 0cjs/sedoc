@@ -10,6 +10,25 @@ All values are in hex.
 Keyboard and Screen Information
 -------------------------------
 
+Control Codes (processed by output routine):
+
+      Ctrl Dec Hex
+      ─────────────────────────────────
+        E  05  $05  Lowercase input mode
+        F  06  $06  Uppercase input mode
+        M  13  $0D  Newline
+        P  16  $10  DEL rubout previous char
+        Q  17  $11  ↓ cursor down
+        R  18  $12  ↑ cursor up
+        S  19  $13  → cursor right
+        T  20  $14  ← cursor left
+        U  21  $15  HOME cursor to upper left
+        V  22  $16  CLR clear screen
+        W  23  $17  GRAPH input mode
+        X  24  $18  INST insert a space, shifting text right
+        Y  25  $19  Alphanumeric input mode
+
+
 Special key codes returned by `GETKY` etc.:
 
       Key Code Screen Code      Key Code Screen Code
