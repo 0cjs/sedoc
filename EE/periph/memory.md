@@ -85,7 +85,7 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
     ⁵23│  A8────────────────────────────────────────────────────────A8  23⁵│
     ⁴22│  A9────────────────────────────── ¶ ────────────── ¶ ──────A9  22⁴│
     ³21│  C̅E̅₃ W̅̅E̅  Vpp W̅E̅ CE₂ A11 A12 A11───────────────────────────A11  21³│
-    ²20│  C̅E̅₁ O̅E̅──────O̅E̅ C̅E̅₁──────C̅E̅₁ O̅E̅── ¶ ────────────── ¶ ──────O̅E̅  20²│
+    ²20│  C̅E̅₁ O̅E̅──────O̅E̅ C̅E̅₁───¶──C̅E̅₁ O̅E̅── ¶ ────────────── ¶ ──────O̅E̅  20²│
     ¹19│ A10───────────────────────────────────────────────────────A10  19¹│
     ⁰18│  CE₂ C̅E̅──────C̅E̅ A11  C̅E̅ A11  C̅E̅────────────────────────────C̅E̅  18⁰│
     ⁹17│  D7────────────────────────────────────────────────────────D7  17⁹│
@@ -194,6 +194,12 @@ References:
   - `1980_Motorola_Memory_Data_Manual.pdf` TMS2716, p.2-131 P.152
   - `1981_82_Motorola_Memory_Databook.pdf` TMS2716, p.2-114 P.132
   - `1982_Motorola_Memory.pdf` TMS2716, p.4-9 P.158
+
+The 2732 is generally programmed by placing program address and data on the
+addr/data pins, bringing pin 20 `O̅E̅` to +21 V (0.1µF capacitor must be
+placed across this pin and ground to suppress spurious voltage transients
+which may damage the device), and then pulsing pin 18 `C̅E̅` low for 50 ms
+(maximum 55 ms). (Source: [SGS-Thomson M2732A datasheet][sgs2732].)
 
 ### 27xxx EEPROM
 
@@ -377,6 +383,7 @@ Used in the TRS-80 Model 100.
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
 [aa-285971]: https://forums.atariage.com/topic/285971-2532-eprom-uses-adapter-for-tl866/#comment-4223453
+[sgs2732]: https://downloads.reactivemicro.com/Electronics/ROM/2732%20EPROM.pdf
 [tms2716]: https://archive.org/details/tms-2716-datasheet/mode/1up
 
 [ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
