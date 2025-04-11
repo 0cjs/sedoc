@@ -10,11 +10,11 @@ Sharp S-BASIC
 [Memory map][som 28]:
 
     $FEFF   Memory limit
-    $A000   Machine-language area
+    $A000   ??? Machine-language area (seems wrong; use LIMIT)
     $????   Basic Text Area
     $1200   BASIC Interpreter
     $1000   Monitor work area
-    $0000   Monitor
+    $0000   Monitor (S-BASIC version on MZ-700)
 
 ### Function Keys
 
@@ -53,7 +53,10 @@ statements.
 
 - `PEEK`, `POKE`
 - `USR`
-- `LIMIT`, `LIMIT MAX`
+- `LIMIT`, `LIMIT MAX` (S-BASIC): Set top of memory available for BASIC use.
+- `CLEAR n` (HU-BASIC): Set top of memory available for BASIC use. Note
+  that unlike MS-BASIC it takes only a single parameter.
+- `BYE`, `B.`: (S-BASIC) Enter S-BASIC monitor.
 
 
 Disk Basic
