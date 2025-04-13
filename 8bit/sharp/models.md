@@ -48,7 +48,7 @@ until the Information Systems division takes over and releases the MZ-1200.
 ### Specs
 
 - CPU: 2 MHz Z80
-- 48 KB max. RAM. 4K ROM w/loaders and low-level I/O routines.
+- 20 KB RAM, 48 KB max. 4K ROM w/loaders and low-level I/O routines.
 - Video: 40×25 text (8×8 cells; 2×2 block graphics avail.).
   1 KB VRAM, 2 KB character ROM.
 - Built-in 9" monitor and CMT.
