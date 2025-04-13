@@ -60,6 +60,8 @@ References:
     Port   IO   Description
     ────────────────────────────────────────────────────
     E0-E6   o   memory banking control (see above)
+    F0-F1  i    joystick A?
+    F2-F3  i    joystick B?
     FE     io   printer?
     FF     ?o   printer?
 
