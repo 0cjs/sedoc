@@ -19,6 +19,7 @@ adapter is required to connect the floppy drive unit. Internal memory was
 16K expandable to 32K; with further RAM expansion from a PC-8011 or PC-8012
 it could run CP/M.
 
+- 1979-09 NEC PC-8001 (¥168k)
 - 1981-08 __PC-8001A:__ US release. Katakana replaced with Greek.
 - 19??-?? __PC-8001B:__ European/Australian release (240V).
   Keyboard changes: `カナ` → `SHIFT LOCK`, keypad-`=` → `ALT CHAR`
