@@ -60,8 +60,15 @@ References:
     Port   IO   Description
     ────────────────────────────────────────────────────
     E0-E6   o   memory banking control (see above)
+    EA-EB       ¿ "ramfile" ?
     F0-F1  i    joystick A?
     F2-F3  i    joystick B?
+    ────────────────────────────────────────────────────
+    F8-FA       MZ-1R12 Extension RAM device (ROM 4K@$E800, 32K SRAM)
+    F8     io   o=set addr MSB; i=reset counter
+    F9     io   o=set addr LSB; i=read data and increment addr
+    FA      o   o=write data and increment addr
+    ────────────────────────────────────────────────────
     FE     io   printer?
     FF     ?o   printer?
 
