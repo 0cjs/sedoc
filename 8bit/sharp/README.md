@@ -19,20 +19,20 @@ Keyboard:
 
 [Keyboard input control codes][som 027]:
 
-    Ctrl n₁₀  Function
-      E   5   lower-case input mode
-      F   6   upper-case input mode
-      M  13   carriage return (CR)
-      P  16   DEL key
-      Q  17   cursor ↓ down
-      R  18   cursor ↑ up
-      S  19   cursor → right
-      T  20   cursor ← left
-      U  21   home position (HOME)
-      V  22   clear screen to BG color (CLR)
-      W  23   GRAPH mode
-      X  24   insert a space (INST)
-      Y  25   alphanumeric input mode (ALPHA/英数)
+    Ctrl dec hex  Function
+      E   5  $05  lower-case input mode
+      F   6  $06  upper-case input mode
+      M  13  $0D  carriage return (CR)
+      P  16  $10  DEL key
+      Q  17  $11  cursor ↓ down
+      R  18  $12  cursor ↑ up
+      S  19  $13  cursor → right
+      T  20  $14  cursor ← left
+      U  21  $15  home position (HOME)
+      V  22  $16  clear screen to BG color (CLR)
+      W  23  $17  GRAPH mode
+      X  24  $18  insert a space (INST)
+      Y  25  $19  alphanumeric input mode (ALPHA/英数)
 
 Monitor:
 - `LOAD` or `L` to load next thing from tape.
