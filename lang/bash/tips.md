@@ -1,27 +1,7 @@
 Bash Tips
 =========
 
-### Error Aborts
-
-For more reliable scripts, set error-catching [options] at the start
-and catch ERR to print a message on error exit:
-
-    #!/usr/bin/env bash
-    set -euo pipefail
-    trap 'code=$?; echo 1>&2 ERROR!; exit $code' ERR
-
-Useful [options]:
-
-    -e          Exit on pipeline/list/compound command exiting with untested
-                non-zero status. (For pipeline, only for last command.)
-    -o pipefail Return status of pipeline is rightmost failure, if any,
-                instead of rightmost command.
-    -u          Error on use of undefined variable/param, except @ and *.
-    -E          Traps on ERR inherited by functions, command substitutions
-                and subshells.
-    -T          Traps on DEBUG, RETURN inherited as above.
-
-[options]: http://www.tldp.org/LDP/abs/html/options.html
+Also see [Bash Error Handling](errors.md) for error handling tips.
 
 ### Inline Comments
 
