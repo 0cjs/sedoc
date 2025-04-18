@@ -52,7 +52,8 @@ Hex numbers are of the form `$nnnn` and can be used only with these
 statements.
 
 - `PEEK`, `POKE`
-- `USR`
+- `USR(addr, [arg$])`: Call _addr_, with the address of the string argument
+  text in DE.
 - `LIMIT`, `LIMIT MAX` (S-BASIC): Set top of memory available for BASIC use.
 - `CLEAR n` (HU-BASIC): Set top of memory available for BASIC use. Note
   that unlike MS-BASIC it takes only a single parameter.
