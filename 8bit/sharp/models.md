@@ -111,8 +111,9 @@ ROM has IPL only, no low-level I/O routines. (IPL copied from ROM to RAM.)
 - CPU: 4 MHz Z80
 - 64K RAM (32K in some overseas models). 2KB ROM (IPL only).
 - Video: 40×25 and 80×25 (8×8 cells).
-  - MZ-8BG board: 320×200 monochrome (overlaid over text screen).
-  - MZ-8BGK board: 320×200 2-plane (overlaid over text screen and MZ-8BG?).
+  - MZ-8BG "Graphic RAM 1": 8K; 320×200 monochrome (overlaid over text screen).
+  - MZ-8BGK "Graphic RAM 2": requires 8BG, adds another 8K, uses expansion
+    unit card slot.
 - Built-in 9" monitor and CMT
 - Typewriter keyboard.
 
