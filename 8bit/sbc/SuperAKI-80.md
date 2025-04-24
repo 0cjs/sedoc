@@ -15,8 +15,9 @@ Manuals, datasheets and software:
   Manual and technical reference.
 - archive.org, [TMPZ84C015BF-10]. Datasheet for CPU plus integrated I/O.
 - archive.org, [MBAKIAI], 2018-09-10. Port of Grant Searle's adapation of
-  of MS-BASIC 4.7. Binary includes; source is for to ARCPIT `XZ80.EXE`
-  assembler.
+  of MS-BASIC 4.7. Binary included; source is for the ARCPIT `XZ80.EXE`
+  assembler. (The CTC channel this uses for the baud rate generator appears
+  to be wrong; see below.)
 
 Product information and and blog entries.
 - akizukidenshi.com, [スーパーAKI-80 (基板単体、保守部品)][az-s80].
@@ -213,6 +214,14 @@ but if you have a regulator installed you must ___also___ connect it to
 The board apparently requires about 100 mA.
 
 #### Serial Connectivity
+
+The board wires the CTC timer 3 output `ZC/TO₃` to the `T̅X̅C̅A̅` and `R̅X̅C̅A̅`
+clock inputs on the SIO for use as a baud rate generator. `T̅X̅C̅B̅` and `R̅X̅C̅B̅`
+are not connected; to use the second serial port you can wire the same or
+another CTC output to them.
+
+__WARNING:__ The [MBAKIAI] BASIC setup uses CTC timer 2, not 3. You
+probably need to change it and rebuild if you're going to use it.
 
 If you have a MAX232, RS-232 levels are available on `CN4`. If you use
 either the second serial port or CTS/RTS, you will need to set jumpers
