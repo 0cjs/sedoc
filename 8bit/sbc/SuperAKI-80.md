@@ -37,8 +37,9 @@ The following are surface mount parts already soldered to the 70×50 mm PCB.
 
 * Toshiba __[TMPZ84C015BF-10]__ 10 MHz TLCS-Z80 MPU and I/O devices. This
   is a Zilog Z80-compatible MPU with the following integrated I/O devices
-  which are more or less equivalent to the [stand-alone Zilog parts][z-io].
-  (Section and PDF page numbers refer to the [datasheet][TMPZ84C015BF-10].)
+  which are more or less equivalent to the [stand-alone Zilog parts][z-io]
+  documented in [this manual][z-io-man]. (Section and PDF page numbers
+  refer to the [TMPZ84C015BF-10 datasheet][TMPZ84C015BF-10].)
   - Clock generator/controller and watchdog timer (__CGC__, §3.3 P.60, §3.7
     P.143) on I/O ports $F0-$F1. This uses an external crystal resonator at
     2× the system clock frequency; see below.
@@ -244,7 +245,8 @@ to get more exact.
 
 [TMPZ84C015BF-10]: https://archive.org/details/TMPZ84C015BF-10
 [az-man]: https://akizukidenshi.com/goodsaffix/A003_SuperAKI-80.pdf
-[z-io]: http://www.z80.info/zip/um0081.pdf
+[z-io-man]: http://www.z80.info/zip/um0081.pdf
+[z-io]: ../../EE/periph/z80.md
 
 [11EQS04]: https://ele.kyocera.com/assets/products/power-semicon/specification/11EQS04-file.pdf
 [1N4148]: https://www.vishay.com/docs/81857/1n4148.pdf
