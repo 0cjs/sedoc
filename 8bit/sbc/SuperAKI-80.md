@@ -67,7 +67,7 @@ The following are surface mount parts already soldered to the 70×50 mm PCB.
   - 74HC14  6× Schmitt-trigger inverters:
     2 for reset logic, 4 unused with inputs tied to Vcc.
 
-### Required
+### User-supplied
 
 You will need to add the following components. The board diagram in the
 manual is an important reference here as the locations are not clearly
@@ -81,7 +81,7 @@ Clock:
 - 19.6608 MHz crystal resonator, giving a 9.830 MHz system clock. Other
   frequencies can be used, but given a 1/16 prescaler on the CTC, this lets
   it generate clocks for the SIO to standard serial speeds from 300 bps
-  through 38.4 kbps.
+  through 38.4 kbps. (See more below.)
 - 2× 33 pF caps for `Cin` and `Cout` lines.
 
 RAM enable:
@@ -107,7 +107,14 @@ ROM:
   out how to use a ZIF socket here.)
 
 RS-232 Serial:
-- 1× MAX232 for ±12 V RS-232 levels on `CN4` (optional).
+- 1× [MAX232] for ±12 V RS-232 levels on `CN4` (optional).
+- 5× electrolytic capacitors for the MAX232 charge pumps.
+  - The SuperAKI-80 manual gives a 10 μF values, which is suitable only for
+    the exact models listed there
+  - Modern versions (e.g. TI or [this MAX232EN][aki-MAX]) use 1 μF; use
+    what the datasheet for your model suggests. Note that the [datasheet]
+    for that model linked has pin 2 configured wrong; the TI datasheet and
+    the board are correct.
 
 Connectors:
 - Header pins: for single row, one 1×40 should cover it.
@@ -222,6 +229,11 @@ CTC timer 0 is connected the SIO `R̅X̅C̅A̅` and `T̅X̅C̅A̅`: with the sta
 crystal use 1/16 CTC prescale, 1/16 mode on the SIO, and CTC divisor:
 1/1=38.4 kbps; 1/2=19.6 kbps; 1/4=9600 bps; ...; 1/128=300 bps.
 
+If you use a 20 MHz crystal instead of 19.6608 Mhz, the bps rates using
+the divisors above be about 1.73% fast. This _may_ be all right for async
+serial, but if not the lower BPS rates can use slightly tweaked divisors
+to get more exact.
+
 
 
 <!-------------------------------------------------------------------->
@@ -239,3 +251,7 @@ crystal use 1/16 CTC prescale, 1/16 mode on the SIO, and CTC divisor:
 [1N5819]: https://www.st.com/content/ccc/resource/technical/document/datasheet/26/db/14/60/52/47/47/5b/CD00001625.pdf/files/CD00001625.pdf/jcr:content/translations/en.CD00001625.pdf
 [1S1588]: https://download.datasheets.com/pdfs/2008/11/10/semi_ap/manual/tos/ds/1s1585.pdf
 [S-8054ALR]: https://www.datasheetarchive.com/datasheet/S-8054ALR/EPSON
+
+[MAX232]: https://www.ti.com/lit/gpn/max232
+[aki-MAX232-ds]: https://akizukidenshi.com/goodsaffix/max232.pdf
+[aki-MAX232]: https://akizukidenshi.com/catalog/g/g116063/
