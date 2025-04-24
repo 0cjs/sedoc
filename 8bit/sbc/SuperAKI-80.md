@@ -86,7 +86,8 @@ Clock:
 
 RAM enable:
 - 1× 100 KΩ resistor between `A15` and `BND`
-- 1S1588 diode, 10k resistor, 1 μF capacitor. (Holds high 74AC00 pin 13.)
+- [1S1588] diode, 10k resistor, 1 μF capacitor. (Holds high 74AC00 pin 13.)
+  ([1N4148] can substitute; meets or exceeds all 1S1588 specs.)
 - 2× [11EQS04] Schottky diodes for power from Vcc to RAM/74AC00 and power
   from battery to the same place. [1N5819] has same specs.
 - S-8054ALB or [S-8054ALR] voltage detector. These seem to be hard to get,
@@ -234,5 +235,7 @@ crystal use 1/16 CTC prescale, 1/16 mode on the SIO, and CTC divisor:
 [z-io]: http://www.z80.info/zip/um0081.pdf
 
 [11EQS04]: https://ele.kyocera.com/assets/products/power-semicon/specification/11EQS04-file.pdf
+[1N4148]: https://www.vishay.com/docs/81857/1n4148.pdf
 [1N5819]: https://www.st.com/content/ccc/resource/technical/document/datasheet/26/db/14/60/52/47/47/5b/CD00001625.pdf/files/CD00001625.pdf/jcr:content/translations/en.CD00001625.pdf
+[1S1588]: https://download.datasheets.com/pdfs/2008/11/10/semi_ap/manual/tos/ds/1s1585.pdf
 [S-8054ALR]: https://www.datasheetarchive.com/datasheet/S-8054ALR/EPSON
