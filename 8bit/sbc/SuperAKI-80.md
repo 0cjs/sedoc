@@ -76,6 +76,7 @@ manual is an important reference here as the locations are not clearly
 marked on the board. Note that most resistors must be mounted vertically.
 
 Power:
+- 100 μF cap.
 - 1× LM2930 or LM7805 voltage regulator. (Or use an external regulated PSU.)
   - Pinout (looking at front): 3=IN, 2=GND, 1=OUT.
 
@@ -99,7 +100,9 @@ RAM enable:
 - 3.6V lithium battery for RAM backup.
 
 Decoupling, pull-ups, pull-downs:
-- 8× 1 μF caps in various locations.
+- 3× 1 μF caps.
+- 5× 0.1 μF caps for decoupling.
+  __WARNING:__ the board diagram marks these locations as 1 μF.
 - 5× 10 KΩ resistors in various locations
 
 ROM:
