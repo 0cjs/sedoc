@@ -73,17 +73,63 @@ Configuration-related commands:
   foreground unless given the `--daemon` option.
 
 
-Backend Driver Notes
---------------------
+Google Drive Backend Driver Notes
+---------------------------------
 
-### Google Drive
+When you need to, remove the third-party client authorization at
+<https://myaccount.google.com/connections>.
+
+### Setting Up API Access Keys
 
 By default rclone's client_id is used for API access; this is slow because
-requests are rate limited for all users using it. See [Making your own
-client_id][rc-mkGid] for details. This is complex, however.
+requests are rate limited for all users using it. For better speed, make
+your own API key (see below). Note that the API key does not give you
+access to any files and is completely independent of the authentication
+tokens you use to get access to files.
 
-Remove the third-party client authorization at
-<https://myaccount.google.com/connections>.
+Instructions are at [Making your own client_id][rc-mkGid]. This is a bit
+complex; the following additional notes may help.
+
+You'll want to set up a new project in the [Google API console][gapi-console].
+Workspace users have a choice of putting it in your Workspace domain
+(enabling Internal apps) or in "uncategorized." To get back to the API
+console (and any other console in Google Cloud services), it's best to
+click the ≡ menu, use the "View all products" button at the very bottom,
+and pin the particular console you want.
+
+When configuring the OAuth Consent Screen, if you create an "Internal"
+(instead of "External") app it avoids approval and/or scary messages. It
+also immediately allows use by all users in the Workspace, rather than
+having to add test users.
+
+When creating the OAuth client, keep a copy of the the client secret; it
+cannot be retrieved after that client entry is created.
+
+### Adding Remotes
+
+Add a remote with `rclone config`, choosing `n`)ew remote then:
+- name>: remote name
+- Storage>: `drive`,
+- client_id>:, client_secret>: OAuth client ID and secret from above.
+  This is for Google API access, and will be under the `client_id` and
+  `client_secret` entries in rclone.conf.
+- scope>: Generally `drive` (or `1`) for full access.
+- service_account_file>: Leave empty.
+- "Use auto-config?"
+  - `y` will immediately open up a browser window to authenticate to the
+    Drive account (My Drive for an account or Shared Drive)
+  - `n` will print links to authenticate later
+  - Either way, this will generate the `token` entry in rclone.conf.
+- "Configure this as a Shared Drive (Team Drive)?" If you type `y` it gives
+  you a list of shared drives to which you have access, otherwise it uses
+  your personal Drive. If a shared drive, it will set `team_drive` in
+  rclone.conf.
+
+You can then, e.g.:
+
+    rclone lsl NAME:            # list all files (including subdirs)
+    rclone copy NAME: ./name/   # clone the drive to the given subdir
+    rclone copy ./name/ NAME:   # copy changed files back to Drive
 
 
 
@@ -94,4 +140,6 @@ Remove the third-party client authorization at
 [g-apicon]: https://console.developers.google.com/
 [rc-confenc]: https://rclone.org/docs/#configuration-encryption
 [rc-docs]: https://rclone.org/docs/
+
+[gapi-console]: https://console.developers.google.com/
 [rc-mkGid]: https://rclone.org/drive/#making-your-own-client-id
