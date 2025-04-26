@@ -45,12 +45,15 @@ Configuration-related commands:
 
 ### Listing Files
 
-    ls              List the objects in the path with size and path.
-    lsd             List all directories/containers/buckets in the path.
-    lsf             List directories and objects in remote:path formatted for parsing.
-    lsjson          List directories and objects in the path in JSON format.
-    lsl             List the objects in path with modification time, size and path.
-    tree            List the contents of the remote in a tree like fashion.
+The `Ṙ` symbol indicates that the listing will be recursive.
+
+    lsd             List all directories/containers/buckets at path
+    tree          Ṙ List the contents under path in a tree like fashion.
+
+    lsf             List directories and objects at path (parsable)
+    lsjson          List directories and objects at path in JSON format
+    ls            Ṙ List the objects under path with size and path
+    lsl           Ṙ List the objects under path with mod time, size and path
 
 ### File Management
 
