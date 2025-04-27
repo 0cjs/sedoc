@@ -29,6 +29,16 @@ After a reset: [[smzo-h&t]]
 
 All numbers are entered and displayed in hex.
 
+#### MZ-80K
+
+    LOAD[fname] Load file (with given name, if supplied) from CMT
+    GOTO$hhhh   Jump to address hhhh
+    SG          Enable keypress beep (Sound Generate)
+    SS          Disable keypress beep (Sound Stop)
+    FD          Floppy disk boot: if $F000 = $00, jumps to $F000
+
+#### MZ-700
+
 Commands (from [[som 149]], monitor listing). `ss` etc must be a full
 four-digit hex value. In the CSCP emulator, `Break` is backspace.
 
