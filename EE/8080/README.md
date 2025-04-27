@@ -212,6 +212,11 @@ interrupt modes:
   must be 0), 8 bits of high address is supplied by `I` register, and the
   interrupt vector is looked up from that address.
 
+In mode 2 the `reti` instruction must be used, not `ret`. These have
+identical behaviour to the software, but hardware following the Zilog
+mode-2 interrupt protocols watches the bus for a `reti` and releases its
+interrupt (to allow lower-priority interrupts) only when it see that.
+
 
 Support Chips
 -------------
