@@ -91,14 +91,15 @@ Reset and RAM enable:
 - 1× 10k resistor
 - 1× 1 μF cap
 - [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588 specs.
+- S-8054ALB or [S-8054ALR] voltage detector.
+  - These seem to be hard to get, need to look for a substitute.
+  - It's the only thing that brings the reset circuit high so without it:
+    - Solder jumper diode cathode to Vcc (look up S-8054ALR pins).
+    - Wire jumper `R̅S̅T̅I̅N̅` (CN2 p4) to Vcc (CN2 p35).
 
 RAM power:
 - 2× [11EQS04] Schottky diodes for power from Vcc to RAM/74AC00 and power
   from battery to the same place. [1N5819] has same specs.
-- S-8054ALB or [S-8054ALR] voltage detector. These seem to be hard to get,
-  but it appears we can run without it (so long as the parts above are in
-  place), and simply can't (safely) use battery backup. See notes in
-  manual about pinout and diode direction.
 - 3.6V lithium battery for RAM backup.
 
 Decoupling/bypass caps:
@@ -112,6 +113,13 @@ ROM:
 - DIP-28W socket for the EPROM. This must _not_ have a cross-bar in the
   middle because the RAM sits under the ROM. (We really need to figure
   out how to use a ZIF socket here.)
+
+Jumpers:
+- These are __not__ 0.1" pitch, but 0.7" (or so).
+- 1× for RAM config if you don't hardwire the RAM jumper. (But
+  recommended you hardwire it, since the 32K × 8 RAM is soldered in.)
+- 1× for ROM config. Right-angle (possibly extended out) if under a ZIF socket.
+- 2× for config of `CN4` if you are using a MAX232.
 
 Power:
 - 100 μF cap.
@@ -133,11 +141,6 @@ Connectors:
   - Male interfaces: three 2×40 male.
   - Female interfaces: three 2×40 female (ideally, two 2×25 and one 2×20),
     optionally a few 2×nn male for a few jumper blocks.
-- Jumpers:
-  - 1× for ROM config.
-  - 1× for RAM config if you don't hardwire the RAM jumper. (But
-    recommended you hardwire it, since the 32K × 8 RAM is soldered in.)
-  - 2× for config of `CN4` if you are using a MAX232.
 
 
 Memory Map
