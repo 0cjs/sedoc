@@ -53,7 +53,7 @@ The following are surface mount parts already soldered to the 70×50 mm PCB.
   - Dual Serial I/O (__SIO__, §3.6 P.107) on I/O addrs $18-$1B.
   - Interrupt prioritysystem (§3.9 P.149).
 
-* Toshiba 82C265, two 8255 Programmable Peripheral Interfaces (__PPIs__) in
+* Toshiba [82C265], two 8255 Programmable Peripheral Interfaces (__PPIs__) in
   a single package. Decoding by a '138 puts these on ports $30-$37. This
   provides 48 pins of GPIO (in addition to the GPIO from the PIO above).
 
@@ -75,11 +75,6 @@ You will need to add the following components. The board diagram in the
 manual is an important reference here as the locations are not clearly
 marked on the board. Note that most resistors must be mounted vertically.
 
-Power:
-- 100 μF cap.
-- 1× LM2930 or LM7805 voltage regulator. (Or use an external regulated PSU.)
-  - Pinout (looking at front): 3=IN, 2=GND, 1=OUT.
-
 Clock:
 - 19.6608 MHz crystal resonator, giving a 9.830 MHz system clock. Other
   frequencies can be used, but given a 1/16 prescaler on the CTC, this lets
@@ -87,10 +82,17 @@ Clock:
   through 38.4 kbps. (See more below.)
 - 2× 33 pF caps for `Cin` and `Cout` lines.
 
-RAM enable:
-- 1× 100 KΩ resistor between `A15` and `BND`
-- [1S1588] diode, 10k resistor, 1 μF capacitor. (Holds high 74AC00 pin 13.)
-  ([1N4148] can substitute; meets or exceeds all 1S1588 specs.)
+Control line pullups:
+- 5× 10K resistors (three lower right, but one is for the reset circuit;
+  two above RAM, one next to header above that).
+
+Reset and RAM enable:
+- 1× 100 KΩ resistor between `A15` and `BND` (A15/select pull-up)
+- 1× 10k resistor
+- 1× 1 μF cap
+- [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588 specs.
+
+RAM power:
 - 2× [11EQS04] Schottky diodes for power from Vcc to RAM/74AC00 and power
   from battery to the same place. [1N5819] has same specs.
 - S-8054ALB or [S-8054ALR] voltage detector. These seem to be hard to get,
@@ -99,17 +101,22 @@ RAM enable:
   manual about pinout and diode direction.
 - 3.6V lithium battery for RAM backup.
 
-Decoupling, pull-ups, pull-downs:
-- 3× 1 μF caps.
-- 5× 0.1 μF caps for decoupling.
-  __WARNING:__ the board diagram marks these locations as 1 μF.
-- 5× 10 KΩ resistors in various locations
+Decoupling/bypass caps:
+- 7× decoupling caps. The manual suggests 1 μF, but I don't see why you'd
+  not use the standard 0.1 μF.
+- The manual BoM also lists 5× 0.1 μF that can't be found on the schematic
+  or the board diagram.
 
 ROM:
 - 2764 (8K × 8 bits), 27128 (16K) or 27256 (32K) EEPROM.
 - DIP-28W socket for the EPROM. This must _not_ have a cross-bar in the
   middle because the RAM sits under the ROM. (We really need to figure
   out how to use a ZIF socket here.)
+
+Power:
+- 100 μF cap.
+- 1× LM2930 or LM7805 voltage regulator. (Or use an external regulated PSU.)
+  - Pinout (looking at front): 3=IN, 2=GND, 1=OUT.
 
 RS-232 Serial:
 - 1× [MAX232] for ±12 V RS-232 levels on `CN4` (optional).
@@ -255,6 +262,7 @@ to get more exact.
 [kissam59]: https://ameblo.jp/kissam59/entry-12475096740.html
 [mbakiai]: https://archive.org/details/MBAKIAI
 
+[82C265]: https://archive.org/details/TMP82C255A
 [TMPZ84C015BF-10]: https://archive.org/details/TMPZ84C015BF-10
 [az-man]: https://akizukidenshi.com/goodsaffix/A003_SuperAKI-80.pdf
 [z-io-man]: http://www.z80.info/zip/um0081.pdf
