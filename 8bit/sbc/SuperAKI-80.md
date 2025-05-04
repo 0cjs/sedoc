@@ -90,12 +90,15 @@ Reset and RAM enable:
 - 1× 100 KΩ resistor between `A15` and `BND` (A15/select pull-up)
 - 1× 10k resistor
 - 1× 1 μF cap
-- [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588 specs.
+- [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588
+  specs.
 - S-8054ALB or [S-8054ALR] voltage detector.
   - These seem to be hard to get, need to look for a substitute.
   - It's the only thing that brings the reset circuit high so without it:
     - Solder jumper diode cathode to Vcc (look up S-8054ALR pins).
-    - Wire jumper `R̅S̅T̅I̅N̅` (CN2 p4) to Vcc (CN2 p35).
+    - Use a jumper wire to connect `R̅S̅T̅I̅N̅` (CN2 p4) first to GND (CN2
+      p37/38) to force into reset state, and then to to Vcc (CN2 p35/36)
+      to bring out of reset state.
 
 RAM power:
 - 2× [11EQS04] Schottky diodes for power from Vcc to RAM/74AC00 and power
@@ -108,18 +111,18 @@ Decoupling/bypass caps:
 - The manual BoM also lists 5× 0.1 μF that can't be found on the schematic
   or the board diagram.
 
+Jumpers:
+- __Warning:__ RAM/ROM jumpers are are 0.07" pitch, not 0.1" pitch.
+- 1× 0.07" for RAM config if you don't hardwire the RAM jumper. (But
+  recommended you hardwire it, since the 32K × 8 RAM is soldered in.)
+- 1× 0.07" for ROM config. Right-angle (w/extension?) if under a ZIF socket.
+- 2× 0.10" for config of `CN4` if you are using a MAX232.
+
 ROM:
 - 2764 (8K × 8 bits), 27128 (16K) or 27256 (32K) EEPROM.
 - DIP-28W socket for the EPROM. This must _not_ have a cross-bar in the
   middle because the RAM sits under the ROM. (We really need to figure
   out how to use a ZIF socket here.)
-
-Jumpers:
-- These are __not__ 0.1" pitch, but 0.7" (or so).
-- 1× for RAM config if you don't hardwire the RAM jumper. (But
-  recommended you hardwire it, since the 32K × 8 RAM is soldered in.)
-- 1× for ROM config. Right-angle (possibly extended out) if under a ZIF socket.
-- 2× for config of `CN4` if you are using a MAX232.
 
 Power:
 - 100 μF cap.
