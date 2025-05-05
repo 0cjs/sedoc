@@ -22,6 +22,8 @@ Manuals, datasheets and software:
 Product information and and blog entries.
 - akizukidenshi.com, [スーパーAKI-80 (基板単体、保守部品)][az-s80].
   Store product page.
+- akizukidenshi.com, [AKI-80(Z80)モニターROM][az-mon]. Monitor ROM (27C256
+  EPROM) with bring-up test, "Z-VISION remote" server. ([Manual][az-mon-man])
 - cba.sakura.ne.jp, [Super AXI-80][cba]. Kit information and photos.
 - ameblo.jp/kissam59, [Super AKI-80に興味を持っています。][kissam59].
   Blog entry briefly describing the Z-VISION development environment.
@@ -261,8 +263,45 @@ serial, but if not the lower BPS rates can use slightly tweaked divisors
 to get more exact.
 
 
+Monitor ROM
+-----------
+
+The [documentation][az-mon-man] for the [AKI-80(Z80)モニターROM][az-mon]
+monitor ROM covers only the test mode: reset with PIO A0 held low and it
+will turn all GPIO pins on and off at 1 Hz. If you start it without PIO A0
+held low it will print an `@`. Responding with `CR` will enter something
+like a BASIC; responding with any other character will enter the monitor.
+
+#### Monitor Mode
+
+This monitor is designed to be used by a program running on the other end
+of the serial link, and so has very little error checking or anything else
+to make it friendly for direct use by a human.
+
+Commands (all _nn_ values are ASCII hex digits):
+- `DTaaaacccc`: Print _cccc_ bytes of memory at _aaaa_ as binary.
+  (Output is prefixed by a `D`.)
+- `GOnnnn`: Jump to address _nnnn_
+- `INnnhh`: Read from port _hhnn_ and display value.
+- `LH`: Load Intel hex records. End with type `01` EOF record followed by
+  LF or CR+LF. All input outside of records ignored to `:` ignored.
+- `OPnnvvhh`: Write value _vv_ to port _hhnn__.
+- `SVaaaacccc`: Read _cccc_ bytes from serial, depositing starting at _aaaa_.
+- `T`: Does nothing.
+- `XR`: Print 26 hex values of memory from $FF09-$FF22.
+- `XMnn…`: Read 26 ASCII hex bytes and deposit to $FF09-$FF22. (Registers?)
+- `Znnnnxxxx`: Sets $FF03 = _nnnn_, $FF05 = _xxxx_.
+- `V`: Print version string (`AKM20220` in my copy).
+
+#### "BASIC" Mode
+
+XXX This needs to be researched.
+
+
 
 <!-------------------------------------------------------------------->
+[az-mon-man]: https://akizukidenshi.com/goodsaffix/AKI-80_monitor_rom.pdf
+[az-mon]: https://akizukidenshi.com/catalog/g/g117738/
 [az-s80]: https://akizukidenshi.com/catalog/g/g111324/
 [cba]: https://cba.sakura.ne.jp/kit01/kit_130.htm
 [kissam59]: https://ameblo.jp/kissam59/entry-12475096740.html
