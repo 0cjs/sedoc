@@ -11,18 +11,14 @@ ROMs for various monitor, charset, and FD interface [downloadable
 here][smzo-dldrom]. The standard MZ-80K ROM is SP-1002. The [new monitor
 ROM][smzo-newmon] is also available here.
 
-Versions:
-- `SP-1002`: JP (and EU?) MZ-80. "Long" command names.
-- `1Z-009A`: JP MZ-700. No `D` command.
-- `1Z-013A`: EU MZ-700.
-
 
 Machine/Software-Specific Monitors
 ----------------------------------
 
-All numbers are entered and displayed in hex.
+All numbers are entered and displayed in hex. Generally, `RREAK` will
+pause output and `Shift-BREAK` will abort and return to the prompt.
 
-#### MZ-80K
+#### MZ-80K SP-1002 (JP and EU version?)
 
     LOAD[fname] Load file (with given name, if supplied) from CMT
     GOTO$hhhh   Jump to address hhhh
@@ -30,7 +26,11 @@ All numbers are entered and displayed in hex.
     SS          Disable keypress beep (Sound Stop)
     FD          Floppy disk boot: if $F000 = $00, jumps to $F000
 
-#### MZ-700
+#### MZ-700 1Z-009A (JP)
+
+Same as 1Z-013A below except without `D` command?
+
+#### MZ-700 1Z-013A (EU)
 
 Commands (from [[som 149]], monitor listing). `ss` etc must be a full
 four-digit hex value. In the CSCP emulator, `Break` is backspace.
@@ -58,10 +58,33 @@ Notes:
 - `F` checks to see if $F000 contains $00; if it does it jumps to $F000.
   (This is a magic number for an expansion ROM at $F000; when unmapped
   that area always returns $7F.)
-- `D` does exist in the JP ROM `1Z-009A`.
 
 The monitor prompt/parse routine starts at $00AD; to return it from
 a program you've entered, `C3 AD 00` (jp $00AD). A `C9` (ret) will reset.
+
+#### MZ-700 S-BASIC 1Z-007B (JP)
+
+#### MZ-700 S-BASIC 1Z-013B (EU)
+
+From EU _Uuser's Manual_ [[som 99]]. Prompt is `*`.
+Invoke with `MON` at the BASIC prompt.
+
+- `:addr=nn nn …`: Deposit to _addr_ sequential bytes _nn …_. Use `;c` to
+  generate a character code.
+- `P`: Switches output for `D` and `F` to printer, or back to display.
+- `Dsaddr [eaddr]`: Dump memory from _saddr_ to _eaddr_ (default $80) in
+  hex and "ASCII" (actually Sharp character coding) form.
+- `M[addr]`: Memory set. Displays value at memory location _addr_; enter a
+  new value or type CR to keep the current value. Exit with `Shift-BREAK`.
+- `Fsaddr eaddr data …`: Search for string _data …_ in memory; found
+  address and values are dumped to screen.
+- `Gaddr`: Call subroutine at _addr_. Stack set to $FFEE.
+- `Tsaddr eaddr taddr`: Copy _saddr_ through (including?) _eaddr_ to target
+  address _taddr_.
+- `Ssaddr eaddr xaddr : fname`: Save data to tape.
+- `L[addr][:fname]`: Load data from tape.
+- `V[fname]`: Verify data on tape, comparing with memory.
+- `R`: Return to program that called the monitor program.
 
 
 Usage and Tips
@@ -109,3 +132,4 @@ the 1Z-009A ROM loops back immediately after the `V` command.)
 [smzo-h&t]: https://original.sharpmz.org/mz-80k/tips.htm
 [smzo-newmon]: https://original.sharpmz.org/mz-80k/newmoni.htm
 [som 149]: https://archive.org/details/sharpmz700ownersmanual/page/n148/mode/1up?view=theater
+[som 99]: https://archive.org/details/sharpmz700ownersmanual/page/n100/mode/1up?view=theater
