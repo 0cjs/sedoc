@@ -12,20 +12,13 @@ here][smzo-dldrom]. The standard MZ-80K ROM is SP-1002. The [new monitor
 ROM][smzo-newmon] is also available here.
 
 Versions:
+- `SP-1002`: JP (and EU?) MZ-80. "Long" command names.
 - `1Z-009A`: JP MZ-700. No `D` command.
 - `1Z-013A`: EU MZ-700.
 
-### Tips
 
-After a reset: [[smzo-h&t]]
-
-    G$1200   BASIC restart (program lost)
-    G$1260   BASIC warm start (program retained)
-    G$1050   SAVE an ML program
-    G$1060   VERIFY a ML program
-    G$2000   Typical entry point of ML program
-
-### Usage
+Machine/Software-Specific Monitors
+----------------------------------
 
 All numbers are entered and displayed in hex.
 
@@ -47,7 +40,7 @@ four-digit hex value. In the CSCP emulator, `Break` is backspace.
                 address <xx>. Prompts for filename. Shift-Break to exit.
     V           Compares save with <S> above to memory.
 
-    Dssee       Dump memory from <ss> through <ee>
+    Dssee       Dump memory from <ss> through <ee>  (EU version only)
     Maaaa       Modify memory starting at <aaaa>. Location and old value
                 displayed; Enter or new value. Shift-Break to exit.
     Jaaaa       Jump to address <aaaa>
@@ -70,6 +63,23 @@ Notes:
 The monitor prompt/parse routine starts at $00AD; to return it from
 a program you've entered, `C3 AD 00` (jp $00AD). A `C9` (ret) will reset.
 
+
+Usage and Tips
+--------------
+
+XXX These need to be checked to confirm to which versions of the monitor
+they apply.
+
+### Tips
+
+After a reset: [[smzo-h&t]]
+
+    G$1200   BASIC restart (program lost)
+    G$1260   BASIC warm start (program retained)
+    G$1050   SAVE an ML program
+    G$1060   VERIFY a ML program
+    G$2000   Typical entry point of ML program
+
 ### Loading ML Programs
 
 This small routine loads an ML program without executing it after load, the
@@ -89,8 +99,6 @@ The command loop is at $00AD; after checking the standard commands
 line, presumably so if the monitor is copied to RAM this can call a
 subroutine to check for further commands. (This is only for 1Z-013A ROM,
 the 1Z-009A ROM loops back immediately after the `V` command.)
-
-
 
 
 
