@@ -410,7 +410,7 @@ Intel-style platforms (incuding Z80) support:
   ("Reserve Memory Bytes")
 - Since v1.42 Bld 234 (2022-12-21), DB/DW/DS/DDB aliases allowed
 
-### Macros (§3.4)
+### Macros (§3.4) and Functions (§3.4.9)
 
     name    [MACRO|IRP|IRPC|REPT] [arg[,arg...]]
             (body)
@@ -420,6 +420,9 @@ Intel-style platforms (incuding Z80) support:
 `IRP` repeats the body for each argument. `IRPC name,str` repeats the body
 assigning each char in _str_ to _name_ for each repetition. `REPT n`
 repeats the body _n_ times.
+
+Macro parameters may be assigned default values by appending `=value`.
+This does not work for functions.
 
 Special parameters are:
 - `{EXPAND}`,`{NOEXPAND}`
