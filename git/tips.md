@@ -110,8 +110,15 @@ For other history changes examples (e.g., moving a subdir) see
 * To create an empty orphan branch:
 
       git checkout --orphan BRANCHNAME
+      #     According to the git-checkout manpage:
+      git rm -rf .
+      #     From other sources (perhaps for older versions of Git):
       git rm --cached -r .
       git clean -fdx
+
+  As with starting any Git repo, you probably want to make your first
+  commit an empty one (`--allow-empty`) so that you have the ability to
+  rewrite the actual first commit with contents.
 
 * Use `git repack -adk` to pack unreachable objects that are not yet ready
   to prune. The default packs (by `gc` or otherwise) leave these loose, and
