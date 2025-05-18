@@ -153,6 +153,48 @@ Connectors:
     optionally a few 2×nn male for a few jumper blocks.
 
 
+Connectors
+----------
+
+These include suggested colours to make identification of signals on system
+connectors easier.
+
+### CN2
+
+- `↑` = 10kΩ pullup. Horizontal arrows indicate inputs/outputs/bidirectional.
+- Color code:
+  - yellow/green/red: power input/ground/Vcc(+5V)
+  - black: control outputs (`◀`, `▶`)
+  - white: control inputs (`▷`,`◁`)
+  - red: address bus (outputs, `◀`, `▶`)
+  - blue: data bus (bidirectional, `↔`)
+
+Diagram:
+
+                  ┌─────┐
+       ↑    /NMI ▷│ 1  2│▶ CLKOUT     white
+         /RSTOUT ◀│ 3  4│◁ /RSTIN     black
+             IEI ▷│ 5  6│▶ /WDTOUT    white
+             IEO ◀│ 7  8│  n/c        white
+              D1 ↔│ 9 10│↔ D0         blue
+              D3 ↔│11 12│↔ D2          │
+              D5 ↔│13 14│↔ D4          │
+              D7 ↔│15 16│↔ D6         blue
+              A1 ◀│17 18│▶ A0         black
+              A3 ◀│19 20│▶ A2          │
+              A5 ◀│21 22│▶ A4          │
+              A7 ◀│23 24│▶ A6         black
+       ↑ /BUSREQ ▷│25 26│▶ /M1        white
+         /BUSACK ◀│27 28│◁ /WAIT   ↑   │
+       ↑    /INT ▷│29 30│▶ /HALT      white
+             /WR ◀│31 32│▶ /MERQ      black
+             /RD ◀│33 34│▶ /IORQ      black
+                  │35 36│  Vcc(+5V)   red
+                  │37 38│  GND        green
+                  │39 40│← Ext.PWR    yellow
+                  └─────┘
+
+
 Memory Map
 ----------
 
