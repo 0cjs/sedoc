@@ -84,9 +84,14 @@ Clock:
   through 38.4 kbps. (See more below.)
 - 2× 33 pF caps for `Cin` and `Cout` lines.
 
+Hardwired jumpers:
+- If you hardwire the RAM and/or ROM jumper (see below), it's easier to do
+  these hardwired ones now rather than after taller components have been
+  installed around them.
+
 Control line pullups:
-- 5× 10K resistors (three lower right, but one is for the reset circuit;
-  two above RAM, one next to header above that).
+- 6× 10K resistors (three lower right, but one is for the reset circuit;
+  two above RAM, one next to PIO header above that).
 
 Reset and RAM enable:
 - 1× 100 KΩ resistor between `A15` and `BND` (A15/select pull-up)
