@@ -159,7 +159,7 @@ Connectors
 These include suggested colours to make identification of signals on system
 connectors easier.
 
-### CN2
+### CN2 Z80 Bus
 
 - `↑` = 10kΩ pullup. Horizontal arrows indicate inputs/outputs/bidirectional.
 - Color code:
@@ -192,6 +192,36 @@ Diagram:
                   │35 36│  Vcc(+5V)   red
                   │37 38│  GND        green
                   │39 40│← Ext.PWR    yellow
+                  └─────┘
+
+### CN1 Z80 I/O
+
+                  ┌─────┐
+                 ◀│ 1  2│▶
+             PA7 ↔│ 3  4│↔ PA6
+             PA5 ↔│ 5  6│↔ PA4
+             PA3 ↔│ 7  8│↔ PA2
+             PA1 ↔│ 9 10│↔ PA0
+          /WRDYA ◀│11 12│↔ /SYNCA
+            RXDA ▷│13 14│◁ /RXCA
+           /TXCA ▷│15 16│▶ TXDA
+           /DTRA ◀│17 18│▶ /RTSA
+           /CTSA ▷┃19 20│◁ /DCDA
+           /DCDB ▷│21 22│◁ /CTSB
+           /RTSB ◀│23 24│▶ /DTRB
+            TXDB ◀│25 26│◁ /TXCB
+           /RXCB ▷│27 28│◁ RXDB
+          /SYNCB ↔│29 30│▶ /WRDYB
+                  │31 32│
+                  │33 34│
+                  │35 36│
+                  │37 38│
+                  │39 40│
+                  │41 42│
+                  │43 44│
+                  │45 46│
+                  │47 48│
+                  │49 50│
                   └─────┘
 
 
