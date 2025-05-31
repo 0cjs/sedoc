@@ -3,6 +3,10 @@ Bash Tips
 
 Also see [Bash Error Handling](errors.md) for error handling tips.
 
+### Passing Parameters to a Script Read from stdin
+
+    curl -sSL … | bash -s -- -…
+
 ### Inline Comments
 
 In a multiline bash statement, inline comments (in the middle of a
