@@ -107,7 +107,7 @@ Other references:
 - \[br01b] [PC-8001B N-Basic Reference Manual][br01b] (PC-8102B/PTS-069), 1981.
 
 
-Extension ROMs
+Expansion ROMs
 --------------
 
 The PC-8001 and PC-8001mkII have a socket on the motherboard for an 2364
@@ -116,8 +116,8 @@ various magic numbers:
 
     7FFF   1b   $55 for altnerate monitor
     7FFC   3b   alternate monitor entry point
-    6002    -   extension rom init entry point
-    6000   2b   extension ROM signature area: sig = "AB" ($41 $42)
+    6002    -   expansion rom init entry point
+    6000   2b   expansion ROM signature area: sig = "AB" ($41 $42)
 
 
 - $7FFF = 55: The BASIC `mon` command jumps to $7FFC instead of the normal
