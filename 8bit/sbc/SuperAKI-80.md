@@ -99,8 +99,9 @@ Reset and RAM enable:
 - 1× 1 μF cap
 - [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588
   specs.
-- S-8054ALB or [S-8054ALR] voltage detector.
-  - These seem to be hard to get, need to look for a substitute.
+- Epson S-8054ALB or [S-8054ALR] voltage detector.
+  - These are no longer available. The ABLIC Inc. [S-80845CLY] appears to
+    be a very close substitute, but has not been tested.
   - It's the only thing that brings the reset circuit high so without it:
     - Solder jumper diode cathode to Vcc (look up S-8054ALR pins).
     - Use a jumper wire to connect `R̅S̅T̅I̅N̅` (CN2 p4) first to GND (CN2
@@ -395,6 +396,7 @@ XXX This needs to be researched.
 [1N5819]: https://www.st.com/content/ccc/resource/technical/document/datasheet/26/db/14/60/52/47/47/5b/CD00001625.pdf/files/CD00001625.pdf/jcr:content/translations/en.CD00001625.pdf
 [1S1588]: https://download.datasheets.com/pdfs/2008/11/10/semi_ap/manual/tos/ds/1s1585.pdf
 [S-8054ALR]: https://www.datasheetarchive.com/datasheet/S-8054ALR/EPSON
+[S-80845CLY]: https://www.digikey.com/en/products/detail/ablic-inc/S-80845CLY-B2-U/6696285
 
 [MAX232]: https://www.ti.com/lit/gpn/max232
 [aki-MAX232-ds]: https://akizukidenshi.com/goodsaffix/max232.pdf
