@@ -6,18 +6,84 @@ the latter now goes to a gambling site.
 
 See [KiCad-install](./KiCad-install) for installation details.
 
-
-Templates
----------
+#### Templates
 
 [`sethhillbrand/kicad_templates`][hill] includes templates to start
 projects with correct design rules for various fabs, including JLCPCB etc.
 
 
-File Formats and Internals
---------------------------
+KiCad Model
+-----------
 
-All file types/extensions are listed on the [File Formats] page.
+[KiCad files and folders][kc-ff-9] lists all file types; [File Formats]
+gives details of file contents (usually S-expressions). Common types are as
+follows; `¤` indicates a global version in `~/.config/kicad/9.0/` as well
+as a local version in the project.
+
+    *.kicad_pro       Project file
+    *.kicad_prl       Current preferences (visible layers, etc.)
+
+    *.kicad_sch       Schematic file
+    *.kicad_sym       Symbol library
+    sym-lib-table   ¤ List of symbol libraries for symbol browser.
+
+    *.kicad_pcb       Board file
+    *.pretty/         Footprint library containing *.kicad_mod files.
+    *.kicad_mod       Footprint library file (contains only a single footprint).
+    fp-lib-table    ¤ List of footprint libraries for footprint browser.
+    fp-info-cache     Cache to speed loading of footprint libraries.
+
+Many files need to be ignored by Git. [KiCad.gitignore] gives suggestions,
+but does not appear to be up to date. We tweak for our standard "project
+subdirs in a repo" layout and use the following:
+
+    /kicad-lib/*.bak
+    /*/kicad/*-backups/
+    /*/kicad/*.lck
+    /*/kicad/fp-info-cache
+    /*/kicad/*.kicad_prl
+
+[kc-ff-9]: https://docs.kicad.org/9.0/en/kicad/kicad.html#kicad_files_and_folders
+[KiCad.gitignore]: https://github.com/github/gitignore/blob/main/KiCad.gitignore
+
+#### Projects
+
+All design documents are in a _project._ My standard format is to have a
+Git repo $REPO, a $PROJNAME subdir for each design, each with a `kicad/`
+subdir for the KiCad files. When creating a new project, use $PROJNAME as
+the project name select the `kicad/` subdir and ensure "Create a new folder
+for the project" is not checked; this will create three files:
+
+    $REPO/$PROJNAME/kicad/$PROJNAME.kicad_{pro,sch,pcb}
+
+#### Schematics and Symbols
+
+Designs start in the _schematic editor_ (`eeschema`), editing the
+`*.kicad_sch` file. This contains one or more _sheets_ in a hierarchical
+format.
+
+On sheets we place _symbols,_ which have:
+- _Pin numbers_ to be connected to _wires_ and _buses._ Pins have optional
+  names as well.
+- _Fields_ including Reference (e.g., 'U1'), Value (e.g. '100 μF'), Library
+  Link, Library Descriptor.
+- A board editor _footprint_  matches its Reference field and pin numbers
+  to those of a schematic symbol.
+- Symbols may have a set of standard footprint templates that can be used
+  to generate a footprint to the board editor. Or any footprint can be
+  linked.
+
+Symbols are defined the schematic, but may be copies from libraries that
+can be updated from those libraries. __View » Symbol Library Browser__ and
+__Place » Place Symbols__ show a list of known libraries from
+`sym-lib-table`  (e.g., "74xx", "Memory_EPROM") these may be expanded by
+clicking ▶ to see the symbols in each library. Symbols may be in several
+parts placed separately, e.g., 7400's "Unit A" through "Unit D" (NAND
+gates) and "Unit E" (power).
+
+#### Boards and Footprints
+
+XXX
 
 
 Usage Hints
@@ -261,7 +327,7 @@ the order of these lists within `DRAW` is not significant.
 
 
 <!-------------------------------------------------------------------->
-[File Formats]: https://kicad.org/help/file-formats/
+[File Formats]: https://dev-docs.kicad.org/en/file-formats/
 [KiCad]: https://www.kicad.org/
 [hill]: https://github.com/sethhillbrand/kicad_templates
 [pcbnewref]: https://docs.kicad.org/5.1/en/pcbnew/pcbnew.html
