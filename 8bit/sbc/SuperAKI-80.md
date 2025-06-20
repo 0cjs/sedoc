@@ -102,11 +102,7 @@ Reset and RAM enable:
 - Epson S-8054ALB or [S-8054ALR] voltage detector.
   - These are no longer available. The ABLIC Inc. [S-80845CLY] appears to
     be a very close substitute, but has not been tested.
-  - It's the only thing that brings the reset circuit high so without it:
-    - Solder jumper diode cathode to Vcc (look up S-8054ALR pins).
-    - Use a jumper wire to connect `R̅S̅T̅I̅N̅` (CN2 p4) first to GND (CN2
-      p37/38) to force into reset state, and then to to Vcc (CN2 p35/36)
-      to bring out of reset state.
+  - Without this part, see below for how to reset the board.
 
 RAM power:
 - 2× [11EQS04] Schottky diodes for power from Vcc to RAM/74AC00 and power
@@ -308,6 +304,32 @@ but if you have a regulator installed you must ___also___ connect it to
 `POWER` to avoid damaging the regulator.
 
 The board apparently requires about 100 mA.
+
+#### Reset
+
+On power up the S-8054ALR voltage detector output will be low, which via a
+10kΩ resistor brings low `R̅S̅T̅I̅N̅` if nothing else is connected to it. This
+in turn brings low 74AC00 pin 13 to disable RAM select and 74HC14 pin 1 to
+assert reset for the all devices on the board.
+
+When `Vcc` rises to a high enough level (around 4.6 V) the voltage detector
+output will change to high, enabling RAM select and deasserting reset for
+all devices on the board.
+
+With the voltage detector installed, `R̅S̅T̅I̅N̅` (CN2 pin 4) is a debounced
+reset input. Use a normally-open momentary switch to bring this line to
+ground to reset the system. (The voltage detector output is protected from
+a short to ground by the 10kΩ resistor.)
+
+On a system without the voltage detector installed, you can reset the
+system by grounding `R̅S̅T̅I̅N̅` momentarily and then connecting it to `Vcc`.
+(The connection to `Vcc` is required because without the voltage detector
+installed there is nothing to bring that part of the circuit high.)
+
+__WARNING:__ Do _not_ short `R̅S̅T̅I̅N̅` to `Vcc` when the voltage detector is
+installed; it is not protected from this and the short from `Vcc` to the
+voltage detector output via the 1S1588 diode will likely damage the voltage
+detector.
 
 #### Serial Connectivity
 
