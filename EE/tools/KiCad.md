@@ -15,7 +15,17 @@ projects with correct design rules for various fabs, including JLCPCB etc.
 KiCad Model
 -----------
 
-[KiCad files and folders][kc-ff-9] lists all file types; [File Formats]
+### Programs, Files and Path Variables
+
+The programs provided are:
+
+    kicad       Project manager (inc. menu of other progams below)
+    eeschema    Schematic editor
+    pcbnew      Board editor
+    kicad-cli   Command-line interface
+
+
+[KiCad files and folders][kcd-ff-9] lists all file types; [File Formats]
 gives details of file contents (usually S-expressions). Common types are as
 follows; `¤` indicates a global version in `~/.config/kicad/9.0/` as well
 as a local version in the project.
@@ -38,13 +48,19 @@ but does not appear to be up to date. We tweak for our standard "project
 subdirs in a repo" layout and use the following:
 
     /kicad-lib/*.bak
+    /*/kicad/#auto_saved_files#
     /*/kicad/*-backups/
     /*/kicad/*.lck
     /*/kicad/fp-info-cache
     /*/kicad/*.kicad_prl
 
-[kc-ff-9]: https://docs.kicad.org/9.0/en/kicad/kicad.html#kicad_files_and_folders
-[KiCad.gitignore]: https://github.com/github/gitignore/blob/main/KiCad.gitignore
+Any environment variable may be substituted in a path by specifying it as a
+[Path Variable Subsitution][kcd-pvs], `${VARNAME}}`. Special variables (set
+by KiCad) can be viewed in the schematic editor with __Preferences »
+Configure Paths...__ These include the following. (All are global settings
+for the install of KiCad for that user/machine, unless noted otherwise.)
+
+    KIPRJMOD        Directory containing current project's *.kicad_pro file
 
 #### Projects
 
@@ -91,12 +107,32 @@ Usage Hints
 
 ### General
 
+- There is a checker (list/checkmark icon) for almost everything, including
+  symbols, schematics, boards, etc. Run it often, keeping the checker
+  window open for files (e.g. schematics, but not symbols) that have it.
+- For partially completed designs, ignore the list output and check that
+  the sections of the schematic or board that are supposed to be ok now
+  have no checker arrows.
+
 Movement and Selection:
 - Right-click-drag to scroll; mouse wheel to zoom.
-- Click element to select. (For components, line or blank space inside it.)
-- Shift-select to add to selection.
+- Click element to select. (For symbols, line or blank space inside it.)
+  `E` on selected element to edit properties.
 - Drag left to right: only components entirely inside the selection box.
 - Drag right to left: all components intersecting the selection box.
+- Shift-select to add to selection.
+- Snapping (watch cursor for icon indicating current snap):
+  - Snap to object can project w/e.g. lines past endpoint.
+  - Some objects can always use their own grid setting;
+    see "Grid Overrides" in Preferences » PCB Editor » Grids.
+  - `Ctrl` disables grid snapping.
+  - `Shift` disables object snapping.
+  - Toggle 90°/45° restriction with `Shift-Space` or left toolbar.
+
+Repeating:
+- Press `Insert` for a "smart do-again" of the action you just did. E.g.,
+  place a label `A0`, then `Insert` will put label `A1` on the next pin
+  down, again will place `A2` on the pin below that, etc.
 
 Measurement and Grids:
 - Measurements for the current location of the cursor are shown at the
@@ -141,7 +177,7 @@ text object on the silk layer in that part's footprint in the PCB file.
 ### Schematic Editor
 
     ESC W       Mode: select, wire
-    K           End line/wire/bus
+    K           End line/wire/bus (or double-click)
     E V U F     Edit item, value, reference, footprint
     M           Move item
     Ctrl-D      Duplicate item (w/Shift to increment)
@@ -150,6 +186,14 @@ For DRC, each symbol must have a _reference_, such as `R1` or `U1` ending
 in a number. For sub-components associated with main component, I use a
 "sub-number" after a period, e.g., `WW_U1.1` for a wire-wrap header
 associated with `U1`.
+
+To create a new bus:
+- Place a short wire (`w`) on each pin you want to group into a bus.
+- Add a label (`l`) to each wire.
+- Add a bus entry (`z`) to the other end of each wire. (Use `x`/`y`/`z` to
+  mirror horizontally/mirror vertically/rotate before placing.)
+- Draw the bus (`b`) attached to all entries.
+- Label it in the fromat `Data[0..7]`.
 
 ### PCB Layout
 
@@ -328,8 +372,12 @@ the order of these lists within `DRAW` is not significant.
 
 <!-------------------------------------------------------------------->
 [File Formats]: https://dev-docs.kicad.org/en/file-formats/
+[KiCad.gitignore]: https://github.com/github/gitignore/blob/main/KiCad.gitignore
 [KiCad]: https://www.kicad.org/
 [hill]: https://github.com/sethhillbrand/kicad_templates
+[kcd-ff-9]: https://docs.kicad.org/9.0/en/kicad/kicad.html#kicad_files_and_folders
+[kcd-pvs]: https://docs.kicad.org/9.0/en/eeschema/eeschema.html#sym-path-variable-substitution
 [pcbnewref]: https://docs.kicad.org/5.1/en/pcbnew/pcbnew.html
 [se 198934]: https://electronics.stackexchange.com/q/198934/15390
 [se 5524]: https://electronics.stackexchange.com/a/256368/15390
+
