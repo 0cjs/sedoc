@@ -17,10 +17,10 @@ bypass; they should be "of the high K ceramic type with low ESR," such as
 to the package ground pin as possible. (Not Vcc pin?) They suggest 50 μF -
 100 μF electrolytic for bulk bypass at the PSU.
 
-[Wikipedia][wp-decoup-cap] mentions ~0.1 μF ceramic per IC with
-up to a few hundred μF electrolytic/tantalum per board section.
-Cypress note [Using Decoupling Capacitors][cypress-decoup] goes
-into much more detail.
+[Wikipedia][wp-decoup-cap] mentions ~0.1 μF ceramic per IC with up to a few
+hundred μF electrolytic/tantalum per board section. Cypress note [Using
+Decoupling Capacitors][cypress-decoup] goes into much more detail, as do
+[the articles in _All About Circuits_][aac].
 
 Bypass caps have an equivalent series inductance (ESL) that rises with
 frequency, dominating (increasing overall impedance) above the
@@ -114,6 +114,7 @@ Sources and References
 
 <!-------------------------------------------------------------------->
 [1210]: https://en.wikipedia.org/wiki/Surface-mount_technology#Packages
+[aac]: https://www.allaboutcircuits.com/technical-articles/clean-power-for-every-ic-part-1-understanding-bypass-capacitors
 [cypress-decoup]: http://www.cypress.com/file/135716/download
 [eevbypass]: https://www.youtube.com/watch?v=BcJ6UdDx1vg
 [ksim]: http://ksim.kemet.com/
