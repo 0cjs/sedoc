@@ -14,7 +14,14 @@ Releases:
     6.0.11                  bookworm/stable
     5.1.5   2019-12-06                              (released before this date)
 
-For Debian 12:
+#### Debian 12 ("Buster")
+
+Use the backports from Debian 13 ("Trixie").
+
+    sudo tee /etc/apt/sources.list.d/backports.list >/dev/null
+    deb http://deb.debian.org/debian/ bookworm-backports main non-free-firmware non-free contrib
+    deb-src http://deb.debian.org/debian/ bookworm-backports main non-free-firmware non-free contrib
+    chmod 644 /etc/apt/sources.list.d/backports.list
 
     sudo apt install -t stable-backports kicad
 
