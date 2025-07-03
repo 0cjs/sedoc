@@ -18,6 +18,9 @@ dirty index or untracked files with Git][so-2657935] (note that second
 answer is higher voted than accepted answer) and blog post [Adding Git
 Status Information to your Terminal Prompt][0xfe].
 
+Also see [`ref.md`](./ref.md) for information on getting ref names
+useful to programs (`rev-parse`, `show-ref`, etc.).
+
 
 git ls-files
 ------------
