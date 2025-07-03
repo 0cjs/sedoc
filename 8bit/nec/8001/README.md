@@ -44,7 +44,9 @@ Also see [[rcp80spc]].
   - Actually runs ~2.3 MHz due to DMA interrupt wait [[sb8001]]
 - Memory: 16/32 KB (sockets for 32K); mkII: 64 KB.
   - VRAM inclusive on PC-8001, later models separate.
-- ROM: 24 KB + 1 empty 8 KB 2716 PROM socket
+- ROM:
+  - PC-8001: 3× 2364 24K BIOS/BASIC;  1× 2364 socket 8K expansion ROM
+  - PC-8001mkII: 2× ??? (24K N-BASIC, 32K N₂-BASIC); 1× 2764 socket 8K expans.
 - Video: μPD2301, b/w composite, DRGB. Programmable CRTC; 4K VRAM (mkII: 32K).
 - Text: 80/72/40/36 × 25/20. "Graphics" can be intermixed.
   - 8 colors: black, blue red, magenta, green, cyan, yellow, white.
