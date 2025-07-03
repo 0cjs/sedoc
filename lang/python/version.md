@@ -84,6 +84,7 @@ stopped earlier. EOL dates in the past are in parens.
 | AWS Lambda    | -         | 3.[789]   |            | 2022-09 (last check)
 | AWS Lambda    | 2.7.?     | 3.6.1     |            | 2018-05 (historical)
 |               |           |           |            |
+| Ubuntu 24.04  | -         | 3.12.3    |  2034/09   | 2022-04
 | Debian 12     |           | 3.10.6    |            | (not yet released)
 | Ubuntu 22.04  | 2.7.18    | 3.10.4    |  2027/32   | 2022-04
 | Debian 11     | 2.7.18    | 3.9.2     |            | 2021-08-14
