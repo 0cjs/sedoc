@@ -61,6 +61,13 @@ a reference using a name. Unless you know in advance the particular
 name you'll get. E.g., `git name-rev @{upstream}` will often give you
 `remotes/origin/HEAD` instead of `remotes/origin/master`.
 
+#### describe
+
+    git describe --always @
+
+    #   SHA (or tag) of HEAD, with `-dirty` suffix if working copy not clean.
+    git describe --always --dirty
+
 
 Finding Branches that Contain Commits
 -------------------------------------
