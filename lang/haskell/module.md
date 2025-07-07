@@ -1,8 +1,10 @@
 Haskell Modules, Imports and Exports
 ====================================
 
-For the module and definition used as the executable entry point,
-see [`main.md`](./main.md).
+See also:
+- [`README.md`](./README.md) §Code Sources for where to get packages.
+- [`main.md`](./main.md) for the module and definition used as the
+  executable entry point.
 
 References:
 - [Modules][h2010-modules]
