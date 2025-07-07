@@ -18,6 +18,21 @@ Other handy stuff:
 - [Pronounceable names for common Haskell operators][so 7746894]
 
 
+Code Sources
+------------
+
+* GHC comes with a standard set of _boot packages._ Particularly important
+  are [`base`][] (which is compiler-dependent, and includes the `Prelude`
+  module) and  [`Cabal`].
+* [Hackage] is the canonical distribution point for third-party packages,
+  similar to PiPy for Python.
+* [Stackage] provides sets of GHC and specific versions of packages known
+  to work together. These sets are used as "snapshots" or "resolvers" for
+  [Haskell Stack](./stack.md). These are always a subset of packages
+  available from Hackage; see [Stackage Maintainers] for how to add a
+  package to Stackage.
+
+
 Language
 --------
 
@@ -43,5 +58,11 @@ the same scope.
 [h2010-pdf]: https://haskell.org/definition/haskell2010.pdf
 [h2010]: https://haskell.org/onlinereport/haskell2010/
 [typeclass]: https://wiki.haskell.org/Typeclassopedia
+
+[Hackage]: https://hackage.haskell.org/
+[Stackage Maintainers]: https://github.com/commercialhaskell/stackage/blob/master/MAINTAINERS.md#adding-a-package
+[Stackage]: https://www.stackage.org/
+[`Cabal`]: https://hackage.haskell.org/package/Cabal
+[`base`]: https://hackage.haskell.org/package/base
 
 [so 7746894]: https://stackoverflow.com/q/7746894/107294
