@@ -1,19 +1,29 @@
 KiCad Schematic/PCB EDA
 =======================
 
-The [KiCad website][kicad] changed to `kicad.org` from `kicad-pcb.org`;
-the latter now goes to a gambling site.
+[KiCad] is a set of tools for schematic capture, PCB layout, design
+checking, etc.
 
-See [KiCad-install](./KiCad-install) for installation details.
+__Note:__ Links directly into the KiCad documentation include the version
+number; there seem to be no URLs that take you just to the "current docs."
 
-#### Templates
+Documentation:
+- [`KiCad-install.md`](./KiCad-install.md): installation/build details.
+- [`docs.kicad.org`]: Current documentation.
+- [`forum.kicad.info`]
+- `kicad-pcb.org`: Ex-KiCad site; now a gambling site.
 
-[`sethhillbrand/kicad_templates`][hill] includes templates to start
-projects with correct design rules for various fabs, including JLCPCB etc.
+Templates (to start new projects):
+- [`sethhillbrand/kicad_templates`][hill]: Correct design rules for various
+  fabs, including JLCPCB etc.
+
+Contents:
+- Files and Folders
+- KiCad Design Model and Overview
 
 
-KiCad Model
------------
+Files and Folders
+-----------------
 
 ### Programs, Files and Path Variables
 
@@ -49,6 +59,7 @@ subdirs in a repo" layout and use the following:
 
     /kicad-lib/*.bak
     /*/kicad/#auto_saved_files#
+    /*/kicad/_autosave-*
     /*/kicad/*-backups/
     /*/kicad/*.lck
     /*/kicad/fp-info-cache
@@ -62,13 +73,17 @@ for the install of KiCad for that user/machine, unless noted otherwise.)
 
     KIPRJMOD        Directory containing current project's *.kicad_pro file
 
+
+KiCad Design Model and Overview
+-------------------------------
+
 #### Projects
 
-All design documents are in a _project._ My standard format is to have a
-Git repo $REPO, a $PROJNAME subdir for each design, each with a `kicad/`
-subdir for the KiCad files. When creating a new project, use $PROJNAME as
-the project name select the `kicad/` subdir and ensure "Create a new folder
-for the project" is not checked; this will create three files:
+All design documents are in a _project._ In a Git repo $REPO, create a
+$PROJNAME/ subdir with a `kicad/` below that for the KiCad files. When
+creating a new project from the `kicad` window, select the `kicad/` subdir,
+ensure "Create a new folder for the project" is ___not___ checked, and type
+$PROJNAME as the project name. This will create three files:
 
     $REPO/$PROJNAME/kicad/$PROJNAME.kicad_{pro,sch,pcb}
 
@@ -79,23 +94,27 @@ Designs start in the _schematic editor_ (`eeschema`), editing the
 format.
 
 On sheets we place _symbols,_ which have:
-- _Pin numbers_ to be connected to _wires_ and _buses._ Pins have optional
-  names as well.
-- _Fields_ including Reference (e.g., 'U1'), Value (e.g. '100 μF'), Library
-  Link, Library Descriptor.
-- A board editor _footprint_  matches its Reference field and pin numbers
-  to those of a schematic symbol.
+- _Pin numbers_ to be connected to _wires_ and _buses._
+  Pins have optional names as well.
+- _Fields_ including 'Reference' (e.g., 'U1'), 'Value' (e.g. '100 μF'),
+  'Library Link', 'Library Descriptor'.
+- A board editor _footprint_  matches its 'Reference' field
+  and pin numbers to those of a schematic symbol.
 - Symbols may have a set of standard footprint templates that can be used
-  to generate a footprint to the board editor. Or any footprint can be
+  to generate a footprint in the board editor. Or any footprint can be
   linked.
 
-Symbols are defined the schematic, but may be copies from libraries that
-can be updated from those libraries. __View » Symbol Library Browser__ and
-__Place » Place Symbols__ show a list of known libraries from
-`sym-lib-table`  (e.g., "74xx", "Memory_EPROM") these may be expanded by
-clicking ▶ to see the symbols in each library. Symbols may be in several
-parts placed separately, e.g., 7400's "Unit A" through "Unit D" (NAND
-gates) and "Unit E" (power).
+Symbols are always copied from a _symbol library,_ either "global" (which
+typically means local to the current host) or "project local," often
+distributed with the project. After the initial copy, updates to the
+library symbol may later be selectively copied to the symbol in the
+schematic.
+
+__View » Symbol Library Browser__ and __Place » Place Symbols__ show a list
+of known libraries from `sym-lib-table`  (e.g., "74xx", "Memory_EPROM")
+these may be expanded by clicking ▶ to see the symbols in each library.
+Symbols may be in several parts placed separately, e.g., 7400's "Unit A"
+through "Unit D" (NAND gates) and "Unit E" (power).
 
 #### Boards and Footprints
 
@@ -371,13 +390,17 @@ the order of these lists within `DRAW` is not significant.
 
 
 <!-------------------------------------------------------------------->
+[KiCad]: https://www.kicad.org/
+[`docs.kicad.org`]: https://docs.kicad.org
+[`forum.kicad.info`]: https://forum.kicad.info/
+[hill]: https://github.com/sethhillbrand/kicad_templates
+
+<!-- Files and Folders -->
 [File Formats]: https://dev-docs.kicad.org/en/file-formats/
 [KiCad.gitignore]: https://github.com/github/gitignore/blob/main/KiCad.gitignore
-[KiCad]: https://www.kicad.org/
-[hill]: https://github.com/sethhillbrand/kicad_templates
 [kcd-ff-9]: https://docs.kicad.org/9.0/en/kicad/kicad.html#kicad_files_and_folders
 [kcd-pvs]: https://docs.kicad.org/9.0/en/eeschema/eeschema.html#sym-path-variable-substitution
+
 [pcbnewref]: https://docs.kicad.org/5.1/en/pcbnew/pcbnew.html
 [se 198934]: https://electronics.stackexchange.com/q/198934/15390
 [se 5524]: https://electronics.stackexchange.com/a/256368/15390
-
