@@ -8,6 +8,7 @@ in `~/.ghcup/bin/`, which is expected to be added to your path.
 
 ### Installation
 
+    sudo apt install -y zlib1g-dev      # commonly used by Haskell packages
     sudo apt install -y \
         build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 \
         libncurses-dev libncurses5 libtinfo5 pkg-config
