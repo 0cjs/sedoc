@@ -39,7 +39,10 @@ you have them on the default branch. If you go to the "Actions" tab and
 it's prompting you to create workflows, you need to copy the
 `main`/`master`/whatever branch from the upstream to your fork repo, set
 the default branch to that, and then the "Actions" tab should show you a
-prompt about enabling workflows.
+prompt about enabling workflows. Once you've started a workflow, you
+can then change the default branch back to `fork`/whatever, and delete
+the `main`/`master`/whatever branch that was a copy from the source repo.
+(XXX Also maybe try setting the default branch to your dev branch?)
 
 Typically forks will still not be configured to run the workflows on the
 development branch you're using. Various solutions are discussed in
