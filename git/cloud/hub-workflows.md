@@ -29,6 +29,24 @@ syntax][w-syntax], including the following top-level properties:
 Runners run a single job at a time. GitHub-provided runners are fresh VMs
 (Ubuntu, Windows, macOS), or you can provide your own.
 
+### Forked Repositories
+
+Workflows default to disabled in forked repositories; the "Actions"
+tab in the forked repo will offer an option to enable them.
+
+The existence of workflows in forked repos will not be recognised unless
+you have them on the default branch. If you go to the "Actions" tab and
+it's prompting you to create workflows, you need to copy the
+`main`/`master`/whatever branch from the upstream to your fork repo, set
+the default branch to that, and then the "Actions" tab should show you a
+prompt about enabling workflows.
+
+Typically forks will still not be configured to run the workflows on the
+development branch you're using. Various solutions are discussed in
+[so-71057825] and other answers, but the easiest work-around seems to be
+generate a commit on your branch changing the trigger events section to
+just `on: push`, and push that.
+
 
 Events
 ------
@@ -109,6 +127,7 @@ Workflows generate _checks_:
 [statchk]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks
 
 <!-- Workflows ("Actions") -->
+[so-71057825]: https://stackoverflow.com/a/71057825/107294
 [w-about]: https://docs.github.com/en/actions/writing-workflows/about-workflows
 [w-actions]: https://docs.github.com/en/actions
 [w-ev-pr]: https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request
