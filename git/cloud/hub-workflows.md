@@ -54,6 +54,7 @@ Events
 References:
 - [Triggering a workflow][w-trig]
 - [Events that trigger workflows][w-events]
+- [Manually running a workflow][w-manual]
 
 Each event has a commit SHA and ref (set as [variables][w-vars]
 `GITHUB_SHA` and `GITHUB_REF` in executing workflows). For each event,
@@ -79,6 +80,11 @@ Commonly used events:
   default `[opened, synchronize, reopened]`
   - `synchronize:` is a head update on ref.
   - `paths: […]` useful to skip long tests on unmodifed files?
+- `workflow-dispatch`: Can run only workflow definitions committed on the
+  default branch. Triggered from "Actions" tab, selecting the workflow and,
+  if it has this event, you will see a "Run workflow" button. (You can
+  select a different branch to run it on with the "Branch" dropdown.)
+  Workflow fields to fill in may be defined. [[w-manual]] for more info.
 
 
 Jobs
@@ -135,6 +141,7 @@ Workflows generate _checks_:
 [w-first]: https://docs.github.com/en/actions/writing-workflows/quickstart#creating-your-first-workflow
 [w-ghhost]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for-public-repositories
 [w-jobs]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobs
+[w-manual]: https://docs.github.com/en/actions/how-tos/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow
 [w-mon]: https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows
 [w-overview]: https://docs.github.com/en/actions/writing-workflows/quickstart
 [w-syntax]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
