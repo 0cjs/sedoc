@@ -21,19 +21,34 @@ The get-ghcup script will ask various questions. Usual answers are:
 3. HLS: Only if you use editors or IDEs that use this.
 4. Better integration with Stack: XXX need to discuss this below.
 
+#### Configuration
+
+Configuration is stored in [`~/.ghcup/config.yaml`]. (Later entries
+override earlier ones; command-line options override the config file.)
+Typical changes you may want to make include:
+
+    key-bindings:
+        down:   { KChar: 'j' }  # Down/up arrow keys still work with this.
+        up:     { KChar: 'k' }
+
+    meta-cache: 86400           # Update meta cache daily, not every 5 min.
+
 
 Locations and Tool Versions
 ---------------------------
 
 `source ~/.ghcup/env` will add the GHCup bin directory and standard Cabal
 bin directory (`~/.cabal/bin/`, where `cabal install` puts binaries) to the
-_end_ of your path.
-* Binaries with specific version numbers (Haskell`ghc-N.M.P` etc.) are always
-  available.
-- Using `ghcup set …` will make available "plain" binaries (`ghc` etc.);
+_end_ of your path. (But also see `ghcup run` below.)
+
+* Binaries with specific version numbers (Haskell`ghc-N.M.P` etc.) are
+  always available.
+* Using `ghcup set …` will make available "plain" binaries (`ghc` etc.);
   these can be disabled with `ghcup unset …`.
-- System-installed "plain" binaries (`ghc`) will always override the
+* System-installed "plain" binaries (`ghc`) will always override the
   `ghcup set …` versions.
+* See `ghcup run` below for setting up with a specifc `ghc`/`cabal`/etc.
+  at the _front_ of the path.
 
 The tools that GHCup provides (and settable with `ghcup set …`) are:
 
@@ -62,6 +77,15 @@ Setting defaults (global for all commands run by the user!):
     ghcup set TOOL VERSION
     ghcup unset TOOL VERSION
 
+Prepending toolchains to path:
+
+    #   Run an arbitrary comand (`code` in this case) that wants to use
+    #   just `ghc`, `cabal`, etc. by putting the paths for the appropriate
+    #   versions at the *front* of the path before executing the command.
+    ghcup run --install \
+      --ghc 8.10.7 --cabal latest --hls latest --stack latest \
+      -- code Setup.hs
+
 
 Environment Variables
 ---------------------
@@ -82,4 +106,5 @@ See [environment variables] in the documentation for more details.
 <!-------------------------------------------------------------------->
 [GHCup]: https://www.haskell.org/ghcup/
 [User Guide]: https://www.haskell.org/ghcup/guide/
+[`~/.ghcup/config.yaml`]: https://github.com/haskell/ghcup-hs/blob/master/data/config.yaml
 [environment variables]: https://www.haskell.org/ghcup/guide/#env-variables
