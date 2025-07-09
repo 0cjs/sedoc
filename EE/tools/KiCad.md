@@ -153,6 +153,14 @@ Repeating:
   place a label `A0`, then `Insert` will put label `A1` on the next pin
   down, again will place `A2` on the pin below that, etc.
 
+Editing:
+- `E` brings up the Properties dialogue; the same can be seen in the
+  Properties Manager at the left if open (icon in left bar toggles). The
+  Properties Manager will also show common info when multiple objects are
+  selected and allow changing it for all objects.
+- For single/multiple seletion, right click » Positioning Tools » Move
+  Exactly etc. will allow moving/etc. a multiple selection.
+
 Measurement and Grids:
 - Measurements for the current location of the cursor are shown at the
   lower right. Even when the mouse is not snapped to the grid, these are
