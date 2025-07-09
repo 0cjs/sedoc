@@ -6,26 +6,54 @@ versions of GHC, Cabal, Haskell Stack and HLS (the Haskell Language
 Server). These are stored under `~/.ghcup/`, with links to the executables
 in `~/.ghcup/bin/`, which is expected to be added to your path.
 
+The source is in the GitHub [`haskell/ghcup-hs`]; repo.
+Do not confuse this with the deprecated `haskell/ghcup` code.
+
 ### Installation
 
-    sudo apt install -y zlib1g-dev      # commonly used by Haskell packages
+    #   Commonly used by Haskell packages
+    sudo apt install -y zlib1g-dev
+    #   From `ghcup tool-requirements`.
     sudo apt install -y \
         build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 \
         libncurses-dev libncurses5 libtinfo5 pkg-config
-    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-    source ~/.ghcup/env     # Path setup
+    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org \
+        | BOOTSTRAP_HASKELL_MINIMAL=1 \
+          BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
+          GHCUP_USE_XDG_DIRS=1 \
+          sh
 
-The get-ghcup script will ask various questions. Usual answers are:
+The "minimal" setting prevents modifying `.bashrc` etc. and the automatic
+installation and setting-to-default of recommended GHC, Cabal etc.
+versions.
+
+It's best not to use `GHCUP_USE_XDG_DIRS=1` for several reasons:
+- XDG dirs [do not work well for GHCup][issuecomment-1363335336].
+- `GHCUP_USE_XDG_DIRS` must be set for _every use_ of both the GHCup
+  installer and `ghcup` itself, or it will revert to using `~/.ghcup/`.
+- You can't (easily) to remove all `ghc-N.M.x` etc. from your path
+  because they are placed in `~/.local/bin/`.
+- Sharing of ghcup into containers is more difficult.
+- (For details, see `lib/GHCup/Utils/Dirs.hs`.)
+
+If not using non-minimal interactive mode, you will be asked a fair number
+of questions. Typical answers are:
 1. Channel: Use `D`efault GHCup maintained to get tested versions of GHC
    etc. builds.
 2. Experimental builds: generally no.
 3. HLS: Only if you use editors or IDEs that use this.
 4. Better integration with Stack: XXX need to discuss this below.
 
+For more, see §"Installer Hacking" below.
+
 #### Configuration
 
-Configuration is stored in [`~/.ghcup/config.yaml`]. (Later entries
-override earlier ones; command-line options override the config file.)
+Configuration is stored in [`~/.ghcup/config.yaml`]. Later entries override
+earlier ones; command-line options override the config file.
+
+(If `GHCUP_USE_XDG_DIRS` is set, `~/.config/ghcup/config.yaml` is used
+instead, but don't do this for reasons described in §"Installation" above.)
+
 Typical changes you may want to make include:
 
     key-bindings:
@@ -62,6 +90,10 @@ The tools that GHCup provides (and settable with `ghcup set …`) are:
 Usage
 -----
 
+As well as specific version numbers (e.g., `9.8.2` for GHC), you can
+use `recommended` and `latest` as version specifiers; listing the
+versions available will also indicate which versions these are.
+
 Queries:
 
     ghcup list -c set           # What's available as `ghc` etc.
@@ -71,7 +103,8 @@ Queries:
 Installation and removal:
 
     ghcup tui                   # Interactive interface.
-    ghcup install ghc 9.6.6     # Install specific version.
+    ghcup install ghc 9.6.6     # Install AND SET specific version.
+                                #   (--set is useless?)
 
 Setting defaults (global for all commands run by the user!):
 
@@ -106,6 +139,10 @@ See [environment variables] in the documentation for more details.
 
 <!-------------------------------------------------------------------->
 [GHCup]: https://www.haskell.org/ghcup/
+[More on installation]: https://www.haskell.org/ghcup/guide/#more-on-installation
 [User Guide]: https://www.haskell.org/ghcup/guide/
+[`haskell/ghcup-hs`]: https://gitlab.haskell.org/haskell/ghcup-hs
 [`~/.ghcup/config.yaml`]: https://github.com/haskell/ghcup-hs/blob/master/data/config.yaml
+[bs]: https://github.com/haskell/ghcup-hs/blob/master/scripts/bootstrap/bootstrap-haskell
 [environment variables]: https://www.haskell.org/ghcup/guide/#env-variables
+[issuecomment-1363335336]: https://github.com/haskell/ghcup-hs/issues/729#issuecomment-1363335336
