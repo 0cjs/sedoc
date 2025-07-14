@@ -165,6 +165,12 @@ mask programming process.
 28-pin:
 - 32K×8 [MB83256][] (Fujitsu). Pins: 1:NC, 25:A14 (27C256-compatible)
 
+### 23xxx Mask ROM
+
+- 4 Mbit?, 8/16 bit wide: Matsushita/Panasonic MN234001TSD, Hynix
+  HY234100P-25, Samsung KM23C4100-25 KM23C4100A-25, Gould AMI S634000M-P,
+  NEC μPD23C4000C.
+
 ### 25xx EPROM
 
 TI [TMS 2532]
