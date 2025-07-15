@@ -31,15 +31,22 @@ String literals may be prefixed with case-insensitive one-character
 prefixes to change their interpretation:
 - `b`: Produce a `bytes` instead of a `str`. Only ASCII chars
   (codepoints < 128) and backslash escape sequences allowed.
-- `r`: Raw string or bytes; backslashes are interpreted literally.
-  (Not usable with `u`.)
+- `r`: Raw string or bytes; backslashes are interpreted literally
+  (no escape sequences). Not usable with `u`.
 - `u`: Unicode literal. Does nothing in Python ≥3.3; in Python 2,
   where `str` is the equivalant of `bytes`, reads string literal as
   Unicode instead.
 - `f`: (≥3.6) [Formatted string literal][f-strings]. Cannot be
   combined with `b` or `u`.
 
-More, including escape code list, at [String and Bytes literals].
+More, including escape sequence list, at [String and Bytes literals].
+
+The [escape sequences] are:
+- `\<newline>`: Backslash and newline ignored.
+- `\\`, `\'`, `\"`: Literal `\`, `'`, `"`.
+- `\a\b\f\n\r\t\v`: ASCII BEL, BS, FF, LF, CR, TAB, VT.
+- `\000`, `\o000`, `\xHH`: octal, hex value.
+- `\N{name}`, `\uHHHH`, `\uHHHHHHHH`: Unicode (_name_ from Unicode spec.)
 
 ### Methods
 
@@ -201,6 +208,7 @@ for further details and examples.
 [buffer protocol]: https://docs.python.org/3/c-api/buffer.html
 [codec error handlers]: https://docs.python.org/3/library/codecs.html#error-handlers
 [encoding]: https://docs.python.org/3/library/codecs.html#standard-encodings
+[escape sequences]: https://docs.python.org/3/reference/lexical_analysis.html#escape-sequences
 [f-strings]: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
 [format specification mini-language]: https://docs.python.org/3/library/string.html#formatspec
 [format string syntax]: https://docs.python.org/3/library/string.html#formatstrings
