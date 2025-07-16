@@ -173,7 +173,7 @@ mask programming process.
 
 ### 25xx EPROM
 
-TI [TMS 2532]
+TI [TMS 2516], [TMS 2532]
 - Datasheet claims "JEDEC Standard Pinout" and "Pin Compatible with
   Existing ROMs and EPROMs (8K, 16K, 32K and 64K)". But they really mean
   "pin-compatible with TMS 4732." For 23xx, not: anything needing `CS2`
@@ -185,11 +185,13 @@ TI [TMS 2532]
 
 ### 27xx EPROM
 
-Apparently the TMS 2716 has a different pinout from the Intel 2716 (as used
-in the PET) and 2816.
+The [TMS 2716] has a non-JEDEC pinout and requires different power:
+- Pin 21 Vbb: -5 V (instead of `W̅̅E̅`)
+- Pin 19 Vdd: 12 V (instead of `A10`)
+- Pin 20: `A10`    (instead of `O̅E̅`)
 
 References:
-- [TMS 2716 datasheet][tms2716]
+- [TMS 2716 datasheet][TMS 2716]
 - <http://www.bitsavers.org/components/ti/_dataBooks/>
   - `1980_TI_The_MOS_Memory_Data_Book_for_Design_Engineers.pdf`
     TMS2716 p.137 P.141
@@ -385,12 +387,13 @@ Used in the TRS-80 Model 100.
 [FM1808]: https://docs.isy.liu.se/pub/VanHeden/DataSheets/fm1808.pdf
 [HM62256A]: https://datasheet.octopart.com/HM62256ALP-10-Hitachi-datasheet-115281844.pdf
 [IDT6116SA/LA]: https://www.renesas.com/jp/en/document/dst/6116sala-data-sheet
+[TMS 2516]: https://archive.org/details/2516_EPROM/mode/1up?view=theater
 [TMS 2532]: https://archive.org/details/2532_EPROM_Data_Sheet/mode/1up
+[TMS 2716]: https://archive.org/details/tms-2716-datasheet/mode/1up
 [W27C512-45Z a]: http://www.kosmodrom.com.ua/pdf/W27C512-45Z.pdf
 [W27C512-45Z]: https://datasheet.octopart.com/W27C512-45Z-Winbond-datasheet-13695031.pdf
 [aa-285971]: https://forums.atariage.com/topic/285971-2532-eprom-uses-adapter-for-tl866/#comment-4223453
 [sgs2732]: https://downloads.reactivemicro.com/Electronics/ROM/2732%20EPROM.pdf
-[tms2716]: https://archive.org/details/tms-2716-datasheet/mode/1up
 
 [ee sprow]: http://www.acornelectron.co.uk/eug/25/a-epro.html
 [f65 32004]: http://forum.6502.org/viewtopic.php?p=32004#p32004
