@@ -44,7 +44,7 @@ Logging and Graph Exploration
 Default Branch Renaming
 -----------------------
 
-After renamed in remote repo `r`:
+After renamed in remote repo `r`, use gitcmd-abbrev `rem -H` or:
 
     br -m master main
     fetch -p r                  # remove tracking branch for `master`
