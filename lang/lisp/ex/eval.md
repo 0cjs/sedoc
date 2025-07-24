@@ -5,7 +5,8 @@ References:
 - \[1] McCarthy et al., _[LISP I Programmer's Manual][1],_ MIT, 1960-03-01.
 - \[1.5] McCarthy et al., _[LISP 1.5 Programmer's Manual][1.5],_ MIT Press, 1962-08-17.
 
-From [[1]] p.19/P.22:
+From [[1]] p.19/P.22. This is not the actual code, apparently, but just
+a demo to show how the idea works.
 
     apply[f;args] = eval[cons[f;appq[args]];NIL]
     appq[m] = [ null[m] → NIL;
@@ -34,6 +35,9 @@ From [[1]] p.19/P.22:
         cons[list[]cadar[e];car[e]];p]];
       eq[caar[e];LAMBDA]  → eval[caddar[e];append[pair[cadar[e]];
         evlis[cdr[e];p];p]]]]
+
+`apply` above requires `(QUOTE T)` for default predicate. (But the actual
+LISP 1 `APPLY` reqires plain `T`.)
 
 From [[1.5]] p.13/P.21:
 
