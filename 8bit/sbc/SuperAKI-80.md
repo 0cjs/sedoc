@@ -8,6 +8,12 @@ parallel I/O, as well as a memory backup circuit. Originally ¥5700, then
 ¥2000, as of 2025-04-23 it's available for ¥280 from a discount bin on the
 second floor.
 
+The external connectors (pinouts below) are:
+- CN1: Z80 I/O (PIOA, SIOA, SIOB, PIOB, CTC, Vcc/GND)
+- CN2: Z80 Bus (A0-7, D0-7, control, power, regulator input)
+- CN3: 8255×2
+- CN4: RS-232 (SIOA tx/rx; SIOA cts/rts or SIOB tx/rx)
+
 ### References
 
 Manuals, datasheets and software:
@@ -193,32 +199,32 @@ Diagram:
 
 ### CN1 Z80 I/O
 
-                  ┌─────┐
-                 ◀│ 1  2│▶
+                  ┌─────┐           __________
+            ARDY ◀│ 1  2│▶ /ASTB
              PA7 ↔│ 3  4│↔ PA6
-             PA5 ↔│ 5  6│↔ PA4
+             PA5 ↔│ 5  6│↔ PA4      Z80 PIO A
              PA3 ↔│ 7  8│↔ PA2
-             PA1 ↔│ 9 10│↔ PA0
+             PA1 ↔│ 9 10│↔ PA0      ___________
           /WRDYA ◀│11 12│↔ /SYNCA
             RXDA ▷│13 14│◁ /RXCA
-           /TXCA ▷│15 16│▶ TXDA
+           /TXCA ▷│15 16│▶ TXDA     Z80 SIO A
            /DTRA ◀│17 18│▶ /RTSA
-           /CTSA ▷┃19 20│◁ /DCDA
+           /CTSA ▷┃19 20│◁ /DCDA    ___________
            /DCDB ▷│21 22│◁ /CTSB
            /RTSB ◀│23 24│▶ /DTRB
-            TXDB ◀│25 26│◁ /TXCB
+            TXDB ◀│25 26│◁ /TXCB    Z80 SIO B
            /RXCB ▷│27 28│◁ RXDB
-          /SYNCB ↔│29 30│▶ /WRDYB
-                  │31 32│
-                  │33 34│
-                  │35 36│
-                  │37 38│
-                  │39 40│
-                  │41 42│
-                  │43 44│
-                  │45 46│
-                  │47 48│
-                  │49 50│
+          /SYNCB ↔│29 30│▶ /WRDYB   ___________
+             PB0 ↔│31 32│↔ PB1
+             PB2 ↔│33 34│↔ PB3
+             PB4 ↔│35 36│↔ PB5      Z80 PIO B
+             PB6 ↔│37 38│↔ PB7
+           /BSTB ◀│39 40│▶ BRDY     ___________
+          ZCT/00  │41 42│  ZCT/01
+          ZCT/02  │43 44│  ZCT/03
+        CLK/TLG3  │45 46│  CLK/TLG2
+        CLK/TLG0  │47 48│  CLK/TLG0
+             Vcc  │49 50│  GND
                   └─────┘
 
 
