@@ -369,20 +369,29 @@ serial, but if not the lower BPS rates can use slightly tweaked divisors
 to get more exact.
 
 
-Monitor ROM
------------
+AKI-80 Monitor ROM
+------------------
 
 The [documentation][az-mon-man] for the [AKI-80(Z80)モニターROM][az-mon]
 monitor ROM covers only the test mode: reset with PIO A0 held low and it
-will turn all GPIO pins on and off at 1 Hz. If you start it without PIO A0
-held low it will print an `@`. Responding with `CR` will enter something
-like a BASIC; responding with any other character will enter the monitor.
+will turn all 8255 GPIO pins on and off at 1 Hz.
+
+If you start it without PIO A0 held low it will print an `@`. Responding
+with `CR` will enter what appears to be some version of Palo Alto Tiny
+BASIC. Responding with any other character will echo `RS`+CR+LF and enter
+the monitor.
+
+In the monitor:
+- `GO0D00` will restart at the `@` prompt.
+- `GO0D18` will enter BASIC.
 
 #### Monitor Mode
 
 This monitor is designed to be used by a program running on the other end
 of the serial link, and so has very little error checking or anything else
-to make it friendly for direct use by a human.
+to make it friendly for direct use by a human. All input (commands and hex
+digits) must be in upper-case. End lines with LF (Ctrl-J, Unix newline) or
+CR+LF.
 
 Commands (all _nn_ values are ASCII hex digits):
 - `DTaaaacccc`: Print _cccc_ bytes of memory at _aaaa_ as binary.
@@ -397,7 +406,7 @@ Commands (all _nn_ values are ASCII hex digits):
 - `XR`: Print 26 hex values of memory from $FF09-$FF22.
 - `XMnn…`: Read 26 ASCII hex bytes and deposit to $FF09-$FF22. (Registers?)
 - `Znnnnxxxx`: Sets $FF03 = _nnnn_, $FF05 = _xxxx_.
-- `V`: Print version string (`AKM20220` in my copy).
+- `VR`: Print version string (`AKM20220` in my copy).
 
 #### "BASIC" Mode
 
