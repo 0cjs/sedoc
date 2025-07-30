@@ -105,9 +105,10 @@ Reset and RAM enable:
 - 1× 1 μF cap
 - [1S1588] diode. [1N4148] can substitute; meets or exceeds all 1S1588
   specs.
-- Epson S-8054ALB or [S-8054ALR] voltage detector.
-  - These are no longer available. The ABLIC Inc. [S-80845CLY] appears to
-    be a very close substitute, but has not been tested.
+- Epson S-8054ALB or [S-8054ALR] voltage detector. (No longer available.)
+  - TO-92 pinout (facing flat side, 1 at left): 1=OUT, 2=VDD (input), 3=GND.
+  - ABLIC Inc. [S-80845CLY][] (same pinout) works as a substitute.
+    (But not super-cheap: Q1=$1.76, Q10=$1.294, Q25=$1.176.)
   - Without this part, see below for how to reset the board.
 
 RAM power:
