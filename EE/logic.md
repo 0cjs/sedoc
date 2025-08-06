@@ -48,7 +48,7 @@ see later bogax post in same thread, where he also mentions that TTL
 sources less current so is slower to bring up a CMOS input.
 
 Here's a comparison of non-HC outputs to HC inputs. All HC parts use the
-Vcc = 4.5 V spec.
+Vcc = 4.5 V spec. (Also see [[nes-hw-mappers]].)
 
                 │ Fam  │ VOLmax  VILmax │ VOHmin  VOHtyp  VIHmin │
     ────────────┼──────┼────────────────┼────────────────────────┤
@@ -138,9 +138,9 @@ min HIGH = 0.7\*Vcc.
 | 3.3V CMOS |     0.0 | 0.8     |     2.0  | 3.3      |
 
 More levels (including some slightly different ones for 5V CMOS) are given
-in Figure 1 from [TI appnote SCEA043][TXB0108-app] and [Logic Voltage
-Levels][jarda14] from Jarda, based on EE Times article [A brief recap of
-popular logic standards][eetimes04]:
+in [[nes-hw-mappers]] and Figure 1 from [TI appnote SCEA043][TXB0108-app]
+and [Logic Voltage Levels][jarda14] from Jarda, based on EE Times article
+[A brief recap of popular logic standards][eetimes04]:
 
 ![Digital Switching Levels](sch/levels-scea043.png)
 ![Logic Voltage Levels](sch/levels-eetimes.png)
@@ -176,6 +176,8 @@ directly into 5V HCT, ACT or AHCT parts.
     and low power.
 - [Code and Life][lshift-cl] gives passive voltage dividers, and buffer
   parts that can run multi-voltage (4050B, 4014B, 40109B, 74HCT125.
+- NESDev [Implementing Mappers In Hardware][nes-hw-mappers] has a large
+  section on level shifting.
 - [forum.6502.org][f6-6386] discussion.
 
 __MOSFET Conversion__
@@ -327,6 +329,7 @@ Level- and current-related:
 [fc-an-319]: https://web.archive.org/web/20161223140623/https://www.fairchildsemi.com/application-notes/AN/AN-319.pdf
 [ib-levels]: http://www.interfacebus.com/voltage_threshold.html
 [jee-33vs5]: https://jeelabs.org/2010/12/16/voltage-3-3-vs-5/
+[nes-hw-mappers]: https://www.nesdev.org/wiki/Implementing_Mappers_In_Hardware
 [rbv20]: http://forum.6502.org/viewtopic.php?f=4&t=5315#p63368
 [scea005]: http://www.ti.com/lit/an/scea005/scea005.pdf
 [spark-levels]: https://learn.sparkfun.com/tutorials/logic-levels/all
