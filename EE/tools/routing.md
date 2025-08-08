@@ -82,7 +82,7 @@ explanation of this is around 40 minutes into Eric Bogatin's presentation
 This effect starts at around 1 kHz and by 1 MHz it's very tight, as shown
 in the video above around 00:48 and [this video][feranec] and the following
 image. Thus, the ideal is ground and power planes underneath the signal
-traces. Breaks in the ground plan will force the current around the break,
+traces. Breaks in the ground plane will force the current around the break,
 as seen in this [return current image](../sch/return-current.jpg).
 
 Note that shared return paths (two return paths using the same narrow
