@@ -399,8 +399,10 @@ Commands (all _nn_ values are ASCII hex digits):
   (Output is prefixed by a `D`.)
 - `GOnnnn`: Jump to address _nnnn_
 - `INnnhh`: Read from port _hhnn_ and display value.
-- `LH`: Load Intel hex records. End with type `01` EOF record followed by
-  LF or CR+LF. All input outside of records ignored to `:` ignored.
+- `LH`: Load Intel hex records. Entry to this mode is indicated with a `$`
+  and exit with an `@`. All outside of record start (`:`) and end (based on
+  the record length) is ignored. The mode is exited when a valid EOF record
+  is received.
 - `OPnnvvhh`: Write value _vv_ to port _hhnn__.
 - `SVaaaacccc`: Read _cccc_ bytes from serial, depositing starting at _aaaa_.
 - `T`: Does nothing.
