@@ -114,7 +114,7 @@ The PC-8001 and PC-8001mkII have a socket on the motherboard for an 2364
 8K×8 ROM chip that is mapped to $6000-$7FFF. The BIOS and BASIC check for
 various magic numbers:
 
-    7FFF   1b   $55 for altnerate monitor
+    7FFF   1b   $55 for alternate monitor
     7FFC   3b   alternate monitor entry point
     6002    -   expansion rom init entry point
     6000   2b   expansion ROM signature area: sig = "AB" ($41 $42)
