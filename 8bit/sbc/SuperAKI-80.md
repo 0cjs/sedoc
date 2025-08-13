@@ -2,7 +2,7 @@ SuperAKI-80 Z80 SBC
 ===================
 
 The SuperAKI-80 is a Z80-based SBC kit released on 2017-01-24 by
-[Akizukisenshi][az-s80] (an Akihabara electronics parts shop). It includes
+[Akizukidenshi][az-s80] (an Akihabara electronics parts shop). It includes
 a timer, a couple of serial ports and significant amounts (64 GPIO pins) of
 parallel I/O, as well as a memory backup circuit. Originally ¥5700, then
 ¥2000, as of 2025-04-23 it's available for ¥280 from a discount bin on the
