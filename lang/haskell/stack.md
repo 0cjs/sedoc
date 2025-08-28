@@ -16,7 +16,9 @@ Stack uses [Hpack] and the Cabal library for builds. Also see:
 - ["Why is stack not cabal?"][boes15]: differences from `cabal-install`
 - [FAQ]
 
-[Installation] and updating:
+[Installation] and updating. Note that this will automatically `sudo
+apt-get install` any system packages that it needs, as well as install
+`stack` to `/usr/local/bin/stack`.
 
     curl -sSL https://get.haskellstack.org/ | sh
     stack upgrade       # Upgrade Stack itself
