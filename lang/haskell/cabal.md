@@ -6,32 +6,57 @@ Cabal Build Tools
 Version notes:
 - ≥3.12: `cabal path` available
 
+Quick hints:
+- `cabal update` when `cabal build` can't find a package from Hackage.
+
+### Directories and Files
+
+For the user configuration file, [discovery][cfdisc] uses first found of:
+- `--config-file`
+- `$CABAL_CONFIG`.
+- `$CABAL_DIR/config`.
+- `~/.cabal/config` (if `~/.cabal/` dir exists, stop here?)
+- `$XDG_CONFIG_HOME/cabal/config`, if $XDG_CONFIG_HOME set
+- `$HOME/.config/cabal/config`
+
+All data are stored in `$CABAL_DIR`, if set, or `~/.cabal/` if it exists,
+otherwise:
+- As above for user configuration.
+- `$XDG_CACHE_HOME/cabal/`: downloaded packages and script executables.
+  This may be removed at any time; it will be rebuilt when necessary.
+- `$XDG_STATE_HOME/cabal/`: Cabal store, compiled artifacts, etc. Removing
+  this may cause installed programs to stop working.
+- `~/.local/bin/`: executables installed with `cabal install`.
+
 
 cabal.project Files ("Configuration")
 ------------------------------------
 
-The [`cabal.project`] file configures general details of the build such
-as the compiler to use, optimization levels, and so on. Many fields
-share names with command-line flags that do the same thing.
+The [`cabal.project`] configuration set is built from the last-found
+of each setting in the following files, in order:
 
-The full configuration is built from the last-found entries in the
-[global config][config], `cabal.project`, `cabal.project.freeze` and
-`cabal.project.local`. If there are no `cabal.*` files in the CWD, Cabal
-will search upward for a directory with them. Options that override this
-include `--project-dir`, `--project-file`, `--ignore-project`, etc.
+    ~/.config/cabal/config    # Actually user configuration; see above
+    cabal.project
+    cabal.project.freeze
+    cabal.project.local
+
+These files configure general details of the build such as the compiler to
+use, optimization levels, and so on. Many fields share names with
+command-line flags that do the same thing.
 
 Related commands:
-
 * [`cabal freeze`]: Creates `cabal.project.freeze` with repository
   information and a `constraints:` field locking all dependencies to
   specific versions.
-
-* `cabal configure`: Overwrites the `cabal.project.local` file with the
-  given config, e.g., `cabal configure -w ghc-9.8.1` will leave a file with
-  only `ignore-project: False` and `with-compiler: ghc-9.8.1` in it.
-  - The old config will be backed up to `…~` unless you use
-    `--disable-backup`.
-  - Use `--enable-append` to append to the current config.
+* `cabal configure`: Writes new full config to `cabal.project.local`
+  - E.g., `cabal configure -w ghc-9.8.1` will leave a file with only
+    `ignore-project: False` and `with-compiler: ghc-9.8.1` in it.
+  - Previous config ignored/wiped, but copied to `cabal.project.local~`,
+    unless `--disable-backup` used.
+  - Use `--enable-append` to insteda replace existing options in and append
+    new options to the current config. (This still copies the previous
+    config to `cabal.project.local~`.)
+  - Probably `--enable-append --disable-backup` wants mainly to be used.
 
 ### Configuration Directives
 
@@ -89,6 +114,7 @@ affect the above. It's not clear what this does; it apparently affects
 [`source-repository-package`]: https://cabal.readthedocs.io/en/stable/cabal-project-description-file.html#taking-a-dependency-from-a-source-code-repository
 [`with-compiler:`]: https://cabal.readthedocs.io/en/stable/cabal-project-description-file.html#cfg-field-with-compiler
 [cabal-#5271]: https://github.com/haskell/cabal/issues/5271
+[cfdisc]: https://cabal.readthedocs.io/en/stable/config.html#configuration-file-discovery
 [conditionals]: https://cabal.readthedocs.io/en/stable/cabal-package-description-file.html#conditional-blocks
 [config]: https://cabal.readthedocs.io/en/stable/config.html
 [environment variable]: https://cabal.readthedocs.io/en/stable/config.html#environment-variables
