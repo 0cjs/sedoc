@@ -28,18 +28,20 @@ References:
 ThinkPad 本体 Models
 --------------------
 
-X1 Carbon Generations:
+X1 Carbon Generations (model prefixes in parens):
 - 2011 original
-- 2012 Gen1
-- 2014 Gen2
-- 2015 Gen3 (FHD, 2k5 from here on)
-- 2016 Gen4 (no suspend on Linux)
-- 2017 Gen5
-- 2018 Gen6 (heard it works fine w/Linux); Extreme Gen1 (15.6", mem upgradable)
-- 2019 Gen7, (FHD/2k5/4K from here through Gen11)
-- 2020 Gen8
-- 2021 Gen9
-- 2022 Gen10
+- 2012 Gen1 (3443,4,6,8, 3460,2,3)
+- 2014 Gen2 (20A7,8)
+- 2015 Gen3 (20BS,BT)  FHD, 2k5 from here on
+- 2016 Gen4 (20FB,C)  no suspend on Linux
+- 2017 Gen5 (20HR,Q 20KH,G)
+- 2018 Gen6 heard it works fine w/Linux
+  - 2018 Extreme Gen1  15.6", mem upgradable
+- 2019 Gen7 (20QE,QD,R1,R2) FHD/2k5/4K from here through Gen11
+- 2020 Gen8 (20UA,9)
+  - SSD: NVMe M.2 2280; M2 3-4mm screw, torx for bottom cover (gen 7-10?)
+- 2021 Gen9 (20X,W)
+- 2022 Gen10 (21CB)
 - 2023 Gen11 (actually 2022-12)
 
 
