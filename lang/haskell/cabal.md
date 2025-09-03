@@ -22,10 +22,12 @@ For the user configuration file, [discovery][cfdisc] uses first found of:
 All data are stored in `$CABAL_DIR`, if set, or `~/.cabal/` if it exists,
 otherwise:
 - As above for user configuration.
-- `$XDG_CACHE_HOME/cabal/`: downloaded packages and script executables.
-  This may be removed at any time; it will be rebuilt when necessary.
-- `$XDG_STATE_HOME/cabal/`: Cabal store, compiled artifacts, etc. Removing
-  this may cause installed programs to stop working.
+- `${XDG_CACHE_HOME:-$HOME/.cache}/cabal/`: downloaded packages and script
+  executables. This may be removed at any time; it will be rebuilt when
+  necessary.
+- `${XDG_STATE_HOME:-$HOME/.local/state}/cabal/`: Cabal store, compiled
+  artifacts, etc. Removing this may cause installed programs to stop
+  working.
 - `~/.local/bin/`: executables installed with `cabal install`.
 
 
