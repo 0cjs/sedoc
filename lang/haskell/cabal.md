@@ -46,6 +46,25 @@ These files configure general details of the build such as the compiler to
 use, optimization levels, and so on. Many fields share names with
 command-line flags that do the same thing.
 
+If the `--project-dir` opton is given, Cabal searches for `cabal.project*`
+files in just that directory. Without that option, it will search the
+current working directory and every parent directory up to the root.
+
+The existence of a `project.cabal*` file(s) found by Cabal has several
+implications:
+1. The project directory will be set to the directory containing the
+   `cabal.project*` file(s).
+2. If a `cabal.project` file is found, the default `packages: .` setting
+   will be removed. If you do not add an explict  `packages:` setting to
+   `cabal.project` it will never find any .cabal files and you will recieve
+   the (usually incorrect) message, "There is no <pkgname>.cabal package
+   file or cabal.project file." Thus you must generally add `packages: .`
+   or similar to `cabal.project` if it exists.
+3. If you are using any `cabal.project*` files and you have not yet
+   generated your .cabal files, you must use
+   `--project-dir=path/to/empty/directory --with-compiler=…` when using
+   commands such as `cabal update` or `cabal install`.
+
 Related commands:
 * [`cabal freeze`]: Creates `cabal.project.freeze` with repository
   information and a `constraints:` field locking all dependencies to
@@ -104,6 +123,10 @@ affect the above. It's not clear what this does; it apparently affects
   [`source-repository-package`] stanzas. Directives within these stanzas
   include `type: git`, `location: URL`, `branch: NAME`, `tag: REF`,
   `subdir: PATH` and `post-checkout-command: …`.
+
+
+Cabal Files ("Configuration")
+-----------------------------
 
 
 
