@@ -14,9 +14,30 @@ order.)
 
 Documents are grouped together in _collections_ (each assigned an immutable
 UUID) which in turn are grouped into _databases_ served by a MongoDB
-server. Each database has a separate set of files for storage. System
-databases include `admin`, `local` and `config`.
+server. Each database has a separate set of files for storage.
 
+System databases include:
+* `local`: Unique to each MongoDB instance and managed by MongoDB. Should
+  never be loaded or copied to another instance, which is why `mongodump`
+  ignores it by default. The `local.startup_log` collection can provide
+  server diagnostic information.)
+* `admin`: Contains [server configuration][admin-params],
+  [users][admin-users] and [roles][admin-roles].
+* [`config`][db-config]: Used for sharded operations and client query
+  consistency support for replica sets.
+
+There is administrative information both in collections in the `admin`
+database and in each individual database; these are called [System
+Collections][admin-syscol]. They include:
+- `admin.system.roles`
+- `admin.system.users`
+- `admin.system.version`: Internal stuff; do not modify.
+- `config.system.indexBuilds`
+- `config.system.preimages`
+- `<database>.system.buckets`
+- `<database>.system.profile`
+- `<database>.system.js`: Server-side JavaScript.
+- `<database>.system.views`: Not writable by users.
 
 
 Installation
@@ -37,6 +58,29 @@ Server:
 The tools (MongoDB Shell, MongoDB Command Line Database Tools, etc.)
 are separate packages from the server on independent release cycles.
 See the [MongoDB tools download page][mdb-dl-tools].
+
+
+Sysadmin
+--------
+
+### Backup, Recovery and Database Copy
+
+There are various backup, recovery and database copy methods. See [Backup
+Methods for a Self-Managed Deployment][mdb-core-bu], which as a table
+comparing them as well. Using any of the below with replicated or sharded
+instances may be more complex.
+
+- Cloud stuff with the Enterprise version.
+- File system snapshots. Journaling must be enabled and the journals in the
+  same snapshot. Very fast to save and restore, but effectively brings up
+  the exact same instance, not an independent copy.
+- Copying underlying data files. Similar to an FS snapshot, but requires
+  stopping writes for the duration of the copy. Produces larger backups
+  than a dump.
+- `mongodump`. Backup is slower and higher load (potentially pushing
+  working data set out of RAM). Restore is slower due to database load,
+  index build, etc. Gives a new instance suitable to run as a copy of
+  the backed-up server.
 
 
 Tools and Clients
@@ -156,10 +200,16 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 <!-------------------------------------------------------------------->
 [BSON]: https://en.wikipedia.org/wiki/BSON
 [ObjectID]: https://www.mongodb.com/docs/manual/reference/bson-types/#std-label-objectid
+[admin-params]: https://www.mongodb.com/docs/manual/reference/parameters/
+[admin-roles]: https://www.mongodb.com/docs/manual/reference/built-in-roles/
+[admin-syscol]: https://www.mongodb.com/docs/manual/reference/system-collections/#std-label-metadata-system-collections
+[admin-users]: https://www.mongodb.com/docs/manual/reference/database-users/
 [compound]: https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/#std-label-index-type-compound
+[db-config]: https://www.mongodb.com/docs/manual/reference/config-database/
 [documents]: https://www.mongodb.com/docs/manual/core/document/
 [id]: https://www.mongodb.com/docs/manual/core/document/#the-_id-field
 
+<!-- Installation -->
 [dr-mongo-tags]: https://github.com/docker-library/docs/blob/master/mongo/README.md
 [dr-mongo]: https://hub.docker.com/_/mongo/
 [mdb-dl-server]: https://www.mongodb.com/try/download/community-edition/releases
@@ -168,6 +218,9 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 [mdb-tools]: https://www.mongodb.com/docs/database-tools/
 [mtut-shell]: https://www.mongodbtutorial.org/getting-started/mongodb-shell/
 [sling-mongosh]: https://www.slingacademy.com/article/mongodb-shell-commands-the-complete-cheat-sheet/
+
+<!-- Sysadmin -->
+[mdb-core-bu]: https://www.mongodb.com/docs/manual/core/backups/
 
 <!-- Tools and Clients -->
 [Network Compression]: https://www.mongodb.com/docs/drivers/go/current/connect/connection-options/network-compression/
