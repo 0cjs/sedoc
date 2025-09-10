@@ -1,6 +1,23 @@
 MongoDB
 =======
 
+MongoDB stores _[documents]_ which are essentially JSON objects (though
+actually [BSON], which is slightly more type-rich). Each document has an
+_[id]_ field serving as the primary key which is either supplied by the
+client or is an automatically generated _[ObjectID]_ (except for
+time-series collections). Additonal _secondary indexes_ (single-field or
+_[compound]_) may be created for faster lookups.
+
+Document fields are ordered, with `_id` always first and the remainder in
+the order supplied in the write request. (Renaming fields may change the
+order.)
+
+Documents are grouped together in _collections_ (each assigned an immutable
+UUID) which in turn are grouped into _databases_ served by a MongoDB
+server. Each database has a separate set of files for storage. System
+databases include `admin`, `local` and `config`.
+
+
 
 Installation
 ------------
@@ -22,22 +39,64 @@ are separate packages from the server on independent release cycles.
 See the [MongoDB tools download page][mdb-dl-tools].
 
 
-Tools
------
+Tools and Clients
+-----------------
 
 Common options:
-- `-h HOST`, `-p PORT`: Connection target.
+- `-h HOST[:PORT]`, `-p PORT`: Connection target. Default is localhost:27017.
+- `-u USERNAME`, `-p PASSWORD`.
+- `--uri URI`: Connection information in format `mongodb://`
+  `username:password@]host1[:port1]…[,hostN[:portN]]][/[database][?options]]`.
+- `--config=FILE`: File with `name: value` pairs for `password`, `uri`,
+  `sslPEMKeyPassword`.
+- Various SSL options, including cert info for authentication.
 
-MongoDB Shell `mongosh`:
+### MongoDB Shell `mongosh`:
+
 - mongodb.com, [Welcome to MongoDB Shell (`mongosh`)][mdb-shell]
 - mongodbtutorial.org, [MongoDB Shell][mtut-shell]
 - slingacademy.com, [MongoDB Shell Commands: The Complete Cheat
   Sheet][sling-mongosh]
 
-MongoDB Database Tools:
-- `mongodump`, `mongorestore`, `bsondump`, `mongoimport`, `mongoexport`,
+### MongoDB Database Tools
+
+- [`mongodump`], `mongorestore`, `bsondump`, `mongoimport`, `mongoexport`,
   `mongostat`, `mongotop`, `mongofiles`.
 - mongodb.com, [The MongoDB Database Tools Documentation][mdb-tools]
+- Since MongoDB 6.0, separate release track starting w/version 100.0.0.
+
+#### mongodump
+
+The `--archive` option produces a single file, otherwise the dump is in a
+directory `dump` (change the name with `-o`/`--out`) with a subdir for each
+database and a `.bson` file for each collection. Views will be in
+`.metadata.json` files. Adding `--oplog` will add an `oplog.bson` file at
+the top level containing write operations that occured during the dump.
+
+Options:
+* `--gzip`: Compresses BSON and JSON metadata files; `.gz` extensions will
+  be added.
+* `--compressors=snappy|zlib|zstd`: Compression between server and client.
+  See [Network Compression].
+* `-d=DATABASE`, `-c=COLLECTION`: Dump only given database and collection.
+* `-q=JSON`: Limit dump to documents matching query.
+* `--readPreference=STR|DOCUMENT`
+* `--dumpDbUsersAndRoles`
+* `--excludeCollection=NAME`, `--excludeCollectionsWithPrefix=PREFIX`
+* `-j=N`, `--numParallelCollections=n`: Parallel export; default 4.
+
+#### bsondump
+
+Takes a `.bson` file (or stdin) and gives JSON or a debug format for
+diagnostic purposes.
+
+Options:
+* `--outFile=FILE`: Output to _file_ instead of stdout.
+* `--pretty`: More human-readable JSON. (Tab indentation levels; use
+  `python3 -m json.tool` for four spaces.)
+* `--type=debug`: Produce a debug format that includes extra BSON info.
+
+
 
 
 Replication
@@ -56,7 +115,7 @@ used solely for voting.
 (It's also possible to have [sharded] clusters, where each shard is a
 separate replica set. These require a replica set of config servers. For
 testing, one can set up a degenerate sharded configuration with only one
-shard.)
+shard.) The `mongos` daemon routes requests to the correct shard.
 
 From the data-holding nodes a _primary_ is elected; the remainder are
 _secondary_ nodes. All nodes can respond to read requests at all times, but
@@ -95,6 +154,12 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 
 
 <!-------------------------------------------------------------------->
+[BSON]: https://en.wikipedia.org/wiki/BSON
+[ObjectID]: https://www.mongodb.com/docs/manual/reference/bson-types/#std-label-objectid
+[compound]: https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/#std-label-index-type-compound
+[documents]: https://www.mongodb.com/docs/manual/core/document/
+[id]: https://www.mongodb.com/docs/manual/core/document/#the-_id-field
+
 [dr-mongo-tags]: https://github.com/docker-library/docs/blob/master/mongo/README.md
 [dr-mongo]: https://hub.docker.com/_/mongo/
 [mdb-dl-server]: https://www.mongodb.com/try/download/community-edition/releases
@@ -103,6 +168,10 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 [mdb-tools]: https://www.mongodb.com/docs/database-tools/
 [mtut-shell]: https://www.mongodbtutorial.org/getting-started/mongodb-shell/
 [sling-mongosh]: https://www.slingacademy.com/article/mongodb-shell-commands-the-complete-cheat-sheet/
+
+<!-- Tools and Clients -->
+[Network Compression]: https://www.mongodb.com/docs/drivers/go/current/connect/connection-options/network-compression/
+[`mongodump`]: https://www.mongodb.com/docs/database-tools/mongodump/
 
 <!-- Replication -->
 [Acknowledgement Behaviour]: https://www.mongodb.com/docs/manual/reference/write-concern/#std-label-wc-ack-behavior
