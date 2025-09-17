@@ -32,6 +32,7 @@ The programs provided are:
     kicad       Project manager (inc. menu of other progams below)
     eeschema    Schematic editor
     pcbnew      Board editor
+    gerbview    View Gerber files (list of files or a .ZIP)
     kicad-cli   Command-line interface
 
 
