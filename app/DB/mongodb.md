@@ -55,9 +55,13 @@ Server:
   - `8.0.13-noble` (kernel 6.8) seems to run fine on Debian 12 (kernel 6.1)
     as well.
 
-The tools (MongoDB Shell, MongoDB Command Line Database Tools, etc.)
-are separate packages from the server on independent release cycles.
-See the [MongoDB tools download page][mdb-dl-tools].
+The tools (MongoDB Shell, MongoDB Compass, MongoDB Command Line Database
+Tools, etc.) are separate packages from the server on independent release
+cycles. See the [MongoDB tools download page][mdb-dl-tools].
+
+- Compass: For Debian-based systems the only [download][mdb-dl-compass] is
+  a Gnome-based Ubuntu 64-bit 20.04+ .deb package, but this works fine
+  on Debian 12.
 
 
 Sysadmin
@@ -102,6 +106,14 @@ Common options:
 - slingacademy.com, [MongoDB Shell Commands: The Complete Cheat
   Sheet][sling-mongosh]
 
+### MongoDB Compass `mongodb-compass`
+
+[MongoDB Compass][mdb-compass] ([docs][mdb-compass-docs],
+[download][mdb-dl-compass]) is a GUI tool for data exploration. This does
+not accept any host/port parameter options, though it does accept `--user`
+and `--password`. It does appear to take a [connection string][] as the
+first argument. (`mongdb://HOST:PORT/`-style, but not plain `HOST:PORT`.)
+
 ### MongoDB Database Tools
 
 - [`mongodump`], `mongorestore`, `bsondump`, `mongoimport`, `mongoexport`,
@@ -139,8 +151,6 @@ Options:
 * `--pretty`: More human-readable JSON. (Tab indentation levels; use
   `python3 -m json.tool` for four spaces.)
 * `--type=debug`: Produce a debug format that includes extra BSON info.
-
-
 
 
 Replication
@@ -212,6 +222,9 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 <!-- Installation -->
 [dr-mongo-tags]: https://github.com/docker-library/docs/blob/master/mongo/README.md
 [dr-mongo]: https://hub.docker.com/_/mongo/
+[mdb-compass-docs]: https://www.mongodb.com/docs/compass/
+[mdb-compass]: https://www.mongodb.com/products/tools/compass
+[mdb-dl-compass]: https://www.mongodb.com/try/download/compass
 [mdb-dl-server]: https://www.mongodb.com/try/download/community-edition/releases
 [mdb-dl-tools]: https://www.mongodb.com/try/download/shell
 [mdb-shell]: https://www.mongodb.com/docs/mongodb-shell/
@@ -225,6 +238,7 @@ are in the replica set. See [Acknowledgement Behaviour] for more details.
 <!-- Tools and Clients -->
 [Network Compression]: https://www.mongodb.com/docs/drivers/go/current/connect/connection-options/network-compression/
 [`mongodump`]: https://www.mongodb.com/docs/database-tools/mongodump/
+[connection string]: https://www.mongodb.com/docs/manual/reference/connection-string/
 
 <!-- Replication -->
 [Acknowledgement Behaviour]: https://www.mongodb.com/docs/manual/reference/write-concern/#std-label-wc-ack-behavior
