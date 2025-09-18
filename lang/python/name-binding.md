@@ -7,7 +7,9 @@ Python Names, Binding and Namespaces
 The primary documentation for this is the [Execution model] section of
 the Python 3 reference and the [Scopes and Namespaces] section of the
 [Classes] tutorial. [Wikipedia] also has a useful summary. [How lookup
-works][hlw] gets into the deep, grungy details.
+works][hlw] gets into the deep, grungy details, and [Inside CPython's
+attriburte lookup][cuni25] gets into the details of lookup on objects
+that contain a [`__dict__`] property (but not those that do not).
 
 Python programs are constructed from _code blocks_: modules, function
 bodies, and [class definitions]. Blocks are executed as a unit and
@@ -128,10 +130,12 @@ Exception Hierarchy
 
 
 
+<!-------------------------------------------------------------------->
 [`__dict__`]: https://docs.python.org/3/library/stdtypes.html#object.__dict__
 [`builtins`]: https://docs.python.org/3/library/builtins.html
 [class definitions]: https://docs.python.org/3/reference/compound_stmts.html#class
 [classes]: https://docs.python.org/3/tutorial/classes.html
+[cuni25]: https://antocuni.eu/2025/08/25/inside-cpythons-attribute-lookup/
 [execution model]: https://docs.python.org/3/reference/executionmodel.html
 [hlw]: https://stupidpythonideas.blogspot.com/2015/12/how-lookup-works.html
 [inheritance]: https://docs.python.org/3/tutorial/classes.html#inheritance
