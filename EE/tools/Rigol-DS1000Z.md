@@ -12,7 +12,8 @@ General
 -------
 
 References:
-- [User Guide, DS1000Z Series Digital Oscilloscope][manual] (PDF)
+- Rigol, [User Guide, DS1000Z Series Digital Oscilloscope][manual], 2019. (PDF)
+- Rigol, [DHO800 Series Digital Oscilloscope User Guide], 2023-08. (PDF)
 - Videos in the [Basics of Oscilloscopes][rv bas] series.
 
 Specs:
