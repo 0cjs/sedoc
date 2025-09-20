@@ -128,6 +128,81 @@ affect the above. It's not clear what this does; it apparently affects
 Cabal Files ("Configuration")
 -----------------------------
 
+XXX
+
+
+Package Data Files
+------------------
+
+References:
+- Neil Mitchell's Blog, ["Adding data files using Cabal"][mitch08]
+- Cabal docs, [`data-files:`]
+- Cabal docs, [1.7. Accessing data files from package code][cd§1.7]
+
+The top-section of the .cabal file may contain a [`data-files:`] stanza
+giving patterns whose matching files in the source repo will be included in
+the run-time package and accessible at run time. These are relative to the
+project directory by default; `data-dir:` can change this. (Similar stanzas
+include `extra-source-files:`  and `extra-files:` for the source repo,
+`extra-doc-files` for the generated Haddock generation, and
+`extra-tmp-files:` to be removed by `cabal clean`.)
+
+Wildcards are limited as follows. Use at least Cabal 3.8 or there will be
+further limitations not documented here.
+- The filename in the path may include a `*` wildcard, but only of the form
+  `*.ext`: there must be a trailing file extension, and there cannot be any
+  prefixes. So `…/chapter-*.html`, `…/foo*` and `…/*` are all not allowed.
+- The path leading to the filename may include `**` wildcard (recursive
+  matching) only as the final component before the filename, and the
+  filename must use a `*` wildcard. Generally, always have a subfolder
+  before the `**` wildcard because otherwise the search will be done from
+  the top level, including `dist-newstyle/`, `.git/`, etc.
+
+Cabal generates a module `Paths_PKGNAME` providing various functions to get
+paths, `getBinDir ∷ IO FilePath`, `getDataDir ∷ IO FilePath`, etc. (This
+can be found under an `autogen/` directory in the Cabal build dir.) The
+commonly used function for this case is:
+
+    getDataFileName :: FilePath -> IO FilePath
+    getDataFileName name = do
+      dir <- getDataDir
+      return (dir `joinFileName` name)
+
+It's not clear whether this correctly deals with `/` versus `\\` in the
+arguments its given vs. the platform it's on. There may also be issues with
+use during development; see below.
+
+Other useful things provided there are `version ∷ Version` (see
+[Data.Version]), `joinFileName` and `pathSeparator ∷ Char`.
+
+There's also a `PackageInfo_PKGNAME` that exports `version ∷ Version` as
+above, and `String`s  with information from the .cabal file: `name`,
+`synopsis`, `copyright` and `homepage`.
+
+#### Package Data Files During Development
+
+Back in 2008, [Neil Mitchell found][mitch08] that the above worked when
+the package was installed, but not during development. (An examination
+of a `Paths_*.hs` indicates that it references `~/.cabal/…`, which does
+not even exist on the machine checked.)
+
+Mitchell suggests adding your own `Paths_PKGNAME` module alongside your
+other modules, such as the following which returns data paths as relative
+to the current working directory:
+
+    module Paths_myproject where
+
+    getDataFileName :: FilePath -> IO FilePath
+    getDataFileName = return
+
+But it appears this may have worked because in development he was not
+building with Cabal:
+
+> While developing the program our hand-created Paths module will be
+> invoked, which says the data is always in the current directory. When
+> doing a Cabal build, Cabal will choose its custom generated Paths module
+> over ours...
+
 
 
 <!-------------------------------------------------------------------->
@@ -143,3 +218,9 @@ Cabal Files ("Configuration")
 [conditionals]: https://cabal.readthedocs.io/en/stable/cabal-package-description-file.html#conditional-blocks
 [config]: https://cabal.readthedocs.io/en/stable/config.html
 [environment variable]: https://cabal.readthedocs.io/en/stable/config.html#environment-variables
+
+<!-- Packaging -->
+[Data.Version]: https://hackage.haskell.org/package/base-4.21.0.0/docs/Data-Version.html
+[`data-files:`]: https://cabal.readthedocs.io/en/stable/cabal-package-description-file.html#pkg-field-data-files
+[cd§1.7]: https://cabal.readthedocs.io/en/stable/cabal-package-description-file.html#accessing-data-files-from-package-code
+[mitch08]: https://neilmitchell.blogspot.com/2008/02/adding-data-files-using-cabal.html
