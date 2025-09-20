@@ -181,6 +181,12 @@ above, and `String`s  with information from the .cabal file: `name`,
 
 #### Package Data Files During Development
 
+According to GPT-5 mini, though the data paths point to the installed
+location, using `cabal run` will change the paths to use the in-tree files.
+It also suggests the "provide your own" solution below. It also appears
+from the generated code that you can set `PKGNAME_datadir` in the
+environment to override the path that `Paths_PKGNAME` will choose.
+
 Back in 2008, [Neil Mitchell found][mitch08] that the above worked when
 the package was installed, but not during development. (An examination
 of a `Paths_*.hs` indicates that it references `~/.cabal/…`, which does
