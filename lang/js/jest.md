@@ -29,11 +29,13 @@ as `--detectOpenHandles` imply `--runInBand=true`.
 
 In either case, every test _file_ runs in a separate [V8 context/realm]
 which means that `globalThis` is fresh, all modules will be cleared, and so
-on: separate test files do not have _any_ global information, such as
-module singletons, set by other test files or their setup/teardown. (This
-cannot be changed.) This implies that, e.g., you cannot share a database
-connection between test files and you must shut down any database
-connections in a file shutdown hook.
+on: separate test files do not have _any_ global interpreter information,
+such as module singletons, set by other test files or their setup/teardown.
+(This cannot be changed.) This implies that, e.g., you cannot share a
+database connection between test files and you must shut down any database
+connections in a file shutdown hook. You can, however, set Unix environment
+variables in the global setup (see below) and they will be inherited by the
+worker processes.
 
 Test _within_ a single file do share globals unless you set `resetModules:
 true`, in which case modules will be reset between tests (but not
