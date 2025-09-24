@@ -52,6 +52,21 @@ unwrap a fulfilled or rejected promise and give the value, or fail if the
 promise was instead rejected or fulfilled; usually you will need `await` in
 front of the `expect()`
 
+[Setup and Teardown] describes how this generally works. The following may
+be used multiple times to add setup and teardown; they will all be executed
+before and after the test or file, regardles of their order in the file.
+Each returns a function to be executed at the appropriate point.
+- `beforeAll`: function to execute before any tests in the file.
+- `beforeEach`: function to execute before each individual test.
+- `afterEach`: function to execute before each individual test.
+- `afterEach`: function to execute after all tests in the file.
+
+The configuration variables [`setupFiles`] and [`setupFilesAfterEnv`] are
+arrays of paths to modules to be run for each file before and after the
+test environment is set up. These too just call the functions above.
+Module-level variables that they define are valid for the duration of a
+test file only.
+
 
 Configuration
 -------------
@@ -87,7 +102,10 @@ However, file setup/teardown call e.g.
 [cheatsheet]: https://devhints.io/jest
 
 <!-- Assertions -->
+[Setup and Teardown]: https://jestjs.io/docs/setup-teardown
 [`expect()`]: https://jestjs.io/docs/expect
+[`setupFilesAfterEnv`]: https://jestjs.io/docs/configuration#setupfilesafterenv-array
+[`setupFiles`]: https://jestjs.io/docs/configuration#setupfiles-array
 
 <!-- Processes and Globals -->
 [V8 context/realm]: https://stackoverflow.com/q/49832187/107294
