@@ -13,7 +13,7 @@ Processes and Globals
 ---------------------
 
 Jest runs in one of two modes. In all modes you can get the worker ID
-(Jest's process number: 1, 2, …) with from `process.env.JEST_WORKER_ID`.
+(Jest's process number: 1, 2, …) from `process.env.JEST_WORKER_ID`.
 
 The default is multi-process mode. A main process will start, with
 `JEST_WORKER_ID` undefined, and run the global setup and teardown. Each
