@@ -42,6 +42,25 @@ true`, in which case modules will be reset between tests (but not
 `globalThis`).
 
 
+Tests
+-----
+
+Functions that generate tests and other things are documented on the
+[Globals][] (meaning global symbols) page.
+
+Tests are generated with functions that take a description (string) and
+a function (usually lambda'd: `() => { … }`).
+
+    test                Basic test.
+    test.skip           Skip this; skipped count noted in summary.
+    test.failing        Must fail or will generate an error.
+    test.skip.failing   Skip a test expected to fail.
+    test.todo           Takes description only; to-do count noted in summary.
+    test.concurent      Experimental. Takes async fn.
+    test.each           (See below.)
+    test.*.each
+
+
 Assertions
 ----------
 
@@ -102,6 +121,9 @@ However, file setup/teardown call e.g.
 [GitHub]: https://facebook.github.io/jest/
 [Home Page]: https://jestjs.io/
 [cheatsheet]: https://devhints.io/jest
+
+<!-- Tests -->
+[Globals]: https://jestjs.io/docs/api
 
 <!-- Assertions -->
 [Setup and Teardown]: https://jestjs.io/docs/setup-teardown
