@@ -88,6 +88,11 @@ Notes:
   signal to JP-21 connectors to set aspect ratio (SCART pin 11 (8?), 0-12V).
 - Sync cable colors changed from standard gray/black due to GND conflict
 
+#### DIN-8a (270°) Analogue
+
+Super Cassette Vision:
+- 1=+5V  2=GND  3=audio  4=CSYNC  5=N/C  5=Red  6=Green  7=Green  8=Blue
+
 #### CBM (Commodore 64, VIC-20) A/V DIN-5 RCA
 
     Pin Wire    C64         RCA             VIC-20
