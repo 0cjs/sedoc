@@ -12,6 +12,24 @@ Testing Frameworks
   Typically you'll need to install both `jest` and `babel-jest`.
 
 
+Syntax
+------
+
+### Exceptions
+
+Exceptions are raised with `throw`, typically `throw new Error('message')`.
+[`Error`] indicates a runtime error; subclasses include:
+- `EvalError`: error from global function `eval()`.
+- `RangeError`: numeric param out of range.
+- `ReferenceError`: de-referencing an invalid reference.
+- `SyntaxError`.
+- `TypeError`: param has invalid type.
+- `URIError`: bad parameter(s) to `encodeURI()` or `decodeURI()`.
+- `AggregateError`: wrapper for several errors when they need to be
+  reported together, e.g. by `Promise.any()`.
+- `InternalError`: JS engine error.
+
+
 Global APIs
 -----------
 
@@ -62,6 +80,9 @@ __Additional formatting:__
 [jest-cheat]: https://devhints.io/jest
 [es6modules]: https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
 [jshoist]: http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
+
+<!-- Syntax -->
+[`Error`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 
 <!-- Global APIs -->
 [Styling console output]: https://developer.mozilla.org/en-US/docs/Web/API/console#styling_console_output
