@@ -15,6 +15,37 @@ Testing Frameworks
 Syntax
 ------
 
+### Syntax
+
+- Objects are maps; the [property access] operators are:
+  - `.`: _obj_`.`.
+  - `[…]`: _obj_`[expr]` where _expr_ evaulates to a string or [symbol]. A
+    space is allowed before the opening bracket.
+  - `.#`: _obj_`.#name` where _name_ is a private element in a class.
+  - `?.` short-circuit property access operator; when any application in a
+    chain produces `undefined` or `null`, that is immediately returned,
+    avoiding the error that would be thrown by the next access. E.g.:
+    - `a.b?.c`: null/undef if _a_ has no _b_ property
+    - `a?.[p].c`: null/undef is _a_ has no property named by expression _p_
+    - `a.b?.()`: null/undef if _a_ has no function `b()` (a `TypeError`
+      will be thrown if `.b` exists but is not a function)
+- `??` is the [nullish coalescing operator]; it evaluates to the LHS if
+  it's not `null` or `undefined`, otherwise the RHS. (It has precedence
+  directly between `||` and `? :`.) The `||` operator is similar, but tests
+  whether the LHS is falsy.
+
+### Immutable Primitives
+
+- The primitives string, number, boolean, undefined, null, symbol and
+  bigint are all immutable; "changing" them with e.g. `s += '.exe'`
+  creates a new object and changes the reference to point to it.
+- Re-assigning parameters to a function changes the bindings within the
+  function, and does not affect bindings outside the function. (Mutating
+  the objects will change them globally, however.)
+- `Symbol(…)` produces a globally unique [symbol] with every call. Certain
+  well-known symbols that are properties on Symbol (e.g.,
+  `Symbol.hasInstance` serve as markers for protocols.
+
 ### Exceptions
 
 Exceptions are raised with `throw`, typically `throw new Error('message')`.
@@ -80,6 +111,11 @@ __Additional formatting:__
 [jest-cheat]: https://devhints.io/jest
 [es6modules]: https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
 [jshoist]: http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
+
+<!-- Syntax -->
+[nullish coalescing operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing
+[property access]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
+[symbol]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
 
 <!-- Syntax -->
 [`Error`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
