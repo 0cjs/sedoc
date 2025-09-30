@@ -60,6 +60,17 @@ a function (usually lambda'd: `() => { … }`).
     test.each           (See below.)
     test.*.each
 
+When using `.toThrow()`, `.toThrowErrorMatchingSnapshot()` and
+`.toThrowErrorMatchingInlineSnapshot()`, pass a _lambda_ to `expect()`:
+
+    expect(() => { f() }).toThrow(new Error('must be this exact message'))
+
+`.toThrow()` takes an optional parameter:
+- regexp: error message matches the pattern
+- string: error message includes the substring
+- error class: error object is an instance of the class.
+- error object: message equal to the `.message` property of the object
+
 
 Assertions
 ----------
