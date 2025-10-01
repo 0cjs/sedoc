@@ -43,6 +43,32 @@ Syntax
   well-known symbols that are properties on Symbol (e.g.,
   `Symbol.hasInstance` serve as markers for protocols.
 
+### Global Variables
+
+Every JS environment has one [global object]; what it is varies depending
+on the environment. (In a browser it's usually an instance of `Window`;
+Node.js creates one that it used to call [`global`].)
+
+The global object can always be accessed as [`globalThis`]; in the global
+context (i.e., for code not in a module: at the Node REPL or in `<script>`
+without `type="module"`) it is also available as `this`.
+
+All "global" references are actually references to properties on the global
+object, e.g., `Error == globalThis.Error`.
+
+There is a global environment, but the only code that runs in it is code in
+`<script>` tags without `type="module"` and typed at the Node REPL.
+(Running `node x.js` actually wraps the file in, approximately,
+`(function(exports, require, module, __filename, __dirname) { … })` and so
+this is run in that function's environment. But in the global environment
+(and non-strict mode?) we have the following effects:
+
+    var one = 1             // global scope; sets globalThis.one
+    function two() { }      // global scope; sets globalThis.two
+    globalThis.three = 3    // global scope; sets globalThis.three
+    let four = 4            // effectively local; NOT on globalThis
+    const five = 5          // effectively local; NOT on globalThis
+
 ### Exceptions
 
 Exceptions are raised with `throw`, typically `throw new Error('message')`.
@@ -110,10 +136,13 @@ __Additional formatting:__
 [property access]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
 [symbol]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
 
-<!-- Syntax -->
-[`Error`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+<!-- Global Variables -->
+[`globalThis`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
+[`global`]: https://nodejs.org/api/globals.html#globals_global
+[global object]: https://developer.mozilla.org/en-US/docs/Glossary/Global_object
 
 <!-- Global APIs -->
 [Styling console output]: https://developer.mozilla.org/en-US/docs/Web/API/console#styling_console_output
+[`Error`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 [`console`]: https://developer.mozilla.org/en-US/docs/Web/API/console
 [substitution arguments]: https://developer.mozilla.org/en-US/docs/Web/API/console#using_string_substitutions
