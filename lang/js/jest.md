@@ -16,30 +16,46 @@ Installation notes:
 Processes and Globals
 ---------------------
 
-Jest runs in one of two modes. In all modes you can get the worker ID
-(Jest's process number: 1, 2, …) from `process.env.JEST_WORKER_ID`.
+Jest runs in one of two modes: _single-process_ mode in which everything
+is run in one process, and _multi-process_ mode where the configuration and
+global setup/teardown are run in the "main" process but tests are run in
+_worker_ sub-processes.
 
-The default is multi-process mode. A main process will start, with
-`JEST_WORKER_ID` undefined, and run the global setup and teardown. Each
-test file will be run in a worker subprocess (`JEST_WORKER_ID` will be an
-integer) that shares no global data with the main process. Worker processes
-may be re-used to run additional test files; the number of worker processes
-can be set with [`--maxWorkersN`][] (_N_ = e.g. `1` or `50%`); the default
-is the cores-1, or cores/2 in watch mode.
+__WARNING:__ Jest may run small numbers of tests, with no more than one
+async test, in single-process mode even if you appear to have specified
+multi-process mode. This can cause e.g. variables set on `globalThis` in
+the global setup to become available to tests in some runs, but not in
+others. Generally, _never_ have tests rely on global variables or other
+process- or interpreter-internal state for any reason.
 
-With `--runInBand` (not available in the config file) all tests will be run
-in the main process, which will be assigned worker ID 1. Other options such
-as `--detectOpenHandles` imply `--runInBand=true`.
+In all modes you can get the worker ID (1, 2, …) for that process from
+`process.env.JEST_WORKER_ID`. In multi-process mode the worker ID is
+`undefined` in the main process; in single-process mode the worker ID is
+`undefined` until tests start running and then will be `1`.
+
+In multi-process mode a main process will run the configuration file and
+global setup/teardown, but each test file will be run in a worker
+subprocess  that shares no global data with the main process. Worker
+processes may be re-used to run additional test files; the number of worker
+processes can be set with [`--maxWorkersN`][] (_N_ = e.g. `1` or `50%`);
+the default is the cores-1, or cores/2 in watch mode.
+
+In single-process mode all tests will be run in the main process, which
+will be assigned worker ID 1 after global configuration and setup. This may
+be enabled with `--runInBand=true` (not available in the config file),
+which is implied by some other options (e.g. `--detectOpenHandles`) or may
+happen automatically for certain sets of tests (see above).
 
 In either case, every test _file_ runs in a separate [V8 context/realm]
-which means that `globalThis` is fresh, all modules will be cleared, and so
-on: separate test files do not have _any_ global interpreter information,
-such as module singletons, set by other test files or their setup/teardown.
-(This cannot be changed.) This implies that, e.g., you cannot share a
-database connection between test files and you must shut down any database
-connections in a file shutdown hook. You can, however, set Unix environment
-variables in the global setup (see below) and they will be inherited by the
-worker processes.
+which means that `globalThis` is fresh (though containing anything set in
+configuration or global setup in single-process mode), all modules will be
+cleared, and so on: separate test files do not have _any_ global
+interpreter information, such as module singletons, set by other test files
+or their setup/teardown. (This cannot be changed.) This implies that, e.g.,
+you cannot share a database connection between test files and you must shut
+down any database connections in a file shutdown hook. You can, however,
+set Unix environment variables in the global setup (see below) and they
+will be inherited by the worker processes.
 
 Test _within_ a single file do share globals unless you set `resetModules:
 true`, in which case modules will be reset between tests (but not
