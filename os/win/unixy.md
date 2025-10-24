@@ -122,6 +122,11 @@ On Windows 10 with Git for Windows installed:
 * `MSYSTEM=MINGW64`
 * `MINGW_PREFIX=/mingw64`
 
+#### Platform Differences
+
+Environment variables:
+- `USER` does not exist; use `USERNAME` instead.
+
 
 Terminals
 ---------
