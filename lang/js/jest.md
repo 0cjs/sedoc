@@ -1,16 +1,24 @@
-| [Overview](README.md) | [Async](async.md)
+| [Overview](README.md) | [TypeScript](ts.js) | [Async](async.md)
 | [NPM](npm.md) | [NPM Files](npm-files.md) | [Jest](jest.md)
 |
 
-Jest Test Framework (JavaScript)
-================================
+Jest Test Framework for JavaScript
+==================================
+
+Note that Node also includes an internal [test runner][node-test]. It's not
+clear how this does test discovery.
 
 References:
 - [Documentation]. [GitHub]. [Home Page].
 - [Cheatsheet].
 
-Installation notes:
-- Typically you'll need to install both `jest` and `babel-jest`. (Maybe?)
+If you use TypeScript you'll need to add a compiler (`typescript` and
+`ts-jest`, or `babel-jest`, or an alternative) and in in `jest.config.js`
+configure a transform, e.g.:
+
+    transform: {
+        '^.+\\.ts$': 'ts-jest',     // ts-jest module transforms TypeScript
+    },
 
 
 Processes and Globals
@@ -152,6 +160,7 @@ However, file setup/teardown call e.g.
 [GitHub]: https://facebook.github.io/jest/
 [Home Page]: https://jestjs.io/
 [cheatsheet]: https://devhints.io/jest
+[node-test]: https://nodejs.org/en/learn/test-runner/using-test-runner
 
 <!-- Tests -->
 [Globals]: https://jestjs.io/docs/api
