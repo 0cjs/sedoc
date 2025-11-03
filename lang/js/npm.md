@@ -49,8 +49,12 @@ the [docs].
   supplied by the [init-package-json] module.
 * `pack`: Create a tarball of the CWD package. Given package
   names/versions, downloads to cache and creates tarballs.
+* `exec` (also `npx` command): Run a command in the environment NPM creates
+  for the current package. (This includes commands linked into
+  `node_modules/.bin/`.) Note that `exec` can accept NPM arguments, but
+  also requires a `--` before any arguments for the command being run.
 
-##### install
+#### install
 
 With no arguments [`install`], installs everything in `package.json`,
 using exact versions from `package-lock.json` if they are within the
