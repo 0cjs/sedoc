@@ -8,6 +8,8 @@ NPM - Node Package Manager
 References:
 - [Top-level documentation page][docs].
 - [About packages and modules][docs-pm]
+- `npm help KEYWORD` will give help on commands and search results for
+  keywords.
 
 NPM is a tool to handle building and installation of _packages_
 

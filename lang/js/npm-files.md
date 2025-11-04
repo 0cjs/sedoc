@@ -5,6 +5,12 @@
 NPM Package Configuration Files
 ===============================
 
+Note that NPM _configuration_ values (e.g. `bin-links`) do _not_ go in
+`package.json`; they go in `.npmrc` or per-user/global/builtin config
+files. These are `key=val` form, not JSON, and do not apply to published
+versions of modules. See `npm help npmrc`.
+
+
 Module Definition: `package.json`
 ---------------------------------
 
@@ -16,9 +22,15 @@ The `package.json` for installed packages under `node_modules` will
 have additional information (in fields starting with `_`) added by NPM
 during install about the source and installation of the module.
 
+The top level is always a single object. Fields (and their sub-fields, if
+present) have the following types:
+- String: e.g. `"version": "1.6.10"`.
+- Array: a list of values, e.g. `"keywords": [ "printf", "sprintf" ]`.
+- Object: a dictionary, e.g. `"foo": { "bar": "baz", "quux": [1,2,3] }`
+
 #### [Dependency Fields]
 
-The following fields specify dependencies:
+The following objects specify dependencies:
 - `dependencies`: Required for use of the package (as library or script)
 - `devDependencies`: For building and testing;
   installed by default by `npm link` or `install`
@@ -49,6 +61,20 @@ Other specifiers are:
   The commit-ish may need slashes escaped with `\`.
 - `user/project`: GitHub repo. Optional version as with `git`.
 - `./foo/bar`: Local path, starting with `../`, `./`, `~/`, `/` or `file:`.
+
+#### `bin` field
+
+The `bin` object maps module names to filenames. If the `bin-links` config
+value is true (the default), `npm install` will create a link in the bin
+directory (default `node_modules/.bin/`) for every filename pointing back
+to file containing the module. (This will typically start with a
+`#!/usr/bin/env node` hashbang.) These can be run directly with `npm run
+NAME` or `npx NAME`.
+
+However, `npm install` does _not_ create links for the top-level package
+under development: just for dependencies. (You can work around this with
+`npm link`, but that creates a global symlink to your development package,
+which generally you don't want.)
 
 #### Other Common Fields
 
