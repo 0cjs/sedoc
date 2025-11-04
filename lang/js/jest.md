@@ -69,6 +69,17 @@ Test _within_ a single file do share globals unless you set `resetModules:
 true`, in which case modules will be reset between tests (but not
 `globalThis`).
 
+#### Checking for Jest
+
+You can check if you're running under Jest with
+
+    process.env.JEST_WORKER_ID !== undefined
+      && typeof jest !== 'undefined'
+      && typeof expect !== 'undefined'
+
+But note this works only in tests themselves; none of these are set during
+global setup.
+
 
 Tests
 -----
