@@ -19,9 +19,9 @@ References:
 ### Related Packages
 
 * [`tsx`]: TypeScript Execute: provides a `tsx` binary you use just like
-  `node`. Has sensible defaults for no-config situations. Seamless CJS ↔
-  ESM imports. Improvement over `ts-node`. (For command-line programs, use
-  as `#!/usr/bin/env tsx`.)
+  `node`. Has sensible defaults for no-config situations. Seamless CJS ↔ ESM
+  imports. Improvement over [`ts-node`]. (For command-line programs, use as
+  `#!/usr/bin/env tsx`.)
 * [`get-tsconfig`]: Pure JS code to find, parse and validate
   `tsconfig.json` files. No dependencies (not even TypeScript).
 * [`esbuild`]: Fast JS bundler/minifier. Compiles TS w/o type checking.
@@ -72,8 +72,9 @@ In this example the test targets use [Node.js's test runner][njs-test].
 <!-- Packages -->
 [`esbuild`]: https://www.npmjs.com/package/esbuild
 [`get-tsconfig`]: https://www.npmjs.com/package/get-tsconfig
-[`typescript`]: https://www.npmjs.com/package/typescript
+[`ts-node`]: https://www.npmjs.com/package/ts-node
 [`tsx`]: https://tsx.is/
+[`typescript`]: https://www.npmjs.com/package/typescript
 
 <!-- Build/Test System -->
 [`tsconfig.json`]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
