@@ -40,6 +40,64 @@ An NPM package is one of:
 - `name` that has a "latest" tag
 
 
+Workspaces
+----------
+
+[Workspaces] are used to manage multiple packages in a directory tree under
+a single top-level root package. (This was first provided by [LernaJS] and
+[Yarn] and later added to NPM.) An [article by Julien Roche][roche25]
+provides considerable additional detail not in the official documentation.
+
+Note that the workspace packages have no special relationship to the
+top-level package; their names and all else (if they are published) are
+independent. Workspaces are merely a build system detail to help with repos
+containing multiple packages.
+
+These are configured as follows. The top-level package is usually declared
+private as it's never intended to be published, though there are somewhat
+complex cases where you do want it public.
+
+    "private": true,
+    "workspaces": [
+        "package",
+        "packages/*"
+      ]
+
+`npm install` at the top level will `npm link` the workspace packages into
+the top-level `node_modules/` and install dependencies for both the
+top-level package and all workspace packages. Dependencies will generally
+be installed to the top-level `node_modules/` directory except when a
+workspace package needs a version incompatible with the top level, where it
+will be installed into that workspace package's local `node_modules/`
+directory. `npm install` in a workspace package will still use the
+top-level `node_modules/` and `package-lock.json`, though it will install
+only the dependencies for that workspace package. All workspace packages
+are available to be imported into top-level package code.
+
+There is only a single `package-lock.json` at the top level; this contains
+all lock information. (It's unclear how one deals with this in workspace
+packages that are applications that want to lock their dependencies if
+published.)
+
+There are several command line/configuration options relating to
+workspaces; these work from anywhere in or under the top-level package.
+- `-w WS`/`--workspace=WS`: Change to the directory of workspace _ws_ and
+  run the npm command. This may be specified multiple times. This may also
+  be given to `npm init` to create a new workspace and update the top-level
+  `workspaces` stanza.
+- `--workspaces`: Run the npm command in all workspaces, but not the
+  top-level package. This will abort on the first failure.
+- `--include-workspace-root`: Add the top-level package to the list of
+  packages on which to operate.
+- `--if-present`: For `npm run`, ignore any workspaces that do not
+  implement that command.
+
+Other notes:
+- For huge monorepos with long build times where developers often want to
+  work on just a single package, Yarn's [focused workspaces] allows working
+  without doing a full build of all workspaces.
+
+
 npm Command Overview
 --------------------
 
@@ -86,6 +144,13 @@ Options:
 <!-------------------------------------------------------------------->
 [docs-pm]: https://docs.npmjs.com/about-packages-and-modules
 [docs]: https://docs.npmjs.com/
+
+<!-- Workspaces -->
+[LernaJS]: https://lerna.js.org/
+[Yarn]: https://classic.yarnpkg.com/lang/en/docs/workspaces/
+[focused workspaces]: https://classic.yarnpkg.com/blog/2018/05/18/focused-workspaces/
+[roche25]: https://medium.com/@rochejul/npm-workspaces-e349da921d29
+[workspaces]: https://docs.npmjs.com/cli/v7/using-npm/workspaces?v=true
 
 [SPDX License List]: https://spdx.org/licenses/
 [`install`]: https://docs.npmjs.com/cli/install
