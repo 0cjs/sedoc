@@ -2,7 +2,8 @@ GitHub Workflows / Actions
 ==========================
 
 * [General](hub-general.md) | [Workflows](hub-workflows.md)
-
+  | [Tips](hub-tips.md)
+  |
 
 References:
 - [About workflows][w-about]

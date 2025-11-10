@@ -2,7 +2,8 @@ GitHub - General Information
 ============================
 
 * [General](hub-general.md) | [Workflows](hub-workflows.md)
-
+  | [Tips](hub-tips.md)
+  |
 
 ### Terminology
 
@@ -70,7 +71,6 @@ explains for each one the directory search order. Common ones are:
 Filenames:
 - Text files such as `README` may contain no extension, `.txt`, `.md`,
   `.markdown`, `.asciidoc`, etc.
-
 
 
 GitHub Merging
