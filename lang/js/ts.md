@@ -31,7 +31,7 @@ References:
 Build/Test System
 -----------------
 
-[`tsconfig.json`] configured with appropriate options, e.g.:
+[`tsconfig.json`] configured with appropriate [options][tscref], e.g.:
 
     {
         "compilerOptions": {
@@ -62,12 +62,40 @@ Build targets (in `package.json`):
 In this example the test targets use [Node.js's test runner][njs-test].
 
 
+Compiler Options
+----------------
+
+These are set in [`tsconfig.json`]; see the [full options reference][tscref].
+
+### Output Directory
+
+The [`outDir`] option sets the output directory in which the `.js` object
+files, `.d.ts`, `.js.map`, `*.buildinfo`, etc. files will be placed. The
+subdirectory structure of the source will be preserved. The default is the
+source directory. Many systems will set this to `dist/`.
+
+### Incremental Compilation
+
+Incremental compilation by `tsc` is enabled by any of:
+- `tsc -b` at the command line.
+- [`incremental: true`] in the config.
+- [`composite: true`] in the config, which sets `incremental: true`.
+
+Incremental compilation generates and uses a [build info
+file][tsbuildinfo]. This is named `tsconfig.tsbuildinfo` by default, but
+`tsconfig` may be changed to a project name in some circumstances. An
+arbitrary path and filename can be set with the
+[`tsBuildInfoFile`][tsbuildinfo] configuration option. (XXX Does this
+option apply only to composite projects?)
+
 
 <!-------------------------------------------------------------------->
 
 [TypeScript]: https://www.typescriptlang.org/
+[`tsconfig.json`]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 [doc]: https://www.typescriptlang.org/docs/
 [erasable syntax]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-8-beta/#the---erasablesyntaxonly-option
+[tscref]: https://www.typescriptlang.org/tsconfig/#composite
 
 <!-- Packages -->
 [`esbuild`]: https://www.npmjs.com/package/esbuild
@@ -77,5 +105,10 @@ In this example the test targets use [Node.js's test runner][njs-test].
 [`typescript`]: https://www.npmjs.com/package/typescript
 
 <!-- Build/Test System -->
-[`tsconfig.json`]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 [njs-test]: https://nodejs.org/en/learn/test-runner/using-test-runner
+
+<!-- Compiler Options -->
+[`composite: true`]: https://www.typescriptlang.org/tsconfig/#Projects_6255
+[`incremental: true`]: https://www.typescriptlang.org/tsconfig/#incremental
+[`outDir`]: https://www.typescriptlang.org/tsconfig/#outDir
+[tsbuildinfo]: https://www.typescriptlang.org/tsconfig/#tsBuildInfoFile
