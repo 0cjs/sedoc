@@ -98,6 +98,25 @@ Other notes:
   without doing a full build of all workspaces.
 
 
+Lifecycle Scripts
+-----------------
+
+The following scripts, if present, are run by various npm commands.
+
+* install, ci, rebuild:
+  - `preinstall`
+  - `install`
+  - `postinstall`
+  - `prepare`: Commonly used for for TS compilation, ensuring `dist/`
+    folder is up to date, etc.
+
+* publish, pack:
+  - `prepublishOnly` (for `publish` only)
+  - `prepack`
+  - `prepare`
+  - `postpack`
+
+
 npm Command Overview
 --------------------
 
@@ -138,6 +157,12 @@ Options:
   * `-O`, `--save-optional`: Save name/ver in `optionalDependencies`
 * `-E`, `--save-exact`: Save exact instead of minimum vesion in deps
 * `-B`, `--save-bundle`: Add also to `bundledDependencies`
+
+#### Packaging
+
+- `publish`: Uploads package to an NPM registry (the public registry by
+  default).
+- `pack`: Creates tarball for publishing.
 
 
 
