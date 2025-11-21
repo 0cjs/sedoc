@@ -55,18 +55,20 @@ Version Reference
 Python 3 minor versions get bug support fixes for 18 months from release
 and security fixes for five years. The "Version" column below is the latest
 point version as of the last update to this file; "RelDate" the date of the
-original n.n.0 release. See also the table of [all versions] and
-[downloads] for lastest info.
+original n.n.0 release. `SupportEnd` is end of security fixes. See also the
+table of [all versions] and [downloads] for the latest info.
 
 | SupportEnd | Version | RelDate    | RelNotes   |
 |------------|---------|------------|------------|
-| 2029 ₁₀    | 3.13    | 2024-10-01 | [PEP 719]  |
-| 2028 ₁₀    | 3.12    | 2023-10-02 | [PEP 693]  |
-| 2027 ₁₀    | 3.11.4  | 2022-10-24 | [PEP 664]  |
-| 2026 ₁₀    | 3.10.12 | 2021-10-04 | [PEP 619]  |
-| 2025 ₁₀    | 3.9.17  | 2020-10-05 | [PEP 596]  |
-| 2024 ₁₀    | 3.8.17  | 2019-10-14 | [PEP 569]  |
+| 2031 ₁₀    | 3.15    | 2026-10-01 |            |
+| 2030 ₁₀    | 3.14.0  | 2025-10-07 |            |
+| 2029 ₁₀    | 3.13.9  | 2024-10-01 | [PEP 719]  |
+| 2028 ₁₀    | 3.12.12 | 2023-10-02 | [PEP 693]  |
+| 2027 ₁₀    | 3.11.14 | 2022-10-24 | [PEP 664]  |
+| 2026 ₁₀    | 3.10.19 | 2021-10-04 | [PEP 619]  |
 |------------|---------|------------|------------|
+| 2025 ₁₀    | 3.9.25  | 2020-10-05 | [PEP 596]  |
+| 2024 ₁₀    | 3.8.20  | 2019-10-14 | [PEP 569]  |
 | 2023-06-27 | 3.7.17  | 2018-06-27 | [PEP 537]  |
 | 2021-12-23 | 3.6.15  | 2016-12-23 | [PEP 494]  |
 | 2020-09-13 | 3.5.10  | 2015-09-13 |            |
@@ -76,32 +78,34 @@ original n.n.0 release. See also the table of [all versions] and
 
 ### OS- and Distribution-shipped Versions
 
-Distro EOL is EOL for maintenance releases; full updates may have
-stopped earlier. EOL dates in the past are in parens.
+Distro EOL is EOL for (unpaid) maintenance releases; full updates may have
+stopped earlier.
 
 | OS/Distro     | `python`  |`python3`  | Distro EOL | Distro Release
 |---------------|-----------|-----------|------------|----------------
 | AWS Lambda    | -         | 3.[789]   |            | 2022-09 (last check)
 | AWS Lambda    | 2.7.?     | 3.6.1     |            | 2018-05 (historical)
 |               |           |           |            |
-| Ubuntu 24.04  | -         | 3.12.3    |  2034/09   | 2022-04
-| Debian 12     |           | 3.10.6    |            | (not yet released)
+| Debian 13     |           | 3.13.15   |  2030      | 2025-08
+| Ubuntu 24.04  | -         | 3.12.3    |  2034/09   | 2024-04
+| Debian 12     |           | 3.10.6    |  2028      | (not yet released)
 | Ubuntu 22.04  | 2.7.18    | 3.10.4    |  2027/32   | 2022-04
-| Debian 11     | 2.7.18    | 3.9.2     |            | 2021-08-14
+| Debian 11     | 2.7.18    | 3.9.2     |  2026      | 2021-08-14
 | Ubuntu 20.04  | 2.7.17    | 3.8.2     |  2025/30   | 2020-04
+|---------------|-----------|-----------|------------|----------------
 | Debian 10     | 2.7.16    | 3.7.3     |  2024-07   | 2019-07
 | CentOS 8      | varies[3] | ?         |            │
 | Ubuntu 18.04  | 2.7.14+   | 3.6.[45]  |  2023/28   | 2018-04
-| MacOS 10.14   | 2.7.16 [1]| -         | (2021-09)  | 2018-09
-| Debian 9      | 2.7.13    | 3.5.3     | (2022-07)  | 2017-06
-| Ubuntu 16.04  | 2.7.12    | 3.5.2     | (2021-04)  | 2016-04
-| Debian 8      | 2.7.9     | 3.4.2     | (2020-06)  | 2015-05
+| MacOS 10.14   | 2.7.16 [1]| -         |  2021-09   | 2018-09
+| Debian 9      | 2.7.13    | 3.5.3     |  2022-07   | 2017-06
+| Ubuntu 16.04  | 2.7.12    | 3.5.2     |  2021-04   | 2016-04
+| Debian 8      | 2.7.9     | 3.4.2     |  2020-06   | 2015-05
 | CentOS 7      | 2.7.5 [1] | [2]       |  2024-06   | 2014-06
-| Ubuntu 14.04  | 2.7.6     | 3.4.3     | (2019-04)  | 2014-04
-| Debian 7      | 2.7.3     | 3.2.3     | (2018-05)  | 2013-05
-| Ubuntu 12.04  | 2.7.3     | 3.2.3     | (2017-04)  | 2012-04 x
-| CentOS 6      | 2.6.6 [1] | [2]       | (2020-11)  | 2011-06 x
-| Debian 6      | ?         | ?         | (2016-02)  | 2011-02 x
+| Ubuntu 14.04  | 2.7.6     | 3.4.3     |  2019-04   | 2014-04
+| Debian 7      | 2.7.3     | 3.2.3     |  2018-05   | 2013-05
+| Ubuntu 12.04  | 2.7.3     | 3.2.3     |  2017-04   | 2012-04 x
+| CentOS 6      | 2.6.6 [1] | [2]       |  2020-11   | 2011-06 x
+| Debian 6      | ?         | ?         |  2016-02   | 2011-02 x
 | Ubuntu 10.04  | 2.6.5     | 3.1.2     |            | 2010-04 x
 | CentOS 5      | 2.4.3     | -         |            | 2007-04 x
 
