@@ -62,14 +62,21 @@ Other specifiers are:
 - `user/project`: GitHub repo. Optional version as with `git`.
 - `./foo/bar`: Local path, starting with `../`, `./`, `~/`, `/` or `file:`.
 
-#### `bin` field
+#### [`bin`] field
 
-The `bin` object maps module names to filenames. If the `bin-links` config
-value is true (the default), `npm install` will create a link in the bin
-directory (default `node_modules/.bin/`) for every filename pointing back
-to file containing the module. (This will typically start with a
-`#!/usr/bin/env node` hashbang.) These can be run directly with `npm run
-NAME` or `npx NAME`.
+The [`bin`] field indicates where to place links to command-line binaries.
+- Global installs use `{prefix}/bin/` (Unix) or `{prefix}/` (Windows). This
+  is typically in the user's path.
+- Local installs use `./node_modules/bin/`. The `npm` command adds this to
+  the path so that the commands are available to anything run by `npm`,
+  such as tests or other tools started with `npm run`, or directly via `npm
+  exec` or `npx`.
+
+The [`bin`] object is a map of command names to filenames. If the
+`bin-links` config value is true (the default), `npm install` will create a
+link (`.cmd` file on Windows) in the bin directory for every filename
+pointing back to file containing the module. (This will typically start
+with a `#!/usr/bin/env node` hashbang, but can be other types of scripts.)
 
 However, `npm install` does _not_ create links for the top-level package
 under development: just for dependencies. (You can work around this with
@@ -157,8 +164,18 @@ necessary?)
 
 
 
+<!-------------------------------------------------------------------->
+<!-- WARNING: Version numbers
+     URLs in this section that include /v11/ or similar version numbers
+     need to be updated as NPM is updated. This fragment can be left out
+     when going to the top of a page, but if you leave it out fragments
+     will not work because they're removed by the redirect.
+-->
+
 [`npm-shrinkwrap.json`]: https://docs.npmjs.com/files/shrinkwrap.json
 [`package-lock.json`]: https://docs.npmjs.com/files/package-lock.json
 [`package.json`]: https://docs.npmjs.com/files/package.json
 [issue 9550]: https://github.com/npm/npm/issues/9550
 [npm-shrinkwrap package]: https://github.com/uber/npm-shrinkwrap
+
+[`bin`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#bin
