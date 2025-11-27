@@ -28,15 +28,88 @@ present) have the following types:
 - Array: a list of values, e.g. `"keywords": [ "printf", "sprintf" ]`.
 - Object: a dictionary, e.g. `"foo": { "bar": "baz", "quux": [1,2,3] }`
 
+#### Description Fields
+
+- __name__: (required)
+  - Cannot start with `.` or `_`; no uppercase; URL-safe.
+  - Do not put `js` or `node` in the name. (Use `engines` if not for node.)
+  - Don't use names already in <https://www.npmjs.com>.
+- __version__: (required) A semver.
+- __license__ (default `ISC`) Use a license from the [SPDX License List],
+  `SEE LICENSE IN <filename>` or `UNLICENSED`.
+- __description__, __keywords__: Used by `npm search`.
+- __author__, __contributors__: String, array of strings. Handles sub-objects
+  with `name`/`email`/`url` fields or `full name <email@x.y> (http://…)`.
+  The `contributors` field defaults to `AUTHORS`, if present, one entry per
+  line in the latter format.
+- __homepage__, __bugs__, __repository__: Links to issue tracker etc.
+
+#### Development Fields
+
+- __scripts__: map of _name_ → _command_ for `npm run NAME`. See [scripts].
+- __config__: map of name/value pairs that "persists across upgrades." Sets
+  `npm_package_config_NAME` env vars.
+- __devEngines__: More sophisticated version of `engines` that is checked
+  before `install`, `ci` and `run` commands. See [devEngines]
+
+#### Development/Packaging Fields
+
+- __workspaces__: See [`npm.md`](./npm.md).
+
+#### Packaging Fields
+
+- __private__: (default `false`) If `true`, npm will not publish and will
+  disable some lint checks for license etc. See also `publishConfig`.
+- __files__: List of patterns for files to be installed by this package.
+  Defaults to `["*"]`. Some files are always included: `package.json`,
+  `README`, `LICENSE`, `LICENCE` (any case/extension for these three), and
+  the files from the `main` and `bin` fields.
+- __directories__: (Complex.)
+- __man__: Manual page(s); string or list.
+- __main__, __browser__: Module name of primary entry point; a path
+  relative to the root of the package. (`require('pkg')` imports this.)
+  Default `./index.js`.
+- __exports__: Much more sophisticated, multi-file version of `main`. See
+  [Package entry points].
+
+#### __bin__ Field (Executable Files)
+
+The [`bin`] field indicates where to place links to command-line binaries.
+- Global installs use `{prefix}/bin/` (Unix) or `{prefix}/` (Windows). This
+  is typically in the user's path.
+- Local installs use `./node_modules/bin/`. The `npm` command adds this to
+  the path so that the commands are available to anything run by `npm`,
+  such as tests or other tools started with `npm run`, or directly via `npm
+  exec` or `npx`.
+
+The [`bin`] object is a map of command names to filenames. If the
+`bin-links` config value is true (the default), `npm install` will create a
+link (`.cmd` file on Windows) in the bin directory for every filename
+pointing back to file containing the module. (This will typically start
+with a `#!/usr/bin/env node` hashbang, but can be other types of scripts.)
+
+However, `npm install` does _not_ create links for the top-level package
+under development: just for dependencies. (You can work around this with
+`npm link`, but that creates a global symlink to your development package,
+which generally you don't want.)
+
+#### System Requirements
+
+- __engines__: Allowable node versions.
+- __os__: List of allowed or not (`!`) platforms as returned by
+  `process.platform`.  E.g. `["darwin", "linux"]` or `["!win32"]`.
+- __cpu__: As `os`, but with `process.arch`.
+- __libc__: Linux-only, e.g. `{ "os": "linux", "libc": "glibc" }`.
+
 #### [Dependency Fields]
 
 The following objects specify dependencies:
-- `dependencies`: Required for use of the package (as library or script)
-- `devDependencies`: For building and testing;
+- __dependencies__: Required for use of the package (as library or script)
+- __devDependencies__: For building and testing;
   installed by default by `npm link` or `install`
-- `peerDependencies`: Minimum versions of plugins; not installed by default
-- `bundledDependencies`: Bundled when publishing the package by `npm pack`
-- `optionalDependencies`: Proceed with warning if not available
+- __peerDependencies__: Minimum versions of plugins; not installed by default
+- __bundledDependencies__: Bundled when publishing the package by `npm pack`
+- __optionalDependencies__: Proceed with warning if not available
   (your software needs to handle package absence)
 
 Dependencies are a map of `{ "name": "SPEC" }`, where the spec is
@@ -61,39 +134,6 @@ Other specifiers are:
   The commit-ish may need slashes escaped with `\`.
 - `user/project`: GitHub repo. Optional version as with `git`.
 - `./foo/bar`: Local path, starting with `../`, `./`, `~/`, `/` or `file:`.
-
-#### [`bin`] field
-
-The [`bin`] field indicates where to place links to command-line binaries.
-- Global installs use `{prefix}/bin/` (Unix) or `{prefix}/` (Windows). This
-  is typically in the user's path.
-- Local installs use `./node_modules/bin/`. The `npm` command adds this to
-  the path so that the commands are available to anything run by `npm`,
-  such as tests or other tools started with `npm run`, or directly via `npm
-  exec` or `npx`.
-
-The [`bin`] object is a map of command names to filenames. If the
-`bin-links` config value is true (the default), `npm install` will create a
-link (`.cmd` file on Windows) in the bin directory for every filename
-pointing back to file containing the module. (This will typically start
-with a `#!/usr/bin/env node` hashbang, but can be other types of scripts.)
-
-However, `npm install` does _not_ create links for the top-level package
-under development: just for dependencies. (You can work around this with
-`npm link`, but that creates a global symlink to your development package,
-which generally you don't want.)
-
-#### Other Common Fields
-
-- `name`: (required)
-  - Cannot start with `.` or `_`; no uppercase; URL-safe.
-  - Do not put `js` or `node` in the name. (Use `engines` if not for node.)
-  - Don't use names already in <https://www.npmjs.com>.
-- `version`: (required) A semver.
-- `private`: (default `false`) If `true`, npm will not publish and will
-  disable some lint checks for license etc. See also `publishConfig`.
-- `license` (default `ISC`) Use a license from the [SPDX License List],
-  `SEE LICENSE IN <filename>` or `UNLICENSED`.
 
 
 Dependency Locking: `package-lock.json` and `npm-shrinkwrap.json`
@@ -178,4 +218,7 @@ necessary?)
 [issue 9550]: https://github.com/npm/npm/issues/9550
 [npm-shrinkwrap package]: https://github.com/uber/npm-shrinkwrap
 
+[Package entry points]: https://nodejs.org/api/packages.html#package-entry-points
 [`bin`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#bin
+[devEngines]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines
+[scripts]: https://docs.npmjs.com/cli/v11/using-npm/scripts
