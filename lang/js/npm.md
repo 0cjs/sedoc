@@ -11,12 +11,14 @@ References:
 - `npm help KEYWORD` will give help on commands and search results for
   keywords.
 
-NPM is a tool to handle building and installation of _packages_
-
-Most `npm` subcommands search upwards from the CWD for `package.json`
-and/or `node_modules/`, and take where that's found as the project
-directory. Otherwise the `node_modules/` (and `package.json`, if updating
-it is necessary) will be created in the CWD.
+NPM is a tool to handle building and installation of _packages._ The
+installation of a package is one of two types:
+- Global: installed into the library/bin/etc. dirs of the base Node system.
+  this is typically used only for command-line programs to be made globally
+  available, such as `npm` itself.
+- Local: installed into the `node_modules/` of the current package, making
+  it a dependency of the current package. For more on how the current
+  package is determined, see §"Files and Directories" below.
 
 While packages must have a `package.json` to be identified as such (see
 below) and `npm install` by default installs dependencies listed in
@@ -38,6 +40,55 @@ An NPM package is one of:
 - `name@version` published on the [registry], giving a tarball URL.
 - `name@tag` published on the registry pointing to a version above.
 - `name` that has a "latest" tag
+
+
+Files and Directories
+---------------------
+
+`{prefix}` is the Node install location.
+- POSIX: `/usr/local/`, `~/.nvm/versions/node/v22.21.1/` or similar. This
+  will have standard Unix $prefix subdirs: `bin/`, `lib/node_modules/`,
+  etc.
+- Windows: usually `%AppData%/npm/`.
+
+To find the current local package, `npm` searches upwards from the CWD for
+`package.json` and/or `node_modules/`, and take where that's found as the
+root directory for the current package. Otherwise the CWD will be used and
+a new module (`package.json` and `node_modules/`) will be created. With
+workspaces (see below), the local package is considered the top-level
+package, not the nearest workspace of it.
+
+"Global" (`-g`) installs go into the node install location. "Local"
+installs go into the root of the current package (determined by searching
+upwards as described above—but see §"Workspaces" below), or the CWD if no
+current package is found. This is used only for installing command-line
+tools (such as `npm`). You can _not_ import or require libraries installed
+globally; they may come only from the current package.
+
+Executable files (the `"bin"` field in `package.json`) are linked into the
+executable directories below. On Unix this is a symlink; on Windows it's a
+`.cmd` file.
+
+#### Global Locations
+
+- Libraries: Unix `{prefix}/lib/node_modules/`; Win `{prefix}`.
+- Executables: Unix `{prefix}/bin/`; Win `{prefix}`.
+- Man pages: Unix `{prefix}/share/man/`; Win not installed.
+- Cache: Unix `~/.npm/`; Win `%LocalAppData%/npm-cache/`.
+  (Controlled by `cache` config param; see also `npm cache`.)
+
+#### Local Locations
+
+- Libraries: `./node_modules/` where `.` is the top-level package at or
+  above the CWD.
+- Executables: `./node_modules/.bin/`
+- Man pages: not installed.
+
+#### References
+
+- [CLI » Configuring » Folders][folders], "Folder Structures Used by npm."
+  This also contains details of installation of multiple versions of a
+  dependency (as required by other dependencies), "hoisting," etc.
 
 
 Workspaces
@@ -169,6 +220,9 @@ Options:
 <!-------------------------------------------------------------------->
 [docs-pm]: https://docs.npmjs.com/about-packages-and-modules
 [docs]: https://docs.npmjs.com/
+
+<!-- Files and Directories -->
+[folders]: https://docs.npmjs.com/cli/configuring-npm/folders
 
 <!-- Workspaces -->
 [LernaJS]: https://lerna.js.org/
