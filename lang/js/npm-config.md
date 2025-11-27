@@ -1,5 +1,6 @@
-| [Overview](README.md) | [TypeScript](ts.js) | [Async](async.md)
-| [NPM](npm.md) | [NPM Configuration](npm-config.md) | [Jest](jest.md)
+| [Overview](README.md) | [Node](node.js) | [TypeScript](ts.js)
+| [NPM](npm.md) | [NPM Configuration](npm-config.md)
+| [Async](async.md) | [Jest](jest.md)
 |
 
 NPM Package Configuration Files
@@ -27,6 +28,10 @@ present) have the following types:
 - String: e.g. `"version": "1.6.10"`.
 - Array: a list of values, e.g. `"keywords": [ "printf", "sprintf" ]`.
 - Object: a dictionary, e.g. `"foo": { "bar": "baz", "quux": [1,2,3] }`
+
+Following are the NPM keys for this file; Node, `typescript`, `jest` and
+others also read this file and have some of their own variables, as well as
+sometimes reading these.
 
 #### Description Fields
 
