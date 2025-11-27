@@ -35,11 +35,11 @@ sometimes reading these.
 
 #### Description Fields
 
-- __name__: (required)
+- __name__:
   - Cannot start with `.` or `_`; no uppercase; URL-safe.
   - Do not put `js` or `node` in the name. (Use `engines` if not for node.)
   - Don't use names already in <https://www.npmjs.com>.
-- __version__: (required) A semver.
+- __version__: A semver.
 - __license__ (default `ISC`) Use a license from the [SPDX License List],
   `SEE LICENSE IN <filename>` or `UNLICENSED`.
 - __description__, __keywords__: Used by `npm search`.
