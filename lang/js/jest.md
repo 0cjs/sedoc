@@ -1,5 +1,5 @@
 | [Overview](README.md) | [TypeScript](ts.js) | [Async](async.md)
-| [NPM](npm.md) | [NPM Files](npm-files.md) | [Jest](jest.md)
+| [NPM](npm.md) | [NPM Configuration](npm-config.md) | [Jest](jest.md)
 |
 
 Jest Test Framework for JavaScript
