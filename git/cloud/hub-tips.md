@@ -5,8 +5,16 @@ GitHub - Tips and Tricks
   | [Tips](hub-tips.md)
   |
 
+URLs to Display Public Keys
+---------------------------
+
+- SSH public keys: <https://github.com/0cjs.keys>
+  - (May strip key comment?)
+- PGP public keys:  <https://github.com/0cjs.gpg>
+
+
 Invisible Unread Notifications
-==============================
+------------------------------
 
 There's a bug in GitHub that doesn't allow you to see some new
 notifications, causing you to have a [permeanent unread notifications
