@@ -10,12 +10,23 @@ Misc Reading:
 * [JavaScript Scoping and Hoisting][jshoist] (Adequately Good)
 * [ES6 In Depth: Modules][es6modules] (Mozilla Hacks)
 
-Syntax
-------
+Objects
+-------
 
-### Syntax
+[Object]s are maps of _properties_ (named _k_ below) to values. They
+typically inherit from `Object.prototype`, though they may also be [null
+prototype] objects created with `Object.create(null)`. Properties are
+[classified][propclass] as:
+- _Enumerable_ or _non-enumerable_ based on their `enumerable` flag; most
+  iterators (`for … in`, `Object.keys()`) visit only enumerable keys. Query
+  with `o.propertyIsEnumerable(k)`. ([`Object.defineProperty()`] creates
+  non-enumerable properties by default.)
+- Ownership: whether the property is defined directly on this object or
+  inherited from the prototype chain. Query with `Object.hasOwn(o, k)` or
+  legacy `o.hasOwnProperty(k)`
+- The name _k_ is a string or a [symbol].
 
-- Objects are maps; the [property access] operators are:
+The [property access] operators are:
   - `.`: _obj_`.`.
   - `[…]`: _obj_`[expr]` where _expr_ evaulates to a string or [symbol]. A
     space is allowed before the opening bracket.
@@ -32,7 +43,47 @@ Syntax
   directly between `||` and `? :`.) The `||` operator is similar, but tests
   whether the LHS is falsy.
 
-### Immutable Primitives
+
+Syntax
+------
+
+### Destructuring
+
+JS supports [destructuring] anywhere new identifier bindings are created,
+including the index of `for`, function parameters and `catch` bindings.
+Destructuring need not be complete: as with function parameters values
+without bindings are ignored. New names and default values may be specified.
+- `const { b, c:x } = { a:10, b:20, c:30 }`: binds b=20, x=30.
+- `function f({y}); f({x:3, y:6})`: binds y=6 in the function
+- `[a, b] = [10, 20, 30]`: binds a=10, b=20.
+- `[a, b=99] = []`: binds a=undefined, b=99.
+- `[a, , c] = [10, 20, 30]`: binds a=10, c=30. (
+- `[a, ...xs] = [10, 20, 30]`: binds a=10, xs=[20, 30]
+- `const [, p, h] = /^(\w+):\/\/([^/]+)\/(.*)$/.exec(url)`: binds _p_ and
+  _h_ to the protocol and host from the regexp match.
+
+Array destructuring calls the iterable protocol on the RHS, so the RHS need
+not be an array. The RHS is iterated only until all bindings are assigned.
+This covers most of it, but there are more details in [destructuring].
+
+### Rest Parameters and Spread Syntax
+
+_[Rest parameters]_ in a function declaration `function f(...xs) { … }`
+constructs an array _xs_ from multiple parameters `f(x₀, x₁, x₂)` .
+_[Spread syntax]_ `g(...ys)` deconstructs an array _ys_ to multiple
+parameters, as if it were called as `g(y₀, y₁, y₂)`.
+
+### Lambdas
+
+Lambdas use `=>`.
+- LHS is a single parameter or no/multiple parameters (destructuring
+  supported) in parens: `() => …`; `x => …`; `(x,y) => …`; `([x,y]) => …`.
+- RHS is a single expression not requiring a return or a block requiring a
+  return: `x => x+1`, `x => { return x+1 }`.
+
+
+Immutable Primitives
+--------------------
 
 - The primitives string, number, boolean, undefined, null, symbol and
   bigint are all immutable; "changing" them with e.g. `s += '.exe'`
@@ -44,7 +95,9 @@ Syntax
   well-known symbols that are properties on Symbol (e.g.,
   `Symbol.hasInstance` serve as markers for protocols.
 
-### Global Variables
+
+Global Variables
+----------------
 
 Every JS environment has one [global object]; what it is varies depending
 on the environment. (In a browser it's usually an instance of `Window`;
@@ -70,7 +123,9 @@ this is run in that function's environment. But in the global environment
     let four = 4            // effectively local; NOT on globalThis
     const five = 5          // effectively local; NOT on globalThis
 
-### Exceptions
+
+Exceptions
+----------
 
 Exceptions are raised with `throw`, typically `throw new Error('message')`.
 [`Error`] indicates a runtime error; subclasses include:
@@ -132,10 +187,19 @@ __Additional formatting:__
 [es6modules]: https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
 [jshoist]: http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
 
-<!-- Syntax -->
+<!-- Objects -->
+[`Object.defineProperty()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+[null prototype]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects
 [nullish coalescing operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing
+[object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+[propclass]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties
 [property access]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
 [symbol]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+
+<!-- Syntax -->
+[destructuring]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring
+[rest parameters]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+[spread syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
 <!-- Global Variables -->
 [`globalThis`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
