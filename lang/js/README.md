@@ -21,9 +21,9 @@ prototype] objects created with `Object.create(null)`. Properties are
   iterators (`for … in`, `Object.keys()`) visit only enumerable keys. Query
   with `o.propertyIsEnumerable(k)`. ([`Object.defineProperty()`] creates
   non-enumerable properties by default.)
-- Ownership: whether the property is defined directly on this object or
-  inherited from the prototype chain. Query with `Object.hasOwn(o, k)` or
-  legacy `o.hasOwnProperty(k)`
+- Ownership ("own" properties): whether the property is defined directly on
+  this object or inherited from the prototype chain. Query with
+  `Object.hasOwn(o, k)` or legacy `o.hasOwnProperty(k)`
 - The name _k_ is a string or a [symbol].
 
 The [property access] operators are:
@@ -182,6 +182,72 @@ __Additional formatting:__
 - `.clear()`: Clear the panel or terminal screen.
 
 
+Modules
+-------
+
+There are two module systems:
+* Common JS (CJS, `.js`): legacy Node.js import system using [`require()`].
+  (These are not called "modules"; that refers only to ESM.)
+* ECMAScript Modules (ESM, `.mjs`): new module system using `import` and
+  [`import()`] introduced in ECMAScript 2015 (ES6), but not recommended in
+  Node until 12+ (2019).
+
+Node will try to detect from the contents of a file if it's CJS or ESM, but
+you can force all `.js` files to be ESM with `"type": "module"` in
+`packge.json`. Regardless, it's [recommended by V8][v8ext] that explicit
+`.mjs` extensions be used for ESM files both to make it more clear to
+developers and to maximise cross-platform compatibility.
+
+ESM imports must use an explicit extension on filenames. Node CJS
+(`require()`) is able to do [extension searches] (e.g. `foo/bar` to find
+`foo/bar.js`). This is not allowed in ESM: file extensions are mandatory
+with two exceptions:
+- Node's `package.json` [`exports`][node.md] field can map bare names to
+  files.
+- Some systems added experimental extension search to ESM. This should
+  never be used. (Node may turn on this capability automatically.)
+
+There are three widely used specifiers for the import name:
+- Relative (to the importer), starting with one of `/`, `./`, `../`.
+- Absolute, which are URLs (typically `http:`, `file:`, data). The
+  [`node:`] URL always resolves to internal Node.js modules.
+- Bare specifiers. Complex and probably should be avoided (see above and
+  [import maps]).
+
+### ESM
+
+#### Imports
+
+Modules are automatically run in strict mode. [`import`] syntax follows.
+All identifiers introduced by imports are "hoisted," meaning that the
+identifier is available everywhere in the importing module, even before the
+import statement, and the importee's global code is always run before any
+code in the importing module.
+
+* `import 'module-name'`: Import for side effects only. (Runs the module's
+  global code if it's not already been run.)
+
+* `import * as NSOBJ from 'module-name'`: Namespace import. _nsobj_ is
+  a _namespace object_ that contains all exports as properties on it.
+  the default export is available under key `.default`. _nosobj_ is
+  [sealed][] (immutable) and has a [null prototype].
+
+* `import D from 'module-name'`: Default import, binding the default export
+  to _d._ May be used in combination: `D, *`, `D, { f, g }`. Importing name
+  `default` has the same effect, but needs to be rebound as it's a reserved
+  word: `import { default as D }`.
+
+* `import { B } from 'module-name'`: Named import. _b_ is comma-separated
+  list of bindings, with optional renamings `{ foo as f }`. Modules may
+  export string-literal identifiers (`export { a as 'a-b' }`) in which case
+  they must be quoted in the import: `import { 'a-b' as b }`.
+
+#### Exports
+
+XXX write me
+
+
+
 <!-------------------------------------------------------------------->
 
 [es6modules]: https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
@@ -211,3 +277,14 @@ __Additional formatting:__
 [`Error`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 [`console`]: https://developer.mozilla.org/en-US/docs/Web/API/console
 [substitution arguments]: https://developer.mozilla.org/en-US/docs/Web/API/console#using_string_substitutions
+
+<!-- Modules -->
+[`import()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
+[`import`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+[`node:`]: https://nodejs.org/api/esm.html#node-imports
+[`require()`]: https://nodejs.org/api/modules.html#requireid
+[extension searches]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#module_specifier_resolution
+[import maps]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#importing_modules_using_import_maps
+[node.md](./node.md#package.json)
+[sealed]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal
+[v8ext]: https://v8.dev/features/modules#mjs
