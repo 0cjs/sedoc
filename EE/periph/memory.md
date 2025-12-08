@@ -124,7 +124,7 @@ Standard Part Numbers (xx16=2K, xx32=4K, xx64=8K):
 
 #### 40-pin Diagram
 
-AM27C400, MX27C4100.
+AM27C400, ST MX27C400, MX27C4100. (4 Mbit; 512KB×8; 256KW×16)
 
 
                         ┌───∪───┐
