@@ -1,6 +1,7 @@
 Git Commits
 ===========
 
+For how to write commit messages, see [`commit-messages`](commit-messages.md)
 For some tips on fixing/rewriting commits, see [Git Tips](tips.md).
 
 
