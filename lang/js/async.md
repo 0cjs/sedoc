@@ -8,10 +8,61 @@ Asynchronous Code in JavaScript
 References:
 - javascript.info tutorial, ["Promises, async/await"][jinf-async]
 
-#### Misc Notes
+Remember that JS lambda syntax is `() => …` (evals to the result of …; do
+not use `return`) and `() => { … }` or `function(…) { … }` evals to the
+result of `return …` inside the block.
 
-- JS lambda syntax is `() => { … }` or `function(…) { … }`.
-  (Braces not necessary for a single statement.)
+
+Event Loop
+----------
+
+This is [the Node.js Event Loop][njs-loop]; not clear how close other
+systems are to it.
+
+On startup Node.js executes the code from the given file. If anything has
+been scheduled via async calls, it then starts the event loop, which has
+six _phases_ per iteration. (Maybe more—OS dependent.)
+
+1. Timers: callbacks scheduled by `setTimeout()` and `setInterval()`.
+2. Pending callbacks: I/O callbacks deferred to the next loop iteration.
+   (E.g., ECONNREFUSED on some systems due to reporting waits.)
+3. Idle, prepare: used internally.
+4. Poll:
+   - Retrieve new I/O events.
+   - Execute I/O-related callbacks (with some exceptions).
+   - There's a hard limit on the number of callbacks executed in this phase
+     to avoid starving the timers etc.
+   - If no I/O callbacks scheduled and no `setImmediate()` queued, Node
+     blocks here with a timeout at the next timer. I/O becoming ready here
+     will return from the blocking call and execute immediately.
+5. Check: `setImmediate()` callbacks.
+6. Close callbacks: not all but some, e.g. `socket.on('close', …)`.
+
+If  are no timers or async I/O scheduled at the end of an iteration NodeJS
+shuts down.
+
+#### NextTick and MicroTask Queues
+
+`process.nextTick()` (as of v22 legacy; use `queueMicroTask()` instead.) is
+technically separate from the event loop; `nextTickQueue` is always
+processed immediately after the current operation (transition from
+underlying C/C++ to JS). Or when the JS stack runs to completion, and
+before the event loop is allowed to continue. (This can starve the whole
+event loop!)
+
+The microtask queue (`queueMicroTask()`) is manged by V8; the `nextTickQueue`
+managed by Node.js is always run first.
+
+See docs for complex details, but one purpose for these is to allow APIs to
+assign event handlers after an object has been constructed, but before any
+I/O can occur. The main issue is that functions must be _entirely_ sync or
+async; you can't sometimes be sync and sometimes emit events. See the
+example in [`queueMicroTask()`]. (And [The Node.js Event Loop][njs-loop]
+goes into a lot more detail.)
+
+
+Functions
+---------
 
 #### Callbacks
 
@@ -22,7 +73,6 @@ Some JS libraries provide callback functionality. E.g. DOM elements:
     script.onload = () =>  { … }    // executed if/when script load complete
     script.onerror = () =>  { … }   // executed if/when script load fails
                                     //   (e.g., parse error?)
-
 #### Promises
 
 Promise objects are constructed with a single parameter, the _executor_
@@ -44,3 +94,7 @@ XXX more here
 
 <!-------------------------------------------------------------------->
 [jinf-async]: https://javascript.info/async
+
+<!-- Event Loop -->
+[njs-loop]: https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
+[`queueMicroTask()`]: https://nodejs.org/api/globals.html#queuemicrotaskcallback
