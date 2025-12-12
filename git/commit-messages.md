@@ -93,9 +93,10 @@ the summary mentioned in [[cbeams]].
      you've not yet gotten around to doing the squash or because you want
      to temporarily leave that change in a separate commit for easier
      review by others.
-   - `BROKEN`: The commit is not passing tests. Usually this should be
-     fixed before the commit is merged to `main`, but for emergency fixes
-     it may go to `main` first and then be fixed later.
+   - `BROKEN`: The commit is not passing tests or is otherwise known to be
+     broken. Usually this should be fixed before the commit is merged to
+     `main`, but for emergency fixes it may go to `main` first and then be
+     fixed later.
    - `UNBROKEN`: Fixes a known broken commit on `main`.
    - Make up your own if you see a need! If it's obvious, others will
      understand; if not, but it's useful, the team can all learn about it
