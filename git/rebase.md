@@ -79,7 +79,45 @@ Also see [`git-rebase(1)`] manpage section ["Recovering from Upstream
 Rebase"][recovering].
 
 
+Git Interactive Rebase (`rebase -i`)
+------------------------------------
 
+### Splitting Commits
+
+Commits can be split by marking them edit and, when editing, starting
+with `git reset HEAD^`. This "rewinds" the HEAD and index to the
+previous commit, leaving the changes from the commit being edited in
+the work tree.
+* `git add -p` etc. to generate a series of new commits that will
+  replace the commit originally being edited.
+* `git stash` to temporarily clean the work tree to test intermediate
+  commits.
+* When the working copy is clean, `git rebase --continue`
+
+### Moving Code Forward to a Later Commit
+
+To fix the earlier commit from which you want to remove code:
+- `git rebase -i` selecting the commit from which to remove code and, if
+  it's not the last commit on the branch, the commit to which the code
+  should be added.
+- `logb -1` and record the current commit ID.
+- `git reset @^` to reset to the parent commit and leave the to-edit
+  commit's changes in the work tree.
+- `git add -p` etc. to stage the changes for the new version of the commit.
+- `git commit -C` to generate a new commit w/the author/timestamp/message
+  of the to-edit commit.
+- `git commit` to generate a new commit with the material to be moved into
+  the next commit.
+- `git rebase --continue` to finish for the moment
+
+Then to do the move forward:
+- Interactive rebase: swap the order of the move-forward commit and the
+  commit to receive the changes, and fixup the new second one.
+- `stash save` after commiting the "remove code" commit and `stash apply`
+  on the next commit.
+
+
+<!-------------------------------------------------------------------->
 [`git-rebase(1)`]: https://git-scm.com/docs/git-rebase
 [co-theirs-fails]: http://git.661346.n2.nabble.com/git-checkout-theirs-fails-td7650612.html
 [recovering]: https://git-scm.com/docs/git-rebase#_recovering_from_upstream_rebase
