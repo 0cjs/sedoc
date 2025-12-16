@@ -239,4 +239,3 @@ Options:
 [dependency fields]: https://docs.npmjs.com/files/package.json#dependencies
 [init-package-json]: https://github.com/npm/init-package-json/
 [registry]: https://docs.npmjs.com/misc/registry
-[semver]: https://docs.npmjs.com/misc/semver

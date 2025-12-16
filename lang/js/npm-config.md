@@ -127,10 +127,14 @@ Version specifiers are [semver]s, including:
 - `~` prefix for approximate equivalance
   - patch-level changes if minor version given: `~1.2.3` = `>=1.2.3 <1.3.0`
   - minor version changes if only major version given `~1` = `>=1.0.0 <2.0.0`
-- `^` prefix for "compatible with":
-  Changes must not modify left-most non-zero digit.
+- `^` prefix for "compatible with": basically specifies a min ver. without
+  ever going past the specified major release.
 - `v1 - v2`: range
 - `range1 || range2`: either range must be satisfied
+
+There's also a [Semver cheatsheet][semver-cheat] (which may or may not
+exactly match NPM) and you may use the [npm SemVer Calculator][semver-calc]
+to see what package versions will be matched by a given expression.
 
 Other specifiers are:
 - `https://.../package.tar.gz`: URL to tarball
@@ -227,3 +231,6 @@ necessary?)
 [`bin`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#bin
 [devEngines]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines
 [scripts]: https://docs.npmjs.com/cli/v11/using-npm/scripts
+[semver]: https://docs.npmjs.com/about-semantic-versioning
+[semver-calc]: https://semver.npmjs.com/
+[semver-cheat]: https://devhints.io/semver
