@@ -51,11 +51,28 @@ sometimes reading these.
 
 #### Development Fields
 
-- __scripts__: map of _name_ → _command_ for `npm run NAME`. See [scripts].
+- __scripts__: map of _name_ → _command_ for `npm run NAME`. List with `npm
+  run`. See below for more details and other commands that use the
+  `scripts` property.
 - __config__: map of name/value pairs that "persists across upgrades." Sets
-  `npm_package_config_NAME` env vars.
+  `npm_package_config_NAME` env vars. Managed with [`npm config`].
 - __devEngines__: More sophisticated version of `engines` that is checked
   before `install`, `ci` and `run` commands. See [devEngines]
+
+Npm has the following top-level commands that execute items defined in the
+[`scripts { … }`][scripts] section, using default values in some cases when
+the item is not defined. (When no default is available, the command will
+exit with a "missing script" error.
+- [`test`]: No default.
+- [`start`]: Runs `node server.js`. This is not the same as Node's default
+  behaviour of running the file specified in the `main` attribute.
+- [`restart`]:
+  - When `restart` defined, runs:
+    - `prerestart`, `restart`, `postrestart`.
+  - When `restart` not defined, but `stop` and/or `start` is defined, runs:
+    - `prerestart`, `prestop`, `stop`, `poststop`, `prestart`, `start`,
+      `poststart`, `postrestart`.
+- [`stop`]: No default.
 
 #### Development/Packaging Fields
 
@@ -227,10 +244,16 @@ necessary?)
 [issue 9550]: https://github.com/npm/npm/issues/9550
 [npm-shrinkwrap package]: https://github.com/uber/npm-shrinkwrap
 
+<!-- Module Definition: `package.json` -->
 [Package entry points]: https://nodejs.org/api/packages.html#package-entry-points
 [`bin`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#bin
+[`config`]: https://docs.npmjs.com/cli/commands/npm-config
+[`restart`]: https://docs.npmjs.com/cli/commands/npm-restart
+[`start`]: https://docs.npmjs.com/cli/commands/npm-start
+[`stop`]: https://docs.npmjs.com/cli/commands/npm-stop
+[`test`]: https://docs.npmjs.com/cli/commands/npm-test
 [devEngines]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines
 [scripts]: https://docs.npmjs.com/cli/v11/using-npm/scripts
-[semver]: https://docs.npmjs.com/about-semantic-versioning
 [semver-calc]: https://semver.npmjs.com/
 [semver-cheat]: https://devhints.io/semver
+[semver]: https://docs.npmjs.com/about-semantic-versioning
