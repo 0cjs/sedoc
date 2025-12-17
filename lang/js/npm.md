@@ -133,10 +133,11 @@ published.)
 
 There are several command line/configuration options relating to
 workspaces; these work from anywhere in or under the top-level package.
-- `-w WS`/`--workspace=WS`: Change to the directory of workspace _ws_ and
-  run the npm command. This may be specified multiple times. This may also
-  be given to `npm init` to create a new workspace and update the top-level
-  `workspaces` stanza.
+- `-w WS`/`--workspace=WS`: Change to the directory of workspace _ws_
+  (where _ws_ is a workspace package directory path or package name from a
+  `package.json`) run the npm command. This may be specified multiple
+  times. This may also be given to `npm init` to create a new workspace and
+  update the top-level `workspaces` stanza.
 - `--workspaces`: Run the npm command in all workspaces, but not the
   top-level package. This will abort on the first failure.
 - `--include-workspace-root`: Add the top-level package to the list of
