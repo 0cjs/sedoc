@@ -9,15 +9,40 @@ Node.js Runtime Environment
 This describes Node-specific features and Node's implementation of standard
 features.
 
+● All links are to the `/latest/` docs; use the "▶ Other versions"
+  drop-down on the docs page to switch to LTS or other versions.
+
 References:
 - [Documentation]
 - [Modules: Packages]
+  - [Module resolution and loading][modload]
 
 
 package.json
 ------------
 
 Node will read the following fields in `package.json`.
+
+#### __type__
+
+When loading a file, Node must [determine the module system][determine-mod]
+to use:
+- `module`: ESM (ECMAScript modules)
+- `commonjs`: CJS (CommonJS and Node legacy module system).
+
+Extensions `.mjs` and `.cjs` always force (ESM) and CJS respectively. For
+code passed to `--eval` or `--print` or piped to stdin, the `--input-type=`
+parameter will force the given interpretation.
+
+For `.js` files, files with no extension, and command-line/stdin out
+without `--input-type`, the [`type`] field controls the behaviour. It may
+be set to:
+- `module`: Treat as ESM.
+- `commonjs`: Treat as CJS (disables syntax detection).
+- No entry: Similar to `commonjs`, but not quite the same: it adds [syntax
+  detection] that tries to evaluate if the file is ESM or CJS, which the
+  above two will never do. (This may silently fail without producing an
+  error or error code; see [node#49444].)
 
 #### __imports__
 
@@ -79,5 +104,10 @@ imports may be importing via URLs rather than filesystems.)
 [Documentation]: https://nodejs.org/docs/latest/api/
 [Modules: Packages]: https://nodejs.org/api/packages.html
 
-[`imports`]: https://nodejs.org/api/packages.html#subpath-imports
 [`exports`]: https://nodejs.org/api/packages.html#package-entry-points
+[`imports`]: https://nodejs.org/api/packages.html#subpath-imports
+[`type`]: https://nodejs.org/docs/latest/api/packages.html#type
+[determine-mod]: https://nodejs.org/docs/latest/api/packages.html#determining-module-system
+[modload]: https://nodejs.org/docs/latest/api/packages.html#determining-module-system
+[node#49444]: https://github.com/nodejs/node/issues/49444
+[syntax detection]: https://nodejs.org/docs/latest/api/packages.html#syntax-detection

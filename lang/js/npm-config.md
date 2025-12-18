@@ -29,9 +29,12 @@ present) have the following types:
 - Array: a list of values, e.g. `"keywords": [ "printf", "sprintf" ]`.
 - Object: a dictionary, e.g. `"foo": { "bar": "baz", "quux": [1,2,3] }`
 
-Following are the NPM keys for this file; Node, `typescript`, `jest` and
-others also read this file and have some of their own variables, as well as
-sometimes reading these.
+Following are the NPM keys for this file. Other programs also read it and
+have their own fields as well as sometimes reading the ones below. In
+particular:
+- [Node](./node.md): `type:commonjs` etc.
+- `typescript`
+- `jest`
 
 #### Description Fields
 
