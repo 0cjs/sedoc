@@ -170,6 +170,24 @@ The following scripts, if present, are run by various npm commands.
   - `postpack`
 
 
+npm Options
+-----------
+
+The `--prefix DIR` option determines where the following files are found:
+- `package.json`: Configuration, dependencies, scripts.
+- `package-lock.json`: Exact (locked) depdendency definitions. (Or
+  `npm-shrinkwrap.json` if that's being used instead.
+- `node_modules`: Package install dir; imports resolved from here.
+- `.npmrc`: Project-level NPM configuration.
+- `.npm/`: Local cache directory, if being used instead of global cache.
+
+It does _not_ itself change the CWD, but `npm run` (and `test`, `start`
+etc.) commands _do_ change the CWD to the prefix (explicit or implicit)
+before running scripts defined in `package.json`. Note that many tools,
+e.g., `jest` rely on this behaviour and search for their configuration in
+CWD, not in the NPM prefix.
+
+
 npm Command Overview
 --------------------
 
