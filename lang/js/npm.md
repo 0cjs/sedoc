@@ -53,14 +53,14 @@ need to be fixed.
 There are two uses of "prefix" in NPM:
 
 1. The "package prefix," indicating where the package definition and code is.
-   * `npm prefix` prints this.
+   * [`npm prefix`] prints this.
    * $npm_package_json contains the path to this followed by
      `package.json`.
    * Found by searching from the current working directory.
    * `npm run` always does a chdir to this before running any script
      entries. (As do the shortcuts, e.g. `npm test` for `npm run test`.)
-   * Overridden by `--prefix`, which _also_ sets the "prefix" used for #2
-     below.
+   * Overridden by (the poorly documented) `--prefix`, which _also_ sets
+     the "prefix" used for #2 below.
 
 2. The "NPM (global) prefix", determining how (non-package) configuration
    is found and where "global" (e.g. `npm install -g`) operations happen.
@@ -292,6 +292,7 @@ Options:
 [NPM Packages]: ./npm-package.md
 [docs-pm]: https://docs.npmjs.com/about-packages-and-modules
 [docs]: https://docs.npmjs.com/
+[`npm prefix`]:https://docs.npmjs.com/cli/commands/npm-prefix
 
 <!-- Files and Directories -->
 [folders]: https://docs.npmjs.com/cli/configuring-npm/folders
