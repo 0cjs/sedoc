@@ -92,6 +92,44 @@ You can await a promise directly:
 XXX more here
 
 
+Stack Traces and the Call Stack
+-------------------------------
+
+Stack traces stop at async boundaries, e.g.:
+
+    try {
+        //  f() will create a new continuation to fulfil the promise; this
+        //  continuation will have its own call stack. It then immediately
+        //  returns, unwinding the user call stack and executing the `await`.
+        await f()
+    } catch (err) {
+        //  This will contain the stack trace of only the continuation in
+        //  which the error occurred, ignoring all code (including
+        //  intermediate continuations) that set up the last continuation.
+        //  Often this will be just a single line of trace deep in the Node
+        //  internals.
+        console.log(err.stack)
+    }
+
+This can to some degree be worked around by having the user's async
+function preserve the user stack:
+
+    async function f() {
+        //  Get our call site here, before any async stuff as done, as
+        //  this will be lost in the continuations created for async.
+        const callSite = {}
+        Error.captureStackTrace(callSite)
+
+        try { … } catch (err) {
+            //  Now the stack trace we return will go down as far as
+            //  `callSite` above. (But note we lose the stack in `err`;
+            //  we really should combine the two.)
+            err.userStack = callSite.stack
+            throw err
+        }
+    }
+
+
 <!-------------------------------------------------------------------->
 [jinf-async]: https://javascript.info/async
 
