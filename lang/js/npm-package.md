@@ -1,18 +1,32 @@
 | [Overview](README.md) | [Node](node.js) | [TypeScript](ts.js)
-| [NPM](npm.md) | [NPM Configuration](npm-config.md)
+| [NPM](npm.md) | [NPM Packages](npm-package.md)
 | [Async](async.md) | [Jest](jest.md)
 |
 
-NPM Package Configuration Files
-===============================
+NPM Packages
+============
+
+__WARNING:__ See the warning in [`npm.md`](./npm.md) about package
+definitions vs.  NPM configuration.
 
 Note that NPM _configuration_ values (e.g. `bin-links`) do _not_ go in
 `package.json`; they go in `.npmrc` or per-user/global/builtin config
 files. These are `key=val` form, not JSON, and do not apply to published
 versions of modules. See `npm help npmrc`.
 
+#### Identifying NPM Packages
 
-Module Definition: `package.json`
+An NPM package is one of:
+- A directory with a `package.json`
+- A gzipped tarball of such a directory.
+- A URL pointing to such a tarball.
+- A Git URL pointing to a repo containing a `package.json` in the root.
+- `name@version` published on the [registry], giving a tarball URL.
+- `name@tag` published on the registry pointing to a version above.
+- `name` that has a "latest" tag
+
+
+Package Definition: `package.json`
 ---------------------------------
 
 [`package.json`] is not a required file; you can `npm install`

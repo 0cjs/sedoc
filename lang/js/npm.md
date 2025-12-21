@@ -1,5 +1,5 @@
 | [Overview](README.md) | [Node](node.js) | [TypeScript](ts.js)
-| [NPM](npm.md) | [NPM Configuration](npm-config.md)
+| [NPM](npm.md) | [NPM Packages](npm-package.md)
 | [Async](async.md) | [Jest](jest.md)
 |
 
@@ -22,25 +22,60 @@ installation of a package is one of two types:
   package is determined, see §"Files and Directories" below.
 
 While packages must have a `package.json` to be identified as such (see
-below) and `npm install` by default installs dependencies listed in
-`package.json`, you do not need to have a `package.json` just to install a
-package in `node_modules` under the current directory. (But a
+[NPM Packages]) and `npm install` by default installs dependencies
+listed in `package.json`, you do not need to have a `package.json` just to
+install a package in `node_modules` under the current directory. (But a
 `package.json` listing the dependency will be created  unless you use
 `--no-save`.)
 
-For details on `package.json` and other files used by NPM see [NPM Package
-Configuration Files](npm-files.md).
+For details on `package.json` and other files used by NPM see [NPM Packages].
 
-#### Identifying NPM Packages
+Note that NPM _configuration_ values (e.g. `bin-links`) do _not_ go in
+`package.json`; they go in `.npmrc` or per-user/global/builtin config
+files. These are `key=val` form, not JSON, and do not apply to published
+versions of modules. See `npm help npmrc`.
 
-An NPM package is one of:
-- A directory with a `package.json`
-- A gzipped tarball of such a directory.
-- A URL pointing to such a tarball.
-- A Git URL pointing to a repo containing a `package.json` in the root.
-- `name@version` published on the [registry], giving a tarball URL.
-- `name@tag` published on the registry pointing to a version above.
-- `name` that has a "latest" tag
+### "Prefix" and Package Definitions vs. NPM Configuration
+
+__WARNING:__  
+There are two kinds of configuration (which overlap) in NPM:
+1. The _package_ configuration: name of the package, dependencies, etc.
+   This is found in `package.json` and related files/directories.
+2. The _NPM_ configuration, some of which can be local to a package and
+   some of which is "global", with values in the former defaulting to
+   values in the latter if not overridden.
+
+Here we try to refer to the former as "package definition" or "module
+definition" and the latter as "NPM configuration," but untangling the two
+can be difficult and there may be erronous uses of these in these docs that
+need to be fixed.
+
+There are two uses of "prefix" in NPM:
+
+1. The "package prefix," indicating where the package definition and code is.
+   * `npm prefix` prints this.
+   * $npm_package_json contains the path to this followed by
+     `package.json`.
+   * Found by searching from the current working directory.
+   * `npm run` always does a chdir to this before running any script
+     entries. (As do the shortcuts, e.g. `npm test` for `npm run test`.)
+   * Overridden by `--prefix`, which _also_ sets the "prefix" used for #2
+     below.
+
+2. The "NPM (global) prefix", determining how (non-package) configuration
+   is found and where "global" (e.g. `npm install -g`) operations happen.
+   * Defaults to the directory in which Node is installed.
+   * $npm_config_prefix and $npm_config_global_prefix both contain this.
+     (They appear never to be different.)
+   * $npm_config_globalconfig is `etc/npmrc` under this.
+   * `--prefix` sets this _and_ sets the package directory used for #1.
+
+TLDR: You almost never want to use `--prefix` unless you're trying to
+emulate multiple different installations of Node. Instead you must rely on
+the upward search from the current working directory to find the package
+definition. I.e.,
+-  NO: `npx --prefix /my/package jest`
+- YES: `(cd /my/package && npx jest)`
 
 
 Files and Directories
@@ -173,6 +208,15 @@ The following scripts, if present, are run by various npm commands.
 npm Options
 -----------
 
+#### --prefix
+
+Changes the global installation prefix (partially), including where
+`install -g` installs things, ___and___ sets the directory from which
+`package.json` etc. will be read.
+
+Generally, don't use this; see §""Prefix" and Package Definitions vs.
+NPM Configuration" above for details.
+
 The `--prefix DIR` option determines where the following files are found:
 - `package.json`: Configuration, dependencies, scripts.
 - `package-lock.json`: Exact (locked) depdendency definitions. (Or
@@ -191,15 +235,22 @@ CWD, not in the NPM prefix.
 npm Command Overview
 --------------------
 
-Links to all command doc pages are in the 'CLI commands' section of
-the [docs].
+Links to all command doc pages are in the 'CLI commands' section of the
+[docs]. All commands use a search upward from the current working directory
+to find the package directory (see §"Files and Directories" above),
+defaulting to the CWD if no package directory is found. Some commands
+change the CWD to that directory before continuing.
 
 * `init`: Interactively create `package.json`. Add `-y` to be
   non-interactive. Customize with [`~/.npm-init.js`]. This command is
   supplied by the [init-package-json] module.
 * `pack`: Create a tarball of the CWD package. Given package
   names/versions, downloads to cache and creates tarballs.
-* `exec` (also `npx` command): Run a command in the environment NPM creates
+* `run`: Change the current working directory to the package directory and
+  execute the given command defined in the `scripts` section of
+  `package.json`.
+* `exec` (also `npx` command): Without changing the current working
+  directory (unlike `npm run`), run a command in the environment NPM creates
   for the current package. (This includes commands linked into
   `node_modules/.bin/`.) Note that `exec` can accept NPM arguments, but
   also requires a `--` before any arguments for the command being run.
@@ -238,6 +289,7 @@ Options:
 
 
 <!-------------------------------------------------------------------->
+[NPM Packages]: ./npm-package.md
 [docs-pm]: https://docs.npmjs.com/about-packages-and-modules
 [docs]: https://docs.npmjs.com/
 

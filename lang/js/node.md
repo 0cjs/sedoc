@@ -1,5 +1,5 @@
 | [Overview](README.md) | [Node](node.js) | [TypeScript](ts.js)
-| [NPM](npm.md) | [NPM Configuration](npm-config.md)
+| [NPM](npm.md) | [NPM Packages](npm-package.md)
 | [Async](async.md) | [Jest](jest.md)
 |
 
