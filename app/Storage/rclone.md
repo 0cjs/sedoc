@@ -45,7 +45,9 @@ Configuration-related commands:
 
 ### Listing Files
 
-The `Ṙ` symbol indicates that the listing will be recursive.
+The `Ṙ` symbol indicates that the listing will be recursive. For
+non-recursive, enable recursion with `-R`; for recursive, disable it
+with `--max-depth 1`.
 
     lsd             List all directories/containers/buckets at path
     tree          Ṙ List the contents under path in a tree like fashion.
@@ -54,6 +56,11 @@ The `Ṙ` symbol indicates that the listing will be recursive.
     lsjson          List directories and objects at path in JSON format
     ls            Ṙ List the objects under path with size and path
     lsl           Ṙ List the objects under path with mod time, size and path
+
+Convenient commands:
+
+    #   List all files/dirs at top level in date order, with sizes.
+    rclone lsf --format tsp REMOTE: | sort | column -t -s ';'
 
 ### File Management
 
