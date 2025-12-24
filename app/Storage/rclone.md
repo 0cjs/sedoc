@@ -101,19 +101,51 @@ Instructions are at [Making your own client_id][rc-mkGid]. This is a bit
 complex; the following additional notes may help.
 
 You'll want to set up a new project in the [Google API console][gapi-console].
-Workspace users have a choice of putting it in your Workspace domain
-(enabling Internal apps) or in "uncategorized." To get back to the API
-console (and any other console in Google Cloud services), it's best to
-click the ≡ menu, use the "View all products" button at the very bottom,
-and pin the particular console you want.
+(Suggested name: `myname-rclone-api-keys`.) Workspace users have a choice
+of putting it in your Workspace domain (enabling Internal apps) or in
+"uncategorized." To get back to the API console (and any other console in
+Google Cloud services), it's best to click the ≡ menu, use the "View all
+products" button at the very bottom, and pin the particular console you
+want.
 
 When configuring the OAuth Consent Screen, if you create an "Internal"
 (instead of "External") app it avoids approval and/or scary messages. It
 also immediately allows use by all users in the Workspace, rather than
 having to add test users.
 
+If you use an internal app, the "Google Auth Platform / Branding" page lets
+you set the name that will appear as "NAME wants to access your Google
+Account." To avoid confusion, set it to the Workspace name and project name
+of your app, e.g., `mydomain.com myname-rclone-api-keys`.
+
 When creating the OAuth client, keep a copy of the the client secret; it
 cannot be retrieved after that client entry is created.
+
+#### Rsync "Making your own client id" summary.
+
+This summarises the rsync ["Making your own client"][rc-mkGid] instructions.
+
+1. Log in to Google API console.
+2. Select your `myname-rclone-api-keys` project using the picker at the top
+   left. (Or create a project if you don't already have one; see above.)
+3. Click the hamburger menu at the upper left and select the "Enabled APIs
+   & services" console. (This can be marked as a favourite for easier
+   access.)
+4. Select "Google Drive API" from the list at the lower right. If not
+   present, select "+ Enable APIs and services" at the the top, search for
+   "Drive," select "Google Drive API" and click the "Enable" button, and
+   then return to "APIs & Services".
+5. Click "OAuth consent screen" at the left. If not configured, click "Get
+   started" and configure per above or the [rsync web
+   documentation][rc-mkGid].
+6. Click "Audience." If you see "User type: internal" you need not add
+   users (everyone in your Workspace is automatically added). Otherwise add
+   yourself as a test user and press save.
+7. Go to "Clients" (not "Overview" as the docs say) and create a client.
+   Existing clients give enough information (`client_id` and last few chars
+   of `client_secret`) to confirm correctness of existing `rclone.conf`
+   entries.
+8. … (XXX needs to be finished)
 
 ### Adding Remotes
 
