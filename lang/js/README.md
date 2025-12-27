@@ -214,6 +214,23 @@ There are three widely used specifiers for the import name:
 - Bare specifiers. Complex and probably should be avoided (see above and
   [import maps]).
 
+#### Cross-importing
+
+ESM code can import CJS code with `import …` statements.
+
+CJS code cannot `require()` ESM code at the top level of a `.js` file; ESM
+imports are async. Thus you must have an async function that does the
+import and call it in an async context, e.g.:
+
+    async function loadLib() {
+        const myLib = await import('my-esm-library');
+        return myLib;
+    }
+
+You can use tools such as [`esbuild`] to build dual-language libraries that
+give one set of source code for importing into CJS and another into ESM.
+(This can also do tree-shaking, etc.)
+
 ### ESM
 
 #### Imports
@@ -279,6 +296,7 @@ XXX write me
 [substitution arguments]: https://developer.mozilla.org/en-US/docs/Web/API/console#using_string_substitutions
 
 <!-- Modules -->
+[`esbuild`]: https://esbuild.github.io/
 [`import()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
 [`import`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 [`node:`]: https://nodejs.org/api/esm.html#node-imports
