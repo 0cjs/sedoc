@@ -10,8 +10,21 @@ Misc Reading:
 * [JavaScript Scoping and Hoisting][jshoist] (Adequately Good)
 * [ES6 In Depth: Modules][es6modules] (Mozilla Hacks)
 
-Objects
--------
+
+Primitives and Objects
+----------------------
+
+### Primitives
+
+- The primitives are `string`, `number`, `boolean`, `undefined`, `null`,
+  `symbol` and `biginit`. (`typeof x` returns these strings for them.)
+- These are all immutable; "changing" them with e.g. `s += '.exe'` creates
+  a new primitive instance and changes the reference to point to it.
+- `Symbol(…)` produces a globally unique [symbol] with every call. Certain
+  well-known symbols that are properties on Symbol (e.g.,
+  `Symbol.hasInstance` serve as markers for protocols.
+
+### Objects
 
 [Object]s are maps of _properties_ (named _k_ below) to values. They
 typically inherit from `Object.prototype`, though they may also be [null
@@ -42,6 +55,41 @@ The [property access] operators are:
   it's not `null` or `undefined`, otherwise the RHS. (It has precedence
   directly between `||` and `? :`.) The `||` operator is similar, but tests
   whether the LHS is falsy.
+
+#### Equality
+
+There are two equality operators:
+
+* [`===`], `!==`: Strict equality.
+  - Different types are always unequal: `'x' !== new String('x')`.
+  - If both operands are objects, they must be the same object.
+  - Both operands are `null` or both are `undefined`.
+  - `NaN !== NaN`.
+  - Numbers with the same numeric value (`-0 === 0`), `string`s have same
+    chars in same order, booleans both `true` or `false`.
+
+* [`==`], `!=`: "Equality" attempts to convert and compare operands of
+  different types.
+  - `null == undefined`.
+  - If one operand is a primitive and the other an object, [convert the
+    object to a primitive][primitive coercion].
+  - `symbol != non_symbol`.
+  - Boolean vs. number: convert `true` to 1 and `false` to 0.
+  - String vs. number: [convert the string to a number][Number coercion].
+    (Conversion failure results in `NaN`, which always compares false.)
+  - String vs. BigInt: convert w/`BigInt(str)`. Failed conversion is false.
+
+Surprising cases:
+- `[] == ![]`, because `![] → false → 0` and `[] → '' → 0`
+- `'' == 0`, because `Number('') → 0`
+- `'' == false`, because above and `false → 0`
+- `0 == false`, because above.
+
+Transitivity problem:
+- `'' == 0` and `0 == '0'`, but `'' != '0'`
+
+Generally, always use `===`. One case not to may be `x == null` to also
+match `undefined`, but some prefer explicit: `x === null || x === undefined`.
 
 
 Syntax
@@ -82,22 +130,14 @@ Lambdas use `=>`.
   return: `x => x+1`, `x => { return x+1 }`.
 
 
-Immutable Primitives
---------------------
+Variable Scope
+--------------
 
-- The primitives string, number, boolean, undefined, null, symbol and
-  bigint are all immutable; "changing" them with e.g. `s += '.exe'`
-  creates a new object and changes the reference to point to it.
-- Re-assigning parameters to a function changes the bindings within the
-  function, and does not affect bindings outside the function. (Mutating
-  the objects will change them globally, however.)
-- `Symbol(…)` produces a globally unique [symbol] with every call. Certain
-  well-known symbols that are properties on Symbol (e.g.,
-  `Symbol.hasInstance` serve as markers for protocols.
+Re-assigning parameters to a function changes the bindings within the
+function, and does not affect bindings outside the function. (Mutating the
+objects will change them globally, however.)
 
-
-Global Variables
-----------------
+### Global Variables
 
 Every JS environment has one [global object]; what it is varies depending
 on the environment. (In a browser it's usually an instance of `Window`;
@@ -270,11 +310,15 @@ XXX write me
 [es6modules]: https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
 [jshoist]: http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
 
-<!-- Objects -->
+<!-- Primitives and Objects -->
+[Number coercion]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#number_coercion
+[`===`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality
+[`==`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality
 [`Object.defineProperty()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
 [null prototype]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects
 [nullish coalescing operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing
 [object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+[primitive coercion]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures#primitive_coercion
 [propclass]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties
 [property access]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
 [symbol]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
