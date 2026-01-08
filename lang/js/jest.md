@@ -1,4 +1,4 @@
-| [Overview](README.md) | [Node](node.js) | [TypeScript](ts.js)
+| [Overview](README.md) | [Node](node.md) | [TypeScript](ts.md)
 | [NPM](npm.md) | [NPM Packages](npm-package.md)
 | [Async](async.md) | [Jest](jest.md)
 |
