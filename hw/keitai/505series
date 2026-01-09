@@ -1,0 +1,22 @@
+
+Model	Thick	Weight	Color	  when	out	Camera	Special
+
+D505i	26	115	262k/65k  now	may23	1.23m	memstick
+SO505i	30	145	262k/-	  May?	jun4	1.3	memstick
+SH505i	24	115	262k/64k  Jun	jun20	1m
+N505i	25	115	262k/65k  Jul	jul4	320m
+F505i	21	105	262k/256  May?	-	1.23m	fingerprint
+P505i	21	120	65k/65k	  Aug	-	310m	2 cameras, front/back
+
+SH505iS	23	115	256/64			2m
+
+F900iT	32	155
+
+Features in F505i missing in SH505i:
+
+- one-touch bookmarks (press number than i-mode button)
+- one touch fast-run appli (hold down appli button)
+- folders for i-appli
+- when doing "quick search" in phone book, the first character is always
+  romaji; you have to type it in, clear it, switch to kana, and continue
+- predictive dictionary shows only one word per row, not several as F does
