@@ -1,0 +1,975 @@
+<html>
+<head>
+
+<title>Making Haskell programs faster and smaller</title>
+<META NAME="keywords" CONTENT="Haskell, strict, lazy"> 
+<META NAME="description" CONTENT="Practical experiences with strictness and laziness in Haskell">
+<style type="text/css">
+<!--
+A:link		{ color:purple;text-decoration:underline; }
+A:visited	{ color:orange;text-decoration:underline; }
+A:hover		{ color:black;text-decoration:underline;  }
+-->
+</style>
+</head>
+
+<body bgcolor=white text=black alink=black vlink=orange link=purple> 
+
+<h1>Making Haskell programs faster and smaller</h1>
+<p>
+Is Haskell's laziness actually a Good Thing? In writing code to
+process large data sets in Haskell I've come across more instances
+where laziness has been harmful than instances when it is
+beneficial. When everything needs processing and all calculations will
+be used, laziness just means that programs take up extortionate
+amounts of heap space while they delay all computation until the last
+minute.  This is a review of some of the processes I've been using to
+deal with the problems caused by processing large amounts of data, for
+my own reference, and for anyone else who would like similar help, as
+this is not usually found in the Haskell textbooks.</p>
+
+<ul>
+<li><a href="#ads">Algorithm/Data structures</a></li>
+<li><a href="#cps">Continuation Passing Style</a></li>
+<li><a href="#seq">Strict datatypes, seq, ($!), DeepSeq and Strategies</a></li>
+<li><a href="#read">Read vs Happy, Binary and others</a></li>
+<li><a href="#semiclosed">hGetContents, hClose, readFile</a></li> 
+<li><a href="#deepseq">DeepSeq.lhs</a></li>
+<li><a href="#sequential">Sequential.hs</a></li>
+<li><a href="#readfilehs">readfile.hs</a></li>
+</ul>
+
+<a name=ads><h2>Algorithm/Data structures</h2></a>
+<p>
+First of all change the algorithm and/or data structure. Although
+obvious, it is worth restating since this is the solution that will
+usually give most benefit. This is not Haskell specific, though it
+could well be easier in Haskell than some other languages, given
+</p>
+<ul>
+<li> the good support for abstract data types - users can easily define 
+new types</li> 
+<li> modularity of code - a whole module for a particular ADT or 
+algorithm can be easily replaced</li>
+<li> lack of side effects - any new functions the user writes to replace 
+or update existing algorithms are guaranteed not to interfere with
+existing code.</li>
+</ul>
+<p>
+Time and heap profiling are great for spotting which parts of your
+code need changing. Handy algorithms are available in Chris Okasaki's
+book (<a href=#refs>Okasaki1999</a>), and from the Haskell web page
+(<a href="http://www.haskell.org/libraries/">http://www.haskell.org/libraries/</a>). The Haskell mailing lists
+(<a href="http://www.haskell.org/mailinglist.html">http://www.haskell.org/mailinglist.html</a>) sometimes carry solutions
+that people post for various problems, such as Ralf Hinze's collection
+of sorting algorithms (8/10/97, "Re: heap sort or the wonder of
+abstraction").</p>
+<p>
+I've used the wrong type of sort and the wrong type of data structure
+(lists rather than prefix trees) before and getting this right speeds
+things up no end. Similarly, time profiling showed that one of
+my functions was taking up all the time not because it was slow but
+because it was being called so often. This pointed to using a screening
+function first, which did a less expensive test to work out whether the
+function really did need to be called, which saved half the time.</p>
+<p>
+There are huge gains to be made by using better algorithms and data
+structures. Unfortunately, profiling can be slow (usually around 10
+times slower in my experience) and it can take a long time to get all the information
+you need. And even then, the right choice of algorithm or data
+structure is not easy.</p>
+
+<a name=cps><h2>Continuation Passing Style</h2></a> 
+<p>
+If a heap profile
+shows that code is being detrimentally lazy, <b>Continuation Passing
+Style (CPS)</b> is one purely functional way of forcing
+evaluation. Using CPS is a way of ensuring the evaluation order of
+functions. For example, consider the following code: </p>
+
+<pre>
+g a b c = let intermediate_result = f a in 
+          h intermediateresult b c
+
+f a = blah
+</pre>
+<p>
+As Haskell's evaluation order is outermost first, function f will not
+be applied until necessary, and will be saved as is without being
+reduced. If these unevaluated instances of f take up much more memory
+than the evaluated answer, this is wasteful. To force reduction,
+we need to bring f to the outside of the computation. This happens as
+follows:</p>
+<p>
+We set f as the outermost function by introducing a new argument to f,
+and using a lambda expression as follows
+</p>
+<pre>
+g a b c  = 
+   f a (\intermediateresult -> h intermediateresult b c)
+</pre>
+<p>
+Now f has to take an extra argument, say k, the "continuation
+function". This function is to be applied whenever f produces a
+result. 
+</p>
+<pre>
+f a k = k blah
+</pre>
+<p>
+If the previous type of f was 
+</p>
+<pre>
+f :: a -> b
+</pre>
+<p>
+then the new type of f with a continuation function will be 
+</p>
+<pre>
+f :: a -> ( b -> c ) -> c
+</pre>
+<p>
+If f is recursive, say f was
+</p>
+<pre>
+f p []     = []
+f p (x:xs) = if p x then x : f p xs 
+             else f p xs
+</pre>
+<p>
+then the continuation function and the result which is being built up
+must be passed through together. f always stays on the outside, even
+in the recusive call:
+</p>
+<pre>
+f p [] k     = k []
+f p (x:xs) k = if p x then f p xs ( k . (x:) ) 
+               else f p xs k  
+</pre>
+<p>
+As an concrete example, here is some code which extracts particular
+parts of a parsed text file, building up a sorted list using insertion
+sort.
+</p>
+<pre>
+addElem position listSoFar (parsedLine:otherLines) =
+   let valueWanted = extract position parsedLine
+       newSoFar    = insert valueWanted listSoFar
+   in addElem position newSoFar otherLines
+
+insert x []       = [x]
+insert x l@(y:ys) = if x < y then x:l else y: insert x ys
+</pre>
+<p>
+As it is, the insert function will not be evaluated until the end, and
+all calls to this function will remain on the heap, wasting space.
+The code is rewritten so that the call to the "insert" function of
+the insertion sort is now on the outside, and takes a continuation
+function as argument. 
+</p>
+<pre>
+addElem position listSoFar (parsedLine:otherLines) =
+   let valueWanted = extract position parsedLine
+   in 
+   insert valueWanted listSoFar $
+     (\newSoFar -> addElem position newSoFar otherLines)
+
+insert x [] k       = k [x]
+insert x l@(y:ys) k = if x < y then k (x:l) else insert x ys (k . (y:))
+</pre>
+<p>
+Why does this work? Claus Reinke and Olaf Chitil pointed out that this
+works because we have been given a handle on "what comes next" (the
+continuation). So we can then move this around to control evaluation
+order. If we move it over some expression which forces evaluation such
+as a pattern match, a case expresion or the branches of a conditional,
+then we can control when the evaluation occurs. Of course, if you do
+not have some evaluation-forcing expression such as these, then the
+CPS code will be no more strict than the original.
+</p>
+<p>
+
+On small examples such as this, CPS is ideal. But as code becomes
+larger and more complex, CPS can have its problems. Take the following
+example
+</p>
+<pre>
+main = do
+          result <- foldM addDataFromFile initialData fileList
+          prettyprint result
+
+
+addDataFromFile initialData fileName =
+    do 
+        compiledFile <- compile fileName
+        return (countData compiledFile initialData)
+</pre>
+<p>
+Both the file compilation and the counting process will be lazily
+deferred, and all the files will be read in before any calculation
+actually happens. This can be checked by forcing evaluation at each
+stage with a redundant "==", and comparing the heap profile with the
+original. If the last line of the addDataFromFile function is changed
+as follows:
+</p>
+<pre> 
+addDataFromFile initialData fileName =
+    do 
+        compiledFile <- compile fileName
+        let newData = countData compiledFile initialData
+        if (newData == newData) 
+          then return newData
+          else return error ""
+</pre>
+<p>
+then everything runs beautifully and the heap stays small and constant
+from file to file.
+
+To convert to CPS the following would be necessary
+</p>
+<pre>
+addDataFromFile initialData fileName = 
+    do 
+      compiledFile <- compile filename
+      countData compiledFile initialData (\newData -> 
+               return newData )
+</pre>
+<p>
+This means lifting the countData function into the IO monad.
+If countData then goes on to call several other functions,
+which themselves call other functions, this will require using CPS on
+these also, and hence lifting a lot of the program into the IO
+monad. Although possible, this begins to look untidy and begins to
+obscure the benefits of using Haskell in the first place.</p>
+<p>
+The advantages of CPS are that it is still purely functional, standard
+Haskell. It stops laziness by changing the evaluation order, sometimes
+brilliantly reducing the memory overhead. The disadvantages are that
+it can make your code far less readable, and in some cases completely
+unintelligible. If a function is complicated, involving many sub
+functions then this can involve re-writing a large amount of code in
+CPS. </p>
+<p>
+
+I've made use of a CPS version of fold which can help if you have a
+suitably evaluating f:
+</p>
+<pre>
+cpsfold f a [] = a
+cpsfold f a (x:xs) = f x a (\y -> cpsfold f y xs) 
+</pre>
+Valery Trifonov emailed me to point out that
+<pre>
+cpsfold f = flip (foldr (flip . f) id)
+</pre>
+<p>
+"so depending on how it appears in the program it may be easier to use
+(foldr f' id) instead of (cpsfold f), for f' defined appropriately and
+instead of f. For defining short-circuit computations I recall to have
+found useful the version:"</p>
+<pre>
+cpsfold' = flip . flip foldr id 
+</pre>
+<p>Gertjan Kamsteeg also notes that:</p>
+<pre>
+cpsfold f a xs = foldr (\x k y -> f x y k) id xs a
+</pre>
+<p>and defines a version that 'consumes' elements from left to right:</p>
+<pre>
+cpsfold' f a xs = foldr (\x k y -> f y x k) id xs a
+</pre>
+
+<a name="seq"><h2>Strict datatypes, seq, ($!), DeepSeq and Strategies</h2></a>
+<p>
+The Haskell language provides support for strictness annotations to
+data and functions. On offer are the datatype annotation <b>!</b>, and
+the strict sequencing operator <b>`seq`</b> and its often more useful
+form as the infix operator <b>($!)</b>.</p>
+<p>
+The datatype annotation is used on user-defined datatypes as in the
+following example:</p>
+
+<pre>
+data Shape = Circle !Int !Int !Colour | Square !Int !Colour
+</pre>
+<p>
+<a href="http://www.haskell.org/onlinereport/decls.html#strictness-flags">http://www.haskell.org/onlinereport/decls.html#strictness-flags</a> gives
+more detail on the usage of these. Each argument that has a ! will be
+evaluated when the constructor is applied. That is, it will be
+evaluated as if it had had ($!) applied to it (see following
+discussion on how much ($!) actually evaluates).
+</p><p>
+The seq operator is
+</p>
+<pre>
+    seq :: a -> b -> b
+</pre> 
+<p>
+x `seq` y will evaluate x, enough to check that it is
+not bottom, then discard the result and evaluate y. This 
+might not seem useful, but it means that x is guaranteed to be 
+evaluated before y is considered.
+</p>
+<p>
+($!) is defined in terms of seq:</p>
+
+<pre>
+    f $! x = x seq f x
+</pre>
+<p>
+This can then be used in a similar fashion to the ordinary function
+application operator ($). For example:
+</p>
+<pre>
+    f x = g $! h $! x 
+</pre>
+<p>
+This will evaluate x first, then h x, then apply g to the result.
+
+However both seq and ($!) evaluate their argument only enough to
+check that it is not bottom. If the argument is a list, this means it
+only has to check the first cons cell. If a complex datatype, it only
+has to check the topmost level, not the parts. So using seq and ($!)
+does not necessarily mean that anything will be fully evaluated. Using
+these combined with the strict datatype operator can help further but
+if this is not applicable to your code, then a deeper evaluation is
+needed.</p>
+<p>
+<b>DeepSeq</b> is a module which provides operators <i>`deepSeq`</i>
+and <i>($!!)</i>. These are the equivalents of seq and ($!) in how
+they are used, but they force complete evaluation rather than the
+partial evaluation of seq and ($!). This module was posted by Dean
+Herington and posted to the Haskell mailing list on 21/8/00 (did he
+write it?). The module is included as <a href="#deepseq">Appendix A</a>.</p>
+<p>
+However, all such ways of enforcing evaluation and strictness are the
+users's responsibilty. DeepSeq is not yet deriveable, and instances
+must be written for all your datatypes (though John Meacham's <a
+href="http://repetae.net/john/computer/haskell/DrIFT/">DrIFT</a> can
+now derive instances of rnf, which is equivalent, see Strategies
+below).  Finding the correct places in the code to use ($!) or ($!!)
+is not always obvious, and code can still be lazy if any necessary
+places are overlooked. It can be an additional time overhead: if a
+computation is repeatedly carried out on an ever-growing
+datastructure, then it may be necessary to re-deepSeq the whole
+structure each iteration, even though most of it will have already
+been evaluated the previous time. Sometimes it can be difficult to
+find a place to put the ($!) or ($!!) operators and I end up writing
+extra redundant code such as the "do" and "return" in</p>
+<pre>
+   tree1 <- readTreeFile file1
+   tree2 <- readTreeFile file2
+   m     <- do return $!! (mergeTrees tree1 tree2)
+   tree3 <- readTreeFile file3
+   prettyprint tree3
+   return (compareTrees m tree3)
+</pre>
+<p>
+in order to force the result of a pure function which would normally
+have been defined with a let statement, before continuing in an IO
+monad.</p>
+<p>
+Scott Turner states on the haskell mailing list (17/6/04):</p>
+<blockquote>
+The concept of DeepSeq bothers me, because usually more limited use of 
+strictness will do the job, and sometimes total strictness can't be used.  
+Alternatives are <b>strictList_</b> and <b>strictList</b> as defined in 
+the "Prelude Extensions" at 
+<a href="http://haskell.org/hawiki/PreludeExts">http://haskell.org/hawiki/PreludeExts</a>
+</blockquote>
+<p><b>strictList</b> evaluates every element of the list when any part of
+the list is examined, and <b>strictList_</b> evaluates the entire
+list, but not its elements, when the head is evaluated.
+</p>
+<p>
+<b>Strategies</b> are another way of controlling evaluation and are
+available in the Strategies.lhs module distributed with GHC (just
+import Strategies). They're used in Glasgow parallel Haskell (GpH),
+but can be used in ordinary Haskell too, and are used in a similar
+fasion to deepSeq et al.
+</p>
+<pre>
+r0, rwhnf, rnf :: Strategy a
+r0 - does no evaluation, 
+rwhnf - reduces its argument to Weak Head Normal Form (WHNF).
+rnf - reduces its argument to normal form (i.e. containing no redexes). 
+</pre>
+
+<p>
+See <a href="http://www.mail-archive.com/haskell@haskell.org/msg11441.html">http://www.mail-archive.com/haskell@haskell.org/msg11441.html</a> and
+<a href="http://www.cee.hw.ac.uk/~dsg/gph/papers/">http://www.cee.hw.ac.uk/~dsg/gph/papers/</a> for more info. <i>rnf</i> can be derived by <a
+href="http://repetae.net/john/computer/haskell/DrIFT/">DrIFT</a>.
+</p>
+
+<a name="read"><h2>Read vs Happy, Binary and others</h2></a>
+<p>If Haskell is to be used in earnest for real-world programs it will
+have to have good methods of reading and writing persistent
+data. Using Read for complex data structures (for example large trees)
+is not an option. Apart from being slow, it is also difficult to force
+code using Read to be strict. Ints will take less space than the
+Strings which represent them, but Haskell will be lazy and leave them
+as Strings until they are required.</p>
+<p>
+<b>Happy</b> (<a href="http://www.haskell.org/happy/">http://www.haskell.org/happy/</a>) is a parser generator tool
+for Haskell. It is suprisingly easy to use. Simply write a grammar for
+the data you want to parse, in the Happy format, use Happy to convert
+the file into a Standard Haskell module, then the module can be used
+as ordinary code. This gives enormous speed-ups over using Read, and
+once you've written one Happy parser, all others are much the same, so
+parsing data will be simple in future. The disadvantages are the
+slight initial learning curve (in my opinion well worth the
+investment) and the difficulty in tracking down the source of type
+errors in generated code (Happy itself provides little in the way of
+error checking, and type errors come to light only when using the
+generated Haskell). The advantages are a large speed increase in
+reading files, and also some memory reduction. As arbitrary Haskell
+code can be included in the parser, sequencing operators and
+strictness annotations can be added where needed.</p>
+
+<p>
+I have found in the past that Happy can still leave unwanted "read"s
+and "span"s on the heap. I haven't used Happy for several years now
+and it's probably much better now. Simon Marlow said several years
+ago:</p>
+
+
+<blockquote>"I've looked a little at making Happy more strict
+recently, because it turns out that it always returns the parse tree
+as a huge tree of thunks to the caller - this wouldn't be so bad if it
+was actually lazy, but it's not!  It doesn't return anything until the
+whole input is parsed, and then it returns a huge wad of thunks. If
+you compile up a recent Happy from CVS (see GHC's building guide for
+info on setting up CVS), then you can use the --strict flag in
+conjunction with -agc to make all the productions strict."
+</blockquote>
+
+<p>
+ If stricter, faster data I/O is needed then
+Malcolm Wallace and Colin Runciman's <b>Binary</b> library
+(<a href="#refs">Wallace1998</a>)
+(<a href="http://www.cs.york.ac.uk/fp/nhc98/libs/Binary.html">http://www.cs.york.ac.uk/fp/nhc98/libs/Binary.html</a>) may be
+necessary. Currently only available for the nhc compiler, this
+provides excellent binary data reading and writing. Data can be read
+and written to file or to memory, and due to the compression used, the
+amount of data stored will generally be an order of magnitude smaller
+than if it were stored as text. I've found that this also means an
+order of magnitude saving in memory costs too, as there are no strings
+to remain on the heap, because the data is read in directly. The
+single disadvantage of Binary at the moment is that it is not Standard
+Haskell, and the only compiler providing support for this is
+nhc. However the support is good: instances of Binary are derivable
+automatically for any user defined data type, or if better compression
+is needed, the instances can be hand-written. Sven Panne once made a
+port of Binary for ghc
+(<a href="http://www.informatik.uni-muenchen.de/~Sven.Panne/haskell_libs/Binary.html">http://www.informatik.uni-muenchen.de/~Sven.Panne/haskell_libs/Binary.html</a>),
+however, this is now out of date, and in my tests it only worked on
+small data (if reading a tree that was too large it would begin to
+read junk after a while), and would not allow any opening of ordinary
+files after reading a reasonable sized binary file.
+</p>
+<p>
+Discussions were taking place in 2003 on the libraries mailing list to
+devise a general Binary library. I haven't kept up with the status of
+this now. If you can provide a summary, please do.</p>
+
+<p>
+Another alternative to Binary is Julian Seward's Sequential code,
+which provides a simple Standard Haskell module for strict data I/O to
+files. This module is included as Appendix B. This does not give as
+good compression as Binary, and instances are not deriveable, and must
+be hand-written for all user datatypes. But it does provide simple
+strict reading of Haskell data.
+</p>
+
+<a name="semiclosed"><h2>hGetContents, hClose, readFile</h2></a>
+<p>
+Some time ago there was an interesting discussion on the Haskell mailing
+list (21/5/03) of hGetContents and hClose which again relates to
+laziness not behaving as you might like. This has come up on the
+mailing list a few times now, and questioners have been referred to
+read about semi-closed handles (see IO library report, section 21.2.2
+<a
+href="http://www.haskell.org/onlinereport/io.html">http://www.haskell.org/onlinereport/io.html</a>).
+</p>
+<p>
+
+If you open a file, and do some reading from the file, then close the
+file, how do you guarantee that the reading and closing of the file
+happens in the order you require? For convenience and easy reading I
+include here three of the emails to the haskell mailing list. These
+postings can be found in the thread that starts <a
+href="http://haskell.org/pipermail/haskell/2003-May/011851.html">here</a>.
+</p>
+<p>
+Graham Klyne wrote:</p>
+<blockquote>
+There seems to be a difficult-to-justify interaction between
+lazy evaluation and monadic I/O:
+<pre>
+[[
+-- file: SpikeIOMonadCloseHandle.hs
+-- Does hClose force completion of lazy I/O?
+ 
+import IO
+ 
+showFile fnam =
+      do  { fh <- openFile fnam ReadMode
+          ; fc <- hGetContents fh
+          ; hClose fh
+          ; putStr fc
+          }
+ 
+test = showFile "SpikeIOMonadCloseHandle.hs"
+]]
+</pre>
+If I load this into Hugs and run it, the output is a single blank line.
+If I reverse the order of hClose and putStr, the source code is displayed.
+</blockquote>
+
+<p>Ketil Z. Malde wrote</p>
+<blockquote>
+hClose is a strict operation, hGetContents is a lazy one.  You want
+hClose to be strict, since the next action may be writing to the same
+file; having an unevaluated hGetContents around to be evaluated after
+other operations may not give you the result you expect.
+<p>
+For a simple example like the above, use readFile, which reads lazily
+and closes the file when it's done.  For complex examples, use handles
+with strict IO operations (but be prepared for high memory cost for
+those lists of chars)
+</blockquote>
+
+
+<p>Hal Daume III wrote:</p>
+<blockquote>
+<p>
+Yes.  This is because hGetContents (and hence readFile, etc.) use lazy
+IO.  Just as in this case you might want hClose to force the file to be
+read, in a case like:</p>
+
+<pre>
+> do h <- openFile "really_large_file" ReadMode
+>    c <- hGetContents h >>= return . head
+>    hClose h
+>    return c
+</pre>
+<p>
+you probably don't want the close to read the whole file.  I'd argue that
+that problem is not with hClose, but with hGetContents.  Really, a strict
+version should be used in most situations.  Something like:</p>
+
+<pre>
+> hGetContentsStrict h = do
+>    b <- hIsEOF h
+>    if b then return [] else do
+>      c <- hGetChar h
+>      r <- hGetContentsStrict h
+>      return (c:r)
+</pre>
+<p>
+of course, you could be smarter with buffering, etc.  Another way would be
+to do something using seq/deepSeq.</p>
+</blockquote>
+
+<p>See also <a href="http://www-fp.dcs.st-and.ac.uk/~kh/papers/io-tutorial/subsubsectionstar3_3_2_2.html">http://www-fp.dcs.st-and.ac.uk/~kh/papers/io-tutorial/subsubsectionstar3_3_2_2.html</a> (the HTML is rather broken and doesn't display well on Firefox but it's a short piece so it's possible to read it anyway).
+</p>
+
+<p>Recently this subject reappeared when another person asked about the same issue. Various responses appeared. I include here one from Cale Gibbard and a followup from Simon Marlow. (2/Aug/05)</p>
+
+Cale Gibbard wrote:
+<blockquote>
+<p>Your problem is, as you pointed out, that readFile does lazy IO.
+ Although the semantics of it can be a bit confusing at times, it is
+ useful for applications where you have a large file which is being
+ consumed, and you don't want to allocate all of the memory for it
+ before doing any processing. Laziness lets you read the file as needed
+ -- you may not even need it all, depending on what is being done. This
+ is quite helpful when you have something like a couple gigabytes of
+ data on disk which needs processing. It can however be confusing at
+ first that it may not finish reading the file before the file is
+ altered, or, in situations involving handles, before the handle is
+ closed.</p>
+ 
+ <p>You can write a strict IO version of readFile in Haskell as follows:</p>
+
+<pre> 
+ import IO
+ 
+ hGetContents' hdl = do e <- hIsEOF hdl
+                        if e then return []
+                             else do c <- hGetChar hdl
+                                     cs <- hGetContents' hdl
+                                     return (c:cs)
+ 
+ readFile' fn = do hdl <- openFile fn ReadMode
+                   xs <- hGetContents' hdl
+                   hClose hdl
+                   return xs
+</pre>
+<p> 
+ If you use readFile', it will ensure that the entire file is read and
+ memory for the string is allocated before continuing. This ought to
+ solve your problem.
+</p>
+</blockquote>
+
+<p>Simon Marlow added the following response:</p>
+
+<blockquote>
+<p>Note that hGetContents' is likely to be slow, because it does repeated
+hGetChar.  Also it is not tail-recursive, so it will run out of stack
+for a large file.  It would be better to read the whole file into memory
+but lazilly convert it to a String, like so:
+</p>
+<pre>
+import System.IO
+import System.IO.Unsafe
+import Foreign
+import Data.Char
+
+readFile' f = do
+  h <- openFile f ReadMode
+  s <- hFileSize h
+  fp <- mallocForeignPtrBytes (fromIntegral s)
+  len <- withForeignPtr fp $ \buf -> hGetBuf h buf (fromIntegral s)
+  lazySlurp fp 0 len
+
+lazySlurp :: ForeignPtr Word8 -> Int -> Int -> IO String
+lazySlurp fp ix len
+  | ix == len = return []
+  | otherwise = do
+     c <- withForeignPtr fp $ \p -> peekElemOff p ix
+     cs <- unsafeInterleaveIO (lazySlurp fp (ix+1) len)
+     return (chr (fromIntegral c) : cs)
+</pre>
+<p>Actually, I recommend always using this version unless you need to deal
+with really large files.  Performance won't be quite as good as
+readFile, but I've attached a tweaked version that performs much better.
+</p>
+</blockquote>
+<p>See <a href="#readfilehs">Appendix C</a> for Simon's tweaked code.</p>
+
+<h2>Summary</h2>
+<p>
+In practice, I've needed all of the above, and wrestling with laziness
+is something that happens with every serious Haskell program I
+write. There must be many more useful techniques. Thanks to all who've
+pointed out mistakes, and useful additions. Further tips and
+suggestions are extremely welcome, please email afc@aber.ac.uk if
+you can add to this list.
+</p>
+
+<a name="refs"><h2>Refs</h2></a>
+<ul>
+<li>Okasaki1999: 
+C. Okasaki, (1999) Purely Functional Data Structures. <i>Cambridge University Press</i></li>
+
+<li>Wallace1998:
+M. Wallace and C. Runciman (1998) The bits between the lambdas: Binary data in a lazy functional language. <i>Proceedings of the International Symposium on Memory Management 1998</i></li>
+</ul>
+
+<a name="deepseq"><h2>Appendix A</h2></a>
+
+<pre>
+Subject: DeepSeq.lhs [was: Re: [Haskell] Force evaluation]
+Date: Tue, 7 Dec 2004 01:25:15 -0500
+From: Dean Herington <heringtonlacey@mindspring.com>
+
+DeepSeq.lhs  --  deep strict evaluation support
+
+The `DeepSeq` class provides a method `deepSeq` that is similar to
+`seq` except that it forces deep evaluation of its first argument
+before returning its second argument.
+
+Instances of `DeepSeq` are provided for Prelude types.  Other
+instances must be supplied by users of this module.
+
+$Id$
+
+>  module  DeepSeq  where
+
+
+>  class  DeepSeq a  where  deepSeq :: a -> b -> b
+
+
+>  infixr 0 `deepSeq`, $!!
+
+
+>  ($!!) :: (DeepSeq a) => (a -> b) -> a -> b
+>  f $!! x = x `deepSeq` f x
+
+
+
+>  instance  DeepSeq ()  where  deepSeq = seq
+
+
+>  instance  DeepSeq Bool  where  deepSeq = seq
+>  instance  DeepSeq Char  where  deepSeq = seq
+
+
+>  instance  (DeepSeq a) => DeepSeq (Maybe a)  where
+>    deepSeq Nothing  y = y
+>    deepSeq (Just x) y = deepSeq x y
+
+
+>  instance  (DeepSeq a, DeepSeq b) => DeepSeq (Either a b)  where
+>    deepSeq (Left  a) y = deepSeq a y
+>    deepSeq (Right b) y = deepSeq b y
+
+
+>  instance  DeepSeq Ordering  where  deepSeq = seq
+
+
+>  instance  DeepSeq Int       where  deepSeq = seq
+>  instance  DeepSeq Integer   where  deepSeq = seq
+>  instance  DeepSeq Float     where  deepSeq = seq
+>  instance  DeepSeq Double    where  deepSeq = seq
+
+
+>  instance  DeepSeq (a -> b)  where  deepSeq = seq
+
+
+>  instance  DeepSeq (IO a)  where  deepSeq = seq
+
+
+>  instance  (DeepSeq a) => DeepSeq [a]  where
+>    deepSeq []     y = y
+>    deepSeq (x:xs) y = deepSeq x $ deepSeq xs y
+
+
+>  instance  (DeepSeq a,DeepSeq b) => DeepSeq (a,b)  where
+>    deepSeq (a,b)           y = deepSeq a $ deepSeq b y
+>  instance  (DeepSeq a,DeepSeq b,DeepSeq c) => DeepSeq (a,b,c)  where
+>    deepSeq (a,b,c)         y = deepSeq a $ deepSeq b $ deepSeq c y
+>  instance  (DeepSeq a,DeepSeq b,DeepSeq c,DeepSeq d) => DeepSeq (a,b,c,d)  where
+>    deepSeq (a,b,c,d)       y = deepSeq a $ deepSeq b $ deepSeq c $ deepSeq d y
+>  instance  (DeepSeq a,DeepSeq b,DeepSeq c,DeepSeq d,DeepSeq e) => DeepSeq (a,b,c,d,e)  where
+>    deepSeq (a,b,c,d,e)     y = deepSeq a $ deepSeq b $ deepSeq c $ deepSeq d $ deepSeq e y
+>  instance  (DeepSeq a,DeepSeq b,DeepSeq c,DeepSeq d,DeepSeq e,DeepSeq f) => DeepSeq (a,b,c,d,e,f)  where
+>    deepSeq (a,b,c,d,e,f)   y = deepSeq a $ deepSeq b $ deepSeq c $ deepSeq d $ deepSeq e $ deepSeq f y
+>  instance  (DeepSeq a,DeepSeq b,DeepSeq c,DeepSeq d,DeepSeq e,DeepSeq f,DeepSeq g) => DeepSeq (a,b,c,d,e,f,g)  where
+>    deepSeq (a,b,c,d,e,f,g) y = deepSeq a $ deepSeq b $ deepSeq c $ deepSeq d $ deepSeq e $ deepSeq f $ deepSeq g y 
+</pre>
+
+<a name="sequential"><h2>Appendix B</h2></a>
+
+<pre>
+module Sequential where
+
+-- Author: Julian Seward, 2002
+-- Module providing strict file I/O for Haskell datatypes
+
+-- Comment by Amanda Clare - Be careful with types that use Strings, there's 
+-- a separate instance for them.
+
+import IO
+import Char	( chr, ord )
+import ADT
+
+panic msg = error ("panic: " ++ msg)
+
+putC :: Handle -> Char -> IO ()
+putC = hPutChar
+putS :: Handle -> String -> IO ()
+putS = hPutStr
+getC :: Handle -> IO Char
+getC = hGetChar
+getS :: Handle -> Int -> IO String
+getS h n
+   | n < 0     = panic "getS: negative"
+   | n == 0    = return []
+   | otherwise = do c <- getC h
+                    cs <- getS h (n-1)
+                    return (c:cs)
+
+-- write the length of an item using an expanding code.  This makes
+-- it possible to implement a reader with zero lookahead.  0-9 are
+-- emitted as-is.  Otherwise emit 'A' + length (show n) ++ show n
+emitLen :: Handle -> Int -> IO ()
+emitLen h n
+   | n < 0 = panic "emitLen"
+   | n < 10 = putC h (chr (n + ord '0'))
+   | otherwise
+   = let ns = show n
+         nd = length ns
+     in  putC h (chr (nd + ord 'A')) >> putS h ns
+
+-- read a len.  Take care to force the returned Int before returning it.
+readLen :: Handle -> IO Int
+readLen h
+   = do c1 <- getC h
+        if c1 >= '0' && c1 <= '9'
+         then do let n = ord c1 - ord '0'
+                 n `seq` return n
+         else do let nd = ord c1 - ord 'A'
+                 str <- getS h nd
+                 let n = read str
+                 n `seq` return n
+
+
+class Sequential t where
+   toSeq   :: Handle -> t -> IO ()
+   fromSeq :: Handle -> IO t
+
+
+
+
+
+-- Alas, this encompasses String == [Char] in a way we don't want
+-- so use toSeqString and fromSeqString for String
+
+instance Sequential a => Sequential [a] where
+   toSeq h xs
+      = let n = length xs
+        in  -- just wop 'em in back-to-back, since the reader knows 
+            -- how many to expect
+            emitLen h n >> mapM_ (toSeq h) xs
+   fromSeq h
+      = do nxs <- readLen h
+           loop nxs
+        where
+           loop :: Int -> IO [a]
+           loop 0 = return []
+           loop n = do x <- fromSeq h
+                       xs <- loop (n-1)
+                       return (x:xs)
+
+instance Sequential Int where
+   toSeq h i = let str = show i in 
+               emitLen h (length str) >> putS h str
+   fromSeq h = do nd <- readLen h
+                  str <- getS h nd
+                  let n = read str
+                  n `seq` return n
+
+instance Sequential Integer where
+   toSeq h i = let str = show i in 
+               emitLen h (length str) >> putS h str
+   fromSeq h = do nd <- readLen h
+                  str <- getS h nd
+                  let n = read str
+                  n `seq` return n
+
+instance (Sequential a, Sequential b) => Sequential (a,b) where
+   toSeq h (x,y) = toSeq h x >> toSeq h y
+   fromSeq h = do x <- fromSeq h
+                  y <- fromSeq h
+                  return (x,y)
+
+--instance Sequential String where   {- see comment above -}
+toSeqString   h str = emitLen h (length str) >> putS h str
+fromSeqString h     = do nd <- readLen h
+                         str <- getS h nd
+                         return str
+
+-- [String] must also be special case 
+-- instance Sequential [String] where 
+toSeqSS :: Handle -> [String] -> IO()
+fromSeqSS :: Handle -> IO [String]
+toSeqSS h xs
+      = let n = length xs
+        in  -- just wop 'em in back-to-back, since the reader knows
+            -- how many to expect
+            emitLen h n >> mapM_ (toSeqString h) xs
+fromSeqSS h
+      = do nxs <- readLen h
+           loop nxs
+        where
+           loop :: Int -> IO [String]
+           loop 0 = return []
+           loop n = do x <- fromSeqString h
+                       xs <- loop (n-1)
+                       return (x:xs)
+
+
+{-
+data T = L | N Int T T
+         deriving (Show, Eq) -- just for testing
+
+instance Sequential T where
+   toSeq h L = putC h 'L'
+   toSeq h (N n l r) = do putC h 'N'
+                          toSeq h n
+                          toSeq h l
+                          toSeq h r
+
+   fromSeq h
+      = do what <- getC h
+           case what of
+              'L' -> return L
+              'N' -> do n <- fromSeq h
+                        l <- fromSeq h
+                        r <- fromSeq h
+                        return (N n l r)
+
+
+mkHugeTree :: Int -> T
+mkHugeTree n
+   | n == 0 = L
+   | n == 1 = N 1 L L
+   | n > 0  = let half = n `div` 2
+              in  N n (mkHugeTree half) (mkHugeTree (n - half))
+
+-- just to force the read thing into memory
+countNodes :: T -> Int
+countNodes L = 0
+countNodes (N _ l r) = 1 + countNodes l + countNodes r
+
+test  = do let tree_orig = mkHugeTree 500000
+	--   putStrLn (show (countNodes tree_orig))
+           h_out <- openFile "testfile2" WriteMode
+           toSeq h_out tree_orig
+           hClose h_out
+           h_in <- openFile "testfile2" ReadMode
+           tree_read <- (fromSeq h_in) :: IO T
+           let n_nodes_read = countNodes tree_read
+           putStrLn ("read tree has " ++ show n_nodes_read ++ " nodes")
+           putStrLn ("is it same as original?: " 
+                      ++ show (tree_orig == tree_read))
+
+main = test
+-}
+</pre>
+
+<a name="readfilehs"><h2>Appendix C</h2></a>
+<p>Simon Marlow's readfile.hs</p>
+<pre>
+import System.IO
+import System.IO.Unsafe
+import Foreign
+import Data.Char
+
+main = do
+  str <- readFile' "/usr/share/dict/words"
+  putStr str
+
+readFile' f = do
+  h <- openFile f ReadMode
+  s <- hFileSize h
+  fp <- mallocForeignPtrBytes (fromIntegral s)
+  len <- withForeignPtr fp $ \buf -> hGetBuf h buf (fromIntegral s)
+  lazySlurp fp 0 len
+
+buf_size = 4096 :: Int
+
+lazySlurp :: ForeignPtr Word8 -> Int -> Int -> IO String
+lazySlurp fp ix len
+  | fp `seq` False = undefined
+  | ix >= len = return []
+  | otherwise = do
+      cs <- unsafeInterleaveIO (lazySlurp fp (ix + buf_size) len)
+      ws <- withForeignPtr fp $ \p -> loop (min (len-ix) buf_size - 1) 
+					((p :: Ptr Word8) `plusPtr` ix) cs
+      return ws
+ where
+  loop :: Int -> Ptr Word8 -> String -> IO String
+  loop len p acc
+    | len `seq` p `seq` False = undefined
+    | len < 0 = return acc
+    | otherwise = do
+       w <- peekElemOff p len
+       loop (len-1) p (chr (fromIntegral w):acc)
+</pre>
+
+</body>
+</html>
