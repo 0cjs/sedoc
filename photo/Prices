@@ -1,0 +1,65 @@
+$Id$
+
+Print sizes:
+(also see http://home.inter.net/eds/paper/miscjpaper.html)
+
+Name		mm		~inches		ratio	comment
+
+135		36 x 24				1.5	35 mm film
+LC		88 x 126	3.5 x 5		1.43	standard small
+KG		102 x 146	4 x 5.75 	1.43
+mutsu-giri	203 x 254	8 x 10		1.25
+mutsu-giri wide	203 x 302	8 x 12 		1.49
+yotsu-giri	254 x 305	10 x 12		1.20
+yotsu-giri wide			10 x 14
+han-kiri	356 x 432	14 x 17		1.21
+
+(Days below are "business days": do not count holidays and weekends.)
+
+Lab	Film		Time	Develop	Index
+-------	---------------	-------	-------	-----
+Kimura	Kodak color	1hr	600	100
+Kimura	Fuji color	1hr	600	100
+Kimura	Presto 1600	2dy	400
+Kimura	Presto 400 push	4dy	800		(quoted 4 but took 2)
+Bic	Presto 1600	3dy	252
+Bic	Presto 400 push	2dy	504
+Kimura	T-Max 400	4dy	1000
+Bic	T-Max 100	5dy	504
+
+Lab	Size		Color	Gloss	Hand	Price
+-------	---------------	-------	-------	-------	-----
+Kimura	L 126x88	BW	Y	N	35
+Kimura	contacts	BW	Y		120/strip (7 to a roll)
+Bic	L 126x88	BW	N	N	26
+Bic	L 126x88	BW	N	N	38 (push roll--above ws error?)
+
+CDs:
+BIC	525 for the first
+Kimura	500 for the first, 400 for subsequent
+
+
+============================================================
+
+SPD: 16.5 rolls per 5l, 35 yen per roll
+Stop bath: 350 yen/l conc., 16.5 2l working x 30 rolls/2l = 495 rolls = 1 yen
+Fixer: 100 rolls / 2l, 650 yen 2/l, 6.5 yen/roll
+
+
+1600-PR-36	300
+SPD		 35
+Fixer		  7
+Sleeve		 42
+print		 72
+
+total		456
+
+
+Sheet film:
+			Standard	Per sheet	QuickLoad	Ratio
+
+    Acros 100		2205 (20)	111		5953 (20)	2.7
+    100TMX	 	5649 (50)	113
+    Tri-X 320		5640 (50)	113
+    Pro160NS		2730 (10)	273		8090 (20)	1.5
+    Velvia 100F		3045 (10)	305		8610 (20)	1.4

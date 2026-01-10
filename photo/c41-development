@@ -1,0 +1,173 @@
+-- $Id$
+
+Color films consist of three layered B/W emulsions, along with dyes
+to control which colours each layer responds to. The top is blue, the
+middle is green, and the bottom is red. The development works with the
+dye couplers to produce subtractive complements of red green and blue:
+cyan magenta and yellow. Bleach re-oxidises the silver halides back to
+silver, since we're no longer interested in the b/w negative that was
+simultaniously produced. The fixer later removes all of that silver
+(both the undeveloped and the developed-but-reverted-by-the-bleach) and
+we're left with the colour dyes. Colour film also has an orange mask to
+control contrast and correct for colour deficiencies.
+
+This is a summary of the C41 process in a sink-line processor.
+There is also a C-41B process that shortens the fixing time and
+eliminates the washes.
+
+All times incude a ten second drain time at the end of each step.
+Developer time is exact; the rest are minimums (but don't go to an hour
+or something dumb like that). Temperature is 24 to 41 degC for all
+stages after development.
+
+Manual agitation, for all steps except final wash and stabilization:
+
+    1. Immerse rack into developer, tap on bottom to dislodge air
+    bubbles. Raise rack out of developer, then reimmerse. Takes 4-5
+    seconds.
+
+    2. Let sit for 10 seconds. Lift straight out and reimmerse without
+    draining. Takes 2-3 seconds. Repeat every 10 seconds.
+
+    3. Ten seconds before end of development, raise out of developer,
+    tilt and allow to drain for remaining time.
+
+    If contrast is too low, agitate more frequently. If too high,
+    agitate less frequently.
+
+Steps:
+
+    Development: 3:15, 37.8 degC +/- 0.15 degC
+
+        This temperature is the recommended temperature during
+        development, not the recommended starting temperature for
+        the developer. The developer starting temperature should be
+        calibrated by finding the temperature drop 60 seconds after film
+        is inserted and agitated normally.
+
+        Agitate for the first 15 seconds, and then every 30 seconds.
+        z131 section 3 describes a combined manual/nitrogen burst system
+        that's somewhat complex.
+
+        Portra 400UC and 800 can be pushed; add 30 seconds for N+1, and
+        60 seconds for n+2. Or, according to Jobo (for any film), add
+        15% for each stop of push, though this may lose color balance.
+        Don't pull, instead develop less in printing.
+
+
+        Temperature loss can be compensated for by increasing
+        development time to somewhere between 3:15 and 3:45.
+
+	Kodak FLEXICOLOR Developer
+
+    Bleach: 6:30
+
+        "Hobby" systems combine this with the fix stage as a
+	"bleach/fix" stage.
+
+        Bleach must be aerated by vigourous stirring. You can also do
+        this by putting the solution into a container twice the size and
+        shaking vigorously for 30s. Do this at least once a week.
+
+	After this step you can turn on the lights.
+
+	Kodak FLEXICOLOR Bleach III
+
+    Wash: 3:15
+
+	Running water, use initial agitation only.
+	Or change water every 30s.
+
+    Fix: 6:30
+
+	Kodak FLEXICOLOR Fixer and Replenisher
+
+    Final Wash: 3:15
+
+	Running water, use initial agitation only.
+	Or change water every 30s.
+
+	Jobo recommends 5:00 for this step.
+
+    Stabilize: 1:30
+
+	Agitation: continuous manual agitation for first 15
+	seconds only.
+
+	Jobo recommends, for this step only, doing it off the
+	processor at room temperature.
+
+        Stabilizers are used to fix or tan the organic dyes in the
+        film. Some modern films don't need this, and you can use just a
+        wetting agent instead. Many stabilizers (though not any Tetenal
+        ones) contain formaldehyde, a carcinogen. For these, good
+        ventilation is essential.
+
+	Kodak FLEXICOLOR Stabilizer III
+
+Jobo's hand-development process is:
+
+    1. The working solutions must be brought to the process temperature
+    chosen.
+
+    2. The developing tank containing the film should be brought to the
+    selected process temperature. Preheat the outside of the tank (in a
+    water bath) for 5 minutes.
+
+    3. In order to keep the developer temperature constant during the
+    process, the tank should be placed in a water bath with as much
+    heated water as possible.
+
+    4. The temperature of the water bath is maintained by adding hot
+    water, if no electric heater is available.
+
+    5. The tank with the films inside is tapped against a table-top
+    after the solutions have been poured in, to remove bubbles adhering
+    to the film.
+
+    6. Then the tank is agitated continuously for 30 seconds inverting
+    the tank one cycle each second.
+
+    7. The next 15 seconds the tank will remain in the water bath.
+
+    8. During the remaining processing time, the tank is agitated once
+    every 15 seconds. Between agitation cycles, the tank should remain
+    immersed in the water bath.
+
+    FAST PROCESS AT 45º C IN PROCESSORS
+    Process Step		Temperature 	Process Time
+    Preheating developing tank	45ºc		2 minutes
+    Color developer		45ºc		2 minutes*
+    Bleach-fix**		45ºc		4 minutes 30 seconds
+    Wash			45ºc		4 x 15 seconds
+    Stabilizer or wetting agent	20-45ºc		1 minute
+    Dry the film
+
+
+
+Usage/Replenishment:
+
+    Developer capacity (regular or LORR working solution), if not
+    replenished, is 3 rolls of 135-36 per litre. Bleach fixer and
+    stabilizer is twice that.
+
+    For each metal reel of 135-36:
+
+	FLEXICOLOR Developer replenisher: 66.2
+	FLEXICOLOR Developer replenisher LORR: 33.1
+	FLEXICOLOR Bleach III, Fixer, Stabilizer III replenisher: 69
+
+    For plastic reels, increase bleach, fixer and stabilizer by 25%.
+
+    This stuff keeps in brimfull bottles for 6 weeks (developer)
+    or 8 weeks (the rest of it).
+
+Useful URLs:
+
+    http://www.kodak.com/global/en/service/Zmanuals/z131.shtml
+    http://www.kodak.com/global/en/service/Zmanuals/
+    http://www.kodak.com/global/en/service/chemicals/qaC41.shtml
+    http://www.jobo-usa.com/instructions/instructions_process_index.htm
+    http://www.jobo-usa.com/instructions/instructions_process_e-6.htm
+    http://www.jobo-usa.com/instructions/instructions_process_c41_presskit.htm
+    http://www.olympusmicro.com/primer/photomicrography/colornegprocerrors.html

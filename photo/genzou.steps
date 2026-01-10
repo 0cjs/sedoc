@@ -1,0 +1,132 @@
+$Id$
+
+How to develop film. By cjs.
+
+1. Wear trousers that look good with white spots on them. Somehow, even
+if you're not mixing any chemicals, you will end up with white spots on
+your trousers.
+
+2. Try to chill fixer. It's always too warm. *Sigh*. I like to pour it
+out into the second measuring jug and put it into the fridge early, but
+this doesn't accomplish much more than make your fridge stink.
+
+3. Pour out 1.5 litres of mizu into your 2L jug, and submurge the ice
+thingie and thermomiter. This should get to 20C soon.
+
+4. Mix any developer powder you have to mix. You're still waiting for
+the fixer, so it will settle soon enough.
+
+4a. If it's settled, start to measure out the developer. You need just
+20C, so maybe you need to add some ice, and wait.
+
+5. Load the tank with your film. Details elsewhere. But make sure reels
+are dry! And, if plastic, use empty reels above the full ones.
+
+6. Prewash: You have 20C water now to pour into the tank. Do it. Shake
+it up. Wait a bit. Pour it out at the next step.
+
+7. Pour out the prewash, pour in the developer, and start the timer.
+Lost my frickin' stick to turn to agitate, so I do a sort of round swirl
+for 30 sec., then set down. Then at every :30 thereafter, do the turn,
+"three," turn, "two," set down thing.
+
+8. Gah! Forgot the bang to get rid of bubbles thingie!
+
+9. Pour out developer. Pour in tempered water.
+
+....
+
+x. Rinse for 7:30. This is supserstition.
+
+
+------
+
+Unaccounted-for things:
+
+* When do you mark your fixer and quickwash as having developed X more
+rolls?
+
+------
+
+Dual-tank Development
+
+Standard steps are:
+
+    8:00 developer (from jug D)
+    0:30 stop bath (from jug F)
+    5:00 fix (from jug F)
+    0:30 wash
+    1:00 hypo clear (from jug F)
+    5:00 wash
+
+Additional equipment:
+	1 x 3-roll tank
+	1 x 3 spirals
+	2 x 1L jugs for developer/fixer.
+	1 x 2L bottle for stop bath
+
+New program for timer:
+
+    time	tank 1		tank 2
+    1/8:00	develop		none/develop
+    2/2:00	stop/fix	develop
+    3/4:00	fix		stop/fix
+    4/2:00	prewash		fix/prewash
+    5/1:00	hypo soak	hypo soak
+    6/7:00	wash		-
+    7/6:00	-		wash
+
+New steps. The times are stage/remaining time.
+
+	timer	action
+		fill developer and stop bath jugs
+		funnel in stop bath bottle
+	1/8:00	tank 1: developer in, agitate 4x
+	1/6:30	tank 1: agitate 2x
+	1/6:00	tank 2: developer in, agitate 4x
+	1/5:30	tank 1: agitate 2x
+		rinse and put away developer jugs
+	1/4:30	tanks 1/2: agitate 2x
+	1/3:30	tanks 1/2: agitate 2x
+	1/2:30	tanks 1/2: agitate 2x
+	1/1:30	tanks 1/2: agitate 2x
+	1/0:30	tanks 1/2: agitate 2x
+	1/0:05	tank 1: developer out into sink
+	2/2:00	tank 1: stop bath in, agitate 4x
+	2/1:30	tank 2: agitate 2x
+		tank 1: stop bath out into bottle
+		jug 1: rinse and measure out fixer
+	2/1:00	tank 1: fixer in, agitate 2x
+	2/0:30	tank 2: agitate 2x
+	2/0:05	tank 2: developer out into sink
+	3/4:00	tank 2: stop bath in, agitate 4x
+	3/3:30	tank 2: stop bath out into bottle
+		jug 2: rinse and measure out fixer
+	3/3:00	tank 2: pour in fixer, agitate 2x
+		rinse funnel and move to fixer bottle
+		close and store stop bath bottle
+	3/0:05	get ready
+	4/2:00	tank 1: pour out fixer into bottle
+		tank 1: pour in prewash, agitate 4x
+		jug 1: rinse and measure out hypo
+	4/0:05	get ready
+	5/1:00	pause timer
+		tank 2: pour out fixer into bottle
+		tank 2: pour in prewash, agitate 4x
+		jug 2: rinse and measure out hypo
+		rinse funnel and move to hypo bottle
+		tanks 1/2: pour in hypo, agitate 2x
+	5/1:00	start timer
+	6/7:00	tanks 1/2: pour out hypo into bottle.
+		tank 1: wash
+	7/6:00	tank 2: wash
+
+For the wash, substitute 10 changes at 30s/30s/30s/30s/1m/1m/1m/2m/5m ?
+
+
+		
+
+	
+	stop bath out of tank 1 into stop bath container
+
+

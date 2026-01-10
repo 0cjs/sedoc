@@ -1,0 +1,23 @@
+To replace the Mercury PX625 battery used in older cameras, options are,
+best to worst:
+
+    1. Get the camera modified by a repairman.
+
+    2. Use a battery adapter. Expensive (3000 yen or so) and apparently
+    sometimes they're a bit too big and the battery compartment won't
+    close fully.
+
+    3. Use a silver-oxide 625 replacement. This has a higher voltage,
+    so the exposure will be off by 1-4 stops. (But which direction?) It
+    does have constant output, so the exposure will be off by the same
+    amount at all times if the meter uses the battery's voltage as a
+    reference voltage.
+
+    4. Use an alkaline LR43 or whatever battery. Some cameras will
+    do ok; others try to use the output voltage of the battery as a
+    reference voltage and will change the light meter reading as the
+    alkaline battery's voltage declines over its discharge life.
+
+Lots of info on this:
+
+    http://web.archive.org/web/20041106001604/http://www.rolleiclub.nl/batt-adapt-US.pdf
