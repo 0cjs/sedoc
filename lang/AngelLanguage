@@ -1,0 +1,342 @@
+
+	    The Angel Programming Language
+	      Revision -100, 2003-10-23
+	     Curt Sampson <cjs@cynic.net>
+
+=== General Description ===
+
+Angel is a strongly typed object-oriented programming language.
+Everything is an object (there are no "base types" as there are in Java
+or C++) and every object has a type. (Most other OO languages, such as
+Java and Smalltalk, refer to types as classes, though some, such as
+Eiffel, distinguish between classes and types.)
+
+All objects are dealt with through references; arguments to queries,
+return values and local variables are all object references. In this
+document we often use "value" as a shorthand for "object reference,"
+"return an object" as shorthand for "return an object reference", and so
+on, since it is impossible to manipulate or query an object except via a
+reference to it.
+
+Objects have zero or more "queries," which correspond to methods,
+fields, etc. in other OO languages. When a client of an object invokes
+a particular query on an object ("queries the object"), that query
+may either perform a calculation and answer a reference to the result
+of the calculation or merely answer a previously stored reference to
+another object. To the client making the query, these operations are
+indistinguishable.
+
+
+=== Expressions ===
+
+There are no statements in Angel, only expressions; every expression
+returns an object reference. However, that returned reference may be of
+type Void, which is an object that inherits from everything and answers
+an exception to all queries; this is the equivalant to a null reference
+in C++ or Java. Expressions are separated by semicolons.
+
+The simplest expression is to ask an object to answer the result of a
+query. This consists of an object reference, the query name, and a
+single object as the argument, e.g.:
+
+    anObject say "hello";
+
+All queries take exactly one object reference as an argument. As with
+return values, this may be Void, which is the equivalant of not having
+arguments in other languages. Where other languages would take multiple
+arguments, in Angel one composes all of the arguments into a new object
+that is then passed as the argument. If no argument is supplied by the
+programmer, the compiler will automatically supply a Void argument:
+
+    anObject reset;
+
+
+=== Variables ===
+
+XXX
+
+Ok, a possible solution to the various problems raised below. An object
+responding to the "?" query is known as a block. When we create a new
+query returning the contents of a slot, we automatically create two more
+(private?) queries, with that name plus "=" appended, that take an object
+of the slot type, and an object of block returning the slot type. The first
+makes the slot refer to that object, the second to the reference returned
+by the query "?" on that object. So [Integer x] would actually declare:
+
+    [
+	Integer x.
+	Void x= Integer.
+	Void x= [Integer ?].
+    ]
+
+XXX
+
+Can we do without local variables? You could do a "block" that has "local"
+variables by simply instantiating a new object; the block could have a
+return value by giving it a "do" method, and executing it. So here's an
+example of a "block" with foo and bar as "local" variables:
+
+    [
+	Integer myValue.
+	myMethod: (Integer foo. value: owner myValue * bar) value. ]
+
+Perhaps a special block evaluation operator would make things a bit
+easier:
+
+    (Integer foo. value: owner myValue * bar)?
+
+Or just make "?" the message, instead of "value", and make a nameless
+method answer to "?", and maybe the problems are solved. Let's see,
+sqrt(2 + 3) * sqrt(5 + 1) would be either of the following:
+
+	2 + 3 sqrt () * (5 + 1 sqrt ()) ?
+	(2 + 3 sqrt ()) ? * (5 + 1 sqrt ()) ?
+
+A bit ugly. Possibly we need a third type of braces for blocks, sigh.
+
+	2 + 3 sqrt() * { 5 + 1 } sqrt()
+
+
+Hmm...so special references:
+
+	arg		the argument to the query
+	this		the object for this query
+	outer		the object within which this object was created
+
+So from within our inner object above, we can query the outer object.
+What if we need yet another? Oh, of course, add an "outer" query on
+every object, so we can back up an arbitrary amount: outer.outer,
+outer.outer.outer, making outer really this.outer, but we're back where
+we need some extra syntax for method calls to nest, etc....
+
+How do we set in an object? Automatic private setter methods?
+
+    (Integer foo. doubleFoo: setFoo (foo * 2)).
+
+Oops. this is screwed; we have no way to nest expressions. (foo * 2) would
+actually be a code block (an object with one unnamed query taking Void),
+but maybe that's how we could do nesting? Or have an explicit Block object,
+as in "Block ( foo * 2 )"?
+
+So here's how we ask a block to do a calculation.
+
+    Block ( value: arg * 2 ) value 3
+
+Maybe the setter method needs to take an object that it would ask to
+do the calculation, and set the slot to that return value, rather
+than setting the slot to the block itself? Nah, probably better just
+to figure out how to nest queries, and then ask the query to evaluate
+itself. Maybe just switch to { } for type declarations, [ ] for
+typedecl/object instantiations, and () for expression nesting.
+
+How does smalltalk deal with this?
+
+=== Names ===
+
+Anything starting with an upper-case letter is a class/type name,
+otherwise it's a reference or method name. Methods need not start with
+a letter; "+" is a valid method name, for example. A class/type name is
+actually a reference to an object representing that class or type, and
+can be messaged just as any other object reference. (This is how we deal
+with creation, extension, creating generics, etc.)
+
+Variables are declared with an object type followed by the variable
+name, and variables can be initialized on declaration.
+
+    Integer myInteger;
+    Integer anotherInteger = 17;
+    String myString = "foobar";
+
+
+=== Objects and Types ===
+
+As with Eiffel, an object has queries. These queries can be invoked by
+sending a message to the object with the query name and an optional
+argument. A query can be implemented either as a slot, which holds a
+reference to an object that is returned when the slot is invoked, or
+a method, which is some code that, when executed, returns a reference
+to an object. From the invoker's point of view, slots and methods are
+identical; there's no way to tell the difference, and one can be changed
+into the other at any time without any harm.
+
+Methods and slots both take a single object as a parameter. Slots always
+take an object of type Void, but methods may declare any type as the
+parameter. If no type is declared, it defaults to Void. Slots can be
+assigned to, but only by code within the object. Code external to an
+object that needs to be able to set a slot must use a setter method.
+
+XXX Do we need a a way to automatically declare setter methods?
+
+An object's type is defined by its inheritance, queries and name,
+though the name may be an empty string, producing an anonymous type,
+known only by its inheritance and queries. An example would be a class
+inheriting from Integer, defining a method called "plusOne" that takes a
+Void parameter and returns an Integer, and named "".
+
+We can define a type by specifying the queries, separated by periods,
+between square brackets. Let's define a type of object that holds a
+reference to an object. It inherits from Object, which is the root
+object, and has two queries: a slot, called "get", which holds an
+Object, and a method, set, taking an argument of type Object and
+returning Void, which sets the value in that slot.
+
+    [
+	Object get.
+
+	Void set Object:
+	    get = arg;
+	    Void.
+    ]
+
+Note that the last statement of a method is evaluated for the return
+value of the method. We can also name the object, if we like:
+
+    MyReference = [ Object get. Void set: get = arg; Void. ]
+
+A method always takes only one object as a parameter; if the method needs
+to be given multiple objects, they must be put together into a single
+object. This can be done by declaring an anonymous object type:
+
+    [
+	Integer add [Integer first. Integer second]:
+	    first + second.
+    ]
+
+See the section Anonymous Object Creation, below, for an easy way to
+create an object of the appropriate type.
+
+In method declarations, both the return type and the argument type are
+optional. The return type defaults to the type of the last expression
+in the method, and the argument defaults to Void. Thus, we can define a
+type containing a methods "hello" and "goodbye" that each take a Void
+argument and returns a String as
+
+    [ hello: "Hello, world.". goodbye: "See you later." ]
+
+Inheritance is specified by giving the names of the classes from which
+you are inheriting followed by the definition of how you are extending
+the class:
+
+    Integer [ double: this * 2. ]
+
+=== Object Creation ===
+
+XXX Hmmm, have to work this out. Maybe the type name followed by "new"?
+
+
+=== Anonymous Object Creation ===
+
+You can define a new (anonymous) object type and create an instance of it
+in a single step by using parentheses. Here we create a new type containing
+two methods, "one" and "two", both returning a String.
+
+    myObject = (String one Void: "ichi". String two Void: "ni")
+
+This can be abbreviated by taking advantage of the default argument
+and return type:
+
+    myObject = (one: "ichi". two: "ni")
+
+This is useful for creating new objects to be passed as arguments to
+methods. Say you have an Array object with set method that needs an
+index and a value. You declare the set method as taking an unnamed
+type with the appropriate method names:
+
+    Void set [Integer index. Object value] : ...
+
+You can create a new object of the appropriate type when you invoke
+the method:
+
+    aList set (index: 17. value: "foobar").
+
+Possibly this could be extended so that the method names are optional, and
+the compiler would attempt to find a parameter object type with a matching
+signature in order to assign the appropriate names automatically:
+
+    aList set (17. "foobar")
+
+But this may conflict with other uses of a method with the name "".
+
+You can use inheritance the same way as you do for a type declaration:
+
+    Integer anInteger = Integer (double: this * 2)
+
+
+=== Generics ===
+
+=== Dynamic Method Invocations ===
+
+Methods, when invoked with the syntax "object method-name argument",
+are statically checked for type correctness. However, there are methods
+on Object that let you query an object for available queries and invoke
+them. hasMethod takes a String and returns boolean:
+
+    anObject hasMethod "aMethodName"
+
+invoke will invoke a method with an argument, returning an Object:
+
+    anObject invoke (name: "doSomething". arg: Void)
+
+XXX How do we cast? Use Eiffel's ?= operator?
+
+A Dictionary class could use this for easy initialization:
+
+    Dictionary aDict = Dictionary new (one: "ichi". two: "ni")
+
+=== Access control ===
+
+    [
+	publicQuery : .
+	privateQuery :: .
+	friendlyQuery : FriendClass OtherFriendClass : .
+    ]
+
+=== Standard Types ===
+
+All the following types are immutable.
+
+    Object		The root of the inheritance hierarchy.
+    Bool		"true" or "false".
+    Int			A 32-bit integer.
+    String		A string of (Unicode?) characters.
+    AsciiString		A string of ASCII characters.
+
+
+==================================================================
+Observations
+==================================================================
+
+=== functional objects ===
+
+In ocaml, you can have "functional objects," which are value objects,
+basically; the modifiers return a new copy with something changed:
+
+    class point (init_x) =
+	object
+	    val x = init_x			(* not mutable *)
+	    method get_x = x
+	    method move dx = {< x = x + dx >}	(* return new object *)
+	end;;
+
+Note that this is *not* the same as defining move as:
+
+	    method move dx = new point (x + dx)
+
+When this is subclassed, the move method will still return a point, not
+the subclass of point. Which of course is The Wrong Thing.
+
+Well, you can do some fairly standard functional stuff to get rid of
+useless fields, too, since the damn thing isn't a variable anyway:
+
+    class point (init_x) =
+	let x = init_x in
+	object
+	    method get_x = x
+	end;;
+
+The question is, how do you combine these two, so that I don't need the
+field, but the subclass's inherited move method returns the subclass,
+not a "pure" point? I want an easy way to define move to return an
+(anonymous) subclass of the subclass, with an overridden get_x method
+that returns the appropriate new value.
+
