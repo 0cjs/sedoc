@@ -12,11 +12,24 @@ The on-line user guide pages are generated from markdown files in GitHub
 project [`awsdocs/amazon-ec2-user-guide`][gh awsdoc]; they accept issues
 and pull requests.
 
-Misc Notes:
-- [Availability zones][reg-az] are arbitrarily mapped for each account.
-   E.g., `ap-northeast-1a` in one account might be the same zone as
-  `ap-northeast-1b` in a different account, and might not exist at all
-  in a third account.
+Overall Structure:
+* World is divided into [_regions_][reg-az] (`us-east-1` Virgina,
+  `us-east-2` Ohio, etc.) which are totally independent, through
+  cross-region traffic is cheaper than external traffic. Regions may be
+  individually enabled/disabled per account.
+* Each region has a set of [_availability zones_][reg-az].
+  - The specific physical locations are identified with [_AZ IDs_][az-list]
+    such as `use1-az1` in `us-east-1`. These are consistent across all
+    accounts and rarely used.
+  - For pre-2025 accounts using pre-2012 regions , each account has its own
+    mapping of _AZ Names_ to AZ IDs; the name is the region name w/`a`,
+    `b`, etc. appended; [after this it's uniform][AZ-IDs]. Thus pre-2012
+    `us-east-1a` in one account might be the same physical AZ `us-east-1b`
+    in a different account. These are what's normally used in the console
+    and APIs.
+* Within a region you create one or more _Virtual Private Cloud_ ([VPC])
+  entities. Each has a separate subnet for each AZ in the region; each
+  resource (for the most part) is placed in one of these subnets.
 
 ### General Notes
 
@@ -32,9 +45,9 @@ Misc Notes:
 - Add keypair from [EC2 console] » Key Pairs (left pane) » Import
 - Public key used at EC2 creation can be retrieved from instance metadata.
 
-Per [Regions and Zones][reg-az]:
-- Regions are, e.g., `us-east-1` (N. Virginia), `us-east-2` (Ohio),
-  `ap-northeast-1` (Tokyo; `-2` Seoul, `-3` Osaka).
+Region notes:
+- Most useful [regions][aws-regions]: `us-east-1` (N. Virginia),
+  `us-east-2` (Ohio), `ap-northeast-1` (Tokyo; `-2` Seoul, `-3` Osaka).
 - Select region using drop-down in top bar; if creating an EC2 instance or
   whatever this will reset any partial configuration.
 
@@ -42,7 +55,11 @@ Per [Regions and Zones][reg-az]:
 
 <!-------------------------------------------------------------------->
 [AWS]: https://en.wikipedia.org/wiki/Amazon_Web_Services
+[AZ-IDs]: https://docs.aws.amazon.com/global-infrastructure/latest/regions/az-ids.html
 [EC2 console]: https://console.aws.amazon.com/ec2/
+[VPC]: https://docs.aws.amazon.com/vpc/latest/userguide/
+[aws-regions]: https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html
+[az-list]: https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html
 [gh awsdoc]: https://github.com/awsdocs/amazon-ec2-user-guide
 [key pairs]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
 [reg-az]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
