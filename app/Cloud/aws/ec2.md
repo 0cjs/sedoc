@@ -30,18 +30,74 @@ Important points to remember:
 Instance Type Information
 -------------------------
 
-[EC2Instances.info][ec2info] contains a database of EC2 instance type
-information parameters (CPU, storage, cost, etc.) scraped from various
-Amazon pages.
+The instance types are documented at [Amazon EC2 instance types][types]
+(sort of a more general, broader and very clicky overview) and [Amazon EC2
+instance types][types2] which is text-oriented and goes into much greater
+detail.
 
-It can be queried in tabular format on the site or the full database
-can be downloaded from the [site source repo][ec2source] as a 4 MB
-[JSON file][ec2json]. (There's also [RDS instance info][ec2rds]
-available.)
+The type name will be followed by an instance size tag indicating overall
+size of the primary resource(s) (CPUs, memory) within the type.
+- `.tiny`, `.small` `.medium`, `.large`, `.xlarge`, `.NNxlarge`, etc.
 
-It's useful to query with [`jq`]:
+#### Categories
 
-    wget https://raw.githubusercontent.com/powdahound/ec2instances.info/master/www/instances.json
+The `-flex` instances offer higher burst loads at the cost of lower
+continuous CPU throughput.
+
+* General purpose: balanced configs for general workloads.
+  - `T4g`: Burstable performance, ARM Graviton2. 40% baseline perf.
+  - `M8i`, `M8i-flex`, `M8gd`, `M8a`, `M8g`, `M2 Pro Mac`, `M1 Mac`, `M6id`
+  - And many, many more.
+* Compute optimised:
+  - `C8a`: 5th gen AMD EPYC
+  - `C8i`, `C8i-flex`: Custom Intel Xeon
+  - `C8i`, `C8gd`, `C8g`, `C7i-flex`, `C7a`, `C7i`, ...
+* Memory optimised.
+  - `X8i`: Intel custom Xeon. SAP etc. 2× RAM of `R#x` instances.
+  - `X8aedz`: 5th gen AMD EPYC. EDA.
+  - `R8a`: AMD. RDBMS.
+  - `R8i-flex`: Intel custom Xeon. RDBMS.
+  - `R8i`: Intel Xeon 6. RDBMS.
+  - `R8gd`, `X8g`, `R8g`: AMD Graviton 4.
+  - ...
+* Accelerated computing optimised.
+* Storage optimised.
+* HPC (High Performance Computing/clustering).
+
+Here's a brief comparision of balance between the different types for
+similar instance sizes.
+
+                       vCPU Mem  Sto EBW  NetBW     Price
+    T4g.2xlarge          8  32   EBS  5    2        $196   63%
+    C8i-flex.2xlarge     8  16   EBS 15   10        $260   84%
+    C8i.2xlarge          8  16   EBS 15   10        $274   89%
+    M8i-flex.2xlarge     8  32   EBS 10   12.5      $294   95%
+    M8i.2xlarge          8  32   EBS 15   10        $309  100%
+    R8i-flex.2xlarge     8  64   EBS 15   10        $385  125%
+    R8i.2xlarge          8  64   EBS 15   10        $406  131%
+    X8i.2xlarge          2  32   EBS 12.5 10        $639  207%
+
+- `Sto`: Local storage type; `EBS` = EBS only.
+- `EBW`: Maximum EBS bandwidth (burst for `t` instances).
+- `NetBW`: Maximum network bandwidth (burst for `t` instances).
+- `Price`: Approx monthly, in `us-east-1`, Linux, from [[ec2info-new]].
+
+### Instance Type Exploration
+
+While the AWS [Instance Type Explorer][explorer] is the standard way of
+comparing types, it has limited information and no pricing.
+
+[EC2Instances.github.io][ec2info-new] contains a database of EC2 instance
+type information parameters (CPU, storage, cost, etc.) scraped from various
+Amazon pages. (The old `ec2instances.info` is now dead, though the
+[source][ec2info-old-source] is still available.)
+
+The old site had a full 4 MB database that could be
+[downloaded][ec2info-old-json] and queried per below; it may be worth
+looking for something similar that can scrape and build that db to query
+with [`jq`]:
+
+    curl -LO https://raw.githubusercontent.com/powdahound/ec2instances.info/master/www/instances.json
     jq -c '.[] | [ .instance_type, .vCPU ]' instances.json
     jq -r '.[] | "\(.vCPU)\t\(.instance_type)"' instances.json | sort -n
 
@@ -305,16 +361,17 @@ takes at least a day.
 [cu-report]: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html
 [dh-pricing]: https://aws.amazon.com/ec2/dedicated-hosts/pricing/
 [ec2doc]: https://aws.amazon.com/documentation/ec2/
-[ec2info]: https://ec2instances.info
-[ec2json]: https://raw.githubusercontent.com/powdahound/ec2instances.info/master/www/instances.json
+[ec2info-new]: https://ec2instances.github.io/
+[ec2info-old-json]: https://raw.githubusercontent.com/powdahound/ec2instances.info/master/www/instances.json
+[ec2info-old-source]: https://github.com/powdahound/ec2instances.info
 [ec2lim-console]: https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home#Limits:
 [ec2lim-doc]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html
 [ec2lim-inst]: https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2
 [ec2lim-res]: http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ec2
 [ec2purch]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html
 [ec2rds]: https://raw.githubusercontent.com/powdahound/ec2instances.info/master/www/rds/instances.json
-[ec2source]: https://github.com/powdahound/ec2instances.info
 [exchanged]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html
+[explorer]: https://aws.amazon.com/ec2/instance-explorer/
 [hft-pricing]: https://thehftguy.com/2016/11/18/google-cloud-is-50-cheaper-than-aws/
 [iw-cpc]: https://www.infoworld.com/article/3237566/cloud-computing/cloud-pricing-comparison-aws-vs-azure-vs-google-vs-ibm.html
 [modified]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html
@@ -326,5 +383,7 @@ takes at least a day.
 [spot-bidadv]: https://aws.amazon.com/ec2/spot/bid-advisor/
 [spot-price-hist]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html
 [spot-price]: https://aws.amazon.com/ec2/spot/pricing/
+[types2]: https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html
+[types]: https://aws.amazon.com/ec2/instance-types/
 [ug-linux]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html
 [vpc-pricing]: https://aws.amazon.com/vpc/pricing/
