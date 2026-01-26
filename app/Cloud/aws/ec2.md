@@ -6,6 +6,27 @@ AWS EC2 (Elastic Compute Cloud)
 * [FAQ]
 
 
+Public IP/Elastic IP Addresses
+------------------------------
+
+See the "Public IPv4 Address" tab on the [Amazon VPC pricing] page for the
+details of the various public IP addresses, how they're set up, and to what
+they're attached.
+
+* (Standard) Public IP addresses are not portable from one host/service to
+  another and may (but don't usually) change when an instance is rebooted.
+* Elastic IPs are a form of public IP (priced the same, ~$0.005/minute, but
+  charged even when idle) that may be moved from host to host.
+
+Important points to remember:
+* Hosts without a public IP address do not have Internet access (e.g. to
+  update packages) unless you set up a separate NAT gateway. The hourly
+  [cost][vpc-pricing] is ≅ 7 public IPs and there are additional traffic
+  charges.
+* The default subnets in the default VPCs have 'Auto-assign public IPv4
+  address' set to 'Yes'. (This is a per-subnet setting.)
+
+
 Instance Type Information
 -------------------------
 
@@ -266,6 +287,7 @@ takes at least a day.
 
 
 <!-------------------------------------------------------------------->
+[Amazon VPC pricing]: https://aws.amazon.com/vpc/pricing/
 [Dedicated Hosts]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html
 [Dedicated Instances]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
 [FAQ]: https://aws.amazon.com/ec2/faqs/
@@ -305,3 +327,4 @@ takes at least a day.
 [spot-price-hist]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html
 [spot-price]: https://aws.amazon.com/ec2/spot/pricing/
 [ug-linux]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html
+[vpc-pricing]: https://aws.amazon.com/vpc/pricing/

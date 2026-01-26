@@ -6,6 +6,7 @@
 * [CLI Command Reference](cli-commands.md)
 * [IAM - Identity and Access Management](iam.md)
 * [EC2 - Elastic Compute Cloud virtual server instances](ec2.md)
+  (Includes Elastic IP and Public IP information.)
 * [Lambda - Serverless Compute](lambda.md)
 
 The on-line user guide pages are generated from markdown files in GitHub
