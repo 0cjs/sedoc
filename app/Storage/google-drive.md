@@ -33,6 +33,22 @@ rclone Google Drive Backend Driver
 When you need to, remove the third-party client authorization at
 <https://myaccount.google.com/connections>.
 
+### Backend Commands
+
+In all cases, _REMOTE_ must be a Google Drive remote.
+
+* `rclone backend help REMOTE:`: list all backend commands for Drive.
+
+* [`rclone backend drives REMOTE: [opts] [args+]`][be-drives]: Display list
+  of just Shared Drives (Team Drives) accessible to the client.
+  - JSON format: list of dicts keyed `{ id:, kind:, name: }`. Kind is
+    usually (always?) `drive#drive`.
+  - `-o CONF` supposed to generate config with this info and `type =
+    combine` entry for all drives together, but doesn't seem to work.
+
+* [`rclone backend query REMOTE: QUERY`][be-query]: List files using Google
+  Drive [search query terms and operators][gdql].
+
 ### Setting Up API Access Keys
 
 By default rclone's client_id is used for API access; this is slow because
@@ -125,5 +141,11 @@ You can then, e.g.:
 [rclone]: https://rclone.org/
 [Grive2]: https://github.com/vitalif/grive2
 
+<!-- Backend Commands -->
+[be-drives]: https://rclone.org/drive/#drives
+[be-query]: https://rclone.org/drive/#query
+[gdql]: https://developers.google.com/workspace/drive/api/guides/ref-search-terms
+
+<!-- Setting Up API Access Keys -->
 [gapi-console]: https://console.developers.google.com/
 [rc-mkGid]: https://rclone.org/drive/#making-your-own-client-id
