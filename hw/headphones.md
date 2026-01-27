@@ -27,7 +27,10 @@ Aftershokz OpenMove
 Bone conduction Bluetooth headphones.
 
 Bug notes:
-- Echo to remote end via mic feedback may be fixed by power-cycling headphones.
+- Power-up with auto-connect to Linux may disable ability to switch from
+  A2DP to HSP. On Linux, disconnect then reconnect and it may fix it.
+- Echo to remote end via mic feedback may be fixed by power-cycling
+  headphones.
 
 Outside of left transducer has __MF Multifunction__ button.
 Base of right arm has (front to back) LED, covered USB-C charge
