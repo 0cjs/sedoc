@@ -56,6 +56,12 @@ CPU resources.
 
 #### Instance Lists
 
+The third letter in an inance type name usually indicates the CPU type.
+Note that `g`/Gravitron is __ARM,__ not x86!
+- `a`: x86_64: AMD
+- `g`: arm64: Gravitron
+- `i`: x86_64: Intel Xeon
+
 * General purpose: balanced configs for general workloads.
   - `T*`: Burstable CPU perf, lower EBS/net bandwidths, max `2xlarge`.
     - [`T4g`]: ARM Graviton2. 5-40% baseline perf.
@@ -74,7 +80,7 @@ CPU resources.
   - `R8a`: AMD. RDBMS.
   - `R8i-flex`: Intel custom Xeon. RDBMS.
   - `R8i`: Intel Xeon 6. RDBMS.
-  - `R8gd`, `X8g`, `R8g`: AMD Graviton 4.
+  - `R8gd`, `X8g`, `R8g`: Graviton 4.
   - ...
 * Accelerated computing optimised.
 * Storage optimised.
