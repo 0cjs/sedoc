@@ -41,11 +41,27 @@ size of the primary resource(s) (CPUs, memory) within the type.
 
 #### Categories
 
-The `-flex` instances offer higher burst loads at the cost of lower
-continuous CPU throughput.
+Non-bursting instances give full, continuous access to 100% of allocated
+CPU resources.
+* `-flex` instances deliver guaranteed 40% baseline CPU performance with
+  the ability to burst to 100% over 95% of a rolling 24-hour window. But
+  they also may have lower EBS and network bandwidth. For the typical 5%
+  savings, it's not good value except at very large scale.
+* `m8g..2xlarge` breaks even against `t4g.2xlarge` once overall continuous
+  CPU usage exceeds about 66%.
+* [`t4` standard][burstable] earns credits at a fixed rate (196/hour for a
+  `t4g.2xlarge`; limit 24h worth) and spends based on CPU usage, with the
+  equilibrium point (inflow = outflow) at 40%. Thus for hours at 100% vs.
+  remainder of day average: 9.0h/5%, 6.3h/20%, 2.8h/33%, 0h/40%.
+
+#### Instance Lists
 
 * General purpose: balanced configs for general workloads.
-  - `T4g`: Burstable performance, ARM Graviton2. 40% baseline perf.
+  - `T*`: Burstable CPU perf, lower EBS/net bandwidths, max `2xlarge`.
+    - [`T4g`]: ARM Graviton2. 5-40% baseline perf.
+    - `T3a`: AMD 1st gen EPYC; cheapest x86 instances.
+    - `T3`: Intel Xeon (Skylake etc.)
+    - `T2`: previous gen burstable (Intel Xeon)
   - `M8i`, `M8i-flex`, `M8gd`, `M8a`, `M8g`, `M2 Pro Mac`, `M1 Mac`, `M6id`
   - And many, many more.
 * Compute optimised:
@@ -64,22 +80,33 @@ continuous CPU throughput.
 * Storage optimised.
 * HPC (High Performance Computing/clustering).
 
-Here's a brief comparision of balance between the different types for
-similar instance sizes.
+#### Instance Example Comparison Table
 
-                       vCPU Mem  Sto EBW  NetBW     Price
-    T4g.2xlarge          8  32   EBS  5    2        $196   63%
-    C8i-flex.2xlarge     8  16   EBS 15   10        $260   84%
-    C8i.2xlarge          8  16   EBS 15   10        $274   89%
-    M8i-flex.2xlarge     8  32   EBS 10   12.5      $294   95%
-    M8i.2xlarge          8  32   EBS 15   10        $309  100%
-    R8i-flex.2xlarge     8  64   EBS 15   10        $385  125%
-    R8i.2xlarge          8  64   EBS 15   10        $406  131%
-    X8i.2xlarge          2  32   EBS 12.5 10        $639  207%
+    Type               vCPU Mem  Sto EBW  NetBW  BP   Price
+    ────────────────────────────────────────────────────────────
+    t4g.2xlarge          8  32   EBS  5    2.8  40%   $196   63%
+    c8i-flex.2xlarge     8  16   EBS 15   10          $260   84%
+    c8i.2xlarge          8  16   EBS 15   10          $274   89%
+    m8g.2xlarge          8  32   EBS 15   10          $262   85%
+    m8i-flex.2xlarge     8  32   EBS 10   12.5        $294   95%
+    m8i.2xlarge          8  32   EBS 15   10          $309  100%
+    r8i-flex.2xlarge     8  64   EBS 15   10          $385  125%
+    r8i.2xlarge          8  64   EBS 15   10          $406  131%
+    x8i.2xlarge          2  32   EBS 12.5 10          $639  207%
+    ────────────────────────────────────────────────────────────
+    t4g.nano             2   ½   EBS  2.8  5     5%     $3    1%
+    t4g.micro            2   1   EBS  2.8  5    10%     $6    2%
+    t4g.small            2   2   EBS  2.8  5    20%    $12    4%
+    t4g.medium           2   4   EBS  2.8  5    20%    $24    8%
+    t4g.large            2   8   EBS  2.8  5    30%    $49   16%
+    t4g.xlarge           4  16   EBS  2.8  5    40%    $98   32%
+    t4g.2xlarge          8  32   EBS  2.8  5    40%   $196   63%
+    ────────────────────────────────────────────────────────────
 
 - `Sto`: Local storage type; `EBS` = EBS only.
 - `EBW`: Maximum EBS bandwidth (burst for `t` instances).
 - `NetBW`: Maximum network bandwidth (burst for `t` instances).
+- `BP`: Baseline performance (for burstable instances, `T*`)
 - `Price`: Approx monthly, in `us-east-1`, Linux, from [[ec2info-new]].
 
 ### Instance Type Exploration
@@ -354,8 +381,10 @@ takes at least a day.
 [Scheduled Instances]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html
 [Spot Fleet]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet.html
 [Spot Instances]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html
+[`T4g`]: https://aws.amazon.com/ec2/instance-types/t4/
 [`jq`]: ../lang/jq.md
 [availability zone]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+[burstable]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html
 [cloudyn-drop]: https://www.cloudyn.com/blog/analyzing-aws-ec2-price-drops-over-the-past-5-years/
 [cloudyn-res]: https://www.cloudyn.com/blog/deciding-an-approach-to-the-cloud-aws-reserved-instances/
 [cu-report]: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html
