@@ -29,6 +29,8 @@ Bone conduction Bluetooth headphones.
 Bug notes:
 - Power-up with auto-connect to Linux may disable ability to switch from
   A2DP to HSP. On Linux, disconnect then reconnect and it may fix it.
+  Failing that, `sudo rmmod btusb && sleep 1 && sudo modprobe btusb &&
+  sleep 1 &&  sudo systemctl restart bluetooth`.
 - Echo to remote end via mic feedback may be fixed by power-cycling
   headphones.
 
