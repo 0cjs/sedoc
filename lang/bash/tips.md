@@ -3,7 +3,7 @@ Bash Tips
 
 Also see [Bash Error Handling](errors.md) for error handling tips.
 
-### Finding Location of Your Script
+### Finding the location of the script
 
 To do this portably in all shells, but giving the symlink location when
 you're running a symlink:
@@ -17,11 +17,11 @@ if there was one, the only portable version across Mac and Linux needs the
 
     export PROJDIR=$(command cd "$(dirname "$(realpath "$0")")/.." && pwd -P)
 
-### Passing Parameters to a Script Read from stdin
+### Passing parameters to a script read from stdin
 
     curl -sSL … | bash -s -- -…
 
-### Inline Comments
+### Inline comments
 
 In a multiline bash statement, inline comments (in the middle of a
 command, with more command after them) can be handy. Use a subshell
@@ -31,7 +31,7 @@ with an "no effect" `:` command:
         $(: '--mirror options: recursive, infinite levels, timestamp checks') \
         -r -l inf -N "$@"
 
-### Assigning Default Values
+### Assigning default values
 
 The following will assign a default value to a variable if it's empty or
 unset, and will not trigger an `ubound variable` error when using the `-u`
@@ -39,12 +39,12 @@ option.
 
     : ${SOMEVAR:=default value}
 
-### Optional Arguments Based on Presence of Parameters
+### Optional arguments based on presence of parameters
 
     #configfile="My Config"     # Uncomment to use config file
     someprogram ${configfile:+--config-file "$configfile"}
 
-### Determining If a Glob Pattern Matched
+### Determining if a glob pattern matched
 
 `for i in *.c` will run the loop once with the glob pattern itself if
 it didn't match anything. This can be fixed with:
@@ -57,7 +57,7 @@ These two methods avoid corner cases that `test -e` and the like have.
 
 [so-2937407]: https://stackoverflow.com/q/2937407
 
-### Run Initial Commands Before Going Interactive
+### Run initial commands before going interactive
 
 Use process substitution to provide an rc file. This replaces the
 standard system and user rc files, so you need to source those
