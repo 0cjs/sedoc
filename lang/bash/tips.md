@@ -3,6 +3,20 @@ Bash Tips
 
 Also see [Bash Error Handling](errors.md) for error handling tips.
 
+### Finding Location of Your Script
+
+To do this portably in all shells, but giving the symlink location when
+you're running a symlink:
+
+    export PROJDIR=$(command cd "$(dirname "$0")/.." && pwd -P)
+
+If you need the actual script file itself, rather than the symlink location
+if there was one, the only portable version across Mac and Linux needs the
+`realpath` command, available in GNU coreutils 8.15 (2012) and MacOS 10.13
+(2017). But this may not be present in minimal userlands.
+
+    export PROJDIR=$(command cd "$(dirname "$(realpath "$0")")/.." && pwd -P)
+
 ### Passing Parameters to a Script Read from stdin
 
     curl -sSL … | bash -s -- -…
