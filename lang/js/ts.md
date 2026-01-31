@@ -7,17 +7,22 @@ TypeScript
 ==========
 
 The standard [TypeScript] compiler is `tsc` from the [`typescript`] package.
-
-Various systems will run TS or a subset, doing no type-checking:
-- Node ≥ v22.18.0 will attempt to run `.ts` after stripping all [erasable
-  syntax]. (Thus TS using enums, namespaces/modules with runtime code,
-  parameter properties in classes, import aliases, etc. will not work.)
-  Before v22.18.0 this required the `--experimental-strip-types` flag; this
-  can be disabled with `--no-experimental-strip-types`. (You can check
-  syntax for this with `tsc --erasableSyntaxOnly`.)
+`tsc` does type checking; note that many other transpilers do not.
 
 References:
 - [Documentation][doc]
+
+### Node Support for TS
+
+Node has limited TS support; see the [TypeScript][node-ts] module:
+- `--experimental-strip-types` (automatic on `.ts` files after v22.18.0 )
+  strips all [erasable syntax], hopefully leaving behind straight JS. ( TS
+  using enums, namespaces/modules with runtime code, parameter properties
+  in classes, import aliases, etc. will not work.) Disable with
+  `--no-experimental-strip-types`.
+- `tsc --erasableSyntaxOnly` can confirm the above will work.
+- 22.7.0 added `--experimental-transform-types` strips and beyond that can
+  also transform some TS features to JS.
 
 ### Related Packages
 
@@ -98,6 +103,7 @@ option apply only to composite projects?)
 [`tsconfig.json`]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 [doc]: https://www.typescriptlang.org/docs/
 [erasable syntax]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-8-beta/#the---erasablesyntaxonly-option
+[node-ts]: https://nodejs.org/docs/latest-v22.x/api/typescript.html#typescript-features
 [tscref]: https://www.typescriptlang.org/tsconfig/#composite
 
 <!-- Packages -->
