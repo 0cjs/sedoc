@@ -42,6 +42,8 @@ The four fields are:
 * _source device_: device name, UUID=partition-UUID, etc.
 * _key file_: File with secret key or `none`
 * _options_: Usually `luks` or `luks,noauto`.
+  - `discard` may also be added, but this can later leak info about the
+    ciphertext access patterns, giving filesystem info etc.
 
 Use `cryptdisks_start TARGET` and `cryptdisks_stop TARGET` to do bring
 the target on or off-line. You will be prompted for a password if
@@ -70,6 +72,23 @@ it as a keyfile for the encrypted partition
     # my-thing UUID=... /etc/crypt.my-thing.key luks
     #       Add to /etc/fstab (FS UUID, not luks UUID!)
     # UUID=...  /u ext4  nosuid  0 2
+
+#### Management Commands
+
+DEV is a device name; NAME is the name assigned with `open`, or from
+`/etc/crypttab` when using `cryptdisks_*`.
+
+    #   Wrappers around around `cryptsetup` that use /etc/crypttab.
+    cryptdisks_start [NAME]
+    cryptdisks_stop [NAME]
+
+    cryptsetup status NAME
+    cryptsetup luksDump DEV
+    cryptsetup open DEV NAME
+    cryptsetup close NAME
+
+Once a crypt partition is opened, `lsblk -f` or `blkid` on
+`/dev/mapper/…_crypt` can be handy to figure out the FS, etc.
 
 #### Debugging
 
