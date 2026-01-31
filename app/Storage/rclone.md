@@ -20,8 +20,9 @@ Hints:
 
 Remote information, _including sensitive access tokens_, is stored in the
 config file, default `~/.config/rclone/rclone.conf`.
-- This is in an undocumented "INI"-style format. It does allow comment
-  lines starting with `#`, but does not allow end-of-line comments.
+- This is in an undocumented "INI"-style format. (It is not parsable as
+  TOML.) It does allow comment lines starting with `#`, but does not allow
+  end-of-line comments.
 - The config file may be encrypted with a [configuration
   password][rc-confenc] which must be supplied to decrypt the config file.
 
