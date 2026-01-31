@@ -15,6 +15,9 @@ References:
 ### Node Support for TS
 
 Node has limited TS support; see the [TypeScript][node-ts] module:
+- Regardless of what's below, `node` will never run `.ts` files under a
+  `node_modules/` path. (This is to discourage packages written in
+  TypeScript; they should instead be compiled to JavaScript.)
 - `--experimental-strip-types` (automatic on `.ts` files after v22.18.0 )
   strips all [erasable syntax], hopefully leaving behind straight JS. ( TS
   using enums, namespaces/modules with runtime code, parameter properties
