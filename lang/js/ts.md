@@ -8,11 +8,13 @@ TypeScript
 
 The standard [TypeScript] compiler is `tsc` from the [`typescript`] package.
 
-Since v22.18.0, Node.js has `--experimental-strip-types` for type
-stripping; this works only with [erasable syntax] only. (No enums,
-namespaces/modules with runtime code, parameter properties in classes,
-import aliases.) `tsc --erasableSyntaxOnly` will issue errors if you're
-using any non-erasable syntax.
+Various systems will run TS or a subset, doing no type-checking:
+- Node ≥ v22.18.0 will attempt to run `.ts` after stripping all [erasable
+  syntax]. (Thus TS using enums, namespaces/modules with runtime code,
+  parameter properties in classes, import aliases, etc. will not work.)
+  Before v22.18.0 this required the `--experimental-strip-types` flag; this
+  can be disabled with `--no-experimental-strip-types`. (You can check
+  syntax for this with `tsc --erasableSyntaxOnly`.)
 
 References:
 - [Documentation][doc]
