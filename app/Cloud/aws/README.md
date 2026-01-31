@@ -32,6 +32,11 @@ Overall Structure:
   entities. Each has a separate subnet for each AZ in the region; each
   resource (for the most part) is placed in one of these subnets.
 
+Common regions include:
+- `us-east-1` Virginia, `us-east-2` Ohio, `us-west-1` N. California
+- `eu-west-2` London.
+- `ap-northeast-1` Tokyo
+
 ### General Notes
 
 [Key Pairs]:

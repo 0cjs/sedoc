@@ -23,6 +23,13 @@ This can be installed in a virtual environment as well, and there are
 also standalone installers for all platforms (Linux, MacOS, Windows).
 See [aws-install] for more information.
 
+Many commands, even though they might not actually use a default region,
+need one set anyway. You can do this temporarily with `export
+AWS_DEFAULT_REGION=us-east-1` or use `aws configure` to set it.
+
+The default profile is always `default`; `export AWS_PROFILE=…` or
+use `aws --profile …` to change it.
+
 
 Environment Variables
 ---------------------
@@ -75,6 +82,9 @@ following order][boto3-cred]:
 4. The same keys as above in the config file.
 5. Via an Assume Role provider (see below).
 6. The EC2 instance profile, if an IAM role is assigned.
+
+(Access key IDs and secrets are configured for individual users in their
+IAM » Security Credentials page.)
 
 #### Assume Role Providers
 
