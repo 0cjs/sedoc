@@ -27,7 +27,7 @@ The procedure this command follows is:
    (i.e., the changes are already included in _upstream_).
 5. Stop on merge failures for manual fixes.
 
-#### Automated Conflict Handling
+### Automated Conflict Handling
 
 The standard merge strategy is `recursive`, which will normally stop
 for manual resolution when there's a conflict. This can be overridden
@@ -39,14 +39,23 @@ the meaning during `git merge`.)
 
 The recursive merge strategy also offers `-Xignore-space-change` etc.
 
-#### Manual Conflict Handling
+### Manual Conflict Handling
+
+When you need to manually handle a conflict, both versions of the code will
+be placed in the source file with _conflict markers_ (see below) separating
+them. The `merge.conflictstyle` setting controls how this is done: the
+default is `merge` which shows the "ours" and "theirs" side; the `diff3`
+style will show the parent commit contents between them. (This can produce
+larger ours/theirs diffs when the parent is different from both.)
 
 The following vim mapping will let you easily find conflict markers
 in a buffer:
 
     noremap qv/ /^\(<<<<<<< .*\\|\|\|\|\|\|\|\| .*\\|=======\\|>>>>>>> .*\)$<CR>
 
-When in a conflicted state you may also use:
+#### Taking all of ours/theirs
+
+While in a conflicted state, the following are available:
 
     git checkout --ours   .     # Take all changes from upstream
     git checkout --theirs .     # Take all changes from _devbranch
@@ -55,6 +64,16 @@ These must have a path specified, otherwise you will get an error
 `--ours/--theirs' cannot be used with switching branches`. (For more
 details, see the message from Jeff King in [git checkout --theirs
 fails][co-theirs-fails].
+
+#### Git rebase and ours/theirs diffs
+
+During `git rebase`, HEAD is the head commit on the branch onto which you
+are rebasing and REBASE_HEAD is the current commit on the branch you are
+moving on to HEAD. If you are using `diff3` conflictstyle, you can see just
+the (sometimes much smaller) diff between the two branches, without the
+parent, using:
+
+    git diff HEAD REBASE_HEAD -- [file]
 
 
 Using --onto
