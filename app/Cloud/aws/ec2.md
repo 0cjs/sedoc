@@ -90,23 +90,32 @@ Note that `g`/Gravitron is __ARM,__ not x86!
 
     Type               vCPU Mem  Sto EBW  NetBW  BP   Price
     ────────────────────────────────────────────────────────────
-    t4g.2xlarge          8  32   EBS  5    2.8  40%   $196   63%
+    t3a.2xlarge          8  32   EBS  2.8  5    40%   $219   71%
     c8i-flex.2xlarge     8  16   EBS 15   10          $260   84%
     c8i.2xlarge          8  16   EBS 15   10          $274   89%
-    m8g.2xlarge          8  32   EBS 15   10          $262   85%
     m8i-flex.2xlarge     8  32   EBS 10   12.5        $294   95%
     m8i.2xlarge          8  32   EBS 15   10          $309  100%
     r8i-flex.2xlarge     8  64   EBS 15   10          $385  125%
     r8i.2xlarge          8  64   EBS 15   10          $406  131%
     x8i.2xlarge          2  32   EBS 12.5 10          $639  207%
     ────────────────────────────────────────────────────────────
-    t4g.nano             2   ½   EBS  2.8  5     5%     $3    1%
+    t3a.nano             2   ½   EBS  2.0  5     5%     $3    1%    (AMD)
+    t3a.micro            2   1   EBS  2.0  5    10%     $7    2%
+    t3a.small            2   2   EBS  2.0  5    20%    $14    5%
+    t3a.medium           2   4   EBS  2.0  5    20%    $27    9%
+    t3a.large            2   8   EBS  2.8  5    30%    $55   18%
+    t3a.xlarge           4  16   EBS  2.8  5    40%   $110   36%
+    t3a.2xlarge          8  32   EBS  2.8  5    40%   $219   71%
+    t3.2xlarge           8  32   EBS  2.8  5    40%   $243   78%    (Intel)
+    ────────────────────────────────────────────────────────────
+    t4g.nano             2   ½   EBS  2.8  5     5%     $3    1%    !ARM!
     t4g.micro            2   1   EBS  2.8  5    10%     $6    2%
     t4g.small            2   2   EBS  2.8  5    20%    $12    4%
     t4g.medium           2   4   EBS  2.8  5    20%    $24    8%
     t4g.large            2   8   EBS  2.8  5    30%    $49   16%
     t4g.xlarge           4  16   EBS  2.8  5    40%    $98   32%
     t4g.2xlarge          8  32   EBS  2.8  5    40%   $196   63%
+    m8g.2xlarge          8  32   EBS 15   10          $262   85%
     ────────────────────────────────────────────────────────────
 
 - `Sto`: Local storage type; `EBS` = EBS only.
