@@ -91,6 +91,7 @@ Note that `g`/Gravitron is __ARM,__ not x86!
     Type               vCPU Mem  Sto EBW  NetBW  BP   Price
     ────────────────────────────────────────────────────────────
     t3a.2xlarge          8  32   EBS  2.8  5    40%   $219   71%
+    m6a.2xlarge          8  32   EBS 10   12.5        $252   82%
     c8i-flex.2xlarge     8  16   EBS 15   10          $260   84%
     c8i.2xlarge          8  16   EBS 15   10          $274   89%
     m8i-flex.2xlarge     8  32   EBS 10   12.5        $294   95%
@@ -123,6 +124,7 @@ Note that `g`/Gravitron is __ARM,__ not x86!
 - `NetBW`: Maximum network bandwidth (burst for `t` instances).
 - `BP`: Baseline performance (for burstable instances, `T*`)
 - `Price`: Approx monthly, in `us-east-1`, Linux, from [[ec2info-new]].
+  (Based on 24×365/12 ≅ 730h/month, same as ec2instances sites.)
 
 ### Instance Type Exploration
 
