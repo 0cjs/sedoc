@@ -49,10 +49,15 @@ CPU resources.
   savings, it's not good value except at very large scale.
 * `m8g..2xlarge` breaks even against `t4g.2xlarge` once overall continuous
   CPU usage exceeds about 66%.
-* [`t4` standard][burstable] earns credits at a fixed rate (196/hour for a
+* [`t#`][burstable] earns credits at a fixed rate (196/hour for a
   `t4g.2xlarge`; limit 24h worth) and spends based on CPU usage, with the
   equilibrium point (inflow = outflow) at 40%. Thus for hours at 100% vs.
   remainder of day average: 9.0h/5%, 6.3h/20%, 2.8h/33%, 0h/40%.
+  - __WARNING:__ Instances not set to "standard" mode will shut down if
+    they run out of credits!
+  - Instances set to unlimited mode will buy credits if they run out. Linux
+    is $0.05/vCPU hour, per [burstable-unlimited-pricing], but remember
+    that with multiple cores this gets charged for each.
 
 #### Instance Lists
 
@@ -129,7 +134,8 @@ Note that `g`/Gravitron is __ARM,__ not x86!
 ### Instance Type Exploration
 
 While the AWS [Instance Type Explorer][explorer] is the standard way of
-comparing types, it has limited information and no pricing.
+comparing types, it has limited information and no pricing. (Get pricing
+from the [on demand] page.
 
 [EC2Instances.github.io][ec2info-new] contains a database of EC2 instance
 type information parameters (CPU, storage, cost, etc.) scraped from various
@@ -402,6 +408,7 @@ takes at least a day.
 [`jq`]: ../lang/jq.md
 [availability zone]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 [burstable]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html
+[burstable-unlimited-pricing]: https://aws.amazon.com/ec2/pricing/on-demand/#T2.2FT3.2FT4g_Unlimited_Mode_Pricing
 [cloudyn-drop]: https://www.cloudyn.com/blog/analyzing-aws-ec2-price-drops-over-the-past-5-years/
 [cloudyn-res]: https://www.cloudyn.com/blog/deciding-an-approach-to-the-cloud-aws-reserved-instances/
 [cu-report]: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html
