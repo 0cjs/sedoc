@@ -6,7 +6,8 @@ Debian Releases and Upgrading
 | Date    | Ver   | Codename | EOL      | Kernel    | Notes
 | --------|-------|----------|----------|-----------|---------------
 |         | 14    | Forky    |          |           |
-| 2025-08 | 13    | Trixie   | 2030-06  | 6.12      |
+| 2026-04 | 26.04 | Resolute | 2031/34  | 7.0       | kernel=6.19+1, no pre-2013 CPUs
+| 2025-08 | 13    | Trixie   | 2030-06  | 6.12      | sudo-rs
 | 2024-05 | 24.04 | Noble    | 2026/34  | 6.8       |
 | 2023-06 | 12    | Bookworm | 2028-06  | 6.1       |
 | 2022-04 | 22.04 | Jammy    | 2027/32  | 5.15      |
