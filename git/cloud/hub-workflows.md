@@ -10,6 +10,7 @@ Contents:
 - Events
 - Jobs
 - Status Checks
+- Running Workflows Locally
 
 Introduction
 ------------
@@ -141,6 +142,19 @@ Workflows generate _checks_:
 - 
 
 
+Running Workflows Locally
+-------------------------
+
+The [`act`] program, written in Go, will let you run workflows locally. The
+README also suggests that you might use this as your standard local build
+tool.
+
+It works by reading `.github/workflows/`, using the Docker API to build
+images and run containers from them to emulate what GitHub would do with
+that workflow. (This probably does not handle situations where tests are
+run directly in the virtual machine.)
+
+
 
 <!-------------------------------------------------------------------->
 [statchk]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks
@@ -160,3 +174,6 @@ Workflows generate _checks_:
 [w-syntax]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 [w-trig]: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow
 [w-vars]: https://docs.github.com/en/actions/learn-github-actions/variables
+
+<!-- Running Workflows Locally -->
+[`act`]: https://github.com/nektos/act
