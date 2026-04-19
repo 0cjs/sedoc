@@ -5,6 +5,15 @@ GitHub Workflows / Actions
   | [Tips](hub-tips.md)
   |
 
+Contents:
+- Introduction
+- Events
+- Jobs
+- Status Checks
+
+Introduction
+------------
+
 References:
 - [About workflows][w-about]
 - ["Creating your first workflow"][w-first] has a sample workflow.
