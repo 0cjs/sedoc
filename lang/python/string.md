@@ -137,6 +137,8 @@ Other:
 
 * `f'...'`, `F'...'`: (≥3.6) Formatted string literals or [f-strings]
   (This is [the fastest formatter][fstr-fast].)
+  - (≥3.8) `=` specifier: `f'{expr=}'` expands to `expr=<value>`,
+    e.g., `f'{x+1=}'` → `'x+1=43'`. Useful for debugging.
 * `format(*args, **kwargs)`: See format() String Syntax below
 * `format_map(mapping)`: Specifications `{key}` in the `str` are looked up
   in _mapping_ and replaced by the returned values.
