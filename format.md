@@ -73,6 +73,16 @@ more details.
 [gh-img-resize-test]: https://gist.github.com/uupaa/f77d2bcf4dc7a294d109
 [md-img-resize]: https://stackoverflow.com/q/14675913/107294
 
+#### GitHub Markdown
+
+GitHub extensions include:
+* Callouts, which they call [alerts][gh-alerts] to emphasise critical
+  information. Write as blockquotes where the first line is `> [!NOTE]`,
+  using one of `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`. These may
+  not be nested.
+
+[gh-alerts]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
+
 
 Disqus
 ------
