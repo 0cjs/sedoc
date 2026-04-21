@@ -47,6 +47,23 @@ Information](pkg-debian.md) for information on backports and the like.
 
 #### Release Notes
 
+* [Ubuntu 26.04][u26.04]
+  - Kernel upgrade to 7.x is not a significant change, but just that Linus
+    thinks 6.20 is too large a minor version number.
+    - Some discussion of dropping x86-64 CPU pre-v2 (Nehalem/Jaguar, ~2009)
+      or pre-v3 (Haswell, ~2015) support, but probably not done?
+  - Since Ubuntu 25.10 (26.04) `sudo-rs` becomes the default, using 0.2.8
+    (0.2.10) with significant upgrades. (`sudo.ws` is the old version, and
+    is usually also installed.)
+    - One particular thing (amongst many others) not supported is
+      `Defaults:user verifypw = any` (it's silently ignored); `dent`
+      required a fix for this. (Many less common `Defaults` options are not
+      supported.)
+
+* [Debian 13][deb13]:
+  - `sudo-rs` (the Rust version), is available, but not the default.
+    - It's 0.2.5, missing `sudoedit` `NOEXEC` and many other things.
+
 * [Debian 10][deb10]:
   - Uses the Wayland display server instead of XOrg for GNOME (3.3), but
     XOrg is still installed by default and the display manager allows
@@ -196,6 +213,7 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [calamares]: https://calamares.io/about/
 [deb-bullseye-faq]: https://wiki.debian.org/DebianBullseye#FAQ
 [deb10]: https://www.debian.org/News/2019/20190706
+[deb13]: https://www.debian.org/releases/trixie/release-notes/
 [debrel]: https://wiki.debian.org/DebianReleases
 [debsources]: https://wiki.debian.org/SourcesList
 [debstable]: https://wiki.debian.org/DebianStable
@@ -203,4 +221,5 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [dig-4.3]: https://www.debian.org/releases/stable/amd64/ch04s03.en.html
 [dinst]: https://www.debian.org/distrib/netinst
 [so 314792]: https://unix.stackexchange.com/questions/314792/
+[u26.04]: https://documentation.ubuntu.com/release-notes/26.04/
 [usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
