@@ -1,6 +1,14 @@
 tmate
 =====
 
+Tmate is a fork of an old version of tmux that allows sharing sessions via
+ssh and web. It appears you must trust the system running the tmate SSH
+server (essentialy, the proxy) not to MITM you, but you can run your own if
+you like using the `tmate/tmate-ssh-server:prod` Docker image. (Ask cjs for
+the ops-cynic config if you need it.)
+
+An alernative to tmate is [upterm].
+
 ### Todo
 
 - PREFIX+`[` enters copy mode (PgUp should as well)
@@ -11,10 +19,13 @@ tmate
 
 ### General Notes
 
-- Session window size (common to all users):
+- The Session window size (common to all users):
   - Smallest width and (separately) height of all connected rw-ssh
     sessions; any client connect or client resize will trigger a session
     window resize.
+  - The above will not be fixed; though tmux added the [`-g window-size`]
+    option in 2.9, tmate is based on an earlier version of tmux and will
+    not be updating.
   - Ro-ssh and web sessions do not affect sizing; they just lose info or
     allow scrolling on client.
 
@@ -99,5 +110,7 @@ Tmate uses the xterm title as the initial status bar title.
 
 
 <!-------------------------------------------------------------------->
+[`-g window-size`]: https://tmuxai.dev/tmux-window-size/
 [cmode]: https://github.com/tmux/tmux/wiki/Control-Mode
 [delay]: https://www.reddit.com/r/vim/comments/40257u/delay_on_esc_with_tmux_and_vim/
+[upterm]: https://owenou.com/upterm/
