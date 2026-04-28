@@ -130,8 +130,8 @@ in Debian 9.[so 314792][bug 844611].
 Upgrading Debian
 ----------------
 
-Also see the stable to testing upgrade instructions at
-[DebianTesting][debtest].
+See also additional version-specific upgrades notes below, and the stable
+to testing upgrade instructions at [DebianTesting][debtest].
 
 1. Ensure `/etc/` is clean and all committed:
 
@@ -182,6 +182,29 @@ Also see the stable to testing upgrade instructions at
         apt autoremove
         apt-clean
 
+### Debian 13
+
+References:
+- [4. Upgrades from Debian 12][deb13from12]
+- [5. Issues to be aware of for trixie][deb13rel-issues]
+
+__WARNINGS:__
+- Encrypted filesystems require the new `systemd-cryptsetup` package; this
+  should be automatically installed, but confirm before rebooting.
+- (§5.2.1) Not essential, but edit or remove `/etc/tmpfiles.d/tmp.conf` to
+  switch to the new default of deleting old files in `/tmp/` (10 days) and
+  `/var/tmp/` (30 days) while the system is running (like other distros).
+
+Other notes:
+- `cat /etc/debian_version` should be 12.12 or greater, so no need to worry
+  about the OpenSSH lockout.
+- `armel` arch is ancient, and not supported anymore except for Raspberry
+  Pi 1, Zero and Zero W, which have some `armhf` features.
+- All encrypted filesystems should be LUKS (`sudo cryptsetup luksDump
+  /dev/…`) so no worries about the 'plain-mode' stuff.
+- Network interface names may change (though seems unlikely on most hosts).
+
+
 
 Upgrading Ubuntu
 ----------------
@@ -223,3 +246,6 @@ https://www.linuxbabe.com/debian/upgrade-debian-8-jessie-to-debian-9-stretch)
 [so 314792]: https://unix.stackexchange.com/questions/314792/
 [u26.04]: https://documentation.ubuntu.com/release-notes/26.04/
 [usr-merge]: https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
+
+[deb13rel-from12]: https://www.debian.org/releases/trixie/release-notes/upgrading.en.html#system-status
+[deb13rel-issues]: https://www.debian.org/releases/trixie/release-notes/issues.en.html
