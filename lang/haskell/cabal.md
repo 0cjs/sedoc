@@ -46,6 +46,14 @@ These files configure general details of the build such as the compiler to
 use, optimization levels, and so on. Many fields share names with
 command-line flags that do the same thing.
 
+__Warning:__ If you do not have a `cabal.project` file, Cabal defaults the
+`project:` setting to searching for `*.cabal` in the current working
+directory. If you _do_ have a cabal.project file there is no default,
+meaning that it will look nowhere for .cabal files and fail with the
+(usually incorrect) message "There is no <pkgname>.cabal package file or
+cabal.project file." Thus you must set this option, usually to `project:
+.`, if you have a cabal.project file.
+
 If the `--project-dir` opton is given, Cabal searches for `cabal.project*`
 files in just that directory. Without that option, it will search the
 current working directory and every parent directory up to the root.
