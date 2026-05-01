@@ -52,6 +52,34 @@ that should be deselected/disabled.
     CRs and spawning Windows consoles with your output.)
 
 
+Post-installation Fixes
+-----------------------
+
+### Line Ending Configuration
+
+If at step 7 you did not pick "Checkout as-is, commit as-is" your repos
+may have mangled line endings. You can confirm the current setting with
+
+    git config --show-origin --get-all core.autocrlf
+    #    true:  Checkout Windows-style, commit Unix-style line endings
+    #   input:  Checkout as-is, commit Unix-style line endings
+    #   false:  Checkout as-is, commit as-is
+
+Fix this with
+
+    #   System-wide change: requires admin shell.
+    git config --system core.autocrlf false
+    #   OR: Change only for the current user
+    git config --global core.autocrlf false
+
+    #   Fix an existing checkout to use the new setting:
+    cd /root/of/git/repo
+    git rm --cached -r . && git reset --hard
+
+Note that repos with a `.gitattributes` file that sets `text` or `eol`
+attributes will override the `core.autocrlf` settings.
+
+
 File Modes
 ----------
 
