@@ -4,6 +4,8 @@ SSH Clients for Windows
 See also [Windows Terminals and Terminal Emulators](terminals.md).
 
 The major options are:
+* Windows SSH, as distributed with later versions of Windows 10 and
+  probably Windows 11.
 * OpenSSH and [mintty] as included in [Git for Windows].
 * [PuTTY], a set of graphical clients for SSH, telnet and raw sockets
   that includes a terminal emulator.
@@ -12,12 +14,41 @@ The major options are:
 
 
 Windows OpenSSH Client and Server
------------------------------
+---------------------------------
 
 As of Windows 10 1809 (and Server 2019) [Microsoft supplies
 OpenSSH][ms-ssh] client and server. As well as the docs linked below,
 there is a [wiki][ms-ssh-wiki] along with the [source on
 GitHub][ms-ssh-github] on GitHub.
+
+### Client
+
+The latest clients are ports of OpenSSH, and thus work prefectly as the
+"standard" SSH suite even in e.g. Git Bash from Git for Windows. (Configure
+GfW to use the system SSH instead of the GfW SSH it supplies.)
+
+The client is `C:\Windows\System32\OpenSSH\ssh` with a version string like
+`OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2`.
+
+`ssh-agent` is different; it's a Windows service run globally for the
+machine that internally separates the keys it stores for each user. In
+PowerShell, `Get-Service ssh-agent` will show if it's running or not.
+If not, in an admin PowerShell:
+
+    Set-Service -Name ssh-agent -StartupType Automatic
+    Start-Service ssh-agent
+
+When running, Windows `ssh-add` will automatically find the agent; no
+environment variables are necessary.
+- `ssh-pagent` can allegedly forward to this with `eval $(ssh-pageant -r -a
+  "/tmp/.ssh-pageant-$USERNAME")`.
+- For WSL terminals you can use [npiprelay] to let the WSL side contact the
+  Windows named pipe: `(setsid socat UNIX-LISTEN:"$SSH_AUTH_SOCK",fork
+  EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &)
+  >/dev/null 2>&1` (making sure to clean up any existing $SSH_AUTH_SOCK
+  etc.).
+
+### Server
 
 [Install][ms-ssh-inst] from __Settings » Apps » Apps and Features
 » Manage Optional Features__. The binaries will be placed in
@@ -42,6 +73,11 @@ The default shell is `CMD.EXE` and password logins are allowed.
     New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH"  -Name DefaultShell \
         -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" \
         -PropertyType String -Force
+
+### ???
+
+[XXX This is old information; it's not clear if it's still relevant, and
+relevant to server, client, or both.]
 
 The standard keys, config files etc. are under `%programdata%\ssh\`
 (usually `C:\ProgramData\ssh\`). Suggested Windows-specific
@@ -135,6 +171,7 @@ that [`ssh-keygen`](../app/openssh.md) can't handle.
 [ms-ssh-inst]: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
 [ms-ssh-wiki]: https://github.com/powershell/win32-openssh/wiki
 [ms-ssh]: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview
+[npiperelay]: https://github.com/jstarks/npiperelay
 [so 15262196]: https://stackoverflow.com/q/15262196/107294
 
 [MLS installer]: http://www.mls-software.com/opensshd.html

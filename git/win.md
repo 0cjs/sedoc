@@ -36,7 +36,11 @@ that should be deselected/disabled.
 3. Default editor: If your preferred option is not in the list, leave it at
    the default (Vim). This can easily be changed later.
 4. Adjusting PATH: "Git from the command line and also from 3rd-party software."
-5. SSH executable: "Use OpenSSH."
+5. SSH executable: On [modern versions of Windows][os-win-ssh] "Use
+   external OpenSSH"; this will use the Windows `ssh`, `ssh-add`, etc. [as
+   described here][os-win-ssh]. On very old versions of Windows where this
+   is not supplied or doesn't work, you may need to "Use OpenSSH." (This
+   uses ssh.exe that comes with Git.)
 6. HTTPS backend: "Use the native Windows Secure Channel library."
 7. Line ending conversions: "Checkout as-is, commit as-is." (Line endings
    should be handled by your editor, not by Git. Even Windows 10 Notepad
@@ -214,6 +218,7 @@ commands, a nice stand-alone Git log browser, and copies of PuTTY's
 [git-config]: https://git-scm.com/docs/git-config
 [git-credential]: https://git-scm.com/docs/git-credential
 [mintty]: https://mintty.github.io/
+[os-win-ssh]: ../os/win/ssh.md
 [so-winsecchan]: https://stackoverflow.com/a/46332681
 [ssh-pageant]: https://github.com/cuviper/ssh-pageant
 [vsc]: https://code.visualstudio.com/
