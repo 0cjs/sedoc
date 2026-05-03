@@ -136,6 +136,31 @@ into the male connector on the PC and the female jack on the IIc:
                         → 3 DSR -/
 
 
+Other Connectors
+----------------
+
+### Winchester Connector
+
+![](img/winchester-connector.jpeg)
+
+The "Winchester connector" is commonly used, in 34-pin form, the [ISO 2593
+pdf] standard "Data communication - 34 pin DTE/DCE interface connector and
+pin assignments." There also seem to be many other connectors that look
+like that used in  older mainframe/IBM-style connections.
+
+__References:__
+- Matthew Gast, _T1: A Survival Guide,_ [High-Speed Serial: V.35][orT1v35]
+- Retrocomputing StackExchange, "Where is/was the standard V.35 connector
+  defined?][rcse-16259]
+- [ISO/IEC 2593:2000]
+- ["Data communication - 34 pin DTE/DCE interface connector and pin
+  assignments"][ISO 2593 pdf].
+- LayGO® Hardware Guide, ["Winchester Connector (ISO-2593)"][laygo-win]
+- LayGO® Hardware Guide, [V.35 Winchester Null Modem Cable][v35null]
+- Pinoutguide.com, ["ITU-TSS V.35 interface pins and signals][v35pinoutguide]
+
+
+
 
 <!-------------------------------------------------------------------->
 [adtpro]: http://adtpro.com/connectionsserial.html#DIN5
@@ -147,3 +172,10 @@ into the male connector on the PC and the female jack on the IIc:
 [wmcons]: https://commons.wikimedia.org/wiki/File:DE-9_to_8P8C_console_cable_pinouts.svg
 [wp-serpin]: https://en.wikipedia.org/wiki/Serial_port#Pinouts
 
+[ISO 2593 pdf]: https://cdn.standards.iteh.ai/samples/7572/e2fa2905102f4ab488ea050912f4a0b9/ISO-2593-1984.pdf
+[ISO/IEC 2593:2000]: https://www.iso.org/standard/34734.html
+[laygo-v35null]: https://advancedrelay.com/laygodoc/laygohwr/v35win.htm
+[laygo-win]: https://advancedrelay.com/laygodoc/laygohwr/v35win.htm
+[orT1v35]: https://www.oreilly.com/library/view/t1-a-survival/0596001274/apes02.html
+[rcse-16259]: https://retrocomputing.stackexchange.com/q/16259/7208
+[v35pinoutguide]: https://pinoutguide.com/SerialPorts/v35_pinout.shtml
