@@ -17,6 +17,6 @@ the script.
 - When no functions are active, $FUNCNAME will be unset. Elements in
   $BASH_SOURCE before the last, if there are any, will be the names of
   `source`d files.
-- When in a function, the last element of $FUCNAME is set to `main`, and
+- When in a function, the last element of $FUNCAME is set to `main`, and
   earlier elements are either `source` or a function name. $BASH_SOURCE
   elements are the names of the files.
