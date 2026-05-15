@@ -8,6 +8,7 @@ Contents:
 - [StackExchange](#stackexchange)
 - [Telegram](#telegram)
 - [Discord](#discord)
+- [Slack](#slack)
 - [YouTube](#youtube)
 - [MediaWiki/Wikipedia Wikitext](#mediawikiwikipedia-wikitext)
 - [WordPress](#wordpress)
@@ -260,6 +261,17 @@ this.
 [discord]: https://discordia.me/en/markdown
 [`discordtimestamp.com`]: https://discordtimestamp.com
 [alrigh]: https://alrigh.com/discord-markdown-formatting/
+
+
+Slack
+-----
+
+Block formats:
+- Code block: triple-backtick
+- Snippet: like a code block, except shows only the first half dozen lines
+  with a "click to expand" prompt. Ctrl-Shift-Enter or `+` menu "Text
+  Snippet" to start. Anything in the current message will be moved to the
+  snippet content; you can also have a separate message (seen in full).
 
 
 YouTube
