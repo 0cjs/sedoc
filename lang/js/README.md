@@ -236,7 +236,8 @@ Node will try to detect from the contents of a file if it's CJS or ESM, but
 you can force all `.js` files to be ESM with `"type": "module"` in
 `packge.json`. Regardless, it's [recommended by V8][v8ext] that explicit
 `.mjs` extensions be used for ESM files both to make it more clear to
-developers and to maximise cross-platform compatibility.
+developers and to maximise cross-platform compatibility. (But see more on
+Node module type handling in [Node](./node.md).)
 
 ESM imports must use an explicit extension on filenames. Node CJS
 (`require()`) is able to do [extension searches] (e.g. `foo/bar` to find

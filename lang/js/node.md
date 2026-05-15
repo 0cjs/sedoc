@@ -39,10 +39,25 @@ without `--input-type`, the [`type`] field controls the behaviour. It may
 be set to:
 - `module`: Treat as ESM.
 - `commonjs`: Treat as CJS (disables syntax detection).
+  - In Node v24, an ESM file may silently fail without producing an error
+    or error code; see [node#49444].
 - No entry: Similar to `commonjs`, but not quite the same: it adds [syntax
   detection] that tries to evaluate if the file is ESM or CJS, which the
-  above two will never do. (This may silently fail without producing an
-  error or error code; see [node#49444].)
+  above two will never do.
+  - In Node v26+, `.js` files that syntax detect as ESM will generate a
+    warning but continue to execute. Extensionless files that syntax detect
+    as ESM will quietly execute.
+
+If in a `"type": "commonjs"` project using extensionless scripts (set
+executable and using the `#!/usr/bin/env node` shebang) you want some to be
+ESM, there are two ways to handle this:
+1. If the scripts have e.g. a `bin/` subdir you can re-enable syntax
+   detection with a `project.json` in that subdir containing just `{}` or
+   `{ "type": "autodetect-with-.js-warning" }`. (The latter is a "comment"
+   hack; Node doesn't understand the value so treats it as unset.)
+2. You can put the script itself in a `.mjs` file and have an extensionless
+   stub that after the shebang does `import('./….mjs')`. (This properly
+   handles top-level await, etc.)
 
 #### __imports__
 
