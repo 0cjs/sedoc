@@ -200,6 +200,10 @@ fixed-width formatting.
 Telegram
 --------
 
+(Side note: in Telegram, "groups" have "members," are for group
+discussions, and may have separated "topics"/threads; "channels" are
+broadcast lists with "subscribers" who cannot see who else subscribes.)
+
 The formatting you add to messages seems to [vary by client][tg-vary].
 [These tests on an old version][tg-clients] show some of the
 not-too-major differences.
