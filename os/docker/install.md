@@ -41,6 +41,10 @@ architectures), Cloud (AWS, Azure), and Desktop (Windows, Mac.)
 The [storage driver] you use can be particularly important; as well
 as the Docker documentation [atomic-loopback] is good.
 
+#### Debian (Debian 13)
+
+<https://docs.docker.com/engine/install/debian/#install-using-the-repository>
+
 #### Debian (as of 2021-08)
 
 Debian has no EE; CE is supported on `x86_64` and `armhf` of Debian 8-10.
