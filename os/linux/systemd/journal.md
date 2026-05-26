@@ -49,6 +49,16 @@ appropriate group.
 * Other selection:
   * `-p PRIO`: Shows <= `emerg` (0), `alert` (1), `crit`, `err`, `warning`, etc.
 
+### Queries
+
+    #   Earliest timestamp in logs
+    journalctl -S '20 years ago' | head -1
+
+    #   Message counts (w/speed optimisations)
+    journalctl -o cat --output-fields=_PID | wc -l
+
+    #   Rate suppression counts
+    journalctl -u systemd-journald --grep=Suppressed
 
 
 
