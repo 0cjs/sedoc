@@ -77,6 +77,8 @@ Installation. You may give a list of targets; it will do them in parallel.
     regardless of any other versions installed.
   - `mise install python@latest`: Install latest version of all released
     versions of the tool. (Does not include pre-releases, betas, etc.)
+  - The `--dry-run-code` option returns 1 if it would install, 0 if the
+    requested version is already installed.
 * `mise upgrade`: Upgrades to "free" part of version number. E.g., `mise
   upgrade` will not upgrade Python 3.14.0 to 3.14.5, but upgrading
   `python@3.14` will. On upgrade, the older version is removed.
