@@ -270,12 +270,18 @@ this.
 Slack
 -----
 
+Inline formats (slightly different from standard Markdown):
+- `_italics_`, `*bold*`, `~strikethrough~`.
+
 Block formats:
 - Code block: triple-backtick
 - Snippet: like a code block, except shows only the first half dozen lines
   with a "click to expand" prompt. Ctrl-Shift-Enter or `+` menu "Text
   Snippet" to start. Anything in the current message will be moved to the
   snippet content; you can also have a separate message (seen in full).
+- Blockquote: `> …`
+
+More at: <https://docs.slack.dev/messaging/formatting-message-text/>
 
 
 YouTube
