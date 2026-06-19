@@ -39,7 +39,7 @@ The [architecture] is based around three primary components:
 > The information below is mainly at the level of detailed use of SigNoz.
 > There's considerably more going on under the hood (especially with
 > time-series databases used by SigNoz, the OTel network protocol (OTLP)
-> and feeders such as [`otelcol`]
+> and feeders such as [`otelcol`])
 
 > [!WARNING]
 > This document was written with considerable AI assistance; it should be
