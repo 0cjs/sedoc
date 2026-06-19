@@ -147,7 +147,7 @@ Core navigation is done from an expanding menu bar at the left, with:
 - SigNoz icon and version number. (Version number may not be displayed; see
   [signoz#11602].)
 - __Home:__ random stuff; not very useful.
-- __Alerts:__ random stuff.
+- __Alerts:__ table with name, status, and random stuff for created alerts.
 - __Dashboards:__ data displays and queries based on those.
 - __Shortcuts:__ Services, Logs, Traces and Infrastructure, in
   user-configurable order.
