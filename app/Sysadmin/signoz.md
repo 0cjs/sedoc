@@ -107,6 +107,11 @@ Metrics have descriptions that can be seen in the Metrics Explorer, but
 attributes do not. You can view attribute names in a pop-up when you click
 in the 'filter query' box in the Query Builder, and all values ever
 received can be shown in the details of the metric in the Metrics Explorer.
+(Clicking on the metric from the Metrics Summary page will reveal a drawer
+menu that has an `Open in Explorer` button in the top right corner; next to
+that there is sometimes a `lucide-crosshair` button that leads to the
+`Metrics Explorer — Metrics Inspect` page which can show graphs of the
+actual datapoints)
 
 As an example, given the way the otelcol daemon is configured in one
 example installation, the `system.cpu.utilization` metric has the following
