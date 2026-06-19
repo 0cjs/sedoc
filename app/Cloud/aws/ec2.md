@@ -45,8 +45,11 @@ Non-bursting instances give full, continuous access to 100% of allocated
 CPU resources.
 * `-flex` instances deliver guaranteed 40% baseline CPU performance with
   the ability to burst to 100% over 95% of a rolling 24-hour window. But
-  they also may have lower EBS and network bandwidth. For the typical 5%
-  savings, it's not good value except at very large scale.
+  it's not clear what happens if you are mostly over 40% all the time; it
+  is apparently credit-based and you might get throttled to 40% right in
+  the middle of your workday. They also may have lower EBS and network
+  bandwidth. For the typical 5% savings, it's not good value except at very
+  large scale.
 * `m8g..2xlarge` breaks even against `t4g.2xlarge` once overall continuous
   CPU usage exceeds about 66%.
 * [`t#`][burstable] earns credits at a fixed rate (196/hour for a
