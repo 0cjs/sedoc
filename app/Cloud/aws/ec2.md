@@ -102,8 +102,11 @@ Note that `g`/Gravitron is __ARM,__ not x86!
     m6a.2xlarge          8  32   EBS 10   12.5        $252   82%
     c8i-flex.2xlarge     8  16   EBS 15   10          $260   84%
     c8i.2xlarge          8  16   EBS 15   10          $274   89%
+    m6a.2xlarge          8  32   EBS                  $252   82%
     m8i-flex.2xlarge     8  32   EBS 10   12.5        $294   95%
     m8i.2xlarge          8  32   EBS 15   10          $309  100%
+    m8a.2xlarge          8  32   EBS                  $355  115%
+    m9g.2xlarge          8  32   EBS 17   12          $286   92%
     r8i-flex.2xlarge     8  64   EBS 15   10          $385  125%
     r8i.2xlarge          8  64   EBS 15   10          $406  131%
     x8i.2xlarge          2  32   EBS 12.5 10          $639  207%
@@ -132,7 +135,7 @@ Note that `g`/Gravitron is __ARM,__ not x86!
 - `NetBW`: Maximum network bandwidth (burst for `t` instances).
 - `BP`: Baseline performance (for burstable instances, `T*`)
 - `Price`: Approx monthly, in `us-east-1`, Linux, from [[ec2info-new]].
-  (Based on 24×365/12 ≅ 730h/month, same as ec2instances sites.)
+  (Based on 24×365/12 ≅ 730 hours/month, same as ec2instances sites.)
 
 ### Instance Type Exploration
 
