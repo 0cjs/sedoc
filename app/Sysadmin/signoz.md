@@ -6,6 +6,9 @@ data in time series and other databases, has a query engine to generate
 stats and graphs from the data, and can generate alerts when certain
 conditions are met.
 
+See also [`signoz-otelcol.md`](./signoz-otelcol.md) for information about
+metrics reported by the SigNoz project-distributed OTel collectors.
+
 ### Architecture
 
 > [!NOTE]
@@ -39,7 +42,7 @@ The [architecture] is based around three primary components:
 > The information below is mainly at the level of detailed use of SigNoz.
 > There's considerably more going on under the hood (especially with
 > time-series databases used by SigNoz, the OTel network protocol (OTLP)
-> and feeders such as [`otelcol`]
+> and feeders such as [`otelcol`]).
 
 > [!WARNING]
 > This document was written with considerable AI assistance; it should be
@@ -142,7 +145,7 @@ Core navigation is done from an expanding menu bar at the left, with:
 - SigNoz icon and version number. (Version number may not be displayed; see
   [signoz#11602].)
 - __Home:__ random stuff; not very useful.
-- __Alerts:__ random stuff.
+- __Alerts:__ List of all alerts, with currently firing at top.
 - __Dashboards:__ data displays and queries based on those.
 - __Shortcuts:__ Services, Logs, Traces and Infrastructure, in
   user-configurable order.
@@ -153,9 +156,26 @@ Core navigation is done from an expanding menu bar at the left, with:
   - …
 - __More__
   - __Metrics:__ The _Metrics Explorer,_ listing all metrics and attributes
-    that have been received and direct views of received metrics. (The
-    listing is paged with page size and number at the bottom of the screen.)
+    that have been received and direct views of received metrics. See more
+    below.
   - …
+
+#### Metrics Explorer
+
+The Metrics Explorer is found via More » Metrics in the left-hand bar. This
+gives you three tabs: Summary, Explorer and Views.
+
+The Summary tab gives a list (paged, with page size and number at the
+bottom of the screen) of all metrics ever received and a query box to
+narrow the search. Clicking on any line gives more details, last received
+time, and a list of attributes and all values available for them. For some
+reason only Gauges, and not Sums, can be viewed in the "Inspect Metric"
+screen, which is accessed via a crosshair icon to the right of the "Open in
+Explorer" icon in the detail view.
+
+The Explorer tab just lets you use the [query builder], just as when
+creating a dashboard. Perhaps it's a better place for experimentation.
+You can save views to the Views tab or add the query to a dashboard.
 
 ### Dashboards
 
@@ -171,6 +191,10 @@ dropdowns at the top of the dashboard, allowing the user to customise the
 panels based on those values. Typically this is used to set e.g.
 `host.name` (referenced as `$host.name` in queries) to have the panels show
 data for just a specific host.
+
+Dashboards _tags_ are displayed in the list of dashboards which lets you
+restrict the view to only certain tags: separate multiple tags with commas.
+The tags are configured under the "Configure" button "overview" tab.
 
 #### Query Builder
 
@@ -226,6 +250,11 @@ you will get separate outputs (and graph lines) for each host, but all the
 `cpu` values `cpu0`, `cpu1`, … will be aggregated with the function. Click
 in `by […]` box to see a pop-up of all remaining attributes on the data
 point to which the 'across' aggregation is being applied.
+
+### Alerts
+
+Alerts take a moment (30-60 seconds) to update when their channel has
+changed its template.
 
 
 
