@@ -93,6 +93,22 @@ Devices behind NAT or similar may acquire addresses on a _relay server_
 that they advertise just as they do other addresses.
 
 
+FAQ and Tips
+------------
+
+### Web Interface Stops Working w/Partial Information Shown
+
+The typical symptom is that the panel renders without info: device is
+"unknown device" with blank/default fields and no folders are listed. This
+is typically CSRF errors, with a common cause being that browser cookies
+are blocked for the origin (CSRF token is cookie-delivered): you've used
+both HTTP and HTTPS, and cookies are not enabled for both. You must enable
+_both_ <http://127.0.0.1:8384> _and_ <httpS://127.0.0.1:8384> origins.
+
+In this case, `syncthing cli show system` will work fine because it's a
+browser, not an API, issue. (And in the browser developer tools, `/rest/…`
+requests will return 403 with 'CSRF Error' in the body.)
+
 
 <!-------------------------------------------------------------------->
 [GitHub]: https://github.com/syncthing/
