@@ -1,3 +1,5 @@
+Standards Information
+---------------------
 
 ### Cross-Recessed Head Screws
 
@@ -40,6 +42,19 @@ References:
 - Wikipedia, [Screwdriver bit § Bit shank standards].
 - AIMS, [Magnetic Nutsetter & Bit Holder Guide].
 
+
+Driver Information
+------------------
+
+### Vessel 220USB-P1 電ドラボールプラス
+
+- USB-C charging at 5V ~30mA; 3.6V 800mAh battery.
+- Three speeds/torques; change by holding down green light button:
+  - 280 RPM 1.2 N⋅m (slow blink):
+    easily damaged components such as terminal blocks
+  - 340 RPM 1.6 N⋅m (fast blink): general tasks ("less recoil")
+  - 400 RPM 2.0 N⋅m (solid): long screws, much tightening.
+—
 
 <!-------------------------------------------------------------------->
 [ISO 4757]: https://cdn.standards.iteh.ai/samples/10742/d878fa0371e041b39de75de4d4426928/ISO-4757-1983.pdf
