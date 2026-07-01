@@ -19,8 +19,8 @@ Each journal entry has a set of __fields__ to which are assigned values.
 Try `journalctl -o verbose -n 1` to see an example log entry with all the
 fields. (On a terminal, trusted fields will be coloured.)
 
-Useful fields: `_SYSTEMD_UNIT`, `SYSLOG_IDENTIFIER`, `_COMM` (command),
-`_EXE`, `_PID`.
+Useful fields: `_SYSTEMD_UNIT`, `_SYSTEMD_USER_UNIT`,
+`SYSLOG_IDENTIFIER`, `_COMM` (command), `_EXE`, `_PID`.
 
 #### Values
 
@@ -41,11 +41,15 @@ appropriate group.
   * `-S/-U DATE`: shows since/until given time/date/'20 sec ago' etc.
 
 * Selection based on fields (no wildcards, no negation):
+  * `--system` (default), `--user` for system services/kernel vs. user
+    services. `--user` also affects `-u`/`--unit` interpretation.
   * `NAME=VAL` Entries where field _name_ matches value _val._
   * `-t VAL`: SYSLOG_IDENTIFIER=_val_ (program name, generally)
   * `-u, --unit=UNIT|PATTERN`: Matches against `_SYSTEMD_UNIT`. Special:
     the only filter that can use a pattern, allegedly, though I've not been
     able to get it to work.
+  * `--user-unit=UNIT|PATTERN`: Matches against `_SYSTEMD_USER_UNIT`;
+    `--unit` does this also if `--user` is provided.
 
 * Other selection:
   * `-p PRIO`: Shows <= `emerg` (0), `alert` (1), `crit`, `err`, `warning`, etc.
