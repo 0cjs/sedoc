@@ -19,7 +19,8 @@ Each journal entry has a set of __fields__ to which are assigned values.
 Try `journalctl -o verbose -n 1` to see an example log entry with all the
 fields. (On a terminal, trusted fields will be coloured.)
 
-Useful fields: `SYSLOG_IDENTIFIER`, `_COMM` (command), `_EXE`, `_PID`.
+Useful fields: `_SYSTEMD_UNIT`, `SYSLOG_IDENTIFIER`, `_COMM` (command),
+`_EXE`, `_PID`.
 
 #### Values
 
@@ -42,9 +43,9 @@ appropriate group.
 * Selection based on fields (no wildcards, no negation):
   * `NAME=VAL` Entries where field _name_ matches value _val._
   * `-t VAL`: SYSLOG_IDENTIFIER=_val_ (program name, generally)
-  * `-u PAT`: Special; only thing that can use a pattern, allegedly,
-    though I've not been able to get it to work. Not clear which of
-    the `*UNIT*` fields it uses.
+  * `-u, --unit=UNIT|PATTERN`: Matches against `_SYSTEMD_UNIT`. Special:
+    the only filter that can use a pattern, allegedly, though I've not been
+    able to get it to work.
 
 * Other selection:
   * `-p PRIO`: Shows <= `emerg` (0), `alert` (1), `crit`, `err`, `warning`, etc.
