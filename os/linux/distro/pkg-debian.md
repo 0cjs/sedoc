@@ -76,14 +76,20 @@ backports from that version to previous versions of Debian.
 The definitions are normally already installed in `/etc/apt/sources.list`,
 and are also shown below.
 
-Note that `-t` does not work with `apt list` use `apt search -t …` instead.
+Notes:
+- Backports does not contain all packages from the next release; e.g.,
+  `git` may be missing.
+- For a particular package, `apt-cache policy PKGNAME` is best; it shows a
+  full version table for all available versions from all available
+  releases.
+- Note that `-t` does not work with `apt list` use `apt search -t …` instead.
 
 All backports are deactivated by default via using `ButAutomaticUpgrades:
 yes` (which pins them to 100) in the Release files. The `-t` option to apt
 commands tweaks the policy engine to prefer the backports packages.
 
     #   Upgrade just kernel
-    apt-get -t stretch-backports upgrade linux-headers-amd64 linux-image-amd64
+    apt-get -t stretch-backports install linux-headers-amd64 linux-image-amd64
     #   Upgrade everything with new versions in backports
     apt -t stretch-backports full-upgrade
 
@@ -141,6 +147,16 @@ From an install started with non-free components:
     # stretch-backports, previously on backports.debian.org
     deb     http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
     deb-src http://ftp.jp.debian.org/debian/            stretch-backports   main contrib non-free
+
+For Debian ≥12, a new stanza in `/etc/apt/sources.list.d/debian.sources`
+because it's "a distinct suite with different pinning behaviour." You want
+the `contrib non-free-firmware` etc. too if you use it in the regular file.
+
+    Types: deb
+    URIs: http://deb.debian.org/debian
+    Suites: bookworm-backports
+    Components: main
+    Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 #### Repository Format
 
