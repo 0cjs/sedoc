@@ -29,26 +29,43 @@ left out .
   and name; `user show 1a2b3c4` shows the same thing; it's not clear how to
   show details.
 
-* Create a new bug with `git bug bug new`; this opens up an editor where
+* For convenience, `gbb() { git bug bug "$@"; }`.
+
+* Create a new bug with `gbb new`; this opens up an editor where
   you enter the title and body as first para and rest, just like a Git
   commit message. After writing, it will come back with something like
   `5b530d2 created`.
 
-* Listing the bugs with `git bug bug` will show a summary line for your
+* Listing the bugs with `gbb` will show a summary line for your
   bug; other ways of seeing information:
 
-      git bug bug title 5b530d2
-      git bug bug status 5b530d2        # 'open'
-      git bug bug label 5b530d2         # no labels yet
-      git bug bug show 5b530d2          # all the information above
-      git bug bug comment 5b530d2       # XXX all above + comments?
+      gbb title 5b530d2
+      gbb status 5b530d2        # 'open'
+      gbb label 5b530d2         # no labels yet
+      gbb show 5b530d2          # summary of all above and all comments
+      gbb comment 5b530d2       # comments only w/no summary; prettier format
 
-* You can `git bug bug select 5b530d2` so that you can do all the above
-  commands without having to specify the bug ID. `git bug bug deselect`
+  The IDs showed by `gbb comment` are the [_combined_ IDs][combid] created
+  by interleaving the bug ID and the comment ID; see also below.
+
+* You can `gbb select 5b530d2` so that you can do all the above
+  commands without having to specify the bug ID. `gbb deselect`
   undoes this.
 
-TODO:
 * Comments on bugs.
+
+      gbb comment new 5b530d2   # bring up editor for comment
+      gbb comment 5b530d2       # shows comment w/new comment ID 5fb3563
+      gbb comment edit 5fb3563  # replaces comment
+      #   BUG: old comment not shown in editor when editing a comment above.
+      gbb comment 5b530d2       # comment ID did not change
+
+  Note that the comment ID after edit remains the same: the [combined
+  ID][combid] of the bug (5b53…) and the original comment ID f365… (that
+  the edit targets with its `"target":"f365…"` field) interleaving each
+  char as a₀b₀a₁b₁a₂b₂… to get 5fb356….
+
+TODO:
 * Filter and sort: Use queries like git bug ls "status:open sort:edit" to filter and sort bugs.
 * Search: Find bugs by text content within your repository.
 * Push/pull to/from remote.
@@ -106,6 +123,22 @@ dig down in a similar way:
     index 0000000..e69de29
     njr@tarnyq-notes$
 
+The clocks and version are empty file objects; `ops` contains all the
+user-visible material:
+
+    $ git cat-file -p  65c6c09234412dbf0c649f97ccca2ad8f0db2d2f | jq
+    { "author": {
+          "id": "581f47ddcb89f45d011ba3d7e313739aa23d656ab910472eaca3fc8dccf39818"
+      },
+       "ops": [   { "type": 1,
+                    "timestamp": 1783064626,
+                    "nonce": "g0MFGZaLkV2f9p1vjE0USQxjpZk=",
+                    "title": "I am confused",
+                    "message": "I am a very confused person and need help. If you can explain to my who I\nam and why I have a nonce, that would be great.\n\nI'm also adding more paragraphs just because I like to talk a lot.",
+                    "files": null
+                  }
+       ] }
+
 
 
 <!-------------------------------------------------------------------->
@@ -114,4 +147,4 @@ dig down in a similar way:
 [git-bug-releases]: https://github.com/git-bug/git-bug/releases/
 [git-bug]: https://github.com/git-bug/git-bug
 [identity]: https://github.com/git-bug/git-bug/blob/trunk/doc/spec/identity.md
-
+[combid]: https://github.com/git-bug/git-bug/blob/trunk/doc/spec/README.md#combined-ids
