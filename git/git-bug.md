@@ -10,10 +10,30 @@ and provides push/pull facilities.
 `git-bug` is a single stand-alone binary; `git bug` will find it in your
 path. Typically, download from the [releases][git-bug-releases] page, e.g.:
 
-    curl -OL https://github.com/git-bug/git-bug/releases/download/v0.10.1/git-bug_linux_amd64
+    curl -OL https://github.com./git-bug/git-bug/releases/download/v0.10.1/git-bug_linux_amd64
     chmod +x git-bug_linux_amd64
     mv git-bug_linux_amd64 ~/.local/bin/git-bug
     git bug version
+
+### Bug Workarounds
+
+The `git-go` library does not understand pushInsteadOf, so this typical
+configuration:
+
+    [url "git@github.com.:"]
+        pushInsteadOf = https://github.com
+
+will cause it to send an incorrect repo name with `git-upload-pack` (even
+if you're not using the pushInsteadOf because pull is SSH too!); full
+details are in issue [XXX#YYY]. There is a workaround for  repos  that
+_don't_ need the "pull with HTTPS but push with SSH" functionality; to the
+_repo's_ `.git/config` add:
+
+    #   Work around a git-go bug with pushInsteadOf: issue [XXX#YYY].
+    #   This still is subject to a race condition where sometimes it will
+    #   say 'knownhost: key is unknown': just try again until it works.
+    [url "git@github.com.:"]
+        insteadOf = git@github.com.:
 
 
 Tutorial
@@ -90,10 +110,13 @@ left out .
       foo
       $
 
+* Pushing/fetching to remote
+
+      git bug push origin
+
 TODO:
 * Filter and sort: Use queries like git bug ls "status:open sort:edit" to filter and sort bugs.
 * Search: Find bugs by text content within your repository.
-* Push/pull to/from remote.
 * Test/document TUI.
 * Test/document web UI.
 * Document bridge workflow (interface to other bug tracking systems).
