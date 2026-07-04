@@ -65,6 +65,31 @@ left out .
   the edit targets with its `"target":"f365…"` field) interleaving each
   char as a₀b₀a₁b₁a₂b₂… to get 5fb356….
 
+* Status can be only `open` or `closed`:
+
+      gbb status 5b530d2        # shows 'open'
+      gbb status close 5b530d2
+      gbb status 5b530d2        # shows 'closed'
+
+* Labels are an arbitrary set:
+
+      $ gbb label 5b530d2                 # no output
+      $ gbb label new 5b530d2 foo bar=baz
+      label foo added
+      label bar=baz added
+      $ gbb label 5b530d2
+      bar=baz
+      foo
+      $ gbb show 5b530d2
+      …
+      labels: bar=baz, foo
+      …
+      $ gbb label rm 5b530d2 bar=baz
+      label bar=baz removed
+      $ gbb label 5b530d2
+      foo
+      $
+
 TODO:
 * Filter and sort: Use queries like git bug ls "status:open sort:edit" to filter and sort bugs.
 * Search: Find bugs by text content within your repository.
