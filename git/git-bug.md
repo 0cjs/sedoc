@@ -5,6 +5,9 @@ git-bug: Distributed Issue Tracker
 stores issues/comments/etc. as objects in a git repository (_not files!_)
 and provides push/pull facilities.
 
+> [!NOTE]
+> The TUI is considerably less buggy than the command line interface.
+
 #### Installation
 
 `git-bug` is a single stand-alone binary; `git bug` will find it in your
@@ -56,9 +59,9 @@ left out .
   commit message. After writing, it will come back with something like
   `5b530d2 created`.
 
-* Listing the bugs with `gbb` will show a summary line for your
-  bug; other ways of seeing information:
+* Listing bugs and showing bug information:
 
+      gbb                       # summary line for each bug
       gbb title 5b530d2
       gbb status 5b530d2        # 'open'
       gbb label 5b530d2         # no labels yet
@@ -113,11 +116,22 @@ left out .
 * Pushing/fetching to remote
 
       git bug push origin
+      git bug pull origin
+
+  __WARNING:__ On the first pull you must have an identity set up or use
+  [a workaround][git-bug#1003.wa] or the pull will be corrupted and will
+  have to be fixed through some difficult hand-editing. You must also not
+  use `--reference` or similar when cloning.
+
+  There is an [ongoing discussion][git-bug#1516] re overhauling the identity
+  management interface: 
+
+[git-bug#1003.wa]: https://github.com/git-bug/git-bug/issues/1003#issuecomment-3305029514
+[git-bug#1516]: https://github.com/git-bug/git-bug/discussions/1516
 
 TODO:
 * Filter and sort: Use queries like git bug ls "status:open sort:edit" to filter and sort bugs.
 * Search: Find bugs by text content within your repository.
-* Test/document TUI.
 * Test/document web UI.
 * Document bridge workflow (interface to other bug tracking systems).
 
