@@ -2,12 +2,16 @@ Headphones, Earphones, Bluetooth Audio Devices
 ----------------------------------------------
 
 Bluetooth profiles:
-- __A2DP__ Advanced Audio Distribution Profile
-  (multimedia audio streaming, unidirectional)
-- __HFP__ Hands-free Profile (telephone calls on automobile systems)
-- __HID__ Human Interface Device Profile (game controllers, etc.; low latency)
-- __HSP__ Headset Profile:
-  (telephone calls; controls for ring, answer, hang-up, volume)
+- __A2DP__ Advanced Audio Distribution Profile (multimedia audio
+  streaming). This is unidirectional, though a few systems supporting
+  [aptX] on the host and client will apparently add bidirectional
+  capability so you can use a mic. (See [[claude-c5b0d804]] for more.)
+- __HFP__ Hands-free Profile: monaural, bidirectional, for telephone calls
+  on automobile systems etc.
+- __HSP__ Headset Profile: for telephone call control: controls for ring,
+  answer, hang-up, volume.
+- __HID__ Human Interface Device Profile
+  (game controllers, etc.; low latency)
 
 Bluetooth remote control:
 - __AVCTP__ Audio/Video Control Transport Protocol:
@@ -19,7 +23,9 @@ Bluetooth remote control:
 [MPRIS] supports play-pause, next, previous, but not volume/mute. (Use
 `pactl` for the latter.)
 
+[aptX]: https://superuser.com/a/1123841/26274
 [mpris]: https://wiki.archlinux.org/title/MPRIS
+[claude-c5b0d804]: https://claude.ai/share/c5b0d804-cfa2-44e7-883a-8f9fe4ee83eb
 
 Aftershokz OpenMove
 -------------------
