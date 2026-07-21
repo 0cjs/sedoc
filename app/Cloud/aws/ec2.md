@@ -74,8 +74,8 @@ Note that `g`/Gravitron is __ARM,__ not x86!
   - `T*`: Burstable CPU perf, lower EBS/net bandwidths, max `2xlarge`.
     - [`T4g`]: ARM Graviton2. 5-40% baseline perf.
     - `T3a`: AMD 1st gen EPYC; cheapest x86 instances.
-    - `T3`: Intel Xeon (Skylake etc.)
-    - `T2`: previous gen burstable (Intel Xeon)
+    - `T3`: Intel Xeon (Skylake etc.), +22% over `t3a`
+    - `T2`: previous gen burstable (Intel Xeon), +11% over `t3a`
   - `M8i`, `M8i-flex`, `M8gd`, `M8a`, `M8g`, `M2 Pro Mac`, `M1 Mac`, `M6id`
   - And many, many more.
 * Compute optimised:
