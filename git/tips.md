@@ -93,6 +93,13 @@ For other history changes examples (e.g., moving a subdir) see
 
       git commit --amend --author cjs -C @
 
+* To remove changes to a file accidentially added to a commit:
+
+      git restore --staged --source=@~ -- FILE
+      #   Unstaged has the changes; staged has the undo of the changes.
+      git commit --amend
+      #   You may now separately stage and commit the changes.
+
 * To remove a file accidentally added to a commit ([so-15321456]):
 
       git reset --soft @^
