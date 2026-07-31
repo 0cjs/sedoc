@@ -143,6 +143,9 @@ While the AWS [Instance Type Explorer][explorer] is the standard way of
 comparing types, it has limited information and no pricing. (Get pricing
 from the [on demand] page.
 
+cloudprice.net's [Amazon EC2 Instances Comparison][cp-ec2] looks to be
+quite good, though I've not used it much yet.
+
 [EC2Instances.github.io][ec2info-new] contains a database of EC2 instance
 type information parameters (CPU, storage, cost, etc.) scraped from various
 Amazon pages. (The old `ec2instances.info` is now dead, though the
@@ -413,10 +416,11 @@ takes at least a day.
 [`T4g`]: https://aws.amazon.com/ec2/instance-types/t4/
 [`jq`]: ../lang/jq.md
 [availability zone]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
-[burstable]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html
 [burstable-unlimited-pricing]: https://aws.amazon.com/ec2/pricing/on-demand/#T2.2FT3.2FT4g_Unlimited_Mode_Pricing
+[burstable]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html
 [cloudyn-drop]: https://www.cloudyn.com/blog/analyzing-aws-ec2-price-drops-over-the-past-5-years/
 [cloudyn-res]: https://www.cloudyn.com/blog/deciding-an-approach-to-the-cloud-aws-reserved-instances/
+[cp-ec2]: https://cloudprice.net/aws/ec2
 [cu-report]: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html
 [dh-pricing]: https://aws.amazon.com/ec2/dedicated-hosts/pricing/
 [ec2doc]: https://aws.amazon.com/documentation/ec2/
