@@ -5,6 +5,23 @@ This document is about GitLab's use use of Git repos; for other
 information about it see the [GitLab](../app/gitlab.md) document.
 
 
+Tips
+----
+
+### send-pack disconnect
+
+If you get messages failing to write your push data to GitLab like:
+
+    Connection to gitlab.com. closed by remote host.
+    send-pack: unexpected disconnect while reading sideband packet
+    fatal: the remote end hung up unexpectedly
+
+the following in your `~/.ssh/config` may fix it:
+
+    Host gitlab.com.
+        IPQoS throughput
+
+
 Special Refs
 ------------
 
