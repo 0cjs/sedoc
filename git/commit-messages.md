@@ -26,6 +26,19 @@ Below, git commands marked with '†' are available from [`gitcmd-abbrev`].
 If you're not using this that's no problem; a standard `git` command is
 always given as an alternative.
 
+#### Line Lengths
+
+`git log` will print commit messages indented with four spaces at the start
+of each line. So in the body the body, ensure you're wrapping lines at 72
+characters or less, except where that's awkward for copies of error
+messages or the like. (72 rather than 75 chars leaves a bit of room for
+quote markers when quoting in mail etc.)
+
+The summary line should never be wrapped. It's usual to try to keep it down
+to 75 characters or less (going well over 50 characters is absolutely
+fine), but if you need to go longer, do so. If your summary is over 100
+chars, however, it probably indicates a problem with how you've written it.
+
 
 Review Procedure
 ----------------
