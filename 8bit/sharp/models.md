@@ -8,7 +8,9 @@ these computers and newer ones, and lots of (small) photos.
 Single-board Computers and Trainers
 -----------------------------------
 
-__[MZ-40K][]__ (1978, ¥24,800 kit). 4-bit Fujitsu MB8843 microcontroller,
+For manuals and further documentation, see the Retroabandon [`tk80-re`] repo.
+
+__[MZ-40K][]__ (1978-05, ¥24,800 kit). 4-bit Fujitsu MB8843 microcontroller,
 keypad, 4-digit 7-segment LED display, speaker. Not programmable as it had
 no monitor in the microcontroller mask ROM, just some demo programs. More a
 toy or soldering exercise than a real computer.
@@ -19,7 +21,7 @@ toy or soldering exercise than a real computer.
 - Built-in programs: clock, timer, sensor, organ, tone playback, telephone
   charge calculation, games (random number generator based on keypress).
 
-__[SB-B-80T][]__ (197?, ¥85,000) Z80 trainer/development board.
+__[SB-B-80T][]__ (1978-06, ¥85,000) Z80 trainer/development board.
 - Keyboard separate from main board: hex keypad and 8 digits of 7-segment LED
 - 2× Z80PIO (one used for keyboard/display)
 - Kansas City tape
@@ -152,6 +154,7 @@ with also a Z80 and some backward compatibility.
 
 
 <!-------------------------------------------------------------------->
+[`tk80-re`]: https://gitlab.com/retroabandon/tk80-re.git
 [MZ-40K]: https://ja.wikipedia.org/wiki/MZ-40K
 [80b-series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80B
 [80k-series]: https://ja.wikipedia.org/wiki/MZ-80#MZ-80K系機種
