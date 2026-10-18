@@ -30,12 +30,17 @@ is run in one process, and _multi-process_ mode where the configuration and
 global setup/teardown are run in the "main" process but tests are run in
 _worker_ sub-processes.
 
-__WARNING:__ Jest may run small numbers of tests, with no more than one
-async test, in single-process mode even if you appear to have specified
-multi-process mode. This can cause e.g. variables set on `globalThis` in
-the global setup to become available to tests in some runs, but not in
-others. Generally, _never_ have tests rely on global variables or other
-process- or interpreter-internal state for any reason.
+> [!WARNING]
+> Jest may run small numbers of tests, with no more than one async test, in
+> single-process/in-band mode even if you appear to have specified
+> multi-process mode. This can cause e.g. variables set on `globalThis` in
+> the global setup to become available to tests in some runs, but not in
+> others. Generally, _never_ have tests rely on global variables or other
+> process- or interpreter-internal state for any reason.
+>
+> Things that can provoke in-band mode include running a single test file,
+> using the `-i`/`--runInBand` option, and on the contents of the timing
+> cache.
 
 In all modes you can get the worker ID (1, 2, …) for that process from
 `process.env.JEST_WORKER_ID`. In multi-process mode the worker ID is
