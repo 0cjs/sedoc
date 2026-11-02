@@ -194,6 +194,14 @@ resolution if the version in the lockfile is not available, a rebuild
 is not entirely deterministic. In this case the lock file will be
 updated with the different version that was actually installed.
 
+> [!NOTE]
+> `node_modules/.package-lock.json`, despite the name and being called a
+> ["hidden lockfile"][hidden-lockfiles], is _not_ a lockfile for dependency
+> locking: it's merely a cache of metadata for what's currently installed
+> under `node_modules/`. It's used only if the package folders it lists
+> exactly match those present and none is newer than it; otherwise
+> `node_modules/` is scanned directly.
+
 ### npm-shrinkwrap.json and package-lock.json
 
 The locked configuration is stored in either [`npm-shrinkwrap.json`]
@@ -258,6 +266,7 @@ necessary?)
 [`npm-shrinkwrap.json`]: https://docs.npmjs.com/files/shrinkwrap.json
 [`package-lock.json`]: https://docs.npmjs.com/files/package-lock.json
 [`package.json`]: https://docs.npmjs.com/files/package.json
+[hidden-lockfiles]: https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json#hidden-lockfiles
 [issue 9550]: https://github.com/npm/npm/issues/9550
 [npm-shrinkwrap package]: https://github.com/uber/npm-shrinkwrap
 
