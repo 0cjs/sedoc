@@ -105,5 +105,5 @@ Be careful about the Xeons. E3-1230 v3 vs. v6 are different sockets.
 
 
 <!-------------------------------------------------------------------->
-[PassMark CPU]: https://www.cpubenchmark.net/cpu_list.php
+[PassMark CPU]: https://www.cpubenchmark.net/CPU_mega_page.html
 [pm-socket]: https://www.cpubenchmark.net/socketType.html
